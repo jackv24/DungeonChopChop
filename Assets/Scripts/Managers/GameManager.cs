@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
 
 	void Start()
 	{
-		StartCoroutine (SetupGame (startSceneIndex));
+		if(SceneManager.sceneCount < 1)
+			StartCoroutine (SetupGame (startSceneIndex));
 	}
 
 	IEnumerator SetupGame(int index)
