@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
 	void Start()
 	{
-		if(SceneManager.sceneCount < 1)
+		if(SceneManager.sceneCount == 1)
 			StartCoroutine (SetupGame (startSceneIndex));
 	}
 

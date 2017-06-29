@@ -12,7 +12,9 @@ public class PlayerInputs : PlayerActionSet
 
 	public PlayerTwoAxisAction Move;
 
-	private InputDevice device;
+	public InputDevice device;
+
+	public bool isKeyboard = false;
 
 	public PlayerInputs()
 	{
@@ -31,6 +33,7 @@ public class PlayerInputs : PlayerActionSet
 
 	public void SetupBindings()
 	{
+		//sets the bindings if the device is a keyboard
 		if (device == null)
 		{
 			Left.AddDefaultBinding (Key.LeftArrow);
@@ -44,9 +47,12 @@ public class PlayerInputs : PlayerActionSet
 
 			Down.AddDefaultBinding (Key.DownArrow);
 			Down.AddDefaultBinding (Key.S);
+
+			isKeyboard = true;
 		}
 		else
 		{
+			//sets the bindings if the device is a controller
 			Left.AddDefaultBinding (InputControlType.DPadLeft);
 			Left.AddDefaultBinding (InputControlType.LeftStickLeft);
 
