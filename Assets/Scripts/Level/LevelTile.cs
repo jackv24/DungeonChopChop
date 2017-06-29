@@ -30,4 +30,29 @@ public class LevelTile : MonoBehaviour
 
 		return doors[index];
 	}
+
+	public bool IsIntersecting(LayerMask layerMask)
+	{
+		bool intersected = false;
+
+		//Check every layout collider
+		foreach(Collider col in layoutColliders)
+		{
+			//Get list of all colliders in layer overlapping this one
+			List<Collider> others = new List<Collider>(Physics.OverlapBox(col.bounds.center, col.bounds.size / 2, col.transform.rotation, layerMask));
+
+			//Remove self from list
+			others.Remove(col);
+
+			//If there are colliders in list, it is intersecting
+			if (others.Count > 0)
+			{
+				intersected = true;
+
+				break;
+			}
+		}
+
+		return intersected;
+	}
 }

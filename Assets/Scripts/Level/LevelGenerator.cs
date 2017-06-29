@@ -10,7 +10,15 @@ public class LevelGenerator : MonoBehaviour
 	[Tooltip("The collision layer that tile layout colliders are on.")]
 	public LayerMask layoutLayer;
 
+	[Header("Debugging")]
+	public bool showProcess = false;
+
 	private void Start()
+	{
+		StartCoroutine("Generator");
+	}
+
+	private IEnumerator Generator()
 	{
 		GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, transform);
 
@@ -18,46 +26,92 @@ public class LevelGenerator : MonoBehaviour
 
 		foreach (Transform door in startTile.doors)
 		{
-			GenerateTile(door, profile.maxTrailLength);
+			yield return StartCoroutine(GenerateTile(door, profile.maxTrailLength));
 		}
 	}
 
-	private void GenerateTile(Transform connectingDoor, int trailLength)
+	private IEnumerator GenerateTile(Transform connectingDoor, int trailLength)
 	{
 		LevelTile nextTile = null;
 
-		while(nextTile == null)
+		List<LevelTile> possibleTiles = new List<LevelTile>(profile.tilePool);
+
+		while (possibleTiles.Count > 0)
 		{
-			//Find a suitable tile (currently randomly selects tile)
+			//Get random tile
+			LevelTile possibleTile = possibleTiles[Random.Range(0, possibleTiles.Count)];
 
-			LevelTile possibleTile = profile.GetRandomTile();
+			bool success = false;
 
-			if (possibleTile == null)
-				return;
+			//Spawn tile in world
+			GameObject tileObj = (GameObject)Instantiate(possibleTile.gameObject, transform);
+			LevelTile tile = tileObj.GetComponent<LevelTile>();
+
+			//Loop through and test all doors to connect to
+			foreach (Transform door in tile.doors)
+			{
+				//Rotate up to three
+				for (int rotationCount = 0; rotationCount < 4; rotationCount++)
+				{
+					//Rotate another 90 degrees every time after the first loop
+					if (rotationCount > 0)
+						tileObj.transform.Rotate(new Vector3(0, 90, 0));
+
+					//Reset tile position to door
+					tileObj.transform.position = connectingDoor.position;
+
+					//Place tile relative so their doors are connected
+					Vector3 offset = connectingDoor.position - door.position;
+
+					//Offset tile so doors are connected
+					tileObj.transform.position = connectingDoor.position + offset;
+
+					//If tile is not intersecting, it has successfully found a place
+					if (!tile.IsIntersecting(layoutLayer))
+					{
+						success = true;
+						break;
+					}
+
+					if(showProcess)
+						yield return new WaitForEndOfFrame();
+				}
+
+				if (success)
+					break;
+			}
+
+			if(success)
+			{
+				nextTile = tile;
+				break;
+			}
 			else
 			{
-				GameObject tileObj = (GameObject)Instantiate(possibleTile.gameObject, transform);
-				LevelTile tile = tileObj.GetComponent<LevelTile>();
+				//Tile did not work, remove it from list of possible tiles
+				possibleTiles.Remove(possibleTile);
 
-				Transform door = tile.GetRandomDoor();
+				//Tile did not work, so delete it
+				Destroy(tileObj);
 
-				Vector3 offset = door.position - connectingDoor.position;
-
-				tileObj.transform.position = connectingDoor.position + offset;
-
-				//TODO: Check if overlapping, attempt rotation, check again, if full rotation doesn't work choose another tile.
-
-				nextTile = tile;
+				if(showProcess)
+					yield return new WaitForEndOfFrame();
 			}
 		}
 
-		trailLength--;
-
-		if (trailLength > 0)
+		//If a tile was found...
+		if (nextTile)
 		{
-			foreach (Transform door in nextTile.doors)
+			//Keep running length of trail left
+			trailLength--;
+
+			if (trailLength > 0)
 			{
-				GenerateTile(door, trailLength);
+				//Generate another tile for each door
+				foreach (Transform door in nextTile.doors)
+				{
+					yield return GenerateTile(door, trailLength);
+				}
 			}
 		}
 	}

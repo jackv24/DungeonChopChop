@@ -12,11 +12,4 @@ public class LevelGeneratorProfile : ScriptableObject
 
 	[Space()]
 	public List<LevelTile> tilePool = new List<LevelTile>();
-
-	public LevelTile GetRandomTile()
-	{
-		int index = Random.Range(0, tilePool.Count);
-
-		return tilePool[index];
-	}
 }
