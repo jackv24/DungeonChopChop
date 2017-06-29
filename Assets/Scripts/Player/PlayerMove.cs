@@ -23,8 +23,16 @@ public class PlayerMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		moveVector.x = input.Move.X * moveSpeed;
-		moveVector.z = input.Move.Y * moveSpeed;
+		if (input.isKeyboard) 
+		{
+			moveVector.x = input.Move.X * moveSpeed;
+			moveVector.z = input.Move.Y * moveSpeed;
+		} 
+		else 
+		{
+			moveVector.x = input.device.LeftStickX * moveSpeed;
+			moveVector.z = input.device.LeftStickY * moveSpeed;
+		}
 		//checks to see if the user is grounded, if not apply gravity
 		if (!characterController.isGrounded) 
 		{
