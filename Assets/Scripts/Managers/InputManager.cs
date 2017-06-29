@@ -15,11 +15,6 @@ public class InputManager : MonoBehaviour
 		Instance = this;
 	}
 
-	void Update()
-	{
-		Debug.Log (Instance.playerInput.Count);
-	}
-
 	public static PlayerInputs GetPlayerInput(int index)
 	{
 		return Instance.playerInput[index];
