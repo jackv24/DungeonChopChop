@@ -88,6 +88,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1800410974829522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4437166771465628}
+  - component: {fileID: 65244880494027692}
+  m_Layer: 8
+  m_Name: Layout Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4031456583532880
 Transform:
   m_ObjectHideFlags: 1
@@ -114,6 +130,19 @@ Transform:
   m_Father: {fileID: 4483306087257832}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!4 &4437166771465628
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1800410974829522}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4483306087257832}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4483306087257832
 Transform:
   m_ObjectHideFlags: 1
@@ -128,6 +157,7 @@ Transform:
   - {fileID: 4749398880011712}
   - {fileID: 4788848438530606}
   - {fileID: 4031456583532880}
+  - {fileID: 4437166771465628}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -157,6 +187,18 @@ Transform:
   m_Father: {fileID: 4483306087257832}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65244880494027692
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1800410974829522}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 1, z: 1.9}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114053957372683134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,6 +214,8 @@ MonoBehaviour:
   - {fileID: 4749398880011712}
   - {fileID: 4788848438530606}
   - {fileID: 4031456583532880}
+  layoutColliders:
+  - {fileID: 65244880494027692}
   requirements: []
 --- !u!212 &212329321035943088
 SpriteRenderer:

@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+	[Tooltip("The level generator profile to use when generating levels.")]
 	public LevelGeneratorProfile profile;
+
+	[Tooltip("The collision layer that tile layout colliders are on.")]
+	public LayerMask layoutLayer;
 
 	private void Start()
 	{

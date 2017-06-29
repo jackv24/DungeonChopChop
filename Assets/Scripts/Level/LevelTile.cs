@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelTile : MonoBehaviour
 {
 	public Transform[] doors;
+	public Collider[] layoutColliders;
 
 	[System.Serializable]
 	public class Requirement
