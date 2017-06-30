@@ -12,14 +12,45 @@ public class LevelGenerator : MonoBehaviour
 
 	private void Start()
 	{
-        GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, transform);
+        Generate();
+    }
 
-        LevelTile startTile = startObj.GetComponent<LevelTile>();
+    public void Generate()
+    {
+        //Delete all children
+        Clear();
 
-        foreach (Transform door in startTile.doors)
+        bool running = true;
+
+        int iterations = 0;
+
+        while (running)
         {
-            GenerateTile(door, profile.maxTrailLength);
+            iterations++;
+
+            //Spawn start tile
+            GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, transform);
+            LevelTile startTile = startObj.GetComponent<LevelTile>();
+
+            foreach (Transform door in startTile.doors)
+            {
+                GenerateTile(door, profile.maxTrailLength);
+            }
+
+            //If there are too few tiles, delete and roll again
+            if (transform.childCount <= profile.minTileAmount || transform.childCount > profile.maxTileAmount)
+            {
+                Clear();
+            }
+            else
+                running = false;
         }
+    }
+
+    public void Clear()
+    {
+        while (transform.childCount > 0)
+            DestroyImmediate(transform.GetChild(0).gameObject);
     }
 
 	private void GenerateTile(Transform connectingDoor, int trailLength)
@@ -64,6 +95,7 @@ public class LevelGenerator : MonoBehaviour
 					{
 						success = true;
 						connectedDoor = door;
+
 						break;
 					}
 				}
@@ -83,7 +115,7 @@ public class LevelGenerator : MonoBehaviour
 				possibleTiles.Remove(possibleTile);
 
 				//Tile did not work, so delete it
-				Destroy(tileObj);
+				DestroyImmediate(tileObj);
 			}
 		}
 
