@@ -12,6 +12,18 @@ public class LevelGeneratorProfile : ScriptableObject
     public int minTileAmount = 5;
     public int maxTileAmount = 20;
 
+    [System.Serializable]
+    public class GeneratorTile
+    {
+        public LevelTile tile;
+        public float probability;
+
+        public GeneratorTile()
+        {
+            tile = null;
+            probability = 1.0f;
+        }
+    }
 	[Space()]
-	public List<LevelTile> tilePool = new List<LevelTile>();
+	public List<GeneratorTile> tilePool = new List<GeneratorTile>();
 }

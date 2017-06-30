@@ -21,16 +21,6 @@ public class LevelTile : MonoBehaviour
 		public int amount = 1;
 	}
 
-	[Space()]
-	public List<Requirement> requirements = new List<Requirement>();
-
-	public Transform GetRandomDoor()
-	{
-		int index = Random.Range(0, doors.Length);
-
-		return doors[index];
-	}
-
 	public bool IsIntersecting(LayerMask layerMask)
 	{
 		bool intersected = false;
