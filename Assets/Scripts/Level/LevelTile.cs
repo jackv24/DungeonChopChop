@@ -44,6 +44,8 @@ public class LevelTile : MonoBehaviour
 			//Remove self from list
 			others.Remove(col);
 
+			Debug.Log(others.Count);
+
 			//If there are colliders in list, it is intersecting
 			if (others.Count > 0)
 			{
@@ -52,6 +54,8 @@ public class LevelTile : MonoBehaviour
 				break;
 			}
 		}
+
+		Debug.Log(intersected);
 
 		return intersected;
 	}

@@ -33,6 +33,7 @@ public class LevelGenerator : MonoBehaviour
 	private IEnumerator GenerateTile(Transform connectingDoor, int trailLength)
 	{
 		LevelTile nextTile = null;
+		Transform connectedDoor = null;
 
 		List<LevelTile> possibleTiles = new List<LevelTile>(profile.tilePool);
 
@@ -53,6 +54,9 @@ public class LevelGenerator : MonoBehaviour
 				//Rotate up to three
 				for (int rotationCount = 0; rotationCount < 4; rotationCount++)
 				{
+					if (showProcess)
+						yield return new WaitForEndOfFrame();
+
 					//Rotate another 90 degrees every time after the first loop
 					if (rotationCount > 0)
 						tileObj.transform.Rotate(new Vector3(0, 90, 0));
@@ -70,11 +74,9 @@ public class LevelGenerator : MonoBehaviour
 					if (!tile.IsIntersecting(layoutLayer))
 					{
 						success = true;
+						connectedDoor = door;
 						break;
 					}
-
-					if(showProcess)
-						yield return new WaitForEndOfFrame();
 				}
 
 				if (success)
@@ -102,13 +104,17 @@ public class LevelGenerator : MonoBehaviour
 		//If a tile was found...
 		if (nextTile)
 		{
+			List<Transform> doors = new List<Transform>(nextTile.doors);
+
+			doors.Remove(connectedDoor);
+
 			//Keep running length of trail left
 			trailLength--;
 
 			if (trailLength > 0)
 			{
 				//Generate another tile for each door
-				foreach (Transform door in nextTile.doors)
+				foreach (Transform door in doors)
 				{
 					yield return GenerateTile(door, trailLength);
 				}
