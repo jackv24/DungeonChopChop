@@ -58,17 +58,38 @@ public class LevelGenerator : MonoBehaviour
 		LevelTile nextTile = null;
 		Transform connectedDoor = null;
 
-		List<LevelTile> possibleTiles = new List<LevelTile>(profile.tilePool);
+		List<LevelGeneratorProfile.GeneratorTile> possibleTiles = new List<LevelGeneratorProfile.GeneratorTile>(profile.tilePool);
 
 		while (possibleTiles.Count > 0)
 		{
-			//Get random tile
-			LevelTile possibleTile = possibleTiles[Random.Range(0, possibleTiles.Count)];
+            LevelGeneratorProfile.GeneratorTile possibleTile = null;
+
+            ///Get random tile with probability
+            //Sort possible tiles list by probability
+            possibleTiles.Sort((x, y) => x.probability.CompareTo(y.probability));
+
+            //Get sum of all probabilities
+            float maxProbability = 0;
+            foreach (LevelGeneratorProfile.GeneratorTile t in possibleTiles)
+                maxProbability += t.probability;
+
+            //Generate random number up to max probability
+            float num = Random.Range(0, maxProbability);
+
+            //Get random tile using cumulative probability
+            float runningProbability = 0;
+            foreach(LevelGeneratorProfile.GeneratorTile t in possibleTiles)
+            {
+                if (num >= runningProbability)
+                    possibleTile = t;
+
+                runningProbability += t.probability;
+            }
 
 			bool success = false;
 
 			//Spawn tile in world
-			GameObject tileObj = (GameObject)Instantiate(possibleTile.gameObject, transform);
+			GameObject tileObj = (GameObject)Instantiate(possibleTile.tile.gameObject, transform);
 			LevelTile tile = tileObj.GetComponent<LevelTile>();
 
 			//Loop through and test all doors to connect to

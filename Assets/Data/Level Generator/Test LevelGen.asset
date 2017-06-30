@@ -11,13 +11,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f79d07e614a04488d6901b6ee7b297, type: 3}
   m_Name: Test LevelGen
   m_EditorClassIdentifier: 
-  startTile: {fileID: 114316823069326804, guid: bab83603e7ceb6e46856393251d6a929,
+  startTile: {fileID: 114585615854244136, guid: 5cf21acd31a2c984086c26027c915a2e,
     type: 2}
-  maxTrailLength: 5
+  maxTrailLength: 15
+  minTileAmount: 30
+  maxTileAmount: 100
   tilePool:
-  - {fileID: 114316823069326804, guid: bab83603e7ceb6e46856393251d6a929, type: 2}
-  - {fileID: 114053957372683134, guid: f2cb58ba552317b499d90e63c47df141, type: 2}
-  - {fileID: 114585615854244136, guid: 22ac18e9e632f6b4ab480343cf466cf5, type: 2}
-  - {fileID: 114636279353782492, guid: 3d904aa8b87256149a5bccac604f7f19, type: 2}
-  - {fileID: 114238129534307380, guid: 04493de01958c1449aa4a7d76cefe998, type: 2}
-  - {fileID: 114040684308461996, guid: 7ba273430e46a384fb2e54bd9127fb62, type: 2}
+  - tile: {fileID: 114316823069326804, guid: bab83603e7ceb6e46856393251d6a929, type: 2}
+    probability: 0.5
+  - tile: {fileID: 114053957372683134, guid: f2cb58ba552317b499d90e63c47df141, type: 2}
+    probability: 1
+  - tile: {fileID: 114585615854244136, guid: 22ac18e9e632f6b4ab480343cf466cf5, type: 2}
+    probability: 2
+  - tile: {fileID: 114636279353782492, guid: 3d904aa8b87256149a5bccac604f7f19, type: 2}
+    probability: 1.5
+  - tile: {fileID: 114238129534307380, guid: 04493de01958c1449aa4a7d76cefe998, type: 2}
+    probability: 3
+  - tile: {fileID: 114040684308461996, guid: 7ba273430e46a384fb2e54bd9127fb62, type: 2}
+    probability: 2.5
