@@ -11,14 +11,22 @@ public class PlayerAttack : MonoBehaviour
 
 	[Header("Rapid Slash Vars")]
 	public int slashAmount;
+	public float rapidSlashCooldown;
+	[Tooltip("The amount added to the rapid slash cooldown (60 times a second)")]
+	public float rapidSlashIncrease = .04f;
 
+	bool canAttack = true;
 
 	private PlayerInputs input;
 	private PlayerInformation playerInformation;
 
-	int comboAmount;
-	float comboCounter;
-	bool comboStarted = false;
+	private int comboAmount;
+
+	private float comboCounter;
+	private float rapidSlashCounter;
+
+	private bool rapidSlashCoolingDown = false;
+	private bool comboStarted = false;
 
 	void Start () 
 	{
@@ -29,23 +37,62 @@ public class PlayerAttack : MonoBehaviour
 
 	void Update()
 	{
-		//do basic attack
-		if (input.BasicAttack.WasPressed) 
+		//check if can actually attack
+		if (canAttack) 
 		{
-			CheckCombo ();
-			//if combo is equal to or greater than 3, do rapid slash
-			if (comboAmount >= 3) 
+			//do basic attack
+			if (input.BasicAttack.WasPressed) 
 			{
-				//rapid slash
-				doRapidSlash ();
+				CheckCombo ();
+				//if combo is equal to or greater than 3, do rapid slash
+				if (comboAmount >= 3) 
+				{
+					//rapid slash
+					doRapidSlash ();
+				} 
+				else 
+				{
+					//basic slash
+					doSlash ();
+				}
 			} 
-			else 
+			else if (input.DashSlash.WasPressed) 
 			{
-				//basic slash
-				Slash();
+				//dash slash
+				doDashSlash ();
+			} 
+			else if (input.BasicAttack) 
+			{
+				//block
+				doBlock ();
 			}
 		}
 	}
+
+	void FixedUpdate()
+	{
+		if (comboStarted) 
+		{
+			CountCombo ();
+			//check if combo has ended
+			if (comboCounter > timeInbetween)
+			{
+				ResetCombo ();
+			}
+		}
+
+		if (rapidSlashCoolingDown) 
+		{
+			RapidSlashCooldownCounter ();
+			//check if rapid slash cooldown is over
+			if (rapidSlashCounter > rapidSlashCooldown) 
+			{
+				ResetRapidSlash ();
+			}
+		}
+	}
+
+	//-------------------------- Combo stuff
 
 	void CheckCombo()
 	{
@@ -76,21 +123,23 @@ public class PlayerAttack : MonoBehaviour
 		comboAmount++;
 		comboCounter = 0;
 	}
+		
 
-	void FixedUpdate()
+	//-------------------------- Block
+
+
+	void doBlock()
 	{
-		if (comboStarted) 
-		{
-			CountCombo ();
-		}
-		//check if combo has ended
-		if (comboCounter > timeInbetween)
-		{
-			ResetCombo ();
-		}
+		//do block things
+
+
+		Debug.Log ("Blocking");
 	}
 
-	void Slash()
+
+	//-------------------------- Attacks
+
+	void doSlash()
 	{
 		//do slash things
 
@@ -102,14 +151,36 @@ public class PlayerAttack : MonoBehaviour
 	{
 		//do rapid slash things
 
-
+		rapidSlashCoolingDown = true;
+		canAttack = false;
 		ResetCombo ();
 		Debug.Log ("Rapid Slash");
 	}
 
+	void ResetRapidSlash()
+	{
+		rapidSlashCoolingDown = false;
+		rapidSlashCounter = 0;
+		canAttack = true;
+	}
+
+	void doDashSlash()
+	{
+		//do flash
+		Debug.Log("Dash Slash");
+	}
+
+
+	//-------------------------- Counters
+
 	void CountCombo()
 	{
 		comboCounter += comboIncrease;
+	}
+
+	void RapidSlashCooldownCounter()
+	{
+		rapidSlashCounter += rapidSlashIncrease;
 	}
 
 }

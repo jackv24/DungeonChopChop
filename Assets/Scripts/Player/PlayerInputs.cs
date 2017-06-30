@@ -10,6 +10,7 @@ public class PlayerInputs : PlayerActionSet
 	public PlayerAction Up;
 	public PlayerAction Down;
 	public PlayerAction BasicAttack;
+	public PlayerAction DashSlash;
 
 	public PlayerTwoAxisAction Move;
 
@@ -25,6 +26,7 @@ public class PlayerInputs : PlayerActionSet
 		Up = CreatePlayerAction ("Move Up");
 		Down = CreatePlayerAction ("Move Down");
 		BasicAttack = CreatePlayerAction ("Basic Attack");
+		DashSlash = CreatePlayerAction ("Dash Slash");
 		Move = CreateTwoAxisPlayerAction (Left, Right, Down, Up);
 	}
 
@@ -51,6 +53,7 @@ public class PlayerInputs : PlayerActionSet
 			Down.AddDefaultBinding (Key.S);
 
 			BasicAttack.AddDefaultBinding (Mouse.LeftButton);
+			DashSlash.AddDefaultBinding (Mouse.RightButton);
 
 			isKeyboard = true;
 		}
@@ -69,7 +72,8 @@ public class PlayerInputs : PlayerActionSet
 			Down.AddDefaultBinding (InputControlType.DPadDown);
 			Down.AddDefaultBinding (InputControlType.LeftStickDown);
 
-			BasicAttack.AddDefaultBinding (InputControlType.Action1);
+			BasicAttack.AddDefaultBinding (InputControlType.Action3);
+			DashSlash.AddDefaultBinding (InputControlType.RightTrigger);
 		}
 	}
 }
