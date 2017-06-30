@@ -9,6 +9,8 @@ public class LevelGeneratorProfile : ScriptableObject
 
 	[Space()]
 	public int maxTrailLength = 5;
+    public int minTileAmount = 5;
+    public int maxTileAmount = 20;
 
 	[Space()]
 	public List<LevelTile> tilePool = new List<LevelTile>();
