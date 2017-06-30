@@ -10,27 +10,19 @@ public class LevelGenerator : MonoBehaviour
 	[Tooltip("The collision layer that tile layout colliders are on.")]
 	public LayerMask layoutLayer;
 
-	[Header("Debugging")]
-	public bool showProcess = false;
-
 	private void Start()
 	{
-		StartCoroutine("Generator");
-	}
+        GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, transform);
 
-	private IEnumerator Generator()
-	{
-		GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, transform);
+        LevelTile startTile = startObj.GetComponent<LevelTile>();
 
-		LevelTile startTile = startObj.GetComponent<LevelTile>();
+        foreach (Transform door in startTile.doors)
+        {
+            GenerateTile(door, profile.maxTrailLength);
+        }
+    }
 
-		foreach (Transform door in startTile.doors)
-		{
-			yield return StartCoroutine(GenerateTile(door, profile.maxTrailLength));
-		}
-	}
-
-	private IEnumerator GenerateTile(Transform connectingDoor, int trailLength)
+	private void GenerateTile(Transform connectingDoor, int trailLength)
 	{
 		LevelTile nextTile = null;
 		Transform connectedDoor = null;
@@ -54,9 +46,6 @@ public class LevelGenerator : MonoBehaviour
 				//Rotate up to three
 				for (int rotationCount = 0; rotationCount < 4; rotationCount++)
 				{
-					if (showProcess)
-						yield return new WaitForEndOfFrame();
-
 					//Rotate another 90 degrees every time after the first loop
 					if (rotationCount > 0)
 						tileObj.transform.Rotate(new Vector3(0, 90, 0));
@@ -95,17 +84,14 @@ public class LevelGenerator : MonoBehaviour
 
 				//Tile did not work, so delete it
 				Destroy(tileObj);
-
-				if(showProcess)
-					yield return new WaitForEndOfFrame();
 			}
 		}
 
 		//If a tile was found...
 		if (nextTile)
 		{
+            //No need to check the door that was just connected
 			List<Transform> doors = new List<Transform>(nextTile.doors);
-
 			doors.Remove(connectedDoor);
 
 			//Keep running length of trail left
@@ -116,7 +102,7 @@ public class LevelGenerator : MonoBehaviour
 				//Generate another tile for each door
 				foreach (Transform door in doors)
 				{
-					yield return GenerateTile(door, trailLength);
+					GenerateTile(door, trailLength);
 				}
 			}
 		}
