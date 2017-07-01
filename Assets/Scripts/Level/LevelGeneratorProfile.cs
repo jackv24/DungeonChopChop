@@ -10,7 +10,10 @@ public class LevelGeneratorProfile : ScriptableObject
 	[Space()]
 	public int maxTrailLength = 5;
     public int minTileAmount = 5;
-    public int maxTileAmount = 20;
+
+	[Space()]
+	[Tooltip("The amount of time the level generator will try to generate a level with a minimum tile amount before giving up.")]
+	public int maxAttempts = 20;
 
     [System.Serializable]
     public class GeneratorTile
