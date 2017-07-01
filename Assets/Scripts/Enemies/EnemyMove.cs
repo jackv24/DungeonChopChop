@@ -7,7 +7,6 @@ public enum TypesOfMoving
 {
 	BasicFollow,
 	FreeRome,
-	RandomRome,
 	FollowInRadius, 
 	FollowPattern,
 	FollowWithIntervals,
@@ -21,7 +20,7 @@ public class EnemyMove : MonoBehaviour
 	//basic move vars
 	public float moveSpeed;
 
-	//follow with intervals
+	//follow with intervals vars
 	[HideInInspector]
 	public float timeTillInterval;
 	[HideInInspector]
@@ -31,10 +30,20 @@ public class EnemyMove : MonoBehaviour
 	[HideInInspector]
 	public float radius;
 
+	//free roam vars
+	[HideInInspector]
+	public float minAdjTime;
+	[HideInInspector]
+	public float maxAdjTime;
+
 	private GameObject player;
 
 	private float intervalCounter = 0;
 	private float timeTillIntervalCounter = 0;
+	private float freeRoamAdjCounter = 0;
+	private float freeRoamNextAdj = 0;
+
+	private Vector3 wayPoint;
 
 	void FixedUpdate()
 	{
@@ -52,6 +61,10 @@ public class EnemyMove : MonoBehaviour
 			else if (movingType == TypesOfMoving.FollowWithIntervals) 
 			{
 				FollowWithIntervals ();
+			}
+			else if (movingType == TypesOfMoving.FreeRome) 
+			{
+				FreeRoam ();
 			}
 		} 
 		else 
@@ -99,5 +112,24 @@ public class EnemyMove : MonoBehaviour
 		{
 			BasicFollow ();
 		}
+	}
+
+
+	void FreeRoam()
+	{
+		freeRoamAdjCounter++;
+		// look at the angle set
+		transform.LookAt (wayPoint);
+		//go forward!
+		transform.position += transform.TransformDirection (Vector3.forward) * moveSpeed * Time.deltaTime;
+		//once the counter is greater then the next adjustment time, adjust
+		if (freeRoamAdjCounter > freeRoamNextAdj) 
+		{
+			freeRoamNextAdj = Random.Range ((minAdjTime * 60), (maxAdjTime * 60));
+			wayPoint = Random.insideUnitSphere * 47;
+			wayPoint.y = 1;
+			freeRoamAdjCounter = 0;
+		}
+
 	}
 }

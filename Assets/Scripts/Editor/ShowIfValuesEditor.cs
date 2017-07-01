@@ -34,6 +34,11 @@ public class ShowIfValuesEditor : Editor {
 			enemyMove.timeTillInterval = EditorGUILayout.FloatField ("Time till Interval in Secs: ", enemyMove.timeTillInterval); 
 			enemyMove.interval = EditorGUILayout.FloatField ("Interval wait in Secs: ", enemyMove.interval); 
 		}
+		else if (enemyMove.movingType == TypesOfMoving.FreeRome) 
+		{
+			enemyMove.minAdjTime = EditorGUILayout.FloatField ("Min time(sec) between rotation: ", enemyMove.minAdjTime); 
+			enemyMove.maxAdjTime = EditorGUILayout.FloatField ("Max time(sec) between rotation: ", enemyMove.maxAdjTime); 
+		}
 	}
 }
 	
