@@ -28,8 +28,17 @@ public class LevelGenerator : MonoBehaviour
         {
             iterations++;
 
-            //Spawn start tile
-            GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, transform);
+			if (iterations > profile.maxAttempts)
+			{
+				Clear();
+
+				Debug.LogWarning("Level Generator exceeded maximum number of attempts. Check to make sure the max trail length allows for generation of the minimum tile amount.");
+
+				break;
+			}
+
+			//Spawn start tile
+			GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, transform);
             LevelTile startTile = startObj.GetComponent<LevelTile>();
 
             foreach (Transform door in startTile.doors)
@@ -38,7 +47,7 @@ public class LevelGenerator : MonoBehaviour
             }
 
             //If there are too few tiles, delete and roll again
-            if (transform.childCount <= profile.minTileAmount || transform.childCount > profile.maxTileAmount)
+            if (transform.childCount <= profile.minTileAmount)
             {
                 Clear();
             }
