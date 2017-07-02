@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
 
 	public int maxHealth;
 	public int health;
-	public bool isDead;
+	public bool isDead = false;
 
 	public delegate void HealthEvent();
 	public event HealthEvent OnDeath;
@@ -31,6 +31,15 @@ public class Health : MonoBehaviour
 			{
 				OnDeath ();
 			}
+			Death ();
+		}
+	}
+
+	void Update()
+	{
+		if (health <= 0) 
+		{
+			isDead = true;
 			Death ();
 		}
 	}
