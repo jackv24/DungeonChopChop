@@ -28,16 +28,15 @@ public class AttackEditor : Editor {
 		} 
 		else if (enemyAttack.attackingType == TypesOfAttack.ShootCircleIntervals) 
 		{
-			enemyAttack.radius = EditorGUILayout.FloatField ("Shoot Radius: ", enemyAttack.radius); 
 			enemyAttack.timeTillInterval = EditorGUILayout.FloatField ("Time till Interval in Secs: ", enemyAttack.timeTillInterval); 
+			enemyAttack.projAmount = EditorGUILayout.IntField ("Amount to shoot in circle: ", enemyAttack.projAmount); 
 		}
 		else if (enemyAttack.attackingType == TypesOfAttack.BasicShootRandom) 
 		{
-			enemyAttack.radius = EditorGUILayout.FloatField ("Shoot Radius: ", enemyAttack.radius); 
 		}
 		else if (enemyAttack.attackingType == TypesOfAttack.ShootCircleRandom) 
 		{
-			enemyAttack.radius = EditorGUILayout.FloatField ("Shoot Radius: ", enemyAttack.radius); 
+			enemyAttack.projAmount = EditorGUILayout.IntField ("Amount to shoot in circle: ", enemyAttack.projAmount); 
 		}
 	}
 }

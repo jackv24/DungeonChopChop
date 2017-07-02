@@ -20,20 +20,27 @@ public class EnemyAttack : MonoBehaviour
 
 	//shoot circle vars
 	[HideInInspector]
-	public float radius;
+	public int projAmount;
 
-	//Interval vars
+	//interval vars
 	[HideInInspector]
 	public float timeTillInterval;
 
 	private float shootIntervalCounter = 0;
 	private float intervalCounter = 0;
+	private int circleAngle = 0;
+	private float angle = 0;
 
 	void FixedUpdate()
 	{
+		circleAngle = 360 / projAmount;
 		if (attackingType == TypesOfAttack.BasicShootIntervals) 
 		{
 			BasicShootIntervals ();
+		}
+		else if (attackingType == TypesOfAttack.ShootCircleIntervals) 
+		{
+			ShootCircleIntervals ();
 		}
 	}
 
@@ -63,9 +70,30 @@ public class EnemyAttack : MonoBehaviour
 
 	}
 
+	void ShootCircle()
+	{
+		angle = circleAngle;
+		for (int i = 0; i < projAmount; i++)
+		{
+			//create the projecticle
+			GameObject projectile = (GameObject)Instantiate (projecticle.gameObject, transform.position, transform.rotation);
+			projectile.transform.Rotate (0, angle, 0);
+			Rigidbody rb = projectile.GetComponent<Rigidbody> ();
+			//make the projectile move
+			rb.AddForce (projectile.transform.forward * thrust, ForceMode.Impulse); 
+			angle += circleAngle;
+		}
+	}
+
 	void ShootCircleIntervals()
 	{
-
+		shootIntervalCounter++;
+		//count up until the counter has reached the interval time, then shoot bullet and restart
+		if (shootIntervalCounter > (timeTillInterval * 60)) 
+		{
+			ShootCircle ();
+			shootIntervalCounter = 0;
+		} 
 	}
 
 	void ShootCircleRandom()
