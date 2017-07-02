@@ -8,7 +8,7 @@ using UnityEditor;
 #endif
 
 [CustomEditor(typeof(EnemyMove))]
-public class ShowIfValuesEditor : Editor {
+public class MoveEditor : Editor {
 
 	private EnemyMove enemyMove;
 

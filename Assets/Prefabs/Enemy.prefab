@@ -26,7 +26,8 @@ GameObject:
   - component: {fileID: 54159024816572496}
   - component: {fileID: 114784011678660516}
   - component: {fileID: 114076963782751592}
-  m_Layer: 0
+  - component: {fileID: 114242283064445466}
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,6 +118,23 @@ MonoBehaviour:
   radius: 4
   minAdjTime: 1
   maxAdjTime: 3
+--- !u!114 &114242283064445466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108581157416084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f297d4c0fe33c54db93b22cef6727cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackingType: 0
+  projecticle: {fileID: 114985999745943196, guid: 2f5e09f5d3b8b784aa23dbea116343df,
+    type: 2}
+  thrust: 50
+  radius: 0
+  timeTillInterval: 3
 --- !u!114 &114445558268403474
 MonoBehaviour:
   m_ObjectHideFlags: 1
