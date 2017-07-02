@@ -19,6 +19,7 @@ public class EnemyMove : MonoBehaviour
 
 	//basic move vars
 	public float moveSpeed;
+	public float lookAtSpeed;
 
 	//follow with intervals vars
 	[HideInInspector]
@@ -74,10 +75,21 @@ public class EnemyMove : MonoBehaviour
 		}
 	}
 
+	void LookAtPlayer()
+	{
+		//get the direction to the player
+		Vector3 direction = player.transform.position - transform.position;
+		//get the quaternion using the direction
+		Quaternion toRotation = Quaternion.LookRotation (direction);
+		//rotate enemy to look at player
+		transform.rotation = Quaternion.Slerp (transform.rotation, toRotation, lookAtSpeed * Time.deltaTime);
+	}
+
 	void BasicFollow()
 	{
 		//move towards the player
 		transform.position = Vector3.MoveTowards (transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+		LookAtPlayer ();
 	}
 
 	void FollowInRadius()

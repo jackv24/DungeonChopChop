@@ -11,6 +11,24 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1108581157416084}
   m_IsPrefabParent: 1
+--- !u!1 &1018409655843728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4347353085480968}
+  - component: {fileID: 33423489075439736}
+  - component: {fileID: 65402598739541526}
+  - component: {fileID: 23124333486583092}
+  m_Layer: 11
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1108581157416084
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +52,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4347353085480968
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018409655843728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.425, z: 0.249}
+  m_LocalScale: {x: 1, y: 0.24087384, z: 0.43464226}
+  m_Children: []
+  m_Father: {fileID: 4807458079098418}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4807458079098418
 Transform:
   m_ObjectHideFlags: 1
@@ -43,10 +74,42 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.84, y: -0.19, z: 1.3016837}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4347353085480968}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23124333486583092
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018409655843728}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!23 &23715869073569426
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -85,6 +148,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1108581157416084}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33423489075439736
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018409655843728}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54159024816572496
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -98,8 +168,20 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!65 &65402598739541526
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018409655843728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114076963782751592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,8 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f729e095034461342b067c758042ecf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingType: 1
+  movingType: 0
   moveSpeed: 1
+  lookAtSpeed: 5
   timeTillInterval: 2
   interval: 2
   radius: 4
@@ -129,12 +212,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f297d4c0fe33c54db93b22cef6727cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackingType: 0
+  attackingType: 1
   projecticle: {fileID: 114985999745943196, guid: 2f5e09f5d3b8b784aa23dbea116343df,
     type: 2}
   thrust: 50
-  radius: 0
-  timeTillInterval: 3
+  projAmount: 5
+  timeTillInterval: 1
+  minInterval: 1
+  maxInterval: 7
 --- !u!114 &114445558268403474
 MonoBehaviour:
   m_ObjectHideFlags: 1

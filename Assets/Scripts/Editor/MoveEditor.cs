@@ -21,7 +21,6 @@ public class MoveEditor : Editor {
 	{
 		base.OnInspectorGUI();
 
-		//EditorGUILayout.BeginHorizontal();
 		if (enemyMove.movingType == TypesOfMoving.BasicFollow) 
 		{
 		} 

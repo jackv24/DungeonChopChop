@@ -21,7 +21,6 @@ public class AttackEditor : Editor {
 	{
 		base.OnInspectorGUI();
 
-		EditorGUILayout.BeginHorizontal();
 		if (enemyAttack.attackingType == TypesOfAttack.BasicShootIntervals) 
 		{
 			enemyAttack.timeTillInterval = EditorGUILayout.FloatField ("Time till Interval in Secs: ", enemyAttack.timeTillInterval); 
@@ -31,12 +30,16 @@ public class AttackEditor : Editor {
 			enemyAttack.timeTillInterval = EditorGUILayout.FloatField ("Time till Interval in Secs: ", enemyAttack.timeTillInterval); 
 			enemyAttack.projAmount = EditorGUILayout.IntField ("Amount to shoot in circle: ", enemyAttack.projAmount); 
 		}
-		else if (enemyAttack.attackingType == TypesOfAttack.BasicShootRandom) 
+		else if (enemyAttack.attackingType == TypesOfAttack.BasicShootRandIntervals) 
 		{
+			enemyAttack.minInterval = EditorGUILayout.FloatField ("Min Interval in Secs: ", enemyAttack.minInterval); 
+			enemyAttack.maxInterval = EditorGUILayout.FloatField ("Max Interval in Secs: ", enemyAttack.maxInterval);
 		}
-		else if (enemyAttack.attackingType == TypesOfAttack.ShootCircleRandom) 
+		else if (enemyAttack.attackingType == TypesOfAttack.ShootCircleRandIntervals) 
 		{
 			enemyAttack.projAmount = EditorGUILayout.IntField ("Amount to shoot in circle: ", enemyAttack.projAmount); 
+			enemyAttack.minInterval = EditorGUILayout.FloatField ("Min Interval in Secs: ", enemyAttack.minInterval); 
+			enemyAttack.maxInterval = EditorGUILayout.FloatField ("Max Interval in Secs: ", enemyAttack.maxInterval);
 		}
 	}
 }

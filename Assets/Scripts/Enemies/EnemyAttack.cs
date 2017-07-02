@@ -5,9 +5,9 @@ using UnityEngine;
 public enum TypesOfAttack
 {
 	BasicShootIntervals,
-	BasicShootRandom,
+	BasicShootRandIntervals,
 	ShootCircleIntervals,
-	ShootCircleRandom,
+	ShootCircleRandIntervals,
 };
 
 public class EnemyAttack : MonoBehaviour
@@ -26,14 +26,22 @@ public class EnemyAttack : MonoBehaviour
 	[HideInInspector]
 	public float timeTillInterval;
 
+	//shoot random vars
+	[HideInInspector]
+	public float minInterval;
+	[HideInInspector]
+	public float maxInterval;
+
 	private float shootIntervalCounter = 0;
 	private float intervalCounter = 0;
 	private int circleAngle = 0;
 	private float angle = 0;
+	private float randomInterval = 0;
 
 	void FixedUpdate()
 	{
 		circleAngle = 360 / projAmount;
+		randomInterval = Random.Range (minInterval, maxInterval);
 		if (attackingType == TypesOfAttack.BasicShootIntervals) 
 		{
 			BasicShootIntervals ();
@@ -41,6 +49,14 @@ public class EnemyAttack : MonoBehaviour
 		else if (attackingType == TypesOfAttack.ShootCircleIntervals) 
 		{
 			ShootCircleIntervals ();
+		}
+		else if (attackingType == TypesOfAttack.ShootCircleRandIntervals) 
+		{
+			ShootCircleRandIntervals ();
+		}
+		else if (attackingType == TypesOfAttack.BasicShootRandIntervals) 
+		{
+			BasicShootRandIntervals ();
 		}
 	}
 
@@ -65,9 +81,16 @@ public class EnemyAttack : MonoBehaviour
 		} 
 	}
 
-	void BasicShootRandom()
+	void BasicShootRandIntervals()
 	{
-
+		shootIntervalCounter++;
+		//count up until the counter has reached the interval time, then shoot bullet and restart
+		if (shootIntervalCounter > (randomInterval * 60)) 
+		{
+			randomInterval = Random.Range (minInterval, maxInterval);
+			Shootforward ();
+			shootIntervalCounter = 0;
+		} 
 	}
 
 	void ShootCircle()
@@ -96,9 +119,16 @@ public class EnemyAttack : MonoBehaviour
 		} 
 	}
 
-	void ShootCircleRandom()
+	void ShootCircleRandIntervals()
 	{
-
+		shootIntervalCounter++;
+		//count up until the counter has reached the interval time, then shoot bullet and restart
+		if (shootIntervalCounter > (randomInterval * 60)) 
+		{
+			randomInterval = Random.Range (minInterval, maxInterval);
+			ShootCircle ();
+			shootIntervalCounter = 0;
+		} 
 	}
 
 }
