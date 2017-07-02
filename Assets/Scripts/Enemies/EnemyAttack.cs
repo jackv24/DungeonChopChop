@@ -63,11 +63,12 @@ public class EnemyAttack : MonoBehaviour
 	void Shootforward()
 	{
 		//create the projecticle
-		GameObject projectile = (GameObject)Instantiate (projecticle.gameObject, transform.position, transform.rotation);
+		GameObject projectile = ObjectPooler.GetPooledObject(projecticle.gameObject);
+		projectile.transform.position = transform.position;
+		projectile.transform.rotation = transform.rotation;;
 		Rigidbody rb = projectile.GetComponent<Rigidbody> ();
 		//make the projectile move
 		rb.AddForce (transform.forward * thrust, ForceMode.Impulse); 
-		Destroy (projectile, 3);
 	}
 
 	void BasicShootIntervals()
@@ -99,7 +100,9 @@ public class EnemyAttack : MonoBehaviour
 		for (int i = 0; i < projAmount; i++)
 		{
 			//create the projecticle
-			GameObject projectile = (GameObject)Instantiate (projecticle.gameObject, transform.position, transform.rotation);
+			GameObject projectile = ObjectPooler.GetPooledObject(projecticle.gameObject);
+			projectile.transform.position = transform.position;
+			projectile.transform.rotation = transform.rotation;
 			projectile.transform.Rotate (0, angle, 0);
 			Rigidbody rb = projectile.GetComponent<Rigidbody> ();
 			//make the projectile move
