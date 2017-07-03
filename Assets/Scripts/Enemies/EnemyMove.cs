@@ -45,6 +45,7 @@ public class EnemyMove : MonoBehaviour
 	//stutter vals
 	[HideInInspector]
 	public float power;
+	[HideInInspector]
 	public float timeBetweenStutter;
 
 	//radius move vars

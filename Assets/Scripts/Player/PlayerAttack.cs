@@ -142,7 +142,14 @@ public class PlayerAttack : MonoBehaviour
 	void doSlash()
 	{
 		//do slash things
-
+		Collider[] colliders = Physics.OverlapSphere(transform.position, 5);
+		foreach (Collider col in colliders) {
+			if (col != null) {
+				if (col.GetComponent<Health> ()) {
+					col.GetComponent<Health> ().AffectHealth (-20);
+				}
+			}
+		}
 
 		Debug.Log ("Basic Slash");
 	}

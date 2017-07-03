@@ -38,16 +38,20 @@ public class EnemyDeath : MonoBehaviour
 			{
 				//checks to make sure if dead
 				dead = true;
-				ShoseDeath ();
+				ChoseDeath ();
 			}
 		}
 	}
 
-	void ShoseDeath()
+	void ChoseDeath()
 	{
 		if (deathType == TypesOfDeath.SplitsIntoAnotherEnemy) 
 		{
 			SplitEnemy ();
+		} 
+		else if (deathType == TypesOfDeath.Nothing) 
+		{
+			Die ();
 		}
 	}
 
