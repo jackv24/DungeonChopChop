@@ -20,23 +20,15 @@ public class MoveEditor : Editor {
 	public override void OnInspectorGUI()
 	{
 		base.OnInspectorGUI();
-
-		if (enemyMove.movingType == TypesOfMoving.BasicFollow) 
-		{
-		} 
-		else if (enemyMove.movingType == TypesOfMoving.FollowInRadius) 
-		{
+		if (enemyMove.moveDistances == MoveDistances.Radius) {
 			enemyMove.radius = EditorGUILayout.FloatField ("Detect Radius: ", enemyMove.radius); 
 		}
-		else if (enemyMove.movingType == TypesOfMoving.FollowWithIntervals) 
-		{
+		if (enemyMove.moveTimes == MoveTimes.Interval) {
 			enemyMove.timeTillInterval = EditorGUILayout.FloatField ("Time till Interval in Secs: ", enemyMove.timeTillInterval); 
 			enemyMove.interval = EditorGUILayout.FloatField ("Interval wait in Secs: ", enemyMove.interval); 
 		}
-		else if (enemyMove.movingType == TypesOfMoving.FreeRome) 
-		{
-			enemyMove.minAdjTime = EditorGUILayout.FloatField ("Min time(sec) between rotation: ", enemyMove.minAdjTime); 
-			enemyMove.maxAdjTime = EditorGUILayout.FloatField ("Max time(sec) between rotation: ", enemyMove.maxAdjTime); 
+		if (enemyMove.moveDistances == MoveDistances.InSight) {
+			enemyMove.distance = EditorGUILayout.FloatField ("Distance can see player: ", enemyMove.distance); 
 		}
 	}
 }
