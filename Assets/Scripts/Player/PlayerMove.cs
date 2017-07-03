@@ -34,6 +34,9 @@ public class PlayerMove : MonoBehaviour
 			moveVector.x = input.device.LeftStickX * moveSpeed;
 			moveVector.z = input.device.LeftStickY * moveSpeed;
 		}
+		//rotate player
+		transform.rotation = Quaternion.LookRotation(new Vector3(moveVector.x, 0, moveVector.z));
+
 		//checks to see if the user is grounded, if not apply gravity
 		if (!characterController.isGrounded) 
 		{

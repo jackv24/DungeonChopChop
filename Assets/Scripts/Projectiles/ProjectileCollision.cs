@@ -18,7 +18,7 @@ public class ProjectileCollision : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
 	{
-		if (col.collider.tag == "Player")
+		if (col.collider.GetComponent<Health>())
 		{
 			col.transform.GetComponent<Health> ().AffectHealth (-damageAmount);
 			gameObject.SetActive (false);
