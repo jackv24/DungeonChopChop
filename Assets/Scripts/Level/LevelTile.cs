@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class LevelTile : MonoBehaviour
 {
-	public Transform[] doors;
+	public List<Transform> doors = new List<Transform>();
 	public BoxCollider[] layoutColliders;
+
+	[Space()]
+	public GameObject blockedDoorPrefab;
+	public int minBlocks = 1;
+	public int maxBlocks = 2;
 
 	[System.Serializable]
 	public class Requirement
@@ -44,6 +49,36 @@ public class LevelTile : MonoBehaviour
 		}
 
 		return intersected;
+	}
+
+	public void BlockDoors()
+	{
+		if(!blockedDoorPrefab)
+		{
+			Debug.LogWarning(gameObject.name + " does not have a door block prefab assigned!");
+			return;
+		}
+
+		if (maxBlocks > doors.Count)
+			maxBlocks = doors.Count;
+
+		int blockAmount = Random.Range(minBlocks, maxBlocks + 1);
+
+		int spawnedBlockAmount = 0;
+
+		while(spawnedBlockAmount < blockAmount)
+		{
+			int index = Random.Range(0, doors.Count);
+
+			GameObject doorObj = (GameObject)Instantiate(blockedDoorPrefab, transform);
+			doorObj.transform.position = doors[index].position;
+			doorObj.transform.rotation = doors[index].rotation;
+
+			DestroyImmediate(doors[index].gameObject);
+			doors.RemoveAt(index);
+
+			spawnedBlockAmount++;
+		}
 	}
 
 	public void EnableStaticBatching()

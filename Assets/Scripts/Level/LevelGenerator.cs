@@ -44,7 +44,10 @@ public class LevelGenerator : MonoBehaviour
 			//Spawn start tile
 			GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, transform);
 			startObj.transform.position = transform.position;
-            LevelTile startTile = startObj.GetComponent<LevelTile>();
+
+			LevelTile startTile = startObj.GetComponent<LevelTile>();
+
+			startTile.BlockDoors();
 
             foreach (Transform door in startTile.doors)
             {
@@ -157,11 +160,12 @@ public class LevelGenerator : MonoBehaviour
 		//If a tile was found...
 		if (nextTile)
 		{
-			nextTile.EnableStaticBatching();
-
             //No need to check the door that was just connected
-			List<Transform> doors = new List<Transform>(nextTile.doors);
-			doors.Remove(connectedDoor);
+			nextTile.doors.Remove(connectedDoor);
+
+			nextTile.BlockDoors();
+
+			nextTile.EnableStaticBatching();
 
 			//Keep running length of trail left
 			trailLength--;
@@ -169,7 +173,7 @@ public class LevelGenerator : MonoBehaviour
 			if (trailLength > 0)
 			{
 				//Generate another tile for each door
-				foreach (Transform door in doors)
+				foreach (Transform door in nextTile.doors)
 				{
 					GenerateTile(door, trailLength);
 				}
