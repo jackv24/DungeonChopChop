@@ -45,4 +45,11 @@ public class LevelTile : MonoBehaviour
 
 		return intersected;
 	}
+
+	public void EnableStaticBatching()
+	{
+		//Only combine meshes in-game (prevents saved scene files becoming too large)
+		if(!Application.isEditor)
+			StaticBatchingUtility.Combine(gameObject);
+	}
 }

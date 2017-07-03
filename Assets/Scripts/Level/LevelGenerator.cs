@@ -157,6 +157,8 @@ public class LevelGenerator : MonoBehaviour
 		//If a tile was found...
 		if (nextTile)
 		{
+			nextTile.EnableStaticBatching();
+
             //No need to check the door that was just connected
 			List<Transform> doors = new List<Transform>(nextTile.doors);
 			doors.Remove(connectedDoor);
