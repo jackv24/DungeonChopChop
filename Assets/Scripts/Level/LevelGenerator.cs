@@ -10,9 +10,13 @@ public class LevelGenerator : MonoBehaviour
 	[Tooltip("The collision layer that tile layout colliders are on.")]
 	public LayerMask layoutLayer;
 
+	[Space()]
+	public bool regenerateOnStart = true;
+
 	private void Start()
 	{
-        Generate();
+		if(regenerateOnStart)
+			Generate();
     }
 
     public void Generate()
@@ -39,6 +43,7 @@ public class LevelGenerator : MonoBehaviour
 
 			//Spawn start tile
 			GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, transform);
+			startObj.transform.position = transform.position;
             LevelTile startTile = startObj.GetComponent<LevelTile>();
 
             foreach (Transform door in startTile.doors)
@@ -152,6 +157,8 @@ public class LevelGenerator : MonoBehaviour
 		//If a tile was found...
 		if (nextTile)
 		{
+			nextTile.EnableStaticBatching();
+
             //No need to check the door that was just connected
 			List<Transform> doors = new List<Transform>(nextTile.doors);
 			doors.Remove(connectedDoor);
