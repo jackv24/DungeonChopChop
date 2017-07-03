@@ -49,7 +49,7 @@ public class LevelTile : MonoBehaviour
 	public void EnableStaticBatching()
 	{
 		//Only combine meshes in-game (prevents saved scene files becoming too large)
-		if(!Application.isEditor)
+		if(Application.isPlaying)
 			StaticBatchingUtility.Combine(gameObject);
 	}
 }
