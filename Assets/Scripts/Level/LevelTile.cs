@@ -70,7 +70,7 @@ public class LevelTile : MonoBehaviour
 		{
 			int index = Random.Range(0, doors.Count);
 
-			GameObject doorObj = (GameObject)Instantiate(blockedDoorPrefab, transform);
+			GameObject doorObj = Instantiate(blockedDoorPrefab, transform);
 			doorObj.transform.position = doors[index].position;
 			doorObj.transform.rotation = doors[index].rotation;
 

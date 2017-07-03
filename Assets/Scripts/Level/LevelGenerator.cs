@@ -11,6 +11,10 @@ public class LevelGenerator : MonoBehaviour
 	public LayerMask layoutLayer;
 
 	[Space()]
+	public string doorTag = "Door";
+	public float maxDoorDistance = 0.1f;
+
+	[Space()]
 	public bool regenerateOnStart = true;
 
 	private void Start()
@@ -61,6 +65,8 @@ public class LevelGenerator : MonoBehaviour
             }
             else
                 running = false;
+
+			BlockEmptyDoors();
         }
     }
 
@@ -179,5 +185,53 @@ public class LevelGenerator : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	void BlockEmptyDoors()
+	{
+		//Find all doors in scene
+		GameObject[] doors = GameObject.FindGameObjectsWithTag(doorTag);
+
+		//Keep list of doors to be deleted
+		List<GameObject> emptyDoors = new List<GameObject>();
+
+		foreach(GameObject doorA in doors)
+		{
+			bool connected = false;
+
+			foreach(GameObject doorB in doors)
+			{
+				if (doorA == doorB)
+					continue;
+
+				//If this door is close to another door it should not be blocked
+				if(Mathf.Abs((doorA.transform.position - doorB.transform.position).magnitude) <= maxDoorDistance)
+					connected = true;
+			}
+
+			//If this door is not close to another door
+			if (!connected)
+			{
+				LevelTile tileA = doorA.GetComponentInParent<LevelTile>();
+
+				if (tileA.blockedDoorPrefab)
+				{
+					GameObject doorObjA = Instantiate(tileA.blockedDoorPrefab, tileA.transform);
+					doorObjA.transform.position = doorA.transform.position;
+					doorObjA.transform.rotation = doorA.transform.rotation;
+				}
+
+				//Make sure to remove door from LevelTile, so no rooms are spawned off of it
+				tileA.doors.Remove(doorA.transform);
+
+				emptyDoors.Add(doorA);
+			}
+		}
+
+		//Remove doors that have been blocked
+		for (int i = 0; i < emptyDoors.Count; i++)
+			DestroyImmediate(emptyDoors[i]);
+
+		emptyDoors.Clear();
 	}
 }
