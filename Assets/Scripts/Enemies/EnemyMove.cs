@@ -5,21 +5,36 @@ using UnityEngine.UI;
 
 public enum TypesOfMoving
 {
-	BasicFollow,
-	FreeRome,
-	FollowInRadius, 
-	FollowPattern,
-	FollowWithIntervals,
+	Follow,
+	Rome,
+};
 
+public enum MoveTimes
+{
+	Constant,
+	Interval
+};
+
+public enum MoveDistances
+{
+	NoDistance,
+	Radius,
+	InSight,
 };
 
 public class EnemyMove : MonoBehaviour 
 {
-	public TypesOfMoving movingType;
-
+	[Header("Basic Movement Values")]
 	//basic move vars
 	public float moveSpeed;
 	public float lookAtSpeed;
+
+
+	public TypesOfMoving movingType;
+	public MoveTimes moveTimes;
+	public MoveDistances moveDistances;
+
+	[Header("Move Choice Values")]
 
 	//follow with intervals vars
 	[HideInInspector]
@@ -37,6 +52,10 @@ public class EnemyMove : MonoBehaviour
 	[HideInInspector]
 	public float maxAdjTime;
 
+	//inSight vars
+	[HideInInspector]
+	public float distance;
+
 	private GameObject player;
 
 	private float intervalCounter = 0;
@@ -48,31 +67,117 @@ public class EnemyMove : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (player != null) 
-		{
-			//checks what enum is selected, do that
-			if (movingType == TypesOfMoving.BasicFollow) 
-			{
-				BasicFollow ();
+		if (player != null) {
+			switch (movingType) {
+			//check what type of moving
+			//------------------------------------------------Follow
+			case TypesOfMoving.Follow:
+				//check what time of time the enemy moves
+				switch (moveTimes) {
+				case MoveTimes.Constant:
+					//if the enemy moves within a specific distance
+					switch (moveDistances) {
+					case MoveDistances.InSight:
+						FollowConstantInSight ();
+						break;
+					case MoveDistances.NoDistance:
+						BasicFollow ();
+						break;
+					case MoveDistances.Radius:
+						FollowConstantRadius ();
+						break;
+					}
+					break;
+				//check what time of time the enemy moves
+				case MoveTimes.Interval:
+					//if the enemy moves within a specific distance
+					switch (moveDistances) {
+					case MoveDistances.InSight:
+						FollowIntervalInSight ();
+						break;
+					case MoveDistances.NoDistance:
+						FollowIntervalNoDistance ();
+						break;
+					case MoveDistances.Radius:
+						FollowIntervalRadius ();
+						break;
+					}
+					break;
+				}
+				break;
+			//check what type of moving
+			//------------------------------------------------Rome
+			case TypesOfMoving.Rome:
+				//check what time of time the enemy moves
+				switch (moveTimes) {
+				case MoveTimes.Constant:
+					//if the enemy moves within a specific distance
+					switch (moveDistances) {
+					case MoveDistances.InSight:
+						Roam ();
+						break;
+					case MoveDistances.NoDistance:
+						Roam ();
+						break;
+					case MoveDistances.Radius:
+						RoamWithRadius ();
+						break;
+					}
+					break;
+				//check what time of time the enemy moves
+				case MoveTimes.Interval:
+					//if the enemy moves within a specific distance
+					switch (moveDistances) {
+					case MoveDistances.InSight:
+						RoamIntervalNoDistance ();
+						break;
+					case MoveDistances.NoDistance:
+						RoamIntervalNoDistance ();
+						break;
+					case MoveDistances.Radius:
+						RoamIntervalRadius ();
+						break;
+					}
+					break;
+				}
+				break;
 			}
-			else if (movingType == TypesOfMoving.FollowInRadius) 
-			{
-				FollowInRadius ();
-			}
-			else if (movingType == TypesOfMoving.FollowWithIntervals) 
-			{
-				FollowWithIntervals ();
-			}
-			else if (movingType == TypesOfMoving.FreeRome) 
-			{
-				FreeRoam ();
-			}
-		} 
+		}
 		else 
 		{
 			//get the player if it hasnt
 			player = GameObject.FindGameObjectWithTag ("Player");
 		}
+	}
+
+	bool InRadiusOfPlayer()
+	{
+		//if the player is less then the radius away from the enemy, follow him
+		float distance = Vector3.Distance (transform.position, player.transform.position);
+		if (distance < radius) {
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+		return false;
+	}
+
+	bool canSeePlayer()
+	{
+		RaycastHit hit;
+		//check to see if the enemy is looking at the player
+		if (Physics.Raycast (transform.position, transform.forward, out hit, distance)) 
+		{
+			//if it sees the player return true, else return false
+			if (hit.collider.tag == "Player")
+			{
+				return true;
+			}
+			return false;
+		}
+		return false;
 	}
 
 	void LookAtPlayer()
@@ -92,18 +197,32 @@ public class EnemyMove : MonoBehaviour
 		LookAtPlayer ();
 	}
 
-	void FollowInRadius()
+	void FollowConstantRadius()
 	{
 		//if the player is less then the radius away from the enemy, follow him
-		float distance = Vector3.Distance (transform.position, player.transform.position);
-		Debug.Log (distance);
-		if (distance < radius) 
+		if (InRadiusOfPlayer ()) 
 		{
 			BasicFollow ();
 		}
 	}
 
-	void FollowWithIntervals()
+	void FollowConstantInSight()
+	{
+		if (canSeePlayer()) 
+		{
+			BasicFollow ();
+		}
+	}
+
+	void FollowIntervalInSight()
+	{
+		if (canSeePlayer()) 
+		{
+			FollowIntervalNoDistance ();
+		}
+	}
+
+	void FollowIntervalNoDistance()
 	{
 		bool follow = true;
 		timeTillIntervalCounter++;
@@ -126,8 +245,17 @@ public class EnemyMove : MonoBehaviour
 		}
 	}
 
+	void FollowIntervalRadius()
+	{
+		//if the player is less then the radius away from the enemy, follow him
+		if (InRadiusOfPlayer ())
+		{
+			FollowIntervalNoDistance ();
+		}
+	}
 
-	void FreeRoam()
+
+	void Roam()
 	{
 		freeRoamAdjCounter++;
 		// look at the angle set
@@ -142,6 +270,45 @@ public class EnemyMove : MonoBehaviour
 			wayPoint.y = 1;
 			freeRoamAdjCounter = 0;
 		}
-
 	}
+
+	void RoamWithRadius()
+	{
+		if (InRadiusOfPlayer ()) 
+		{
+			Roam ();
+		}
+	}
+
+	void RoamIntervalRadius()
+	{
+		if (InRadiusOfPlayer ()) 
+		{
+			RoamIntervalNoDistance ();
+		}
+	}
+
+	void RoamIntervalNoDistance()
+	{
+		bool roam = true;
+		timeTillIntervalCounter++;
+		//once this float is greater then time till interval, the interval has started
+		if (timeTillIntervalCounter > (timeTillInterval * 60)) 
+		{
+			roam = false;
+			intervalCounter++;
+			//once this float is greater then the interval, the interval has ended
+			if (intervalCounter > (interval * 60)) 
+			{
+				roam = true;
+				intervalCounter = 0;
+				timeTillIntervalCounter = 0;
+			}
+		} 
+		if (roam) 
+		{
+			Roam ();
+		}
+	}
+
 }
