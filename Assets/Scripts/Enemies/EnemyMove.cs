@@ -12,7 +12,8 @@ public enum TypesOfMoving
 public enum MoveTimes
 {
 	Constant,
-	Interval
+	Interval,
+	Stutter
 };
 
 public enum MoveDistances
@@ -29,7 +30,6 @@ public class EnemyMove : MonoBehaviour
 	public float moveSpeed;
 	public float lookAtSpeed;
 
-
 	public TypesOfMoving movingType;
 	public MoveTimes moveTimes;
 	public MoveDistances moveDistances;
@@ -41,6 +41,11 @@ public class EnemyMove : MonoBehaviour
 	public float timeTillInterval;
 	[HideInInspector]
 	public float interval;
+
+	//stutter vals
+	[HideInInspector]
+	public float power;
+	public float timeBetweenStutter;
 
 	//radius move vars
 	[HideInInspector]
@@ -57,6 +62,7 @@ public class EnemyMove : MonoBehaviour
 	public float distance;
 
 	private GameObject player;
+	private Rigidbody rb;
 
 	private float intervalCounter = 0;
 	private float timeTillIntervalCounter = 0;
@@ -64,6 +70,11 @@ public class EnemyMove : MonoBehaviour
 	private float freeRoamNextAdj = 0;
 
 	private Vector3 wayPoint;
+
+	void Start()
+	{
+		rb = GetComponent<Rigidbody> ();
+	}
 
 	void FixedUpdate()
 	{
@@ -100,6 +111,21 @@ public class EnemyMove : MonoBehaviour
 						break;
 					case MoveDistances.Radius:
 						FollowIntervalRadius ();
+						break;
+					}
+					break;
+				//check what time of time the enemy moves
+				case MoveTimes.Stutter:
+					//if the enemy moves within a specific distance
+					switch (moveDistances) {
+					case MoveDistances.InSight:
+						FollowStutter ();
+						break;
+					case MoveDistances.NoDistance:
+						FollowStutter ();
+						break;
+					case MoveDistances.Radius:
+						FollowStutter ();
 						break;
 					}
 					break;
@@ -252,6 +278,23 @@ public class EnemyMove : MonoBehaviour
 		{
 			FollowIntervalNoDistance ();
 		}
+	}
+
+	void Stutter()
+	{
+		rb.AddForce (transform.forward * power, ForceMode.Impulse);
+	}
+
+	void FollowStutter()
+	{
+		BasicFollow ();
+		timeTillIntervalCounter++;
+		//once this float is greater then time till interval, the interval has started
+		if (timeTillIntervalCounter > (timeBetweenStutter * 60)) 
+		{
+			Stutter ();
+			timeTillIntervalCounter = 0;
+		} 
 	}
 
 
