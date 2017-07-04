@@ -18,9 +18,6 @@ public class LevelGeneratorEditor : Editor
     {
         base.OnInspectorGUI();
 
-		if (!generator.regenerateOnStart)
-			EditorGUILayout.HelpBox("Regenerate On Start is not checked! Instantiated meshes will not be statically batched.", MessageType.Warning);
-
 		EditorGUILayout.BeginHorizontal();
         if(GUILayout.Button("Generate"))
         {

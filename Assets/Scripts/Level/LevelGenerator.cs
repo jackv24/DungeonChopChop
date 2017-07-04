@@ -14,13 +14,9 @@ public class LevelGenerator : MonoBehaviour
 	public string doorTag = "Door";
 	public float maxDoorDistance = 0.1f;
 
-	[Space()]
-	public bool regenerateOnStart = true;
-
 	private void Start()
 	{
-		if(regenerateOnStart)
-			Generate();
+		Generate();
     }
 
     public void Generate()
@@ -52,6 +48,8 @@ public class LevelGenerator : MonoBehaviour
 			LevelTile startTile = startObj.GetComponent<LevelTile>();
 
 			startTile.BlockDoors();
+
+			startTile.EnableStaticBatching();
 
             foreach (Transform door in startTile.doors)
             {
