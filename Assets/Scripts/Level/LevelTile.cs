@@ -8,6 +8,7 @@ public class LevelTile : MonoBehaviour
 	public BoxCollider[] layoutColliders;
 
 	[Space()]
+	[Tooltip("The prefab to spawn when blocking off doors on this tile.")]
 	public GameObject blockedDoorPrefab;
 	public int minBlocks = 1;
 	public int maxBlocks = 2;

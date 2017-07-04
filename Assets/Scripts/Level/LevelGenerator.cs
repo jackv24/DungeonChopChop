@@ -11,7 +11,7 @@ public class LevelGenerator : MonoBehaviour
 	public LayerMask layoutLayer;
 
 	[Space()]
-	public string doorTag = "Door";
+	[Tooltip("How close two doors need to be to be considered connected.")]
 	public float maxDoorDistance = 0.1f;
 
 	private void Start()
@@ -48,7 +48,6 @@ public class LevelGenerator : MonoBehaviour
 			LevelTile startTile = startObj.GetComponent<LevelTile>();
 
 			startTile.BlockDoors();
-
 			startTile.EnableStaticBatching();
 
             foreach (Transform door in startTile.doors)
@@ -64,7 +63,7 @@ public class LevelGenerator : MonoBehaviour
             else
                 running = false;
 
-			BlockEmptyDoors();
+			ConnectDoors();
         }
     }
 
@@ -168,7 +167,6 @@ public class LevelGenerator : MonoBehaviour
 			nextTile.doors.Remove(connectedDoor);
 
 			nextTile.BlockDoors();
-
 			nextTile.EnableStaticBatching();
 
 			//Keep running length of trail left
@@ -185,30 +183,35 @@ public class LevelGenerator : MonoBehaviour
 		}
 	}
 
-	void BlockEmptyDoors()
+	void ConnectDoors()
 	{
 		//Find all doors in scene
-		GameObject[] doors = GameObject.FindGameObjectsWithTag(doorTag);
+		LevelDoor[] doors = FindObjectsOfType<LevelDoor>();
 
 		//Keep list of doors to be deleted
 		List<GameObject> emptyDoors = new List<GameObject>();
 
-		foreach(GameObject doorA in doors)
+		foreach(LevelDoor doorA in doors)
 		{
-			bool connected = false;
+			LevelDoor connectedDoor = null;
 
-			foreach(GameObject doorB in doors)
+			foreach(LevelDoor doorB in doors)
 			{
 				if (doorA == doorB)
 					continue;
 
 				//If this door is close to another door it should not be blocked
-				if(Mathf.Abs((doorA.transform.position - doorB.transform.position).magnitude) <= maxDoorDistance)
-					connected = true;
+				if (Mathf.Abs((doorA.transform.position - doorB.transform.position).magnitude) <= maxDoorDistance)
+					connectedDoor = doorB;
 			}
 
+			//If this door is close to another door, it should be connected
+			if (connectedDoor)
+			{
+				doorA.SetTarget(connectedDoor);
+			}
 			//If this door is not close to another door
-			if (!connected)
+			else
 			{
 				LevelTile tileA = doorA.GetComponentInParent<LevelTile>();
 
@@ -222,7 +225,7 @@ public class LevelGenerator : MonoBehaviour
 				//Make sure to remove door from LevelTile, so no rooms are spawned off of it
 				tileA.doors.Remove(doorA.transform);
 
-				emptyDoors.Add(doorA);
+				emptyDoors.Add(doorA.gameObject);
 			}
 		}
 
