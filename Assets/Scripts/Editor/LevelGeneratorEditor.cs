@@ -18,8 +18,11 @@ public class LevelGeneratorEditor : Editor
     {
         base.OnInspectorGUI();
 
+		EditorGUILayout.Space();
+		EditorGUILayout.HelpBox("Please note that preview performance will be significantly worse than in-game performance, due to the large number of tiles on-screen and the lack of static batching", MessageType.Warning);
+
 		EditorGUILayout.BeginHorizontal();
-        if(GUILayout.Button("Generate"))
+        if(GUILayout.Button("Generate Preview"))
         {
             generator.Generate();
             EditorSceneManager.MarkAllScenesDirty();

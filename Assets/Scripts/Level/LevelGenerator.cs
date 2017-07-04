@@ -14,6 +14,8 @@ public class LevelGenerator : MonoBehaviour
 	[Tooltip("How close two doors need to be to be considered connected.")]
 	public float maxDoorDistance = 0.1f;
 
+	private List<LevelTile> generatedTiles = new List<LevelTile>();
+
 	private void Start()
 	{
 		Generate();
@@ -46,10 +48,11 @@ public class LevelGenerator : MonoBehaviour
 			startObj.transform.position = transform.position;
 
 			LevelTile startTile = startObj.GetComponent<LevelTile>();
+			generatedTiles.Add(startTile);
 
 			startTile.BlockDoors();
-			startTile.EnableStaticBatching();
 
+			//Spawn a tile for every door
             foreach (Transform door in startTile.doors)
             {
                 GenerateTile(door, profile.maxTrailLength);
@@ -63,14 +66,31 @@ public class LevelGenerator : MonoBehaviour
             else
                 running = false;
 
+			//Connect all close open doors, block open doors that don't lead anywhere
 			ConnectDoors();
-        }
+
+			//Only apply to tiles when game is running (otherwise it is an in-editor preview)
+			if (Application.isPlaying)
+			{
+				for (int i = 0; i < generatedTiles.Count; i++)
+				{
+					//Enable static batching on a per-tile basis after they have been fully generated
+					generatedTiles[i].EnableStaticBatching();
+
+					//Disable all except the first tile, the rest will be enabled/disabled as the player walks through doors
+					if(i > 0)
+						generatedTiles[i].gameObject.SetActive(false);
+				}
+			}
+		}
     }
 
     public void Clear()
     {
         while (transform.childCount > 0)
             DestroyImmediate(transform.GetChild(0).gameObject);
+
+		generatedTiles.Clear();
     }
 
 	private void GenerateTile(Transform connectingDoor, int trailLength)
@@ -163,11 +183,12 @@ public class LevelGenerator : MonoBehaviour
 		//If a tile was found...
 		if (nextTile)
 		{
+			generatedTiles.Add(nextTile);
+
             //No need to check the door that was just connected
 			nextTile.doors.Remove(connectedDoor);
 
 			nextTile.BlockDoors();
-			nextTile.EnableStaticBatching();
 
 			//Keep running length of trail left
 			trailLength--;
