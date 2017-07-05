@@ -39,7 +39,43 @@ public class MoveEditor : Editor {
 			enemyMove.timeBetweenStutter = EditorGUILayout.FloatField ("Time between each stutter: ", enemyMove.timeBetweenStutter); 
 		}
 		if (enemyMove.moveTimes == MoveTimes.Charge) {
+			enemyMove.power = EditorGUILayout.FloatField ("The amount of power on impulse: ", enemyMove.power); 
+			enemyMove.chargeUptime = EditorGUILayout.FloatField ("The time it takes to charge up: ", enemyMove.chargeUptime); 
+		}
+		if (enemyMove.moveTimes == MoveTimes.Hop) {
+			enemyMove.power = EditorGUILayout.FloatField ("The amount of power on impulse: ", enemyMove.power); 
+			enemyMove.jumpPower = EditorGUILayout.FloatField ("The amount of jump power: ", enemyMove.jumpPower); 
+		}
 
+		if (enemyMove.movingType == TypesOfMoving.Follow) {
+			if (enemyMove.moveTimes == MoveTimes.Charge) {
+				EditorGUILayout.HelpBox ("Warning: This movement doesn't exist", MessageType.Warning);
+			}
+		}
+		if (enemyMove.movingType == TypesOfMoving.Follow) {
+			if (enemyMove.moveTimes == MoveTimes.Stutter) {
+				if (enemyMove.moveDistances == MoveDistances.InSight || enemyMove.moveDistances == MoveDistances.Radius) {
+					EditorGUILayout.HelpBox ("Warning: This movement doesn't exist", MessageType.Warning);
+				}
+			}
+		}
+		if (enemyMove.movingType == TypesOfMoving.Roam) {
+			if (enemyMove.moveTimes == MoveTimes.Stutter || enemyMove.moveTimes == MoveTimes.Charge) {
+				EditorGUILayout.HelpBox ("Warning: This movement doesn't exist", MessageType.Warning);
+			} else {
+				if (enemyMove.moveDistances == MoveDistances.InSight) {
+					EditorGUILayout.HelpBox ("Warning: This movement doesn't exist", MessageType.Warning);
+				}
+			}
+		}
+		if (enemyMove.movingType == TypesOfMoving.Static) {
+			if (enemyMove.moveTimes != MoveTimes.Charge && enemyMove.moveTimes != MoveTimes.Constant) {
+				EditorGUILayout.HelpBox ("Warning: This movement doesn't exist", MessageType.Warning);
+			} else {
+				if (enemyMove.moveDistances == MoveDistances.InSight || enemyMove.moveDistances == MoveDistances.Radius) {
+					EditorGUILayout.HelpBox ("Warning: This movement doesn't exist", MessageType.Warning);
+				}
+			}
 		}
 	}
 }

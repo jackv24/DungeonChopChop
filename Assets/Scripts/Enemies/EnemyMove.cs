@@ -15,7 +15,8 @@ public enum MoveTimes
 	Constant,
 	Interval,
 	Stutter,
-	Charge
+	Charge,
+	Hop,
 };
 
 public enum MoveDistances
@@ -50,9 +51,17 @@ public class EnemyMove : MonoBehaviour
 	[HideInInspector]
 	public float timeBetweenStutter;
 
+	//charge vals
+	[HideInInspector]
+	public float chargeUptime;
+
 	//radius move vars
 	[HideInInspector]
 	public float radius;
+
+	//hop vars
+	[HideInInspector]
+	public float jumpPower;
 
 	//free roam vars
 	[HideInInspector]
@@ -72,11 +81,30 @@ public class EnemyMove : MonoBehaviour
 	private float freeRoamAdjCounter = 0;
 	private float freeRoamNextAdj = 0;
 
+	private bool isGrounded = false;
+	private RaycastHit hit;
+
 	private Vector3 wayPoint;
 
 	void Start()
 	{
 		rb = GetComponent<Rigidbody> ();
+	}
+
+	void OnDrawGizmos()
+	{
+		Debug.DrawRay (new Vector3 (transform.position.x, (transform.position.y - transform.lossyScale.y + .3f), transform.position.z), -transform.up);
+	}
+
+	void Update()
+	{
+		if (Physics.Raycast (new Vector3(transform.position.x, (transform.position.y - transform.localScale.y + .3f), transform.position.z) , -transform.up, out hit, .4f)) {
+			if (hit.collider.tag == "Ground") {
+				isGrounded = true;
+			}
+		} else {
+			isGrounded = false;
+		}
 	}
 
 	void FixedUpdate()
@@ -122,13 +150,24 @@ public class EnemyMove : MonoBehaviour
 					//if the enemy moves within a specific distance
 					switch (moveDistances) {
 					case MoveDistances.InSight:
-						FollowStutter ();
 						break;
 					case MoveDistances.NoDistance:
 						FollowStutter ();
 						break;
 					case MoveDistances.Radius:
-						FollowStutter ();
+						break;
+					}
+					break;
+				//check what time of time the enemy moves
+				case MoveTimes.Hop:
+					//if the enemy moves within a specific distance
+					switch (moveDistances) {
+					case MoveDistances.InSight:
+						break;
+					case MoveDistances.NoDistance:
+						Hop ();
+						break;
+					case MoveDistances.Radius:
 						break;
 					}
 					break;
@@ -143,7 +182,6 @@ public class EnemyMove : MonoBehaviour
 					//if the enemy moves within a specific distance
 					switch (moveDistances) {
 					case MoveDistances.InSight:
-						Roam ();
 						break;
 					case MoveDistances.NoDistance:
 						Roam ();
@@ -158,7 +196,6 @@ public class EnemyMove : MonoBehaviour
 					//if the enemy moves within a specific distance
 					switch (moveDistances) {
 					case MoveDistances.InSight:
-						RoamIntervalNoDistance ();
 						break;
 					case MoveDistances.NoDistance:
 						RoamIntervalNoDistance ();
@@ -175,32 +212,15 @@ public class EnemyMove : MonoBehaviour
 			case TypesOfMoving.Static:
 				//check what time of time the enemy moves
 				switch (moveTimes) {
-				case MoveTimes.Constant:
+				case MoveTimes.Charge:
 					//if the enemy moves within a specific distance
 					switch (moveDistances) {
 					case MoveDistances.InSight:
-						Roam ();
 						break;
 					case MoveDistances.NoDistance:
-						Roam ();
+						Charge ();
 						break;
 					case MoveDistances.Radius:
-						RoamWithRadius ();
-						break;
-					}
-					break;
-					//check what time of time the enemy moves
-				case MoveTimes.Interval:
-					//if the enemy moves within a specific distance
-					switch (moveDistances) {
-					case MoveDistances.InSight:
-						RoamIntervalNoDistance ();
-						break;
-					case MoveDistances.NoDistance:
-						RoamIntervalNoDistance ();
-						break;
-					case MoveDistances.Radius:
-						RoamIntervalRadius ();
 						break;
 					}
 					break;
@@ -394,7 +414,22 @@ public class EnemyMove : MonoBehaviour
 
 	void Charge()
 	{
-		Stutter ();
+		LookAtPlayer ();
+		timeTillIntervalCounter++;
+		//once this float is greater then time till charge up time, do the stutter
+		if (timeTillIntervalCounter > (chargeUptime * 60)) {
+			timeTillIntervalCounter = 0;
+			Stutter ();
+		}
+	}
+
+	void Hop()
+	{
+		BasicFollow ();
+		if (isGrounded) {
+			rb.AddForce (transform.forward * power, ForceMode.Impulse);
+			rb.AddForce (transform.up * jumpPower, ForceMode.Impulse);
+		}
 	}
 
 }
