@@ -33,7 +33,6 @@ public class EnemyAttack : MonoBehaviour
 	public float maxInterval;
 
 	private float shootIntervalCounter = 0;
-	private float intervalCounter = 0;
 	private int circleAngle = 0;
 	private float angle = 0;
 	private float randomInterval = 0;

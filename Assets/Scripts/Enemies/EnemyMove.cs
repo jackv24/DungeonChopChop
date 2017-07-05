@@ -6,14 +6,16 @@ using UnityEngine.UI;
 public enum TypesOfMoving
 {
 	Follow,
-	Rome,
+	Roam,
+	Static,
 };
 
 public enum MoveTimes
 {
 	Constant,
 	Interval,
-	Stutter
+	Stutter,
+	Charge
 };
 
 public enum MoveDistances
@@ -133,8 +135,8 @@ public class EnemyMove : MonoBehaviour
 				}
 				break;
 			//check what type of moving
-			//------------------------------------------------Rome
-			case TypesOfMoving.Rome:
+			//------------------------------------------------Roam
+			case TypesOfMoving.Roam:
 				//check what time of time the enemy moves
 				switch (moveTimes) {
 				case MoveTimes.Constant:
@@ -152,6 +154,42 @@ public class EnemyMove : MonoBehaviour
 					}
 					break;
 				//check what time of time the enemy moves
+				case MoveTimes.Interval:
+					//if the enemy moves within a specific distance
+					switch (moveDistances) {
+					case MoveDistances.InSight:
+						RoamIntervalNoDistance ();
+						break;
+					case MoveDistances.NoDistance:
+						RoamIntervalNoDistance ();
+						break;
+					case MoveDistances.Radius:
+						RoamIntervalRadius ();
+						break;
+					}
+					break;
+				}
+				break;
+			//check what type of moving
+			//------------------------------------------------Static
+			case TypesOfMoving.Static:
+				//check what time of time the enemy moves
+				switch (moveTimes) {
+				case MoveTimes.Constant:
+					//if the enemy moves within a specific distance
+					switch (moveDistances) {
+					case MoveDistances.InSight:
+						Roam ();
+						break;
+					case MoveDistances.NoDistance:
+						Roam ();
+						break;
+					case MoveDistances.Radius:
+						RoamWithRadius ();
+						break;
+					}
+					break;
+					//check what time of time the enemy moves
 				case MoveTimes.Interval:
 					//if the enemy moves within a specific distance
 					switch (moveDistances) {
@@ -188,7 +226,6 @@ public class EnemyMove : MonoBehaviour
 		{
 			return false;
 		}
-		return false;
 	}
 
 	bool canSeePlayer()
@@ -353,6 +390,11 @@ public class EnemyMove : MonoBehaviour
 		{
 			Roam ();
 		}
+	}
+
+	void Charge()
+	{
+		Stutter ();
 	}
 
 }

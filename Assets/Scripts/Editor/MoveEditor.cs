@@ -30,13 +30,16 @@ public class MoveEditor : Editor {
 		if (enemyMove.moveDistances == MoveDistances.InSight) {
 			enemyMove.distance = EditorGUILayout.FloatField ("Distance can see player: ", enemyMove.distance); 
 		}
-		if (enemyMove.movingType == TypesOfMoving.Rome) {
+		if (enemyMove.movingType == TypesOfMoving.Roam) {
 			enemyMove.minAdjTime = EditorGUILayout.FloatField ("Min time between direction change: ", enemyMove.minAdjTime); 
 			enemyMove.maxAdjTime = EditorGUILayout.FloatField ("Max time between direction change: ", enemyMove.maxAdjTime); 
 		}
 		if (enemyMove.moveTimes == MoveTimes.Stutter) {
 			enemyMove.power = EditorGUILayout.FloatField ("The amount of power on impulse: ", enemyMove.power); 
 			enemyMove.timeBetweenStutter = EditorGUILayout.FloatField ("Time between each stutter: ", enemyMove.timeBetweenStutter); 
+		}
+		if (enemyMove.moveTimes == MoveTimes.Charge) {
+
 		}
 	}
 }
