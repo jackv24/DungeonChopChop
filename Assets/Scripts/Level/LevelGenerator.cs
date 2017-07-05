@@ -50,7 +50,14 @@ public class LevelGenerator : MonoBehaviour
 				break;
 			}
 
-			//Spawn start tile
+            if (!profile.startTile)
+            {
+                Debug.LogWarning("No start tile defined in level generator profile!");
+
+                return;
+            }
+
+            //Spawn start tile
 			GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, transform);
 			startObj.transform.position = transform.position;
 

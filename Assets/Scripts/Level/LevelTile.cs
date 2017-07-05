@@ -54,12 +54,6 @@ public class LevelTile : MonoBehaviour
 
 	public void BlockDoors()
 	{
-		if(!blockedDoorPrefab)
-		{
-			Debug.LogWarning(gameObject.name + " does not have a door block prefab assigned!");
-			return;
-		}
-
 		if (maxBlocks > doors.Count)
 			maxBlocks = doors.Count;
 
@@ -71,9 +65,12 @@ public class LevelTile : MonoBehaviour
 		{
 			int index = Random.Range(0, doors.Count);
 
-			GameObject doorObj = Instantiate(blockedDoorPrefab, transform);
-			doorObj.transform.position = doors[index].position;
-			doorObj.transform.rotation = doors[index].rotation;
+            if (blockedDoorPrefab)
+            {
+                GameObject doorObj = Instantiate(blockedDoorPrefab, transform);
+                doorObj.transform.position = doors[index].position;
+                doorObj.transform.rotation = doors[index].rotation;
+            }
 
 			DestroyImmediate(doors[index].gameObject);
 			doors.RemoveAt(index);
