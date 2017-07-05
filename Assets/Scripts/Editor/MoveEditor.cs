@@ -58,6 +58,11 @@ public class MoveEditor : Editor {
 					EditorGUILayout.HelpBox ("Warning: This movement doesn't exist", MessageType.Warning);
 				}
 			}
+			if (enemyMove.moveTimes == MoveTimes.Hop) {
+				if (enemyMove.moveDistances == MoveDistances.InSight || enemyMove.moveDistances == MoveDistances.Radius) {
+					EditorGUILayout.HelpBox ("Warning: This movement doesn't exist", MessageType.Warning);
+				}
+			}
 		}
 		if (enemyMove.movingType == TypesOfMoving.Roam) {
 			if (enemyMove.moveTimes == MoveTimes.Stutter || enemyMove.moveTimes == MoveTimes.Charge) {
