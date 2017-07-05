@@ -14,6 +14,10 @@ public class LevelGenerator : MonoBehaviour
 	[Tooltip("How close two doors need to be to be considered connected.")]
 	public float maxDoorDistance = 0.1f;
 
+    [Space()]
+    [Tooltip("Seed for the level generator. Leave at 0 for random seed.")]
+    public int seed = 0;
+
 	private List<LevelTile> generatedTiles = new List<LevelTile>();
 
 	private void Start()
@@ -23,6 +27,9 @@ public class LevelGenerator : MonoBehaviour
 
     public void Generate()
     {
+        if (seed != 0)
+            Random.InitState(seed);
+
         //Delete all children
         Clear();
 
