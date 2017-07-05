@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour 
 {
+	[Header("Attack vars")]
+	public float attackMinAngle = 130;
+	public float attackDistance = 5;
+
 	[Header("Combo Vars")]
 	public float timeInbetween;
 	[Tooltip("The amount added to the combo counter (60 times a second)")]
@@ -142,11 +146,17 @@ public class PlayerAttack : MonoBehaviour
 	void doSlash()
 	{
 		//do slash things
-		Collider[] colliders = Physics.OverlapSphere(transform.position, 5);
+		Collider[] colliders = Physics.OverlapSphere(transform.position, attackDistance);
 		foreach (Collider col in colliders) {
-			if (col != null) {
-				if (col.GetComponent<Health> ()) {
-					col.GetComponent<Health> ().AffectHealth (-20);
+			if (col != null && col) {
+				if (col.gameObject.layer == 11) {
+					if (col.GetComponent<Health> ()) {
+						float angle = Vector3.Angle (transform.forward, transform.position - col.transform.position);
+						if (angle > attackMinAngle) {
+							col.GetComponent<Health> ().AffectHealth (-20);
+							Debug.Log ("hit enemy");
+						}
+					}
 				}
 			}
 		}
