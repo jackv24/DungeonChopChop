@@ -18,6 +18,9 @@ public class LevelGenerator : MonoBehaviour
     [Tooltip("Seed for the level generator. Leave at 0 for random seed.")]
     public int seed = 0;
 
+    [Space()]
+    public LevelTile.Biomes biome;
+
 	private List<LevelTile> generatedTiles = new List<LevelTile>();
 
 	private void Start()
@@ -83,19 +86,11 @@ public class LevelGenerator : MonoBehaviour
 			//Connect all close open doors, block open doors that don't lead anywhere
 			ConnectDoors();
 
-			//Only apply to tiles when game is running (otherwise it is an in-editor preview)
-			if (Application.isPlaying)
-			{
-				for (int i = 0; i < generatedTiles.Count; i++)
-				{
-					//Enable static batching on a per-tile basis after they have been fully generated
-					generatedTiles[i].EnableStaticBatching();
+            ReplaceBiomes();
 
-					//Disable all except the first tile, the rest will be enabled/disabled as the player walks through doors
-					if(i > 0)
-						generatedTiles[i].gameObject.SetActive(false);
-				}
-			}
+            //Only apply to tiles when game is running (otherwise it is an in-editor preview)
+            if (Application.isPlaying)
+                Finish();
 		}
     }
 
@@ -270,4 +265,26 @@ public class LevelGenerator : MonoBehaviour
 
 		emptyDoors.Clear();
 	}
+
+    void ReplaceBiomes()
+    {
+        //TODO: Actually replace biomes based on position, rather than making them all one biome
+        foreach(LevelTile tile in generatedTiles)
+        {
+            tile.Replace(biome);
+        }
+    }
+
+    void Finish()
+    {
+        for (int i = 0; i < generatedTiles.Count; i++)
+        {
+            //Enable static batching on a per-tile basis after they have been fully generated
+            generatedTiles[i].EnableStaticBatching();
+
+            //Disable all except the first tile, the rest will be enabled/disabled as the player walks through doors
+            if (i > 0)
+                generatedTiles[i].gameObject.SetActive(false);
+        }
+    }
 }

@@ -13,21 +13,23 @@ public class LevelTile : MonoBehaviour
 	public int minBlocks = 1;
 	public int maxBlocks = 2;
 
-	[System.Serializable]
-	public class Requirement
-	{
-		public enum Type
-		{
-			Door,
-			Dungeon
-		}
+    [Header("Alternate Graphics")]
+    [Tooltip("The graphic that will be replaced by the below prefabs.")]
+    public GameObject defaultGraphic;
 
-		public Type type;
+    [Space()]
+    public GameObject grassGraphicPrefab;
+    public GameObject desertGraphicPrefab;
+    public GameObject fireGraphicPrefab;
 
-		public int amount = 1;
-	}
+    public enum Biomes
+    {
+        Grass,
+        Fire,
+        Desert
+    }
 
-	public bool IsIntersecting(LayerMask layerMask)
+    public bool IsIntersecting(LayerMask layerMask)
 	{
 		bool intersected = false;
 
@@ -78,6 +80,46 @@ public class LevelTile : MonoBehaviour
 			spawnedBlockAmount++;
 		}
 	}
+
+    public void Replace(Biomes biome)
+    {
+        if(defaultGraphic)
+        {
+            GameObject newGraphic = null;
+
+            //Select prefab to replace based on biome
+            switch(biome)
+            {
+                case Biomes.Grass:
+                    newGraphic = grassGraphicPrefab;
+                    break;
+                case Biomes.Desert:
+                    newGraphic = desertGraphicPrefab;
+                    break;
+                case Biomes.Fire:
+                    newGraphic = fireGraphicPrefab;
+                    break;
+            }
+
+            //If prefab exists then replace with it
+            if(newGraphic)
+            {
+                GameObject obj = Instantiate(newGraphic, transform);
+                obj.transform.localPosition = defaultGraphic.transform.localPosition;
+                obj.transform.localRotation = defaultGraphic.transform.localRotation;
+
+                //Destroy layout graphic
+                DestroyImmediate(defaultGraphic);
+            }
+        }
+
+        LevelBlock[] levelBlocks = GetComponentsInChildren<LevelBlock>();
+
+        for(int i = 0; i < levelBlocks.Length; i++)
+        {
+            levelBlocks[i].Replace(biome);
+        }
+    }
 
 	public void EnableStaticBatching()
 	{
