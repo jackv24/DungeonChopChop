@@ -30,6 +30,7 @@ public class EnemyMove : MonoBehaviour
 {
 	[Header("Basic Movement Values")]
 	//basic move vars
+	public LayerMask groundMask;
 	public float moveSpeed;
 	public float lookAtSpeed;
 
@@ -82,8 +83,6 @@ public class EnemyMove : MonoBehaviour
 	private float freeRoamNextAdj = 0;
 
 	private bool isGrounded = false;
-	private RaycastHit hit;
-
 	private Vector3 wayPoint;
 
 	void Start()
@@ -98,11 +97,12 @@ public class EnemyMove : MonoBehaviour
 
 	void Update()
 	{
-		if (Physics.Raycast (new Vector3(transform.position.x, (transform.position.y - transform.localScale.y + .3f), transform.position.z) , -transform.up, out hit, .4f)) {
-			if (hit.collider.tag == "Ground") {
-				isGrounded = true;
-			}
-		} else {
+		if (Physics.Raycast (new Vector3(transform.position.x, (transform.position.y - transform.localScale.y + .3f), transform.position.z) , -transform.up, .4f, groundMask)) 
+		{
+			isGrounded = true;
+		} 
+		else 
+		{
 			isGrounded = false;
 		}
 	}
