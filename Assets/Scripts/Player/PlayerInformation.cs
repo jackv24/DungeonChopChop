@@ -11,5 +11,6 @@ public class PlayerInformation : MonoBehaviour
 	public float moveSpeed;
 	public float strength;
 	public float attackSpeed;
+	public float resistance;
 
 }

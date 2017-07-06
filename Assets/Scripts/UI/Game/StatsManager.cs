@@ -10,7 +10,9 @@ public enum StatName
 	Spread,
 	RunSpeed,
 	AttackSpeed,
-	Strength
+	Strength,
+	maxHealth,
+	Resistance,
 };
 
 [Serializable]
@@ -27,11 +29,14 @@ public class StatsManager : MonoBehaviour
 
 	public Stat[] stats;
 	private List<PlayerInformation> playersInfo;
+	private List<Health> healthInfo;
 
 	// Use this for initialization
 	void Start () 
 	{
 		playersInfo = new List<PlayerInformation> ();
+		healthInfo = new List<Health> ();
+
 		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
 		if (players.Length > 0) 
 		{
@@ -39,6 +44,7 @@ public class StatsManager : MonoBehaviour
 			{
 				if (player != null) 
 				{
+					healthInfo.Add(player.GetComponent<Health>());
 					playersInfo.Add (player.GetComponent<PlayerInformation>());
 				}
 			}
@@ -56,6 +62,7 @@ public class StatsManager : MonoBehaviour
 				stat.statText.text = "" + stat.statName.ToString () + ": " + (stat.statLevel);
 			}
 		}
+		int temp = 0;
 		foreach (PlayerInformation playerInfo in playersInfo) 
 		{
 			foreach (Stat stat in stats) 
@@ -70,7 +77,12 @@ public class StatsManager : MonoBehaviour
 					playerInfo.strength = stat.levelValue [stat.statLevel - 1];
 				else if (stat.statName == StatName.AttackSpeed)
 					playerInfo.attackSpeed = stat.levelValue [stat.statLevel - 1];
+				else if (stat.statName == StatName.maxHealth)
+					healthInfo[temp].maxHealth = (int)stat.levelValue [stat.statLevel - 1];
+				else if (stat.statName == StatName.Resistance)
+					playerInfo.resistance = stat.levelValue [stat.statLevel - 1];
 			}
+			temp++;
 		}
 	}
 }
