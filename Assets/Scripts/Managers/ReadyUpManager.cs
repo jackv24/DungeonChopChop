@@ -32,7 +32,6 @@ public class ReadyUpManager : MonoBehaviour
 			if (!sameDevice) 
 			{
 				InputManager.Instance.playerInput.Add (new PlayerInputs ());
-				InputManager.Instance.playerInput [playersReady] = new PlayerInputs ();
 				InputManager.Instance.playerInput [playersReady].SetupBindings ();
 				playersReady++;
 			}
@@ -53,7 +52,6 @@ public class ReadyUpManager : MonoBehaviour
 			if (!sameDevice) 
 			{
 				InputManager.Instance.playerInput.Add (new PlayerInputs ());
-				InputManager.Instance.playerInput [playersReady] = new PlayerInputs ();
 				InputManager.Instance.playerInput [playersReady].AssignDevice (InControl.InputManager.ActiveDevice);
 				InputManager.Instance.playerInput [playersReady].SetupBindings ();
 				playersReady++;

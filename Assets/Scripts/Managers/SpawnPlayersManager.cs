@@ -12,13 +12,16 @@ public class SpawnPlayersManager : MonoBehaviour
 	{
 		int temp = 0;
 		//loops through each player input and instantiates a player prefab
-		foreach (PlayerInputs user in InputManager.Instance.playerInput) 
+		if (InputManager.Instance) 
 		{
-			if (user != null) 
+			foreach (PlayerInputs user in InputManager.Instance.playerInput) 
 			{
-				GameObject player = (GameObject)Instantiate (playerPrefab, spawnPosition, Quaternion.Euler (0, 0, 0));
-				player.GetComponent<PlayerInformation> ().playerIndex = temp;
-				temp++;
+				if (user != null) 
+				{
+					GameObject player = (GameObject)Instantiate (playerPrefab, spawnPosition, Quaternion.Euler (0, 0, 0));
+					player.GetComponent<PlayerInformation> ().playerIndex = temp;
+					temp++;
+				}
 			}
 		}
 	}

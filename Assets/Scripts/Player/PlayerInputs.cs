@@ -14,7 +14,7 @@ public class PlayerInputs : PlayerActionSet
 
 	public PlayerTwoAxisAction Move;
 
-	public InputDevice device;
+	public InputDevice device = null;
 
 	public bool isKeyboard = false;
 

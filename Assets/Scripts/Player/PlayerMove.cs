@@ -17,7 +17,15 @@ public class PlayerMove : MonoBehaviour
 	void Start () 
 	{
 		playerInformation = GetComponent<PlayerInformation> ();
-		input = InputManager.GetPlayerInput (playerInformation.playerIndex);
+		if (InputManager.Instance) 
+		{
+			input = InputManager.GetPlayerInput (playerInformation.playerIndex);
+		} 
+		else 
+		{
+			input = new PlayerInputs ();
+			input.SetupBindings ();
+		}
 		characterController = GetComponent<CharacterController> ();
 	}
 	
