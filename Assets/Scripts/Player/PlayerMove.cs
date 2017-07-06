@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour 
 {
 
-	public float moveSpeed;
+	float moveSpeed;
 	public float gravity = -9.8f;
 
 	private PlayerInputs input;
 	private CharacterController characterController;
 	private PlayerInformation playerInformation;
+
+	private Vector2 inputVector;
 	private Vector3 moveVector;
 
 	// Use this for initialization
@@ -32,19 +34,21 @@ public class PlayerMove : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (input.isKeyboard) 
-		{
-			moveVector.x = input.Move.X * moveSpeed;
-			moveVector.z = input.Move.Y * moveSpeed;
-		} 
-		else 
-		{
-			moveVector.x = input.device.LeftStickX * moveSpeed;
-			moveVector.z = input.device.LeftStickY * moveSpeed;
-		}
+		//sets movespeed to playerinformation movespeed;
+		moveSpeed = playerInformation.moveSpeed;
+
+		//checks if the player is on keyboard
+		inputVector = input.Move;
+
+		if (inputVector.magnitude > 1)
+			inputVector.Normalize ();
+
+		moveVector.x = inputVector.x * moveSpeed;
+		moveVector.z = inputVector.y * moveSpeed;
+
 		//rotate player
-		if(moveVector.magnitude > 0)
-			transform.rotation = Quaternion.LookRotation(new Vector3(moveVector.x, 0, moveVector.z));
+		if(inputVector.magnitude > 0.01f)
+			transform.rotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y));
 
 		//checks to see if the user is grounded, if not apply gravity
 		if (!characterController.isGrounded) 

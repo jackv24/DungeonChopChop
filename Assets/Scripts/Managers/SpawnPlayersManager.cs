@@ -18,7 +18,7 @@ public class SpawnPlayersManager : MonoBehaviour
 			{
 				if (user != null) 
 				{
-					GameObject player = (GameObject)Instantiate (playerPrefab, spawnPosition, Quaternion.Euler (0, 0, 0));
+					GameObject player = (GameObject)Instantiate (playerPrefab, new Vector3(spawnPosition.x + (temp * 10), spawnPosition.y, spawnPosition.z), Quaternion.Euler (0, 0, 0));
 					player.GetComponent<PlayerInformation> ().playerIndex = temp;
 					temp++;
 				}
