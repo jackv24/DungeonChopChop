@@ -26,7 +26,7 @@ public class LevelDoor : MonoBehaviour
 		//Setup box collider through script to ensure all are the same
         BoxCollider col = gameObject.AddComponent<BoxCollider>();
         col.size = new Vector3(3, 1, 1);
-        col.center = new Vector3(0, 0, 0);
+        col.center = new Vector3(0, 0, -0.5f);
         col.isTrigger = true;
     }
 
