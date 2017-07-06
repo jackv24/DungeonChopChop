@@ -42,6 +42,10 @@ public class Health : MonoBehaviour
 			isDead = true;
 			Death ();
 		}
+		if (health > maxHealth) 
+		{
+			health = maxHealth;
+		}
 	}
 
 	public void Death()
