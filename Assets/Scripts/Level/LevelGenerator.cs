@@ -287,10 +287,6 @@ public class LevelGenerator : MonoBehaviour
         {
             //Enable static batching on a per-tile basis after they have been fully generated
             generatedTiles[i].EnableStaticBatching();
-
-            //Disable all except the first tile, the rest will be enabled/disabled as the player walks through doors
-            if (i > 0)
-                generatedTiles[i].gameObject.SetActive(false);
         }
 
 		generatedTiles[0].SetCurrent(null);
