@@ -107,6 +107,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1716551381068616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4169105033936114}
+  m_Layer: 0
+  m_Name: TileOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1746017326429716
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +213,19 @@ Transform:
   m_Father: {fileID: 4972799518582478}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!4 &4169105033936114
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716551381068616}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4972799518582478}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4216372739075176
 Transform:
   m_ObjectHideFlags: 1
@@ -307,6 +335,7 @@ Transform:
   - {fileID: 4502054366466078}
   - {fileID: 4306114646963350}
   - {fileID: 4943550222686090}
+  - {fileID: 4169105033936114}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -373,6 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114429640087812874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -386,6 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114461406873946128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -410,6 +441,7 @@ MonoBehaviour:
     type: 2}
   minBlocks: 1
   maxBlocks: 2
+  tileOrigin: {fileID: 4169105033936114}
   defaultGraphic: {fileID: 1746017326429716}
   grassGraphicPrefab: {fileID: 1044042409305210, guid: 1992b9dcf31b8384b8983a2804319bf3,
     type: 2}
@@ -430,6 +462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114678500439635236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -443,6 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114727646843403848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,6 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114983782573380110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -469,3 +504,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}

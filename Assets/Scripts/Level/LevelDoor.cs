@@ -7,13 +7,17 @@ public class LevelDoor : MonoBehaviour
 	public LevelTile targetTile;
 	public LevelDoor targetDoor;
 
-    private bool setup = false;
+	public LevelTile parentTile;
+
+	private bool setup = false;
 	private bool entered = false;
 
 	public void SetTarget(LevelDoor target)
 	{
 		targetDoor = target;
 		targetTile = target.GetComponentInParent<LevelTile>();
+
+		parentTile = GetComponentInParent<LevelTile>();
 
         if (!setup)
             Setup();
@@ -25,7 +29,7 @@ public class LevelDoor : MonoBehaviour
 
 		//Setup box collider through script to ensure all are the same
         BoxCollider col = gameObject.AddComponent<BoxCollider>();
-        col.size = new Vector3(3, 1, 1);
+        col.size = new Vector3(5, 1, 1);
         col.center = new Vector3(0, 0, -0.5f);
         col.isTrigger = true;
     }
@@ -42,6 +46,8 @@ public class LevelDoor : MonoBehaviour
 					//if this door was entered on the current tile, enable target tile
 					targetTile.gameObject.SetActive(true);
 					targetDoor.entered = true;
+
+					targetTile.SetCurrent(parentTile);
 				}
 				else
 				{

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
+	public static CameraFollow Instance;
+
+    public List<Transform> targets;
 
     [Space()]
     public float height = 15.0f;
@@ -13,26 +15,28 @@ public class CameraFollow : MonoBehaviour
     [Space()]
     public float followSpeed = 10.0f;
 
-    void Start()
-    {
-        if(!target)
-        {
-            GameObject player = GameObject.FindWithTag("Player");
-
-            if (player)
-                target = player.transform;
-        }
-    }
+	void Awake()
+	{
+		Instance = this;
+	}
 
     void LateUpdate()
     {
-        if(target)
-        {
-            Vector3 targetPos = target.position;
-            targetPos += Vector3.up * height;
-            targetPos += Vector3.forward * zOffset;
+		Vector3 targetPos = Vector3.zero;
 
-            transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
-        }
+		if (targets.Count > 0)
+		{
+			foreach (Transform target in targets)
+			{
+				targetPos += target.position;
+			}
+
+			targetPos /= targets.Count;
+		}
+
+        targetPos += Vector3.up * height;
+        targetPos += Vector3.forward * zOffset;
+
+        transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
     }
 }

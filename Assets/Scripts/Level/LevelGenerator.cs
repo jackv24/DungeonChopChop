@@ -18,9 +18,6 @@ public class LevelGenerator : MonoBehaviour
     [Tooltip("Seed for the level generator. Leave at 0 for random seed.")]
     public int seed = 0;
 
-    [Space()]
-    public LevelTile.Biomes biome;
-
 	private List<LevelTile> generatedTiles = new List<LevelTile>();
 
 	private void Start()
@@ -271,7 +268,16 @@ public class LevelGenerator : MonoBehaviour
         //TODO: Actually replace biomes based on position, rather than making them all one biome
         foreach(LevelTile tile in generatedTiles)
         {
-            tile.Replace(biome);
+			LevelTile.Biomes biome = LevelTile.Biomes.Grass;
+
+			if (tile.transform.position.x < 0 && tile.transform.position.z > 0)
+				biome = LevelTile.Biomes.Fire;
+			else if (tile.transform.position.x < 0 && tile.transform.position.z < 0)
+				biome = LevelTile.Biomes.Desert;
+			else if (tile.transform.position.x > 0 && tile.transform.position.z < 0)
+				biome = LevelTile.Biomes.Ice;
+
+			tile.Replace(biome);
         }
     }
 
@@ -286,5 +292,7 @@ public class LevelGenerator : MonoBehaviour
             if (i > 0)
                 generatedTiles[i].gameObject.SetActive(false);
         }
+
+		generatedTiles[0].SetCurrent(null);
     }
 }

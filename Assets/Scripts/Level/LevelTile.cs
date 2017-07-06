@@ -13,6 +13,9 @@ public class LevelTile : MonoBehaviour
 	public int minBlocks = 1;
 	public int maxBlocks = 2;
 
+	[Space()]
+	public Transform tileOrigin;
+
     [Header("Alternate Graphics")]
     [Tooltip("The graphic that will be replaced by the below prefabs.")]
     public GameObject defaultGraphic;
@@ -26,7 +29,8 @@ public class LevelTile : MonoBehaviour
     {
         Grass,
         Fire,
-        Desert
+        Desert,
+		Ice
     }
 
     public bool IsIntersecting(LayerMask layerMask)
@@ -126,5 +130,15 @@ public class LevelTile : MonoBehaviour
 		//Only combine meshes in-game (prevents saved scene files becoming too large)
 		if(Application.isPlaying)
 			StaticBatchingUtility.Combine(gameObject);
+	}
+
+	public void SetCurrent(LevelTile oldTile)
+	{
+		//Add current tile to camera targets
+		CameraFollow.Instance.targets.Add(tileOrigin ? tileOrigin : transform);
+
+		//Remove old tile from camera targets
+		if (oldTile)
+			CameraFollow.Instance.targets.Remove(oldTile.tileOrigin ? oldTile.tileOrigin : oldTile.transform);
 	}
 }

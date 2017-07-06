@@ -43,6 +43,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1067285272916452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4727974052465884}
+  m_Layer: 0
+  m_Name: TileOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1269982255114212
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,6 +337,7 @@ Transform:
   - {fileID: 4303559653470890}
   - {fileID: 4053126680692076}
   - {fileID: 4657414735839660}
+  - {fileID: 4727974052465884}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -377,6 +393,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4354502564898286}
   m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4727974052465884
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067285272916452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4354502564898286}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4775339958031886
 Transform:
@@ -493,6 +522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114111740708704712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -506,6 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114141595360152114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -519,6 +550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114229437737001782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -547,6 +579,7 @@ MonoBehaviour:
     type: 2}
   minBlocks: 1
   maxBlocks: 2
+  tileOrigin: {fileID: 4727974052465884}
   defaultGraphic: {fileID: 1852126194587452}
   grassGraphicPrefab: {fileID: 1056703978444932, guid: 58e50cee682a71b4ab95b48ccb2d1938,
     type: 2}
@@ -567,6 +600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114299241270226764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -580,6 +614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114387763957658700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -593,6 +628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114429701038818288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -606,6 +642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114707178713069186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -619,6 +656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114834239325568448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -632,6 +670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
 --- !u!114 &114922092821942998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -645,3 +684,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTile: {fileID: 0}
   targetDoor: {fileID: 0}
+  parentTile: {fileID: 0}
