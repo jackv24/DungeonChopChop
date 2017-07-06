@@ -26,7 +26,8 @@ public class LevelTile : MonoBehaviour
     {
         Grass,
         Fire,
-        Desert
+        Desert,
+		Ice
     }
 
     public bool IsIntersecting(LayerMask layerMask)
