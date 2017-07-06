@@ -74,6 +74,8 @@ public class PlayerInputs : PlayerActionSet
 
 			BasicAttack.AddDefaultBinding (InputControlType.Action3);
 			DashSlash.AddDefaultBinding (InputControlType.RightTrigger);
+
+			IncludeDevices.Add (device);
 		}
 	}
 }

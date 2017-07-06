@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour 
 {
-	[Header("Attack vars")]
-	public float attackMinAngle = 130;
-	public float attackDistance = 5;
+	float attackMinAngle = 130;
+	float attackDistance = 5;
 
 	[Header("Combo Vars")]
 	public float timeInbetween;
@@ -49,6 +48,9 @@ public class PlayerAttack : MonoBehaviour
 
 	void Update()
 	{
+		//sets attack values
+		attackMinAngle = playerInformation.attackMinAngle;
+		attackDistance = playerInformation.attackDistance;
 		//check if can actually attack
 		if (canAttack) 
 		{
