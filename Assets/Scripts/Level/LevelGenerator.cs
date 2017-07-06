@@ -292,5 +292,7 @@ public class LevelGenerator : MonoBehaviour
             if (i > 0)
                 generatedTiles[i].gameObject.SetActive(false);
         }
+
+		generatedTiles[0].SetCurrent(null);
     }
 }
