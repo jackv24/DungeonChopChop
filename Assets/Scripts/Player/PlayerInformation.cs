@@ -27,7 +27,10 @@ public class PlayerInformation : MonoBehaviour
 	void Start()
 	{
 		health = GetComponent<Health> ();
-		statsManager = GameObject.FindGameObjectWithTag ("StatsManager").GetComponent<StatsManager> ();
+
+		GameObject s = GameObject.FindGameObjectWithTag("StatsManager");
+		if(s)
+			statsManager = s.GetComponent<StatsManager> ();
 	}
 
 	void Update()
