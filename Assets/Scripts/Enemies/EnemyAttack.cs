@@ -17,6 +17,8 @@ public class EnemyAttack : MonoBehaviour
 	public ProjecticleVariables projecticle;
 
 	public float thrust;
+	[Tooltip("This values x projectile damage")]
+	public float attackStrength;
 
 	//shoot circle vars
 	[HideInInspector]
@@ -66,6 +68,7 @@ public class EnemyAttack : MonoBehaviour
 		projectile.transform.position = transform.position;
 		projectile.transform.rotation = transform.rotation;;
 		Rigidbody rb = projectile.GetComponent<Rigidbody> ();
+		projectile.GetComponent<ProjectileCollision> ().damageMultiplyer = attackStrength;
 		//make the projectile move
 		rb.AddForce (transform.forward * thrust, ForceMode.Impulse); 
 	}
@@ -104,6 +107,7 @@ public class EnemyAttack : MonoBehaviour
 			projectile.transform.rotation = transform.rotation;
 			projectile.transform.Rotate (0, angle, 0);
 			Rigidbody rb = projectile.GetComponent<Rigidbody> ();
+			projectile.GetComponent<ProjectileCollision> ().damageMultiplyer = attackStrength;
 			//make the projectile move
 			rb.AddForce (projectile.transform.forward * thrust, ForceMode.Impulse); 
 			angle += circleAngle;

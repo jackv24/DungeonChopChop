@@ -6,6 +6,9 @@ public class ProjectileCollision : MonoBehaviour {
 
 	public int damageAmount;
 
+	[HideInInspector]
+	public float damageMultiplyer;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -20,7 +23,7 @@ public class ProjectileCollision : MonoBehaviour {
 	{
 		if (col.collider.GetComponent<Health>())
 		{
-			col.transform.GetComponent<Health> ().AffectHealth (-damageAmount);
+			col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer));
 			gameObject.SetActive (false);
 		}
 	}

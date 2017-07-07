@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.11480223, g: 0.11976789, b: 0.10575684, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -91,6 +91,103 @@ NavMeshSettings:
     cellSize: 0.16666667
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &465739353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 465739355}
+  - component: {fileID: 465739354}
+  m_Layer: 0
+  m_Name: StatManager
+  m_TagString: StatsManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &465739354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 465739353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad1b80677cdb414f9caf6d41422c89e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+  - statName: 0
+    statLevel: 1
+    levelValue:
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+  - statName: 1
+    statLevel: 1
+    levelValue:
+    - 130
+    - 110
+    - 70
+    - 40
+    - 0
+  - statName: 2
+    statLevel: 1
+    levelValue:
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+  - statName: 3
+    statLevel: 1
+    levelValue:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  - statName: 4
+    statLevel: 1
+    levelValue:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  - statName: 5
+    statLevel: 1
+    levelValue:
+    - 20
+    - 40
+    - 60
+    - 80
+    - 100
+  - statName: 6
+    statLevel: 1
+    levelValue:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+--- !u!4 &465739355
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 465739353}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1860.158, y: 215.9965, z: 88.698}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1123629887
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +302,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   suspendInBackground: 0
   enableICade: 0
-  enableXInput: 0
+  enableXInput: 1
   xInputOverrideUpdateRate: 0
   xInputUpdateRate: 0
   xInputOverrideBufferSize: 0

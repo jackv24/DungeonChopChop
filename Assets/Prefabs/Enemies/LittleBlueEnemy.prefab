@@ -220,6 +220,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f729e095034461342b067c758042ecf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
   moveSpeed: 4
   lookAtSpeed: 5
   movingType: 0
@@ -229,7 +232,9 @@ MonoBehaviour:
   interval: 2
   power: 0
   timeBetweenStutter: 0
+  chargeUptime: 0
   radius: 4
+  jumpPower: 0
   minAdjTime: 1
   maxAdjTime: 3
   distance: 0
@@ -262,6 +267,7 @@ MonoBehaviour:
   projecticle: {fileID: 114985999745943196, guid: 2f5e09f5d3b8b784aa23dbea116343df,
     type: 2}
   thrust: 50
+  attackStrength: 1
   projAmount: 25
   timeTillInterval: 1
   minInterval: 1
