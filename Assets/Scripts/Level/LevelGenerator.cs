@@ -18,6 +18,15 @@ public class LevelGenerator : MonoBehaviour
     [Tooltip("Seed for the level generator. Leave at 0 for random seed.")]
     public int seed = 0;
 
+	[Header("Biomes")]
+	public float townBiomeRadius = 100.0f;
+	public LevelTile.Biomes townBiome;
+	[Space()]
+	public LevelTile.Biomes topRightBiome;
+	public LevelTile.Biomes bottomRightBiome;
+	public LevelTile.Biomes bottomLeftBiome;
+	public LevelTile.Biomes topLeftBiome;
+
 	private List<LevelTile> generatedTiles = new List<LevelTile>();
 
 	private void Start()
@@ -86,8 +95,7 @@ public class LevelGenerator : MonoBehaviour
             ReplaceBiomes();
 
             //Only apply to tiles when game is running (otherwise it is an in-editor preview)
-            if (Application.isPlaying)
-                Finish();
+            Finish();
 		}
     }
 
@@ -270,12 +278,17 @@ public class LevelGenerator : MonoBehaviour
         {
 			LevelTile.Biomes biome = LevelTile.Biomes.Grass;
 
-			if (tile.transform.position.x < 0 && tile.transform.position.z > 0)
-				biome = LevelTile.Biomes.Fire;
-			else if (tile.transform.position.x < 0 && tile.transform.position.z < 0)
-				biome = LevelTile.Biomes.Desert;
-			else if (tile.transform.position.x > 0 && tile.transform.position.z < 0)
-				biome = LevelTile.Biomes.Ice;
+			if ((tile.transform.position - transform.position).magnitude > townBiomeRadius)
+			{
+				if (tile.transform.position.x < 0 && tile.transform.position.z > 0)
+					biome = topLeftBiome;
+				else if (tile.transform.position.x < 0 && tile.transform.position.z < 0)
+					biome = bottomLeftBiome;
+				else if (tile.transform.position.x > 0 && tile.transform.position.z < 0)
+					biome = bottomRightBiome;
+				else if (tile.transform.position.x > 0 && tile.transform.position.z > 0)
+					biome = topRightBiome;
+			}
 
 			tile.Replace(biome);
         }
@@ -283,12 +296,37 @@ public class LevelGenerator : MonoBehaviour
 
     void Finish()
     {
-        for (int i = 0; i < generatedTiles.Count; i++)
-        {
-            //Enable static batching on a per-tile basis after they have been fully generated
-            generatedTiles[i].EnableStaticBatching();
-        }
+		if (Application.isPlaying)
+		{
+			//Combine level for batching (only when playing)
+			StaticBatchingUtility.Combine(gameObject);
 
-		generatedTiles[0].SetCurrent(null);
+			for (int i = 0; i < generatedTiles.Count; i++)
+			{
+				if (generatedTiles[i].walls)
+					generatedTiles[i].walls.SetActive(false);
+				else
+					Debug.Log("Tile: " + generatedTiles[i].gameObject.name + " has no walls");
+			}
+
+			generatedTiles[0].SetCurrent(null);
+		}
+		else
+		{
+			//If not playing, hide all walls
+			for(int i = 0; i < transform.childCount; i++)
+			{
+				LevelTile tile = transform.GetChild(i).gameObject.GetComponent<LevelTile>();
+
+				if (tile)
+					tile.walls.SetActive(false);
+			}
+		}
     }
+
+	void OnDrawGizmosSelected()
+	{
+		if(transform.childCount > 0)
+		Gizmos.DrawWireSphere(transform.GetChild(0).position, townBiomeRadius);
+	}
 }

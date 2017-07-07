@@ -7,6 +7,8 @@ public class LevelBlock : MonoBehaviour
     public GameObject grassDecalPrefab;
     public GameObject desertDecalPrefab;
     public GameObject fireDecalPrefab;
+	public GameObject iceDecalPrefab;
+	public GameObject forestDecalPrefab;
 
     public void Replace(LevelTile.Biomes biome)
     {
@@ -23,7 +25,13 @@ public class LevelBlock : MonoBehaviour
             case LevelTile.Biomes.Fire:
                 newGraphic = fireDecalPrefab;
                 break;
-        }
+			case LevelTile.Biomes.Ice:
+				newGraphic = iceDecalPrefab;
+				break;
+			case LevelTile.Biomes.Forest:
+				newGraphic = forestDecalPrefab;
+				break;
+		}
 
         if (newGraphic)
         {
