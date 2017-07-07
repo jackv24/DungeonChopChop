@@ -18,6 +18,15 @@ public class LevelGenerator : MonoBehaviour
     [Tooltip("Seed for the level generator. Leave at 0 for random seed.")]
     public int seed = 0;
 
+	[Header("Biomes")]
+	public float townBiomeRadius = 100.0f;
+	public LevelTile.Biomes townBiome;
+	[Space()]
+	public LevelTile.Biomes topRightBiome;
+	public LevelTile.Biomes bottomRightBiome;
+	public LevelTile.Biomes bottomLeftBiome;
+	public LevelTile.Biomes topLeftBiome;
+
 	private List<LevelTile> generatedTiles = new List<LevelTile>();
 
 	private void Start()
@@ -270,12 +279,17 @@ public class LevelGenerator : MonoBehaviour
         {
 			LevelTile.Biomes biome = LevelTile.Biomes.Grass;
 
-			if (tile.transform.position.x < 0 && tile.transform.position.z > 0)
-				biome = LevelTile.Biomes.Fire;
-			else if (tile.transform.position.x < 0 && tile.transform.position.z < 0)
-				biome = LevelTile.Biomes.Desert;
-			else if (tile.transform.position.x > 0 && tile.transform.position.z < 0)
-				biome = LevelTile.Biomes.Ice;
+			if ((tile.transform.position - transform.position).magnitude > townBiomeRadius)
+			{
+				if (tile.transform.position.x < 0 && tile.transform.position.z > 0)
+					biome = topLeftBiome;
+				else if (tile.transform.position.x < 0 && tile.transform.position.z < 0)
+					biome = bottomLeftBiome;
+				else if (tile.transform.position.x > 0 && tile.transform.position.z < 0)
+					biome = bottomRightBiome;
+				else if (tile.transform.position.x > 0 && tile.transform.position.z > 0)
+					biome = topRightBiome;
+			}
 
 			tile.Replace(biome);
         }
@@ -285,10 +299,21 @@ public class LevelGenerator : MonoBehaviour
     {
         for (int i = 0; i < generatedTiles.Count; i++)
         {
+			if (generatedTiles[i].walls)
+				generatedTiles[i].walls.SetActive(false);
+			else
+				Debug.Log("Tile: " + generatedTiles[i].gameObject.name + " has no walls");
+
             //Enable static batching on a per-tile basis after they have been fully generated
             generatedTiles[i].EnableStaticBatching();
         }
 
 		generatedTiles[0].SetCurrent(null);
     }
+
+	void OnDrawGizmosSelected()
+	{
+		if(transform.childCount > 0)
+		Gizmos.DrawWireSphere(transform.GetChild(0).position, townBiomeRadius);
+	}
 }

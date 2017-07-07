@@ -16,6 +16,9 @@ public class LevelTile : MonoBehaviour
 	[Space()]
 	public Transform tileOrigin;
 
+	[Space()]
+	public GameObject walls;
+
     [Header("Alternate Graphics")]
     [Tooltip("The graphic that will be replaced by the below prefabs.")]
     public GameObject defaultGraphic;
@@ -24,13 +27,16 @@ public class LevelTile : MonoBehaviour
     public GameObject grassGraphicPrefab;
     public GameObject desertGraphicPrefab;
     public GameObject fireGraphicPrefab;
+	public GameObject iceGraphicPrefab;
+	public GameObject forestGraphicPrefab;
 
-    public enum Biomes
+	public enum Biomes
     {
         Grass,
         Fire,
         Desert,
-		Ice
+		Ice,
+		Forest
     }
 
     public bool IsIntersecting(LayerMask layerMask)
@@ -103,7 +109,13 @@ public class LevelTile : MonoBehaviour
                 case Biomes.Fire:
                     newGraphic = fireGraphicPrefab;
                     break;
-            }
+				case Biomes.Ice:
+					newGraphic = iceGraphicPrefab;
+					break;
+				case Biomes.Forest:
+					newGraphic = forestGraphicPrefab;
+					break;
+			}
 
             //If prefab exists then replace with it
             if(newGraphic)
@@ -134,11 +146,91 @@ public class LevelTile : MonoBehaviour
 
 	public void SetCurrent(LevelTile oldTile)
 	{
-		//Add current tile to camera targets
-		CameraFollow.Instance.targets.Add(tileOrigin ? tileOrigin : transform);
-
-		//Remove old tile from camera targets
 		if (oldTile)
+			StartCoroutine(FadeWalls(CameraFollow.Instance.wallFadeOutTime, CameraFollow.Instance.wallFadeInTime, this, oldTile));
+		else
+		{
+			walls.SetActive(true);
+
+			CameraFollow.Instance.targets.Add(tileOrigin ? tileOrigin : transform);
+		}
+	}
+
+	IEnumerator FadeWalls(float fadeOutTime, float fadeInTime, LevelTile newTile, LevelTile oldTile)
+	{
+		GameObject newWalls = newTile.walls;
+		GameObject oldWalls = oldTile.walls;
+
+		//Get mesh renderers
+		MeshRenderer[] newRends = newWalls.GetComponentsInChildren<MeshRenderer>();
+		MeshRenderer[] oldRends = oldWalls.GetComponentsInChildren<MeshRenderer>();
+
+		//Cache shared material to return at end
+		Material sharedMaterial = newRends[0].sharedMaterial;
+
+		//Fade old out
+		{
+			Material[] oldMats = new Material[oldRends.Length];
+
+			for (int i = 0; i < oldRends.Length; i++)
+				oldMats[i] = oldRends[i].material;
+
+			Color startColor = sharedMaterial.GetColor("_TintColor");
+			Color endColor = oldMats[0].GetColor("_TintColor");
+			endColor.a = 0;
+
+			float elapsedTime = 0;
+
+			while (elapsedTime <= fadeOutTime)
+			{
+				yield return new WaitForEndOfFrame();
+				elapsedTime += Time.deltaTime;
+
+				foreach(Material mat in oldMats)
+					mat.SetColor("_TintColor", Color.Lerp(startColor, endColor, elapsedTime / fadeOutTime));
+			}
+
+			oldWalls.SetActive(false);
+
 			CameraFollow.Instance.targets.Remove(oldTile.tileOrigin ? oldTile.tileOrigin : oldTile.transform);
+		}
+
+		//Fade new in
+		{
+			Material[] newMats = new Material[newRends.Length];
+
+			for (int i = 0; i < oldRends.Length; i++)
+				newMats[i] = newRends[i].material;
+
+			Color startColor = sharedMaterial.GetColor("_TintColor");
+			startColor.a = 0;
+			Color endColor = newMats[0].GetColor("_TintColor");
+
+			foreach (Material mat in newMats)
+				mat.SetColor("_TintColor", startColor);
+
+			newWalls.SetActive(true);
+
+			CameraFollow.Instance.targets.Add(newTile.tileOrigin ? newTile.tileOrigin : newTile.transform);
+
+			float elapsedTime = 0;
+
+			while (elapsedTime <= fadeInTime)
+			{
+				yield return new WaitForEndOfFrame();
+				elapsedTime += Time.deltaTime;
+
+				foreach (Material mat in newMats)
+					mat.SetColor("_TintColor", Color.Lerp(startColor, endColor, elapsedTime / fadeInTime));
+			}
+
+		}
+
+		//Restore shared material
+		foreach(MeshRenderer rend in oldRends)
+			rend.sharedMaterial = sharedMaterial;
+
+		foreach (MeshRenderer rend in newRends)
+			rend.sharedMaterial = sharedMaterial;
 	}
 }
