@@ -95,8 +95,7 @@ public class LevelGenerator : MonoBehaviour
             ReplaceBiomes();
 
             //Only apply to tiles when game is running (otherwise it is an in-editor preview)
-            if (Application.isPlaying)
-                Finish();
+            Finish();
 		}
     }
 
@@ -297,18 +296,32 @@ public class LevelGenerator : MonoBehaviour
 
     void Finish()
     {
-        for (int i = 0; i < generatedTiles.Count; i++)
-        {
-			if (generatedTiles[i].walls)
-				generatedTiles[i].walls.SetActive(false);
-			else
-				Debug.Log("Tile: " + generatedTiles[i].gameObject.name + " has no walls");
+		if (Application.isPlaying)
+		{
+			//Combine level for batching (only when playing)
+			StaticBatchingUtility.Combine(gameObject);
 
-            //Enable static batching on a per-tile basis after they have been fully generated
-            generatedTiles[i].EnableStaticBatching();
-        }
+			for (int i = 0; i < generatedTiles.Count; i++)
+			{
+				if (generatedTiles[i].walls)
+					generatedTiles[i].walls.SetActive(false);
+				else
+					Debug.Log("Tile: " + generatedTiles[i].gameObject.name + " has no walls");
+			}
 
-		generatedTiles[0].SetCurrent(null);
+			generatedTiles[0].SetCurrent(null);
+		}
+		else
+		{
+			//If not playing, hide all walls
+			for(int i = 0; i < transform.childCount; i++)
+			{
+				LevelTile tile = transform.GetChild(i).gameObject.GetComponent<LevelTile>();
+
+				if (tile)
+					tile.walls.SetActive(false);
+			}
+		}
     }
 
 	void OnDrawGizmosSelected()

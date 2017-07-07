@@ -180,7 +180,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   maxDoorDistance: 0.1
-  seed: 420
+  seed: 0
   townBiomeRadius: 60
   townBiome: 0
   topRightBiome: 3
@@ -287,13 +287,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 923097257}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalRotation: {x: 0.6427876, y: 0, z: 0, w: 0.7660445}
+  m_LocalPosition: {x: 0, y: 20, z: -4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
 --- !u!114 &923097263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,8 +320,10 @@ MonoBehaviour:
   targets:
   - {fileID: 543925477}
   height: 20
-  zOffset: 0
+  zOffset: -4.5
   followSpeed: 10
+  wallFadeOutTime: 0.1
+  wallFadeInTime: 0.25
 --- !u!1 &936812004
 GameObject:
   m_ObjectHideFlags: 0

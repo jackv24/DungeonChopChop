@@ -137,13 +137,6 @@ public class LevelTile : MonoBehaviour
         }
     }
 
-	public void EnableStaticBatching()
-	{
-		//Only combine meshes in-game (prevents saved scene files becoming too large)
-		if(Application.isPlaying)
-			StaticBatchingUtility.Combine(gameObject);
-	}
-
 	public void SetCurrent(LevelTile oldTile)
 	{
 		if (oldTile)
@@ -170,13 +163,13 @@ public class LevelTile : MonoBehaviour
 
 		//Fade old out
 		{
-			Material[] oldMats = new Material[oldRends.Length];
+			Material oldMat = oldRends[0].material;
 
 			for (int i = 0; i < oldRends.Length; i++)
-				oldMats[i] = oldRends[i].material;
+				oldRends[i].sharedMaterial = oldMat;
 
 			Color startColor = sharedMaterial.GetColor("_TintColor");
-			Color endColor = oldMats[0].GetColor("_TintColor");
+			Color endColor = oldMat.GetColor("_TintColor");
 			endColor.a = 0;
 
 			float elapsedTime = 0;
@@ -186,8 +179,7 @@ public class LevelTile : MonoBehaviour
 				yield return new WaitForEndOfFrame();
 				elapsedTime += Time.deltaTime;
 
-				foreach(Material mat in oldMats)
-					mat.SetColor("_TintColor", Color.Lerp(startColor, endColor, elapsedTime / fadeOutTime));
+				oldMat.SetColor("_TintColor", Color.Lerp(startColor, endColor, elapsedTime / fadeOutTime));
 			}
 
 			oldWalls.SetActive(false);
@@ -197,17 +189,16 @@ public class LevelTile : MonoBehaviour
 
 		//Fade new in
 		{
-			Material[] newMats = new Material[newRends.Length];
+			Material newMat = newRends[0].material;
 
-			for (int i = 0; i < oldRends.Length; i++)
-				newMats[i] = newRends[i].material;
+			for (int i = 0; i < newRends.Length; i++)
+				newRends[i].sharedMaterial = newMat;
 
 			Color startColor = sharedMaterial.GetColor("_TintColor");
 			startColor.a = 0;
-			Color endColor = newMats[0].GetColor("_TintColor");
+			Color endColor = newMat.GetColor("_TintColor");
 
-			foreach (Material mat in newMats)
-				mat.SetColor("_TintColor", startColor);
+			newMat.SetColor("_TintColor", startColor);
 
 			newWalls.SetActive(true);
 
@@ -220,8 +211,7 @@ public class LevelTile : MonoBehaviour
 				yield return new WaitForEndOfFrame();
 				elapsedTime += Time.deltaTime;
 
-				foreach (Material mat in newMats)
-					mat.SetColor("_TintColor", Color.Lerp(startColor, endColor, elapsedTime / fadeInTime));
+				newMat.SetColor("_TintColor", Color.Lerp(startColor, endColor, elapsedTime / fadeInTime));
 			}
 
 		}
