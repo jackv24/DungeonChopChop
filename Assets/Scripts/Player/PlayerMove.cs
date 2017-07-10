@@ -7,13 +7,20 @@ public class PlayerMove : MonoBehaviour
 
 	float moveSpeed;
 	public float gravity = -9.8f;
+	public float acceleration = 1;
 
 	private PlayerInputs input;
 	private CharacterController characterController;
 	private PlayerInformation playerInformation;
 
+	private float speed;
+
 	private Vector2 inputVector;
-	private Vector3 moveVector;
+	private Vector3 targetMoveVector;
+	private Vector3 fromMoveVector = Vector3.zero;
+	private bool onIce = false;
+
+	private float friction = .1f;
 
 	// Use this for initialization
 	void Start () 
@@ -32,19 +39,19 @@ public class PlayerMove : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate () 
 	{
 		//sets movespeed to playerinformation movespeed;
 		moveSpeed = playerInformation.moveSpeed;
 
-		//checks if the player is on keyboard
+		//sets the input vector
 		inputVector = input.Move;
 
 		if (inputVector.magnitude > 1)
 			inputVector.Normalize ();
 
-		moveVector.x = inputVector.x * moveSpeed;
-		moveVector.z = inputVector.y * moveSpeed;
+		targetMoveVector.x = inputVector.x * moveSpeed;
+		targetMoveVector.z = inputVector.y * moveSpeed;
 
 		//rotate player
 		if(inputVector.magnitude > 0.01f)
@@ -53,9 +60,38 @@ public class PlayerMove : MonoBehaviour
 		//checks to see if the user is grounded, if not apply gravity
 		if (!characterController.isGrounded) 
 		{
-			moveVector.y += gravity * Time.deltaTime;
+			targetMoveVector.y += gravity * Time.deltaTime;
 		}
+			
 		//moves the player using the input axis and move speed
-		characterController.Move (moveVector * Time.deltaTime);
+		//checks if the player is on ice or not
+		if (!onIce)
+		{
+			characterController.Move (targetMoveVector * Time.deltaTime);
+		}
+		else 
+		{
+			fromMoveVector = Vector3.Lerp (fromMoveVector, targetMoveVector, acceleration * Time.deltaTime);
+			characterController.Move (fromMoveVector * Time.deltaTime);
+		}
 	}
+		
+	//checks if the floor is ice
+	void OnTriggerEnter(Collider col)
+	{
+		if (col.tag == "Ice")
+		{
+			onIce = true;
+		}
+	}
+
+	void OnTriggerExit(Collider col)
+	{
+		if (col.tag == "Ice")
+		{
+			fromMoveVector = Vector3.zero;
+			onIce = false;
+		}
+	}
+
 }

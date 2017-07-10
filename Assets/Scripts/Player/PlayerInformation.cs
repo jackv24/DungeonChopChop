@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInformation : MonoBehaviour 
 {
-
+	[Header("Player Values")]
 	public int playerIndex = 0;
 	public float attackMinAngle = 130;
 	public float attackDistance = 5;
@@ -13,6 +13,7 @@ public class PlayerInformation : MonoBehaviour
 	public float attackSpeed;
 	public float resistance;
 
+	[Header("Stat Levels")]
 	public int attackSpreadLevel = 1;
 	public int attackDistanceLevel = 1;
 	public int moveSpeedLevel = 1;
@@ -47,5 +48,4 @@ public class PlayerInformation : MonoBehaviour
 			health.maxHealth = (int)statsManager.GetStatValue (StatName.maxHealth, maxHealthLevel); 
 		}
 	}
-
 }
