@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class LevelDoor : MonoBehaviour
 {
+	[Tooltip("How far the player must walk out after entering this door.")]
+	public float exitDistance = 1.0f;
+
+	[Header("Set by Generator")]
 	public LevelTile targetTile;
 	public LevelDoor targetDoor;
 
 	public LevelTile parentTile;
 
-	private bool setup = false;
 	private bool entered = false;
 
 	public void SetTarget(LevelDoor target)
@@ -18,42 +21,60 @@ public class LevelDoor : MonoBehaviour
 		targetTile = target.GetComponentInParent<LevelTile>();
 
 		parentTile = GetComponentInParent<LevelTile>();
-
-        if (!setup)
-            Setup();
 	}
-
-    void Setup()
-    {
-        setup = true;
-
-		//Setup box collider through script to ensure all are the same
-        BoxCollider col = gameObject.AddComponent<BoxCollider>();
-        col.size = new Vector3(5, 1, 0.5f);
-        col.center = new Vector3(0, 0, 0.25f);
-        col.isTrigger = true;
-    }
 
     void OnTriggerEnter(Collider col)
     {
-        if(setup)
+		//If player walked into this door
+        if(col.tag == "Player" && col.GetType() == typeof(CharacterController))
         {
-			//If player walked into this door
-            if(col.tag == "Player" && col.GetType() == typeof(CharacterController))
-            {
-				if (!entered)
-				{
-					//if this door was entered on the current tile, enable target tile
-					targetDoor.entered = true;
+			if (!entered)
+			{
+				//if this door was entered on the current tile, enable target tile
+				targetDoor.entered = true;
 
-					targetTile.SetCurrent(parentTile);
-				}
-				else
-				{
-					//If this door was entered on the target tile, disable previous tile
-					entered = false;
-				}
-            }
+				targetTile.SetCurrent(parentTile);
+
+				StartCoroutine(WalkOut(col.gameObject));
+			}
+			else
+			{
+				//If this door was entered on the target tile, disable previous tile
+				entered = false;
+			}
         }
     }
+
+	IEnumerator WalkOut(GameObject player)
+	{
+		PlayerInformation playerInfo = player.GetComponent<PlayerInformation>();
+		PlayerMove playerMove = player.GetComponent<PlayerMove>();
+
+		if(playerMove && playerInfo)
+		{
+			//Revoke player control
+			playerMove.enabled = false;
+
+			//Get move speed and direction
+			float moveSpeed = playerInfo.moveSpeed;
+			Vector3 direction = -transform.forward;
+
+			//Calculate time required to move target distance
+			float moveTime = exitDistance / moveSpeed;
+
+			//Loop for that amount of time
+			float elapsedTime = 0;
+			while(elapsedTime <= moveTime)
+			{
+				//Move player
+				player.transform.position += direction * moveSpeed * Time.deltaTime;
+
+				yield return new WaitForEndOfFrame();
+				elapsedTime += Time.deltaTime;
+			}
+
+			//Return player control
+			playerMove.enabled = true;
+		}
+	}
 }
