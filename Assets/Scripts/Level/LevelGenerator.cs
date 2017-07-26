@@ -32,6 +32,8 @@ public class LevelGenerator : MonoBehaviour
 	public GameObject bottomRightDungeon;
 	public GameObject bottomLeftDungeon;
 	public GameObject topLeftDungeon;
+	[Space()]
+	public int maxDungeonAttempts = 20;
 
 	private List<LevelTile> generatedTiles = new List<LevelTile>();
 
@@ -100,7 +102,7 @@ public class LevelGenerator : MonoBehaviour
 
             ReplaceBiomes();
 
-			PlaceDungeons();
+			GenerateDungeons();
 
             //Only apply to tiles when game is running (otherwise it is an in-editor preview)
             Finish();
@@ -314,7 +316,7 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-	void PlaceDungeons()
+	void GenerateDungeons()
 	{
 		for (int i = 0; i < 4; i++)
 		{
@@ -403,13 +405,31 @@ public class LevelGenerator : MonoBehaviour
 				//If a furthest tile was found...
 				if (furthestTile)
 				{
-					//Instantiate a dungeon
-					GameObject dungeonObj = Instantiate(topRightDungeon, furthestTile.transform);
-					dungeonObj.transform.localPosition = Vector3.zero;
-
-					//TODO: Actually placing dungeon correctly
+					//Place dungeon withi tile
+					PlaceDungeon(dungeonPrefab, furthestTile);
 				}
 			}
+		}
+	}
+
+	void PlaceDungeon(GameObject dungeonPrefab, LevelTile tile)
+	{
+		//Instantiate a dungeon
+		GameObject dungeonObj = Instantiate(dungeonPrefab, tile.transform);
+		dungeonObj.transform.localPosition = Vector3.zero;
+
+		int attempts = 0;
+
+		while(attempts < maxDungeonAttempts)
+		{
+			attempts++;
+
+			dungeonObj.transform.position = tile.GetPosInTile();
+
+			if (tile.IsInTileBounds(dungeonObj))
+				break;
+			else if(attempts >= maxDungeonAttempts)
+				Debug.LogError("Dungeon could not be placed on " + tile.gameObject.name);
 		}
 	}
 

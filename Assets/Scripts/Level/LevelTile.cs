@@ -64,6 +64,44 @@ public class LevelTile : MonoBehaviour
 		return intersected;
 	}
 
+	public bool IsInTileBounds(GameObject obj)
+	{
+		BoxCollider box = obj.GetComponent<BoxCollider>();
+
+		if (box)
+		{
+			Vector3 max = transform.position + box.center + box.size / 2;
+			Vector3 min = transform.position + box.center - box.size / 2;
+
+			foreach (BoxCollider col in layoutColliders)
+			{
+				max.y = col.center.y;
+				min.y = col.center.y;
+
+				if(col.bounds.Contains(min) && col.bounds.Contains(max))
+					return true;
+			}
+		}
+
+		return false;
+	}
+
+	public Vector3 GetPosInTile()
+	{
+		//If there are no layout colliders, just return tile origin
+		if (layoutColliders.Length <= 0)
+			return Vector3.zero;
+
+		BoxCollider col = layoutColliders[Random.Range(0, layoutColliders.Length)];
+
+		Vector3 pos = Vector3.zero;
+
+		pos.x = Random.Range(col.bounds.min.x, col.bounds.max.x);
+		pos.z = Random.Range(col.bounds.min.z, col.bounds.max.z);
+
+		return pos;
+	}
+
 	public void BlockDoors()
 	{
 		if (maxBlocks > doors.Count)
