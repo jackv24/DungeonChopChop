@@ -27,6 +27,12 @@ public class LevelGenerator : MonoBehaviour
 	public LevelTile.Biomes bottomLeftBiome;
 	public LevelTile.Biomes topLeftBiome;
 
+	[Header("Map Features")]
+	public GameObject topRightDungeon;
+	public GameObject bottomRightDungeon;
+	public GameObject bottomLeftDungeon;
+	public GameObject topLeftDungeon;
+
 	private List<LevelTile> generatedTiles = new List<LevelTile>();
 
 	private void Start()
@@ -93,6 +99,8 @@ public class LevelGenerator : MonoBehaviour
 			ConnectDoors();
 
             ReplaceBiomes();
+
+			PlaceDungeons();
 
             //Only apply to tiles when game is running (otherwise it is an in-editor preview)
             Finish();
@@ -220,6 +228,18 @@ public class LevelGenerator : MonoBehaviour
 
 	void ConnectDoors()
 	{
+		//Replace placeholder doors with actual LevelDoors
+		foreach(LevelTile tile in generatedTiles)
+		{
+			foreach(Transform door in tile.doors)
+			{
+				ReplaceWithPrefab replace = door.GetComponent<ReplaceWithPrefab>();
+
+				if (replace)
+					replace.Replace();
+			}
+		}
+
 		//Find all doors in scene
 		LevelDoor[] doors = FindObjectsOfType<LevelDoor>();
 
@@ -293,6 +313,105 @@ public class LevelGenerator : MonoBehaviour
 			tile.Replace(biome);
         }
     }
+
+	void PlaceDungeons()
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			GameObject dungeonPrefab = null;
+			bool top = false;
+			bool right = false;
+
+			//Firgure out which quadrant to work in
+			switch(i)
+			{
+				case 0:
+					dungeonPrefab = topRightDungeon;
+					top = true;
+					right = true;
+					break;
+				case 1:
+					dungeonPrefab = bottomRightDungeon;
+					top = false;
+					right = true;
+					break;
+				case 2:
+					dungeonPrefab = bottomLeftDungeon;
+					top = false;
+					right = false;
+					break;
+				case 3:
+					dungeonPrefab = topLeftDungeon;
+					top = true;
+					right = false;
+					break;
+			}
+
+			//If there is a dungeon prefab for this quadrant
+			if (dungeonPrefab)
+			{
+				List<LevelTile> potentialTiles = new List<LevelTile>();
+
+				//Get all tiles in this quadrant
+				foreach (LevelTile tile in generatedTiles)
+				{
+					bool keepTop = false;
+					bool keepRight = false;
+
+					if(top)
+					{
+						if (tile.transform.position.z > 0)
+							keepTop = true;
+					}
+					else
+					{
+						if (tile.transform.position.z < 0)
+							keepTop = true;
+					}
+
+					if (right)
+					{
+						if (tile.transform.position.x > 0)
+							keepRight = true;
+					}
+					else
+					{
+						if (tile.transform.position.x < 0)
+							keepRight = true;
+					}
+
+					if (keepTop && keepRight)
+						potentialTiles.Add(tile);
+				}
+
+				//Keep track of furthest tile and it's distance
+				LevelTile furthestTile = null;
+				float furthestDistance = 0;
+
+				//Find furthest tile
+				foreach (LevelTile tile in potentialTiles)
+				{
+					float distance = Vector3.Distance(transform.position, tile.transform.position);
+
+					if (distance > furthestDistance)
+					{
+						furthestTile = tile;
+						furthestDistance = distance;
+					}
+				}
+
+				//If a furthest tile was found...
+				if (furthestTile)
+				{
+					//Instantiate a dungeon
+					GameObject dungeonObj = Instantiate(topRightDungeon, furthestTile.transform);
+					dungeonObj.transform.localPosition = Vector3.zero;
+
+					//TODO: Actually placing dungeon correctly
+				}
+			}
+		}
+	}
 
     void Finish()
     {
