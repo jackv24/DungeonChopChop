@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114910671819656350}
   - component: {fileID: 54240468328729012}
   - component: {fileID: 136500385918002184}
+  - component: {fileID: 136248845063515268}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -211,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -9.8
+  acceleration: 1
 --- !u!114 &114888587539373240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,6 +228,16 @@ MonoBehaviour:
   attackMinAngle: 130
   attackDistance: 5
   moveSpeed: 5
+  strength: 0
+  attackSpeed: 0
+  resistance: 0
+  attackSpreadLevel: 1
+  attackDistanceLevel: 1
+  moveSpeedLevel: 1
+  strengthLevel: 1
+  attackSpeedLevel: 1
+  resistanceLevel: 1
+  maxHealthLevel: 1
 --- !u!114 &114910671819656350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,6 +252,19 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   isDead: 0
+--- !u!136 &136248845063515268
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515761076265150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.2, z: 0}
 --- !u!136 &136500385918002184
 CapsuleCollider:
   m_ObjectHideFlags: 1

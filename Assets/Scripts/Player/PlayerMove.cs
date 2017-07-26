@@ -20,8 +20,6 @@ public class PlayerMove : MonoBehaviour
 	private Vector3 fromMoveVector = Vector3.zero;
 	private bool onIce = false;
 
-	private float friction = .1f;
-
 	// Use this for initialization
 	void Start () 
 	{
