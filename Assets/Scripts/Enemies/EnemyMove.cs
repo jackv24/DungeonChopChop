@@ -84,6 +84,7 @@ public class EnemyMove : MonoBehaviour
 
 	private bool isGrounded = false;
 	private Vector3 wayPoint;
+	private RaycastHit hit;
 
 	void Start()
 	{
@@ -97,6 +98,7 @@ public class EnemyMove : MonoBehaviour
 
 	void Update()
 	{
+		//sends a raycast down to check if the enemy is grounded
 		if (Physics.Raycast (new Vector3(transform.position.x, (transform.position.y - transform.localScale.y + .3f), transform.position.z) , -transform.up, .4f, groundMask)) 
 		{
 			isGrounded = true;
@@ -105,6 +107,20 @@ public class EnemyMove : MonoBehaviour
 		{
 			isGrounded = false;
 		}
+	}
+
+	void RotateRight()
+	{
+		Debug.Log ("Right");
+		Vector3 targetPosition = transform.position + (transform.right * 3);
+		transform.position = Vector3.MoveTowards (transform.position, targetPosition, moveSpeed * Time.deltaTime);
+	}
+
+	void RotateLeft()
+	{
+		Debug.Log ("Left");
+		Vector3 targetPosition = transform.position + (-transform.right * 3);
+		transform.position = Vector3.MoveTowards (transform.position, targetPosition, moveSpeed * Time.deltaTime);
 	}
 
 	void FixedUpdate()

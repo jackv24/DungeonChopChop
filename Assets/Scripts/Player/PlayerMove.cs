@@ -37,7 +37,7 @@ public class PlayerMove : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () 
+	void Update () 
 	{
 		//sets movespeed to playerinformation movespeed;
 		moveSpeed = playerInformation.moveSpeed;

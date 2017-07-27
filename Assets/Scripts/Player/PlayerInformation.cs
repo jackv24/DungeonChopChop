@@ -25,6 +25,8 @@ public class PlayerInformation : MonoBehaviour
 	private StatsManager statsManager;
 	private Health health;
 
+	private WeaponStats currentWeaponStats;
+
 	void Start()
 	{
 		health = GetComponent<Health> ();
@@ -36,7 +38,7 @@ public class PlayerInformation : MonoBehaviour
 
 	void Update()
 	{
-		//set stats
+		//set stat values depending on level
 		if (statsManager) 
 		{
 			attackMinAngle = statsManager.GetStatValue (StatName.AttackSpeed, attackSpreadLevel); 
@@ -46,6 +48,17 @@ public class PlayerInformation : MonoBehaviour
 			attackSpeed = statsManager.GetStatValue (StatName.AttackSpeed, attackSpeedLevel);
 			resistance = statsManager.GetStatValue (StatName.Resistance, resistanceLevel);
 			health.maxHealth = (int)statsManager.GetStatValue (StatName.maxHealth, maxHealthLevel); 
+		}
+		//sets stats depending on weapon values
+		if (currentWeaponStats) 
+		{
+			attackSpreadLevel = currentWeaponStats.spreadLevel;
+			attackSpeedLevel = currentWeaponStats.speedLevel;
+			attackDistanceLevel = currentWeaponStats.distanceLevel;
+		} 
+		else 
+		{
+			currentWeaponStats = GetComponentInChildren<WeaponStats> ();
 		}
 	}
 }
