@@ -18,23 +18,6 @@ public class LevelGenerator : MonoBehaviour
     [Tooltip("Seed for the level generator. Leave at 0 for random seed.")]
     public int seed = 0;
 
-	[Header("Biomes")]
-	public float townBiomeRadius = 100.0f;
-	public LevelTile.Biomes townBiome;
-	[Space()]
-	public LevelTile.Biomes topRightBiome;
-	public LevelTile.Biomes bottomRightBiome;
-	public LevelTile.Biomes bottomLeftBiome;
-	public LevelTile.Biomes topLeftBiome;
-
-	[Header("Map Features")]
-	public GameObject topRightDungeon;
-	public GameObject bottomRightDungeon;
-	public GameObject bottomLeftDungeon;
-	public GameObject topLeftDungeon;
-	[Space()]
-	public float lockDungeonAngle = 45.0f;
-
 	[Header("In-game")]
 	public bool showLoadingScreenInEditor = true;
 	public bool ShowLoadingScreen { get { return showLoadingScreenInEditor || !Application.isEditor; } }
@@ -43,7 +26,8 @@ public class LevelGenerator : MonoBehaviour
 	public float stageDelay = 0.1f;
 	public float fadeOutTime = 0.5f;
 
-	private List<LevelTile> generatedTiles = new List<LevelTile>();
+	[HideInInspector]
+	public List<LevelTile> generatedTiles = new List<LevelTile>();
 
 	private void Start()
 	{
@@ -126,19 +110,12 @@ public class LevelGenerator : MonoBehaviour
 
 			if (ShowLoadingScreen && loadingText)
 			{
-				loadingText.Replace("replacing biomes");
+				loadingText.Replace("skinning level");
 				yield return new WaitForSeconds(stageDelay);
 			}
 
-			ReplaceBiomes();
-
-			if (ShowLoadingScreen && loadingText)
-			{
-				loadingText.Replace("placing dungeons");
-				yield return new WaitForSeconds(stageDelay);
-			}
-
-			GenerateDungeons();
+			//After level layout is generated, generate level type-specific content
+			profile.Generate(this);
 
 			if (ShowLoadingScreen && loadingText)
 			{
@@ -347,154 +324,6 @@ public class LevelGenerator : MonoBehaviour
 		emptyDoors.Clear();
 	}
 
-    void ReplaceBiomes()
-    {
-        //TODO: Actually replace biomes based on position, rather than making them all one biome
-        foreach(LevelTile tile in generatedTiles)
-        {
-			LevelTile.Biomes biome = LevelTile.Biomes.Grass;
-
-			if ((tile.transform.position - transform.position).magnitude > townBiomeRadius)
-			{
-				if (tile.transform.position.x < 0 && tile.transform.position.z > 0)
-					biome = topLeftBiome;
-				else if (tile.transform.position.x < 0 && tile.transform.position.z < 0)
-					biome = bottomLeftBiome;
-				else if (tile.transform.position.x > 0 && tile.transform.position.z < 0)
-					biome = bottomRightBiome;
-				else if (tile.transform.position.x > 0 && tile.transform.position.z > 0)
-					biome = topRightBiome;
-			}
-
-			tile.Replace(biome);
-        }
-    }
-
-	void GenerateDungeons()
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			GameObject dungeonPrefab = null;
-			bool top = false;
-			bool right = false;
-
-			//Firgure out which quadrant to work in
-			switch(i)
-			{
-				case 0:
-					dungeonPrefab = topRightDungeon;
-					top = true;
-					right = true;
-					break;
-				case 1:
-					dungeonPrefab = bottomRightDungeon;
-					top = false;
-					right = true;
-					break;
-				case 2:
-					dungeonPrefab = bottomLeftDungeon;
-					top = false;
-					right = false;
-					break;
-				case 3:
-					dungeonPrefab = topLeftDungeon;
-					top = true;
-					right = false;
-					break;
-			}
-
-			//If there is a dungeon prefab for this quadrant
-			if (dungeonPrefab)
-			{
-				List<LevelTile> potentialTiles = new List<LevelTile>();
-
-				//Get all tiles in this quadrant
-				foreach (LevelTile tile in generatedTiles)
-				{
-					bool keepTop = false;
-					bool keepRight = false;
-
-					if(top)
-					{
-						if (tile.transform.position.z > 0)
-							keepTop = true;
-					}
-					else
-					{
-						if (tile.transform.position.z < 0)
-							keepTop = true;
-					}
-
-					if (right)
-					{
-						if (tile.transform.position.x > 0)
-							keepRight = true;
-					}
-					else
-					{
-						if (tile.transform.position.x < 0)
-							keepRight = true;
-					}
-
-					if (keepTop && keepRight)
-						potentialTiles.Add(tile);
-				}
-
-				//Keep track of furthest tile and it's distance
-				LevelTile furthestTile = null;
-				float furthestDistance = 0;
-
-				//Find furthest tile
-				foreach (LevelTile tile in potentialTiles)
-				{
-					float distance = Vector3.Distance(transform.position, tile.transform.position);
-
-					if (distance > furthestDistance)
-					{
-						furthestTile = tile;
-						furthestDistance = distance;
-					}
-				}
-
-				//If a furthest tile was found...
-				if (furthestTile)
-				{
-					//Place dungeon withi tile
-					PlaceDungeon(dungeonPrefab, furthestTile);
-				}
-			}
-		}
-	}
-
-	void PlaceDungeon(GameObject dungeonPrefab, LevelTile tile)
-	{
-		//Instantiate a dungeon
-		GameObject dungeonObj = Instantiate(dungeonPrefab, tile.transform);
-		dungeonObj.transform.localPosition = Vector3.zero;
-
-		Collider col = dungeonObj.GetComponent<Collider>();
-
-		//Place dungeon withing tile
-		if(col)
-			dungeonObj.transform.position = tile.GetPosInTile(col.bounds.size.x, col.bounds.size.z);
-		else
-			Debug.LogWarning("BoxCollider not found on dungeon in tile: " + tile.gameObject.name);
-
-		//Rotate dungeon to face towards tile centre
-		Vector3 lookPos = tile.tileOrigin.position - dungeonObj.transform.position;
-		lookPos.y = 0;
-
-		if (lookPos != Vector3.zero)
-		{
-			Quaternion rotation = Quaternion.LookRotation(lookPos);
-			Vector3 euler = rotation.eulerAngles;
-			euler.y = Mathf.Round(euler.y / lockDungeonAngle) * lockDungeonAngle;
-			rotation.eulerAngles = euler;
-
-			dungeonObj.transform.rotation = rotation;
-		}
-	}
-
     void Finish()
     {
 		if (Application.isPlaying)
@@ -524,10 +353,4 @@ public class LevelGenerator : MonoBehaviour
 			}
 		}
     }
-
-	void OnDrawGizmosSelected()
-	{
-		if(transform.childCount > 0)
-		Gizmos.DrawWireSphere(transform.GetChild(0).position, townBiomeRadius);
-	}
 }

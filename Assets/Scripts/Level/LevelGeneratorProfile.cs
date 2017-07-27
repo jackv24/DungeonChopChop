@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New LevelGen", menuName = "Data/Level Generator Profile")]
 public class LevelGeneratorProfile : ScriptableObject
 {
 	public LevelTile startTile;
@@ -19,7 +18,7 @@ public class LevelGeneratorProfile : ScriptableObject
     public class GeneratorTile
     {
         public LevelTile tile;
-        public float probability;
+        public float probability = 1.0f;
 
         public GeneratorTile()
         {
@@ -29,4 +28,10 @@ public class LevelGeneratorProfile : ScriptableObject
     }
 	[Space()]
 	public List<GeneratorTile> tilePool = new List<GeneratorTile>();
+
+	public virtual void Generate(LevelGenerator levelGenerator)
+	{
+		//Default generate function does nothing
+		Debug.LogWarning("Base generate function called!");
+	}
 }
