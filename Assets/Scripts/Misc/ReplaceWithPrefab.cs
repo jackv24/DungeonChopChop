@@ -15,7 +15,7 @@ public class ReplaceWithPrefab : MonoBehaviour
 			Replace();
 	}
 
-	public void Replace()
+	public GameObject Replace()
 	{
 		if (prefab)
 		{
@@ -31,9 +31,11 @@ public class ReplaceWithPrefab : MonoBehaviour
 				obj.transform.parent = transform.parent;
 				obj.transform.localPosition = transform.localPosition;
 				obj.transform.localRotation = transform.localRotation;
-			}
 
-			DestroyImmediate(gameObject);
+				return obj;
+			}
 		}
+
+		return null;
 	}
 }

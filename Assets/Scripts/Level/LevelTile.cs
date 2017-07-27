@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelTile : MonoBehaviour
 {
 	public List<Transform> doors = new List<Transform>();
-	public BoxCollider[] layoutColliders;
+	public BoxCollider layoutCollider;
 
 	[Space()]
 	[Tooltip("The prefab to spawn when blocking off doors on this tile.")]
@@ -43,61 +43,31 @@ public class LevelTile : MonoBehaviour
 	{
 		bool intersected = false;
 
-		//Check every layout collider
-		foreach(BoxCollider col in layoutColliders)
+		BoxCollider col = layoutCollider;
+
+		//Get list of all colliders in layer overlapping this one
+		List<Collider> others = new List<Collider>(Physics.OverlapBox(col.center + col.transform.position, col.size / 2, col.transform.rotation, layerMask));
+
+		//Remove self from list
+		others.Remove(col);
+
+		//If there are colliders in list, it is intersecting
+		if (others.Count > 0)
 		{
-			//Get list of all colliders in layer overlapping this one
-			List<Collider> others = new List<Collider>(Physics.OverlapBox(col.center + col.transform.position, col.size / 2, col.transform.rotation, layerMask));
-
-			//Remove self from list
-			others.Remove(col);
-
-			//If there are colliders in list, it is intersecting
-			if (others.Count > 0)
-			{
-				intersected = true;
-
-				break;
-			}
+			intersected = true;
 		}
 
 		return intersected;
 	}
 
-	public bool IsInTileBounds(GameObject obj)
+	public Vector3 GetPosInTile(float width, float height)
 	{
-		BoxCollider box = obj.GetComponent<BoxCollider>();
-
-		if (box)
-		{
-			Vector3 max = transform.position + box.center + box.size / 2;
-			Vector3 min = transform.position + box.center - box.size / 2;
-
-			foreach (BoxCollider col in layoutColliders)
-			{
-				max.y = col.center.y;
-				min.y = col.center.y;
-
-				if(col.bounds.Contains(min) && col.bounds.Contains(max))
-					return true;
-			}
-		}
-
-		return false;
-	}
-
-	public Vector3 GetPosInTile()
-	{
-		//If there are no layout colliders, just return tile origin
-		if (layoutColliders.Length <= 0)
-			return Vector3.zero;
-
-		BoxCollider col = layoutColliders[Random.Range(0, layoutColliders.Length)];
+		BoxCollider col = layoutCollider;
 
 		Vector3 pos = Vector3.zero;
 
-		pos.x = Random.Range(col.bounds.min.x, col.bounds.max.x);
-		pos.z = Random.Range(col.bounds.min.z, col.bounds.max.z);
+		pos.x = Random.Range(col.bounds.min.x + width / 2, col.bounds.max.x - width / 2);
+		pos.z = Random.Range(col.bounds.min.z + height / 2, col.bounds.max.z - height / 2);
 
 		return pos;
 	}
@@ -126,6 +96,28 @@ public class LevelTile : MonoBehaviour
 			doors.RemoveAt(index);
 
 			spawnedBlockAmount++;
+		}
+	}
+
+	public void ReplaceDoors()
+	{
+		for(int i = 0; i < doors.Count; i++)
+		{
+			GameObject oldObj = doors[i].gameObject;
+
+			ReplaceWithPrefab replace = doors[i].GetComponent<ReplaceWithPrefab>();
+
+			if(replace)
+			{
+				GameObject newObj = replace.Replace();
+
+				if(newObj)
+				{
+					doors[i] = newObj.transform;
+
+					DestroyImmediate(oldObj);
+				}
+			}
 		}
 	}
 
@@ -183,7 +175,8 @@ public class LevelTile : MonoBehaviour
 		{
 			walls.SetActive(true);
 
-			CameraFollow.Instance.targets.Add(tileOrigin ? tileOrigin : transform);
+			if (layoutCollider)
+				CameraFollow.Instance.UpdateCameraBounds(layoutCollider.bounds);
 		}
 	}
 
@@ -221,8 +214,6 @@ public class LevelTile : MonoBehaviour
 			}
 
 			oldWalls.SetActive(false);
-
-			CameraFollow.Instance.targets.Remove(oldTile.tileOrigin ? oldTile.tileOrigin : oldTile.transform);
 		}
 
 		//Fade new in
@@ -240,7 +231,8 @@ public class LevelTile : MonoBehaviour
 
 			newWalls.SetActive(true);
 
-			CameraFollow.Instance.targets.Add(newTile.tileOrigin ? newTile.tileOrigin : newTile.transform);
+			if(newTile.layoutCollider)
+				CameraFollow.Instance.UpdateCameraBounds(newTile.layoutCollider.bounds);
 
 			float elapsedTime = 0;
 

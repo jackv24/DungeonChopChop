@@ -138,7 +138,7 @@ MonoBehaviour:
     type: 2}
   topLeftDungeon: {fileID: 1804674940532648, guid: 7350c7fdfadcb1847a6df1b27b120932,
     type: 2}
-  maxDungeonAttempts: 20
+  lockDungeonAngle: 45
 --- !u!4 &239491258
 Transform:
   m_ObjectHideFlags: 0
@@ -333,8 +333,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cffed64bd8dab314ab9d7ce56a3abb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
+  players:
   - {fileID: 543925477}
+  paddingTop: 9
+  paddingBottom: 6
+  paddingLeft: 10
+  paddingRight: 10
   height: 20
   zOffset: -6.5
   followSpeed: 10
