@@ -75,7 +75,7 @@ public class PlayerMove : MonoBehaviour
 	}
 		
 	//checks if the floor is ice
-	void OnTriggerEnter(Collider col)
+	void OnTriggerStay(Collider col)
 	{
 		if (col.tag == "Ice")
 		{
