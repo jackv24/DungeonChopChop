@@ -35,11 +35,9 @@ public class LevelBlock : MonoBehaviour
 
         if (newGraphic)
         {
-            GameObject obj = Instantiate(newGraphic, transform.parent);
-            obj.transform.localPosition = transform.localPosition;
-            obj.transform.localRotation = transform.localRotation;
-
-            DestroyImmediate(gameObject);
+            GameObject obj = Instantiate(newGraphic, transform);
+            obj.transform.localPosition = Vector3.zero;
+            obj.transform.localRotation = Quaternion.identity;
         }
     }
 }
