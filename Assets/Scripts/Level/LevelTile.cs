@@ -129,6 +129,28 @@ public class LevelTile : MonoBehaviour
 		}
 	}
 
+	public void ReplaceDoors()
+	{
+		for(int i = 0; i < doors.Count; i++)
+		{
+			GameObject oldObj = doors[i].gameObject;
+
+			ReplaceWithPrefab replace = doors[i].GetComponent<ReplaceWithPrefab>();
+
+			if(replace)
+			{
+				GameObject newObj = replace.Replace();
+
+				if(newObj)
+				{
+					doors[i] = newObj.transform;
+
+					DestroyImmediate(oldObj);
+				}
+			}
+		}
+	}
+
     public void Replace(Biomes biome)
     {
         if(defaultGraphic)

@@ -209,7 +209,10 @@ public class LevelGenerator : MonoBehaviour
 		{
 			generatedTiles.Add(nextTile);
 
-            //No need to check the door that was just connected
+			//Replace door prefab spawners with actual doors
+			nextTile.ReplaceDoors();
+
+			//No need to check the door that was just connected
 			nextTile.doors.Remove(connectedDoor);
 
 			nextTile.BlockDoors();
@@ -230,20 +233,10 @@ public class LevelGenerator : MonoBehaviour
 
 	void ConnectDoors()
 	{
-		//Replace placeholder doors with actual LevelDoors
-		foreach(LevelTile tile in generatedTiles)
-		{
-			foreach(Transform door in tile.doors)
-			{
-				ReplaceWithPrefab replace = door.GetComponent<ReplaceWithPrefab>();
-
-				if (replace)
-					replace.Replace();
-			}
-		}
-
 		//Find all doors in scene
 		LevelDoor[] doors = FindObjectsOfType<LevelDoor>();
+
+		Debug.Log("Level Doors: " + doors.Length);
 
 		//Keep list of doors to be deleted
 		List<GameObject> emptyDoors = new List<GameObject>();
