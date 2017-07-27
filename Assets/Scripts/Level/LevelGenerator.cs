@@ -35,16 +35,33 @@ public class LevelGenerator : MonoBehaviour
 	[Space()]
 	public float lockDungeonAngle = 45.0f;
 
+	[Header("In-game")]
+	public bool showLoadingScreenInEditor = true;
+	public bool ShowLoadingScreen { get { return showLoadingScreenInEditor || !Application.isEditor; } }
+	public GameObject loadingScreen;
+	public ReplaceText loadingText;
+	public float stageDelay = 0.1f;
+	public float fadeOutTime = 0.5f;
+
 	private List<LevelTile> generatedTiles = new List<LevelTile>();
 
 	private void Start()
 	{
-		Generate();
+		StartCoroutine("Generate");
     }
 
-    public void Generate()
+    public IEnumerator Generate()
     {
-        if (seed != 0)
+		if (ShowLoadingScreen)
+		{
+			if (loadingScreen)
+				loadingScreen.SetActive(true);
+
+			if (loadingText)
+				loadingText.Replace("generating tiles");
+		}
+
+		if (seed != 0)
             Random.InitState(seed);
 
         //Delete all children
@@ -71,7 +88,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 Debug.LogWarning("No start tile defined in level generator profile!");
 
-                return;
+                yield return null;
             }
 
             //Spawn start tile
@@ -97,15 +114,61 @@ public class LevelGenerator : MonoBehaviour
             else
                 running = false;
 
+			if (ShowLoadingScreen && loadingText)
+			{
+				yield return new WaitForSeconds(stageDelay);
+				loadingText.Replace("connecting doors");
+				yield return new WaitForSeconds(stageDelay);
+			}
+
 			//Connect all close open doors, block open doors that don't lead anywhere
 			ConnectDoors();
 
-            ReplaceBiomes();
+			if (ShowLoadingScreen && loadingText)
+			{
+				loadingText.Replace("replacing biomes");
+				yield return new WaitForSeconds(stageDelay);
+			}
+
+			ReplaceBiomes();
+
+			if (ShowLoadingScreen && loadingText)
+			{
+				loadingText.Replace("placing dungeons");
+				yield return new WaitForSeconds(stageDelay);
+			}
 
 			GenerateDungeons();
 
-            //Only apply to tiles when game is running (otherwise it is an in-editor preview)
-            Finish();
+			if (ShowLoadingScreen && loadingText)
+			{
+				loadingText.Replace("merging meshes");
+				yield return new WaitForSeconds(stageDelay);
+			}
+
+			//Only apply to tiles when game is running (otherwise it is an in-editor preview)
+			Finish();
+
+			if (ShowLoadingScreen && loadingText)
+				loadingText.SetFallback();
+
+			CanvasRenderer[] rends = loadingScreen.GetComponentsInChildren<CanvasRenderer>();
+
+			float elapsedTime = 0;
+
+			while (elapsedTime < fadeOutTime)
+			{
+				foreach (CanvasRenderer rend in rends)
+				{
+					rend.SetAlpha(1 - (elapsedTime / fadeOutTime));
+				}
+
+				yield return new WaitForEndOfFrame();
+				elapsedTime += Time.deltaTime;
+			}
+
+			if (loadingScreen)
+				loadingScreen.SetActive(false);
 		}
     }
 
