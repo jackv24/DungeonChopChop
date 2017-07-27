@@ -33,7 +33,7 @@ public class LevelGenerator : MonoBehaviour
 	public GameObject bottomLeftDungeon;
 	public GameObject topLeftDungeon;
 	[Space()]
-	public int maxDungeonAttempts = 20;
+	public float lockDungeonAngle = 45.0f;
 
 	private List<LevelTile> generatedTiles = new List<LevelTile>();
 
@@ -80,7 +80,7 @@ public class LevelGenerator : MonoBehaviour
 
 			LevelTile startTile = startObj.GetComponent<LevelTile>();
 			generatedTiles.Add(startTile);
-
+			startTile.ReplaceDoors();
 			startTile.BlockDoors();
 
 			//Spawn a tile for every door
@@ -235,8 +235,6 @@ public class LevelGenerator : MonoBehaviour
 	{
 		//Find all doors in scene
 		LevelDoor[] doors = FindObjectsOfType<LevelDoor>();
-
-		Debug.Log("Level Doors: " + doors.Length);
 
 		//Keep list of doors to be deleted
 		List<GameObject> emptyDoors = new List<GameObject>();
@@ -411,18 +409,26 @@ public class LevelGenerator : MonoBehaviour
 		GameObject dungeonObj = Instantiate(dungeonPrefab, tile.transform);
 		dungeonObj.transform.localPosition = Vector3.zero;
 
-		int attempts = 0;
+		Collider col = dungeonObj.GetComponent<Collider>();
 
-		while(attempts < maxDungeonAttempts)
+		//Place dungeon withing tile
+		if(col)
+			dungeonObj.transform.position = tile.GetPosInTile(col.bounds.size.x, col.bounds.size.z);
+		else
+			Debug.LogWarning("BoxCollider not found on dungeon in tile: " + tile.gameObject.name);
+
+		//Rotate dungeon to face towards tile centre
+		Vector3 lookPos = tile.tileOrigin.position - dungeonObj.transform.position;
+		lookPos.y = 0;
+
+		if (lookPos != Vector3.zero)
 		{
-			attempts++;
+			Quaternion rotation = Quaternion.LookRotation(lookPos);
+			Vector3 euler = rotation.eulerAngles;
+			euler.y = Mathf.Round(euler.y / lockDungeonAngle) * lockDungeonAngle;
+			rotation.eulerAngles = euler;
 
-			dungeonObj.transform.position = tile.GetPosInTile();
-
-			if (tile.IsInTileBounds(dungeonObj))
-				break;
-			else if(attempts >= maxDungeonAttempts)
-				Debug.LogError("Dungeon could not be placed on " + tile.gameObject.name);
+			dungeonObj.transform.rotation = rotation;
 		}
 	}
 
