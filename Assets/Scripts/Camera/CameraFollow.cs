@@ -27,6 +27,7 @@ public class CameraFollow : MonoBehaviour
 	[Space()]
 	public float wallFadeOutTime = 0.1f;
 	public float wallFadeInTime = 0.25f;
+	public float wallFadeDelay = 0.1f;
 
 	void Awake()
 	{

@@ -170,7 +170,7 @@ public class LevelTile : MonoBehaviour
 	public void SetCurrent(LevelTile oldTile)
 	{
 		if (oldTile)
-			StartCoroutine(FadeWalls(CameraFollow.Instance.wallFadeOutTime, CameraFollow.Instance.wallFadeInTime, this, oldTile));
+			StartCoroutine(FadeWalls(CameraFollow.Instance.wallFadeOutTime, CameraFollow.Instance.wallFadeInTime, CameraFollow.Instance.wallFadeDelay, this, oldTile));
 		else
 		{
 			walls.SetActive(true);
@@ -180,7 +180,7 @@ public class LevelTile : MonoBehaviour
 		}
 	}
 
-	IEnumerator FadeWalls(float fadeOutTime, float fadeInTime, LevelTile newTile, LevelTile oldTile)
+	IEnumerator FadeWalls(float fadeOutTime, float fadeInTime, float wallFadeDelay, LevelTile newTile, LevelTile oldTile)
 	{
 		GameObject newWalls = newTile.walls;
 		GameObject oldWalls = oldTile.walls;
@@ -233,6 +233,8 @@ public class LevelTile : MonoBehaviour
 
 			if(newTile.layoutCollider)
 				CameraFollow.Instance.UpdateCameraBounds(newTile.layoutCollider.bounds);
+
+			yield return new WaitForSeconds(wallFadeDelay);
 
 			float elapsedTime = 0;
 
