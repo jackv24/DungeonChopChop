@@ -284,6 +284,7 @@ public class EnemyMove : MonoBehaviour
 	{
 		//get the direction to the player
 		Vector3 direction = player.transform.position - transform.position;
+		direction.y = 0;
 		//get the quaternion using the direction
 		Quaternion toRotation = Quaternion.LookRotation (direction);
 		//rotate enemy to look at player

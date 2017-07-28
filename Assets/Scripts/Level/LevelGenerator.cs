@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+	public static LevelGenerator Instance;
+
+	public delegate void NormalEvent();
+	public event NormalEvent OnGenerationFinished;
+	public event NormalEvent OnTileEnter;
+
 	[Tooltip("The level generator profile to use when generating levels.")]
 	public LevelGeneratorProfile profile;
 
@@ -28,6 +34,11 @@ public class LevelGenerator : MonoBehaviour
 
 	[HideInInspector]
 	public List<LevelTile> generatedTiles = new List<LevelTile>();
+
+	void Awake()
+	{
+		Instance = this;
+	}
 
 	private void Start()
 	{
@@ -128,6 +139,11 @@ public class LevelGenerator : MonoBehaviour
 
 				//Only apply to tiles when game is running (otherwise it is an in-editor preview)
 				Finish();
+
+				//Wait for players to be spawned, then call done event
+				yield return new WaitForEndOfFrame();
+				if (OnGenerationFinished != null)
+					OnGenerationFinished();
 
 				if (ShowLoadingScreen && loadingText)
 					loadingText.SetFallback();
@@ -359,4 +375,10 @@ public class LevelGenerator : MonoBehaviour
 			}
 		}
     }
+
+	public void EnterTile()
+	{
+		if (OnTileEnter != null)
+			OnTileEnter();
+	}
 }

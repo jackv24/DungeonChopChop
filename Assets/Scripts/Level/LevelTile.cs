@@ -201,7 +201,20 @@ public class LevelTile : MonoBehaviour
 	public void SetCurrent(LevelTile oldTile)
 	{
 		if (oldTile)
+		{
 			StartCoroutine(FadeWalls(CameraFollow.Instance.wallFadeOutTime, CameraFollow.Instance.wallFadeInTime, CameraFollow.Instance.wallFadeDelay, this, oldTile));
+
+			EnemySpawner oldSpawner = oldTile.GetComponentInChildren<EnemySpawner>();
+			EnemySpawner newSpawner = GetComponentInChildren<EnemySpawner>();
+
+			if (oldSpawner)
+				oldSpawner.Despawn();
+
+			if (newSpawner)
+				newSpawner.Spawn();
+
+			LevelGenerator.Instance.EnterTile();
+		}
 		else
 		{
 			walls.SetActive(true);
