@@ -9,6 +9,8 @@ public class PlayerMove : MonoBehaviour
 	public float gravity = -9.8f;
 	public float acceleration = 1;
 
+	private bool allowMove = true;
+
 	private PlayerInputs input;
 	private CharacterController characterController;
 	private PlayerInformation playerInformation;
@@ -34,11 +36,22 @@ public class PlayerMove : MonoBehaviour
 			input.SetupBindings ();
 		}
 		characterController = GetComponent<CharacterController> ();
+
+		//Wait until level generation is done to allow movement
+		if(LevelGenerator.Instance)
+		{
+			allowMove = false;
+
+			LevelGenerator.Instance.OnGenerationFinished += delegate { allowMove = true; };
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		if (!allowMove)
+			return;
+
 		//sets movespeed to playerinformation movespeed;
 		moveSpeed = playerInformation.moveSpeed;
 

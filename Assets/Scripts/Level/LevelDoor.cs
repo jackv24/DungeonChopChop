@@ -5,7 +5,8 @@ using UnityEngine;
 public class LevelDoor : MonoBehaviour
 {
 	[Tooltip("How far the player must walk out after entering this door.")]
-	public float exitDistance = 1.0f;
+	public float exitDistance = 2.0f;
+	public float secondaryExitDistance = 1.0f;
 
 	[Header("Set by Generator")]
 	public LevelTile targetTile;
@@ -28,7 +29,10 @@ public class LevelDoor : MonoBehaviour
 		//If player walked into this door
         if(col.tag == "Player" && col.GetType() == typeof(CharacterController))
         {
-			if (!entered)
+			PlayerInformation playerInfo = col.GetComponent<PlayerInformation>();
+
+			//Only player 1 can enter doors
+			if (!entered && playerInfo.playerIndex == 0)
 			{
 				//if this door was entered on the current tile, enable target tile
 				targetDoor.entered = true;
@@ -50,17 +54,20 @@ public class LevelDoor : MonoBehaviour
 		PlayerInformation playerInfo = player.GetComponent<PlayerInformation>();
 		PlayerMove playerMove = player.GetComponent<PlayerMove>();
 
-		if(playerMove && playerInfo)
+		Vector3 direction = -transform.forward;
+
+		if (playerMove && playerInfo)
 		{
 			//Revoke player control
 			playerMove.enabled = false;
 
 			//Get move speed and direction
 			float moveSpeed = playerInfo.moveSpeed;
-			Vector3 direction = -transform.forward;
+
+			Vector3 targetPos = transform.position + direction * exitDistance;
 
 			//Calculate time required to move target distance
-			float moveTime = exitDistance / moveSpeed;
+			float moveTime = Vector3.Distance(targetPos, player.transform.position) / moveSpeed;
 
 			//Loop for that amount of time
 			float elapsedTime = 0;
@@ -75,6 +82,14 @@ public class LevelDoor : MonoBehaviour
 
 			//Return player control
 			playerMove.enabled = true;
+		}
+
+		//Position other player outside door
+		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+		foreach(GameObject p in players)
+		{
+			if (p != player)
+				p.transform.position = transform.position + direction * secondaryExitDistance;
 		}
 	}
 }
