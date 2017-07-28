@@ -42,7 +42,8 @@ public class CameraFollow : MonoBehaviour
 		{
 			foreach (Transform target in players)
 			{
-				targetPos += target.position;
+				if(target)
+					targetPos += target.position;
 			}
 		}
 

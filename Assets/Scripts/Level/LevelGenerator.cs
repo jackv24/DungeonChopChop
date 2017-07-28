@@ -130,23 +130,25 @@ public class LevelGenerator : MonoBehaviour
 				if (ShowLoadingScreen && loadingText)
 					loadingText.SetFallback();
 
-				CanvasRenderer[] rends = loadingScreen.GetComponentsInChildren<CanvasRenderer>();
-
-				float elapsedTime = 0;
-
-				while (elapsedTime < fadeOutTime)
+				if (loadingScreen)
 				{
-					foreach (CanvasRenderer rend in rends)
+					CanvasRenderer[] rends = loadingScreen.GetComponentsInChildren<CanvasRenderer>();
+
+					float elapsedTime = 0;
+
+					while (elapsedTime < fadeOutTime)
 					{
-						rend.SetAlpha(1 - (elapsedTime / fadeOutTime));
+						foreach (CanvasRenderer rend in rends)
+						{
+							rend.SetAlpha(1 - (elapsedTime / fadeOutTime));
+						}
+
+						yield return new WaitForEndOfFrame();
+						elapsedTime += Time.deltaTime;
 					}
 
-					yield return new WaitForEndOfFrame();
-					elapsedTime += Time.deltaTime;
-				}
-
-				if (loadingScreen)
 					loadingScreen.SetActive(false);
+				}
 			}
 		}
     }
