@@ -8,8 +8,8 @@ public class CameraFollow : MonoBehaviour
 
     public List<Transform> players;
 
-	private Vector3 max;
-	private Vector4 min;
+	private Vector3 max = Vector3.zero;
+	private Vector3 min = Vector3.zero;
 
 	[Space()]
 	public float paddingTop = 2.0f;
@@ -50,15 +50,18 @@ public class CameraFollow : MonoBehaviour
 
 		//Clamp to tile bounds
 		//Only clamp if max is more than min
-		if (max.x - paddingRight > min.x + paddingLeft)
-			targetPos.x = Mathf.Clamp(targetPos.x, min.x + paddingLeft, max.x - paddingRight);
-		else //Else centre
-			targetPos.x = (min.x + max.x) / 2;
+		if (max != Vector3.zero && min != Vector3.zero)
+		{
+			if (max.x - paddingRight > min.x + paddingLeft)
+				targetPos.x = Mathf.Clamp(targetPos.x, min.x + paddingLeft, max.x - paddingRight);
+			else //Else centre
+				targetPos.x = (min.x + max.x) / 2;
 
-		if (max.z - paddingTop > min.z + paddingBottom)
-			targetPos.z = Mathf.Clamp(targetPos.z, min.z + paddingBottom, max.z - paddingTop);
-		else
-			targetPos.z = (min.z + max.z) / 2;
+			if (max.z - paddingTop > min.z + paddingBottom)
+				targetPos.z = Mathf.Clamp(targetPos.z, min.z + paddingBottom, max.z - paddingTop);
+			else
+				targetPos.z = (min.z + max.z) / 2;
+		}
 
 		//Move camera to correct offset
 		targetPos += Vector3.up * height;
