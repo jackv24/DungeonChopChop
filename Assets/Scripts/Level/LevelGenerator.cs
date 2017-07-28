@@ -72,7 +72,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 Debug.LogWarning("No start tile defined in level generator profile!");
 
-                yield return null;
+				break;
             }
 
             //Spawn start tile
@@ -90,62 +90,64 @@ public class LevelGenerator : MonoBehaviour
                 GenerateTile(door, profile.maxTrailLength);
             }
 
-            //If there are too few tiles, delete and roll again
-            if (transform.childCount <= profile.minTileAmount)
-            {
-                Clear();
-            }
-            else
-                running = false;
-
-			if (ShowLoadingScreen && loadingText)
+			//If there are too few tiles, delete and roll again
+			if (transform.childCount <= profile.minTileAmount)
 			{
-				yield return new WaitForSeconds(stageDelay);
-				loadingText.Replace("connecting doors");
-				yield return new WaitForSeconds(stageDelay);
+				Clear();
 			}
-
-			//Connect all close open doors, block open doors that don't lead anywhere
-			ConnectDoors();
-
-			if (ShowLoadingScreen && loadingText)
+			else
 			{
-				loadingText.Replace("skinning level");
-				yield return new WaitForSeconds(stageDelay);
-			}
+				running = false;
 
-			//After level layout is generated, generate level type-specific content
-			profile.Generate(this);
-
-			if (ShowLoadingScreen && loadingText)
-			{
-				loadingText.Replace("merging meshes");
-				yield return new WaitForSeconds(stageDelay);
-			}
-
-			//Only apply to tiles when game is running (otherwise it is an in-editor preview)
-			Finish();
-
-			if (ShowLoadingScreen && loadingText)
-				loadingText.SetFallback();
-
-			CanvasRenderer[] rends = loadingScreen.GetComponentsInChildren<CanvasRenderer>();
-
-			float elapsedTime = 0;
-
-			while (elapsedTime < fadeOutTime)
-			{
-				foreach (CanvasRenderer rend in rends)
+				if (ShowLoadingScreen && loadingText)
 				{
-					rend.SetAlpha(1 - (elapsedTime / fadeOutTime));
+					yield return new WaitForSeconds(stageDelay);
+					loadingText.Replace("connecting doors");
+					yield return new WaitForSeconds(stageDelay);
 				}
 
-				yield return new WaitForEndOfFrame();
-				elapsedTime += Time.deltaTime;
-			}
+				//Connect all close open doors, block open doors that don't lead anywhere
+				ConnectDoors();
 
-			if (loadingScreen)
-				loadingScreen.SetActive(false);
+				if (ShowLoadingScreen && loadingText)
+				{
+					loadingText.Replace("skinning level");
+					yield return new WaitForSeconds(stageDelay);
+				}
+
+				//After level layout is generated, generate level type-specific content
+				profile.Generate(this);
+
+				if (ShowLoadingScreen && loadingText)
+				{
+					loadingText.Replace("merging meshes");
+					yield return new WaitForSeconds(stageDelay);
+				}
+
+				//Only apply to tiles when game is running (otherwise it is an in-editor preview)
+				Finish();
+
+				if (ShowLoadingScreen && loadingText)
+					loadingText.SetFallback();
+
+				CanvasRenderer[] rends = loadingScreen.GetComponentsInChildren<CanvasRenderer>();
+
+				float elapsedTime = 0;
+
+				while (elapsedTime < fadeOutTime)
+				{
+					foreach (CanvasRenderer rend in rends)
+					{
+						rend.SetAlpha(1 - (elapsedTime / fadeOutTime));
+					}
+
+					yield return new WaitForEndOfFrame();
+					elapsedTime += Time.deltaTime;
+				}
+
+				if (loadingScreen)
+					loadingScreen.SetActive(false);
+			}
 		}
     }
 
