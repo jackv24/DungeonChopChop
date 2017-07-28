@@ -10,6 +10,7 @@ public class SpawnPlayersManager : MonoBehaviour
 
 	void Start () 
 	{
+		CameraFollow cameraFollow = Camera.main.GetComponent<CameraFollow> ();
 		int temp = 0;
 		//loops through each player input and instantiates a player prefab
 		if (InputManager.Instance) 
@@ -19,6 +20,7 @@ public class SpawnPlayersManager : MonoBehaviour
 				if (user != null) 
 				{
 					GameObject player = (GameObject)Instantiate (playerPrefab, new Vector3(spawnPosition.x + (temp * 10), spawnPosition.y, spawnPosition.z), Quaternion.Euler (0, 0, 0));
+					cameraFollow.players.Add (player.transform);
 					player.GetComponent<PlayerInformation> ().playerIndex = temp;
 					temp++;
 				}

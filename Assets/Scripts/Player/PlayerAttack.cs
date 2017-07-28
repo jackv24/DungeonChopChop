@@ -18,9 +18,16 @@ public class PlayerAttack : MonoBehaviour
 	[Tooltip("The amount added to the rapid slash cooldown (60 times a second)")]
 	public float rapidSlashIncrease = .04f;
 
+	[Header("Do Dash Vars")]
+	public AnimationCurve dashCurve;
+	public float dashTime;
+	private float dashDistance;
+
 	bool canAttack = true;
 
 	private PlayerInputs input;
+	private PlayerMove playerMove;
+	private PlayerCharm playerCharm;
 	private PlayerInformation playerInformation;
 
 	private int comboAmount;
@@ -33,7 +40,10 @@ public class PlayerAttack : MonoBehaviour
 
 	void Start () 
 	{
+		playerCharm = GetComponent<PlayerCharm> ();
 		playerInformation = GetComponent<PlayerInformation> ();
+		playerMove = GetComponent <PlayerMove> ();
+
 		if (InputManager.Instance) 
 		{
 			input = InputManager.GetPlayerInput (playerInformation.playerIndex);
@@ -48,6 +58,7 @@ public class PlayerAttack : MonoBehaviour
 
 	void Update()
 	{
+		dashDistance = playerInformation.dashDistance;
 		//sets attack values
 		attackMinAngle = playerInformation.attackMinAngle;
 		attackDistance = playerInformation.attackDistance;
@@ -73,7 +84,7 @@ public class PlayerAttack : MonoBehaviour
 			else if (input.DashSlash.WasPressed) 
 			{
 				//dash slash
-				doDashSlash ();
+				doDash ();
 			} 
 			else if (input.BasicAttack) 
 			{
@@ -191,10 +202,27 @@ public class PlayerAttack : MonoBehaviour
 		canAttack = true;
 	}
 
-	void doDashSlash()
+	void doDash()
 	{
 		//do flash
-		Debug.Log("Dash Slash");
+		StartCoroutine(dash());
+	}
+
+	IEnumerator dash()
+	{
+		float tempDashDistance = dashDistance;
+		if (playerInformation.currentCharm == Charms.DashCharm) {
+			tempDashDistance = dashDistance * playerCharm.dashDistanceIncrease;
+		}
+		playerMove.enabled = false;
+		Vector3 startingPos = transform.position;
+		float elapsedTime = 0;
+		while (elapsedTime < dashTime) {
+			transform.position = startingPos + transform.forward * dashCurve.Evaluate (elapsedTime / dashTime) * tempDashDistance;
+			yield return new WaitForEndOfFrame();
+			elapsedTime += Time.deltaTime;
+		}
+		playerMove.enabled = true;
 	}
 
 

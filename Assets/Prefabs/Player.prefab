@@ -22,11 +22,12 @@ GameObject:
   - component: {fileID: 33822135091355954}
   - component: {fileID: 23609079175606106}
   - component: {fileID: 114544447695856810}
-  - component: {fileID: 143203483932609108}
   - component: {fileID: 114888587539373240}
   - component: {fileID: 114141948471565388}
   - component: {fileID: 114910671819656350}
+  - component: {fileID: 114235362396078772}
   - component: {fileID: 54240468328729012}
+  - component: {fileID: 143203483932609108}
   - component: {fileID: 136500385918002184}
   - component: {fileID: 136248845063515268}
   m_Layer: 0
@@ -200,6 +201,39 @@ MonoBehaviour:
   slashAmount: 3
   rapidSlashCooldown: 3
   rapidSlashIncrease: 0.04
+  dashCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 1.0167364
+      outSlope: 1.0167364
+      tangentMode: 34
+    - serializedVersion: 2
+      time: 0.99583334
+      value: 1.0125
+      inSlope: 1.0167364
+      outSlope: 1.0167364
+      tangentMode: 34
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  dashTime: 0.4
+--- !u!114 &114235362396078772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515761076265150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af581d58a2bf48e4d81d66a53eeca492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpIncrease: 1.25
+  dashDistanceIncrease: 1.5
+  damageIncrease: 1.1
 --- !u!114 &114544447695856810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,6 +261,7 @@ MonoBehaviour:
   playerIndex: 0
   attackMinAngle: 130
   attackDistance: 5
+  dashDistance: 5
   moveSpeed: 5
   strength: 0
   attackSpeed: 0
@@ -238,6 +273,7 @@ MonoBehaviour:
   attackSpeedLevel: 1
   resistanceLevel: 1
   maxHealthLevel: 1
+  currentCharm: 2
 --- !u!114 &114910671819656350
 MonoBehaviour:
   m_ObjectHideFlags: 1

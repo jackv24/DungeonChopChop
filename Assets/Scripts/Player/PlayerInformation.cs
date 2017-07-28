@@ -8,6 +8,7 @@ public class PlayerInformation : MonoBehaviour
 	public int playerIndex = 0;
 	public float attackMinAngle = 130;
 	public float attackDistance = 5;
+	public float dashDistance = 5;
 	public float moveSpeed;
 	public float strength;
 	public float attackSpeed;
@@ -21,6 +22,9 @@ public class PlayerInformation : MonoBehaviour
 	public int attackSpeedLevel = 1;
 	public int resistanceLevel = 1;
 	public int maxHealthLevel = 1;
+
+	[Header("Charm")]
+	public Charms currentCharm;
 
 	private StatsManager statsManager;
 	private Health health;
