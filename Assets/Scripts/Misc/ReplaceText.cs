@@ -13,28 +13,29 @@ public class ReplaceText : MonoBehaviour
 	void Awake()
 	{
 		text = GetComponent<Text>();
-	}
 
-	void Start()
-	{
-		SetFallback();
+		Replace("");
 	}
 
 	public void Replace(string replaceText)
 	{
-		if (textString == "")
-			textString = text.text;
-
 		if (text)
+		{
+			if (textString == "")
+				textString = text.text;
+
 			text.text = string.Format(textString, replaceText);
+		}
 	}
 
 	public void SetFallback()
 	{
-		if (textString == "")
-			textString = text.text;
-
 		if (text)
+		{
+			if (textString == "")
+				textString = text.text;
+
 			text.text = string.Format(textString, fallBack);
+		}
 	}
 }

@@ -43,6 +43,8 @@ public class LevelGenerator : MonoBehaviour
 
 			if (loadingText)
 				loadingText.Replace("generating tiles");
+
+			yield return new WaitForSeconds(stageDelay);
 		}
 
 		if (seed != 0)
