@@ -212,6 +212,8 @@ public class LevelTile : MonoBehaviour
 
 			if (newSpawner)
 				newSpawner.Spawn();
+
+			LevelGenerator.Instance.EnterTile();
 		}
 		else
 		{

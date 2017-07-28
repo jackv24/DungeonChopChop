@@ -8,6 +8,7 @@ public class LevelGenerator : MonoBehaviour
 
 	public delegate void NormalEvent();
 	public event NormalEvent OnGenerationFinished;
+	public event NormalEvent OnTileEnter;
 
 	[Tooltip("The level generator profile to use when generating levels.")]
 	public LevelGeneratorProfile profile;
@@ -374,4 +375,10 @@ public class LevelGenerator : MonoBehaviour
 			}
 		}
     }
+
+	public void EnterTile()
+	{
+		if (OnTileEnter != null)
+			OnTileEnter();
+	}
 }
