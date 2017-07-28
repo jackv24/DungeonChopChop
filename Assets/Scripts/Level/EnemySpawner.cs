@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
 
 	public Helper.Probability[] enemies;
 
+	private List<GameObject> spawnedEnemies = new List<GameObject>();
+
 	public void Spawn()
 	{
 		foreach (Transform spawn in spawnPoints)
@@ -17,8 +19,21 @@ public class EnemySpawner : MonoBehaviour
 			if (enemyPrefab)
 			{
 				GameObject enemy = ObjectPooler.GetPooledObject(enemyPrefab);
-				enemy.transform.position = spawn.position;
+				enemy.transform.position = spawn.position + Vector3.up;
+				enemy.transform.rotation = Quaternion.identity;
+
+				spawnedEnemies.Add(enemy);
 			}
 		}
+	}
+
+	public void Despawn()
+	{
+		foreach (GameObject enemy in spawnedEnemies)
+		{
+			enemy.SetActive(false);
+		}
+
+		spawnedEnemies.Clear();
 	}
 }
