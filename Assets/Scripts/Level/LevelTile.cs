@@ -21,7 +21,8 @@ public class LevelTile : MonoBehaviour
 
     [Header("Alternate Graphics")]
     [Tooltip("The graphic that will be replaced by the below prefabs.")]
-    public GameObject defaultGraphic;
+    public GameObject currentGraphic;
+	private Biomes biome;
 
     [Space()]
     public GameObject grassGraphicPrefab;
@@ -123,7 +124,9 @@ public class LevelTile : MonoBehaviour
 
     public void Replace(Biomes biome)
     {
-        if(defaultGraphic)
+		this.biome = biome;
+
+        if(currentGraphic)
         {
             GameObject newGraphic = null;
 
@@ -151,11 +154,13 @@ public class LevelTile : MonoBehaviour
             if(newGraphic)
             {
                 GameObject obj = Instantiate(newGraphic, transform);
-                obj.transform.localPosition = defaultGraphic.transform.localPosition;
-                obj.transform.localRotation = defaultGraphic.transform.localRotation;
+                obj.transform.localPosition = currentGraphic.transform.localPosition;
+                obj.transform.localRotation = currentGraphic.transform.localRotation;
 
                 //Destroy layout graphic
-                DestroyImmediate(defaultGraphic);
+                DestroyImmediate(currentGraphic);
+
+				currentGraphic = obj;
             }
         }
 
@@ -166,6 +171,32 @@ public class LevelTile : MonoBehaviour
             levelBlocks[i].Replace(biome);
         }
     }
+
+	public void EnsureBiomeContinuity()
+	{
+		bool connected = false;
+
+		List<Biomes> biomeOptions = new List<Biomes>();
+
+		//Check if this tile connects to any other tiles of the same biome
+		foreach(Transform door in doors)
+		{
+			LevelDoor d = door.GetComponent<LevelDoor>();
+
+			if (d.targetTile.biome == biome)
+				connected = true;
+			else
+				biomeOptions.Add(d.targetTile.biome);
+		}
+
+		//If not, replace it with a random biome that it is connected to
+		if(!connected && biomeOptions.Count > 0)
+		{
+			Biomes newBiome = biomeOptions[Random.Range(0, biomeOptions.Count)];
+
+			Replace(newBiome);
+		}
+	}
 
 	public void SetCurrent(LevelTile oldTile)
 	{

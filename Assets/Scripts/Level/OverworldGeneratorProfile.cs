@@ -50,6 +50,12 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 
 			tile.Replace(biome);
 		}
+
+		//Make sure there are no mini-biomes inside other biomes
+		foreach(LevelTile tile in levelGenerator.generatedTiles)
+		{
+			tile.EnsureBiomeContinuity();
+		}
 	}
 
 	void GenerateDungeons(LevelGenerator levelGenerator)
