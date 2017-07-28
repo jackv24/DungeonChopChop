@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
 	public static CameraFollow Instance;
 
-    public List<Transform> players;
+    public Transform player;
 
 	private Vector3 max = Vector3.zero;
 	private Vector3 min = Vector3.zero;
@@ -38,16 +38,7 @@ public class CameraFollow : MonoBehaviour
     {
 		Vector3 targetPos = Vector3.zero;
 
-		if (players.Count > 0)
-		{
-			foreach (Transform target in players)
-			{
-				if(target)
-					targetPos += target.position;
-			}
-		}
-
-		targetPos /= players.Count;
+		targetPos = player.position;
 
 		//Clamp to tile bounds
 		//Only clamp if max is more than min

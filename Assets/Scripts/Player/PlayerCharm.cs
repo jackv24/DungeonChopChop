@@ -34,18 +34,33 @@ public class PlayerCharm : MonoBehaviour {
 
 	[Header("Thiefs Charm Values")]
 	[Tooltip("2 = double")]
+	public Sprite thiefCharmImg;
 	public float pickUpIncrease = 1.25f;
 	private float setPickUpIncrease;
 
 	[Header("Dash Charm Values")]
 	[Tooltip("2 = double")]
+	public Sprite dashCharmImg;
 	public float dashDistanceIncrease = 1.5f;
 	private float setDashDistance;
 
 	[Header("Strength Charm Values")]
 	[Tooltip("2 = double")]
+	public Sprite strengthCharmImg;
 	public float damageIncrease = 1.1f;
 	private float setDamageIncrease;
+
+	[Header("Reacher Charm Values")]
+	[Tooltip("2 = double")]
+	public Sprite reacherCharmImg;
+
+	[Header("Armor Charm Values")]
+	[Tooltip("2 = double")]
+	public Sprite armorCharmImg;
+
+	[Header("Death touch Charm Values")]
+	[Tooltip("2 = double")]
+	public Sprite deathTouchCharmImg;
 
 	//armor to do
 

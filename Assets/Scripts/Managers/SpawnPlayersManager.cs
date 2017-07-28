@@ -20,7 +20,9 @@ public class SpawnPlayersManager : MonoBehaviour
 				if (user != null) 
 				{
 					GameObject player = (GameObject)Instantiate (playerPrefab, new Vector3(spawnPosition.x + (temp * 10), spawnPosition.y, spawnPosition.z), Quaternion.Euler (0, 0, 0));
-					cameraFollow.players.Add (player.transform);
+					if (!cameraFollow.player)
+						cameraFollow.player = player.transform;
+					
 					player.GetComponent<PlayerInformation> ().playerIndex = temp;
 					temp++;
 				}
