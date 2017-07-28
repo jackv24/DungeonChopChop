@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CharmImage : MonoBehaviour {
 
+	public GameObject player;
 	private PlayerCharm playerCharm;
 	private PlayerInformation playerInfo;
 	private Image charmImg;
@@ -18,15 +19,15 @@ public class CharmImage : MonoBehaviour {
 	IEnumerator wait()
 	{
 		yield return new WaitForSeconds (.1f);
-		GameObject s = GameObject.FindGameObjectWithTag ("Player");
-		if (s) {
-			playerCharm = s.GetComponent<PlayerCharm> ();
-			playerInfo = s.GetComponent<PlayerInformation> ();
+		if (player) {
+			playerCharm = player.GetComponent<PlayerCharm> ();
+			playerInfo = player.GetComponent<PlayerInformation> ();
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		//sets the components sprite to the current players ability
 		if (playerCharm) {
 			if (playerInfo.currentCharm == Charms.ArmorBugCharm) {
 				charmImg.sprite = playerCharm.armorCharmImg;

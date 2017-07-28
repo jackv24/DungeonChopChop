@@ -37,8 +37,8 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
 		Vector3 targetPos = Vector3.zero;
-
-		targetPos = player.position;
+		if (player)
+			targetPos = player.position;
 
 		//Clamp to tile bounds
 		//Only clamp if max is more than min

@@ -29,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
 	private PlayerMove playerMove;
 	private PlayerCharm playerCharm;
 	private PlayerInformation playerInformation;
+	private CharacterController characterController;
 
 	private int comboAmount;
 
@@ -218,7 +219,7 @@ public class PlayerAttack : MonoBehaviour
 		Vector3 startingPos = transform.position;
 		float elapsedTime = 0;
 		while (elapsedTime < dashTime) {
-			transform.position = startingPos + transform.forward * dashCurve.Evaluate (elapsedTime / dashTime) * tempDashDistance;
+			characterController.Move(transform.forward * dashCurve.Evaluate (elapsedTime / dashTime) * tempDashDistance * Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 			elapsedTime += Time.deltaTime;
 		}
