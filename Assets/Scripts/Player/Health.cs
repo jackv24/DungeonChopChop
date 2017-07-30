@@ -5,8 +5,8 @@ using UnityEngine;
 public class Health : MonoBehaviour 
 {
 
-	public int maxHealth;
-	public int health;
+	public float maxHealth;
+	public float health;
 	public bool isDead = false;
 
 	public delegate void HealthEvent();
@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
 	private int poisonCounter = 0;
 	private float poisonDuration = 0;
 
-	public void AffectHealth(int healthDeta)
+	public void AffectHealth(float healthDeta)
 	{
 		health += healthDeta;
 		if (OnHealthChange != null) 
