@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
 	float moveSpeed;
 	public float gravity = -9.8f;
 	public float acceleration = 1;
+	public float inMudSpeed = 2.5f;
 
 	private bool allowMove = true;
 
@@ -21,6 +22,7 @@ public class PlayerMove : MonoBehaviour
 	private Vector3 targetMoveVector;
 	private Vector3 fromMoveVector = Vector3.zero;
 	private bool onIce = false;
+	private float originalMoveSpeed = 0;
 
 	// Use this for initialization
 	void Start () 
@@ -86,13 +88,25 @@ public class PlayerMove : MonoBehaviour
 			characterController.Move (fromMoveVector * Time.deltaTime);
 		}
 	}
-		
-	//checks if the floor is ice
+
+	void OnTriggerEnter(Collider col)
+	{
+		if (col.tag == "Mud") 
+		{
+			originalMoveSpeed = playerInformation.moveSpeed;
+		}
+	}		
+
 	void OnTriggerStay(Collider col)
 	{
-		if (col.tag == "Ice")
+		//checks if the floor is ice
+		if (col.tag == "Ice") 
 		{
 			onIce = true;
+		} 
+		else if (col.tag == "Mud")
+		{
+			playerInformation.moveSpeed = inMudSpeed;
 		}
 	}
 
@@ -102,6 +116,10 @@ public class PlayerMove : MonoBehaviour
 		{
 			fromMoveVector = Vector3.zero;
 			onIce = false;
+		} 
+		else if (col.tag == "Mud")
+		{
+			playerInformation.moveSpeed = inMudSpeed;
 		}
 	}
 

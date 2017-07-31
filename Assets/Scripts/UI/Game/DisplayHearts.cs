@@ -9,6 +9,7 @@ public class DisplayHearts : MonoBehaviour {
 
 	void Awake()
 	{
+		//assign the hearts variable player .... important for 2 player
 		player = GameObject.FindGameObjectWithTag ("Player");
 		if (player) {
 			foreach (Transform child in transform) {

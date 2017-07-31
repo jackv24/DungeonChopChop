@@ -18,7 +18,9 @@ public class CharmImage : MonoBehaviour {
 
 	IEnumerator wait()
 	{
+		//the reason for this wait is, the player spawns after the start function
 		yield return new WaitForSeconds (.1f);
+		player = GameObject.FindGameObjectWithTag ("Player");
 		if (player) {
 			playerCharm = player.GetComponent<PlayerCharm> ();
 			playerInfo = player.GetComponent<PlayerInformation> ();
