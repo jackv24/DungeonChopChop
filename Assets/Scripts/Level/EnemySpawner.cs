@@ -15,9 +15,9 @@ public class EnemySpawner : MonoBehaviour
 	public int respawnTileCount = 5;
 	private int tilesLeftUntilRespawn = 0;
 
-	private class UndefeatedEnemy
+	private class EnemySpawnPair
 	{
-		public UndefeatedEnemy(GameObject prefab, Transform spawnPoint)
+		public EnemySpawnPair(GameObject prefab, Transform spawnPoint)
 		{
 			this.prefab = prefab;
 			this.spawnPoint = spawnPoint;
@@ -26,57 +26,124 @@ public class EnemySpawner : MonoBehaviour
 		public GameObject prefab;
 		public Transform spawnPoint;
 	}
-	private List<UndefeatedEnemy> undefeatedEnemies = new List<UndefeatedEnemy>();
+	private List<EnemySpawnPair> undefeatedEnemies = new List<EnemySpawnPair>();
+
+	private bool shouldSpawn = false;
 
 	public void Spawn()
 	{
 		if (tilesLeftUntilRespawn > 0)
 			return;
 
+		shouldSpawn = true;
+
+		StartCoroutine(SpawnWithEffect());
+	}
+
+	IEnumerator SpawnWithEffect()
+	{
+		bool newEnemies = false;
+
+		List<EnemySpawnPair> toSpawn = new List<EnemySpawnPair>();
+
+		//If there were no undefeated enemies...
 		if (undefeatedEnemies.Count <= 0)
 		{
+			//Spawn a new random set
 			foreach (Transform spawn in spawnPoints)
 			{
 				GameObject enemyPrefab = Helper.GetRandomByProbability(enemies);
 
+				//Add to list to be spawned
 				if (enemyPrefab)
+					toSpawn.Add(new EnemySpawnPair(enemyPrefab, spawn));
+			}
+
+			newEnemies = true;
+		}
+		else
+		{
+			//If there were enemies undefeated, just respawn them
+			foreach (EnemySpawnPair undefeatedEnemy in undefeatedEnemies)
+				toSpawn.Add(undefeatedEnemy);
+		}
+
+		if (LevelVars.Instance)
+		{
+			//Keep a list of spawned particles
+			List<ParticleSystem> particles = new List<ParticleSystem>();
+
+			if (LevelVars.Instance.enemySpawnEffect)
+			{
+				//Get particle effect from pool
+				GameObject effectPrefab = LevelVars.Instance.enemySpawnEffect;
+
+				foreach(EnemySpawnPair spawn in toSpawn)
 				{
-					GameObject enemy = ObjectPooler.GetPooledObject(enemyPrefab);
-					enemy.transform.position = spawn.position + Vector3.up;
+					//Spawn an effect where enemies will spawn
+					if (spawn.prefab)
+					{
+						GameObject effect = ObjectPooler.GetPooledObject(effectPrefab);
+
+						if (effect)
+						{
+							effect.transform.position = spawn.spawnPoint.position;
+
+							ParticleSystem system = effect.GetComponent<ParticleSystem>();
+							particles.Add(system);
+						}
+					}
+				}
+			}
+
+			//Wait for set time
+			yield return new WaitForSeconds(LevelVars.Instance.enemySpawnDelay);
+
+			//Stop playing all particle effects (let the particles disperse before being disabled in other script)
+			foreach (ParticleSystem system in particles)
+				system.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+		}
+
+		//After delay, actually spawn the enemies
+		if (shouldSpawn)
+		{
+			foreach (EnemySpawnPair spawn in toSpawn)
+			{
+				GameObject enemy = ObjectPooler.GetPooledObject(spawn.prefab);
+
+				if (enemy)
+				{
+					enemy.transform.position = spawn.spawnPoint.position + Vector3.up;
 					enemy.transform.rotation = Quaternion.identity;
 
 					spawnedEnemies.Add(enemy);
 
-					undefeatedEnemies.Add(new UndefeatedEnemy(enemyPrefab, spawn));
+					if (newEnemies)
+						undefeatedEnemies.Add(spawn);
 				}
-			}
-		}
-		else
-		{
-			foreach(UndefeatedEnemy undefeatedEnemy in undefeatedEnemies)
-			{
-				GameObject enemy = ObjectPooler.GetPooledObject(undefeatedEnemy.prefab);
-				enemy.transform.position = undefeatedEnemy.spawnPoint.position + Vector3.up;
-				enemy.transform.rotation = Quaternion.identity;
-
-				spawnedEnemies.Add(enemy);
 			}
 		}
 	}
 
 	public void Despawn()
 	{
-		List<UndefeatedEnemy> toRemove = new List<UndefeatedEnemy>();
+		//Interrupt spawning routine if yet to happen
+		shouldSpawn = false;
+		List<EnemySpawnPair> toRemove = new List<EnemySpawnPair>();
 
-		for (int i = 0; i < undefeatedEnemies.Count; i++)
+		//Make sure enemies have actually spawned
+		if (spawnedEnemies.Count > 0)
 		{
-			//Add defeated enemies to a list so that iterator is not edited
-			if (!spawnedEnemies[i].activeSelf)
-				toRemove.Add(undefeatedEnemies[i]);
+			for (int i = 0; i < undefeatedEnemies.Count; i++)
+			{
+				//Add defeated enemies to a list so that iterator is not edited
+				if (!spawnedEnemies[i].activeSelf)
+					toRemove.Add(undefeatedEnemies[i]);
+			}
 		}
 
 		//Remove defeated enemies
-		foreach (UndefeatedEnemy e in toRemove)
+		foreach (EnemySpawnPair e in toRemove)
 			undefeatedEnemies.Remove(e);
 
 		toRemove.Clear();
@@ -99,11 +166,13 @@ public class EnemySpawner : MonoBehaviour
 	{
 		tilesLeftUntilRespawn--;
 
-		//If time to reset tile, just clear undefeated enemies
-		undefeatedEnemies.Clear();
-
-		//If no tiles are left, remove reset counter
 		if (tilesLeftUntilRespawn <= 0)
+		{
+			//If time to reset tile, just clear undefeated enemies
+			undefeatedEnemies.Clear();
+
+			//If no tiles are left, remove reset counter
 			LevelGenerator.Instance.OnTileEnter -= MinusTilesLeft;
+		}
 	}
 }
