@@ -31,6 +31,9 @@ public class LevelTile : MonoBehaviour
 	public GameObject iceGraphicPrefab;
 	public GameObject forestGraphicPrefab;
 
+	//Shared material that all walls return to after fading (set by first wall fade)
+	private static Material wallMaterial = null;
+
 	public enum Biomes
     {
         Grass,
@@ -234,7 +237,8 @@ public class LevelTile : MonoBehaviour
 		MeshRenderer[] oldRends = oldWalls.GetComponentsInChildren<MeshRenderer>();
 
 		//Cache shared material to return at end
-		Material sharedMaterial = newRends[0].sharedMaterial;
+		if(wallMaterial == null)
+			wallMaterial = newRends[0].sharedMaterial;
 
 		//Fade old out
 		{
@@ -243,7 +247,7 @@ public class LevelTile : MonoBehaviour
 			for (int i = 0; i < oldRends.Length; i++)
 				oldRends[i].sharedMaterial = oldMat;
 
-			Color startColor = sharedMaterial.GetColor("_TintColor");
+			Color startColor = wallMaterial.GetColor("_TintColor");
 			Color endColor = oldMat.GetColor("_TintColor");
 			endColor.a = 0;
 
@@ -267,7 +271,7 @@ public class LevelTile : MonoBehaviour
 			for (int i = 0; i < newRends.Length; i++)
 				newRends[i].sharedMaterial = newMat;
 
-			Color startColor = sharedMaterial.GetColor("_TintColor");
+			Color startColor = wallMaterial.GetColor("_TintColor");
 			startColor.a = 0;
 			Color endColor = newMat.GetColor("_TintColor");
 
@@ -294,9 +298,9 @@ public class LevelTile : MonoBehaviour
 
 		//Restore shared material
 		foreach(MeshRenderer rend in oldRends)
-			rend.sharedMaterial = sharedMaterial;
+			rend.sharedMaterial = wallMaterial;
 
 		foreach (MeshRenderer rend in newRends)
-			rend.sharedMaterial = sharedMaterial;
+			rend.sharedMaterial = wallMaterial;
 	}
 }
