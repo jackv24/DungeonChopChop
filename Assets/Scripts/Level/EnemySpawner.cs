@@ -63,9 +63,21 @@ public class EnemySpawner : MonoBehaviour
 		}
 		else
 		{
+			//Copy list of spawn points for non-destructive removal
+			List<Transform> spawns = new List<Transform>(spawnPoints);
+
 			//If there were enemies undefeated, just respawn them
 			foreach (EnemySpawnPair undefeatedEnemy in undefeatedEnemies)
+			{
+				//Get random spawn and remove from temp list
+				Transform spawn = spawns[Random.Range(0, spawns.Count)];
+				spawns.Remove(spawn);
+
+				//Enemy should spawn at new random point
+				undefeatedEnemy.spawnPoint = spawn;
+
 				toSpawn.Add(undefeatedEnemy);
+			}
 		}
 
 		if (LevelVars.Instance)
