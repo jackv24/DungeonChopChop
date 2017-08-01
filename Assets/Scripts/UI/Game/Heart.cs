@@ -15,6 +15,12 @@ public class Heart : MonoBehaviour {
 	void Start () {
 		heartNumber = transform.GetSiblingIndex () + 1;
 		image = transform.GetChild(1).GetComponent<Image> ();
+		StartCoroutine (wait ());
+	}
+
+	IEnumerator wait()
+	{
+		yield return new WaitForSeconds (.1f);
 		if (player) {
 			playerHealth = player.GetComponent<Health> ();
 		}
@@ -30,6 +36,7 @@ public class Heart : MonoBehaviour {
 			}
 			//safety checker, if health is greater then heart number it needs to be filled
 			if (playerHealth.health > heartNumber) {
+				//Debug.Log (heartNumber + "player health is greater then this heart number");
 				image.fillAmount = 1;
 			}
 			//safety checker, checks if health is less then heart number, if so make sure the heart is empty

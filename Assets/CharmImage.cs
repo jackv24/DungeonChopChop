@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CharmImage : MonoBehaviour {
 
+	public string playerTag;
 	public GameObject player;
 	private PlayerCharm playerCharm;
 	private PlayerInformation playerInfo;
@@ -20,7 +21,7 @@ public class CharmImage : MonoBehaviour {
 	{
 		//the reason for this wait is, the player spawns after the start function
 		yield return new WaitForSeconds (.1f);
-		player = GameObject.FindGameObjectWithTag ("Player");
+		player = GameObject.FindGameObjectWithTag (playerTag);
 		if (player) {
 			playerCharm = player.GetComponent<PlayerCharm> ();
 			playerInfo = player.GetComponent<PlayerInformation> ();
