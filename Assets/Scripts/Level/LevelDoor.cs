@@ -27,7 +27,7 @@ public class LevelDoor : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
 		//If player walked into this door
-        if(col.tag == "Player" && col.GetType() == typeof(CharacterController))
+		if(col.gameObject.layer == 14 && col.GetType() == typeof(CharacterController))
         {
 			PlayerInformation playerInfo = col.GetComponent<PlayerInformation>();
 
