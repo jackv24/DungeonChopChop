@@ -74,7 +74,7 @@ public class EnemyMove : MonoBehaviour
 	[HideInInspector]
 	public float distance;
 
-	private GameObject player;
+	private PlayerInformation[] players;
 	private Rigidbody rb;
 
 	private float intervalCounter = 0;
@@ -85,6 +85,9 @@ public class EnemyMove : MonoBehaviour
 	private bool isGrounded = false;
 	private Vector3 wayPoint;
 	private RaycastHit hit;
+
+	private GameObject closestPlayer;
+	private float previousPlayerDistance;
 
 	void Start()
 	{
@@ -107,6 +110,20 @@ public class EnemyMove : MonoBehaviour
 		{
 			isGrounded = false;
 		}
+
+		//check for closest player
+		if (players != null) 
+		{
+			foreach (PlayerInformation player in players) 
+			{
+				float distance = Vector3.Distance (player.transform.position, transform.position);
+				if (distance < previousPlayerDistance) 
+				{
+					closestPlayer = player.gameObject;
+				}
+				previousPlayerDistance = distance;
+			}
+		}
 	}
 
 	void RotateRight()
@@ -125,7 +142,7 @@ public class EnemyMove : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (player != null) {
+		if (players != null) {
 			switch (movingType) {
 			//check what type of moving
 			//------------------------------------------------Follow
@@ -247,14 +264,14 @@ public class EnemyMove : MonoBehaviour
 		else 
 		{
 			//get the player if it hasnt
-			player = GameObject.FindGameObjectWithTag ("Player");
+			players = GameObject.FindObjectsOfType<PlayerInformation>();
 		}
 	}
 
 	bool InRadiusOfPlayer()
 	{
 		//if the player is less then the radius away from the enemy, follow him
-		float distance = Vector3.Distance (transform.position, player.transform.position);
+		float distance = Vector3.Distance (transform.position, closestPlayer.transform.position);
 		if (distance < radius) {
 			return true;
 		} 
@@ -271,7 +288,7 @@ public class EnemyMove : MonoBehaviour
 		if (Physics.Raycast (transform.position, transform.forward, out hit, distance)) 
 		{
 			//if it sees the player return true, else return false
-			if (hit.collider.tag == "Player")
+			if (hit.collider.tag == "Player1" || hit.collider.tag == "Player2")
 			{
 				return true;
 			}
@@ -282,20 +299,26 @@ public class EnemyMove : MonoBehaviour
 
 	void LookAtPlayer()
 	{
-		//get the direction to the player
-		Vector3 direction = player.transform.position - transform.position;
-		direction.y = 0;
-		//get the quaternion using the direction
-		Quaternion toRotation = Quaternion.LookRotation (direction);
-		//rotate enemy to look at player
-		transform.rotation = Quaternion.Slerp (transform.rotation, toRotation, lookAtSpeed * Time.deltaTime);
+		if (closestPlayer) 
+		{
+			//get the direction to the player
+			Vector3 direction = closestPlayer.transform.position - transform.position;
+			direction.y = 0;
+			//get the quaternion using the direction
+			Quaternion toRotation = Quaternion.LookRotation (direction);
+			//rotate enemy to look at player
+			transform.rotation = Quaternion.Slerp (transform.rotation, toRotation, lookAtSpeed * Time.deltaTime);
+		}
 	}
 
 	void BasicFollow()
 	{
 		//move towards the player
-		transform.position = Vector3.MoveTowards (transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-		LookAtPlayer ();
+		if (closestPlayer) 
+		{
+			transform.position = Vector3.MoveTowards (transform.position, closestPlayer.transform.position, moveSpeed * Time.deltaTime);
+			LookAtPlayer ();
+		}
 	}
 
 	void FollowConstantRadius()
