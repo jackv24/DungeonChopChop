@@ -41,6 +41,7 @@ public class PlayerAttack : MonoBehaviour
 
 	void Start () 
 	{
+		characterController = GetComponent<CharacterController> ();
 		playerCharm = GetComponent<PlayerCharm> ();
 		playerInformation = GetComponent<PlayerInformation> ();
 		playerMove = GetComponent <PlayerMove> ();
@@ -159,7 +160,7 @@ public class PlayerAttack : MonoBehaviour
 		//do block things
 
 
-		Debug.Log ("Blocking");
+		//Debug.Log ("Blocking");
 	}
 
 
@@ -176,14 +177,14 @@ public class PlayerAttack : MonoBehaviour
 						float angle = Vector3.Angle (transform.forward, transform.position - col.transform.position);
 						if (angle > attackMinAngle) {
 							col.GetComponent<Health> ().AffectHealth (-20);
-							Debug.Log ("hit enemy");
+							//Debug.Log ("hit enemy");
 						}
 					}
 				}
 			}
 		}
 
-		Debug.Log ("Basic Slash");
+		//Debug.Log ("Basic Slash");
 	}
 
 	void doRapidSlash()
@@ -193,7 +194,7 @@ public class PlayerAttack : MonoBehaviour
 		rapidSlashCoolingDown = true;
 		canAttack = false;
 		ResetCombo ();
-		Debug.Log ("Rapid Slash");
+		//Debug.Log ("Rapid Slash");
 	}
 
 	void ResetRapidSlash()

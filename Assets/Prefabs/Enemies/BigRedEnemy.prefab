@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 114076963782751592}
   - component: {fileID: 114242283064445466}
   - component: {fileID: 114455699731158592}
+  - component: {fileID: 114667928060904312}
   m_Layer: 11
   m_Name: BigRedEnemy
   m_TagString: Untagged
@@ -260,6 +261,43 @@ MonoBehaviour:
   deathType: 1
   amountToSplit: 2
   splitEnemy: {fileID: 1886692293410826, guid: 965cb136b7648c347a5ec502fd398ed7, type: 2}
+--- !u!114 &114667928060904312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108581157416084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8af6fba017eb594f9bbe87f903e9f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - Drop: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    minPercentage: 0
+    maxPercentage: 40
+  - Drop: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
+    minPercentage: 41
+    maxPercentage: 65
+  - Drop: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
+    minPercentage: 66
+    maxPercentage: 85
+  - Drop: {fileID: 1616226106310662, guid: 0c71fc111242199438e231f8efa50564, type: 2}
+    minPercentage: 86
+    maxPercentage: 95
+  - Drop: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
+    minPercentage: 96
+    maxPercentage: 100
+  numberOfDrops:
+  - dropAmount: 0
+    minPercentage: 0
+    maxPercentage: 50
+  - dropAmount: 1
+    minPercentage: 51
+    maxPercentage: 80
+  - dropAmount: 2
+    minPercentage: 81
+    maxPercentage: 100
 --- !u!114 &114784011678660516
 MonoBehaviour:
   m_ObjectHideFlags: 1

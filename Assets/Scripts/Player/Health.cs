@@ -69,6 +69,11 @@ public class Health : MonoBehaviour
 	public void Death()
 	{
 		//do death
+		//checks if the game has an enemy drop script, if it does it is an enemy
+		if (transform.GetComponent<EnemyDrops> ()) 
+		{
+			transform.GetComponent<EnemyDrops> ().DoDrop ();
+		}
 	}
 
 	/// <summary>

@@ -271,14 +271,19 @@ public class EnemyMove : MonoBehaviour
 	bool InRadiusOfPlayer()
 	{
 		//if the player is less then the radius away from the enemy, follow him
-		float distance = Vector3.Distance (transform.position, closestPlayer.transform.position);
-		if (distance < radius) {
-			return true;
-		} 
-		else 
+		if (closestPlayer) 
 		{
-			return false;
+			float distance = Vector3.Distance (transform.position, closestPlayer.transform.position);
+			if (distance < radius) 
+			{
+				return true;
+			} 
+			else
+			{
+				return false;
+			}
 		}
+		return false;
 	}
 
 	bool canSeePlayer()
