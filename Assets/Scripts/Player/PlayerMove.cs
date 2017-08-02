@@ -66,6 +66,9 @@ public class PlayerMove : MonoBehaviour
 		targetMoveVector.x = inputVector.x * moveSpeed;
 		targetMoveVector.z = inputVector.y * moveSpeed;
 
+		if (CameraFollow.Instance)
+			targetMoveVector = CameraFollow.Instance.ValidateMovePos(transform.position, targetMoveVector);
+
 		//rotate player
 		if(inputVector.magnitude > 0.01f)
 			transform.rotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y));
