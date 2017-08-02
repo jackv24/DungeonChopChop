@@ -6,6 +6,11 @@ public class EnemySpawner : MonoBehaviour
 {
 	public Transform[] spawnPoints;
 
+	[Space()]
+	public int minSpawns = 0;
+	public int maxSpawns = 0;
+
+	[Space()]
 	public Helper.Probability[] enemies;
 
 	private List<GameObject> spawnedEnemies = new List<GameObject>();
@@ -49,8 +54,27 @@ public class EnemySpawner : MonoBehaviour
 		//If there were no undefeated enemies...
 		if (undefeatedEnemies.Count <= 0)
 		{
+			//Cache spawn points for non-destructive editing
+			List<Transform> potentialSpawns = new List<Transform>(spawnPoints);
+
+			if (maxSpawns > 0)
+			{
+				//Check if min/max is valid
+				if (maxSpawns <= minSpawns || minSpawns < 0)
+					Debug.LogWarning("Enemy spawner min/max spawns mismatch!");
+				else
+				{
+					//Randomly choose amount to spawn
+					int spawnAmount = Random.Range(minSpawns, maxSpawns + 1);
+
+					//Remove random elements until desired spawn amount is reached
+					while (potentialSpawns.Count > spawnAmount)
+						potentialSpawns.RemoveAt(Random.Range(0, potentialSpawns.Count));
+				}
+			}
+
 			//Spawn a new random set
-			foreach (Transform spawn in spawnPoints)
+			foreach (Transform spawn in potentialSpawns)
 			{
 				GameObject enemyPrefab = Helper.GetRandomByProbability(enemies);
 
