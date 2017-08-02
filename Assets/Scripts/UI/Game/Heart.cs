@@ -10,12 +10,16 @@ public class Heart : MonoBehaviour {
 
 	private Health playerHealth;
 	private Image image;
+	private Image[] childImages;
+
+	private bool containerActive = true;
 
 	// Use this for initialization
 	void Start () {
 		heartNumber = transform.GetSiblingIndex () + 1;
 		image = transform.GetChild(1).GetComponent<Image> ();
 		StartCoroutine (wait ());
+		childImages = transform.GetComponentsInChildren<Image> ();
 	}
 
 	IEnumerator wait()
@@ -47,6 +51,29 @@ public class Heart : MonoBehaviour {
 			//safety checker, for the last heart, if the health is full, fill the heart
 			if (heartNumber == playerHealth.health) {
 				image.fillAmount = 1;
+			}
+			//hide heart container
+			if (heartNumber > playerHealth.maxHealth) 
+			{
+				if (containerActive) 
+				{
+					foreach (Image child in childImages) 
+					{
+						child.gameObject.SetActive (false);
+					}
+					containerActive = false;
+				}
+			} 
+			else 
+			{
+				if (!containerActive) 
+				{
+					foreach (Image child in childImages) 
+					{
+						child.gameObject.SetActive (true);
+					}
+					containerActive = true;
+				}
 			}
 		}
 	}
