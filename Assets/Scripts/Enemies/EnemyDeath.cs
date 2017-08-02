@@ -41,6 +41,9 @@ public class EnemyDeath : MonoBehaviour
 				ChoseDeath ();
 			}
 		}
+		if (health.health <= 0) {
+			ChoseDeath ();
+		}
 	}
 
 	void ChoseDeath()
