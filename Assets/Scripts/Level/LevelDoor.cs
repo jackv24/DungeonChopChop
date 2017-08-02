@@ -32,7 +32,7 @@ public class LevelDoor : MonoBehaviour
 			PlayerInformation playerInfo = col.GetComponent<PlayerInformation>();
 
 			//Only player 1 can enter doors
-			if (!entered && playerInfo.playerIndex == 0)
+			if (!entered)
 			{
 				//if this door was entered on the current tile, enable target tile
 				targetDoor.entered = true;
@@ -85,10 +85,10 @@ public class LevelDoor : MonoBehaviour
 		}
 
 		//Position other player outside door
-		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-		foreach(GameObject p in players)
+		PlayerInformation[] players = FindObjectsOfType<PlayerInformation>();
+		foreach(PlayerInformation p in players)
 		{
-			if (p != player)
+			if (p.gameObject != player)
 				p.transform.position = transform.position + direction * secondaryExitDistance;
 		}
 	}
