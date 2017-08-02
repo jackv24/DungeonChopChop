@@ -22,7 +22,6 @@ public class GemScript : MonoBehaviour {
 	void OnCollisionEnter(Collision col)
 	{
 		if (col.collider.tag == "Player1" || col.collider.tag == "Player2") {
-			Debug.Log ("hi");
 			items.Coins += coinAmount;
 			gameObject.SetActive (false);
 		}
