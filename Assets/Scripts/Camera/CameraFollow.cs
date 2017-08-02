@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
 	public static CameraFollow Instance;
 
-    public Transform player;
+    public List<Transform> players = new List<Transform>();
 
 	private Vector3 max = Vector3.zero;
 	private Vector3 min = Vector3.zero;
@@ -34,11 +34,28 @@ public class CameraFollow : MonoBehaviour
 		Instance = this;
 	}
 
+	void Start()
+	{
+		PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
+
+		foreach (PlayerInformation p in playerInfos)
+			players.Add(p.transform);
+	}
+
     void LateUpdate()
     {
 		Vector3 targetPos = Vector3.zero;
-		if (player)
-			targetPos = player.position;
+
+		//Calculate average position between players
+		if (players.Count > 0)
+		{
+			foreach (Transform player in players)
+			{
+				targetPos += player.position;
+			}
+
+			targetPos /= players.Count;
+		}
 
 		//Clamp to tile bounds
 		//Only clamp if max is more than min
