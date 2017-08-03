@@ -8,7 +8,13 @@ public class Helper : MonoBehaviour
 	public class Probability
 	{
 		public GameObject prefab;
+		[Tooltip("If probability = 0, it will be considered 1.")]
 		public float probability;
+
+		public Probability()
+		{
+			probability = 1.0f;
+		}
 	}
 
 	public static GameObject GetRandomByProbability(Probability[] array)
@@ -24,7 +30,7 @@ public class Helper : MonoBehaviour
 		//Get sum of all probabilities
 		float maxProbability = 0;
 		foreach (Probability e in possibleGameObjects)
-			maxProbability += e.probability;
+			maxProbability += e.probability != 0 ? e.probability : 1;
 
 		//Generate random number up to max probability
 		float num = Random.Range(0, maxProbability);

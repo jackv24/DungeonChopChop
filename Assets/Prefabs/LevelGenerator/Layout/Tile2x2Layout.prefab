@@ -1370,16 +1370,21 @@ MonoBehaviour:
   tileOrigin: {fileID: 4202818410992614}
   walls: {fileID: 1410426390507500}
   currentGraphic: {fileID: 1519617947674676}
-  grassGraphicPrefab: {fileID: 1897015692428800, guid: 95f73503d6442934d8c105ed14b66451,
-    type: 2}
-  desertGraphicPrefab: {fileID: 1790640786387992, guid: 2f034b23c3a3ca9419baddbdbcc1f0bf,
-    type: 2}
-  fireGraphicPrefab: {fileID: 1510989215340452, guid: 89c6d7028ddee0143b8dc02a7e515f00,
-    type: 2}
-  iceGraphicPrefab: {fileID: 1197426409338614, guid: 0446989f3fa1e4a4684e6414b3a103df,
-    type: 2}
-  forestGraphicPrefab: {fileID: 1360487451027538, guid: 214baaf512e89004c8c77b7e8e4b0003,
-    type: 2}
+  grassTiles:
+  - prefab: {fileID: 1897015692428800, guid: 95f73503d6442934d8c105ed14b66451, type: 2}
+    probability: 1
+  desertTiles:
+  - prefab: {fileID: 1790640786387992, guid: 2f034b23c3a3ca9419baddbdbcc1f0bf, type: 2}
+    probability: 1
+  fireTiles:
+  - prefab: {fileID: 1510989215340452, guid: 89c6d7028ddee0143b8dc02a7e515f00, type: 2}
+    probability: 1
+  iceTiles:
+  - prefab: {fileID: 1197426409338614, guid: 0446989f3fa1e4a4684e6414b3a103df, type: 2}
+    probability: 1
+  forestTiles:
+  - prefab: {fileID: 1360487451027538, guid: 214baaf512e89004c8c77b7e8e4b0003, type: 2}
+    probability: 1
 --- !u!114 &114877178253023038
 MonoBehaviour:
   m_ObjectHideFlags: 1

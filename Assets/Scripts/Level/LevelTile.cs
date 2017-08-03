@@ -19,17 +19,17 @@ public class LevelTile : MonoBehaviour
 	[Space()]
 	public GameObject walls;
 
-    [Header("Alternate Graphics")]
+    [Header("Alternate Tiles")]
     [Tooltip("The graphic that will be replaced by the below prefabs.")]
     public GameObject currentGraphic;
 	private Biomes biome;
 
     [Space()]
-    public GameObject grassGraphicPrefab;
-    public GameObject desertGraphicPrefab;
-    public GameObject fireGraphicPrefab;
-	public GameObject iceGraphicPrefab;
-	public GameObject forestGraphicPrefab;
+    public Helper.Probability[] grassTiles;
+	public Helper.Probability[] desertTiles;
+	public Helper.Probability[] fireTiles;
+	public Helper.Probability[] iceTiles;
+	public Helper.Probability[] forestTiles;
 
 	//Shared material that all walls return to after fading (set by first wall fade)
 	private static Material wallMaterial = null;
@@ -137,19 +137,19 @@ public class LevelTile : MonoBehaviour
             switch(biome)
             {
                 case Biomes.Grass:
-                    newGraphic = grassGraphicPrefab;
+                    newGraphic = Helper.GetRandomByProbability(grassTiles);
                     break;
                 case Biomes.Desert:
-                    newGraphic = desertGraphicPrefab;
+                    newGraphic = Helper.GetRandomByProbability(desertTiles);
                     break;
                 case Biomes.Fire:
-                    newGraphic = fireGraphicPrefab;
+                    newGraphic = Helper.GetRandomByProbability(fireTiles);
                     break;
 				case Biomes.Ice:
-					newGraphic = iceGraphicPrefab;
+					newGraphic = Helper.GetRandomByProbability(iceTiles);
 					break;
 				case Biomes.Forest:
-					newGraphic = forestGraphicPrefab;
+					newGraphic = Helper.GetRandomByProbability(forestTiles);
 					break;
 			}
 
