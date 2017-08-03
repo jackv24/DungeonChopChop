@@ -22,7 +22,6 @@ public class PlayerAttack : MonoBehaviour
 
 	private PlayerInputs input;
 	private PlayerMove playerMove;
-	private PlayerCharm playerCharm;
 	private PlayerInformation playerInformation;
 	private CharacterController characterController;
 
@@ -40,7 +39,6 @@ public class PlayerAttack : MonoBehaviour
 	void Start () 
 	{
 		characterController = GetComponent<CharacterController> ();
-		playerCharm = GetComponent<PlayerCharm> ();
 		playerInformation = GetComponent<PlayerInformation> ();
 		playerMove = GetComponent <PlayerMove> ();
 
@@ -251,15 +249,11 @@ public class PlayerAttack : MonoBehaviour
 
 	IEnumerator dash(DashCharm dashCharm)
 	{
-		float tempDashDistance = dashCharm.dashDistance;
-		if (dashCharm) {
-			tempDashDistance = dashCharm.dashDistance * playerCharm.dashDistanceIncrease;
-		}
 		playerMove.enabled = false;
 		Vector3 startingPos = transform.position;
 		float elapsedTime = 0;
 		while (elapsedTime < dashCharm.dashTime) {
-			characterController.Move(transform.forward * dashCharm.dashCurve.Evaluate (elapsedTime / dashCharm.dashTime) * tempDashDistance * Time.deltaTime);
+			characterController.Move(transform.forward * dashCharm.dashCurve.Evaluate (elapsedTime / dashCharm.dashTime) * dashCharm.dashDistance * Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 			elapsedTime += Time.deltaTime;
 		}

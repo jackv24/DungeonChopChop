@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 114888587539373240}
   - component: {fileID: 114141948471565388}
   - component: {fileID: 114910671819656350}
-  - component: {fileID: 114235362396078772}
   - component: {fileID: 54240468328729012}
   - component: {fileID: 143203483932609108}
   - component: {fileID: 136500385918002184}
@@ -202,26 +201,6 @@ MonoBehaviour:
   rapidSlashCooldown: 3
   rapidSlashIncrease: 0.04
   shield: {fileID: 0}
---- !u!114 &114235362396078772
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1515761076265150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af581d58a2bf48e4d81d66a53eeca492, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thiefCharmImg: {fileID: 21300000, guid: b836a3d51cda1c04b8cee462a78dfd67, type: 3}
-  pickUpIncrease: 1.25
-  dashCharmImg: {fileID: 21300000, guid: b5b6fc033feae494984bc9ae931d077c, type: 3}
-  dashDistanceIncrease: 1.5
-  strengthCharmImg: {fileID: 21300000, guid: 653437009ea37a04e87db8d2d0bc90e1, type: 3}
-  damageIncrease: 1.1
-  reacherCharmImg: {fileID: 21300000, guid: 7043718887b37064e82d7ae1f8295c27, type: 3}
-  armorCharmImg: {fileID: 21300000, guid: cbdd6f4ae387676468fe5fcf3b32e288, type: 3}
-  deathTouchCharmImg: {fileID: 0}
 --- !u!114 &114544447695856810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,8 +241,8 @@ MonoBehaviour:
   resistanceLevel: 1
   maxHealthLevel: 1
   canDash: 0
-  currentCharms:
-  - {fileID: 11400000, guid: 64a62992a10baf845b33b9a43f49475f, type: 2}
+  charmAmount: 2
+  currentCharms: []
 --- !u!114 &114910671819656350
 MonoBehaviour:
   m_ObjectHideFlags: 1

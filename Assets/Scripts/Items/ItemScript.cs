@@ -16,7 +16,10 @@ public class ItemScript : MonoBehaviour
 			if (playerInfo)
 			{
 				//Call pickup function on item
-				representingItem.Pickup(playerInfo);
+				Charm charm = (Charm)representingItem;
+
+				if (charm)
+					playerInfo.PickupCharm (charm);
 
 				gameObject.SetActive(false);
 			}

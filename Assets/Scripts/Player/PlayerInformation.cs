@@ -26,7 +26,8 @@ public class PlayerInformation : MonoBehaviour
 	public bool canDash = false;
 
 	[Header("Charm")]
-	public Charm[] currentCharms;
+	public int charmAmount;
+	public List<Charm> currentCharms =  new List<Charm>();
 
 	private StatsManager statsManager;
 	private Health health;
@@ -42,6 +43,8 @@ public class PlayerInformation : MonoBehaviour
 		GameObject s = GameObject.FindGameObjectWithTag("StatsManager");
 		if(s)
 			statsManager = s.GetComponent<StatsManager> ();
+
+		PickupCharm (null);
 	}
 
 	void Update()
@@ -71,5 +74,29 @@ public class PlayerInformation : MonoBehaviour
 			currentWeaponStats = GetComponentInChildren<WeaponStats> ();
 		}
 		prevMoveSpeedLevel = moveSpeedLevel;
+	}
+
+	public void PickupCharm(Charm charm)
+	{
+		if (charm) {
+			currentCharms.Insert (0, charm);
+
+			if (currentCharms.Count > charmAmount) {
+				Charm oldCharm = currentCharms [currentCharms.Count - 1];
+
+				currentCharms.Remove (oldCharm);
+
+				oldCharm.Drop (this);
+			}
+
+			charm.Pickup (this);
+		}
+
+		CharmImage[] charmImg = FindObjectsOfType<CharmImage> ();
+
+		foreach (CharmImage img in charmImg) {
+			if (playerIndex == img.id)
+				img.UpdateCharms (this);
+		}
 	}
 }
