@@ -24,6 +24,7 @@ public class PlayerInformation : MonoBehaviour
 
 	[Header("Charm Values")]
 	public bool canDash = false;
+	public bool canMagnetize = false;
 
 	[Header("Charm")]
 	public int charmAmount;
@@ -74,16 +75,25 @@ public class PlayerInformation : MonoBehaviour
 			currentWeaponStats = GetComponentInChildren<WeaponStats> ();
 		}
 		prevMoveSpeedLevel = moveSpeedLevel;
+
+
+		//if charm == Magnetic charm
+		if (canMagnetize) 
+		{
+			MagnetizeItems ();
+		}
 	}
 
 	public void PickupCharm(Charm charm)
 	{
 		if (charm) {
+			//adds a charm to the start of the list
 			currentCharms.Insert (0, charm);
-
+			//checks to see if the amount of charms the player has is greater then the amount they can hold
 			if (currentCharms.Count > charmAmount) {
+				//creates a new charm and adds it to the list
 				Charm oldCharm = currentCharms [currentCharms.Count - 1];
-
+				//removes the older charm
 				currentCharms.Remove (oldCharm);
 
 				oldCharm.Drop (this);
@@ -91,12 +101,36 @@ public class PlayerInformation : MonoBehaviour
 
 			charm.Pickup (this);
 		}
-
 		CharmImage[] charmImg = FindObjectsOfType<CharmImage> ();
-
+		//loops through each charm and updates the ui
 		foreach (CharmImage img in charmImg) {
 			if (playerIndex == img.id)
 				img.UpdateCharms (this);
 		}
+	}
+
+	//-------------------------- Charm functions
+
+	void MagnetizeItems()
+	{
+		//gets the magnetic charm
+		foreach (Charm charm in currentCharms) 
+		{
+			MagneticCharm m = (MagneticCharm)charm;
+			if (m) 
+			{
+				//gets all items in radius
+				Collider[] items = Physics.OverlapSphere (transform.position, m.magnetizeRadius, m.layerMask);
+				if (items.Length > 0) 
+				{
+					foreach (Collider item in items) 
+					{
+						//moves those items towards the player
+						item.transform.position = Vector3.MoveTowards (item.transform.position, transform.position, m.absorbSpeed * Time.deltaTime);
+					}
+				}
+			}
+		}
+
 	}
 }
