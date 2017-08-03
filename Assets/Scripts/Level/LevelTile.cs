@@ -37,6 +37,8 @@ public class LevelTile : MonoBehaviour
 
 	private MapTile mapTile;
 
+	private bool layoutReplaced = false;
+
 	public enum Biomes
     {
         Grass,
@@ -168,8 +170,11 @@ public class LevelTile : MonoBehaviour
                 obj.transform.localPosition = currentGraphic.transform.localPosition;
                 obj.transform.localRotation = currentGraphic.transform.localRotation;
 
-                //Destroy layout graphic
-                //DestroyImmediate(currentGraphic);
+				//Destroy old graphic
+				if (layoutReplaced)
+					DestroyImmediate(currentGraphic);
+				else
+					layoutReplaced = true;
 
 				currentGraphic = obj;
             }

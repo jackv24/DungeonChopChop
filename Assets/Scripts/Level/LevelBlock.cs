@@ -10,6 +10,8 @@ public class LevelBlock : MonoBehaviour
 	public GameObject iceDecalPrefab;
 	public GameObject forestDecalPrefab;
 
+	private GameObject oldGraphic = null;
+
     public void Replace(LevelTile.Biomes biome)
     {
         GameObject newGraphic = null;
@@ -38,6 +40,11 @@ public class LevelBlock : MonoBehaviour
             GameObject obj = Instantiate(newGraphic, transform);
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localRotation = Quaternion.identity;
-        }
+
+			if(oldGraphic)
+				DestroyImmediate(oldGraphic);
+
+			oldGraphic = obj;
+		}
     }
 }
