@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemScript : MonoBehaviour {
+public class ItemScript : MonoBehaviour
+{
+	[Tooltip("The item that this GameObject represents.")]
+	public BaseItem representingItem;
 
-	public float destroyTime = 20;
-
-	void OnEnable()
+	void OnTriggerEnter(Collider col)
 	{
-		StartCoroutine (waitToHide ());
-	}
-		
-	IEnumerator waitToHide()
-	{
-		yield return new WaitForSeconds (destroyTime);
-		gameObject.SetActive (false);
-	}
+		if (representingItem)
+		{
+			PlayerInformation playerInfo = col.GetComponent<PlayerInformation>();
 
+			if (playerInfo)
+			{
+				//Call pickup function on item
+				representingItem.Pickup(playerInfo);
+
+				gameObject.SetActive(false);
+			}
+		}
+	}
 }

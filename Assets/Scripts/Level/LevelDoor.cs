@@ -29,8 +29,6 @@ public class LevelDoor : MonoBehaviour
 		//If player walked into this door
 		if(col.gameObject.layer == 14 && col.GetType() == typeof(CharacterController))
         {
-			PlayerInformation playerInfo = col.GetComponent<PlayerInformation>();
-
 			//Only player 1 can enter doors
 			if (!entered)
 			{
