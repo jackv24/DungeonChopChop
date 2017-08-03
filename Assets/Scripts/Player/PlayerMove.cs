@@ -122,7 +122,7 @@ public class PlayerMove : MonoBehaviour
 		} 
 		else if (col.tag == "Mud")
 		{
-			playerInformation.moveSpeed = inMudSpeed;
+			playerInformation.moveSpeed = originalMoveSpeed;
 		}
 	}
 
