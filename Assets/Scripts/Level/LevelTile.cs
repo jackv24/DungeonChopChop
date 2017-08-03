@@ -237,8 +237,18 @@ public class LevelTile : MonoBehaviour
 				CameraFollow.Instance.UpdateCameraBounds(layoutCollider.bounds);
 		}
 
+		//Show tile on map
 		if (mapTile)
 			mapTile.SetInside();
+
+		//Show doors on map
+		foreach(Transform door in doors)
+		{
+			LevelDoor d = door.GetComponent<LevelDoor>();
+
+			if (d)
+				d.ShowOnMap();
+		}
 	}
 
 	IEnumerator FadeWalls(float fadeOutTime, float fadeInTime, float wallFadeDelay, LevelTile newTile, LevelTile oldTile)

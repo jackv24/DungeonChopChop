@@ -16,6 +16,22 @@ public class LevelDoor : MonoBehaviour
 
 	private bool entered = false;
 
+	private MeshRenderer rend;
+
+	private void Start()
+	{
+		rend = GetComponentInChildren<MeshRenderer>();
+
+		if (rend)
+			rend.enabled = false;
+	}
+
+	public void ShowOnMap()
+	{
+		if(rend)
+			rend.enabled = true;
+	}
+
 	public void SetTarget(LevelDoor target)
 	{
 		targetDoor = target;
