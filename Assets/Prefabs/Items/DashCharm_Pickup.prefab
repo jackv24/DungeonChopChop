@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4329391096102954}
   - component: {fileID: 212008175869848556}
+  - component: {fileID: 114975755014645188}
   m_Layer: 0
   m_Name: Charms0002
   m_TagString: Untagged
@@ -50,9 +51,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1560283821100278}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4460224279317396}
   m_RootOrder: 0
@@ -64,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1238767144501634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.5, y: 0, z: 3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4329391096102954}
@@ -83,6 +84,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   representingItem: {fileID: 11400000, guid: 64a62992a10baf845b33b9a43f49475f, type: 2}
+--- !u!114 &114975755014645188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1560283821100278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaed5a5f321befe44ad496b93a3af8cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135475852971788964
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -93,8 +105,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Radius: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!212 &212008175869848556
 SpriteRenderer:
   m_ObjectHideFlags: 1
