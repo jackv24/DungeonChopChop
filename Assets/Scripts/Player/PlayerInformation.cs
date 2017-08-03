@@ -8,7 +8,6 @@ public class PlayerInformation : MonoBehaviour
 	public int playerIndex = 0;
 	public float attackMinAngle = 130;
 	public float attackDistance = 5;
-	public float dashDistance = 5;
 	public float moveSpeed;
 	public float strength;
 	public float attackSpeed;
@@ -23,11 +22,16 @@ public class PlayerInformation : MonoBehaviour
 	public int resistanceLevel = 1;
 	public int maxHealthLevel = 1;
 
+	[Header("Charm Values")]
+	public bool canDash = false;
+
 	[Header("Charm")]
-	public Charms currentCharm;
+	public Charm[] currentCharms;
 
 	private StatsManager statsManager;
 	private Health health;
+
+	private int prevMoveSpeedLevel = 0;
 
 	private WeaponStats currentWeaponStats;
 
@@ -47,11 +51,13 @@ public class PlayerInformation : MonoBehaviour
 		{
 			attackMinAngle = statsManager.GetStatValue (StatName.AttackSpeed, attackSpreadLevel); 
 			attackDistance = statsManager.GetStatValue (StatName.Range, attackDistanceLevel);
-			moveSpeed = statsManager.GetStatValue (StatName.RunSpeed, moveSpeedLevel); 
 			strength = statsManager.GetStatValue (StatName.Strength, strengthLevel);
 			attackSpeed = statsManager.GetStatValue (StatName.AttackSpeed, attackSpeedLevel);
 			resistance = statsManager.GetStatValue (StatName.Resistance, resistanceLevel);
 			health.maxHealth = (int)statsManager.GetStatValue (StatName.maxHealth, maxHealthLevel); 
+			if (moveSpeedLevel != prevMoveSpeedLevel) {
+				moveSpeed = statsManager.GetStatValue (StatName.RunSpeed, moveSpeedLevel);
+			}
 		}
 		//sets stats depending on weapon values
 		if (currentWeaponStats) 
@@ -64,5 +70,6 @@ public class PlayerInformation : MonoBehaviour
 		{
 			currentWeaponStats = GetComponentInChildren<WeaponStats> ();
 		}
+		prevMoveSpeedLevel = moveSpeedLevel;
 	}
 }

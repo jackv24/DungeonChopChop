@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponStats : MonoBehaviour {
+public class ShieldStats : MonoBehaviour {
 
-	public int spreadLevel;
-	public int distanceLevel;
-	public int speedLevel;
-	public int knockBackLevel;
+	[Header("Shield values")]
+	[Tooltip("0 = not move, 1 = move at normal speed")]
+	public float speedDamping = 0; 
 
 	// Use this for initialization
 	void Start () {

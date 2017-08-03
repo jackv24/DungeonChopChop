@@ -6,12 +6,12 @@ public class BaseItem : ScriptableObject
 {
 	public string displayName = "";
 
-	public virtual void Pickup()
+	public virtual void Pickup(PlayerInformation playerInfo)
 	{
 
 	}
 
-	public virtual void Drop()
+	public virtual void Drop(PlayerInformation playerInfo)
 	{
 
 	}

@@ -17,21 +17,6 @@ public class PlayerCharm : MonoBehaviour {
 
 	private PlayerInformation playerInfo;
 
-	public Charms Charm
-	{
-		get
-		{
-			return playerInfo.currentCharm;
-		}
-
-		set
-		{
-			playerInfo.currentCharm = value;
-
-
-		}
-	}
-
 	[Header("Thiefs Charm Values")]
 	[Tooltip("2 = double")]
 	public Sprite thiefCharmImg;

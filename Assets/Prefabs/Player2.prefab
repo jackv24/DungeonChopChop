@@ -229,25 +229,7 @@ MonoBehaviour:
   slashAmount: 3
   rapidSlashCooldown: 3
   rapidSlashIncrease: 0.04
-  dashCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: -0.00829861
-      value: 1.0125
-      inSlope: -1.006319
-      outSlope: -1.006319
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 1.0041319
-      value: -0.006328106
-      inSlope: -1.006319
-      outSlope: -1.006319
-      tangentMode: 34
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  dashTime: 0.4
+  shield: {fileID: 0}
 --- !u!114 &114791182706743314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,7 +264,6 @@ MonoBehaviour:
   playerIndex: 0
   attackMinAngle: 130
   attackDistance: 5
-  dashDistance: 25
   moveSpeed: 5
   strength: 0
   attackSpeed: 0
@@ -294,7 +275,9 @@ MonoBehaviour:
   attackSpeedLevel: 1
   resistanceLevel: 1
   maxHealthLevel: 1
-  currentCharm: 2
+  canDash: 0
+  currentCharms:
+  - {fileID: 11400000, guid: 64a62992a10baf845b33b9a43f49475f, type: 2}
 --- !u!136 &136174031427121098
 CapsuleCollider:
   m_ObjectHideFlags: 1

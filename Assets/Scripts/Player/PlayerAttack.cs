@@ -18,11 +18,6 @@ public class PlayerAttack : MonoBehaviour
 	[Tooltip("The amount added to the rapid slash cooldown (60 times a second)")]
 	public float rapidSlashIncrease = .04f;
 
-	[Header("Do Dash Vars")]
-	public AnimationCurve dashCurve;
-	public float dashTime;
-	private float dashDistance;
-
 	bool canAttack = true;
 
 	private PlayerInputs input;
@@ -31,10 +26,13 @@ public class PlayerAttack : MonoBehaviour
 	private PlayerInformation playerInformation;
 	private CharacterController characterController;
 
+	public ShieldStats shield;
+
 	private int comboAmount;
 
 	private float comboCounter;
 	private float rapidSlashCounter;
+	private float normalMoveSpeed;
 
 	private bool rapidSlashCoolingDown = false;
 	private bool comboStarted = false;
@@ -60,7 +58,11 @@ public class PlayerAttack : MonoBehaviour
 
 	void Update()
 	{
-		dashDistance = playerInformation.dashDistance;
+		if (Input.GetKeyDown (KeyCode.P)) {
+			foreach (Charm charm in playerInformation.currentCharms) {
+				charm.Pickup (playerInformation);
+			}
+		}
 		//sets attack values
 		attackMinAngle = playerInformation.attackMinAngle;
 		attackDistance = playerInformation.attackDistance;
@@ -86,12 +88,24 @@ public class PlayerAttack : MonoBehaviour
 			else if (input.DashSlash.WasPressed) 
 			{
 				//dash slash
-				doDash ();
+				if (playerInformation.canDash) 
+				{
+					doDash ();
+				}
 			} 
-			else if (input.BasicAttack) 
+			else if (input.Block.WasPressed) 
 			{
 				//block
-				doBlock ();
+				if (shield) {
+					doBlock ();
+				}
+			}
+			else if (input.Block.WasReleased) 
+			{
+				//block
+				if (shield) {
+					stopBlock ();
+				}
 			}
 		}
 	}
@@ -158,9 +172,16 @@ public class PlayerAttack : MonoBehaviour
 	void doBlock()
 	{
 		//do block things
-
+		normalMoveSpeed = playerInformation.moveSpeed;
+		playerInformation.moveSpeed = playerInformation.moveSpeed * shield.speedDamping;
 
 		//Debug.Log ("Blocking");
+	}
+
+	void stopBlock()
+	{
+		//stop block things
+		playerInformation.moveSpeed = normalMoveSpeed;
 	}
 
 
@@ -207,20 +228,38 @@ public class PlayerAttack : MonoBehaviour
 	void doDash()
 	{
 		//do flash
-		StartCoroutine(dash());
+		foreach (Charm charm in playerInformation.currentCharms) {
+			DashCharm d = (DashCharm)charm;
+			if (d)
+			{
+				StartCoroutine(dash(d));
+				StartCoroutine (dashCooldown (d));
+			}
+		}
 	}
 
-	IEnumerator dash()
+	IEnumerator dashCooldown(DashCharm dashCharm)
 	{
-		float tempDashDistance = dashDistance;
-		if (playerInformation.currentCharm == Charms.DashCharm) {
-			tempDashDistance = dashDistance * playerCharm.dashDistanceIncrease;
+		int i = 0;
+		playerInformation.canDash = false;
+		while (i < dashCharm.dashCooldown) {
+			yield return new WaitForSeconds (1);
+			i++;
+		}
+		playerInformation.canDash = true;
+	}
+
+	IEnumerator dash(DashCharm dashCharm)
+	{
+		float tempDashDistance = dashCharm.dashDistance;
+		if (dashCharm) {
+			tempDashDistance = dashCharm.dashDistance * playerCharm.dashDistanceIncrease;
 		}
 		playerMove.enabled = false;
 		Vector3 startingPos = transform.position;
 		float elapsedTime = 0;
-		while (elapsedTime < dashTime) {
-			characterController.Move(transform.forward * dashCurve.Evaluate (elapsedTime / dashTime) * tempDashDistance * Time.deltaTime);
+		while (elapsedTime < dashCharm.dashTime) {
+			characterController.Move(transform.forward * dashCharm.dashCurve.Evaluate (elapsedTime / dashCharm.dashTime) * tempDashDistance * Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 			elapsedTime += Time.deltaTime;
 		}

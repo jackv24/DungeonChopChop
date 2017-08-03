@@ -32,23 +32,23 @@ public class CharmImage : MonoBehaviour {
 	void Update () {
 		//sets the components sprite to the current players ability
 		if (playerCharm) {
-			if (playerInfo.currentCharm == Charms.ArmorBugCharm) {
-				charmImg.sprite = playerCharm.armorCharmImg;
-			} else if (playerInfo.currentCharm == Charms.DashCharm) {
-				charmImg.sprite = playerCharm.dashCharmImg;
-			}
-			else if (playerInfo.currentCharm == Charms.DeathTouchCharm) {
-				charmImg.sprite = playerCharm.deathTouchCharmImg;
-			}
-			else if (playerInfo.currentCharm == Charms.ReacherCharm) {
-				charmImg.sprite = playerCharm.reacherCharmImg;
-			}
-			else if (playerInfo.currentCharm == Charms.StrengthCharm) {
-				charmImg.sprite = playerCharm.strengthCharmImg;
-			}
-			else if (playerInfo.currentCharm == Charms.ThiefsCharm) {
-				charmImg.sprite = playerCharm.thiefCharmImg;
-			}
+//			if (playerInfo.currentCharm == Charms.ArmorBugCharm) {
+//				charmImg.sprite = playerCharm.armorCharmImg;
+//			} else if (playerInfo.currentCharm == Charms.DashCharm) {
+//				charmImg.sprite = playerCharm.dashCharmImg;
+//			}
+//			else if (playerInfo.currentCharm == Charms.DeathTouchCharm) {
+//				charmImg.sprite = playerCharm.deathTouchCharmImg;
+//			}
+//			else if (playerInfo.currentCharm == Charms.ReacherCharm) {
+//				charmImg.sprite = playerCharm.reacherCharmImg;
+//			}
+//			else if (playerInfo.currentCharm == Charms.StrengthCharm) {
+//				charmImg.sprite = playerCharm.strengthCharmImg;
+//			}
+//			else if (playerInfo.currentCharm == Charms.ThiefsCharm) {
+//				charmImg.sprite = playerCharm.thiefCharmImg;
+//			}
 		}
 	}
 }

@@ -5,13 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Charm", menuName = "Data/Items/Charm")]
 public class Charm : BaseItem
 {
-	public override void Pickup()
+	public override void Pickup(PlayerInformation playerInfo)
 	{
-		base.Pickup();
+		base.Pickup(playerInfo);
 	}
 
-	public override void Drop()
+	public override void Drop(PlayerInformation playerInfo)
 	{
-		base.Drop();
+		base.Drop(playerInfo);
 	}
 }
