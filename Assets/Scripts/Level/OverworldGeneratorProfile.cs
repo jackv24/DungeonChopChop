@@ -14,14 +14,6 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 	public LevelTile.Biomes bottomLeftBiome;
 	public LevelTile.Biomes topLeftBiome;
 
-	[Header("Map Features")]
-	public GameObject topRightDungeon;
-	public GameObject bottomRightDungeon;
-	public GameObject bottomLeftDungeon;
-	public GameObject topLeftDungeon;
-	[Space()]
-	public float lockDungeonAngle = 45.0f;
-
 	public override void Generate(LevelGenerator levelGenerator)
 	{
 		ReplaceBiomes(levelGenerator);
@@ -60,126 +52,71 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 
 	void GenerateDungeons(LevelGenerator levelGenerator)
 	{
+		int dungeonCount = 0;
+
 		for (int i = 0; i < 4; i++)
 		{
-			GameObject dungeonPrefab = null;
-			bool top = false;
-			bool right = false;
+			LevelTile.Biomes biome = LevelTile.Biomes.Grass;
 
-			//Firgure out which quadrant to work in
+			//Figure out which quadrant to work in
 			switch (i)
 			{
 				case 0:
-					dungeonPrefab = topRightDungeon;
-					top = true;
-					right = true;
+					biome = LevelTile.Biomes.Forest;
 					break;
 				case 1:
-					dungeonPrefab = bottomRightDungeon;
-					top = false;
-					right = true;
+					biome = LevelTile.Biomes.Ice;
 					break;
 				case 2:
-					dungeonPrefab = bottomLeftDungeon;
-					top = false;
-					right = false;
+					biome = LevelTile.Biomes.Desert;
 					break;
 				case 3:
-					dungeonPrefab = topLeftDungeon;
-					top = true;
-					right = false;
+					biome = LevelTile.Biomes.Fire;
 					break;
 			}
 
-			//If there is a dungeon prefab for this quadrant
-			if (dungeonPrefab)
+			List<DungeonTile> replaceTiles = new List<DungeonTile>();
+
+			//Get all tiles in this quadrant
+			foreach (LevelTile tile in levelGenerator.generatedTiles)
 			{
-				List<LevelTile> potentialTiles = new List<LevelTile>();
-
-				//Get all tiles in this quadrant
-				foreach (LevelTile tile in levelGenerator.generatedTiles)
+				if (tile.Biome == biome)
 				{
-					bool keepTop = false;
-					bool keepRight = false;
+					DungeonTile dungeon = tile.currentGraphic.GetComponent<DungeonTile>();
 
-					if (top)
-					{
-						if (tile.transform.position.z > 0)
-							keepTop = true;
-					}
-					else
-					{
-						if (tile.transform.position.z < 0)
-							keepTop = true;
-					}
-
-					if (right)
-					{
-						if (tile.transform.position.x > 0)
-							keepRight = true;
-					}
-					else
-					{
-						if (tile.transform.position.x < 0)
-							keepRight = true;
-					}
-
-					if (keepTop && keepRight)
-						potentialTiles.Add(tile);
-				}
-
-				//Keep track of furthest tile and it's distance
-				LevelTile furthestTile = null;
-				float furthestDistance = 0;
-
-				//Find furthest tile
-				foreach (LevelTile tile in potentialTiles)
-				{
-					float distance = Vector3.Distance(levelGenerator.transform.position, tile.transform.position);
-
-					if (distance > furthestDistance)
-					{
-						furthestTile = tile;
-						furthestDistance = distance;
-					}
-				}
-
-				//If a furthest tile was found...
-				if (furthestTile)
-				{
-					//Place dungeon withi tile
-					PlaceDungeon(dungeonPrefab, furthestTile);
+					if (dungeon)
+						replaceTiles.Add(dungeon);
 				}
 			}
+
+			//Keep track of furthest tile and it's distance
+			DungeonTile furthestTile = null;
+			float furthestDistance = 0;
+
+			//Find furthest tile
+			foreach (DungeonTile tile in replaceTiles)
+			{
+				float distance = Vector3.Distance(levelGenerator.transform.position, tile.transform.position);
+
+				if (distance > furthestDistance)
+				{
+					furthestTile = tile;
+					furthestDistance = distance;
+				}
+			}
+
+			//If a furthest tile was found...
+			if (furthestTile)
+			{
+				//Replace dungeon tile
+				furthestTile.Replace();
+
+				dungeonCount++;
+			}
 		}
-	}
 
-	void PlaceDungeon(GameObject dungeonPrefab, LevelTile tile)
-	{
-		//Instantiate a dungeon
-		GameObject dungeonObj = Instantiate(dungeonPrefab, tile.transform);
-		dungeonObj.transform.localPosition = Vector3.zero;
-
-		Collider col = dungeonObj.GetComponent<Collider>();
-
-		//Place dungeon withing tile
-		if (col)
-			dungeonObj.transform.position = tile.GetPosInTile(col.bounds.size.x, col.bounds.size.z);
-		else
-			Debug.LogWarning("BoxCollider not found on dungeon in tile: " + tile.gameObject.name);
-
-		//Rotate dungeon to face towards tile centre
-		Vector3 lookPos = tile.tileOrigin.position - dungeonObj.transform.position;
-		lookPos.y = 0;
-
-		if (lookPos != Vector3.zero)
-		{
-			Quaternion rotation = Quaternion.LookRotation(lookPos);
-			Vector3 euler = rotation.eulerAngles;
-			euler.y = Mathf.Round(euler.y / lockDungeonAngle) * lockDungeonAngle;
-			rotation.eulerAngles = euler;
-
-			dungeonObj.transform.rotation = rotation;
-		}
+		//Generation did not succed if not enough dungeons
+		if (dungeonCount < 4)
+			succeeded = false;
 	}
 }

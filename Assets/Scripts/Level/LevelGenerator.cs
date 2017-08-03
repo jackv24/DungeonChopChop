@@ -76,7 +76,7 @@ public class LevelGenerator : MonoBehaviour
 			{
 				Clear();
 
-				Debug.LogWarning("Level Generator exceeded maximum number of attempts. Check to make sure the max trail length allows for generation of the minimum tile amount.");
+				Debug.LogWarning("Level Generator exceeded maximum number of attempts. Check to make sure the max trail length allows for generation of the minimum tile amount, and that all generation conditions are met.");
 
 				break;
 			}
@@ -104,13 +104,16 @@ public class LevelGenerator : MonoBehaviour
             }
 
 			//If there are too few tiles, delete and roll again
-			if (transform.childCount <= profile.minTileAmount)
+			if (transform.childCount <= profile.minTileAmount && !profile.succeeded)
 			{
 				Clear();
 			}
 			else
 			{
 				running = false;
+
+				//Assume generation will succeed until told otherwise
+				profile.succeeded = true;
 
 				if (ShowLoadingScreen && loadingText)
 				{

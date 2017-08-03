@@ -23,6 +23,7 @@ public class LevelTile : MonoBehaviour
     [Tooltip("The graphic that will be replaced by the below prefabs.")]
     public GameObject currentGraphic;
 	private Biomes biome;
+	public Biomes Biome { get { return biome; } }
 
     [Space()]
     public Helper.Probability[] grassTiles;

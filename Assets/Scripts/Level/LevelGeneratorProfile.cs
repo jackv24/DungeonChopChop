@@ -14,6 +14,9 @@ public class LevelGeneratorProfile : ScriptableObject
 	[Tooltip("The amount of time the level generator will try to generate a level with a minimum tile amount before giving up.")]
 	public int maxAttempts = 20;
 
+	[HideInInspector]
+	public bool succeeded = true;
+
     [System.Serializable]
     public class GeneratorTile
     {
