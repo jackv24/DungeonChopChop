@@ -35,7 +35,7 @@ public class CameraFollow : MonoBehaviour
 	public float wallFadeInTime = 0.25f;
 	public float wallFadeDelay = 0.1f;
 
-	private Vector3 targetPos;
+	public Vector3 targetPos;
 
 	void Awake()
 	{

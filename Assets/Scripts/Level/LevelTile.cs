@@ -35,6 +35,8 @@ public class LevelTile : MonoBehaviour
 	//Shared material that all walls return to after fading (set by first wall fade)
 	private static Material wallMaterial = null;
 
+	private MapTile mapTile;
+
 	public enum Biomes
     {
         Grass,
@@ -43,6 +45,11 @@ public class LevelTile : MonoBehaviour
 		Ice,
 		Forest
     }
+
+	void Start()
+	{
+		mapTile = GetComponentInChildren<MapTile>();
+	}
 
     public bool IsIntersecting(LayerMask layerMask)
 	{
@@ -162,7 +169,7 @@ public class LevelTile : MonoBehaviour
                 obj.transform.localRotation = currentGraphic.transform.localRotation;
 
                 //Destroy layout graphic
-                DestroyImmediate(currentGraphic);
+                //DestroyImmediate(currentGraphic);
 
 				currentGraphic = obj;
             }
@@ -217,6 +224,9 @@ public class LevelTile : MonoBehaviour
 			if (newSpawner)
 				newSpawner.Spawn();
 
+			if (oldTile.mapTile)
+				oldTile.mapTile.SetOutside();
+
 			LevelGenerator.Instance.EnterTile();
 		}
 		else
@@ -226,6 +236,9 @@ public class LevelTile : MonoBehaviour
 			if (layoutCollider)
 				CameraFollow.Instance.UpdateCameraBounds(layoutCollider.bounds);
 		}
+
+		if (mapTile)
+			mapTile.SetInside();
 	}
 
 	IEnumerator FadeWalls(float fadeOutTime, float fadeInTime, float wallFadeDelay, LevelTile newTile, LevelTile oldTile)
