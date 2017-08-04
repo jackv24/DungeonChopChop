@@ -88,7 +88,7 @@ public class PlayerAttack : MonoBehaviour
 				//dash slash
 				if (playerInformation.canDash) 
 				{
-					doDash ();
+					//doDash ();
 				}
 			} 
 			else if (input.Block.WasPressed) 
@@ -223,42 +223,42 @@ public class PlayerAttack : MonoBehaviour
 		canAttack = true;
 	}
 
-	void doDash()
-	{
-		//do flash
-		foreach (Charm charm in playerInformation.currentCharms) {
-			DashCharm d = (DashCharm)charm;
-			if (d)
-			{
-				StartCoroutine(dash(d));
-				StartCoroutine (dashCooldown (d));
-			}
-		}
-	}
+	//void doDash()
+	//{
+	//	//do flash
+	//	foreach (Charm charm in playerInformation.currentCharms) {
+	//		DashCharm d = (DashCharm)charm;
+	//		if (d)
+	//		{
+	//			StartCoroutine(dash(d));
+	//			StartCoroutine (dashCooldown (d));
+	//		}
+	//	}
+	//}
 
-	IEnumerator dashCooldown(DashCharm dashCharm)
-	{
-		int i = 0;
-		playerInformation.canDash = false;
-		while (i < dashCharm.dashCooldown) {
-			yield return new WaitForSeconds (1);
-			i++;
-		}
-		playerInformation.canDash = true;
-	}
+	//IEnumerator dashCooldown()
+	//{
+	//	int i = 0;
+	//	playerInformation.canDash = false;
+	//	while (i < dashCharm.dashCooldown) {
+	//		yield return new WaitForSeconds (1);
+	//		i++;
+	//	}
+	//	playerInformation.canDash = true;
+	//}
 
-	IEnumerator dash(DashCharm dashCharm)
-	{
-		playerMove.enabled = false;
-		Vector3 startingPos = transform.position;
-		float elapsedTime = 0;
-		while (elapsedTime < dashCharm.dashTime) {
-			characterController.Move(transform.forward * dashCharm.dashCurve.Evaluate (elapsedTime / dashCharm.dashTime) * dashCharm.dashDistance * Time.deltaTime);
-			yield return new WaitForEndOfFrame();
-			elapsedTime += Time.deltaTime;
-		}
-		playerMove.enabled = true;
-	}
+	//IEnumerator dash()
+	//{
+	//	playerMove.enabled = false;
+	//	Vector3 startingPos = transform.position;
+	//	float elapsedTime = 0;
+	//	while (elapsedTime < dashCharm.dashTime) {
+	//		characterController.Move(transform.forward * dashCharm.dashCurve.Evaluate (elapsedTime / dashCharm.dashTime) * dashCharm.dashDistance * Time.deltaTime);
+	//		yield return new WaitForEndOfFrame();
+	//		elapsedTime += Time.deltaTime;
+	//	}
+	//	playerMove.enabled = true;
+	//}
 
 
 	//-------------------------- Counters

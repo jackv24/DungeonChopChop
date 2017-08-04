@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
 	private int currentSceneIndex = -1;
 
+	private Dictionary<string, float> globalMultipliers = new Dictionary<string, float>();
+
 	void Awake()
 	{
 		Instance = this;
@@ -43,5 +45,18 @@ public class GameManager : MonoBehaviour
 		yield return SceneManager.LoadSceneAsync (index, LoadSceneMode.Additive);
 
 		currentSceneIndex = index;
+	}
+
+	public void SetGlobalMultiplier(string key, float value)
+	{
+		globalMultipliers[key] = value;
+	}
+
+	public float GetGlobalMultiplier(string key)
+	{
+		if (globalMultipliers.ContainsKey(key))
+			return globalMultipliers[key];
+		else
+			return 1.0f;
 	}
 }

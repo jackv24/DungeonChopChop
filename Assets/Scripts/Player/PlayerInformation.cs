@@ -37,6 +37,8 @@ public class PlayerInformation : MonoBehaviour
 
 	private WeaponStats currentWeaponStats;
 
+	private Dictionary<string, float> multipliers = new Dictionary<string, float>();
+
 	void Start()
 	{
 		health = GetComponent<Health> ();
@@ -109,28 +111,41 @@ public class PlayerInformation : MonoBehaviour
 		}
 	}
 
+	public void SetMultiplier(string key, float value)
+	{
+		multipliers[key] = value;
+	}
+
+	public float GetMultiplier(string key)
+	{
+		if (multipliers.ContainsKey(key))
+			return multipliers[key];
+		else
+			return 1.0f;
+	}
+
 	//-------------------------- Charm functions
 
 	void MagnetizeItems()
 	{
 		//gets the magnetic charm
-		foreach (Charm charm in currentCharms) 
-		{
-			MagneticCharm m = (MagneticCharm)charm;
-			if (m) 
-			{
-				//gets all items in radius
-				Collider[] items = Physics.OverlapSphere (transform.position, m.magnetizeRadius, m.layerMask);
-				if (items.Length > 0) 
-				{
-					foreach (Collider item in items) 
-					{
-						//moves those items towards the player
-						item.transform.position = Vector3.MoveTowards (item.transform.position, transform.position, m.absorbSpeed * Time.deltaTime);
-					}
-				}
-			}
-		}
+		//foreach (Charm charm in currentCharms) 
+		//{
+		//	MagneticCharm m = (MagneticCharm)charm;
+		//	if (m) 
+		//	{
+		//		//gets all items in radius
+		//		Collider[] items = Physics.OverlapSphere (transform.position, m.magnetizeRadius, m.layerMask);
+		//		if (items.Length > 0) 
+		//		{
+		//			foreach (Collider item in items) 
+		//			{
+		//				//moves those items towards the player
+		//				item.transform.position = Vector3.MoveTowards (item.transform.position, transform.position, m.absorbSpeed * Time.deltaTime);
+		//			}
+		//		}
+		//	}
+		//}
 
 	}
 }
