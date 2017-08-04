@@ -230,7 +230,10 @@ public class LevelTile : MonoBehaviour
 				newSpawner.Spawn();
 
 			if (oldTile.mapTile)
+			{
+				oldTile.mapTile.biome = oldTile.biome;
 				oldTile.mapTile.SetOutside();
+			}
 
 			LevelGenerator.Instance.EnterTile();
 		}
@@ -244,7 +247,10 @@ public class LevelTile : MonoBehaviour
 
 		//Show tile on map
 		if (mapTile)
+		{
+			mapTile.biome = biome;
 			mapTile.SetInside();
+		}
 
 		//Show doors on map
 		foreach(Transform door in doors)
