@@ -18,6 +18,7 @@ public class PlayerAttack : MonoBehaviour
 	[Tooltip("The amount added to the rapid slash cooldown (60 times a second)")]
 	public float rapidSlashIncrease = .04f;
 
+	[Header("Dash Vars")]
 	public float dashTime = 1.0f;
 	public float dashSpeed = 5.0f;
 	public float dashCooldown = 0.5f;
@@ -90,10 +91,7 @@ public class PlayerAttack : MonoBehaviour
 			else if (input.DashSlash.WasPressed) 
 			{
 				//dash slash
-				if (playerInformation.canDash) 
-				{
-					doDash ();
-				}
+				doDash ();
 			} 
 			else if (input.Block.WasPressed) 
 			{
@@ -236,15 +234,13 @@ public class PlayerAttack : MonoBehaviour
 	IEnumerator dashCooldownTimer()
 	{
 		int i = 0;
-		playerInformation.canDash = false;
-
 		float cooldown = dashCooldown * playerInformation.GetMultiplier ("dashCooldown");
 
-		while (i < cooldown) {
+		while (i < cooldown)
+		{
 			yield return new WaitForSeconds (1);
 			i++;
 		}
-		playerInformation.canDash = true;
 	}
 
 	IEnumerator dash()
