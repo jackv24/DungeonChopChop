@@ -13,6 +13,6 @@ public class CustomImporter : AssetPostprocessor
 		modelImporter.importMaterials = false;
 
 		//Most models will not use animation, and don't need animators by default
-		modelImporter.animationType = ModelImporterAnimationType.None;
+		//modelImporter.animationType = ModelImporterAnimationType.None;
 	}
 }
