@@ -40,6 +40,7 @@ public class PlayerInformation : MonoBehaviour
 	private WeaponStats currentWeaponStats;
 
 	private Dictionary<string, float> multipliers = new Dictionary<string, float>();
+	private Dictionary<string, float> chances = new Dictionary<string, float>();
 
 	void Start()
 	{
@@ -106,7 +107,8 @@ public class PlayerInformation : MonoBehaviour
 
 	public void PickupCharm(Charm charm)
 	{
-		if (charm) {
+		if (charm) 
+		{
 			//adds a charm to the start of the list
 			currentCharms.Insert (0, charm);
 			//checks to see if the amount of charms the player has is greater then the amount they can hold
@@ -123,15 +125,29 @@ public class PlayerInformation : MonoBehaviour
 		}
 		CharmImage[] charmImg = FindObjectsOfType<CharmImage> ();
 		//loops through each charm and updates the ui
-		foreach (CharmImage img in charmImg) {
+		foreach (CharmImage img in charmImg) 
+		{
 			if (playerIndex == img.id)
 				img.UpdateCharms (this);
 		}
+	}
+		
+	public void SetChance(string key, float value)
+	{
+		chances[key] = value;
 	}
 
 	public void SetMultiplier(string key, float value)
 	{
 		multipliers[key] = value;
+	}
+
+	public float GetChance(string key)
+	{
+		if (chances.ContainsKey(key))
+			return chances[key];
+		else
+			return 1.0f;
 	}
 
 	public float GetMultiplier(string key)
@@ -145,6 +161,11 @@ public class PlayerInformation : MonoBehaviour
 	public bool HasMultiplier(string key)
 	{
 		return multipliers.ContainsKey (key);
+	}
+
+	public bool HasChance(string key)
+	{
+		return chances.ContainsKey (key);
 	}
 
 	//-------------------------- Charm functions
@@ -198,7 +219,6 @@ public class PlayerInformation : MonoBehaviour
 
 	IEnumerator SpeedBuffForTime(float time, float multiplier)
 	{
-		Debug.Log ("hi");
 		float speed = moveSpeed;
 		moveSpeed *= multiplier;
 

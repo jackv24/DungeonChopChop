@@ -9,14 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f143d12257910c478a59dfbda8cf2eb, type: 3}
-  m_Name: Sugar Charm
+  m_Name: Crit Charm
   m_EditorClassIdentifier: 
-  displayName: Sugar
-  itemIcon: {fileID: 21300000, guid: 04692cc5bdb17224e90b7d214d8d15c5, type: 3}
+  displayName: Critical Hit
+  itemIcon: {fileID: 21300000, guid: b5b6fc033feae494984bc9ae931d077c, type: 3}
   multipliers:
-  - multiplierKey: speedBuffTime
-    multiplierValue: 10
+  - multiplierKey: critMultiplier
+    multiplierValue: 1.5
     global: 0
-  - multiplierKey: speedBuff
-    multiplierValue: 3
+  chances:
+  - chanceKey: critChance
+    chanceValue: 50
     global: 0

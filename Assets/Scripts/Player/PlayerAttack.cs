@@ -187,6 +187,23 @@ public class PlayerAttack : MonoBehaviour
 
 	//-------------------------- Attacks
 
+	float criticalHit()
+	{
+		if (playerInformation.HasChance ("critChance")) 
+		{
+			float randomPercent = Random.Range (0, 101);
+			if (randomPercent >= playerInformation.GetChance("critChance")) 
+			{
+				return playerInformation.GetMultiplier("critMultiplier");
+			} 
+			else 
+			{
+				return 1.0f;
+			}
+		}
+		return 1.0f;
+	}
+
 	void doSlash()
 	{
 		//do slash things
@@ -197,7 +214,7 @@ public class PlayerAttack : MonoBehaviour
 					if (col.GetComponent<Health> ()) {
 						float angle = Vector3.Angle (transform.forward, transform.position - col.transform.position);
 						if (angle > attackMinAngle) {
-							col.GetComponent<Health> ().AffectHealth (-20);
+							col.GetComponent<Health> ().AffectHealth (-20 * criticalHit());
 							//Debug.Log ("hit enemy");
 						}
 					}
