@@ -5,22 +5,30 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Charm", menuName = "Data/Items/Charm")]
 public class Charm : BaseItem
 {
-	[Header("Multipler")]
-	public string multiplierKey = "";
-	public float multiplierValue = 1.0f;
-	[Space()]
-	public bool global = false;
+	[System.Serializable]
+	public class Multiplier
+	{
+		public string multiplierKey = "";
+		public float multiplierValue = 1.0f;
+		[Space()]
+		public bool global = false;
+	}
+
+	[Header("Multipliers")]
+	public Multiplier[] multipliers;
 
 	public override void Pickup(PlayerInformation playerInfo)
 	{
 		base.Pickup(playerInfo);
 
-		if (multiplierKey != "")
+		foreach (Multiplier multiplier in multipliers)
 		{
-			if(global)
-				GameManager.Instance.SetGlobalMultiplier(multiplierKey, multiplierValue);
-			else
-				playerInfo.SetMultiplier(multiplierKey, multiplierValue);
+			if (multiplier.multiplierKey != "") {
+				if (multiplier.global)
+					GameManager.Instance.SetGlobalMultiplier (multiplier.multiplierKey, multiplier.multiplierValue);
+				else
+					playerInfo.SetMultiplier (multiplier.multiplierKey, multiplier.multiplierValue);
+			}
 		}
 	}
 
@@ -28,12 +36,14 @@ public class Charm : BaseItem
 	{
 		base.Drop(playerInfo);
 
-		if (multiplierKey != "")
+		foreach (Multiplier multiplier in multipliers)
 		{
-			if (global)
-				GameManager.Instance.SetGlobalMultiplier(multiplierKey, 1.0f);
-			else
-				playerInfo.SetMultiplier(multiplierKey, 1.0f);
+			if (multiplier.multiplierKey != "") {
+				if (multiplier.global)
+					GameManager.Instance.SetGlobalMultiplier (multiplier.multiplierKey, 1.0f);
+				else
+					playerInfo.SetMultiplier (multiplier.multiplierKey, 1.0f);
+			}
 		}
 	}
 }

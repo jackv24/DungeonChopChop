@@ -18,6 +18,10 @@ public class PlayerAttack : MonoBehaviour
 	[Tooltip("The amount added to the rapid slash cooldown (60 times a second)")]
 	public float rapidSlashIncrease = .04f;
 
+	public float dashTime = 1.0f;
+	public float dashSpeed = 5.0f;
+	public float dashCooldown = 0.5f;
+
 	bool canAttack = true;
 
 	private PlayerInputs input;
@@ -88,7 +92,7 @@ public class PlayerAttack : MonoBehaviour
 				//dash slash
 				if (playerInformation.canDash) 
 				{
-					//doDash ();
+					doDash ();
 				}
 			} 
 			else if (input.Block.WasPressed) 
@@ -223,42 +227,39 @@ public class PlayerAttack : MonoBehaviour
 		canAttack = true;
 	}
 
-	//void doDash()
-	//{
-	//	//do flash
-	//	foreach (Charm charm in playerInformation.currentCharms) {
-	//		DashCharm d = (DashCharm)charm;
-	//		if (d)
-	//		{
-	//			StartCoroutine(dash(d));
-	//			StartCoroutine (dashCooldown (d));
-	//		}
-	//	}
-	//}
+	void doDash()
+	{
+		StartCoroutine(dash());
+		StartCoroutine (dashCooldownTimer ());
+	}
 
-	//IEnumerator dashCooldown()
-	//{
-	//	int i = 0;
-	//	playerInformation.canDash = false;
-	//	while (i < dashCharm.dashCooldown) {
-	//		yield return new WaitForSeconds (1);
-	//		i++;
-	//	}
-	//	playerInformation.canDash = true;
-	//}
+	IEnumerator dashCooldownTimer()
+	{
+		int i = 0;
+		playerInformation.canDash = false;
 
-	//IEnumerator dash()
-	//{
-	//	playerMove.enabled = false;
-	//	Vector3 startingPos = transform.position;
-	//	float elapsedTime = 0;
-	//	while (elapsedTime < dashCharm.dashTime) {
-	//		characterController.Move(transform.forward * dashCharm.dashCurve.Evaluate (elapsedTime / dashCharm.dashTime) * dashCharm.dashDistance * Time.deltaTime);
-	//		yield return new WaitForEndOfFrame();
-	//		elapsedTime += Time.deltaTime;
-	//	}
-	//	playerMove.enabled = true;
-	//}
+		float cooldown = dashCooldown * playerInformation.GetMultiplier ("dashCooldown");
+
+		while (i < cooldown) {
+			yield return new WaitForSeconds (1);
+			i++;
+		}
+		playerInformation.canDash = true;
+	}
+
+	IEnumerator dash()
+	{
+		playerMove.enabled = false;
+		Vector3 startingPos = transform.position;
+		float elapsedTime = 0;
+		float timer = dashTime * playerInformation.GetMultiplier ("dashTime");
+		while (elapsedTime < timer) {
+			characterController.Move(transform.forward * dashSpeed * playerInformation.GetMultiplier("dashSpeed") * Time.deltaTime);
+			yield return new WaitForEndOfFrame();
+			elapsedTime += Time.deltaTime;
+		}
+		playerMove.enabled = true;
+	}
 
 
 	//-------------------------- Counters
