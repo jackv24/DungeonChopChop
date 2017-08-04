@@ -220,7 +220,6 @@ GameObject:
   - component: {fileID: 114888587539373240}
   - component: {fileID: 114141948471565388}
   - component: {fileID: 114910671819656350}
-  - component: {fileID: 54240468328729012}
   - component: {fileID: 143203483932609108}
   - component: {fileID: 136500385918002184}
   - component: {fileID: 136248845063515268}
@@ -724,21 +723,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515761076265150}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54240468328729012
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1515761076265150}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!95 &95545888271025160
 Animator:
   serializedVersion: 3
@@ -774,7 +758,7 @@ MonoBehaviour:
   rapidSlashIncrease: 0.04
   dashTime: 0.5
   dashSpeed: 15
-  dashCooldown: 0.5
+  dashCooldown: 4
   shield: {fileID: 0}
 --- !u!114 &114544447695856810
 MonoBehaviour:
@@ -808,6 +792,7 @@ MonoBehaviour:
   strength: 0
   attackSpeed: 0
   resistance: 0
+  knockback: 2
   attackSpreadLevel: 1
   attackDistanceLevel: 1
   moveSpeedLevel: 1
@@ -815,6 +800,7 @@ MonoBehaviour:
   attackSpeedLevel: 1
   resistanceLevel: 1
   maxHealthLevel: 1
+  knockbackLevel: 1
   charmAmount: 2
   currentCharms: []
 --- !u!114 &114910671819656350

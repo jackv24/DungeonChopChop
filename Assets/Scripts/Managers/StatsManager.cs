@@ -13,6 +13,7 @@ public enum StatName
 	Strength,
 	maxHealth,
 	Resistance,
+	Knockback,
 };
 
 [Serializable]
@@ -42,7 +43,7 @@ public class StatsManager : MonoBehaviour
 		foreach (Stat stat in stats) 
 		{
 			if (stat.statName == statName)
-				return stat.levelValue[level];
+				return stat.levelValue[level - 1];
 		}
 		return 0;
 	}
@@ -93,6 +94,8 @@ public class StatsManager : MonoBehaviour
 						stat.statLevel = playerOneInfo.attackSpreadLevel;
 					else if (stat.statName == StatName.Strength)
 						stat.statLevel = playerOneInfo.strengthLevel;
+					else if (stat.statName == StatName.Knockback)
+						stat.statLevel = playerOneInfo.knockbackLevel;
 					
 				}
 			}
