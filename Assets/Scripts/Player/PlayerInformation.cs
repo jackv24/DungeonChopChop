@@ -12,6 +12,7 @@ public class PlayerInformation : MonoBehaviour
 	public float strength;
 	public float attackSpeed;
 	public float resistance;
+	public float knockback;
 
 	[Header("Stat Levels")]
 	public int attackSpreadLevel = 1;
@@ -21,6 +22,7 @@ public class PlayerInformation : MonoBehaviour
 	public int attackSpeedLevel = 1;
 	public int resistanceLevel = 1;
 	public int maxHealthLevel = 1;
+	public int knockbackLevel = 1;
 
 	[Header("Charm")]
 	public int charmAmount;
@@ -36,6 +38,7 @@ public class PlayerInformation : MonoBehaviour
 	private int prevAttackSpeedLevel = 0;
 	private int prevResistanceLevel = 0;
 	private int prevMaxHealthLevel = 0;
+	private int prevKnockbackLevel = 0;
 
 	private WeaponStats currentWeaponStats;
 
@@ -78,6 +81,8 @@ public class PlayerInformation : MonoBehaviour
 				health.maxHealth = (int)statsManager.GetStatValue (StatName.maxHealth, maxHealthLevel); 
 			if (moveSpeedLevel != prevMoveSpeedLevel) 
 				moveSpeed = statsManager.GetStatValue (StatName.RunSpeed, moveSpeedLevel);
+			if (knockbackLevel != prevKnockbackLevel) 
+				knockback = statsManager.GetStatValue (StatName.Knockback, knockbackLevel);
 			
 		}
 		//sets stats depending on weapon values
@@ -86,6 +91,7 @@ public class PlayerInformation : MonoBehaviour
 			attackSpreadLevel = currentWeaponStats.spreadLevel;
 			attackSpeedLevel = currentWeaponStats.speedLevel;
 			attackDistanceLevel = currentWeaponStats.distanceLevel;
+			knockbackLevel = currentWeaponStats.knockBackLevel;
 		} 
 		else 
 		{
