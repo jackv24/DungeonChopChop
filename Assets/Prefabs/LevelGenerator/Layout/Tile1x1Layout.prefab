@@ -99,7 +99,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4878777250900706}
-  m_Layer: 0
+  - component: {fileID: 114240465044712348}
+  m_Layer: 8
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +327,7 @@ GameObject:
   - component: {fileID: 4746996745498194}
   - component: {fileID: 33447239762986278}
   - component: {fileID: 23088248531469670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Terrain01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +537,7 @@ Transform:
   m_GameObject: {fileID: 1649311949739036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 0.2, z: 20}
+  m_LocalScale: {x: 15, y: 0.2, z: 15}
   m_Children: []
   m_Father: {fileID: 4878777250900706}
   m_RootOrder: 0
@@ -984,6 +985,19 @@ MonoBehaviour:
   prefab: {fileID: 1084036274993698, guid: 12dad2d4f34f07048bdb19d06b95fcb6, type: 2}
   replaceOnAwake: 0
   pooled: 0
+--- !u!114 &114240465044712348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1263063660088612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61017e0437e176c43be5ea447dda861d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  insideMaterial: {fileID: 2100000, guid: f4139f9860abedc4ea22987b031e133a, type: 2}
+  outsideMaterial: {fileID: 2100000, guid: 8c781d9fd1aa8084b80cda3b00355de6, type: 2}
 --- !u!114 &114491266108581552
 MonoBehaviour:
   m_ObjectHideFlags: 1

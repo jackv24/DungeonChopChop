@@ -171,6 +171,8 @@ public class LevelGenerator : MonoBehaviour
 					loadingScreen.SetActive(false);
 				}
 			}
+
+			startTile.SetCurrent(null);
 		}
     }
 
