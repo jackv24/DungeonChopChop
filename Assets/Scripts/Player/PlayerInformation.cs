@@ -22,10 +22,6 @@ public class PlayerInformation : MonoBehaviour
 	public int resistanceLevel = 1;
 	public int maxHealthLevel = 1;
 
-	[Header("Charm Values")]
-	public bool canDash = false;
-	public bool canMagnetize = false;
-
 	[Header("Charm")]
 	public int charmAmount;
 	public List<Charm> currentCharms =  new List<Charm>();
@@ -34,6 +30,12 @@ public class PlayerInformation : MonoBehaviour
 	private Health health;
 
 	private int prevMoveSpeedLevel = 0;
+	private int prevAttackSpreadLevel = 0;
+	private int prevAttackDistanceLevel = 0;
+	private int prevStrengthLevel = 0;
+	private int prevAttackSpeedLevel = 0;
+	private int prevResistanceLevel = 0;
+	private int prevMaxHealthLevel = 0;
 
 	private WeaponStats currentWeaponStats;
 
@@ -47,6 +49,12 @@ public class PlayerInformation : MonoBehaviour
 		if(s)
 			statsManager = s.GetComponent<StatsManager> ();
 
+		if (LevelGenerator.Instance)
+		{
+			LevelGenerator.Instance.OnTileEnter += RegenHealth;
+			LevelGenerator.Instance.OnTileEnter += SpeedBuff;
+		}
+
 		PickupCharm (null);
 	}
 
@@ -55,15 +63,21 @@ public class PlayerInformation : MonoBehaviour
 		//set stat values depending on level
 		if (statsManager) 
 		{
-			attackMinAngle = statsManager.GetStatValue (StatName.AttackSpeed, attackSpreadLevel); 
-			attackDistance = statsManager.GetStatValue (StatName.Range, attackDistanceLevel);
-			strength = statsManager.GetStatValue (StatName.Strength, strengthLevel);
-			attackSpeed = statsManager.GetStatValue (StatName.AttackSpeed, attackSpeedLevel);
-			resistance = statsManager.GetStatValue (StatName.Resistance, resistanceLevel);
-			health.maxHealth = (int)statsManager.GetStatValue (StatName.maxHealth, maxHealthLevel); 
-			if (moveSpeedLevel != prevMoveSpeedLevel) {
+			if (attackSpreadLevel != prevAttackSpreadLevel)
+				attackMinAngle = statsManager.GetStatValue (StatName.AttackSpeed, attackSpreadLevel); 
+			if (attackDistanceLevel != prevAttackDistanceLevel)
+				attackDistance = statsManager.GetStatValue (StatName.Range, attackDistanceLevel);
+			if (strengthLevel != prevStrengthLevel)
+				strength = statsManager.GetStatValue (StatName.Strength, strengthLevel);
+			if (attackSpeedLevel != prevAttackSpeedLevel)
+				attackSpeed = statsManager.GetStatValue (StatName.AttackSpeed, attackSpeedLevel);
+			if (resistanceLevel != prevResistanceLevel)
+				resistance = statsManager.GetStatValue (StatName.Resistance, resistanceLevel);
+			if (maxHealthLevel != prevMaxHealthLevel)
+				health.maxHealth = (int)statsManager.GetStatValue (StatName.maxHealth, maxHealthLevel); 
+			if (moveSpeedLevel != prevMoveSpeedLevel) 
 				moveSpeed = statsManager.GetStatValue (StatName.RunSpeed, moveSpeedLevel);
-			}
+			
 		}
 		//sets stats depending on weapon values
 		if (currentWeaponStats) 
@@ -76,14 +90,18 @@ public class PlayerInformation : MonoBehaviour
 		{
 			currentWeaponStats = GetComponentInChildren<WeaponStats> ();
 		}
+
+		//assigns previous level to current stat level
 		prevMoveSpeedLevel = moveSpeedLevel;
+		prevAttackSpreadLevel = attackSpreadLevel;
+		prevAttackDistanceLevel = attackDistanceLevel;
+		prevStrengthLevel = strengthLevel;
+		prevResistanceLevel = resistanceLevel;
+		prevMaxHealthLevel = maxHealthLevel;
 
 
 		//if charm == Magnetic charm
-		if (canMagnetize) 
-		{
-			MagnetizeItems ();
-		}
+		MagnetizeItems ();
 	}
 
 	public void PickupCharm(Charm charm)
@@ -124,6 +142,11 @@ public class PlayerInformation : MonoBehaviour
 			return 1.0f;
 	}
 
+	public bool HasMultiplier(string key)
+	{
+		return multipliers.ContainsKey (key);
+	}
+
 	//-------------------------- Charm functions
 
 	void MagnetizeItems()
@@ -147,5 +170,40 @@ public class PlayerInformation : MonoBehaviour
 		//	}
 		//}
 
+	}
+
+	private int roomAmount = 0;
+
+	void RegenHealth()
+	{
+		if (HasMultiplier ("regenRooms")) {
+			roomAmount++;
+
+			int maxRoomAmount = Mathf.CeilToInt (GetMultiplier ("regenRooms"));
+
+			if (roomAmount >= maxRoomAmount) {
+				roomAmount = 0;
+
+				health.health += GetMultiplier ("regenAmount");
+			}
+		}
+	}
+
+	void SpeedBuff()
+	{
+		if (HasMultiplier ("speedBuffTime")) {
+			StartCoroutine (SpeedBuffForTime (GetMultiplier ("speedBuffTime"), GetMultiplier ("speedBuff")));
+		}
+	}
+
+	IEnumerator SpeedBuffForTime(float time, float multiplier)
+	{
+		Debug.Log ("hi");
+		float speed = moveSpeed;
+		moveSpeed *= multiplier;
+
+		yield return new WaitForSeconds (time);
+
+		moveSpeed = speed;
 	}
 }

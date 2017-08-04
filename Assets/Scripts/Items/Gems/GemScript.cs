@@ -19,9 +19,9 @@ public class GemScript : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter(Collision col)
+	void OnTriggerEnter(Collider col)
 	{
-		if (col.collider.tag == "Player1" || col.collider.tag == "Player2") {
+		if (col.tag == "Player1" || col.tag == "Player2") {
 			items.Coins += coinAmount;
 			gameObject.SetActive (false);
 		}
