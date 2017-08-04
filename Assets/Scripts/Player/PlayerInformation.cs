@@ -44,6 +44,9 @@ public class PlayerInformation : MonoBehaviour
 
 	private Dictionary<string, float> multipliers = new Dictionary<string, float>();
 	private Dictionary<string, float> chances = new Dictionary<string, float>();
+	private Dictionary<string, float> ticks = new Dictionary<string, float>();
+	private Dictionary<string, float> radials = new Dictionary<string, float>();
+	private LayerMask layerMask;
 
 	void Start()
 	{
@@ -137,7 +140,22 @@ public class PlayerInformation : MonoBehaviour
 				img.UpdateCharms (this);
 		}
 	}
+
+	public void SetLayerMask(LayerMask lm)
+	{
+		layerMask = lm;
+	}
+
+	public void SetRadial(string key, float value)
+	{
+		radials[key] = value;
+	}
 		
+	public void SetTick(string key, float value)
+	{
+		ticks[key] = value;
+	}
+
 	public void SetChance(string key, float value)
 	{
 		chances[key] = value;
@@ -146,6 +164,22 @@ public class PlayerInformation : MonoBehaviour
 	public void SetMultiplier(string key, float value)
 	{
 		multipliers[key] = value;
+	}
+
+	public float GetRadial(string key)
+	{
+		if (radials.ContainsKey(key))
+			return radials[key];
+		else
+			return 0;
+	}
+
+	public float GetTick(string key)
+	{
+		if (ticks.ContainsKey(key))
+			return ticks[key];
+		else
+			return 1.0f;
 	}
 
 	public float GetChance(string key)
@@ -164,6 +198,16 @@ public class PlayerInformation : MonoBehaviour
 			return 1.0f;
 	}
 
+	public bool HasRadial(string key)
+	{
+		return radials.ContainsKey (key);
+	}
+
+	public bool HasTick(string key)
+	{
+		return ticks.ContainsKey (key);
+	}
+
 	public bool HasMultiplier(string key)
 	{
 		return multipliers.ContainsKey (key);
@@ -178,25 +222,19 @@ public class PlayerInformation : MonoBehaviour
 
 	void MagnetizeItems()
 	{
-		//gets the magnetic charm
-		//foreach (Charm charm in currentCharms) 
-		//{
-		//	MagneticCharm m = (MagneticCharm)charm;
-		//	if (m) 
-		//	{
-		//		//gets all items in radius
-		//		Collider[] items = Physics.OverlapSphere (transform.position, m.magnetizeRadius, m.layerMask);
-		//		if (items.Length > 0) 
-		//		{
-		//			foreach (Collider item in items) 
-		//			{
-		//				//moves those items towards the player
-		//				item.transform.position = Vector3.MoveTowards (item.transform.position, transform.position, m.absorbSpeed * Time.deltaTime);
-		//			}
-		//		}
-		//	}
-		//}
-
+		if (HasRadial ("radialValue")) {
+			//gets the magnetic charm
+			foreach (Charm charm in currentCharms) {
+				//gets all items in radius
+				Collider[] items = Physics.OverlapSphere (transform.position, GetRadial("radialValue"), layerMask);
+				if (items.Length > 0) {
+					foreach (Collider item in items) {
+						//moves those items towards the player
+						item.transform.position = Vector3.MoveTowards (item.transform.position, transform.position, GetRadial("radialAbsorbSpeed") * Time.deltaTime);
+					}
+				}
+			}
+		}
 	}
 
 	private int roomAmount = 0;
@@ -210,7 +248,6 @@ public class PlayerInformation : MonoBehaviour
 
 			if (roomAmount >= maxRoomAmount) {
 				roomAmount = 0;
-
 				health.health += GetMultiplier ("regenAmount");
 			}
 		}
@@ -232,4 +269,22 @@ public class PlayerInformation : MonoBehaviour
 
 		moveSpeed = speed;
 	}
+
+	void OnCollisionEnter(Collision col)
+	{
+		if (col.transform.tag == "Enemy") 
+		{
+			if (HasTick ("burnTickTime")) {
+				if (col.transform.GetComponent<Health> ()) {
+					col.transform.GetComponent<Health> ().SetBurned (GetTick ("burnTickDamage"), GetTick ("burnTickTotalTime"), GetTick ("burnTickTime"));
+				}
+			}
+			if (HasTick ("poisonTickTime")) {
+				if (col.transform.GetComponent<Health> ()) {
+					col.transform.GetComponent<Health> ().SetPoison (GetTick ("poisonTickDamage"), GetTick ("poisonTickTotalTime"), GetTick ("poisonTickTime"));
+				}
+			}
+		}
+	}
+
 }

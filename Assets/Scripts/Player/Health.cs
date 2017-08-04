@@ -14,9 +14,12 @@ public class Health : MonoBehaviour
 	public event HealthEvent OnHealthChange;
 
 	private bool isPoisoned = false;
+	private bool isBurned = false;
 
 	private int poisonCounter = 0;
 	private float poisonDuration = 0;
+
+	private PlayerInformation playerInfo;
 
 	public void AffectHealth(float healthDeta)
 	{
@@ -37,6 +40,14 @@ public class Health : MonoBehaviour
 				OnDeath ();
 			}
 			Death ();
+		}
+	}
+
+	void Start()
+	{
+		if (GetComponent<PlayerInformation> ()) 
+		{
+			playerInfo = GetComponent<PlayerInformation> ();
 		}
 	}
 
@@ -81,18 +92,43 @@ public class Health : MonoBehaviour
 	/// </summary>
 	/// <param name="duration">Duration in seconds.</param>
 	/// <param name="timeBetweenPoison">Time between poison in seconds.</param>
-	public void SetPoison(int damagePerTick, float duration, float timeBetweenPoison)
+	public void SetPoison(float damagePerTick, float duration, float timeBetweenPoison)
 	{
+		if (playerInfo)
+			damagePerTick = playerInfo.GetMultiplier ("poisonMultiplier");
 		poisonDuration = duration;
 		isPoisoned = true;
 		StartCoroutine (doPoison (damagePerTick, timeBetweenPoison));
 	}
 
-	IEnumerator doPoison(int damagePerTick, float timeBetweenPoison)
+	IEnumerator doPoison(float damagePerTick, float timeBetweenPoison)
 	{
 		while (isPoisoned) 
 		{
 			yield return new WaitForSeconds (timeBetweenPoison);
+			AffectHealth (-damagePerTick);
+		}
+	}
+
+	/// <summary>
+	/// Sets the burn.
+	/// </summary>
+	/// <param name="duration">Duration in seconds.</param>
+	/// <param name="timeBetweenBurn">Time between poison in seconds.</param>
+	public void SetBurned(float damagePerTick, float duration, float timeBetweenBurn)
+	{
+		if (playerInfo)
+			damagePerTick = playerInfo.GetMultiplier ("burnMultiplier");
+		poisonDuration = duration;
+		isBurned = true;
+		StartCoroutine (doBurn (damagePerTick, timeBetweenBurn));
+	}
+
+	IEnumerator doBurn(float damagePerTick, float timeBetweenBurn)
+	{
+		while (isBurned) 
+		{
+			yield return new WaitForSeconds (timeBetweenBurn);
 			AffectHealth (-damagePerTick);
 		}
 	}
