@@ -6,111 +6,63 @@ using UnityEngine;
 public class Charm : BaseItem
 {
 	[System.Serializable]
-	public class Multiplier
+	public class CharmFloat
 	{
-		public string multiplierKey = "";
-		public float multiplierValue = 1.0f;
+		public string floatKey = "";
+		public float floatValue = 1.0f;
 		[Space ()]
 		public bool global = false;
 	}
 
 	[System.Serializable]
-	public class Chance
+	public class CharmBool
 	{
-		public string chanceKey = "";
-		[Tooltip ("0 = no chance, 50 = 50% chance")]
-		public float chanceValue = 50.0f;
-		[Space ()]
+		public string boolKey = "";
+		public bool boolValue = false;
+		[Space()]
 		public bool global = false;
 	}
 
-	[System.Serializable]
-	public class Tick
-	{
-		public string tickKey = "";
-		public float tickValue = 0.5f;
-		[Space ()]
-		public bool global = false;
-	}
+	[Header ("CharmFloats")]
+	public CharmFloat[] charmFloats;
 
-	[System.Serializable]
-	public class Radial
-	{
-		public string radialKey = "";
-		public float radialValue = 0.5f;
-		[Space ()]
-		public bool global = false;
-	}
+	[Header("CharmBools")]
+	public CharmBool[] charmBools;
 
-	[Header ("Multipliers")]
-	public Multiplier[] multipliers;
-	[Header ("Random Chances")]
-	public Chance[] chances;
-	[Header ("Something per tick")]
-	public Tick[] ticks;
-	[Header ("Layer Mask")]
-	public Radial[] radials;
 	public LayerMask layerMask;
 
 	public override void Pickup (PlayerInformation playerInfo)
 	{
 		base.Pickup (playerInfo);
 
-		if (multipliers.Length > 0)
+		if (charmFloats.Length > 0)
 		{
-			foreach (Multiplier multiplier in multipliers)
+			foreach (CharmFloat charmFloat in charmFloats)
 			{
-				if (multiplier.multiplierKey != "")
+				if (charmFloat.floatKey != "")
 				{
-					if (multiplier.global)
-						GameManager.Instance.SetGlobalMultiplier (multiplier.multiplierKey, multiplier.multiplierValue);
+					if (charmFloat.global)
+						GameManager.Instance.SetGlobalMultiplier (charmFloat.floatKey, charmFloat.floatValue);
 					else
-						playerInfo.SetMultiplier (multiplier.multiplierKey, multiplier.multiplierValue);
+						playerInfo.SetCharmFloat (charmFloat.floatKey, charmFloat.floatValue);
 				}
 			}
 		}
 
-		if (chances.Length > 0)
+		if (charmBools.Length > 0)
 		{
-			foreach (Chance chance in chances)
+			foreach (CharmBool charmBool in charmBools)
 			{
-				if (chance.chanceKey != "")
+				if (charmBool.boolKey != "")
 				{
-					if (chance.global)
-						GameManager.Instance.SetGlobalMultiplier (chance.chanceKey, chance.chanceValue);
+					if (charmBool.global)
+						GameManager.Instance.SetGlobalBool (charmBool.boolKey, charmBool.boolValue);
 					else
-						playerInfo.SetChance (chance.chanceKey, chance.chanceValue);
+						playerInfo.SetCharmBool (charmBool.boolKey, charmBool.boolValue);
 				}
 			}
 		}
 
-		if (ticks.Length > 0)
-		{
-			foreach (Tick tick in ticks)
-			{
-				if (tick.tickKey != "")
-				{
-					if (tick.global)
-						GameManager.Instance.SetGlobalMultiplier (tick.tickKey, tick.tickValue);
-					else
-						playerInfo.SetTick (tick.tickKey, tick.tickValue);
-				}
-			}
-		}
-
-		if (radials.Length > 0)
-		{
-			foreach (Radial radial in radials)
-			{
-				if (radial.radialKey != "")
-				{
-					if (radial.global)
-						GameManager.Instance.SetGlobalMultiplier (radial.radialKey, radial.radialValue);
-					else
-						playerInfo.SetRadial (radial.radialKey, radial.radialValue);
-				}
-			}
-		}
 		playerInfo.SetLayerMask (layerMask);
 	}
 
@@ -118,58 +70,30 @@ public class Charm : BaseItem
 	{
 		base.Drop (playerInfo);
 
-		if (multipliers.Length > 0)
+		if (charmFloats.Length > 0)
 		{
-			foreach (Multiplier multiplier in multipliers)
+			foreach (CharmFloat charmFloat in charmFloats)
 			{
-				if (multiplier.multiplierKey != "")
+				if (charmFloat.floatKey != "")
 				{
-					if (multiplier.global)
-						GameManager.Instance.SetGlobalMultiplier (multiplier.multiplierKey, 1.0f);
+					if (charmFloat.global)
+						GameManager.Instance.SetGlobalMultiplier (charmFloat.floatKey, 1.0f);
 					else
-						playerInfo.SetMultiplier (multiplier.multiplierKey, 1.0f);
+						playerInfo.SetCharmFloat (charmFloat.floatKey, 1.0f);
 				}
 			}
 		}
 
-		if (chances.Length > 0)
+		if (charmBools.Length > 0)
 		{
-			foreach (Chance chance in chances)
+			foreach (CharmBool charmBool in charmBools)
 			{
-				if (chance.chanceKey != "")
+				if (charmBool.boolKey != "")
 				{
-					if (chance.global)
-						GameManager.Instance.SetGlobalMultiplier (chance.chanceKey, 1.0f);
+					if (charmBool.global)
+						GameManager.Instance.SetGlobalBool (charmBool.boolKey, false);
 					else
-						playerInfo.SetChance (chance.chanceKey, 1.0f);
-				}
-			}
-		}
-
-		if (ticks.Length > 0)
-		{
-			foreach (Tick tick in ticks)
-			{
-				if (tick.tickKey != "")
-				{
-					if (tick.global)
-						GameManager.Instance.SetGlobalMultiplier (tick.tickKey, 1.0f);
-					else
-						playerInfo.SetTick (tick.tickKey, 1.0f);
-				}
-			}
-		}
-
-		if (radials.Length > 0)
-		{
-			foreach (Radial radial in radials)
-			{
-				if (radial.radialKey != "")
-				{
-					if (radial.global)
-						GameManager.Instance.SetGlobalMultiplier (radial.radialKey, 0);
-					else
-						playerInfo.SetRadial (radial.radialKey, 0);
+						playerInfo.SetCharmBool (charmBool.boolKey, false);
 				}
 			}
 		}

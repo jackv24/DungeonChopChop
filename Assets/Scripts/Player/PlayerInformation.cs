@@ -42,10 +42,8 @@ public class PlayerInformation : MonoBehaviour
 
 	private WeaponStats currentWeaponStats;
 
-	private Dictionary<string, float> multipliers = new Dictionary<string, float>();
-	private Dictionary<string, float> chances = new Dictionary<string, float>();
-	private Dictionary<string, float> ticks = new Dictionary<string, float>();
-	private Dictionary<string, float> radials = new Dictionary<string, float>();
+	private Dictionary<string, float> charmFloats = new Dictionary<string, float>();
+	private Dictionary<string, bool> charmBools = new Dictionary<string, bool>();
 	private LayerMask layerMask;
 
 	void Start()
@@ -146,91 +144,61 @@ public class PlayerInformation : MonoBehaviour
 		layerMask = lm;
 	}
 
-	public void SetRadial(string key, float value)
+	public void SetCharmFloat(string key, float value)
 	{
-		radials[key] = value;
-	}
-		
-	public void SetTick(string key, float value)
-	{
-		ticks[key] = value;
+		charmFloats[key] = value;
 	}
 
-	public void SetChance(string key, float value)
+	public void SetCharmBool(string key, bool value)
 	{
-		chances[key] = value;
+		charmBools[key] = value;
 	}
 
-	public void SetMultiplier(string key, float value)
+	public float GetCharmFloat(string key)
 	{
-		multipliers[key] = value;
-	}
-
-	public float GetRadial(string key)
-	{
-		if (radials.ContainsKey(key))
-			return radials[key];
-		else
-			return 0;
-	}
-
-	public float GetTick(string key)
-	{
-		if (ticks.ContainsKey(key))
-			return ticks[key];
+		if (charmFloats.ContainsKey(key))
+			return charmFloats[key];
 		else
 			return 1.0f;
 	}
 
-	public float GetChance(string key)
+	public bool GetCharmBool(string key)
 	{
-		if (chances.ContainsKey(key))
-			return chances[key];
+		if (charmBools.ContainsKey (key))
+			return charmBools [key];
 		else
-			return 1.0f;
+			return false;
 	}
 
-	public float GetMultiplier(string key)
+	public bool HasCharmFloat(string key)
 	{
-		if (multipliers.ContainsKey(key))
-			return multipliers[key];
-		else
-			return 1.0f;
+		return charmFloats.ContainsKey (key);
 	}
 
-	public bool HasRadial(string key)
+	public bool HasCharmBool(string key)
 	{
-		return radials.ContainsKey (key);
-	}
-
-	public bool HasTick(string key)
-	{
-		return ticks.ContainsKey (key);
-	}
-
-	public bool HasMultiplier(string key)
-	{
-		return multipliers.ContainsKey (key);
-	}
-
-	public bool HasChance(string key)
-	{
-		return chances.ContainsKey (key);
+		return charmBools.ContainsKey (key);
 	}
 
 	//-------------------------- Charm functions
 
 	void MagnetizeItems()
 	{
-		if (HasRadial ("radialValue")) {
-			//gets the magnetic charm
-			foreach (Charm charm in currentCharms) {
-				//gets all items in radius
-				Collider[] items = Physics.OverlapSphere (transform.position, GetRadial("radialValue"), layerMask);
-				if (items.Length > 0) {
-					foreach (Collider item in items) {
-						//moves those items towards the player
-						item.transform.position = Vector3.MoveTowards (item.transform.position, transform.position, GetRadial("radialAbsorbSpeed") * Time.deltaTime);
+		if (HasCharmBool ("absorb")) {
+			if (GetCharmBool ("absorb")) 
+			{
+				//gets the magnetic charm
+				foreach (Charm charm in currentCharms) 
+				{
+					//gets all items in radius
+					Collider[] items = Physics.OverlapSphere (transform.position, GetCharmFloat ("radialValue"), layerMask);
+					if (items.Length > 0) 
+					{
+						foreach (Collider item in items) 
+						{
+							//moves those items towards the player
+							item.transform.position = Vector3.MoveTowards (item.transform.position, transform.position, GetCharmFloat ("radialAbsorbSpeed") * Time.deltaTime);
+						}
 					}
 				}
 			}
@@ -241,22 +209,22 @@ public class PlayerInformation : MonoBehaviour
 
 	void RegenHealth()
 	{
-		if (HasMultiplier ("regenRooms")) {
+		if (HasCharmFloat ("regenRooms")) {
 			roomAmount++;
 
-			int maxRoomAmount = Mathf.CeilToInt (GetMultiplier ("regenRooms"));
+			int maxRoomAmount = Mathf.CeilToInt (GetCharmFloat ("regenRooms"));
 
 			if (roomAmount >= maxRoomAmount) {
 				roomAmount = 0;
-				health.health += GetMultiplier ("regenAmount");
+				health.health += GetCharmFloat ("regenAmount");
 			}
 		}
 	}
 
 	void SpeedBuff()
 	{
-		if (HasMultiplier ("speedBuffTime")) {
-			StartCoroutine (SpeedBuffForTime (GetMultiplier ("speedBuffTime"), GetMultiplier ("speedBuff")));
+		if (HasCharmFloat ("speedBuffTime")) {
+			StartCoroutine (SpeedBuffForTime (GetCharmFloat ("speedBuffTime"), GetCharmFloat ("speedBuff")));
 		}
 	}
 
@@ -274,14 +242,24 @@ public class PlayerInformation : MonoBehaviour
 	{
 		if (col.transform.tag == "Enemy") 
 		{
-			if (HasTick ("burnTickTime")) {
-				if (col.transform.GetComponent<Health> ()) {
-					col.transform.GetComponent<Health> ().SetBurned (GetTick ("burnTickDamage"), GetTick ("burnTickTotalTime"), GetTick ("burnTickTime"));
+			if (HasCharmFloat ("burnTickTime")) 
+			{
+				if (!col.gameObject.GetComponent<Health> ().isBurned) 
+				{
+					if (col.transform.GetComponent<Health> ()) 
+					{
+						col.transform.GetComponent<Health> ().SetBurned (GetCharmFloat ("burnTickDamage"), GetCharmFloat ("burnTickTotalTime"), GetCharmFloat ("burnTickTime"));
+					}
 				}
 			}
-			if (HasTick ("poisonTickTime")) {
-				if (col.transform.GetComponent<Health> ()) {
-					col.transform.GetComponent<Health> ().SetPoison (GetTick ("poisonTickDamage"), GetTick ("poisonTickTotalTime"), GetTick ("poisonTickTime"));
+			if (!col.gameObject.GetComponent<Health> ().isPoisoned) 
+			{
+				if (HasCharmFloat ("poisonTickTime")) 
+				{
+					if (col.transform.GetComponent<Health> ()) 
+					{
+						col.transform.GetComponent<Health> ().SetPoison (GetCharmFloat ("poisonTickDamage"), GetCharmFloat ("poisonTickTotalTime"), GetCharmFloat ("poisonTickTime"));
+					}
 				}
 			}
 		}

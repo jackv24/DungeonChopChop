@@ -13,8 +13,8 @@ public class Health : MonoBehaviour
 	public event HealthEvent OnDeath;
 	public event HealthEvent OnHealthChange;
 
-	private bool isPoisoned = false;
-	private bool isBurned = false;
+	public bool isPoisoned = false;
+	public bool isBurned = false;
 
 	private int poisonCounter = 0;
 	private float poisonDuration = 0;
@@ -95,18 +95,24 @@ public class Health : MonoBehaviour
 	public void SetPoison(float damagePerTick, float duration, float timeBetweenPoison)
 	{
 		if (playerInfo)
-			damagePerTick = playerInfo.GetMultiplier ("poisonMultiplier");
+			damagePerTick = playerInfo.GetCharmFloat ("poisonMultiplier");
 		poisonDuration = duration;
 		isPoisoned = true;
-		StartCoroutine (doPoison (damagePerTick, timeBetweenPoison));
+		StartCoroutine (doPoison (damagePerTick, duration, timeBetweenPoison));
 	}
 
-	IEnumerator doPoison(float damagePerTick, float timeBetweenPoison)
+	IEnumerator doPoison(float damagePerTick, float duration, float timeBetweenPoison)
 	{
+		int counter = 0;
 		while (isPoisoned) 
 		{
+			counter++;
 			yield return new WaitForSeconds (timeBetweenPoison);
 			AffectHealth (-damagePerTick);
+			if (counter >= duration) 
+			{
+				isPoisoned = false;
+			}
 		}
 	}
 
@@ -118,18 +124,24 @@ public class Health : MonoBehaviour
 	public void SetBurned(float damagePerTick, float duration, float timeBetweenBurn)
 	{
 		if (playerInfo)
-			damagePerTick = playerInfo.GetMultiplier ("burnMultiplier");
+			damagePerTick = playerInfo.GetCharmFloat ("burnMultiplier");
 		poisonDuration = duration;
 		isBurned = true;
-		StartCoroutine (doBurn (damagePerTick, timeBetweenBurn));
+		StartCoroutine (doBurn (damagePerTick, duration, timeBetweenBurn));
 	}
 
-	IEnumerator doBurn(float damagePerTick, float timeBetweenBurn)
+	IEnumerator doBurn(float damagePerTick, float duration, float timeBetweenBurn)
 	{
+		int counter = 0;
 		while (isBurned) 
 		{
+			counter++;
 			yield return new WaitForSeconds (timeBetweenBurn);
 			AffectHealth (-damagePerTick);
+			if (counter >= duration) 
+			{
+				isBurned = false;
+			}
 		}
 	}
 }

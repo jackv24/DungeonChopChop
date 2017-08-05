@@ -189,12 +189,12 @@ public class PlayerAttack : MonoBehaviour
 
 	float criticalHit()
 	{
-		if (playerInformation.HasChance ("critChance")) 
+		if (playerInformation.HasCharmFloat ("critChance")) 
 		{
 			float randomPercent = Random.Range (0, 101);
-			if (randomPercent >= playerInformation.GetChance("critChance")) 
+			if (randomPercent >= playerInformation.GetCharmFloat("critChance")) 
 			{
-				return playerInformation.GetMultiplier("critMultiplier");
+				return playerInformation.GetCharmFloat("critMultiplier");
 			} 
 			else 
 			{
@@ -206,7 +206,7 @@ public class PlayerAttack : MonoBehaviour
 
 	void knockback(GameObject obj)
 	{
-		obj.GetComponent<Rigidbody> ().AddForce (transform.forward * playerInformation.knockback * playerInformation.GetMultiplier("kockbackMultiplier"), ForceMode.Impulse);
+		obj.GetComponent<Rigidbody> ().AddForce (transform.forward * playerInformation.knockback * playerInformation.GetCharmFloat("kockbackMultiplier"), ForceMode.Impulse);
 	}
 
 	void doSlash()
@@ -256,7 +256,7 @@ public class PlayerAttack : MonoBehaviour
 	IEnumerator dashCooldownTimer()
 	{
 		int i = 0;
-		float cooldown = dashCooldown * playerInformation.GetMultiplier ("dashCooldown");
+		float cooldown = dashCooldown * playerInformation.GetCharmFloat ("dashCooldown");
 
 		while (i < cooldown)
 		{
@@ -270,9 +270,9 @@ public class PlayerAttack : MonoBehaviour
 		playerMove.enabled = false;
 		Vector3 startingPos = transform.position;
 		float elapsedTime = 0;
-		float timer = dashTime * playerInformation.GetMultiplier ("dashTime");
+		float timer = dashTime * playerInformation.GetCharmFloat ("dashTime");
 		while (elapsedTime < timer) {
-			characterController.Move(transform.forward * dashSpeed * playerInformation.GetMultiplier("dashSpeed") * Time.deltaTime);
+			characterController.Move(transform.forward * dashSpeed * playerInformation.GetCharmFloat("dashSpeed") * Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 			elapsedTime += Time.deltaTime;
 		}

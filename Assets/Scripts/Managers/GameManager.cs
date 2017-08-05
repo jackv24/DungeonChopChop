@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 	private int currentSceneIndex = -1;
 
 	private Dictionary<string, float> globalMultipliers = new Dictionary<string, float>();
+	private Dictionary<string, bool> globalBools = new Dictionary<string, bool>();
 
 	void Awake()
 	{
@@ -52,11 +53,24 @@ public class GameManager : MonoBehaviour
 		globalMultipliers[key] = value;
 	}
 
+	public void SetGlobalBool(string key, bool value)
+	{
+		globalBools[key] = value;
+	}
+
 	public float GetGlobalMultiplier(string key)
 	{
 		if (globalMultipliers.ContainsKey(key))
 			return globalMultipliers[key];
 		else
 			return 1.0f;
+	}
+
+	public bool GetGlobalBool(string key)
+	{
+		if (globalBools.ContainsKey (key))
+			return globalBools [key];
+		else
+			return false;
 	}
 }
