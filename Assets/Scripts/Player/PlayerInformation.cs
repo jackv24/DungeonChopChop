@@ -41,6 +41,7 @@ public class PlayerInformation : MonoBehaviour
 	private int prevKnockbackLevel = 0;
 
 	private WeaponStats currentWeaponStats;
+	private PlayerAttack playerAttack;
 
 	private Dictionary<string, float> charmFloats = new Dictionary<string, float>();
 	private Dictionary<string, bool> charmBools = new Dictionary<string, bool>();
@@ -49,6 +50,7 @@ public class PlayerInformation : MonoBehaviour
 	void Start()
 	{
 		health = GetComponent<Health> ();
+		playerAttack = GetComponent<PlayerAttack> ();
 
 		GameObject s = GameObject.FindGameObjectWithTag("StatsManager");
 		if(s)
@@ -242,24 +244,37 @@ public class PlayerInformation : MonoBehaviour
 	{
 		if (col.transform.tag == "Enemy") 
 		{
+			//checks to make sure player has a charm with burn tick time
 			if (HasCharmFloat ("burnTickTime")) 
 			{
+				//the enemy can't be burned more then once, check to make sure it's not burned already
 				if (!col.gameObject.GetComponent<Health> ().isBurned) 
 				{
 					if (col.transform.GetComponent<Health> ()) 
 					{
+						//set the enemy to burned with the following values
 						col.transform.GetComponent<Health> ().SetBurned (GetCharmFloat ("burnTickDamage"), GetCharmFloat ("burnTickTotalTime"), GetCharmFloat ("burnTickTime"));
 					}
 				}
 			}
-			if (!col.gameObject.GetComponent<Health> ().isPoisoned) 
+			//checks to make sure player has a charm with poison tick time
+			if (HasCharmFloat ("poisonTickTime")) 
 			{
-				if (HasCharmFloat ("poisonTickTime")) 
+				//the enemy can't be poisoned more then once, check to make sure it's not poisoned already
+				if (!col.gameObject.GetComponent<Health> ().isPoisoned) 
 				{
 					if (col.transform.GetComponent<Health> ()) 
 					{
+						//set the enemy to poisoned with the following values
 						col.transform.GetComponent<Health> ().SetPoison (GetCharmFloat ("poisonTickDamage"), GetCharmFloat ("poisonTickTotalTime"), GetCharmFloat ("poisonTickTime"));
 					}
+				}
+			}
+			//checks to make sure the player has a charm with damageOnTouch
+			if (HasCharmFloat ("damageOnTouch")) {
+				if (col.transform.GetComponent<Health> ()) {
+					col.gameObject.GetComponent<Health> ().AffectHealth (-GetCharmFloat ("damageOnTouch"));
+					playerAttack.knockback (col.gameObject);
 				}
 			}
 		}

@@ -204,7 +204,7 @@ public class PlayerAttack : MonoBehaviour
 		return 1.0f;
 	}
 
-	void knockback(GameObject obj)
+	public void knockback(GameObject obj)
 	{
 		obj.GetComponent<Rigidbody> ().AddForce (transform.forward * playerInformation.knockback * playerInformation.GetCharmFloat("kockbackMultiplier"), ForceMode.Impulse);
 	}
