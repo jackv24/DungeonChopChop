@@ -7,7 +7,9 @@ public class MapCamera : MonoBehaviour
 {
 	public static MapCamera Instance;
 
+	public Canvas canvas;
 	public RectTransform mapRect;
+	public RectTransform rawMapRect;
 
 	[Header("Transforms")]
 	public Transform town;
@@ -17,6 +19,7 @@ public class MapCamera : MonoBehaviour
 	private RectTransform townIconTransform;
 	[Space()]
 	public float iconScale = 1.0f;
+	public float mapRadius = 1.0f;
 
 	private float height;
 	private CameraFollow cameraFollow;
@@ -52,6 +55,8 @@ public class MapCamera : MonoBehaviour
 				Vector3 worldPos = mapRect.TransformPoint(localPos);
 
 				townIconTransform.position = new Vector3(worldPos.x - mapRect.sizeDelta.x, worldPos.y, 1f);
+
+				LimitToRadius(townIconTransform, rawMapRect, mapRadius);
 			}
 		}
 	}
@@ -67,9 +72,25 @@ public class MapCamera : MonoBehaviour
 		townIconImage.sprite = townIcon;
 		townIconImage.SetNativeSize();
 
-		if (mapRect)
-			obj.transform.SetParent(mapRect.transform, false);
+		if (canvas)
+			obj.transform.SetParent(canvas.transform, false);
 
 		obj.transform.localScale *= iconScale;
+	}
+
+	void LimitToRadius(RectTransform icon, RectTransform parent, float radius)
+	{
+		Vector2 offset = (Vector2)icon.position - (Vector2)parent.position;
+
+		//If icon is fruther away from the centre than the radius
+		if (offset.magnitude > radius)
+		{
+			//Normalize offset the get direction, then multiply by radius to get new offset
+			Vector3 direction = offset.normalized;
+			Vector3 newOffset = direction * radius;
+
+			//Set position as new offset
+			icon.position = newOffset + parent.position;
+		}
 	}
 }
