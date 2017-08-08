@@ -10,11 +10,27 @@ public class MapTracker : MonoBehaviour
 	[Space()]
 	public bool setLastSibling = false;
 
+	[Space()]
+	public bool showOnTileEnter = false;
+
 	void Start()
 	{
-		if(sprite && MapCamera.Instance)
+		if (sprite && MapCamera.Instance)
 		{
-			MapCamera.Instance.RegisterIcon(sprite, transform, color, setLastSibling);
+			if (showOnTileEnter)
+			{
+				LevelTile tile = GetComponentInParent<LevelTile>();
+
+				if (tile)
+					tile.OnTileEnter += Register;
+			}
+			else
+				Register();
 		}
+	}
+
+	void Register()
+	{
+		MapCamera.Instance.RegisterIcon(sprite, transform, color, setLastSibling);
 	}
 }

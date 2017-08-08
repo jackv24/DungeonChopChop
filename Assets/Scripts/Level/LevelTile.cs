@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LevelTile : MonoBehaviour
 {
+	public delegate void NormalEvent();
+	public event NormalEvent OnTileEnter;
+
 	public List<Transform> doors = new List<Transform>();
 	public BoxCollider layoutCollider;
 
@@ -260,6 +263,9 @@ public class LevelTile : MonoBehaviour
 			if (d)
 				d.ShowOnMap();
 		}
+
+		if (OnTileEnter != null)
+			OnTileEnter();
 	}
 
 	IEnumerator FadeWalls(float fadeOutTime, float fadeInTime, float wallFadeDelay, LevelTile newTile, LevelTile oldTile)
