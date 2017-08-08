@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 143203483932609108}
   - component: {fileID: 136500385918002184}
   - component: {fileID: 136248845063515268}
+  - component: {fileID: 114646258548207922}
   m_Layer: 14
   m_Name: Player
   m_TagString: Player1
@@ -774,6 +775,20 @@ MonoBehaviour:
   gravity: -9.8
   acceleration: 1
   inMudSpeed: 1
+--- !u!114 &114646258548207922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515761076265150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e12b6b668ad0b499ef88df05383d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 286e353daac31e14696c3dff76e16ad6, type: 3}
+  color: {r: 0, g: 1, b: 1, a: 1}
+  setLastSibling: 1
 --- !u!114 &114888587539373240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -817,6 +832,8 @@ MonoBehaviour:
   maxHealth: 10
   health: 10
   isDead: 0
+  isPoisoned: 0
+  isBurned: 0
 --- !u!136 &136248845063515268
 CapsuleCollider:
   m_ObjectHideFlags: 1

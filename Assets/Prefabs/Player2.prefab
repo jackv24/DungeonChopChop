@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 143759508104333822}
   - component: {fileID: 136174031427121098}
   - component: {fileID: 136944476744992890}
+  - component: {fileID: 114017393033686590}
   m_Layer: 14
   m_Name: Player2
   m_TagString: Player2
@@ -184,6 +185,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114017393033686590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1996687976791886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e12b6b668ad0b499ef88df05383d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 286e353daac31e14696c3dff76e16ad6, type: 3}
+  color: {r: 1, g: 0.35295355, b: 0.35295355, a: 1}
+  setLastSibling: 1
 --- !u!114 &114024120235656376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,6 +213,8 @@ MonoBehaviour:
   maxHealth: 10
   health: 10
   isDead: 0
+  isPoisoned: 0
+  isBurned: 0
 --- !u!114 &114626733898180080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,6 +267,7 @@ MonoBehaviour:
   strength: 0
   attackSpeed: 0
   resistance: 0
+  knockback: 0
   attackSpreadLevel: 1
   attackDistanceLevel: 1
   moveSpeedLevel: 1
@@ -257,8 +275,7 @@ MonoBehaviour:
   attackSpeedLevel: 1
   resistanceLevel: 1
   maxHealthLevel: 1
-  canDash: 0
-  canMagnetize: 0
+  knockbackLevel: 1
   charmAmount: 2
   currentCharms: []
 --- !u!136 &136174031427121098

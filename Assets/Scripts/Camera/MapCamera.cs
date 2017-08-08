@@ -11,15 +11,19 @@ public class MapCamera : MonoBehaviour
 	public RectTransform mapRect;
 	public RectTransform rawMapRect;
 
-	[Header("Transforms")]
-	public Transform town;
-
 	[Header("Icons")]
-	public Sprite townIcon;
-	private RectTransform townIconTransform;
-	[Space()]
 	public float iconScale = 1.0f;
 	public float mapRadius = 1.0f;
+
+	class Icon
+	{
+		public RectTransform rectTransform;
+		public Transform targetTransform;
+
+		public bool setLastSibling = false;
+	}
+
+	private List<Icon> icons = new List<Icon>();
 
 	private float height;
 	private CameraFollow cameraFollow;
@@ -35,8 +39,6 @@ public class MapCamera : MonoBehaviour
 		height = transform.position.y;
 		cameraFollow = FindObjectOfType<CameraFollow>();
 		cam = GetComponent<Camera>();
-
-		InitialiseIcons();
 	}
 
 	void LateUpdate()
@@ -48,34 +50,65 @@ public class MapCamera : MonoBehaviour
 
 		if(cam && mapRect)
 		{
-			if(town && townIconTransform)
+			//Update all icons
+			foreach (Icon icon in icons)
 			{
-				Vector2 viewPos = cam.WorldToViewportPoint(town.position);
+				//Transform position from world to map viewport
+				Vector2 viewPos = cam.WorldToViewportPoint(icon.targetTransform.position);
+				//Map to actual UI image
 				Vector2 localPos = new Vector2(viewPos.x * mapRect.sizeDelta.x, viewPos.y * mapRect.sizeDelta.y);
 				Vector3 worldPos = mapRect.TransformPoint(localPos);
 
-				townIconTransform.position = new Vector3(worldPos.x - mapRect.sizeDelta.x, worldPos.y, 1f);
+				//Set icon position
+				icon.rectTransform.position = new Vector3(worldPos.x - mapRect.sizeDelta.x, worldPos.y, 1f);
 
-				LimitToRadius(townIconTransform, rawMapRect, mapRadius);
+				//Make sure icon does not go off screen
+				LimitToRadius(icon.rectTransform, rawMapRect, mapRadius);
 			}
 		}
 	}
 
-	void InitialiseIcons()
+	public void RegisterIcon(Sprite sprite, Transform target, Color color, bool setLastSibling = false)
 	{
-		GameObject obj = new GameObject("TownIcon");
+		//Create new icon and set values
+		Icon icon = new Icon();
+		icon.targetTransform = target;
+		icon.setLastSibling = setLastSibling;
 
-		townIconTransform = obj.AddComponent<RectTransform>();
+		//Make new gameobject in heirarchy for this icon
+		GameObject obj = new GameObject(target.gameObject.name + "_Icon");
+
+		//Add gameobject to canvas with canvas renderer
+		icon.rectTransform = obj.AddComponent<RectTransform>();
 		obj.AddComponent<CanvasRenderer>();
 
-		Image townIconImage = obj.AddComponent<Image>();
-		townIconImage.sprite = townIcon;
-		townIconImage.SetNativeSize();
+		//Add image component and set sprite, size, color
+		Image image = obj.AddComponent<Image>();
+		image.sprite = sprite;
+		image.SetNativeSize();
+		image.color = color;
 
+		//Make sure icon is child of canvas
 		if (canvas)
 			obj.transform.SetParent(canvas.transform, false);
 
 		obj.transform.localScale *= iconScale;
+
+		//Add to list
+		icons.Add(icon);
+
+		//Reorder in heirarchy if required
+		SetIconOrder();
+	}
+
+	void SetIconOrder()
+	{
+		foreach (Icon icon in icons)
+		{
+			//Reorder in heirarchy if required
+			if (icon.setLastSibling)
+				icon.rectTransform.SetAsLastSibling();
+		}
 	}
 
 	void LimitToRadius(RectTransform icon, RectTransform parent, float radius)

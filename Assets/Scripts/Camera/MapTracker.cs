@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class MapTracker : MonoBehaviour
 {
+	public Sprite sprite;
+	public Color color = Color.white;
+
+	[Space()]
+	public bool setLastSibling = false;
+
 	void Start()
 	{
-		if(MapCamera.Instance)
+		if(sprite && MapCamera.Instance)
 		{
-			MapCamera.Instance.town = transform;
+			MapCamera.Instance.RegisterIcon(sprite, transform, color, setLastSibling);
 		}
 	}
 }
