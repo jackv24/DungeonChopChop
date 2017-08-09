@@ -38,6 +38,7 @@ public class PlayerAttack : MonoBehaviour
 	private float rapidSlashCounter;
 	private float normalMoveSpeed;
 
+	private bool canDash = true;
 	private bool rapidSlashCoolingDown = false;
 	private bool comboStarted = false;
 
@@ -91,19 +92,24 @@ public class PlayerAttack : MonoBehaviour
 			else if (input.DashSlash.WasPressed) 
 			{
 				//dash slash
-				doDash ();
+				if (canDash)
+				{
+					doDash ();
+				}
 			} 
 			else if (input.Block.WasPressed) 
 			{
 				//block
-				if (shield) {
+				if (shield) 
+				{
 					doBlock ();
 				}
 			}
 			else if (input.Block.WasReleased) 
 			{
 				//block
-				if (shield) {
+				if (shield) 
+				{
 					stopBlock ();
 				}
 			}
@@ -249,6 +255,7 @@ public class PlayerAttack : MonoBehaviour
 
 	void doDash()
 	{
+		canDash = false;
 		StartCoroutine(dash());
 		StartCoroutine (dashCooldownTimer ());
 	}
@@ -263,6 +270,7 @@ public class PlayerAttack : MonoBehaviour
 			yield return new WaitForSeconds (1);
 			i++;
 		}
+		canDash = true;
 	}
 
 	IEnumerator dash()
