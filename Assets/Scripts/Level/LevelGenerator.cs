@@ -58,8 +58,12 @@ public class LevelGenerator : MonoBehaviour
 			yield return new WaitForSeconds(stageDelay);
 		}
 
-		if (seed != 0)
-            Random.InitState(seed);
+		//If seed is zero, set seed with "arbitrary" value
+		if (seed == 0)
+			seed = System.DateTime.Now.Millisecond;
+
+		//Initialise random with seed
+        Random.InitState(seed);
 
         //Delete all children
         Clear();
