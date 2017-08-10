@@ -25,6 +25,7 @@ public class DialogueBox : MonoBehaviour
 
 	public void CloseDialogue()
 	{
+		// If there is a close anim, play that, else just disable
 		if (closeAnim && anim)
 			StartCoroutine(CloseAnimation());
 		else
@@ -33,10 +34,13 @@ public class DialogueBox : MonoBehaviour
 
 	IEnumerator CloseAnimation()
 	{
+		// Play close anim
 		anim.Play(closeAnim.name);
 
+		// Wait until anim is finished
 		yield return new WaitForSeconds(closeAnim.length);
 
+		// Disable for pooling
 		gameObject.SetActive(false);
 	}
 }
