@@ -218,14 +218,14 @@ public class PlayerAttack : MonoBehaviour
 	void doSlash()
 	{
 		//do slash things
-		Collider[] colliders = Physics.OverlapSphere(transform.position, attackDistance);
+		Collider[] colliders = Physics.OverlapSphere(transform.position, attackDistance * playerInformation.GetCharmFloat("attackDistanceMultiplier"));
 		foreach (Collider col in colliders) {
 			if (col != null && col) {
 				if (col.gameObject.layer == 11) {
 					if (col.GetComponent<Health> ()) {
 						float angle = Vector3.Angle (transform.forward, transform.position - col.transform.position);
-						if (angle > attackMinAngle) {
-							col.GetComponent<Health> ().AffectHealth (-20 * criticalHit());
+						if (angle > attackMinAngle / playerInformation.GetCharmFloat("angleDivider")) {
+							col.GetComponent<Health> ().AffectHealth (-playerInformation.strength * playerInformation.GetCharmFloat("strengthMultiplier") * criticalHit());
 							//Debug.Log ("hit enemy");
 						}
 					}
