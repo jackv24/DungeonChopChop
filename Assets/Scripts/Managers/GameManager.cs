@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 		//stuff inbetween scenes
 
 		yield return SceneManager.LoadSceneAsync (index, LoadSceneMode.Additive);
+		SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(index));
 
 		currentSceneIndex = index;
 	}
