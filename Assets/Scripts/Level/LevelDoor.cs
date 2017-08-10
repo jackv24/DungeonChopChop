@@ -76,7 +76,7 @@ public class LevelDoor : MonoBehaviour
 			playerMove.enabled = false;
 
 			//Get move speed and direction
-			float moveSpeed = playerInfo.moveSpeed;
+			float moveSpeed = playerInfo.maxMoveSpeed;
 
 			Vector3 targetPos = transform.position + direction * exitDistance;
 

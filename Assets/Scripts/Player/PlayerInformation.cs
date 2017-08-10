@@ -8,7 +8,7 @@ public class PlayerInformation : MonoBehaviour
 	public int playerIndex = 0;
 	public float attackMinAngle = 130;
 	public float attackDistance = 5;
-	public float moveSpeed;
+	public float maxMoveSpeed;
 	public float strength;
 	public float attackSpeed;
 	public float resistance;
@@ -83,7 +83,7 @@ public class PlayerInformation : MonoBehaviour
 			if (maxHealthLevel != prevMaxHealthLevel)
 				health.maxHealth = (int)statsManager.GetStatValue (StatName.maxHealth, maxHealthLevel); 
 			if (moveSpeedLevel != prevMoveSpeedLevel) 
-				moveSpeed = statsManager.GetStatValue (StatName.RunSpeed, moveSpeedLevel);
+				maxMoveSpeed = statsManager.GetStatValue (StatName.RunSpeed, moveSpeedLevel);
 			if (knockbackLevel != prevKnockbackLevel) 
 				knockback = statsManager.GetStatValue (StatName.Knockback, knockbackLevel);
 			
@@ -232,12 +232,12 @@ public class PlayerInformation : MonoBehaviour
 
 	IEnumerator SpeedBuffForTime(float time, float multiplier)
 	{
-		float speed = moveSpeed;
-		moveSpeed *= multiplier;
+		float speed = maxMoveSpeed;
+		maxMoveSpeed *= multiplier;
 
 		yield return new WaitForSeconds (time);
 
-		moveSpeed = speed;
+		maxMoveSpeed = speed;
 	}
 
 	void OnCollisionEnter(Collision col)

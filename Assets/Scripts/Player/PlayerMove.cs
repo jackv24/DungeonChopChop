@@ -5,9 +5,14 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour 
 {
 
-	float moveSpeed;
+	float maxMoveSpeed;
+
+	[Header("Main movement vals")]
 	public float gravity = -9.8f;
-	public float acceleration = 1;
+	public float acceleration;
+	public float rotateSpeed = 4f;
+
+	[Header("Other vals")]
 	public float inMudSpeed = 2.5f;
 
 	private bool allowMove = true;
@@ -15,18 +20,19 @@ public class PlayerMove : MonoBehaviour
 	private PlayerInputs input;
 	private CharacterController characterController;
 	private PlayerInformation playerInformation;
+	private Animator animator;
 
 	private float speed;
 
 	private Vector2 inputVector;
 	private Vector3 targetMoveVector;
 	private Vector3 fromMoveVector = Vector3.zero;
-	private bool onIce = false;
 	private float originalMoveSpeed = 0;
 
 	// Use this for initialization
 	void Start () 
 	{
+		animator = GetComponentInChildren<Animator> ();
 		playerInformation = GetComponent<PlayerInformation> ();
 		if (InputManager.Instance) 
 		{
@@ -47,15 +53,23 @@ public class PlayerMove : MonoBehaviour
 			LevelGenerator.Instance.OnGenerationFinished += delegate { allowMove = true; };
 		}
 	}
+
+	void doAnimations()
+	{
+		//float speed = targetMoveVector.magnitude / maxMoveSpeed;
+		animator.SetFloat ("move", characterController.velocity.magnitude / maxMoveSpeed);
+	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		doAnimations ();
+
 		if (!allowMove)
 			return;
 
 		//sets movespeed to playerinformation movespeed;
-		moveSpeed = playerInformation.moveSpeed;
+		maxMoveSpeed = playerInformation.maxMoveSpeed;
 
 		//sets the input vector
 		inputVector = input.Move;
@@ -63,15 +77,16 @@ public class PlayerMove : MonoBehaviour
 		if (inputVector.magnitude > 1)
 			inputVector.Normalize ();
 
-		targetMoveVector.x = inputVector.x * moveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier");
-		targetMoveVector.z = inputVector.y * moveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier");
+		targetMoveVector.x = inputVector.x * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier");
+		targetMoveVector.z = inputVector.y * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier");
 
 		if (CameraFollow.Instance)
 			targetMoveVector = CameraFollow.Instance.ValidateMovePos(transform.position, targetMoveVector);
 
 		//rotate player
 		if(inputVector.magnitude > 0.01f)
-			transform.rotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y));
+			//transform.rotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y));
+			transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y)), rotateSpeed * Time.deltaTime);
 
 		//checks to see if the user is grounded, if not apply gravity
 		if (!characterController.isGrounded) 
@@ -81,23 +96,20 @@ public class PlayerMove : MonoBehaviour
 			
 		//moves the player using the input axis and move speed
 		//checks if the player is on ice or not
-		if (!onIce)
-		{
-			characterController.Move (targetMoveVector * Time.deltaTime);
-		}
-		else 
-		{
-			fromMoveVector = Vector3.Lerp (fromMoveVector, targetMoveVector, acceleration * Time.deltaTime);
-			characterController.Move (fromMoveVector * Time.deltaTime);
-		}
+		fromMoveVector = Vector3.Lerp (fromMoveVector, targetMoveVector, acceleration * Time.deltaTime);
+		characterController.Move (fromMoveVector * Time.deltaTime);
 	}
 
 	void OnTriggerEnter(Collider col)
 	{
 		if (col.tag == "Mud") 
 		{
-			originalMoveSpeed = playerInformation.moveSpeed;
+			originalMoveSpeed = playerInformation.maxMoveSpeed;
 		}
+		if (col.tag == "Ice") 
+		{
+			acceleration = 1;
+		} 
 	}		
 
 	void OnTriggerStay(Collider col)
@@ -105,11 +117,11 @@ public class PlayerMove : MonoBehaviour
 		//checks if the floor is ice
 		if (col.tag == "Ice") 
 		{
-			onIce = true;
+			acceleration = 1;
 		} 
 		else if (col.tag == "Mud")
 		{
-			playerInformation.moveSpeed = inMudSpeed;
+			playerInformation.maxMoveSpeed = inMudSpeed;
 		}
 	}
 
@@ -118,11 +130,11 @@ public class PlayerMove : MonoBehaviour
 		if (col.tag == "Ice")
 		{
 			fromMoveVector = Vector3.zero;
-			onIce = false;
+			acceleration = 10f;
 		} 
 		else if (col.tag == "Mud")
 		{
-			playerInformation.moveSpeed = originalMoveSpeed;
+			playerInformation.maxMoveSpeed = originalMoveSpeed;
 		}
 	}
 
