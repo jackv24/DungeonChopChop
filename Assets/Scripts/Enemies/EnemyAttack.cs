@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum TypesOfAttack
 {
+	Nothing,
 	BasicShootIntervals,
 	BasicShootRandIntervals,
 	ShootCircleIntervals,
@@ -19,6 +20,7 @@ public class EnemyAttack : MonoBehaviour
 	public float thrust;
 	[Tooltip("This values x projectile damage")]
 	public float attackStrength;
+	public float damageOnTouch;
 
 	//shoot circle vars
 	[HideInInspector]
@@ -135,6 +137,15 @@ public class EnemyAttack : MonoBehaviour
 			ShootCircle ();
 			shootIntervalCounter = 0;
 		} 
+	}
+
+	void OnCollisionEnter(Collision col)
+	{
+		if (col.transform.GetComponent<Health> ())
+		{
+			col.transform.GetComponent<Health> ().Damaged ();
+			col.transform.GetComponent<Health> ().AffectHealth (-damageOnTouch);
+		}
 	}
 
 }

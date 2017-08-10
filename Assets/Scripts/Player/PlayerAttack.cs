@@ -29,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
 	private PlayerMove playerMove;
 	private PlayerInformation playerInformation;
 	private CharacterController characterController;
+	private Animator animator;
 
 	public ShieldStats shield;
 
@@ -44,6 +45,7 @@ public class PlayerAttack : MonoBehaviour
 
 	void Start () 
 	{
+		animator = GetComponentInChildren<Animator> ();
 		characterController = GetComponent<CharacterController> ();
 		playerInformation = GetComponent<PlayerInformation> ();
 		playerMove = GetComponent <PlayerMove> ();
@@ -86,7 +88,10 @@ public class PlayerAttack : MonoBehaviour
 				else 
 				{
 					//basic slash
-					doSlash ();
+					if (!animator.GetCurrentAnimatorStateInfo (1).IsTag ("Attacking"))
+					{
+						doSlash ();
+					}
 				}
 			} 
 			else if (input.DashSlash.WasPressed) 
@@ -180,6 +185,10 @@ public class PlayerAttack : MonoBehaviour
 		//do block things
 		normalMoveSpeed = playerInformation.maxMoveSpeed;
 		playerInformation.maxMoveSpeed = playerInformation.maxMoveSpeed * shield.speedDamping;
+		if (animator)
+		{
+			animator.SetBool ("Blocking", true);
+		}
 
 		//Debug.Log ("Blocking");
 	}
@@ -188,6 +197,10 @@ public class PlayerAttack : MonoBehaviour
 	{
 		//stop block things
 		playerInformation.maxMoveSpeed = normalMoveSpeed;
+		if (animator)
+		{
+			animator.SetBool ("Blocking", false);
+		}
 	}
 
 
@@ -217,6 +230,7 @@ public class PlayerAttack : MonoBehaviour
 
 	void doSlash()
 	{
+		animator.SetTrigger ("Attack");
 		//do slash things
 		Collider[] colliders = Physics.OverlapSphere(transform.position, attackDistance * playerInformation.GetCharmFloat("attackDistanceMultiplier"));
 		foreach (Collider col in colliders) {

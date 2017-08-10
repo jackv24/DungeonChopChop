@@ -65,6 +65,23 @@ public class PlayerInformation : MonoBehaviour
 		PickupCharm (null);
 	}
 
+	public int chanceChecker(string chanceKey)
+	{
+		if (HasCharmFloat (chanceKey))
+		{
+			float randomPercent = Random.Range (0, 101);
+			if (randomPercent >= GetCharmFloat (chanceKey))
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		return 0;
+	}
+
 	void Update()
 	{
 		//set stat values depending on level
@@ -267,6 +284,19 @@ public class PlayerInformation : MonoBehaviour
 					{
 						//set the enemy to poisoned with the following values
 						col.transform.GetComponent<Health> ().SetPoison (GetCharmFloat ("poisonTickDamage"), GetCharmFloat ("poisonTickTotalTime"), GetCharmFloat ("poisonTickTime"));
+					}
+				}
+			}
+			//checks to make sure player has a charm with poison tick time
+			if (HasCharmFloat ("slowDeathTickTime")) 
+			{
+				//the enemy can't be poisoned more then once, check to make sure it's not poisoned already
+				if (!col.gameObject.GetComponent<Health> ().isSlowlyDying) 
+				{
+					if (col.transform.GetComponent<Health> ()) 
+					{
+						//set the enemy to poisoned with the following values
+						col.transform.GetComponent<Health> ().SetSlowDeath (GetCharmFloat ("slowDeathTickDamage"), GetCharmFloat ("slowDeathTickTotalTime"), GetCharmFloat ("slowDeathTickTime"));
 					}
 				}
 			}

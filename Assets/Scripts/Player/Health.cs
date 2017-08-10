@@ -15,9 +15,7 @@ public class Health : MonoBehaviour
 
 	public bool isPoisoned = false;
 	public bool isBurned = false;
-
-	private int poisonCounter = 0;
-	private float poisonDuration = 0;
+	public bool isSlowlyDying = false;
 
 	private PlayerInformation playerInfo;
 	private Animator animator;
@@ -70,15 +68,11 @@ public class Health : MonoBehaviour
 		}
 	}
 
-	void FixedUpdate()
+	public void Damaged()
 	{
-		if (isPoisoned) 
+		if (animator)
 		{
-			poisonCounter++;
-			if (poisonCounter >= (poisonDuration * 60)) 
-			{
-				isPoisoned = false;
-			}
+			animator.SetTrigger ("Hit");
 		}
 	}
 		
@@ -101,7 +95,6 @@ public class Health : MonoBehaviour
 	{
 		if (playerInfo)
 			damagePerTick = playerInfo.GetCharmFloat ("poisonMultiplier");
-		poisonDuration = duration;
 		isPoisoned = true;
 		StartCoroutine (doPoison (damagePerTick, duration, timeBetweenPoison));
 	}
@@ -131,7 +124,6 @@ public class Health : MonoBehaviour
 	{
 		if (playerInfo)
 			damagePerTick = playerInfo.GetCharmFloat ("burnMultiplier");
-		poisonDuration = duration;
 		isBurned = true;
 		StartCoroutine (doBurn (damagePerTick, duration, timeBetweenBurn));
 	}
@@ -148,6 +140,35 @@ public class Health : MonoBehaviour
 			if (counter >= duration) 
 			{
 				isBurned = false;
+			}
+		}
+	}
+
+	/// <summary>
+	/// Sets the slow death.
+	/// </summary>
+	/// <param name="duration">Duration in seconds.</param>
+	/// <param name="timeBetweenDeathTick">Time between death tick in seconds.</param>
+	public void SetSlowDeath(float damagePerTick, float duration, float timeBetweenDeathTick)
+	{
+		if (playerInfo)
+			damagePerTick = playerInfo.GetCharmFloat ("deathTickMultiplier");
+		isSlowlyDying = true;
+		StartCoroutine (doSlowDeath (damagePerTick, duration, timeBetweenDeathTick));
+	}
+
+	IEnumerator doSlowDeath(float damagePerTick, float duration, float timeBetweenBurn)
+	{
+		int counter = 0;
+		while (isSlowlyDying) 
+		{
+			counter++;
+			yield return new WaitForSeconds (timeBetweenBurn);
+			AffectHealth (-damagePerTick);
+			animator.SetTrigger ("Flinch");
+			if (counter >= duration) 
+			{
+				isSlowlyDying = false;
 			}
 		}
 	}

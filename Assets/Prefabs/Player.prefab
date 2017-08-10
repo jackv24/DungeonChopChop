@@ -852,6 +852,7 @@ MonoBehaviour:
   isDead: 0
   isPoisoned: 0
   isBurned: 0
+  isSlowlyDying: 0
 --- !u!136 &136248845063515268
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -953,8 +954,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.04, z: 0}

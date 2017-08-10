@@ -76,6 +76,7 @@ public class EnemyMove : MonoBehaviour
 
 	private PlayerInformation[] players;
 	private Rigidbody rb;
+	private Animator animator;
 
 	private float intervalCounter = 0;
 	private float timeTillIntervalCounter = 0;
@@ -91,6 +92,7 @@ public class EnemyMove : MonoBehaviour
 
 	void Start()
 	{
+		animator = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody> ();
 	}
 
@@ -470,6 +472,7 @@ public class EnemyMove : MonoBehaviour
 
 	void Hop()
 	{
+		animator.SetTrigger ("Hop");
 		BasicFollow ();
 		if (isGrounded) {
 			rb.AddForce (transform.forward * power, ForceMode.Impulse);
