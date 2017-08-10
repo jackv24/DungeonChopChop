@@ -21,23 +21,26 @@ public class DialogueSpeaker : MonoBehaviour
 	{
 		Collider[] cols = Physics.OverlapSphere(transform.position, speakRange, playerLayer);
 
+		//if colliders were found, player is in range
 		if(cols.Length > 0)
 		{
+			//if box isn't already showing, show box
 			if(!currentBox)
 			{
+				//Position pooled dialogue box
 				GameObject obj = ObjectPooler.GetPooledObject(dialogueBoxPrefab);
 				obj.transform.position = transform.position + Vector3.up * textBoxHeight;
 
 				currentBox = obj.GetComponent<DialogueBox>();
 
+				//Set random line
 				if(currentBox)
-				{
 					currentBox.SetDialogue(lines[Random.Range(0, lines.Length)]);
-				}
 			}
 		}
 		else if(currentBox)
 		{
+			//Close dialoue and set null
 			currentBox.CloseDialogue();
 
 			currentBox = null;
