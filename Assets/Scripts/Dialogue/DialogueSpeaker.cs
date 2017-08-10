@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueSpeaker : MonoBehaviour
 {
 	public string[] lines = { "Default text" };
+	private int lastIndex = -1;
 
 	[Space()]
 	public float speakRange = 2.0f;
@@ -34,8 +35,17 @@ public class DialogueSpeaker : MonoBehaviour
 				currentBox = obj.GetComponent<DialogueBox>();
 
 				//Set random line
-				if(currentBox)
-					currentBox.SetDialogue(lines[Random.Range(0, lines.Length)]);
+				if (currentBox)
+				{
+					int index = lastIndex;
+
+					while (index == lastIndex)
+						index = Random.Range(0, lines.Length);
+
+					currentBox.SetDialogue(lines[index]);
+
+					lastIndex = index;
+				}
 			}
 		}
 		else if(currentBox)
