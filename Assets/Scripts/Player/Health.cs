@@ -20,6 +20,7 @@ public class Health : MonoBehaviour
 	private float poisonDuration = 0;
 
 	private PlayerInformation playerInfo;
+	private Animator animator;
 
 	public void AffectHealth(float healthDeta)
 	{
@@ -45,6 +46,10 @@ public class Health : MonoBehaviour
 
 	void Start()
 	{
+		if (GetComponentInChildren<Animator> ())
+		{
+			animator = GetComponentInChildren<Animator> ();
+		}
 		if (GetComponent<PlayerInformation> ()) 
 		{
 			playerInfo = GetComponent<PlayerInformation> ();
@@ -109,6 +114,7 @@ public class Health : MonoBehaviour
 			counter++;
 			yield return new WaitForSeconds (timeBetweenPoison);
 			AffectHealth (-damagePerTick);
+			animator.SetTrigger ("Flinch");
 			if (counter >= duration) 
 			{
 				isPoisoned = false;
@@ -138,6 +144,7 @@ public class Health : MonoBehaviour
 			counter++;
 			yield return new WaitForSeconds (timeBetweenBurn);
 			AffectHealth (-damagePerTick);
+			animator.SetTrigger ("Flinch");
 			if (counter >= duration) 
 			{
 				isBurned = false;

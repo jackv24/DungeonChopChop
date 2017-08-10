@@ -178,8 +178,8 @@ public class PlayerAttack : MonoBehaviour
 	void doBlock()
 	{
 		//do block things
-		normalMoveSpeed = playerInformation.moveSpeed;
-		playerInformation.moveSpeed = playerInformation.moveSpeed * shield.speedDamping;
+		normalMoveSpeed = playerInformation.maxMoveSpeed;
+		playerInformation.maxMoveSpeed = playerInformation.maxMoveSpeed * shield.speedDamping;
 
 		//Debug.Log ("Blocking");
 	}
@@ -187,7 +187,7 @@ public class PlayerAttack : MonoBehaviour
 	void stopBlock()
 	{
 		//stop block things
-		playerInformation.moveSpeed = normalMoveSpeed;
+		playerInformation.maxMoveSpeed = normalMoveSpeed;
 	}
 
 

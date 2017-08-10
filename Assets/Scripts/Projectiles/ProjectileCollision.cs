@@ -24,6 +24,11 @@ public class ProjectileCollision : MonoBehaviour {
 		if (col.collider.GetComponent<Health>())
 		{
 			col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer));
+			//check to see if collider has an animator
+			if (col.gameObject.GetComponentInChildren<Animator> ())
+			{
+				col.gameObject.GetComponentInChildren<Animator> ().SetTrigger ("Hit");
+			}
 			gameObject.SetActive (false);
 		}
 	}
