@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 23863450305897434}
   - component: {fileID: 114000807067742558}
   - component: {fileID: 54565448723443048}
-  - component: {fileID: 114010907128170568}
   - component: {fileID: 114743325656237592}
   - component: {fileID: 114653381972465610}
   - component: {fileID: 114948972841801984}
@@ -200,18 +199,7 @@ MonoBehaviour:
   isDead: 0
   isPoisoned: 0
   isBurned: 0
---- !u!114 &114010907128170568
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1960850519861330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87f06eb55c62d61449d84a6af2c1297f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 5
+  isSlowlyDying: 0
 --- !u!114 &114058906516613826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -265,6 +253,7 @@ MonoBehaviour:
     type: 2}
   thrust: 50
   attackStrength: 1
+  damageOnTouch: 0
   projAmount: 25
   timeTillInterval: 1
   minInterval: 1
@@ -288,6 +277,7 @@ MonoBehaviour:
   movingType: 1
   moveTimes: 1
   moveDistances: 0
+  movementWhilstIdle: 0
   timeTillInterval: 2
   interval: 2
   power: 15

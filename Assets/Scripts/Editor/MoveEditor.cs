@@ -46,10 +46,16 @@ public class MoveEditor : Editor {
 			enemyMove.power = EditorGUILayout.FloatField ("The amount of power on impulse: ", enemyMove.power); 
 			enemyMove.jumpPower = EditorGUILayout.FloatField ("The amount of jump power: ", enemyMove.jumpPower); 
 		}
+		if (enemyMove.movementWhilstIdle == MovementWhilstIdle.Roam) {
+			enemyMove.minAdjTime = EditorGUILayout.FloatField ("Min time between direction change: ", enemyMove.minAdjTime); 
+			enemyMove.maxAdjTime = EditorGUILayout.FloatField ("Max time between direction change: ", enemyMove.maxAdjTime); 
+		}
 
 		if (enemyMove.movingType == TypesOfMoving.Follow) {
 			if (enemyMove.moveTimes == MoveTimes.Charge) {
-				EditorGUILayout.HelpBox ("Warning: This movement doesn't exist", MessageType.Warning);
+				if (enemyMove.moveDistances == MoveDistances.InSight) {
+					EditorGUILayout.HelpBox ("Warning: This movement doesn't exist", MessageType.Warning);
+				}
 			}
 		}
 		if (enemyMove.movingType == TypesOfMoving.Follow) {
