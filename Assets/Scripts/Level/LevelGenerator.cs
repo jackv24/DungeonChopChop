@@ -191,7 +191,7 @@ public class LevelGenerator : MonoBehaviour
 	private void GenerateTile(Transform connectingDoor, int trailLength)
 	{
 		LevelTile nextTile = null;
-		Transform connectedDoor = null;
+		int connectedDoorIndex = -1;
 
 		List<LevelGeneratorProfile.GeneratorTile> possibleTiles = new List<LevelGeneratorProfile.GeneratorTile>(profile.tilePool);
 
@@ -228,7 +228,7 @@ public class LevelGenerator : MonoBehaviour
 			LevelTile tile = tileObj.GetComponent<LevelTile>();
 
 			//Loop through and test all doors to connect to
-			foreach (Transform door in tile.doors)
+			for(int i = 0; i < tile.doors.Count; i++)
 			{
 				//Rotate up to three
 				for (int rotationCount = 0; rotationCount < 4; rotationCount++)
@@ -241,7 +241,7 @@ public class LevelGenerator : MonoBehaviour
 					tileObj.transform.position = connectingDoor.position;
 
 					//Place tile relative so their doors are connected
-					Vector3 offset = connectingDoor.position - door.position;
+					Vector3 offset = connectingDoor.position - tile.doors[i].position;
 
 					//Offset tile so doors are connected
 					tileObj.transform.position = connectingDoor.position + offset;
@@ -250,7 +250,7 @@ public class LevelGenerator : MonoBehaviour
 					if (!tile.IsIntersecting(layoutLayer))
 					{
 						success = true;
-						connectedDoor = door;
+						connectedDoorIndex = i;
 
 						break;
 					}
@@ -284,7 +284,7 @@ public class LevelGenerator : MonoBehaviour
 			nextTile.ReplaceDoors();
 
 			//No need to check the door that was just connected
-			nextTile.doors.Remove(connectedDoor);
+			nextTile.doors.RemoveAt(connectedDoorIndex);
 
 			nextTile.BlockDoors();
 

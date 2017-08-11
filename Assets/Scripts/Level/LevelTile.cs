@@ -91,8 +91,11 @@ public class LevelTile : MonoBehaviour
 
 	public void BlockDoors()
 	{
-		if (maxBlocks > doors.Count)
-			maxBlocks = doors.Count;
+		if (minBlocks < 0)
+			minBlocks = 0;
+
+		if (maxBlocks >= doors.Count)
+			maxBlocks = doors.Count - 1;
 
 		int blockAmount = Random.Range(minBlocks, maxBlocks + 1);
 
