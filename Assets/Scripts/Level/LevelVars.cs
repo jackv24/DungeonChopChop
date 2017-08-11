@@ -10,6 +10,9 @@ public class LevelVars : MonoBehaviour
 	public GameObject enemySpawnEffect;
 	public float enemySpawnDelay = 0.5f;
 
+	[Header("Misc")]
+	public GameObject droppedCharmPrefab;
+
 	private void Awake()
 	{
 		Instance = this;

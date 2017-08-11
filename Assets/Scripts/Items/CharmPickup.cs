@@ -11,6 +11,15 @@ public class CharmPickup : MonoBehaviour
 	public Charm representingCharm;
 	private Charm oldCharm = null;
 
+	[Space()]
+	public float pickupDelay = 1.0f;
+	private float pickupTime;
+
+	void OnEnable()
+	{
+		pickupTime = Time.time + pickupDelay;
+	}
+
 	void Update()
 	{
 		if (iconRenderer)
@@ -27,7 +36,7 @@ public class CharmPickup : MonoBehaviour
 
 	void OnTriggerEnter(Collider col)
 	{
-		if (representingCharm)
+		if (representingCharm && Time.time >= pickupTime)
 		{
 			PlayerInformation playerInfo = col.GetComponent<PlayerInformation>();
 
