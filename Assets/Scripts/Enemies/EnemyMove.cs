@@ -26,6 +26,12 @@ public enum MoveDistances
 	InSight,
 };
 
+public enum MovementWhilstIdle
+{
+	Nothing,
+	Roam,
+};
+
 public class EnemyMove : MonoBehaviour 
 {
 	[Header("Basic Movement Values")]
@@ -37,6 +43,7 @@ public class EnemyMove : MonoBehaviour
 	public TypesOfMoving movingType;
 	public MoveTimes moveTimes;
 	public MoveDistances moveDistances;
+	public MovementWhilstIdle movementWhilstIdle;
 
 	[Header("Move Choice Values")]
 
@@ -92,40 +99,13 @@ public class EnemyMove : MonoBehaviour
 
 	void Start()
 	{
-		animator = GetComponent<Animator> ();
+		animator = GetComponentInChildren<Animator> ();
 		rb = GetComponent<Rigidbody> ();
 	}
 
 	void OnDrawGizmos()
 	{
 		Debug.DrawRay (new Vector3 (transform.position.x, (transform.position.y - transform.lossyScale.y + .3f), transform.position.z), -transform.up);
-	}
-
-	void Update()
-	{
-		//sends a raycast down to check if the enemy is grounded
-		if (Physics.Raycast (new Vector3(transform.position.x, (transform.position.y - transform.localScale.y + .3f), transform.position.z) , -transform.up, .4f, groundMask)) 
-		{
-			isGrounded = true;
-		} 
-		else 
-		{
-			isGrounded = false;
-		}
-
-		//check for closest player
-		if (players != null) 
-		{
-			foreach (PlayerInformation player in players) 
-			{
-				float distance = Vector3.Distance (player.transform.position, transform.position);
-				if (distance < previousPlayerDistance) 
-				{
-					closestPlayer = player.gameObject;
-				}
-				previousPlayerDistance = distance;
-			}
-		}
 	}
 
 	void RotateRight()
@@ -142,7 +122,7 @@ public class EnemyMove : MonoBehaviour
 		transform.position = Vector3.MoveTowards (transform.position, targetPosition, moveSpeed * Time.deltaTime);
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
 		if (players != null) {
 			switch (movingType) {
@@ -150,10 +130,12 @@ public class EnemyMove : MonoBehaviour
 			//------------------------------------------------Follow
 			case TypesOfMoving.Follow:
 				//check what time of time the enemy moves
-				switch (moveTimes) {
+				switch (moveTimes)
+				{
 				case MoveTimes.Constant:
 					//if the enemy moves within a specific distance
-					switch (moveDistances) {
+					switch (moveDistances)
+					{
 					case MoveDistances.InSight:
 						FollowConstantInSight ();
 						break;
@@ -168,7 +150,8 @@ public class EnemyMove : MonoBehaviour
 				//check what time of time the enemy moves
 				case MoveTimes.Interval:
 					//if the enemy moves within a specific distance
-					switch (moveDistances) {
+					switch (moveDistances)
+					{
 					case MoveDistances.InSight:
 						FollowIntervalInSight ();
 						break;
@@ -183,7 +166,8 @@ public class EnemyMove : MonoBehaviour
 				//check what time of time the enemy moves
 				case MoveTimes.Stutter:
 					//if the enemy moves within a specific distance
-					switch (moveDistances) {
+					switch (moveDistances)
+					{
 					case MoveDistances.InSight:
 						break;
 					case MoveDistances.NoDistance:
@@ -196,13 +180,27 @@ public class EnemyMove : MonoBehaviour
 				//check what time of time the enemy moves
 				case MoveTimes.Hop:
 					//if the enemy moves within a specific distance
-					switch (moveDistances) {
+					switch (moveDistances)
+					{
 					case MoveDistances.InSight:
 						break;
 					case MoveDistances.NoDistance:
 						Hop ();
 						break;
 					case MoveDistances.Radius:
+						break;
+					}
+					break;
+				case MoveTimes.Charge:
+					//if the enemy moves within a specific distance
+					switch (moveDistances) {
+					case MoveDistances.InSight:
+						break;
+					case MoveDistances.NoDistance:
+						Charge ();
+						break;
+					case MoveDistances.Radius:
+						ChargeRadius ();
 						break;
 					}
 					break;
@@ -268,6 +266,59 @@ public class EnemyMove : MonoBehaviour
 			//get the player if it hasnt
 			players = GameObject.FindObjectsOfType<PlayerInformation>();
 		}
+
+		//sends a raycast down to check if the enemy is grounded
+		if (Physics.Raycast (new Vector3(transform.position.x, (transform.position.y - transform.localScale.y + .3f), transform.position.z) , -transform.up, .4f, groundMask)) 
+		{
+			isGrounded = true;
+		} 
+		else 
+		{
+			isGrounded = false;
+		}
+
+		//check for closest player
+		if (players != null) 
+		{
+			foreach (PlayerInformation player in players) 
+			{
+				float distance = Vector3.Distance (player.transform.position, transform.position);
+				if (distance < previousPlayerDistance) 
+				{
+					closestPlayer = player.gameObject;
+				}
+				previousPlayerDistance = distance;
+			}
+		}
+		//if velocity is 0, set idle to false
+//		Debug.Log(rb.velocity.magnitude);
+//		if (rb.velocity.magnitude == 0)
+//		{
+//			StopRunAnimation ();
+//		}
+	}
+
+	void PlayRunAnimation()
+	{
+		animator.SetBool ("Idle", false);
+	}
+
+	void StopRunAnimation()
+	{
+		animator.SetBool ("Idle", true);
+	}
+
+	void MoveDuringIdle()
+	{
+		switch (movementWhilstIdle)
+		{
+		case MovementWhilstIdle.Roam:
+			Roam ();
+			break;
+		case MovementWhilstIdle.Nothing:
+			StopRunAnimation ();
+			break;
+		}
 	}
 
 	bool InRadiusOfPlayer()
@@ -324,6 +375,7 @@ public class EnemyMove : MonoBehaviour
 		if (closestPlayer) 
 		{
 			transform.position = Vector3.MoveTowards (transform.position, closestPlayer.transform.position, moveSpeed * Time.deltaTime);
+			PlayRunAnimation ();
 			LookAtPlayer ();
 		}
 	}
@@ -387,6 +439,7 @@ public class EnemyMove : MonoBehaviour
 
 	void Stutter()
 	{
+		animator.SetTrigger ("Charging");
 		rb.AddForce (transform.forward * power, ForceMode.Impulse);
 	}
 
@@ -402,12 +455,23 @@ public class EnemyMove : MonoBehaviour
 		} 
 	}
 
+	void ChargeRadius()
+	{
+		if (InRadiusOfPlayer())
+		{
+			Charge ();
+		} else
+		{
+			MoveDuringIdle ();
+		}
+	}
+
 
 	void Roam()
 	{
 		freeRoamAdjCounter++;
 		// look at the angle set
-		transform.LookAt (wayPoint);
+		transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(wayPoint), lookAtSpeed * Time.deltaTime);
 		//go forward!
 		transform.position += transform.TransformDirection (Vector3.forward) * moveSpeed * Time.deltaTime;
 		//once the counter is greater then the next adjustment time, adjust
@@ -422,9 +486,12 @@ public class EnemyMove : MonoBehaviour
 
 	void RoamWithRadius()
 	{
-		if (InRadiusOfPlayer ()) 
+		if (InRadiusOfPlayer ())
 		{
 			Roam ();
+		} else
+		{
+			MoveDuringIdle ();
 		}
 	}
 

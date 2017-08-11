@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 23715869073569426}
   - component: {fileID: 114445558268403474}
   - component: {fileID: 54159024816572496}
-  - component: {fileID: 114784011678660516}
   - component: {fileID: 114076963782751592}
   - component: {fileID: 114242283064445466}
   - component: {fileID: 114455699731158592}
@@ -203,6 +202,7 @@ MonoBehaviour:
   movingType: 1
   moveTimes: 1
   moveDistances: 1
+  movementWhilstIdle: 0
   timeTillInterval: 2
   interval: 2
   power: 0.2
@@ -229,6 +229,7 @@ MonoBehaviour:
     type: 2}
   thrust: 50
   attackStrength: 1
+  damageOnTouch: 0
   projAmount: 25
   timeTillInterval: 1
   minInterval: 1
@@ -249,6 +250,7 @@ MonoBehaviour:
   isDead: 0
   isPoisoned: 0
   isBurned: 0
+  isSlowlyDying: 0
 --- !u!114 &114455699731158592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -300,18 +302,6 @@ MonoBehaviour:
   - dropAmount: 2
     minPercentage: 81
     maxPercentage: 100
---- !u!114 &114784011678660516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1108581157416084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87f06eb55c62d61449d84a6af2c1297f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 5
 --- !u!136 &136107755229580504
 CapsuleCollider:
   m_ObjectHideFlags: 1
