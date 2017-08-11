@@ -300,11 +300,13 @@ public class EnemyMove : MonoBehaviour
 
 	void PlayRunAnimation()
 	{
+		if (animator)
 		animator.SetBool ("Idle", false);
 	}
 
 	void StopRunAnimation()
 	{
+		if (animator)
 		animator.SetBool ("Idle", true);
 	}
 
