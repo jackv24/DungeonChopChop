@@ -40,6 +40,8 @@ public class PlayerInformation : MonoBehaviour
 	private int prevMaxHealthLevel = 0;
 	private int prevKnockbackLevel = 0;
 
+	private bool speedBoost = false;
+
 	private WeaponStats currentWeaponStats;
 	private PlayerAttack playerAttack;
 
@@ -242,18 +244,24 @@ public class PlayerInformation : MonoBehaviour
 
 	void SpeedBuff()
 	{
-		if (HasCharmFloat ("speedBuffTime")) {
-			StartCoroutine (SpeedBuffForTime (GetCharmFloat ("speedBuffTime"), GetCharmFloat ("speedBuff")));
+		if (!speedBoost) 
+		{
+			if (HasCharmFloat ("speedBuffTime")) 
+			{
+				StartCoroutine (SpeedBuffForTime (GetCharmFloat ("speedBuffTime"), GetCharmFloat ("speedBuff")));
+			}
 		}
 	}
 
 	IEnumerator SpeedBuffForTime(float time, float multiplier)
 	{
+		speedBoost = true;
 		float speed = maxMoveSpeed;
 		maxMoveSpeed *= multiplier;
 
 		yield return new WaitForSeconds (time);
 
+		speedBoost = false;
 		maxMoveSpeed = speed;
 	}
 
