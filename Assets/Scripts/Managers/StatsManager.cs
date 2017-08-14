@@ -30,6 +30,7 @@ public class StatsManager : MonoBehaviour
 	public Stat[] stats;
 
 	private PlayerInformation playerOneInfo;
+	private Health playerHealth;
 	private GameObject player;
 
 	// Use this for initialization
@@ -57,20 +58,43 @@ public class StatsManager : MonoBehaviour
 		}
 		return 0;
 	}
+
+	int GetClosestLevel(StatName statName, float playerStatValue)
+	{
+		foreach (Stat stat in stats) 
+		{
+			if (stat.statName == statName) {
+				float closestNumber = stat.levelValue [0];
+				int valNumber = 0;
+				for (int i = 0; i < stat.levelValue.Length; i++) {
+					if (Mathf.Abs (stat.levelValue [i] - playerStatValue) < Mathf.Abs (closestNumber - playerStatValue)) {
+						closestNumber = stat.levelValue [i];
+						valNumber = i;
+					}
+				}
+
+				return valNumber;
+			}
+		}
+		return 0;
+	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		
 		if (!player) 
 		{
-			player = GameObject.FindGameObjectWithTag ("Player");
+			player = GameObject.FindGameObjectWithTag ("Player1");
 		}
 		if (player) 
 		{
 			if (!playerOneInfo) 
 			{
 				playerOneInfo = player.GetComponent<PlayerInformation> ();
+			}
+			if (!playerHealth) 
+			{
+				playerHealth = player.GetComponent<Health> ();
 			}
 		} 
 
@@ -80,22 +104,22 @@ public class StatsManager : MonoBehaviour
 			foreach (Stat stat in stats) 
 			{
 				if (stat != null) {
-					if (stat.statName == StatName.AttackSpeed)
-						stat.statLevel = playerOneInfo.attackSpeedLevel;
+					if (stat.statName == StatName.RunSpeed)
+						stat.statLevel = GetClosestLevel(StatName.RunSpeed, playerOneInfo.maxMoveSpeed);
 					else if (stat.statName == StatName.maxHealth)
-						stat.statLevel = playerOneInfo.maxHealthLevel;
+						stat.statLevel = GetClosestLevel(StatName.maxHealth, playerHealth.maxHealth);
+					else if (stat.statName == StatName.AttackSpeed)
+						stat.statLevel = GetClosestLevel(StatName.AttackSpeed, playerOneInfo.attackSpeed);
 					else if (stat.statName == StatName.Range)
-						stat.statLevel = playerOneInfo.attackDistanceLevel;
+						stat.statLevel = GetClosestLevel(StatName.Range, playerOneInfo.attackDistance);
 					else if (stat.statName == StatName.Resistance)
-						stat.statLevel = playerOneInfo.resistanceLevel;
-					else if (stat.statName == StatName.RunSpeed)
-						stat.statLevel = playerOneInfo.moveSpeedLevel;
+						stat.statLevel = GetClosestLevel(StatName.Resistance, playerOneInfo.resistance);
 					else if (stat.statName == StatName.Spread)
-						stat.statLevel = playerOneInfo.attackSpreadLevel;
+						stat.statLevel = GetClosestLevel(StatName.Spread, playerOneInfo.attackMinAngle);
 					else if (stat.statName == StatName.Strength)
-						stat.statLevel = playerOneInfo.strengthLevel;
+						stat.statLevel = GetClosestLevel(StatName.Strength, playerOneInfo.strength);
 					else if (stat.statName == StatName.Knockback)
-						stat.statLevel = playerOneInfo.knockbackLevel;
+						stat.statLevel = GetClosestLevel(StatName.Knockback, playerOneInfo.knockback);
 					
 				}
 			}

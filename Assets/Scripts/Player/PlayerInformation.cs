@@ -14,31 +14,11 @@ public class PlayerInformation : MonoBehaviour
 	public float resistance;
 	public float knockback;
 
-	[Header("Stat Levels")]
-	public int attackSpreadLevel = 1;
-	public int attackDistanceLevel = 1;
-	public int moveSpeedLevel = 1;
-	public int strengthLevel = 1;
-	public int attackSpeedLevel = 1;
-	public int resistanceLevel = 1;
-	public int maxHealthLevel = 1;
-	public int knockbackLevel = 1;
-
 	[Header("Charm")]
 	public int charmAmount;
 	public List<Charm> currentCharms =  new List<Charm>();
 
-	private StatsManager statsManager;
 	private Health health;
-
-	private int prevMoveSpeedLevel = 0;
-	private int prevAttackSpreadLevel = 0;
-	private int prevAttackDistanceLevel = 0;
-	private int prevStrengthLevel = 0;
-	private int prevAttackSpeedLevel = 0;
-	private int prevResistanceLevel = 0;
-	private int prevMaxHealthLevel = 0;
-	private int prevKnockbackLevel = 0;
 
 	private bool speedBoost = false;
 
@@ -53,10 +33,6 @@ public class PlayerInformation : MonoBehaviour
 	{
 		health = GetComponent<Health> ();
 		playerAttack = GetComponent<PlayerAttack> ();
-
-		GameObject s = GameObject.FindGameObjectWithTag("StatsManager");
-		if(s)
-			statsManager = s.GetComponent<StatsManager> ();
 
 		if (LevelGenerator.Instance)
 		{
@@ -86,48 +62,15 @@ public class PlayerInformation : MonoBehaviour
 
 	void Update()
 	{
-		//set stat values depending on level
-		if (statsManager) 
-		{
-			if (attackSpreadLevel != prevAttackSpreadLevel)
-				attackMinAngle = statsManager.GetStatValue (StatName.AttackSpeed, attackSpreadLevel); 
-			if (attackDistanceLevel != prevAttackDistanceLevel)
-				attackDistance = statsManager.GetStatValue (StatName.Range, attackDistanceLevel);
-			if (strengthLevel != prevStrengthLevel)
-				strength = statsManager.GetStatValue (StatName.Strength, strengthLevel);
-			if (attackSpeedLevel != prevAttackSpeedLevel)
-				attackSpeed = statsManager.GetStatValue (StatName.AttackSpeed, attackSpeedLevel);
-			if (resistanceLevel != prevResistanceLevel)
-				resistance = statsManager.GetStatValue (StatName.Resistance, resistanceLevel);
-			if (maxHealthLevel != prevMaxHealthLevel)
-				health.maxHealth = (int)statsManager.GetStatValue (StatName.maxHealth, maxHealthLevel); 
-			if (moveSpeedLevel != prevMoveSpeedLevel) 
-				maxMoveSpeed = statsManager.GetStatValue (StatName.RunSpeed, moveSpeedLevel);
-			if (knockbackLevel != prevKnockbackLevel) 
-				knockback = statsManager.GetStatValue (StatName.Knockback, knockbackLevel);
-			
-		}
 		//sets stats depending on weapon values
 		if (currentWeaponStats) 
 		{
-			attackSpreadLevel = currentWeaponStats.spreadLevel;
-			attackSpeedLevel = currentWeaponStats.speedLevel;
-			attackDistanceLevel = currentWeaponStats.distanceLevel;
-			knockbackLevel = currentWeaponStats.knockBackLevel;
+			//get weapon stats
 		} 
 		else 
 		{
 			currentWeaponStats = GetComponentInChildren<WeaponStats> ();
 		}
-
-		//assigns previous level to current stat level
-		prevMoveSpeedLevel = moveSpeedLevel;
-		prevAttackSpreadLevel = attackSpreadLevel;
-		prevAttackDistanceLevel = attackDistanceLevel;
-		prevStrengthLevel = strengthLevel;
-		prevResistanceLevel = resistanceLevel;
-		prevMaxHealthLevel = maxHealthLevel;
-
 
 		//if charm == Magnetic charm
 		MagnetizeItems ();
