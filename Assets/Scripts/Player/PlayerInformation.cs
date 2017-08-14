@@ -13,6 +13,8 @@ public class PlayerInformation : MonoBehaviour
 	public float attackSpeed;
 	public float resistance;
 	public float knockback;
+	public float invincibilityTimeAfterHit = 2;
+	public bool invincible = false;
 
 	[Header("Charm")]
 	public int charmAmount;
@@ -38,6 +40,7 @@ public class PlayerInformation : MonoBehaviour
 		{
 			LevelGenerator.Instance.OnTileEnter += RegenHealth;
 			LevelGenerator.Instance.OnTileEnter += SpeedBuff;
+			LevelGenerator.Instance.OnTileEnter += firstHit;
 		}
 
 		PickupCharm (null);
@@ -183,6 +186,12 @@ public class PlayerInformation : MonoBehaviour
 				health.health += GetCharmFloat ("regenAmount");
 			}
 		}
+	}
+
+	void firstHit()
+	{
+		if (HasCharmBool ("firstHitInvincibility")) 
+			invincible = true;
 	}
 
 	void SpeedBuff()

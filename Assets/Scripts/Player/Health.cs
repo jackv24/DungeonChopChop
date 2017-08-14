@@ -44,6 +44,8 @@ public class Health : MonoBehaviour
 
 	void Start()
 	{
+		OnHealthChange += TemporaryInvincibility;
+
 		if (GetComponentInChildren<Animator> ())
 		{
 			animator = GetComponentInChildren<Animator> ();
@@ -52,6 +54,21 @@ public class Health : MonoBehaviour
 		{
 			playerInfo = GetComponent<PlayerInformation> ();
 		}
+	}
+
+	void TemporaryInvincibility()
+	{
+		if (playerInfo)
+		{
+			StartCoroutine(InvincibilityWait(playerInfo));
+		}
+	}
+
+	IEnumerator InvincibilityWait(PlayerInformation playerInfo)
+	{
+		playerInfo.invincible = true;
+		yield return new WaitForSeconds(playerInfo.invincibilityTimeAfterHit);
+		playerInfo.invincible = false;
 	}
 
 	void Update()
