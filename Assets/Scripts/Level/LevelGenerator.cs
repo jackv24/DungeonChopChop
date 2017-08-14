@@ -34,6 +34,11 @@ public class LevelGenerator : MonoBehaviour
 
 	[HideInInspector]
 	public List<LevelTile> generatedTiles = new List<LevelTile>();
+	[HideInInspector]
+	public LevelTile currentTile;
+
+	[Space()]
+	public bool showDebugMenu = false;
 
 	void Awake()
 	{
@@ -43,9 +48,33 @@ public class LevelGenerator : MonoBehaviour
 	private void Start()
 	{
 		StartCoroutine("Generate");
+
+		showDebugMenu = Application.isEditor;
     }
 
-    public IEnumerator Generate()
+	private void Update()
+	{
+		if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.D))
+			showDebugMenu = !showDebugMenu;
+	}
+
+	private void OnGUI()
+	{
+		if (showDebugMenu)
+		{
+			Vector2 size = new Vector2(Screen.width - 10, 400);
+			Vector2 pos = new Vector2(10, Screen.height - size.y);
+
+			string text = "<b>Debug Menu:</b>\n";
+
+			text += "Current Seed: " + seed + "\n";
+			text += "Current Tile: " + (currentTile ? currentTile.gameObject.name : "NULL") + "\n";
+
+			GUI.Label(new Rect(pos, size), text);
+		}
+	}
+
+	public IEnumerator Generate()
     {
 		if (ShowLoadingScreen)
 		{
@@ -98,8 +127,11 @@ public class LevelGenerator : MonoBehaviour
 
 			LevelTile startTile = startObj.GetComponent<LevelTile>();
 			generatedTiles.Add(startTile);
+			startObj.name += generatedTiles.Count;
 			startTile.ReplaceDoors();
 			startTile.BlockDoors();
+
+			currentTile = startTile;
 
 			//Spawn a tile for every door
             foreach (Transform door in startTile.doors)
@@ -279,6 +311,7 @@ public class LevelGenerator : MonoBehaviour
 		if (nextTile)
 		{
 			generatedTiles.Add(nextTile);
+			nextTile.gameObject.name += generatedTiles.Count;
 
 			//Replace door prefab spawners with actual doors
 			nextTile.ReplaceDoors();

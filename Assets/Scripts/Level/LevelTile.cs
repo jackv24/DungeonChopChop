@@ -241,6 +241,7 @@ public class LevelTile : MonoBehaviour
 				oldTile.mapTile.SetOutside();
 			}
 
+			LevelGenerator.Instance.currentTile = this;
 			LevelGenerator.Instance.EnterTile();
 		}
 		else
