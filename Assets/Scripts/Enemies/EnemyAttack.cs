@@ -141,11 +141,16 @@ public class EnemyAttack : MonoBehaviour
 
 	void OnCollisionEnter(Collision col)
 	{
-		if (col.transform.GetComponent<Health> ())
+		if (col.transform.GetComponent<Health>())
 		{
-			col.transform.GetComponent<Health> ().Damaged ();
-			col.transform.GetComponent<Health> ().AffectHealth (-damageOnTouch);
+			if (col.gameObject.GetComponent<PlayerInformation>())
+			{
+				if (!col.gameObject.GetComponent<PlayerInformation>().invincible)
+				{
+					col.transform.GetComponent<Health>().Damaged();
+					col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch);
+				}
+			}
 		}
 	}
-
 }

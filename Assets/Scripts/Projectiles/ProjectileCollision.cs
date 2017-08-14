@@ -9,16 +9,6 @@ public class ProjectileCollision : MonoBehaviour {
 	[HideInInspector]
 	public float damageMultiplyer;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	void OnCollisionEnter(Collision col)
 	{
 		if (col.collider.GetComponent<Health>())
@@ -26,15 +16,18 @@ public class ProjectileCollision : MonoBehaviour {
 			if (col.gameObject.GetComponent<PlayerInformation> ())
 			{
 				PlayerInformation playerInfo = col.gameObject.GetComponent<PlayerInformation> ();
-				if (playerInfo.HasCharmFloat ("immuneChance"))
+				if (!playerInfo.invincible) 
 				{
-					if (playerInfo.chanceChecker ("immuneChance") == 0)
+					if (playerInfo.HasCharmFloat ("immuneChance")) 
+					{
+						if (playerInfo.chanceChecker ("immuneChance") == 0) 
+						{
+							col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer));
+						}
+					} else 
 					{
 						col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer));
 					}
-				} else
-				{
-					col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer));
 				}
 			} else
 			{
