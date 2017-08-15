@@ -34,6 +34,7 @@ public class LevelTile : MonoBehaviour
 	public Helper.Probability[] fireTiles;
 	public Helper.Probability[] iceTiles;
 	public Helper.Probability[] forestTiles;
+	public Helper.Probability[] dungeonTiles;
 
 	//Shared material that all walls return to after fading (set by first wall fade)
 	private static Material wallMaterial = null;
@@ -48,7 +49,8 @@ public class LevelTile : MonoBehaviour
         Fire,
         Desert,
 		Ice,
-		Forest
+		Forest,
+		Dungeon
     }
 
 	void Start()
@@ -166,6 +168,9 @@ public class LevelTile : MonoBehaviour
 					break;
 				case Biomes.Forest:
 					newGraphic = Helper.GetRandomByProbability(forestTiles);
+					break;
+				case Biomes.Dungeon:
+					newGraphic = Helper.GetRandomByProbability(dungeonTiles);
 					break;
 			}
 

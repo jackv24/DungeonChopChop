@@ -16,6 +16,7 @@ public class MapTile : MonoBehaviour
 	public MaterialPair desertMap;
 	public MaterialPair iceMap;
 	public MaterialPair fireMap;
+	public MaterialPair dungeonMap;
 
 	public LevelTile.Biomes biome;
 
@@ -64,6 +65,8 @@ public class MapTile : MonoBehaviour
 				return iceMap;
 			case LevelTile.Biomes.Forest:
 				return forestMap;
+			case LevelTile.Biomes.Dungeon:
+				return dungeonMap;
 		}
 
 		return null;

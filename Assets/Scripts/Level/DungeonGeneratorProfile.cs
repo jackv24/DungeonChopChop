@@ -7,6 +7,9 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 {
 	public override void Generate(LevelGenerator levelGenerator)
 	{
-		Debug.LogWarning("Dungeon generator incomplete!");
+		foreach(LevelTile tile in levelGenerator.generatedTiles)
+		{
+			tile.Replace(LevelTile.Biomes.Dungeon);
+		}
 	}
 }

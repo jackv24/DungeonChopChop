@@ -6,7 +6,7 @@ public class DungeonTile : MonoBehaviour
 {
 	public GameObject replaceTile;
 
-	public void Replace()
+	public GameObject Replace()
 	{
 		if(replaceTile)
 		{
@@ -16,7 +16,11 @@ public class DungeonTile : MonoBehaviour
 			obj.transform.localRotation = Quaternion.identity;
 
 			//Remove this tile graphic
-			DestroyImmediate(gameObject);
+			Destroy(gameObject);
+
+			return obj;
 		}
+
+		return null;
 	}
 }

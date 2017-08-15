@@ -9,6 +9,7 @@ public class LevelBlock : MonoBehaviour
     public GameObject fireDecalPrefab;
 	public GameObject iceDecalPrefab;
 	public GameObject forestDecalPrefab;
+	public GameObject dungeonDecalPrefab;
 
 	private GameObject oldGraphic = null;
 
@@ -32,6 +33,9 @@ public class LevelBlock : MonoBehaviour
 				break;
 			case LevelTile.Biomes.Forest:
 				newGraphic = forestDecalPrefab;
+				break;
+			case LevelTile.Biomes.Dungeon:
+				newGraphic = dungeonDecalPrefab;
 				break;
 		}
 

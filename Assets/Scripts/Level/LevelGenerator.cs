@@ -7,6 +7,7 @@ public class LevelGenerator : MonoBehaviour
 	public static LevelGenerator Instance;
 
 	public delegate void NormalEvent();
+	public event NormalEvent OnGenerationStart;
 	public event NormalEvent OnGenerationFinished;
 	public event NormalEvent OnTileEnter;
 
@@ -22,7 +23,7 @@ public class LevelGenerator : MonoBehaviour
 
     [Space()]
     [Tooltip("Seed for the level generator. Leave at 0 for random seed.")]
-    public int seed = 0;
+    public int overworldSeed = 0;
 
 	[Header("In-game")]
 	public bool showLoadingScreenInEditor = true;
@@ -47,7 +48,11 @@ public class LevelGenerator : MonoBehaviour
 
 	private void Start()
 	{
-		StartCoroutine("Generate");
+		//If seed is zero, set seed with "arbitrary" value
+		if (overworldSeed == 0)
+			overworldSeed = System.DateTime.Now.Millisecond;
+
+		StartCoroutine(Generate(overworldSeed));
 
 		showDebugMenu = Application.isEditor;
     }
@@ -67,15 +72,18 @@ public class LevelGenerator : MonoBehaviour
 
 			string text = "<b>Debug Menu:</b>\n";
 
-			text += "Current Seed: " + seed + "\n";
+			text += "Seed: " + overworldSeed + "\n\n";
 			text += "Current Tile: " + (currentTile ? currentTile.gameObject.name : "NULL") + "\n";
 
 			GUI.Label(new Rect(pos, size), text);
 		}
 	}
 
-	public IEnumerator Generate()
+	public IEnumerator Generate(int seed)
     {
+		if (OnGenerationStart != null)
+			OnGenerationStart();
+
 		if (ShowLoadingScreen)
 		{
 			if (loadingScreen)
@@ -86,10 +94,6 @@ public class LevelGenerator : MonoBehaviour
 
 			yield return new WaitForSeconds(stageDelay);
 		}
-
-		//If seed is zero, set seed with "arbitrary" value
-		if (seed == 0)
-			seed = System.DateTime.Now.Millisecond;
 
 		//Initialise random with seed
         Random.InitState(seed);
@@ -214,8 +218,10 @@ public class LevelGenerator : MonoBehaviour
 
     public void Clear()
     {
-        while (transform.childCount > 0)
-            DestroyImmediate(transform.GetChild(0).gameObject);
+        for(int i = 0; i < transform.childCount; i++)
+		{
+			Destroy(transform.GetChild(i).gameObject);
+		}
 
 		generatedTiles.Clear();
     }
@@ -390,31 +396,25 @@ public class LevelGenerator : MonoBehaviour
 
     void Finish()
     {
-		if (Application.isPlaying)
+		//Combine level for batching (only when playing)
+		StaticBatchingUtility.Combine(gameObject);
+
+		for (int i = 0; i < generatedTiles.Count; i++)
 		{
-			//Combine level for batching (only when playing)
-			StaticBatchingUtility.Combine(gameObject);
-
-			for (int i = 0; i < generatedTiles.Count; i++)
-			{
-				if (generatedTiles[i].walls)
-					generatedTiles[i].walls.SetActive(false);
-				else
-					Debug.Log("Tile: " + generatedTiles[i].gameObject.name + " has no walls");
-			}
-
-			generatedTiles[0].SetCurrent(null);
+			if (generatedTiles[i].walls)
+				generatedTiles[i].walls.SetActive(false);
+			else
+				Debug.Log("Tile: " + generatedTiles[i].gameObject.name + " has no walls");
 		}
-		else
-		{
-			//If not playing, hide all walls
-			for(int i = 0; i < transform.childCount; i++)
-			{
-				LevelTile tile = transform.GetChild(i).gameObject.GetComponent<LevelTile>();
 
-				if (tile)
-					tile.walls.SetActive(false);
-			}
+		generatedTiles[0].SetCurrent(null);
+
+		//Move players to tile centre
+		PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
+
+		foreach(PlayerInformation playerInfo in playerInfos)
+		{
+			playerInfo.gameObject.transform.position = currentTile.tileOrigin.position + Vector3.up;
 		}
     }
 
@@ -422,5 +422,14 @@ public class LevelGenerator : MonoBehaviour
 	{
 		if (OnTileEnter != null)
 			OnTileEnter();
+	}
+
+	public void RegenerateWithProfile(LevelGeneratorProfile p, int seed)
+	{
+		Clear();
+
+		profile = p;
+
+		StartCoroutine(Generate(seed));
 	}
 }

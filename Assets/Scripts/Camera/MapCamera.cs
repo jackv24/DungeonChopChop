@@ -39,6 +39,9 @@ public class MapCamera : MonoBehaviour
 		height = transform.position.y;
 		cameraFollow = FindObjectOfType<CameraFollow>();
 		cam = GetComponent<Camera>();
+
+		if (LevelGenerator.Instance)
+			LevelGenerator.Instance.OnGenerationStart += ClearIcons;
 	}
 
 	void LateUpdate()
@@ -66,6 +69,16 @@ public class MapCamera : MonoBehaviour
 				LimitToRadius(icon.rectTransform, rawMapRect, mapRadius);
 			}
 		}
+	}
+
+	public void ClearIcons()
+	{
+		foreach(Icon icon in icons)
+		{
+			Destroy(icon.rectTransform.gameObject);
+		}
+
+		icons.Clear();
 	}
 
 	public void RegisterIcon(Sprite sprite, Transform target, Color color, bool setLastSibling = false)

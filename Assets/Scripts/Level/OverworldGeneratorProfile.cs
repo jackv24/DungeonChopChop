@@ -58,6 +58,8 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 		{
 			LevelTile.Biomes biome = LevelTile.Biomes.Grass;
 
+			int seed = Random.Range(0, 1000);
+
 			//Figure out which quadrant to work in
 			switch (i)
 			{
@@ -109,9 +111,14 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 			if (furthestTile)
 			{
 				//Replace dungeon tile
-				furthestTile.Replace();
+				GameObject obj = furthestTile.Replace();
 
 				dungeonCount++;
+
+				DungeonEntrance entrance = obj.GetComponentInChildren<DungeonEntrance>();
+
+				if (entrance)
+					entrance.seed = seed;
 			}
 		}
 
