@@ -124,6 +124,10 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 
 		//Generation did not succed if not enough dungeons
 		if (dungeonCount < 4)
+		{
 			succeeded = false;
+
+			Debug.LogWarning("Level Generator did not generate enough dungeons!");
+		}
 	}
 }
