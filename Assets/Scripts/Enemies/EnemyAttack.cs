@@ -145,10 +145,11 @@ public class EnemyAttack : MonoBehaviour
 		{
 			if (col.gameObject.GetComponent<PlayerInformation>())
 			{
+				PlayerInformation playerInfo = col.gameObject.GetComponent<PlayerInformation> ();
 				if (!col.gameObject.GetComponent<PlayerInformation>().invincible)
 				{
 					col.transform.GetComponent<Health>().Damaged();
-					col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch);
+					col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch * playerInfo.resistance);
 				}
 			}
 		}

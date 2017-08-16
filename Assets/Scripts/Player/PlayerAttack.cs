@@ -23,6 +23,9 @@ public class PlayerAttack : MonoBehaviour
 	public float dashSpeed = 5.0f;
 	public float dashCooldown = 0.5f;
 
+	[Header("Other Vars")]
+	public bool blocking = false;
+
 	bool canAttack = true;
 
 	private PlayerInputs input;
@@ -185,10 +188,14 @@ public class PlayerAttack : MonoBehaviour
 		//do block things
 		normalMoveSpeed = playerInformation.maxMoveSpeed;
 		playerInformation.maxMoveSpeed = playerInformation.maxMoveSpeed * shield.speedDamping;
+		if (playerInformation.HasCharmFloat("blockSpeedMultiplier"))
+			playerInformation.maxMoveSpeed = playerInformation.maxMoveSpeed * shield.speedDamping * playerInformation.GetCharmFloat("blockSpeedMultiplier");
+		
 		if (animator)
 		{
 			animator.SetBool ("Blocking", true);
 		}
+		blocking = true;
 
 		//Debug.Log ("Blocking");
 	}
@@ -201,6 +208,7 @@ public class PlayerAttack : MonoBehaviour
 		{
 			animator.SetBool ("Blocking", false);
 		}
+		blocking = false;
 	}
 
 
