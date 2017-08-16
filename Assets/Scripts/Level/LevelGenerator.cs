@@ -322,9 +322,6 @@ public class LevelGenerator : MonoBehaviour
 			//Replace door prefab spawners with actual doors
 			nextTile.ReplaceDoors();
 
-			//No need to check the door that was just connected
-			nextTile.doors.RemoveAt(connectedDoorIndex);
-
 			nextTile.BlockDoors();
 
 			//Keep running length of trail left
@@ -335,6 +332,10 @@ public class LevelGenerator : MonoBehaviour
 				//Generate another tile for each door
 				foreach (Transform door in nextTile.doors)
 				{
+					//No need to check the door that was just connected
+					if (door == nextTile.doors[connectedDoorIndex])
+						continue;
+
 					GenerateTile(door, trailLength);
 				}
 			}
