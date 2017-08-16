@@ -8,6 +8,7 @@ public class LevelGenerator : MonoBehaviour
 
 	public delegate void NormalEvent();
 	public event NormalEvent OnGenerationStart;
+	public event NormalEvent OnBeforeMergeMeshes;
 	public event NormalEvent OnGenerationFinished;
 	public event NormalEvent OnTileEnter;
 
@@ -397,6 +398,9 @@ public class LevelGenerator : MonoBehaviour
 
     void Finish()
     {
+		if (OnBeforeMergeMeshes != null)
+			OnBeforeMergeMeshes();
+
 		//Combine level for batching (only when playing)
 		StaticBatchingUtility.Combine(gameObject);
 
