@@ -102,26 +102,25 @@ public class LevelGenerator : MonoBehaviour
         //Delete all children
         Clear();
 
-        bool running = true;
-
         int iterations = 0;
 
-        while (running)
+		profile.succeeded = false;
+
+		while (iterations < profile.maxAttempts && !profile.succeeded)
         {
-            iterations++;
+			//Assume succeeded until set otherwise
+			profile.succeeded = true;
 
-			if (iterations > profile.maxAttempts)
-			{
-				Clear();
+			Clear();
 
-				Debug.LogWarning("Level Generator exceeded maximum number of attempts. Check to make sure the max trail length allows for generation of the minimum tile amount, and that all generation conditions are met.");
-
-				break;
-			}
+			iterations++;
 
             if (!profile.startTile)
             {
                 Debug.LogWarning("No start tile defined in level generator profile!");
+
+				//Try new seed
+				overworldSeed = System.DateTime.Now.Millisecond;
 
 				break;
             }
@@ -148,74 +147,76 @@ public class LevelGenerator : MonoBehaviour
 			if (transform.childCount <= profile.minTileAmount && !profile.succeeded)
 			{
 				Clear();
+
+				continue;
 			}
-			else
+
+			if (ShowLoadingScreen && loadingText)
 			{
-				running = false;
-
-				//Assume generation will succeed until told otherwise
-				profile.succeeded = true;
-
-				if (ShowLoadingScreen && loadingText)
-				{
-					yield return new WaitForSeconds(stageDelay);
-					loadingText.Replace("connecting doors");
-					yield return new WaitForSeconds(stageDelay);
-				}
-
-				//Connect all close open doors, block open doors that don't lead anywhere
-				ConnectDoors();
-
-				if (ShowLoadingScreen && loadingText)
-				{
-					loadingText.Replace("skinning level");
-					yield return new WaitForSeconds(stageDelay);
-				}
-
-				//After level layout is generated, generate level type-specific content
-				profile.Generate(this);
-
-				if (ShowLoadingScreen && loadingText)
-				{
-					loadingText.Replace("merging meshes");
-					yield return new WaitForSeconds(stageDelay);
-				}
-
-				//Only apply to tiles when game is running (otherwise it is an in-editor preview)
-				Finish();
-
-				//Wait for players to be spawned, then call done event
-				yield return new WaitForEndOfFrame();
-				if (OnGenerationFinished != null)
-					OnGenerationFinished();
-
-				if (ShowLoadingScreen && loadingText)
-					loadingText.SetFallback();
-
-				if (loadingScreen)
-				{
-					CanvasRenderer[] rends = loadingScreen.GetComponentsInChildren<CanvasRenderer>();
-
-					float elapsedTime = 0;
-
-					while (elapsedTime < fadeOutTime)
-					{
-						foreach (CanvasRenderer rend in rends)
-						{
-							rend.SetAlpha(1 - (elapsedTime / fadeOutTime));
-						}
-
-						yield return new WaitForEndOfFrame();
-						elapsedTime += Time.deltaTime;
-					}
-
-					loadingScreen.SetActive(false);
-				}
+				yield return new WaitForSeconds(stageDelay);
+				loadingText.Replace("connecting doors");
+				yield return new WaitForSeconds(stageDelay);
 			}
+
+			//Connect all close open doors, block open doors that don't lead anywhere
+			ConnectDoors();
+
+			if (ShowLoadingScreen && loadingText)
+			{
+				loadingText.Replace("skinning level");
+				yield return new WaitForSeconds(stageDelay);
+			}
+
+			//After level layout is generated, generate level type-specific content
+			profile.Generate(this);
 
 			startTile.SetCurrent(null);
 		}
-    }
+
+		if (ShowLoadingScreen && loadingText)
+		{
+			loadingText.Replace("merging meshes");
+			yield return new WaitForSeconds(stageDelay);
+		}
+
+		//Merge meshes etc when level is finished generating
+		Finish();
+
+		//Wait for players to be spawned, then call done event
+		yield return new WaitForEndOfFrame();
+		if (OnGenerationFinished != null)
+			OnGenerationFinished();
+
+		if (ShowLoadingScreen && loadingText)
+			loadingText.SetFallback();
+
+		if (loadingScreen)
+		{
+			CanvasRenderer[] rends = loadingScreen.GetComponentsInChildren<CanvasRenderer>();
+
+			float elapsedTime = 0;
+
+			while (elapsedTime < fadeOutTime)
+			{
+				foreach (CanvasRenderer rend in rends)
+				{
+					rend.SetAlpha(1 - (elapsedTime / fadeOutTime));
+				}
+
+				yield return new WaitForEndOfFrame();
+				elapsedTime += Time.deltaTime;
+			}
+
+			loadingScreen.SetActive(false);
+		}
+
+		if (iterations >= profile.maxAttempts)
+		{
+			Debug.LogWarning("Level Generator exceeded maximum number of attempts. Check to make sure the max trail length allows for generation of the minimum tile amount, and that all generation conditions are met.");
+
+			Clear();
+		}
+	}
 
     public void Clear()
     {
