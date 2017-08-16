@@ -20,6 +20,11 @@ public class PlayerInformation : MonoBehaviour
 	public int charmAmount;
 	public List<Charm> currentCharms =  new List<Charm>();
 
+    [Header("Other Vals")]
+    public float timeBetweenFlash = 0.5f;
+    public int amountToFlash = 5;
+    public GameObject invincibleSphere;
+
 	private Health health;
 
 	private bool speedBoost = false;
@@ -30,6 +35,7 @@ public class PlayerInformation : MonoBehaviour
 	private Dictionary<string, float> charmFloats = new Dictionary<string, float>();
 	private Dictionary<string, bool> charmBools = new Dictionary<string, bool>();
 	private LayerMask layerMask;
+    private 
 
 	void Start()
 	{
@@ -40,7 +46,6 @@ public class PlayerInformation : MonoBehaviour
 		{
 			LevelGenerator.Instance.OnTileEnter += RegenHealth;
 			LevelGenerator.Instance.OnTileEnter += SpeedBuff;
-			LevelGenerator.Instance.OnTileEnter += firstHit;
 		}
 
 		PickupCharm (null);
@@ -214,12 +219,6 @@ public class PlayerInformation : MonoBehaviour
 		}
 	}
 
-	void firstHit()
-	{
-		if (HasCharmBool ("firstHitInvincibility")) 
-			invincible = true;
-	}
-
 	void SpeedBuff()
 	{
 		if (!speedBoost) 
@@ -242,6 +241,46 @@ public class PlayerInformation : MonoBehaviour
 		speedBoost = false;
 		maxMoveSpeed = speed;
 	}
+
+    public void HitFlash()
+    {
+        StartCoroutine(DoHitFlash());
+    }
+
+    IEnumerator DoHitFlash()
+    {
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        SkinnedMeshRenderer skinrend = GetComponentInChildren<SkinnedMeshRenderer>();
+        for (int i = 0; i <= amountToFlash; i++)
+        {
+            skinrend.enabled = false;
+            foreach (MeshRenderer renderer in renderers)
+            {
+                renderer.enabled = false;
+            }
+            yield return new WaitForSeconds(timeBetweenFlash);
+
+            skinrend.enabled = true;
+            foreach (MeshRenderer renderer in renderers)
+            {
+                renderer.enabled = true;
+            }
+            yield return new WaitForSeconds(timeBetweenFlash);
+        }
+
+    }
+
+    public void Forcefield(float duration)
+    {
+        StartCoroutine(DoForcefield(duration));
+    }
+
+    IEnumerator DoForcefield(float time)
+    {
+        invincibleSphere.SetActive(true);
+        yield return new WaitForSeconds(time);
+        invincibleSphere.SetActive(false);
+    }
 
 	void OnCollisionEnter(Collision col)
 	{

@@ -67,6 +67,7 @@ public class Health : MonoBehaviour
 	IEnumerator InvincibilityWait(PlayerInformation playerInfo)
 	{
 		playerInfo.invincible = true;
+        playerInfo.HitFlash();
 		yield return new WaitForSeconds(playerInfo.invincibilityTimeAfterHit);
 		playerInfo.invincible = false;
 	}
