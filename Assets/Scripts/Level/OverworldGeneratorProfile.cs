@@ -127,7 +127,7 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 		{
 			succeeded = false;
 
-			Debug.LogWarning("Level Generator did not generate enough dungeons!");
+			Debug.LogWarning("Level Generator did not generate enough dungeons! Amount: " + dungeonCount);
 		}
 	}
 }

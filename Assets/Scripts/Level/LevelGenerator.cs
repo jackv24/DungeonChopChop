@@ -24,14 +24,13 @@ public class LevelGenerator : MonoBehaviour
 
     [Space()]
     [Tooltip("Seed for the level generator. Leave at 0 for random seed.")]
-    public int overworldSeed = 0;
+    public int startSeed = 0;
 
 	[Header("In-game")]
 	public bool showLoadingScreenInEditor = true;
 	public bool ShowLoadingScreen { get { return showLoadingScreenInEditor || !Application.isEditor; } }
 	public GameObject loadingScreen;
 	public ReplaceText loadingText;
-	public float stageDelay = 0.1f;
 	public float fadeOutTime = 0.5f;
 
 	[HideInInspector]
@@ -50,10 +49,10 @@ public class LevelGenerator : MonoBehaviour
 	private void Start()
 	{
 		//If seed is zero, set seed with "arbitrary" value
-		if (overworldSeed == 0)
-			overworldSeed = System.DateTime.Now.Millisecond;
+		if (startSeed == 0)
+			startSeed = System.DateTime.Now.Millisecond;
 
-		StartCoroutine(Generate(overworldSeed));
+		StartCoroutine(Generate(startSeed));
 
 		showDebugMenu = Application.isEditor;
     }
@@ -73,7 +72,7 @@ public class LevelGenerator : MonoBehaviour
 
 			string text = "<b>Debug Menu:</b>\n";
 
-			text += "Seed: " + overworldSeed + "\n\n";
+			text += "Start Seed: " + startSeed + "\n\n";
 			text += "Current Tile: " + (currentTile ? currentTile.gameObject.name : "NULL") + "\n";
 
 			GUI.Label(new Rect(pos, size), text);
@@ -92,15 +91,7 @@ public class LevelGenerator : MonoBehaviour
 
 			if (loadingText)
 				loadingText.Replace("generating tiles");
-
-			yield return new WaitForSeconds(stageDelay);
 		}
-
-		//Initialise random with seed
-        Random.InitState(seed);
-
-        //Delete all children
-        Clear();
 
         int iterations = 0;
 
@@ -112,15 +103,23 @@ public class LevelGenerator : MonoBehaviour
 			profile.succeeded = true;
 
 			Clear();
+			yield return new WaitForEndOfFrame();
+
+			//If first seed did not work, try another
+			if (iterations > 0)
+			{
+				seed = Random.Range(0, 1000);
+
+				Debug.LogWarning("Generation did not succeed, trying seed: " + seed);
+			}
+
+			Random.InitState(seed);
 
 			iterations++;
 
             if (!profile.startTile)
             {
                 Debug.LogWarning("No start tile defined in level generator profile!");
-
-				//Try new seed
-				overworldSeed = System.DateTime.Now.Millisecond;
 
 				break;
             }
@@ -143,29 +142,21 @@ public class LevelGenerator : MonoBehaviour
                 GenerateTile(door, profile.maxTrailLength);
             }
 
-			//If there are too few tiles, delete and roll again
+			//If there are too few tiles, roll again
 			if (transform.childCount <= profile.minTileAmount && !profile.succeeded)
 			{
-				Clear();
-
 				continue;
 			}
 
 			if (ShowLoadingScreen && loadingText)
-			{
-				yield return new WaitForSeconds(stageDelay);
 				loadingText.Replace("connecting doors");
-				yield return new WaitForSeconds(stageDelay);
-			}
 
 			//Connect all close open doors, block open doors that don't lead anywhere
 			ConnectDoors();
+			yield return new WaitForEndOfFrame();
 
 			if (ShowLoadingScreen && loadingText)
-			{
 				loadingText.Replace("skinning level");
-				yield return new WaitForSeconds(stageDelay);
-			}
 
 			//After level layout is generated, generate level type-specific content
 			profile.Generate(this);
@@ -174,11 +165,13 @@ public class LevelGenerator : MonoBehaviour
 		}
 
 		if (ShowLoadingScreen && loadingText)
-		{
 			loadingText.Replace("merging meshes");
-			yield return new WaitForSeconds(stageDelay);
-		}
 
+		yield return new WaitForEndOfFrame();
+		if (OnBeforeMergeMeshes != null)
+			OnBeforeMergeMeshes();
+
+		yield return new WaitForEndOfFrame();
 		//Merge meshes etc when level is finished generating
 		Finish();
 
@@ -213,16 +206,16 @@ public class LevelGenerator : MonoBehaviour
 		if (iterations >= profile.maxAttempts)
 		{
 			Debug.LogWarning("Level Generator exceeded maximum number of attempts. Check to make sure the max trail length allows for generation of the minimum tile amount, and that all generation conditions are met.");
-
-			Clear();
 		}
 	}
 
     public void Clear()
     {
-        for(int i = 0; i < transform.childCount; i++)
+		int childAmount = transform.childCount;
+
+		for (int i = 0; i < childAmount; i++)
 		{
-			Destroy(transform.GetChild(i).gameObject);
+			DestroyImmediate(transform.GetChild(0).gameObject);
 		}
 
 		generatedTiles.Clear();
@@ -399,9 +392,6 @@ public class LevelGenerator : MonoBehaviour
 
     void Finish()
     {
-		if (OnBeforeMergeMeshes != null)
-			OnBeforeMergeMeshes();
-
 		//Combine level for batching (only when playing)
 		StaticBatchingUtility.Combine(gameObject);
 
