@@ -1,28 +1,46 @@
 fileFormatVersion: 2
-guid: 30a811adab1b95745ac84dc0116fa202
-timeCreated: 1502855717
+guid: 1b39d34cfb0b40b449ab8c85200a5fee
+timeCreated: 1502856957
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: eye_mesh
-    100002: horn_mesh
-    100004: innerlayer_mesh
-    100006: outerlayer_mesh
-    100008: //RootNode
-    400000: eye_mesh
-    400002: horn_mesh
-    400004: innerlayer_mesh
-    400006: outerlayer_mesh
-    400008: //RootNode
-    2300000: eye_mesh
-    2300002: horn_mesh
-    2300004: innerlayer_mesh
-    2300006: outerlayer_mesh
-    3300000: eye_mesh
-    3300002: horn_mesh
-    3300004: innerlayer_mesh
-    3300006: outerlayer_mesh
+    100000: back_JNT
+    100002: backFoot_JNT
+    100004: eye_JNT1
+    100006: eye_mesh
+    100008: front_JNT
+    100010: frontFoot_JNT
+    100012: head_END
+    100014: head_JNT
+    100016: horn_mesh
+    100018: innerlayer_mesh
+    100020: left_JNT
+    100022: leftFoot_JNT
+    100024: outerlayer_mesh
+    100026: right_JNT
+    100028: rightFoot_JNT
+    100030: root_JNT
+    100032: slime_mesh1
+    100034: //RootNode
+    400000: back_JNT
+    400002: backFoot_JNT
+    400004: eye_JNT1
+    400006: eye_mesh
+    400008: front_JNT
+    400010: frontFoot_JNT
+    400012: head_END
+    400014: head_JNT
+    400016: horn_mesh
+    400018: innerlayer_mesh
+    400020: left_JNT
+    400022: leftFoot_JNT
+    400024: outerlayer_mesh
+    400026: right_JNT
+    400028: rightFoot_JNT
+    400030: root_JNT
+    400032: slime_mesh1
+    400034: //RootNode
     4300000: outerlayer_mesh
     4300002: horn_mesh
     4300004: innerlayer_mesh
@@ -31,6 +49,10 @@ ModelImporter:
     7400002: Idle
     7400004: GetHit
     9500000: //RootNode
+    13700000: eye_mesh
+    13700002: horn_mesh
+    13700004: innerlayer_mesh
+    13700006: outerlayer_mesh
   materials:
     importMaterials: 0
     materialName: 0
@@ -79,13 +101,39 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: eye_mesh
+      - path: root_JNT
         weight: 1
-      - path: horn_mesh
+      - path: root_JNT/backFoot_JNT
         weight: 1
-      - path: innerlayer_mesh
+      - path: root_JNT/frontFoot_JNT
         weight: 1
-      - path: outerlayer_mesh
+      - path: root_JNT/head_JNT
+        weight: 1
+      - path: root_JNT/head_JNT/back_JNT
+        weight: 1
+      - path: root_JNT/head_JNT/eye_JNT1
+        weight: 1
+      - path: root_JNT/head_JNT/front_JNT
+        weight: 1
+      - path: root_JNT/head_JNT/head_END
+        weight: 1
+      - path: root_JNT/head_JNT/left_JNT
+        weight: 1
+      - path: root_JNT/head_JNT/right_JNT
+        weight: 1
+      - path: root_JNT/leftFoot_JNT
+        weight: 1
+      - path: root_JNT/rightFoot_JNT
+        weight: 1
+      - path: slime_mesh1
+        weight: 1
+      - path: slime_mesh1/eye_mesh
+        weight: 1
+      - path: slime_mesh1/horn_mesh
+        weight: 1
+      - path: slime_mesh1/innerlayer_mesh
+        weight: 1
+      - path: slime_mesh1/outerlayer_mesh
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
@@ -117,13 +165,39 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: eye_mesh
+      - path: root_JNT
         weight: 1
-      - path: horn_mesh
+      - path: root_JNT/backFoot_JNT
         weight: 1
-      - path: innerlayer_mesh
+      - path: root_JNT/frontFoot_JNT
         weight: 1
-      - path: outerlayer_mesh
+      - path: root_JNT/head_JNT
+        weight: 1
+      - path: root_JNT/head_JNT/back_JNT
+        weight: 1
+      - path: root_JNT/head_JNT/eye_JNT1
+        weight: 1
+      - path: root_JNT/head_JNT/front_JNT
+        weight: 1
+      - path: root_JNT/head_JNT/head_END
+        weight: 1
+      - path: root_JNT/head_JNT/left_JNT
+        weight: 1
+      - path: root_JNT/head_JNT/right_JNT
+        weight: 1
+      - path: root_JNT/leftFoot_JNT
+        weight: 1
+      - path: root_JNT/rightFoot_JNT
+        weight: 1
+      - path: slime_mesh1
+        weight: 1
+      - path: slime_mesh1/eye_mesh
+        weight: 1
+      - path: slime_mesh1/horn_mesh
+        weight: 1
+      - path: slime_mesh1/innerlayer_mesh
+        weight: 1
+      - path: slime_mesh1/outerlayer_mesh
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
@@ -155,13 +229,39 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: eye_mesh
+      - path: root_JNT
         weight: 1
-      - path: horn_mesh
+      - path: root_JNT/backFoot_JNT
         weight: 1
-      - path: innerlayer_mesh
+      - path: root_JNT/frontFoot_JNT
         weight: 1
-      - path: outerlayer_mesh
+      - path: root_JNT/head_JNT
+        weight: 1
+      - path: root_JNT/head_JNT/back_JNT
+        weight: 1
+      - path: root_JNT/head_JNT/eye_JNT1
+        weight: 1
+      - path: root_JNT/head_JNT/front_JNT
+        weight: 1
+      - path: root_JNT/head_JNT/head_END
+        weight: 1
+      - path: root_JNT/head_JNT/left_JNT
+        weight: 1
+      - path: root_JNT/head_JNT/right_JNT
+        weight: 1
+      - path: root_JNT/leftFoot_JNT
+        weight: 1
+      - path: root_JNT/rightFoot_JNT
+        weight: 1
+      - path: slime_mesh1
+        weight: 1
+      - path: slime_mesh1/eye_mesh
+        weight: 1
+      - path: slime_mesh1/horn_mesh
+        weight: 1
+      - path: slime_mesh1/innerlayer_mesh
+        weight: 1
+      - path: slime_mesh1/outerlayer_mesh
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}

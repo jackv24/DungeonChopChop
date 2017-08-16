@@ -42,10 +42,6 @@ public class MoveEditor : Editor {
 			enemyMove.power = EditorGUILayout.FloatField ("The amount of power on impulse: ", enemyMove.power); 
 			enemyMove.chargeUptime = EditorGUILayout.FloatField ("The time it takes to charge up: ", enemyMove.chargeUptime); 
 		}
-		if (enemyMove.moveTimes == MoveTimes.Hop) {
-			enemyMove.power = EditorGUILayout.FloatField ("The amount of power on impulse: ", enemyMove.power); 
-			enemyMove.jumpPower = EditorGUILayout.FloatField ("The amount of jump power: ", enemyMove.jumpPower); 
-		}
 		if (enemyMove.movementWhilstIdle == MovementWhilstIdle.Roam) {
 			enemyMove.minAdjTime = EditorGUILayout.FloatField ("Min time between direction change: ", enemyMove.minAdjTime); 
 			enemyMove.maxAdjTime = EditorGUILayout.FloatField ("Max time between direction change: ", enemyMove.maxAdjTime); 

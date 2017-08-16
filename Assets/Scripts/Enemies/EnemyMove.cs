@@ -543,9 +543,15 @@ public class EnemyMove : MonoBehaviour
 	{
 		animator.SetTrigger ("Hop");
 		BasicFollow ();
-		if (isGrounded) {
-			rb.AddForce (transform.forward * power, ForceMode.Impulse);
-			rb.AddForce (transform.up * jumpPower, ForceMode.Impulse);
+		if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Midair"))
+		{
+            //ignore collisions between enemy and player
+            Physics.IgnoreLayerCollision(11, 14, true);
+		}
+		else
+		{
+            //stop ignoring collisions between enemy and player
+            Physics.IgnoreLayerCollision(11, 14, false);
 		}
 	}
 
