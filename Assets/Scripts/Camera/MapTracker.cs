@@ -25,8 +25,19 @@ public class MapTracker : MonoBehaviour
 					tile.OnTileEnter += Register;
 			}
 			else
-				Register();
+			{
+				if (LevelGenerator.Instance)
+					LevelGenerator.Instance.OnGenerationFinished += Register;
+				else
+					Register();
+			}
 		}
+	}
+
+	void OnDestroy()
+	{
+		if (LevelGenerator.Instance)
+			LevelGenerator.Instance.OnGenerationFinished -= Register;
 	}
 
 	void Register()
