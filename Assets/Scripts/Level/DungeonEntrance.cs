@@ -13,10 +13,17 @@ public class DungeonEntrance : MonoBehaviour
 		//If player walked into this door
 		if (col.gameObject.layer == 14 && col.GetType() == typeof(CharacterController))
 		{
-			if(LevelGenerator.Instance && profile)
-			{
-				LevelGenerator.Instance.RegenerateWithProfile(profile, seed);
-			}
+			StartCoroutine(EnterDelayed());
+		}
+	}
+
+	IEnumerator EnterDelayed()
+	{
+		yield return new WaitForEndOfFrame();
+
+		if (LevelGenerator.Instance && profile)
+		{
+			LevelGenerator.Instance.RegenerateWithProfile(profile, seed);
 		}
 	}
 }

@@ -37,6 +37,8 @@ public class CameraFollow : MonoBehaviour
 
 	public Vector3 targetPos;
 
+	private bool resetCamera = true;
+
 	void Awake()
 	{
 		Instance = this;
@@ -48,6 +50,14 @@ public class CameraFollow : MonoBehaviour
 
 		foreach (PlayerInformation p in playerInfos)
 			players.Add(p.transform);
+
+		if(LevelGenerator.Instance)
+		{
+			LevelGenerator.Instance.OnGenerationFinished += delegate
+			{
+				resetCamera = true;
+			};
+		}
 	}
 
     void LateUpdate()
@@ -86,7 +96,14 @@ public class CameraFollow : MonoBehaviour
 		camPos += Vector3.up * height;
         camPos += Vector3.forward * zOffset;
 
-        transform.position = Vector3.Lerp(transform.position, camPos, followSpeed * Time.deltaTime);
+		if (resetCamera)
+		{
+			resetCamera = false;
+
+			transform.position = camPos;
+		}
+		else
+			transform.position = Vector3.Lerp(transform.position, camPos, followSpeed * Time.deltaTime);
     }
 
 	public void UpdateCameraBounds(Bounds tileBounds)

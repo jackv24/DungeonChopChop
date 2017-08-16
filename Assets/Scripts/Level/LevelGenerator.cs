@@ -150,13 +150,14 @@ public class LevelGenerator : MonoBehaviour
 
 			if (ShowLoadingScreen && loadingText)
 				loadingText.Replace("connecting doors");
+			yield return new WaitForEndOfFrame();
 
 			//Connect all close open doors, block open doors that don't lead anywhere
 			ConnectDoors();
-			yield return new WaitForEndOfFrame();
 
 			if (ShowLoadingScreen && loadingText)
 				loadingText.Replace("skinning level");
+			yield return new WaitForEndOfFrame();
 
 			//After level layout is generated, generate level type-specific content
 			profile.Generate(this);
@@ -166,8 +167,8 @@ public class LevelGenerator : MonoBehaviour
 
 		if (ShowLoadingScreen && loadingText)
 			loadingText.Replace("merging meshes");
-
 		yield return new WaitForEndOfFrame();
+
 		if (OnBeforeMergeMeshes != null)
 			OnBeforeMergeMeshes();
 
@@ -182,6 +183,7 @@ public class LevelGenerator : MonoBehaviour
 
 		if (ShowLoadingScreen && loadingText)
 			loadingText.SetFallback();
+		yield return new WaitForEndOfFrame();
 
 		if (loadingScreen)
 		{
