@@ -75,8 +75,11 @@ public class PlayerInformation : MonoBehaviour
 			currentWeaponStats = GetComponentInChildren<WeaponStats> ();
 		}
 
-		//if charm == Magnetic charm
+		if (HasCharmFloat ("resistanceMultiplier"))
+			resistance = resistance * GetCharmFloat ("resistanceMuliplier");
+			
 		MagnetizeItems ();
+		PullEnemies ();
 	}
 
 	public void PickupCharm(Charm charm)
@@ -165,6 +168,29 @@ public class PlayerInformation : MonoBehaviour
 						{
 							//moves those items towards the player
 							item.transform.position = Vector3.MoveTowards (item.transform.position, transform.position, GetCharmFloat ("radialAbsorbSpeed") * Time.deltaTime);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	void PullEnemies()
+	{
+		if (HasCharmBool ("pullEnemy")) {
+			if (GetCharmBool ("pullEnemy")) 
+			{
+				//gets the pull enemy charm
+				foreach (Charm charm in currentCharms) 
+				{
+					//gets all items in radius
+					Collider[] enemies = Physics.OverlapSphere (transform.position, GetCharmFloat ("radialValue"), layerMask);
+					if (enemies.Length > 0) 
+					{
+						foreach (Collider enemy in enemies) 
+						{
+							//moves those enemies towards the player
+							enemy.transform.position = Vector3.MoveTowards (enemy.transform.position, transform.position, GetCharmFloat ("radialPullSpeed") * Time.deltaTime);
 						}
 					}
 				}

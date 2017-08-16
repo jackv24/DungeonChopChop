@@ -22,11 +22,11 @@ public class ProjectileCollision : MonoBehaviour {
 					{
 						if (playerInfo.chanceChecker ("immuneChance") == 0) 
 						{
-							col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer));
+							col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer * playerInfo.resistance));
 						}
 					} else 
 					{
-						col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer));
+						col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer * playerInfo.resistance));
 					}
 				}
 			} else

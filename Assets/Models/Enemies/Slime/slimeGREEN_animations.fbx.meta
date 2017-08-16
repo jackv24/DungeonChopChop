@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9220ef8b7a4825c4e9f5e9920a595e37
-timeCreated: 1502345090
+guid: 30a811adab1b95745ac84dc0116fa202
+timeCreated: 1502855717
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
@@ -24,11 +24,11 @@ ModelImporter:
     3300004: innerlayer_mesh
     3300006: outerlayer_mesh
     4300000: outerlayer_mesh
-    4300002: innerlayer_mesh
-    4300004: horn_mesh
+    4300002: horn_mesh
+    4300004: innerlayer_mesh
     4300006: eye_mesh
-    7400000: Idle
-    7400002: Hop
+    7400000: Hop
+    7400002: Idle
     7400004: GetHit
     9500000: //RootNode
   materials:
@@ -53,7 +53,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Hop
       takeName: Take 001
       firstFrame: 1
       lastFrame: 40
@@ -79,19 +79,19 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
+      - path: eye_mesh
+        weight: 1
+      - path: horn_mesh
+        weight: 1
+      - path: innerlayer_mesh
+        weight: 1
       - path: outerlayer_mesh
-        weight: 1
-      - path: outerlayer_mesh/innerlayer_mesh
-        weight: 1
-      - path: outerlayer_mesh/innerlayer_mesh/horn_mesh
-        weight: 1
-      - path: outerlayer_mesh/innerlayer_mesh/horn_mesh/eye_mesh
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Hop
+      name: Idle
       takeName: Take 001
       firstFrame: 60
       lastFrame: 94
@@ -101,7 +101,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -117,13 +117,13 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
+      - path: eye_mesh
+        weight: 1
+      - path: horn_mesh
+        weight: 1
+      - path: innerlayer_mesh
+        weight: 1
       - path: outerlayer_mesh
-        weight: 1
-      - path: outerlayer_mesh/innerlayer_mesh
-        weight: 1
-      - path: outerlayer_mesh/innerlayer_mesh/horn_mesh
-        weight: 1
-      - path: outerlayer_mesh/innerlayer_mesh/horn_mesh/eye_mesh
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
@@ -131,7 +131,7 @@ ModelImporter:
     - serializedVersion: 16
       name: GetHit
       takeName: Take 001
-      firstFrame: 108
+      firstFrame: 126
       lastFrame: 156
       wrapMode: 0
       orientationOffsetY: 0
@@ -155,13 +155,13 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
+      - path: eye_mesh
+        weight: 1
+      - path: horn_mesh
+        weight: 1
+      - path: innerlayer_mesh
+        weight: 1
       - path: outerlayer_mesh
-        weight: 1
-      - path: outerlayer_mesh/innerlayer_mesh
-        weight: 1
-      - path: outerlayer_mesh/innerlayer_mesh/horn_mesh
-        weight: 1
-      - path: outerlayer_mesh/innerlayer_mesh/horn_mesh/eye_mesh
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
