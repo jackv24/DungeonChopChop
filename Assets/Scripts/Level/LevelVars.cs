@@ -10,6 +10,10 @@ public class LevelVars : MonoBehaviour
 	public GameObject enemySpawnEffect;
 	public float enemySpawnDelay = 0.5f;
 
+	[Header("Chest Spawning")]
+	public GameObject normalChestPrefab;
+	public GameObject specialChestPrefab;
+
 	[Header("Misc")]
 	public GameObject droppedCharmPrefab;
 

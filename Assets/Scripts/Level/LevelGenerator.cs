@@ -126,7 +126,7 @@ public class LevelGenerator : MonoBehaviour
 			generatedTiles.Add(startTile);
 			startObj.name += generatedTiles.Count;
 			startTile.ReplaceDoors();
-			startTile.BlockDoors();
+			startTile.BlockDoors(-1);
 
 			currentTile = startTile;
 
@@ -163,6 +163,9 @@ public class LevelGenerator : MonoBehaviour
 		yield return new WaitForEndOfFrame();
 		//Merge meshes etc when level is finished generating
 		Finish();
+
+		//Spawn chests AFTER meshes are merged
+		SpawnChests();
 
 		//Wait for players to be spawned, then call done event
 		yield return new WaitForEndOfFrame();
@@ -307,7 +310,7 @@ public class LevelGenerator : MonoBehaviour
 			//Replace door prefab spawners with actual doors
 			nextTile.ReplaceDoors();
 
-			nextTile.BlockDoors();
+			nextTile.BlockDoors(connectedDoorIndex);
 
 			//Keep running length of trail left
 			trailLength--;
@@ -403,6 +406,21 @@ public class LevelGenerator : MonoBehaviour
 			playerInfo.gameObject.transform.position = currentTile.tileOrigin.position + Vector3.up;
 		}
     }
+
+	void SpawnChests()
+	{
+		ChestSpawn[] spawns = FindObjectsOfType<ChestSpawn>();
+
+		for(int i = 0; i < spawns.Length; i++)
+		{
+			float value = Random.Range(0, 1f);
+
+			if (value <= profile.chestSpawnProbability)
+				spawns[i].Spawn();
+			else
+				Destroy(spawns[i].gameObject);
+		}
+	}
 
 	public void EnterTile()
 	{

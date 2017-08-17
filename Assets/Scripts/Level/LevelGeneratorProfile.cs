@@ -32,6 +32,10 @@ public class LevelGeneratorProfile : ScriptableObject
 	[Space()]
 	public List<GeneratorTile> tilePool = new List<GeneratorTile>();
 
+	[Header("Item Spawning")]
+	[Range(0, 1f)]
+	public float chestSpawnProbability = 0.1f;
+
 	public virtual void Generate(LevelGenerator levelGenerator)
 	{
 		//Default generate function does nothing

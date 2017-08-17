@@ -91,7 +91,7 @@ public class LevelTile : MonoBehaviour
 		return pos;
 	}
 
-	public void BlockDoors()
+	public void BlockDoors(int ignoreIndex)
 	{
 		if (minBlocks < 0)
 			minBlocks = 0;
@@ -106,6 +106,10 @@ public class LevelTile : MonoBehaviour
 		while(spawnedBlockAmount < blockAmount)
 		{
 			int index = Random.Range(0, doors.Count);
+
+			//Don't block the door that this tile was spawned from
+			if (index == ignoreIndex)
+				continue;
 
             if (blockedDoorPrefab)
             {

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -146,19 +145,10 @@ public class EnemySpawner : MonoBehaviour
 		{
 			foreach (EnemySpawnPair spawn in toSpawn)
 			{
-				GameObject enemy = ObjectPooler.GetPooledObject(spawn.prefab);
+				GameObject enemy = ObjectPooler.GetPooledObject(spawn.prefab, spawn.spawnPoint.position + Vector3.up);
 
 				if (enemy)
 				{
-                    NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
-
-                    if (agent)
-                        agent.Warp(spawn.spawnPoint.position + Vector3.up);
-                    else
-					    enemy.transform.position = spawn.spawnPoint.position + Vector3.up;
-                    
-					enemy.transform.rotation = Quaternion.identity;
-
 					spawnedEnemies.Add(enemy);
 
 					if (newEnemies)
