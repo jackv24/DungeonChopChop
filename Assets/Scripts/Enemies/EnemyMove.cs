@@ -290,12 +290,6 @@ public class EnemyMove : MonoBehaviour
 				previousPlayerDistance = distance;
 			}
 		}
-		//if velocity is 0, set idle to false
-//		Debug.Log(rb.velocity.magnitude);
-//		if (rb.velocity.magnitude == 0)
-//		{
-//			StopRunAnimation ();
-//		}
 	}
 
 	void PlayRunAnimation()

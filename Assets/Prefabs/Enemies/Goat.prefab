@@ -285,6 +285,8 @@ GameObject:
   - component: {fileID: 114925325827139408}
   - component: {fileID: 114786262747269572}
   - component: {fileID: 65025995231616882}
+  - component: {fileID: 195603989886451894}
+  - component: {fileID: 114642048521526954}
   m_Layer: 11
   m_Name: Goat
   m_TagString: Enemy
@@ -602,6 +604,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!54 &54055866780958592
 Rigidbody:
@@ -653,7 +656,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1938501127172918}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f729e095034461342b067c758042ecf1, type: 3}
   m_Name: 
@@ -715,6 +718,19 @@ MonoBehaviour:
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
+--- !u!114 &114642048521526954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938501127172918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ae9153fef988a4a9fc72c2f8a71505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingType: 1
+  timeBetweenRoam: 2
 --- !u!114 &114786262747269572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -796,6 +812,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
@@ -841,6 +858,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
@@ -867,3 +885,24 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.08810042, y: 0.07222037, z: 0.007144153}
     m_Extent: {x: 0.33214915, y: 0.3484298, z: 0.23778892}
   m_DirtyAABB: 0
+--- !u!195 &195603989886451894
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938501127172918}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
