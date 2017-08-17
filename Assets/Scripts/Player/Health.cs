@@ -56,7 +56,7 @@ public class Health : MonoBehaviour
 		}
 	}
 
-	void TemporaryInvincibility()
+	public void TemporaryInvincibility()
 	{
 		if (playerInfo)
 		{
