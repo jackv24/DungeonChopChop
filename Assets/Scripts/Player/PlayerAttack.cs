@@ -62,6 +62,7 @@ public class PlayerAttack : MonoBehaviour
 			input = new PlayerInputs ();
 			input.SetupBindings ();
 		}
+        normalMoveSpeed = playerInformation.maxMoveSpeed;
 	}
 
 
@@ -76,10 +77,10 @@ public class PlayerAttack : MonoBehaviour
 		attackMinAngle = playerInformation.attackMinAngle;
 		attackDistance = playerInformation.attackDistance;
 		//check if can actually attack
-		if (canAttack) 
-		{
+		//if (canAttack) 
+		//{
 			//do basic attack
-			if (input.BasicAttack.WasPressed) 
+			if (input.BasicAttack) 
 			{
 				CheckCombo ();
 				//if combo is equal to or greater than 3, do rapid slash
@@ -88,16 +89,16 @@ public class PlayerAttack : MonoBehaviour
 					//rapid slash
 					doRapidSlash ();
 				} 
-				else 
-				{
-					//basic slash
-					if (!animator.GetCurrentAnimatorStateInfo (1).IsTag ("Attacking"))
-					{
-						doSlash ();
-					}
-				}
+                //basic slash
+                if (!animator.GetCurrentAnimatorStateInfo (1).IsTag ("Attacking"))
+                {
+                    if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Blocking"))
+                    {
+                        doSlash();
+                    }
+                }
 			} 
-			else if (input.DashSlash.WasPressed) 
+			if (input.DashSlash.WasPressed) 
 			{
 				//dash slash
 				if (canDash)
@@ -105,23 +106,24 @@ public class PlayerAttack : MonoBehaviour
 					doDash ();
 				}
 			} 
-			else if (input.Block.WasPressed) 
+			if (input.Block) 
 			{
 				//block
 				if (shield) 
 				{
-					doBlock ();
+                    if (!animator.GetCurrentAnimatorStateInfo (1).IsTag ("Attacking"))
+					    DoBlock ();
 				}
 			}
-			else if (input.Block.WasReleased) 
+			if (input.Block.WasReleased) 
 			{
 				//block
 				if (shield) 
 				{
-					stopBlock ();
+					StopBlock ();
 				}
 			}
-		}
+		//}
 	}
 
 	void FixedUpdate()
@@ -183,11 +185,13 @@ public class PlayerAttack : MonoBehaviour
 	//-------------------------- Block
 
 
-	void doBlock()
+	void DoBlock()
 	{
 		//do block things
-		normalMoveSpeed = playerInformation.maxMoveSpeed;
-		playerInformation.maxMoveSpeed = playerInformation.maxMoveSpeed * shield.speedDamping;
+        if (playerInformation.maxMoveSpeed == normalMoveSpeed)
+        {
+            playerInformation.maxMoveSpeed = playerInformation.maxMoveSpeed * shield.speedDamping;
+        }
 		if (playerInformation.HasCharmFloat("blockSpeedMultiplier"))
 			playerInformation.maxMoveSpeed = playerInformation.maxMoveSpeed * shield.speedDamping * playerInformation.GetCharmFloat("blockSpeedMultiplier");
 		
@@ -200,7 +204,7 @@ public class PlayerAttack : MonoBehaviour
 		//Debug.Log ("Blocking");
 	}
 
-	void stopBlock()
+	void StopBlock()
 	{
 		//stop block things
 		playerInformation.maxMoveSpeed = normalMoveSpeed;
@@ -236,9 +240,16 @@ public class PlayerAttack : MonoBehaviour
 		obj.GetComponent<Rigidbody> ().AddForce (transform.forward * playerInformation.knockback * playerInformation.GetCharmFloat("kockbackMultiplier"), ForceMode.Impulse);
 	}
 
+    IEnumerator boolWait(string boolName)
+    {
+        animator.SetBool (boolName, true);
+        yield return new WaitForEndOfFrame();
+        animator.SetBool (boolName, false);
+    }
+
 	void doSlash()
 	{
-		animator.SetTrigger ("Attack");
+        StartCoroutine(boolWait("Attack"));
 		//do slash things
 		Collider[] colliders = Physics.OverlapSphere(transform.position, attackDistance * playerInformation.GetCharmFloat("attackDistanceMultiplier"));
 		foreach (Collider col in colliders) {
