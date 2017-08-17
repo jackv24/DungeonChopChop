@@ -213,6 +213,8 @@ GameObject:
   - component: {fileID: 33081308235559958}
   - component: {fileID: 23597048324541558}
   - component: {fileID: 114477483672140604}
+  - component: {fileID: 114899894684300704}
+  - component: {fileID: 135784751365130204}
   m_Layer: 14
   m_Name: ForceField
   m_TagString: Untagged
@@ -1104,6 +1106,17 @@ MonoBehaviour:
   timeBetweenFlash: 0.05
   amountToFlash: 5
   invincibleSphere: {fileID: 1522217988136000}
+--- !u!114 &114899894684300704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522217988136000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4d2ed097b2cbab489d2676ac1f06f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114910671819656350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1121,6 +1134,18 @@ MonoBehaviour:
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
+--- !u!135 &135784751365130204
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522217988136000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.000000029802322, z: 0}
 --- !u!136 &136248845063515268
 CapsuleCollider:
   m_ObjectHideFlags: 1

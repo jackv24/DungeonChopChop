@@ -46,6 +46,7 @@ public class PlayerInformation : MonoBehaviour
 		{
 			LevelGenerator.Instance.OnTileEnter += RegenHealth;
 			LevelGenerator.Instance.OnTileEnter += SpeedBuff;
+            LevelGenerator.Instance.OnTileEnter += Forcefield;
 		}
 
 		PickupCharm (null);
@@ -270,16 +271,10 @@ public class PlayerInformation : MonoBehaviour
 
     }
 
-    public void Forcefield(float duration)
+    public void Forcefield()
     {
-        StartCoroutine(DoForcefield(duration));
-    }
-
-    IEnumerator DoForcefield(float time)
-    {
-        invincibleSphere.SetActive(true);
-        yield return new WaitForSeconds(time);
-        invincibleSphere.SetActive(false);
+        if (HasCharmBool("firstHitInvincible"))
+            invincibleSphere.SetActive(true);
     }
 
 	void OnCollisionEnter(Collision col)
