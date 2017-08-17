@@ -126,7 +126,7 @@ public class LevelGenerator : MonoBehaviour
 			generatedTiles.Add(startTile);
 			startObj.name += generatedTiles.Count;
 			startTile.ReplaceDoors();
-			startTile.BlockDoors();
+			startTile.BlockDoors(-1);
 
 			currentTile = startTile;
 
@@ -310,7 +310,7 @@ public class LevelGenerator : MonoBehaviour
 			//Replace door prefab spawners with actual doors
 			nextTile.ReplaceDoors();
 
-			nextTile.BlockDoors();
+			nextTile.BlockDoors(connectedDoorIndex);
 
 			//Keep running length of trail left
 			trailLength--;
