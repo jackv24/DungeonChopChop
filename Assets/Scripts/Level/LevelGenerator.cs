@@ -84,14 +84,8 @@ public class LevelGenerator : MonoBehaviour
 		if (OnGenerationStart != null)
 			OnGenerationStart();
 
-		if (ShowLoadingScreen)
-		{
-			if (loadingScreen)
-				loadingScreen.SetActive(true);
-
-			if (loadingText)
-				loadingText.Replace("generating tiles");
-		}
+		if (ShowLoadingScreen && loadingScreen)
+			loadingScreen.SetActive(true);
 
         int iterations = 0;
 
@@ -148,15 +142,11 @@ public class LevelGenerator : MonoBehaviour
 				continue;
 			}
 
-			if (ShowLoadingScreen && loadingText)
-				loadingText.Replace("connecting doors");
 			yield return new WaitForEndOfFrame();
 
 			//Connect all close open doors, block open doors that don't lead anywhere
 			ConnectDoors();
 
-			if (ShowLoadingScreen && loadingText)
-				loadingText.Replace("skinning level");
 			yield return new WaitForEndOfFrame();
 
 			//After level layout is generated, generate level type-specific content
@@ -165,8 +155,6 @@ public class LevelGenerator : MonoBehaviour
 			startTile.SetCurrent(null);
 		}
 
-		if (ShowLoadingScreen && loadingText)
-			loadingText.Replace("merging meshes");
 		yield return new WaitForEndOfFrame();
 
 		if (OnBeforeMergeMeshes != null)

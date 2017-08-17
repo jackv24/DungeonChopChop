@@ -182,7 +182,7 @@ public class LevelTile : MonoBehaviour
                 obj.transform.localRotation = currentGraphic.transform.localRotation;
 
 				//Destroy old graphic
-				if (layoutReplaced)
+				if (layoutReplaced && currentGraphic)
 					DestroyImmediate(currentGraphic);
 				else
 					layoutReplaced = true;
