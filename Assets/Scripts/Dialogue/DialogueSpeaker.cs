@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialogueSpeaker : MonoBehaviour
 {
+	[Multiline]
 	public string[] lines = { "Default text" };
 	private int lastIndex = -1;
 
