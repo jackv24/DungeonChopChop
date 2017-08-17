@@ -35,6 +35,7 @@ public class LevelGeneratorProfile : ScriptableObject
 	[Header("Item Spawning")]
 	[Range(0, 1f)]
 	public float chestSpawnProbability = 0.1f;
+	public int minChests = 1;
 
 	public virtual void Generate(LevelGenerator levelGenerator)
 	{

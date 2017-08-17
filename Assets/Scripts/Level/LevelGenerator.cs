@@ -409,16 +409,62 @@ public class LevelGenerator : MonoBehaviour
 
 	void SpawnChests()
 	{
+		//Find all chest spawns
 		ChestSpawn[] spawns = FindObjectsOfType<ChestSpawn>();
 
-		for(int i = 0; i < spawns.Length; i++)
-		{
-			float value = Random.Range(0, 1f);
+		List<ChestSpawn> chestsSpawned = new List<ChestSpawn>();
+		List<ChestSpawn> chestsNotSpawned = new List<ChestSpawn>();
 
-			if (value <= profile.chestSpawnProbability)
-				spawns[i].Spawn();
+		//loop through all spawns
+		for (int i = 0; i < spawns.Length; i++)
+		{
+			bool shouldSpawn = false;
+
+			//Make sure something is spawned at all dead ends
+			LevelTile parentTile = spawns[i].GetComponentInParent<LevelTile>();
+
+			if (parentTile && parentTile.doors.Count <= 1)
+				shouldSpawn = true;
 			else
-				Destroy(spawns[i].gameObject);
+			{
+				//If not a dead end, spawn based on probability
+				float value = Random.Range(0, 1f);
+				if (value <= profile.chestSpawnProbability)
+					shouldSpawn = true;
+			}
+
+			if(shouldSpawn)
+			{
+				if (spawns[i].Spawn())
+					chestsSpawned.Add(spawns[i]);
+				else
+					chestsNotSpawned.Add(spawns[i]);
+			}
+		}
+
+		//Calculate how many chests are needed to fulfill quota
+		int chestsNeeded = profile.minChests - chestsSpawned.Count;
+
+		while(chestsNeeded > 0 && chestsNotSpawned.Count > 0)
+		{
+			int index = Random.Range(0, chestsNotSpawned.Count);
+
+			if (chestsNotSpawned[index].Spawn())
+				chestsNotSpawned.RemoveAt(index);
+
+			chestsNeeded--;
+		}
+
+		//Remove chest spawners
+		foreach (ChestSpawn spawn in spawns)
+			Destroy(spawn.gameObject);
+
+		//Generation did not succeed if not enough chests spawned
+		if(chestsNeeded > 0)
+		{
+			profile.succeeded = false;
+
+			Debug.LogWarning("Not enough chests spawned!");
 		}
 	}
 

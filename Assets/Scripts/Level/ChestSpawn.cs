@@ -12,7 +12,7 @@ public class ChestSpawn : MonoBehaviour
 
 	public Type type;
 
-	public void Spawn()
+	public bool Spawn()
 	{
 		if(LevelVars.Instance)
 		{
@@ -33,11 +33,12 @@ public class ChestSpawn : MonoBehaviour
 				GameObject obj = Instantiate(prefab, transform.parent);
 				obj.transform.localPosition = transform.localPosition;
 
-				//Destroy this spawner at the end of the frame
-				Destroy(gameObject);
+				return true;
 			}
 			else
 				Debug.LogWarning("Chest could not spawn, no prefab assigned in LevelVars!");
 		}
+
+		return false;
 	}
 }

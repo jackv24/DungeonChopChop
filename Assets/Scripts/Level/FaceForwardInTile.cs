@@ -4,16 +4,28 @@ using UnityEngine;
 
 public class FaceForwardInTile : MonoBehaviour
 {
+	public bool beforeMerge = true;
+
 	void Start()
 	{
-		if(LevelGenerator.Instance)
-			LevelGenerator.Instance.OnBeforeMergeMeshes += FaceForward;
+		if (LevelGenerator.Instance)
+		{
+			if(beforeMerge)
+				LevelGenerator.Instance.OnBeforeMergeMeshes += FaceForward;
+			else
+				LevelGenerator.Instance.OnGenerationFinished += FaceForward;
+		}
 	}
 
 	void OnDestroy()
 	{
 		if (LevelGenerator.Instance)
-			LevelGenerator.Instance.OnBeforeMergeMeshes -= FaceForward;
+		{
+			if (beforeMerge)
+				LevelGenerator.Instance.OnBeforeMergeMeshes -= FaceForward;
+			else
+				LevelGenerator.Instance.OnGenerationFinished -= FaceForward;
+		}
 	}
 
 	void FaceForward()
