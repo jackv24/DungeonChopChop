@@ -82,7 +82,7 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 			//Get all tiles in this quadrant
 			foreach (LevelTile tile in levelGenerator.generatedTiles)
 			{
-				if (tile.Biome == biome)
+				if (tile.Biome == biome && tile.currentGraphic)
 				{
 					DungeonTile dungeon = tile.currentGraphic.GetComponent<DungeonTile>();
 
