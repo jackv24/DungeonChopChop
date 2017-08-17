@@ -61,7 +61,7 @@ public class PlayerMove : MonoBehaviour
 
 	void doAnimations()
 	{
-		if (!playerAttack.blocking)
+        if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Blocking"))
 		{
 			//float speed = targetMoveVector.magnitude / maxMoveSpeed;
 			animator.SetFloat("move", characterController.velocity.magnitude / maxMoveSpeed);
