@@ -5407,7 +5407,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1105758118}
-  - component: {fileID: 1105758119}
   m_Layer: 5
   m_Name: HUD
   m_TagString: ItemsManager
@@ -5437,21 +5436,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1105758119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1105758117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf3d4efde51b00941b4550b0d193511c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Keys: 0
-  Coins: 0
-  keyText: {fileID: 1166751568}
-  coinText: {fileID: 145433172}
 --- !u!1001 &1127348293
 Prefab:
   m_ObjectHideFlags: 0
@@ -7396,11 +7380,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   maxDoorDistance: 0.1
-  overworldSeed: 0
+  startSeed: 0
   showLoadingScreenInEditor: 1
   loadingScreen: {fileID: 2053476381}
   loadingText: {fileID: 490562574}
-  stageDelay: 0.1
   fadeOutTime: 0.5
   generatedTiles: []
   currentTile: {fileID: 0}

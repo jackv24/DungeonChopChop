@@ -5,21 +5,14 @@ using UnityEngine.UI;
 
 public class ItemsManager : MonoBehaviour {
 
+    public static ItemsManager Instance;
+
 	[Header("Items")]
 	public int Keys;
 	public int Coins;
-	[Header("Item Text")]
-	public Text keyText;
-	public Text coinText;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		keyText.text = "" + Keys;
-		coinText.text = "" + Coins;
-	}
+    void Awake()
+    {
+        Instance = this;
+    }
 }
