@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 114225288333840818}
   - component: {fileID: 114511596281364994}
   - component: {fileID: 195765706233200804}
-  - component: {fileID: 114822094784381370}
   m_Layer: 11
   m_Name: LittleBlueEnemy
   m_TagString: Enemy
@@ -212,25 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f729e095034461342b067c758042ecf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4096
-  moveSpeed: 4
-  lookAtSpeed: 5
-  movingType: 0
-  moveTimes: 0
-  moveDistances: 0
-  movementWhilstIdle: 0
-  timeTillInterval: 2
-  interval: 2
-  power: 0
-  timeBetweenStutter: 0
-  chargeUptime: 0
-  radius: 4
-  jumpPower: 0
-  minAdjTime: 1
-  maxAdjTime: 3
-  distance: 0
 --- !u!114 &114511596281364994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -285,19 +265,6 @@ MonoBehaviour:
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
---- !u!114 &114822094784381370
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1886692293410826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ae9153fef988a4a9fc72c2f8a71505, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingType: 1
-  timeBetweenRoam: 2
 --- !u!114 &114904690817952110
 MonoBehaviour:
   m_ObjectHideFlags: 1

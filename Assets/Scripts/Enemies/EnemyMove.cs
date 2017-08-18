@@ -12,7 +12,27 @@ public class EnemyMove : MonoBehaviour
     protected PlayerInformation currentPlayer = null;
     protected Animator animator;
 
-    protected void Setup()
+	void OnEnable()
+	{
+		NavMeshAgent a = GetComponent<NavMeshAgent>();
+
+		if (a)
+		{
+			a.enabled = true;
+
+			a.Warp(transform.position);
+		}
+	}
+
+	void OnDisable()
+	{
+		NavMeshAgent a = GetComponent<NavMeshAgent>();
+
+		if (a)
+			a.enabled = false;
+	}
+
+	protected void Setup()
     {
         animator = GetComponentInChildren<Animator>();
         players = FindObjectsOfType<PlayerInformation>();
