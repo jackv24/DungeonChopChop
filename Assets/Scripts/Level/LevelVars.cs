@@ -15,7 +15,7 @@ public class LevelVars : MonoBehaviour
 	public GameObject specialChestPrefab;
 
 	[Header("Misc")]
-	public GameObject droppedCharmPrefab;
+	public GameObject droppedItemPrefab;
 
 	private void Awake()
 	{

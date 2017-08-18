@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharmPickup : MonoBehaviour
+public class ItemPickup : MonoBehaviour
 {
 	public SpriteRenderer iconRenderer;
 
 	[Space()]
 	[Tooltip("The item that this GameObject represents.")]
-	public Charm representingCharm;
-	private Charm oldCharm = null;
+	public BaseItem representingItem;
+	private BaseItem oldItem = null;
 
 	[Space()]
 	public float pickupDelay = 1.0f;
@@ -24,25 +24,31 @@ public class CharmPickup : MonoBehaviour
 	{
 		if (iconRenderer)
 		{
-			if (representingCharm != oldCharm)
+			if (representingItem != oldItem)
 			{
-				oldCharm = representingCharm;
+				oldItem = representingItem;
 
-				if (representingCharm.itemIcon)
-					iconRenderer.sprite = representingCharm.itemIcon;
+				if (representingItem.itemIcon)
+					iconRenderer.sprite = representingItem.itemIcon;
+				else
+					iconRenderer.sprite = null;
 			}
 		}
 	}
 
 	void OnTriggerEnter(Collider col)
 	{
-		if (representingCharm && Time.time >= pickupTime)
+		if (representingItem && Time.time >= pickupTime)
 		{
 			PlayerInformation playerInfo = col.GetComponent<PlayerInformation>();
 
 			if (playerInfo)
 			{
-				playerInfo.PickupCharm (representingCharm);
+				//if item is a charm, add charm
+				if ((Charm)representingItem)
+					playerInfo.PickupCharm((Charm)representingItem);
+				else
+					Debug.Log("item was not a charm");
 
 				gameObject.SetActive(false);
 			}

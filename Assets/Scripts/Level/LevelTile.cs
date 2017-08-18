@@ -29,12 +29,12 @@ public class LevelTile : MonoBehaviour
 	public Biomes Biome { get { return biome; } }
 
     [Space()]
-    public Helper.Probability[] grassTiles;
-	public Helper.Probability[] desertTiles;
-	public Helper.Probability[] fireTiles;
-	public Helper.Probability[] iceTiles;
-	public Helper.Probability[] forestTiles;
-	public Helper.Probability[] dungeonTiles;
+    public Helper.ProbabilityGameObject[] grassTiles;
+	public Helper.ProbabilityGameObject[] desertTiles;
+	public Helper.ProbabilityGameObject[] fireTiles;
+	public Helper.ProbabilityGameObject[] iceTiles;
+	public Helper.ProbabilityGameObject[] forestTiles;
+	public Helper.ProbabilityGameObject[] dungeonTiles;
 
 	//Shared material that all walls return to after fading (set by first wall fade)
 	private static Material wallMaterial = null;
@@ -159,22 +159,22 @@ public class LevelTile : MonoBehaviour
             switch(biome)
             {
                 case Biomes.Grass:
-                    newGraphic = Helper.GetRandomByProbability(grassTiles);
+                    newGraphic = Helper.GetRandomGameObjectByProbability(grassTiles);
                     break;
                 case Biomes.Desert:
-                    newGraphic = Helper.GetRandomByProbability(desertTiles);
+                    newGraphic = Helper.GetRandomGameObjectByProbability(desertTiles);
                     break;
                 case Biomes.Fire:
-                    newGraphic = Helper.GetRandomByProbability(fireTiles);
+                    newGraphic = Helper.GetRandomGameObjectByProbability(fireTiles);
                     break;
 				case Biomes.Ice:
-					newGraphic = Helper.GetRandomByProbability(iceTiles);
+					newGraphic = Helper.GetRandomGameObjectByProbability(iceTiles);
 					break;
 				case Biomes.Forest:
-					newGraphic = Helper.GetRandomByProbability(forestTiles);
+					newGraphic = Helper.GetRandomGameObjectByProbability(forestTiles);
 					break;
 				case Biomes.Dungeon:
-					newGraphic = Helper.GetRandomByProbability(dungeonTiles);
+					newGraphic = Helper.GetRandomGameObjectByProbability(dungeonTiles);
 					break;
 			}
 

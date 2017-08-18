@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
 	public int maxSpawns = 0;
 
 	[Space()]
-	public Helper.Probability[] enemies;
+	public Helper.ProbabilityGameObject[] enemies;
 
 	private List<GameObject> spawnedEnemies = new List<GameObject>();
 
@@ -76,7 +76,7 @@ public class EnemySpawner : MonoBehaviour
 			//Spawn a new random set
 			foreach (Transform spawn in potentialSpawns)
 			{
-				GameObject enemyPrefab = Helper.GetRandomByProbability(enemies);
+				GameObject enemyPrefab = Helper.GetRandomGameObjectByProbability(enemies);
 
 				//Add to list to be spawned
 				if (enemyPrefab)
