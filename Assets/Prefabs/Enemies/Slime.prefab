@@ -250,13 +250,12 @@ GameObject:
   - component: {fileID: 4439663630895524}
   - component: {fileID: 114189448086392140}
   - component: {fileID: 54034798396073692}
-  - component: {fileID: 114618674516654072}
   - component: {fileID: 114262389343349236}
   - component: {fileID: 114964125105130556}
   - component: {fileID: 114576608485218758}
+  - component: {fileID: 114747209592000936}
   - component: {fileID: 65766634527232394}
   - component: {fileID: 195040792718675142}
-  - component: {fileID: 114087097777877290}
   m_Layer: 11
   m_Name: Slime
   m_TagString: Enemy
@@ -619,19 +618,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114087097777877290
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761846842308470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ae9153fef988a4a9fc72c2f8a71505, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingType: 1
-  timeBetweenRoam: 2
 --- !u!114 &114189448086392140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -707,36 +693,18 @@ MonoBehaviour:
   - dropAmount: 2
     minPercentage: 81
     maxPercentage: 100
---- !u!114 &114618674516654072
+--- !u!114 &114747209592000936
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761846842308470}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f729e095034461342b067c758042ecf1, type: 3}
+  m_Script: {fileID: 11500000, guid: 82a60bbd03b5083439968e54b13f9c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4096
-  moveSpeed: 2
-  lookAtSpeed: 5
-  movingType: 0
-  moveTimes: 4
-  moveDistances: 0
-  movementWhilstIdle: 0
-  timeTillInterval: 2
-  interval: 2
-  power: 15
-  timeBetweenStutter: 2
-  chargeUptime: 0
-  radius: 4
-  jumpPower: 20
-  minAdjTime: 1
-  maxAdjTime: 3
-  distance: 100
+  timeBetweenHops: 0
 --- !u!114 &114964125105130556
 MonoBehaviour:
   m_ObjectHideFlags: 1

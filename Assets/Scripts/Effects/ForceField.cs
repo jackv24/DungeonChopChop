@@ -15,6 +15,6 @@ public class ForceField : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        rend.material.mainTextureOffset = new Vector2(rend.material.mainTextureOffset.x + xIncrease, rend.material.mainTextureOffset.y + yIncrease);
+        rend.material.mainTextureOffset = new Vector2(rend.material.mainTextureOffset.x + xIncrease * Time.deltaTime, rend.material.mainTextureOffset.y + yIncrease * Time.deltaTime);
 	}
 }

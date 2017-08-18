@@ -7,22 +7,20 @@ using UnityEngine.UI;
 using UnityEditor;
 #endif
 
-[CustomEditor(typeof(EnemyNavMove))]
+[CustomEditor(typeof(EnemyMove))]
 public class MoveEditor : Editor {
 
-    private EnemyNavMove enemyMove;
+    private EnemyMove enemyMove;
 
 	void OnEnable()
 	{
-        enemyMove = (EnemyNavMove)target;
+        enemyMove = (EnemyMove)target;
 	}
 
 	public override void OnInspectorGUI()
 	{
 		base.OnInspectorGUI();
-        if (enemyMove.movingType == TypesOfMoving.Roam) {
-            enemyMove.timeBetweenRoam = EditorGUILayout.FloatField ("Time Between Roam Change: ", enemyMove.timeBetweenRoam); 
-		}
+
 	}
 }
 	
