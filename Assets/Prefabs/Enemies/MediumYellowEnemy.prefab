@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 114948972841801984}
   - component: {fileID: 114058906516613826}
   - component: {fileID: 195601979313025386}
-  - component: {fileID: 114204494617238004}
   m_Layer: 11
   m_Name: MediumYellowEnemy
   m_TagString: Enemy
@@ -241,19 +240,6 @@ MonoBehaviour:
   - dropAmount: 2
     minPercentage: 81
     maxPercentage: 100
---- !u!114 &114204494617238004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1960850519861330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ae9153fef988a4a9fc72c2f8a71505, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingType: 1
-  timeBetweenRoam: 2
 --- !u!114 &114653381972465610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -286,25 +272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f729e095034461342b067c758042ecf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4096
-  moveSpeed: 2
-  lookAtSpeed: 5
-  movingType: 1
-  moveTimes: 1
-  moveDistances: 0
-  movementWhilstIdle: 0
-  timeTillInterval: 2
-  interval: 2
-  power: 15
-  timeBetweenStutter: 2
-  chargeUptime: 0
-  radius: 4
-  jumpPower: 0
-  minAdjTime: 1
-  maxAdjTime: 3
-  distance: 100
 --- !u!114 &114948972841801984
 MonoBehaviour:
   m_ObjectHideFlags: 1
