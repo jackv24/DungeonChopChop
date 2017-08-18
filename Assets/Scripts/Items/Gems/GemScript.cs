@@ -22,7 +22,7 @@ public class GemScript : MonoBehaviour {
 	void OnTriggerEnter(Collider col)
 	{
 		if (col.tag == "Player1" || col.tag == "Player2") {
-			items.Coins += coinAmount;
+            ItemsManager.Instance.Coins += coinAmount;
 			gameObject.SetActive (false);
 		}
 	}

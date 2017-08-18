@@ -6,11 +6,13 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour 
 {
-    private NavMeshAgent agent;
+    protected NavMeshAgent agent;
     private PlayerInformation[] players;
 
     protected PlayerInformation currentPlayer = null;
     protected Animator animator;
+
+    private int roamCounter = 0;
 
     protected void Setup()
     {
@@ -22,6 +24,26 @@ public class EnemyMove : MonoBehaviour
     protected void FollowPlayer()
     {
         agent.destination = GetClosestPlayer().position;
+    }
+
+    protected void Roam(float timeBetweenRoam) 
+    { 
+        roamCounter++; 
+        if (roamCounter > timeBetweenRoam * 60) 
+        { 
+            agent.destination = LevelGenerator.Instance.currentTile.GetPosInTile(1, 1); 
+            roamCounter = 0; 
+        } 
+    } 
+
+    protected bool IsInDistanceOfPlayer(float radius)
+    {
+        float distance = Vector3.Distance(transform.position, GetClosestPlayer().position);
+        if (distance < radius)
+        {
+            return true;
+        }
+        return false;
     }
 
     protected Transform GetClosestPlayer()

@@ -324,7 +324,7 @@ public class PlayerInformation : MonoBehaviour
 			if (HasCharmFloat ("damageOnTouch")) {
 				if (col.transform.GetComponent<Health> ()) {
 					col.gameObject.GetComponent<Health> ().AffectHealth (-GetCharmFloat ("damageOnTouch"));
-					playerAttack.knockback (col.gameObject);
+                    col.gameObject.GetComponent<Health>().Knockback(this, -col.transform.forward, 1);
 				}
 			}
 		}

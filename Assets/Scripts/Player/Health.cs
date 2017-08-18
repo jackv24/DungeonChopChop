@@ -19,6 +19,7 @@ public class Health : MonoBehaviour
 
 	private PlayerInformation playerInfo;
 	private Animator animator;
+    private Rigidbody rb;
 
 	public void AffectHealth(float healthDeta)
 	{
@@ -44,6 +45,7 @@ public class Health : MonoBehaviour
 
 	void Start()
 	{
+        rb = GetComponent<Rigidbody>();
 		OnHealthChange += TemporaryInvincibility;
 
 		if (GetComponentInChildren<Animator> ())
@@ -71,6 +73,12 @@ public class Health : MonoBehaviour
 		yield return new WaitForSeconds(playerInfo.invincibilityTimeAfterHit);
 		playerInfo.invincible = false;
 	}
+
+    public void Knockback(PlayerInformation playerInfo, Vector3 direction, float distance)
+    {
+        if (rb)
+            rb.AddForce(direction / distance * playerInfo.knockback * playerInfo.GetCharmFloat("kockbackMultiplier"), ForceMode.Impulse);
+    }
 
 	void Update()
 	{
