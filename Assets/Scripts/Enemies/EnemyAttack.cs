@@ -139,7 +139,7 @@ public class EnemyAttack : MonoBehaviour
 		} 
 	}
 
-	void OnCollisionEnter(Collision col)
+	void OnCollisionStay(Collision col)
 	{
 		if (col.transform.GetComponent<Health>())
 		{
