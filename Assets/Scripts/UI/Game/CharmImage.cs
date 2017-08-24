@@ -34,13 +34,11 @@ public class CharmImage : MonoBehaviour {
 			{
 				if (img) {
 					//sets the sprite image to the current charms icon
-					if (playerInfo.currentCharms.Count > 0)
-						img.sprite = playerInfo.currentCharms [i].itemIcon;
+                    if (playerInfo.currentCharms.Count > 0)
+                    {
+                        img.sprite = playerInfo.currentCharms[i].itemIcon;
+                    }
 				}
-			}
-			else
-			{
-				img.sprite = null;
 			}
 		}
 	}
