@@ -8,6 +8,22 @@ public class DungeonEntrance : MonoBehaviour
 
 	public int seed = 0;
 
+	[Tooltip("Does this lead back to the overworld?")]
+	public bool overworldEntrance = false;
+
+	void OnEnable()
+	{
+		//Set profile and seed as overworld if desired
+		if(overworldEntrance)
+		{
+			profile = LevelVars.Instance.levelData.overworldProfile;
+			seed = LevelVars.Instance.levelData.overworldSeed;
+		}
+
+		//We are in a dungeon if this entrance leads back to the overworld
+		LevelVars.Instance.levelData.inDungeon = overworldEntrance;
+	}
+
 	private void OnTriggerEnter(Collider col)
 	{
 		//If player walked into this door

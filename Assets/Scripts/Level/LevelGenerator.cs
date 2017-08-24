@@ -123,6 +123,7 @@ public class LevelGenerator : MonoBehaviour
 			startObj.transform.position = transform.position;
 
 			LevelTile startTile = startObj.GetComponent<LevelTile>();
+			startTile.index = generatedTiles.Count;
 			generatedTiles.Add(startTile);
 			startObj.name += generatedTiles.Count;
 			startTile.ReplaceDoors();
@@ -304,6 +305,7 @@ public class LevelGenerator : MonoBehaviour
 		//If a tile was found...
 		if (nextTile)
 		{
+			nextTile.index = generatedTiles.Count;
 			generatedTiles.Add(nextTile);
 			nextTile.gameObject.name += generatedTiles.Count;
 
@@ -404,6 +406,15 @@ public class LevelGenerator : MonoBehaviour
 		foreach(PlayerInformation playerInfo in playerInfos)
 		{
 			playerInfo.gameObject.transform.position = currentTile.tileOrigin.position + Vector3.up;
+		}
+
+		if(LevelVars.Instance && !LevelVars.Instance.levelData.inDungeon)
+		{
+			for (int i = 0; i < generatedTiles.Count; i++)
+			{
+				if (LevelVars.Instance.levelData.clearedTiles.Contains(generatedTiles[i].index))
+					generatedTiles[i].ShowTile();
+			}
 		}
     }
 
