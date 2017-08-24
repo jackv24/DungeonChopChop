@@ -7,11 +7,14 @@ public class SlimeMove : EnemyMove {
     [Tooltip("In seconds")]
     public float minTimeBetweenHops;
     public float maxTimeBetweenHops;
+    public float damageToEnemies = 1;
 
     private int hopCounter = 0;
     private float currentTimeBetweenHop = 0;
 
     private Collider col;
+
+    public bool friendly = false;
 
 	// Use this for initialization
 	void Awake () {
@@ -24,7 +27,28 @@ public class SlimeMove : EnemyMove {
 	void FixedUpdate () 
     {
         DoHop();
-        FollowPlayer();
+        if (!friendly)
+        {
+            FollowPlayer();
+        }
+        else
+        {
+            FollowEnemy();
+        }
+
+        foreach (PlayerInformation player in players)
+        {
+            if (player.HasCharmBool("slimesAreFriends"))
+            {
+                Debug.Log("hi");
+                friendly = true;
+                break;
+            }
+            else
+            {
+                friendly = false;
+            }
+        }
 	}
 
     void Update()
@@ -56,5 +80,19 @@ public class SlimeMove : EnemyMove {
     void Hop()
     {
         animator.SetTrigger("Hop");
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (friendly)
+        {
+            if (col.collider.tag != "Player" || col.collider.tag != "Slime")
+            {
+                if (col.gameObject.GetComponent<Health>())
+                {
+                    col.gameObject.GetComponent<Health>().AffectHealth(-damageToEnemies);
+                }
+            }
+        }
     }
 }

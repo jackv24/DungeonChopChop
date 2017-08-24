@@ -12,7 +12,6 @@ public class Slash : MonoBehaviour {
     public CharacterController cc;
 
     private int fadeInCounter = 0;
-    private int fadeOutCounter = 0;
 
     private SpriteRenderer sprite;
     private float alpha = 0;
@@ -67,7 +66,7 @@ public class Slash : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "Enemy")
+        if (col.gameObject.layer == 11)
         {
             if (col.GetComponent<Health>())
             {

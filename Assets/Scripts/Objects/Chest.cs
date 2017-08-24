@@ -43,6 +43,7 @@ public class Chest : MonoBehaviour
 
 	void Open()
 	{
+        //opens chest and plays animation
 		animator.SetTrigger("Open");
 		opened = true;
 

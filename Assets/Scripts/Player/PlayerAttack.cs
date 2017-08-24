@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    float attackMinAngle = 130;
-    float attackDistance = 5;
-
     [Header("Combo Vars")]
     public float timeInbetween;
     [Tooltip("The amount added to the combo counter (60 times a second)")]
@@ -69,12 +66,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        //sets attack values
-        attackMinAngle = playerInformation.attackMinAngle;
-        attackDistance = playerInformation.attackDistance;
         //check if can actually attack
-        //if (canAttack) 
-        //{
         //do basic attack
         if (input.BasicAttack.WasPressed)
         {
