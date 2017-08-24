@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyMove : MonoBehaviour 
 {
     protected NavMeshAgent agent;
-    private PlayerInformation[] players;
+    protected PlayerInformation[] players;
 
     protected PlayerInformation currentPlayer = null;
     protected Animator animator;
@@ -46,6 +46,11 @@ public class EnemyMove : MonoBehaviour
         agent.destination = GetClosestPlayer().position;
     }
 
+    protected void FollowEnemy()
+    {
+        agent.destination = GetClosestEnemy("Slime").position;
+    }
+
     protected void Roam(float timeBetweenRoam) 
     { 
         roamCounter++; 
@@ -79,5 +84,22 @@ public class EnemyMove : MonoBehaviour
             previousPlayerDistance = distance;
         }
         return currentPlayer.transform;
+    }
+
+    protected Transform GetClosestEnemy(string enemyTag)
+    {
+        GameObject closestEnemy = null;
+        float maxDistance = float.MaxValue;
+        Collider[] enemies = Physics.OverlapSphere(transform.position, 100);
+        foreach (Collider enemy in enemies)
+        {
+            float dist = Vector3.Distance(transform.position, enemy.transform.position);
+            if (dist < maxDistance)
+            {
+                closestEnemy = enemy.gameObject;
+                maxDistance = dist;
+            }
+        }
+        return closestEnemy.transform;
     }
 }
