@@ -14,6 +14,12 @@ public class CameraShake : MonoBehaviour
 		Instance = this;
 	}
 
+	//void Update()
+	//{
+	//	if (Input.GetKeyDown(KeyCode.P))
+	//		ShakeScreen(0.2f, 1.0f, 0.2f);
+	//}
+
 	/// <summary>
 	/// Causes the screen to shake according to parameters.
 	/// </summary>
@@ -31,11 +37,11 @@ public class CameraShake : MonoBehaviour
 		float elapsedTime = 0;
 		float elapsedStep = 0;
 
-		Vector3 offset = Random.insideUnitSphere.normalized * magnitude;
+		Vector2 offset = Random.insideUnitCircle.normalized * magnitude;
 
 		while(elapsedTime < duration)
 		{
-			transform.position += Vector3.Lerp(offset, Vector3.zero, elapsedTime / duration);
+			transform.Translate(Vector3.Lerp(offset, Vector3.zero, elapsedTime / duration), Space.Self);
 
 			yield return new WaitForEndOfFrame();
 			elapsedTime += Time.deltaTime;
@@ -45,7 +51,7 @@ public class CameraShake : MonoBehaviour
 			{
 				elapsedStep = 0;
 
-				offset = Random.insideUnitSphere.normalized * magnitude;
+				offset = Random.insideUnitCircle.normalized * magnitude;
 			}
 		}
 	}

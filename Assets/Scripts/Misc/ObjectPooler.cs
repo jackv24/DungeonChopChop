@@ -81,6 +81,8 @@ public static class ObjectPooler
             //If there was no pre-existing object to hold them, create a new one
             if (!poolObject)
                 poolObject = new GameObject("PooledObjects");
+
+			GameObject.DontDestroyOnLoad(poolObject);
         }
 
         //Pool starts as null, since one will either be found or created
