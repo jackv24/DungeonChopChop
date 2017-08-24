@@ -40,6 +40,7 @@ public class SlimeMove : EnemyMove {
         {
             if (player.HasCharmBool("slimesAreFriends"))
             {
+                Debug.Log("hi");
                 friendly = true;
                 break;
             }
@@ -83,11 +84,14 @@ public class SlimeMove : EnemyMove {
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.collider.tag != "Player" || col.collider.tag != "Slime")
+        if (friendly)
         {
-            if (col.gameObject.GetComponent<Health>())
+            if (col.collider.tag != "Player" || col.collider.tag != "Slime")
             {
-                col.gameObject.GetComponent<Health>().AffectHealth(-damageToEnemies);
+                if (col.gameObject.GetComponent<Health>())
+                {
+                    col.gameObject.GetComponent<Health>().AffectHealth(-damageToEnemies);
+                }
             }
         }
     }

@@ -98,7 +98,7 @@ public class Health : MonoBehaviour
 	{
 		if (animator)
 		{
-			animator.SetTrigger ("Hit");
+			//animator.SetTrigger ("Hit");
 		}
 	}
 		

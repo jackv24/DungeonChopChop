@@ -30,7 +30,6 @@ public class PlayerInformation : MonoBehaviour
 	private bool speedBoost = false;
 
 	private WeaponStats currentWeaponStats;
-	private PlayerAttack playerAttack;
 
 	private Dictionary<string, float> charmFloats = new Dictionary<string, float>();
 	private Dictionary<string, bool> charmBools = new Dictionary<string, bool>();
@@ -40,7 +39,6 @@ public class PlayerInformation : MonoBehaviour
 	void Start()
 	{
 		health = GetComponent<Health> ();
-		playerAttack = GetComponent<PlayerAttack> ();
 
 		if (LevelGenerator.Instance)
 		{
