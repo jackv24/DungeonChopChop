@@ -19,6 +19,7 @@ public class EnemyDeath : MonoBehaviour
 	public int amountToSplit;
 	[HideInInspector]
 	public GameObject splitEnemy;
+    public GameObject deathParticle;
 
 	private Health health;
 	private bool dead = false;
@@ -75,6 +76,8 @@ public class EnemyDeath : MonoBehaviour
 	void Die()
 	{
 		//do die particles and stuff
+        GameObject particle = ObjectPooler.GetPooledObject(deathParticle);
+        particle.transform.position = transform.position;
 		gameObject.SetActive(false);
 	}
 

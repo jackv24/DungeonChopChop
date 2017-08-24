@@ -40,7 +40,6 @@ public class SlimeMove : EnemyMove {
         {
             if (player.HasCharmBool("slimesAreFriends"))
             {
-                Debug.Log("hi");
                 friendly = true;
                 break;
             }

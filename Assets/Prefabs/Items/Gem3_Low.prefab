@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616226106310662}
   m_LocalRotation: {x: 0.38268346, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -35.46718, y: 6.0608773, z: -22.29717}
   m_LocalScale: {x: 13.568527, y: 13.568527, z: 13.568527}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6a70180efe1cb434db96d10a938f615c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,6 +76,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33511706333467880
 MeshFilter:
@@ -109,8 +110,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.015790718, y: 0.017781, z: 0.017781}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.08983617, y: 0.09144468, z: 0.099802256}
+  m_Center: {x: 0.002622643, y: 0.00022868396, z: 0.00778609}
 --- !u!114 &114167149829681834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,6 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAmount: 20
+  floatStrength: 0.5
+  rotationStrength: 25
 --- !u!114 &114797713548918308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,7 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d981f969f6d3e94b93c175457d3f95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iconRenderer: {fileID: 0}
   representingItem: {fileID: 0}
+  pickupDelay: 1
 --- !u!135 &135586965857579908
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -145,5 +150,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.016796729
+  m_Radius: 0.08
   m_Center: {x: 0, y: 0, z: 0}
