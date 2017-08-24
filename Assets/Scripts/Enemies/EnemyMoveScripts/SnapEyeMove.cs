@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class SnapEyeMove : EnemyMove 
 {
-
     public float radius;
 
 	// Use this for initialization
 	void Start () 
+    {
+        Setup();   
+	}
+	
+	// Update is called once per frame
+	void Update () 
     {
         if (IsInDistanceOfPlayer(radius))
         {
@@ -21,10 +26,5 @@ public class SnapEyeMove : EnemyMove
         {
             FollowPlayer();
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }
