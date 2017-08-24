@@ -96,10 +96,14 @@ public class PlayerMove : MonoBehaviour
 			targetMoveVector = CameraFollow.Instance.ValidateMovePos(transform.position, targetMoveVector);
 
 		//rotate player
-		if (inputVector.magnitude > 0.01f)
-			//transform.rotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y));
-			transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y)), rotateSpeed * Time.deltaTime);
-
+        if (inputVector.magnitude > 0.01f)
+        {
+            if (!playerAttack.blocking)
+            {
+                //transform.rotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y));
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y)), rotateSpeed * Time.deltaTime);
+            }
+        }
 		//checks to see if the user is grounded, if not apply gravity
 		if (!characterController.isGrounded)
 		{

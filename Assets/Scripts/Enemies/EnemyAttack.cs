@@ -148,8 +148,16 @@ public class EnemyAttack : MonoBehaviour
 				PlayerInformation playerInfo = col.gameObject.GetComponent<PlayerInformation> ();
 				if (!col.gameObject.GetComponent<PlayerInformation>().invincible)
 				{
-					col.transform.GetComponent<Health>().Damaged();
-					col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch * playerInfo.resistance);
+                    if (!col.transform.GetComponent<PlayerAttack>().blocking)
+                    {
+                        col.transform.GetComponent<Health>().Damaged();
+                        col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch * playerInfo.resistance);
+                    }
+                    else
+                    {
+                        col.transform.GetComponent<Health>().Damaged();
+                        col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch * playerInfo.resistance * col.transform.GetComponent<PlayerAttack>().shield.blockingResistance);
+                    }
 				}
 			}
 		}

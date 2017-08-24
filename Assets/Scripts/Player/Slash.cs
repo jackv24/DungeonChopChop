@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Slash : MonoBehaviour {
 
+    [Header("Attack Values")]
     public float timeToComplete;
     public float amountOfAlpha;
     public float distance;
     public float xScaleIncrease;
     public float yScaleIncrease;
     public CharacterController cc;
+
+    [Header("Camera Shake Values")]
+    public float magnitude = 1;
+    public float shakeAmount = 1;
+    public float duration = 1;
 
     private int fadeInCounter = 0;
 
@@ -60,7 +66,7 @@ public class Slash : MonoBehaviour {
                 gameObject.SetActive(false);
             }
         }
-        transform.position += (direction * distance) * (1 + cc.velocity.magnitude / 6);
+        transform.position += (direction * distance) * (1 + cc.velocity.magnitude / 9.5f);
         transform.localScale += new Vector3(xScaleIncrease, yScaleIncrease, 0);
     }
 
@@ -74,6 +80,7 @@ public class Slash : MonoBehaviour {
                 float dist = Vector3.Distance(transform.position, col.transform.position);
                 col.GetComponent<Health>().Knockback(playerInfo, -dir, dist);
                 col.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
+                CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
             }
         }
     }
