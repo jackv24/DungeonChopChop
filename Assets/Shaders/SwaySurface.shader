@@ -45,7 +45,9 @@
 			float4 worldV = mul(unity_ObjectToWorld, v.vertex);
 
 			float height = sqrt(worldV.y * worldV.y);
-			float offset = sin(_Time.y * _SwaySpeed + ((worldV.x + worldV.z) / 2) + height * _HeightOffset);
+			float offset = (sin(_Time.y * _SwaySpeed + ((worldV.x + worldV.z) / 2)))
+				+ (sin(_Time.y * _SwaySpeed + ((worldV.x + worldV.z) / 2)/4)
+					+ height * _HeightOffset);
 
 			//Move world vertex position
 			worldV += float4(offset * height * _SwayMagnitude, 0.0f, offset * height * _SwayMagnitude, 0.0f);
