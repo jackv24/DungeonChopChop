@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -387,7 +388,16 @@ public class LevelGenerator : MonoBehaviour
 
     void Finish()
     {
-		//Combine level for batching (only when playing)
+		//Bake tile navmeshes (before batching to allow mesh read access)
+		for (int i = 0; i < generatedTiles.Count; i++)
+		{
+			NavMeshSurface surface = generatedTiles[i].GetComponentInChildren<NavMeshSurface>();
+
+			if (surface)
+				surface.BuildNavMesh();
+		}
+
+		//Combine level for batching
 		StaticBatchingUtility.Combine(gameObject);
 
 		for (int i = 0; i < generatedTiles.Count; i++)
@@ -403,12 +413,14 @@ public class LevelGenerator : MonoBehaviour
 		//Move players to tile centre
 		PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
 
+		//Move players to origin of current tile
 		foreach(PlayerInformation playerInfo in playerInfos)
 		{
 			playerInfo.gameObject.transform.position = currentTile.tileOrigin.position + Vector3.up;
 		}
 
-		if(LevelVars.Instance && !LevelVars.Instance.levelData.inDungeon)
+		//Show already visited dungeons
+		if (LevelVars.Instance && !LevelVars.Instance.levelData.inDungeon)
 		{
 			for (int i = 0; i < generatedTiles.Count; i++)
 			{
