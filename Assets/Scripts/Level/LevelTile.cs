@@ -7,6 +7,8 @@ public class LevelTile : MonoBehaviour
 	public delegate void NormalEvent();
 	public event NormalEvent OnTileEnter;
 
+	public int index = 0;
+
 	public List<Transform> doors = new List<Transform>();
 	public BoxCollider layoutCollider;
 
@@ -261,6 +263,14 @@ public class LevelTile : MonoBehaviour
 				CameraFollow.Instance.UpdateCameraBounds(layoutCollider.bounds);
 		}
 
+		ShowTile();
+
+		if (OnTileEnter != null)
+			OnTileEnter();
+	}
+
+	public void ShowTile()
+	{
 		//Show tile on map
 		if (mapTile)
 		{
@@ -268,17 +278,17 @@ public class LevelTile : MonoBehaviour
 			mapTile.SetInside();
 		}
 
+		if (LevelVars.Instance)
+			LevelVars.Instance.levelData.SetClearedTile(index);
+
 		//Show doors on map
-		foreach(Transform door in doors)
+		foreach (Transform door in doors)
 		{
 			LevelDoor d = door.GetComponent<LevelDoor>();
 
 			if (d)
 				d.ShowOnMap();
 		}
-
-		if (OnTileEnter != null)
-			OnTileEnter();
 	}
 
 	IEnumerator FadeWalls(float fadeOutTime, float fadeInTime, float wallFadeDelay, LevelTile newTile, LevelTile oldTile)
