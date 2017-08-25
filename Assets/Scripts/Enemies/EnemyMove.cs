@@ -14,26 +14,6 @@ public class EnemyMove : MonoBehaviour
 
     private int roamCounter = 0;
 
-	void OnEnable()
-	{
-		NavMeshAgent a = GetComponent<NavMeshAgent>();
-
-		if (a)
-		{
-			a.enabled = true;
-
-			a.Warp(transform.position);
-		}
-	}
-
-	void OnDisable()
-	{
-		NavMeshAgent a = GetComponent<NavMeshAgent>();
-
-		if (a)
-			a.enabled = false;
-	}
-
 	protected void Setup()
     {
         animator = GetComponentInChildren<Animator>();
