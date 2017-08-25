@@ -48,6 +48,7 @@ public class EnemyDrops : MonoBehaviour {
 			if (randomPercent >= drop.minPercentage && randomPercent <= drop.maxPercentage) {
 				//this then finds how many items to drops
 				dropAmount = drop.dropAmount;
+                break;
 			}
 		}
 		DropItem (dropAmount);
@@ -69,7 +70,9 @@ public class EnemyDrops : MonoBehaviour {
 					{
 						//creates the item and sets the position to the enemies position
 						GameObject item = ObjectPooler.GetPooledObject (drop.Drop);
-						item.transform.position = transform.position;
+                        item.transform.rotation = UnityEngine.Random.rotation;
+                        item.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+                        item.GetComponent<Rigidbody>().AddForce(transform.forward, ForceMode.Impulse);
 						break;
 					}
 				}

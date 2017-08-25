@@ -5,53 +5,62 @@ using UnityEngine;
 public class GemScript : MonoBehaviour {
 
 	public int coinAmount;
-    public float floatStrength = .5f; 
-    public float rotationStrength;
-    public float maxDistanceFromSpawn = 2;
-    public float speed = 5;
 
-    private float randomRotationStrength;
-    private float distance;
-    private Vector3 ogPosition;
+    public float floatSpeed = 1.0f;
+    public float rotateSpeed = 5;
+    public float floatMagnitude = 1.0f;
 
+    private bool doFloat = false;
     private Rigidbody rb;
+
+    private Vector3 initialPos;
+    private Vector3 rotation;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void OnEnable()
-    {
-        transform.parent = null;
-        ogPosition = transform.position;
-    }
 
 	void OnTriggerEnter(Collider col)
 	{
+        //checks if the player collides with the item
 		if (col.tag == "Player1" || col.tag == "Player2") {
             ItemsManager.Instance.Coins += coinAmount;
 			gameObject.SetActive (false);
 		}
 	}
 
+    void OnEnable()
+    {
+        rotation = Random.insideUnitSphere.normalized * rotateSpeed;
+
+        StartCoroutine(wait());
+    }
+
+    void OnDisable()
+    {
+        doFloat = false;
+        rb.isKinematic = false;
+    }
+
+    IEnumerator wait()
+    {
+        //waits a second before letting the item to float
+        yield return new WaitForSeconds(1);
+        initialPos = transform.localPosition;
+        rb.isKinematic = true;
+        doFloat = true;
+    }
+
     void FixedUpdate()
     {
-        //making coin float
-
-
-//        distance = Vector3.Distance(transform.position, ogPosition);
-//        Debug.Log(distance);
-//        if (distance < maxDistanceFromSpawn)
-//        {
-//            randomRotationStrength = Random.Range(0, rotationStrength);
-//            rb.AddForce(Vector3.up * floatStrength);
-//            transform.Rotate(randomRotationStrength, randomRotationStrength, randomRotationStrength);
-//        }
-//        else
-//        {
-//            transform.position = Vector3.MoveTowards(transform.position, ogPosition, speed * Time.deltaTime);
-//        }
+        //makes item float
+        if (doFloat)
+        {
+            transform.eulerAngles += rotation * Time.fixedDeltaTime;
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, initialPos + Vector3.up * Mathf.Sin(Time.time * floatSpeed) * floatMagnitude, Time.fixedDeltaTime * floatSpeed);
+        }
     }
 
 }

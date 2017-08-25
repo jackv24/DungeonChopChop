@@ -21,11 +21,11 @@ GameObject:
   - component: {fileID: 4582113171297060}
   - component: {fileID: 33438355509046568}
   - component: {fileID: 23648836535820756}
-  - component: {fileID: 54986296104065568}
   - component: {fileID: 65711643047417132}
   - component: {fileID: 135779134138573050}
   - component: {fileID: 114654669773840514}
   - component: {fileID: 114638644984236718}
+  - component: {fileID: 54006736554122974}
   m_Layer: 15
   m_Name: Gem2_Low
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1500886815647376}
   m_Mesh: {fileID: 4300000, guid: 25de1d97656eb994fa82cfbeaa74b459, type: 3}
---- !u!54 &54986296104065568
+--- !u!54 &54006736554122974
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -124,8 +124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAmount: 10
-  floatStrength: 0.5
-  rotationStrength: 25
+  floatSpeed: 2
+  rotateSpeed: 15
+  floatMagnitude: 0.5
 --- !u!114 &114654669773840514
 MonoBehaviour:
   m_ObjectHideFlags: 1
