@@ -39,7 +39,6 @@ public class Health : MonoBehaviour
 			{
 				OnDeath ();
 			}
-			Death ();
 		}
 	}
 
@@ -109,6 +108,7 @@ public class Health : MonoBehaviour
 		if (transform.GetComponent<EnemyDrops> ()) 
 		{
 			transform.GetComponent<EnemyDrops> ().DoDrop ();
+            Debug.Log("dropped");
 		}
 	}
 
