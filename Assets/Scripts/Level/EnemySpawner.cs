@@ -107,9 +107,6 @@ public class EnemySpawner : MonoBehaviour
 
 		if (LevelVars.Instance)
 		{
-			//Keep a list of spawned particles
-			List<ParticleSystem> particles = new List<ParticleSystem>();
-
 			if (LevelVars.Instance.enemySpawnEffect)
 			{
 				//Get particle effect from pool
@@ -125,9 +122,7 @@ public class EnemySpawner : MonoBehaviour
 						if (effect)
 						{
 							effect.transform.position = spawn.spawnPoint.position;
-
-							ParticleSystem system = effect.GetComponent<ParticleSystem>();
-							particles.Add(system);
+							effect.transform.rotation = effectPrefab.transform.rotation;
 						}
 					}
 				}
@@ -135,10 +130,6 @@ public class EnemySpawner : MonoBehaviour
 
 			//Wait for set time
 			yield return new WaitForSeconds(LevelVars.Instance.enemySpawnDelay);
-
-			//Stop playing all particle effects (let the particles disperse before being disabled in other script)
-			foreach (ParticleSystem system in particles)
-				system.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 		}
 
 		//After delay, actually spawn the enemies

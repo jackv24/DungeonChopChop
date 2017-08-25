@@ -7,7 +7,7 @@ public class DisableFinishedParticleSystem : MonoBehaviour
 	private ParticleSystem system;
 
 	[Tooltip("How long after spawning until checking if disabled starts.")]
-	public float firstCheckDelay = 0.1f;
+	public float firstCheckDelay = 0.0f;
 	private float firstCheckTime;
 
 	private void Awake()
