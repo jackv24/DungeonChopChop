@@ -425,7 +425,7 @@ public class LevelGenerator : MonoBehaviour
 			for (int i = 0; i < generatedTiles.Count; i++)
 			{
 				if (LevelVars.Instance.levelData.clearedTiles.Contains(generatedTiles[i].index))
-					generatedTiles[i].ShowTile();
+					generatedTiles[i].ShowTile(false);
 			}
 		}
     }
