@@ -80,6 +80,7 @@ public class Charm : BaseItem
 						GameManager.Instance.SetGlobalMultiplier (charmFloat.floatKey, 1.0f);
 					else
 						playerInfo.SetCharmFloat (charmFloat.floatKey, 1.0f);
+                    playerInfo.RemoveCharmFloat(charmFloat.floatKey);
 				}
 			}
 		}
@@ -94,6 +95,7 @@ public class Charm : BaseItem
 						GameManager.Instance.SetGlobalBool (charmBool.boolKey, false);
 					else
 						playerInfo.SetCharmBool (charmBool.boolKey, false);
+                    playerInfo.RemoveCharmBool(charmBool.boolKey);
 				}
 			}
 		}
