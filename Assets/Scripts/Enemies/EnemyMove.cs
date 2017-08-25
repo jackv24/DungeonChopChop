@@ -12,7 +12,24 @@ public class EnemyMove : MonoBehaviour
     protected PlayerInformation currentPlayer = null;
     protected Animator animator;
 
+    protected bool runAway = false;
+
     private int roamCounter = 0;
+
+    void FixedUpdate()
+    {
+        if (currentPlayer)
+        {
+            if (currentPlayer.HasCharmBool("enemiesRunAway"))
+            {
+                runAway = true;
+            }
+            else
+            {
+                runAway = false;
+            }
+        }
+    }
 
 	protected void Setup()
     {
@@ -49,6 +66,18 @@ public class EnemyMove : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    protected void RunAwayFromPlayer()
+    {
+        transform.rotation = Quaternion.LookRotation(transform.position - currentPlayer.transform.position);
+        Vector3 runTo = transform.position + transform.forward * 5;
+
+        NavMeshHit hit;
+
+        NavMesh.SamplePosition(runTo, out hit, 5, 1 << NavMesh.GetAreaFromName("Walkable"));
+
+        agent.SetDestination(hit.position);
     }
 
     protected Transform GetClosestPlayer()

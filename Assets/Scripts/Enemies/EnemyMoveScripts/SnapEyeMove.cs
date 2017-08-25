@@ -24,7 +24,10 @@ public class SnapEyeMove : EnemyMove
         }
         if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Attacking"))
         {
-            FollowPlayer();
+            if (!runAway)
+                FollowPlayer();
+            else
+                RunAwayFromPlayer();
         }
 	}
 }

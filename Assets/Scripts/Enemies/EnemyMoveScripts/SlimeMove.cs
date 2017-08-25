@@ -29,7 +29,10 @@ public class SlimeMove : EnemyMove {
         DoHop();
         if (!friendly)
         {
-            FollowPlayer();
+            if (!runAway)
+                FollowPlayer();
+            else
+                RunAwayFromPlayer();
         }
         else
         {

@@ -115,6 +115,16 @@ public class PlayerInformation : MonoBehaviour
         }
     }
 
+    public void RemoveCharmFloat(string key)
+    {
+        charmFloats.Remove(key);
+    }
+
+    public void RemoveCharmBool(string key)
+    {
+        charmBools.Remove(key);
+    }
+
     public void SetLayerMask(LayerMask lm)
     {
         layerMask = lm;
@@ -198,11 +208,6 @@ public class PlayerInformation : MonoBehaviour
                 }
             }
         }
-    }
-
-    void RandomCharm()
-    {
-        //Charm[] charms = Resources.LoadAll<Charm>("Items/Charms/");
     }
 
     private int roomAmount = 0;
