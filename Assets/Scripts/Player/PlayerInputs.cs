@@ -42,21 +42,14 @@ public class PlayerInputs : PlayerActionSet
 		//sets the bindings if the device is a keyboard
 		if (device == null)
 		{
-			Left.AddDefaultBinding (Key.LeftArrow);
 			Left.AddDefaultBinding (Key.A);
-
-			Right.AddDefaultBinding (Key.RightArrow);
 			Right.AddDefaultBinding (Key.D);
-
-			Up.AddDefaultBinding (Key.UpArrow);
 			Up.AddDefaultBinding (Key.W);
-
-			Down.AddDefaultBinding (Key.DownArrow);
 			Down.AddDefaultBinding (Key.S);
 
-            Block.AddDefaultBinding(Key.X);
-			BasicAttack.AddDefaultBinding(Key.Z);
-            DashSlash.AddDefaultBinding (Key.C);
+			BasicAttack.AddDefaultBinding(Key.J);
+            Block.AddDefaultBinding(Key.K);
+            DashSlash.AddDefaultBinding (Key.L);
 
 			isKeyboard = true;
 		}
