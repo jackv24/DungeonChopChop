@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 4897491955572324}
   - component: {fileID: 95782630718477598}
   - component: {fileID: 114966756260339052}
+  - component: {fileID: 114576910293873334}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -1064,6 +1065,38 @@ MonoBehaviour:
   acceleration: 10
   rotateSpeed: 20
   inMudSpeed: 1
+--- !u!114 &114576910293873334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893195225447350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9895ff768b4c6e46ab7655adb386fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftFoot: {fileID: 4798361860611036}
+  rightFoot: {fileID: 4210212024195822}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  materialPairs:
+  - groundMaterial: {fileID: 2100000, guid: e58e4bf46dce42c49b8da94bab28fe2a, type: 2}
+    particlePrefab: {fileID: 1240315760738564, guid: 937ac72134130b7488457639e8e3022e,
+      type: 2}
+  - groundMaterial: {fileID: 2100000, guid: 0e2ec4cbf6f06834fa27966f9ab7a672, type: 2}
+    particlePrefab: {fileID: 1240315760738564, guid: 7dab5b659dea13b4eaa16b8db1ddb96c,
+      type: 2}
+  - groundMaterial: {fileID: 2100000, guid: 97acf961025bac44688d263e646cd9a4, type: 2}
+    particlePrefab: {fileID: 1240315760738564, guid: d16bb225471daff49bf336ca1488b8f8,
+      type: 2}
+  - groundMaterial: {fileID: 2100000, guid: 3a55dbc7713d99740a146a0681e4cde7, type: 2}
+    particlePrefab: {fileID: 1240315760738564, guid: 316ed40f84a13c04e839ef6a5f5a0f7e,
+      type: 2}
+  - groundMaterial: {fileID: 2100000, guid: e9746cc04d5b35142a792803f0956ae5, type: 2}
+    particlePrefab: {fileID: 1240315760738564, guid: 9a044de563ccb5b4f8c33a27f08d0bb2,
+      type: 2}
 --- !u!114 &114594443601044814
 MonoBehaviour:
   m_ObjectHideFlags: 1
