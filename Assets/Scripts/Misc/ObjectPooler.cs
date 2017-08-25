@@ -28,6 +28,7 @@ public static class ObjectPooler
                 {
                     //Activate and return any object found
                     o.SetActive(true);
+					o.transform.position = position;
                     return o;
                 }
             }
