@@ -42,6 +42,12 @@ public class Health : MonoBehaviour
 		}
 	}
 
+    void OnEnable()
+    {
+        health = maxHealth;
+        isDead = false;
+    }
+
 	void Start()
 	{
         rb = GetComponent<Rigidbody>();
@@ -108,7 +114,6 @@ public class Health : MonoBehaviour
 		if (transform.GetComponent<EnemyDrops> ()) 
 		{
 			transform.GetComponent<EnemyDrops> ().DoDrop ();
-            Debug.Log("dropped");
 		}
 	}
 

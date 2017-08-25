@@ -200,11 +200,6 @@ public class PlayerInformation : MonoBehaviour
         }
     }
 
-    void RandomCharm()
-    {
-        //Charm[] charms = Resources.LoadAll<Charm>("Items/Charms/");
-    }
-
     private int roomAmount = 0;
 
     void RegenHealth()
