@@ -2,244 +2,249 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInformation : MonoBehaviour 
+public class PlayerInformation : MonoBehaviour
 {
-	[Header("Player Values")]
-	public int playerIndex = 0;
-	public float attackMinAngle = 130;
-	public float attackDistance = 5;
-	public float maxMoveSpeed;
-	public float strength;
-	public float attackSpeed;
-	public float resistance;
-	public float knockback;
-	public float invincibilityTimeAfterHit = 2;
-	public bool invincible = false;
+    [Header("Player Values")]
+    public int playerIndex = 0;
+    public float attackMinAngle = 130;
+    public float attackDistance = 5;
+    public float maxMoveSpeed;
+    public float strength;
+    public float attackSpeed;
+    public float resistance;
+    public float knockback;
+    public float invincibilityTimeAfterHit = 2;
+    public bool invincible = false;
 
-	[Header("Charm")]
-	public int charmAmount;
-	public List<Charm> currentCharms =  new List<Charm>();
+    [Header("Charm")]
+    public int charmAmount;
+    public List<Charm> currentCharms = new List<Charm>();
 
     [Header("Other Vals")]
     public float timeBetweenFlash = 0.5f;
     public int amountToFlash = 5;
     public GameObject invincibleSphere;
 
-	private Health health;
+    private Health health;
 
-	private bool speedBoost = false;
+    private bool speedBoost = false;
 
-	private WeaponStats currentWeaponStats;
+    private WeaponStats currentWeaponStats;
 
-	private Dictionary<string, float> charmFloats = new Dictionary<string, float>();
-	private Dictionary<string, bool> charmBools = new Dictionary<string, bool>();
-	private LayerMask layerMask;
+    private Dictionary<string, float> charmFloats = new Dictionary<string, float>();
+    private Dictionary<string, bool> charmBools = new Dictionary<string, bool>();
+    private LayerMask layerMask;
+
     private 
 
 	void Start()
-	{
-		health = GetComponent<Health> ();
+    {
+        health = GetComponent<Health>();
 
-		if (LevelGenerator.Instance)
-		{
-			LevelGenerator.Instance.OnTileEnter += RegenHealth;
-			LevelGenerator.Instance.OnTileEnter += SpeedBuff;
+        if (LevelGenerator.Instance)
+        {
+            LevelGenerator.Instance.OnTileEnter += RegenHealth;
+            LevelGenerator.Instance.OnTileEnter += SpeedBuff;
             LevelGenerator.Instance.OnTileEnter += Forcefield;
-		}
+        }
 
-		PickupCharm (null);
-	}
+        PickupCharm(null);
+    }
 
-	public int chanceChecker(string chanceKey)
-	{
-		if (HasCharmFloat (chanceKey))
-		{
-			float randomPercent = Random.Range (0, 101);
-			if (randomPercent >= GetCharmFloat (chanceKey))
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
-		}
-		return 0;
-	}
+    public int chanceChecker(string chanceKey)
+    {
+        if (HasCharmFloat(chanceKey))
+        {
+            float randomPercent = Random.Range(0, 101);
+            if (randomPercent >= GetCharmFloat(chanceKey))
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        return 0;
+    }
 
-	void Update()
-	{
-		//sets stats depending on weapon values
-		if (currentWeaponStats) 
-		{
-			//get weapon stats
-		} 
-		else 
-		{
-			currentWeaponStats = GetComponentInChildren<WeaponStats> ();
-		}
+    void Update()
+    {
+        //sets stats depending on weapon values
+        if (currentWeaponStats)
+        {
+            //get weapon stats
+        }
+        else
+        {
+            currentWeaponStats = GetComponentInChildren<WeaponStats>();
+        }
 
-		if (HasCharmFloat ("resistanceMultiplier"))
-			resistance = resistance * GetCharmFloat ("resistanceMuliplier");
+        if (HasCharmFloat("resistanceMultiplier"))
+            resistance = resistance * GetCharmFloat("resistanceMuliplier");
 			
-		MagnetizeItems ();
-		PullEnemies ();
-	}
+        MagnetizeItems();
+        PullEnemies();
+    }
 
-	public void PickupCharm(Charm charm)
-	{
-		if (charm) 
-		{
-			//adds a charm to the start of the list
-			currentCharms.Insert (0, charm);
-			//checks to see if the amount of charms the player has is greater then the amount they can hold
-			if (currentCharms.Count > charmAmount) {
-				//creates a new charm and adds it to the list
-				Charm oldCharm = currentCharms [currentCharms.Count - 1];
-				//removes the older charm
-				currentCharms.Remove (oldCharm);
+    public void PickupCharm(Charm charm)
+    {
+        if (charm)
+        {
+            //adds a charm to the start of the list
+            currentCharms.Insert(0, charm);
+            //checks to see if the amount of charms the player has is greater then the amount they can hold
+            if (currentCharms.Count > charmAmount)
+            {
+                //creates a new charm and adds it to the list
+                Charm oldCharm = currentCharms[currentCharms.Count - 1];
+                //removes the older charm
+                currentCharms.Remove(oldCharm);
 
-				oldCharm.Drop (this);
-			}
+                oldCharm.Drop(this);
+            }
 
-			charm.Pickup (this);
-		}
-		CharmImage[] charmImg = FindObjectsOfType<CharmImage> ();
-		//loops through each charm and updates the ui
-		foreach (CharmImage img in charmImg) 
-		{
-			if (playerIndex == img.id)
-				img.UpdateCharms (this);
-		}
-	}
+            charm.Pickup(this);
+        }
+        CharmImage[] charmImg = FindObjectsOfType<CharmImage>();
+        //loops through each charm and updates the ui
+        foreach (CharmImage img in charmImg)
+        {
+            if (playerIndex == img.id)
+                img.UpdateCharms(this);
+        }
+    }
 
-	public void SetLayerMask(LayerMask lm)
-	{
-		layerMask = lm;
-	}
+    public void SetLayerMask(LayerMask lm)
+    {
+        layerMask = lm;
+    }
 
-	public void SetCharmFloat(string key, float value)
-	{
-		charmFloats[key] = value;
-	}
+    public void SetCharmFloat(string key, float value)
+    {
+        charmFloats[key] = value;
+    }
 
-	public void SetCharmBool(string key, bool value)
-	{
-		charmBools[key] = value;
-	}
+    public void SetCharmBool(string key, bool value)
+    {
+        charmBools[key] = value;
+    }
 
-	public float GetCharmFloat(string key)
-	{
-		if (charmFloats.ContainsKey(key))
-			return charmFloats[key];
-		else
-			return 1.0f;
-	}
+    public float GetCharmFloat(string key)
+    {
+        if (charmFloats.ContainsKey(key))
+            return charmFloats[key];
+        else
+            return 1.0f;
+    }
 
-	public bool GetCharmBool(string key)
-	{
-		if (charmBools.ContainsKey (key))
-			return charmBools [key];
-		else
-			return false;
-	}
+    public bool GetCharmBool(string key)
+    {
+        if (charmBools.ContainsKey(key))
+            return charmBools[key];
+        else
+            return false;
+    }
 
-	public bool HasCharmFloat(string key)
-	{
-		return charmFloats.ContainsKey (key);
-	}
+    public bool HasCharmFloat(string key)
+    {
+        return charmFloats.ContainsKey(key);
+    }
 
-	public bool HasCharmBool(string key)
-	{
-		return charmBools.ContainsKey (key);
-	}
+    public bool HasCharmBool(string key)
+    {
+        return charmBools.ContainsKey(key);
+    }
 
-	//-------------------------- Charm functions
+    //-------------------------- Charm functions
 
-	void MagnetizeItems()
-	{
-		if (HasCharmBool ("absorb")) {
-			if (GetCharmBool ("absorb")) 
-			{
-				//gets the magnetic charm
-				foreach (Charm charm in currentCharms) 
-				{
-					//gets all items in radius
-					Collider[] items = Physics.OverlapSphere (transform.position, GetCharmFloat ("radialValue"), layerMask);
-					if (items.Length > 0) 
-					{
-						foreach (Collider item in items) 
-						{
-							//moves those items towards the player
-							item.transform.position = Vector3.MoveTowards (item.transform.position, transform.position, GetCharmFloat ("radialAbsorbSpeed") * Time.deltaTime);
-						}
-					}
-				}
-			}
-		}
-	}
+    void MagnetizeItems()
+    {
+        //gets all items in radius
+        Collider[] items = Physics.OverlapSphere(transform.position, (GetCharmFloat("radialValue") + 1));
+        if (items.Length > 0)
+        {
+            foreach (Collider item in items)
+            {
+                //check the layer
+                if (item.gameObject.layer == 15)
+                {
+                    //moves those items towards the player
+                    item.transform.position = Vector3.MoveTowards(item.transform.position, transform.position, (GetCharmFloat("radialAbsorbSpeed") + 1) * Time.deltaTime);
+                }
+            }
+        }
+    }
 
-	void PullEnemies()
-	{
-		if (HasCharmBool ("pullEnemy")) {
-			if (GetCharmBool ("pullEnemy")) 
-			{
-				//gets the pull enemy charm
-				foreach (Charm charm in currentCharms) 
-				{
-					//gets all items in radius
-					Collider[] enemies = Physics.OverlapSphere (transform.position, GetCharmFloat ("radialValue"), layerMask);
-					if (enemies.Length > 0) 
-					{
-						foreach (Collider enemy in enemies) 
-						{
-							//moves those enemies towards the player
-							enemy.transform.position = Vector3.MoveTowards (enemy.transform.position, transform.position, GetCharmFloat ("radialPullSpeed") * Time.deltaTime);
-						}
-					}
-				}
-			}
-		}
-	}
+    void PullEnemies()
+    {
+        if (HasCharmBool("pullEnemy"))
+        {
+            if (GetCharmBool("pullEnemy"))
+            {
+                //gets the pull enemy charm
+                foreach (Charm charm in currentCharms)
+                {
+                    //gets all items in radius
+                    Collider[] enemies = Physics.OverlapSphere(transform.position, GetCharmFloat("radialValue"), layerMask);
+                    if (enemies.Length > 0)
+                    {
+                        foreach (Collider enemy in enemies)
+                        {
+                            //moves those enemies towards the player
+                            enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, transform.position, GetCharmFloat("radialPullSpeed") * Time.deltaTime);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-	private int roomAmount = 0;
+    void RandomCharm()
+    {
+        //Charm[] charms = Resources.LoadAll<Charm>("Items/Charms/");
+    }
 
-	void RegenHealth()
-	{
-		if (HasCharmFloat ("regenRooms")) {
-			roomAmount++;
+    private int roomAmount = 0;
 
-			int maxRoomAmount = Mathf.CeilToInt (GetCharmFloat ("regenRooms"));
+    void RegenHealth()
+    {
+        if (HasCharmFloat("regenRooms"))
+        {
+            roomAmount++;
 
-			if (roomAmount >= maxRoomAmount) {
-				roomAmount = 0;
-				health.health += GetCharmFloat ("regenAmount");
-			}
-		}
-	}
+            int maxRoomAmount = Mathf.CeilToInt(GetCharmFloat("regenRooms"));
 
-	void SpeedBuff()
-	{
-		if (!speedBoost) 
-		{
-			if (HasCharmFloat ("speedBuffTime")) 
-			{
-				StartCoroutine (SpeedBuffForTime (GetCharmFloat ("speedBuffTime"), GetCharmFloat ("speedBuff")));
-			}
-		}
-	}
+            if (roomAmount >= maxRoomAmount)
+            {
+                roomAmount = 0;
+                health.health += GetCharmFloat("regenAmount");
+            }
+        }
+    }
 
-	IEnumerator SpeedBuffForTime(float time, float multiplier)
-	{
-		speedBoost = true;
-		float speed = maxMoveSpeed;
-		maxMoveSpeed *= multiplier;
+    void SpeedBuff()
+    {
+        if (!speedBoost)
+        {
+            if (HasCharmFloat("speedBuffTime"))
+            {
+                StartCoroutine(SpeedBuffForTime(GetCharmFloat("speedBuffTime"), GetCharmFloat("speedBuff")));
+            }
+        }
+    }
 
-		yield return new WaitForSeconds (time);
+    IEnumerator SpeedBuffForTime(float time, float multiplier)
+    {
+        speedBoost = true;
+        float speed = maxMoveSpeed;
+        maxMoveSpeed *= multiplier;
 
-		speedBoost = false;
-		maxMoveSpeed = speed;
-	}
+        yield return new WaitForSeconds(time);
+
+        speedBoost = false;
+        maxMoveSpeed = speed;
+    }
 
     public void HitFlash()
     {
@@ -275,57 +280,59 @@ public class PlayerInformation : MonoBehaviour
             invincibleSphere.SetActive(true);
     }
 
-	void OnCollisionEnter(Collision col)
-	{
-		if (col.transform.tag == "Enemy") 
-		{
-			//checks to make sure player has a charm with burn tick time
-			if (HasCharmFloat ("burnTickTime")) 
-			{
-				//the enemy can't be burned more then once, check to make sure it's not burned already
-				if (!col.gameObject.GetComponent<Health> ().isBurned) 
-				{
-					if (col.transform.GetComponent<Health> ()) 
-					{
-						//set the enemy to burned with the following values
-						col.transform.GetComponent<Health> ().SetBurned (GetCharmFloat ("burnTickDamage"), GetCharmFloat ("burnTickTotalTime"), GetCharmFloat ("burnTickTime"));
-					}
-				}
-			}
-			//checks to make sure player has a charm with poison tick time
-			if (HasCharmFloat ("poisonTickTime")) 
-			{
-				//the enemy can't be poisoned more then once, check to make sure it's not poisoned already
-				if (!col.gameObject.GetComponent<Health> ().isPoisoned) 
-				{
-					if (col.transform.GetComponent<Health> ()) 
-					{
-						//set the enemy to poisoned with the following values
-						col.transform.GetComponent<Health> ().SetPoison (GetCharmFloat ("poisonTickDamage"), GetCharmFloat ("poisonTickTotalTime"), GetCharmFloat ("poisonTickTime"));
-					}
-				}
-			}
-			//checks to make sure player has a charm with poison tick time
-			if (HasCharmFloat ("slowDeathTickTime")) 
-			{
-				//the enemy can't be poisoned more then once, check to make sure it's not poisoned already
-				if (!col.gameObject.GetComponent<Health> ().isSlowlyDying) 
-				{
-					if (col.transform.GetComponent<Health> ()) 
-					{
-						//set the enemy to poisoned with the following values
-						col.transform.GetComponent<Health> ().SetSlowDeath (GetCharmFloat ("slowDeathTickDamage"), GetCharmFloat ("slowDeathTickTotalTime"), GetCharmFloat ("slowDeathTickTime"));
-					}
-				}
-			}
-			//checks to make sure the player has a charm with damageOnTouch
-			if (HasCharmFloat ("damageOnTouch")) {
-				if (col.transform.GetComponent<Health> ()) {
-					col.gameObject.GetComponent<Health> ().AffectHealth (-GetCharmFloat ("damageOnTouch"));
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.transform.tag == "Enemy")
+        {
+            //checks to make sure player has a charm with burn tick time
+            if (HasCharmFloat("burnTickTime"))
+            {
+                //the enemy can't be burned more then once, check to make sure it's not burned already
+                if (!col.gameObject.GetComponent<Health>().isBurned)
+                {
+                    if (col.transform.GetComponent<Health>())
+                    {
+                        //set the enemy to burned with the following values
+                        col.transform.GetComponent<Health>().SetBurned(GetCharmFloat("burnTickDamage"), GetCharmFloat("burnTickTotalTime"), GetCharmFloat("burnTickTime"));
+                    }
+                }
+            }
+            //checks to make sure player has a charm with poison tick time
+            if (HasCharmFloat("poisonTickTime"))
+            {
+                //the enemy can't be poisoned more then once, check to make sure it's not poisoned already
+                if (!col.gameObject.GetComponent<Health>().isPoisoned)
+                {
+                    if (col.transform.GetComponent<Health>())
+                    {
+                        //set the enemy to poisoned with the following values
+                        col.transform.GetComponent<Health>().SetPoison(GetCharmFloat("poisonTickDamage"), GetCharmFloat("poisonTickTotalTime"), GetCharmFloat("poisonTickTime"));
+                    }
+                }
+            }
+            //checks to make sure player has a charm with poison tick time
+            if (HasCharmFloat("slowDeathTickTime"))
+            {
+                //the enemy can't be poisoned more then once, check to make sure it's not poisoned already
+                if (!col.gameObject.GetComponent<Health>().isSlowlyDying)
+                {
+                    if (col.transform.GetComponent<Health>())
+                    {
+                        //set the enemy to poisoned with the following values
+                        col.transform.GetComponent<Health>().SetSlowDeath(GetCharmFloat("slowDeathTickDamage"), GetCharmFloat("slowDeathTickTotalTime"), GetCharmFloat("slowDeathTickTime"));
+                    }
+                }
+            }
+            //checks to make sure the player has a charm with damageOnTouch
+            if (HasCharmFloat("damageOnTouch"))
+            {
+                if (col.transform.GetComponent<Health>())
+                {
+                    col.gameObject.GetComponent<Health>().AffectHealth(-GetCharmFloat("damageOnTouch"));
                     col.gameObject.GetComponent<Health>().Knockback(this, -col.transform.forward, 1);
-				}
-			}
-		}
-	}
+                }
+            }
+        }
+    }
 
 }
