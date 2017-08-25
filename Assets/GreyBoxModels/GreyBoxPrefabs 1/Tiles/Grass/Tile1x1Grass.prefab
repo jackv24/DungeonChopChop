@@ -1912,7 +1912,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4698400249527496}
   - component: {fileID: 114523632363516388}
-  - component: {fileID: 114705202701086524}
   m_Layer: 0
   m_Name: Tile1x1Grass
   m_TagString: Untagged
@@ -14086,7 +14085,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 12289
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
@@ -14096,43 +14095,6 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &114705202701086524
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1472741223503970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab8bedca2022eb42ab66d60fd58d259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoints:
-  - {fileID: 4276742144445064, guid: 95f73503d6442934d8c105ed14b66451, type: 2}
-  - {fileID: 4516878233033450, guid: 95f73503d6442934d8c105ed14b66451, type: 2}
-  - {fileID: 4258547580636874, guid: 95f73503d6442934d8c105ed14b66451, type: 2}
-  - {fileID: 4738491029660852, guid: 95f73503d6442934d8c105ed14b66451, type: 2}
-  - {fileID: 4249709703144508, guid: 95f73503d6442934d8c105ed14b66451, type: 2}
-  - {fileID: 4106436643286094, guid: 95f73503d6442934d8c105ed14b66451, type: 2}
-  - {fileID: 4089355482492442, guid: 95f73503d6442934d8c105ed14b66451, type: 2}
-  - {fileID: 4379342917368468, guid: 95f73503d6442934d8c105ed14b66451, type: 2}
-  - {fileID: 4589793427933970, guid: 95f73503d6442934d8c105ed14b66451, type: 2}
-  minSpawns: 3
-  maxSpawns: 5
-  enemies:
-  - prefab: {fileID: 1900345625037602, guid: 1c7aed8bfcbb87e4eb9b0593b73ba0c2, type: 2}
-    probability: 1
-  - prefab: {fileID: 1761846842308470, guid: 7434c0b4388260e40b908832865451b7, type: 2}
-    probability: 1
-  - prefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451, type: 2}
-    probability: 1
-  - prefab: {fileID: 1778345937751282, guid: e1cb910c04eb74a478c2a9f1b4e3805f, type: 2}
-    probability: 1
-  - prefab: {fileID: 1378222217357978, guid: e7da4400884b2e5468ac181a157ecd91, type: 2}
-    probability: 1
-  - prefab: {fileID: 1877086586426536, guid: a1c2521df5f0b3b4fb9970d6777677ea, type: 2}
-    probability: 1
-  respawnTileCount: 5
 --- !u!114 &114859366371616816
 MonoBehaviour:
   m_ObjectHideFlags: 1
