@@ -14,7 +14,7 @@ public class ForcefieldCol : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "Enemy" || col.tag == "Projectile")
+        if (col.gameObject.layer == 11 || col.tag == "Projectile")
         {
             playerHealth.TemporaryInvincibility();
             gameObject.SetActive(false);
