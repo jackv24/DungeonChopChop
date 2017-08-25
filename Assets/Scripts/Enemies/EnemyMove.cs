@@ -75,7 +75,7 @@ public class EnemyMove : MonoBehaviour
 
         NavMeshHit hit;
 
-        NavMesh.SamplePosition(runTo, out hit, 5, 1 << NavMesh.GetAreaFromName("Default"));
+        NavMesh.SamplePosition(runTo, out hit, 5, 1 << NavMesh.GetAreaFromName("Walkable"));
 
         agent.SetDestination(hit.position);
     }

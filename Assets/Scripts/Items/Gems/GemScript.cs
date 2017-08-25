@@ -16,9 +16,12 @@ public class GemScript : MonoBehaviour {
     private Vector3 initialPos;
     private Vector3 rotation;
 
+    private float distToGround;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        distToGround = GetComponent<Collider>().bounds.extents.y;
     }
 
 
@@ -26,7 +29,7 @@ public class GemScript : MonoBehaviour {
 	{
         //checks if the player collides with the item
 		if (col.tag == "Player1" || col.tag == "Player2") {
-            ItemsManager.Instance.Coins += coinAmount;
+            ItemsManager.Instance.Coins += coinAmount * (int)col.GetComponent<PlayerInformation>().GetCharmFloat("coinMultiplier");
 			gameObject.SetActive (false);
 		}
 	}
@@ -48,7 +51,11 @@ public class GemScript : MonoBehaviour {
     {
         //waits a second before letting the item to float
         yield return new WaitForSeconds(1);
-        initialPos = transform.localPosition;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, distToGround + 1000))
+        {
+            initialPos = hit.point;
+        }
         rb.isKinematic = true;
         doFloat = true;
     }

@@ -271,11 +271,20 @@ public class LevelTile : MonoBehaviour
 
 	public void ShowTile()
 	{
+		ShowTile(true);
+	}
+
+	public void ShowTile(bool inside)
+	{
 		//Show tile on map
 		if (mapTile)
 		{
 			mapTile.biome = biome;
-			mapTile.SetInside();
+
+			if (inside)
+				mapTile.SetInside();
+			else
+				mapTile.SetOutside();
 		}
 
 		if (LevelVars.Instance)
