@@ -50,6 +50,7 @@ public class Slash : MonoBehaviour {
     {
         if (fadeIn)
         {
+            //fades in the slash
             fadeInCounter++;
             alpha += amountOfAlpha;
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, alpha);
@@ -61,6 +62,7 @@ public class Slash : MonoBehaviour {
         }
         else
         {
+            //fades out the slash
             alpha -= amountOfAlpha;
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, alpha);
             if (alpha <= 0)
@@ -68,21 +70,27 @@ public class Slash : MonoBehaviour {
                 gameObject.SetActive(false);
             }
         }
+        //moves the slash forward
         transform.position += (direction * distance) * (1 + cc.velocity.magnitude / 9.5f);
+        //increases the size of the slash
         transform.localScale += new Vector3(xScaleIncrease, yScaleIncrease, 0);
     }
 
     void OnTriggerEnter(Collider col)
     {
+        //check if the collider is on the enemy layer
         if (col.gameObject.layer == 11)
         {
             if (col.GetComponent<Health>())
             {
+                //gets the direction of the collision
                 Vector3 dir = transform.position - col.transform.position;
-                float dist = Vector3.Distance(transform.position, col.transform.position);
-                col.GetComponent<Health>().Knockback(playerInfo, -dir, dist);
+                //calculates knockback depending on direction
+                col.GetComponent<Health>().Knockback(playerInfo, -dir);
+                //checks if the player has a status condition
                 if (playerHealth.HasStatusCondition())
                 {
+                    //if the player is burned or poisoned, a charm may affect the damage output
                     if (playerHealth.isBurned || playerHealth.isPoisoned)
                     {
                         col.GetComponent<Health>().AffectHealth((-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * playerInfo.GetCharmFloat("dmgMultiWhenBurned") * playerInfo.GetCharmFloat("dmgMultiWhenPoisoned"));

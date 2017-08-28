@@ -20,16 +20,18 @@ public class PlayerInformation : MonoBehaviour
     public int charmAmount;
     public List<Charm> currentCharms = new List<Charm>();
 
-    [Header("Other Vals")]
-    public float timeBetweenFlash = 0.5f;
-    public int amountToFlash = 5;
     public GameObject invincibleSphere;
 
     private Health health;
 
     private bool speedBoost = false;
+    private bool paralysed = false;
 
     private WeaponStats currentWeaponStats;
+    private PlayerMove playerMove;
+    private Animator animator;
+    private Rigidbody rb;
+    private CharacterController characterController;
 
     private Dictionary<string, float> charmFloats = new Dictionary<string, float>();
     private Dictionary<string, bool> charmBools = new Dictionary<string, bool>();
@@ -40,12 +42,17 @@ public class PlayerInformation : MonoBehaviour
 	void Start()
     {
         health = GetComponent<Health>();
+        playerMove = GetComponent<PlayerMove>();
+        animator = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
 
         if (LevelGenerator.Instance)
         {
             LevelGenerator.Instance.OnTileEnter += RegenHealth;
             LevelGenerator.Instance.OnTileEnter += SpeedBuff;
             LevelGenerator.Instance.OnTileEnter += Forcefield;
+            LevelGenerator.Instance.OnTileEnter += Paralysed;
         }
 
         PickupCharm(null);
@@ -239,6 +246,29 @@ public class PlayerInformation : MonoBehaviour
         }
     }
 
+    void Paralysed()
+    {
+        if (!paralysed)
+        {
+            if (HasCharmFloat("paralysisTime"))
+            {
+                StartCoroutine(ParalysedForSeconds(GetCharmFloat("paralysisTime")));
+            }
+        }
+    }
+
+    IEnumerator ParalysedForSeconds(float seconds)
+    {
+        paralysed = true;
+        yield return new WaitForSeconds(.5f);
+        animator.enabled = false;
+        playerMove.enabled = false;
+        yield return new WaitForSeconds(seconds);
+        paralysed = false;
+        animator.enabled = true;
+        playerMove.enabled = true;
+    }
+
     IEnumerator SpeedBuffForTime(float time, float multiplier)
     {
         speedBoost = true;
@@ -251,38 +281,27 @@ public class PlayerInformation : MonoBehaviour
         maxMoveSpeed = speed;
     }
 
-    public void HitFlash()
-    {
-        StartCoroutine(DoHitFlash());
-    }
-
-    IEnumerator DoHitFlash()
-    {
-        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
-        SkinnedMeshRenderer skinrend = GetComponentInChildren<SkinnedMeshRenderer>();
-        for (int i = 0; i <= amountToFlash; i++)
-        {
-            skinrend.enabled = false;
-            foreach (MeshRenderer renderer in renderers)
-            {
-                renderer.enabled = false;
-            }
-            yield return new WaitForSeconds(timeBetweenFlash);
-
-            skinrend.enabled = true;
-            foreach (MeshRenderer renderer in renderers)
-            {
-                renderer.enabled = true;
-            }
-            yield return new WaitForSeconds(timeBetweenFlash);
-        }
-
-    }
-
     public void Forcefield()
     {
         if (HasCharmBool("firstHitInvincible"))
             invincibleSphere.SetActive(true);
+    }
+
+    public void KnockbackPlayer(Vector3 direction, float knockbackStrength)
+    {
+        StartCoroutine(KnockPlayerBack(direction, knockbackStrength));      
+    }
+
+    IEnumerator KnockPlayerBack(Vector3 direction, float knockbackStrength)
+    {
+        float elapsedTime = 0;
+        float timer = .3f;
+        while (elapsedTime < timer)
+        {
+            characterController.Move(direction * knockbackStrength * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+            elapsedTime += Time.deltaTime;
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -334,7 +353,7 @@ public class PlayerInformation : MonoBehaviour
                 if (col.transform.GetComponent<Health>())
                 {
                     col.gameObject.GetComponent<Health>().AffectHealth(-GetCharmFloat("damageOnTouch"));
-                    col.gameObject.GetComponent<Health>().Knockback(this, -col.transform.forward, 1);
+                    col.gameObject.GetComponent<Health>().Knockback(this, -col.transform.forward);
                 }
             }
         }

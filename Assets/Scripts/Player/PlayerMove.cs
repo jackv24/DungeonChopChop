@@ -112,7 +112,7 @@ public class PlayerMove : MonoBehaviour
 			
 		//moves the player using the input axis and move speed
 		//checks if the player is on ice or not
-		fromMoveVector = Vector3.Lerp(fromMoveVector, targetMoveVector, acceleration * Time.deltaTime);
+        fromMoveVector = Vector3.Lerp(fromMoveVector, targetMoveVector, acceleration * playerInformation.GetCharmFloat("slipMultiplier") * Time.deltaTime);
 		characterController.Move(fromMoveVector * Time.deltaTime);
 	}
 

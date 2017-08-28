@@ -585,7 +585,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1663011482531826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 81.90355, y: 0.5, z: -171.68889}
+  m_LocalPosition: {x: 12.239502, y: 1.9458082, z: 14.37068}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4124461298648114}
@@ -657,8 +657,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2016816, y: 1.6003876, z: 2.2792568}
-  m_Center: {x: 0.015663084, y: 0.7541437, z: -0.016053915}
+  m_Size: {x: 2.2016816, y: 4.581268, z: 2.2792568}
+  m_Center: {x: 0.015663028, y: 2.2445838, z: -0.016053915}
 --- !u!95 &95213666120795750
 Animator:
   serializedVersion: 3
@@ -742,6 +742,7 @@ MonoBehaviour:
   thrust: 50
   attackStrength: 1
   damageOnTouch: 1
+  knockbackStrength: 5
   projAmount: 25
   timeTillInterval: 1
   minInterval: 1
@@ -757,12 +758,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
-  health: 2
-  isDead: 0
+  maxHealth: 10
+  health: 10
+  weight: 2
+  IsEnemy: 1
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
+  isDead: 0
+  hitParticles:
+  - {fileID: 0}
+  timeBetweenFlash: 0.1
+  amountToFlash: 5
 --- !u!114 &114812999653983072
 MonoBehaviour:
   m_ObjectHideFlags: 1

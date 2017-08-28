@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class Health : MonoBehaviour 
 {
-
 	public float maxHealth;
 	public float health;
-	public bool isDead = false;
+    [Tooltip("The heavier the weight, less knockback")]
+    public float weight;
+	
 
 	public delegate void HealthEvent();
 	public event HealthEvent OnDeath;
 	public event HealthEvent OnHealthChange;
 
+    [Space()]
+    public bool IsEnemy;
 	public bool isPoisoned = false;
 	public bool isBurned = false;
 	public bool isSlowlyDying = false;
+
+    public bool isDead = false;
+
+    [Space()]
+    public GameObject[] hitParticles;
+
+    [Space()]
+    [Header("Other Vals")]
+    public float timeBetweenFlash = 0.1f;
+    public int amountToFlash = 5;
 
 	private PlayerInformation playerInfo;
 	private Animator animator;
@@ -40,7 +53,22 @@ public class Health : MonoBehaviour
 				OnDeath ();
 			}
 		}
+        if (IsEnemy)
+        {
+            DoHitParticle();
+            HitFlash();
+        }
 	}
+
+    void DoHitParticle()
+    {
+        if (hitParticles.Length > 0)
+        {
+            int random = Random.Range(0, hitParticles.Length);
+            GameObject particle = ObjectPooler.GetPooledObject(hitParticles[random]);
+            particle.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        }
+    }
 
     void OnEnable()
     {
@@ -74,19 +102,57 @@ public class Health : MonoBehaviour
 	IEnumerator InvincibilityWait(PlayerInformation playerInfo)
 	{
 		playerInfo.invincible = true;
-        playerInfo.HitFlash();
+        HitFlash();
 		yield return new WaitForSeconds(playerInfo.invincibilityTimeAfterHit);
 		playerInfo.invincible = false;
 	}
 
-    public void Knockback(PlayerInformation playerInfo, Vector3 direction, float distance)
+    public void Knockback(PlayerInformation playerInfo, Vector3 direction)
     {
         if (rb)
-            rb.AddForce(direction / distance * playerInfo.knockback * playerInfo.GetCharmFloat("kockbackMultiplier"), ForceMode.Impulse);
+            rb.AddForce(direction * (playerInfo.knockback / weight) * playerInfo.GetCharmFloat("kockbackMultiplier"), ForceMode.Impulse);
+    }
+
+    public void HitFlash()
+    {
+        StartCoroutine(DoHitFlash());
+    }
+
+    IEnumerator DoHitFlash()
+    {
+        //Gets all mesh renderers and skin renderers
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        SkinnedMeshRenderer[] skinrends = GetComponentsInChildren<SkinnedMeshRenderer>();
+        for (int i = 0; i <= amountToFlash; i++)
+        {
+            //loops through each and disables them
+            foreach (SkinnedMeshRenderer renderer in skinrends)
+            {
+                renderer.enabled = false;
+            }
+            foreach (MeshRenderer renderer in renderers)
+            {
+                renderer.enabled = false;
+            }
+            yield return new WaitForSeconds(timeBetweenFlash);
+
+            //loops through each and enables them
+            foreach (SkinnedMeshRenderer renderer in skinrends)
+            {
+                renderer.enabled = true;
+            }
+            foreach (MeshRenderer renderer in renderers)
+            {
+                renderer.enabled = true;
+            }
+            yield return new WaitForSeconds(timeBetweenFlash);
+        }
+
     }
 
 	void Update()
 	{
+        //makes sure health doesn't go below 0        
 		if (health <= 0) 
 		{
 			health = 0;
