@@ -88,21 +88,29 @@ public class PlayerAttack : MonoBehaviour
         } 
         if (input.DashSlash.WasPressed)
         {
-            //dash slash
-            if (canDash)
+            if (!playerInformation.HasCharmBool("cantDash"))
             {
-                doDash();
+                //dash slash
+                if (canDash)
+                {
+                    doDash();
+                }
             }
         } 
+            
         if (input.Block)
         {
-            //block
-            if (shield)
+            if (!playerInformation.HasCharmBool("cantBlock"))
             {
-                if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                    DoBlock();
+                //block
+                if (shield)
+                {
+                    if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
+                        DoBlock();
+                }
             }
         }
+
         if (input.Block.WasReleased)
         {
             //block

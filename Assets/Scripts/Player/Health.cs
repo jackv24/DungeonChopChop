@@ -106,6 +106,15 @@ public class Health : MonoBehaviour
 			//animator.SetTrigger ("Hit");
 		}
 	}
+
+    public bool HasStatusCondition()
+    {
+        if (isBurned || isPoisoned || isSlowlyDying)
+        {
+            return true;
+        }
+        return false;
+    }
 		
 	public void Death()
 	{

@@ -25,6 +25,7 @@ public class Slash : MonoBehaviour {
     private Vector3 ogScale;
     private PlayerAttack playerAttack;
     private PlayerInformation playerInfo;
+    private Health playerHealth;
     public Vector3 direction;
 
     public GameObject player;
@@ -41,6 +42,7 @@ public class Slash : MonoBehaviour {
         sprite = GetComponent<SpriteRenderer>();
         playerInfo = player.GetComponent<PlayerInformation>();
         playerAttack = player.GetComponent<PlayerAttack>();
+        playerHealth = player.GetComponent<Health>();
     }
 	
 	// Update is called once per frame
@@ -79,7 +81,21 @@ public class Slash : MonoBehaviour {
                 Vector3 dir = transform.position - col.transform.position;
                 float dist = Vector3.Distance(transform.position, col.transform.position);
                 col.GetComponent<Health>().Knockback(playerInfo, -dir, dist);
-                col.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
+                if (playerHealth.HasStatusCondition())
+                {
+                    if (playerHealth.isBurned || playerHealth.isPoisoned)
+                    {
+                        col.GetComponent<Health>().AffectHealth((-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * playerInfo.GetCharmFloat("dmgMultiWhenBurned") * playerInfo.GetCharmFloat("dmgMultiWhenPoisoned"));
+                    }
+                    else
+                    {
+                        col.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
+                    }
+                }
+                else
+                {
+                    col.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
+                }
                 CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
             }
         }

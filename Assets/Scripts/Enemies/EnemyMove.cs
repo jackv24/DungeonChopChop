@@ -8,7 +8,6 @@ public class EnemyMove : MonoBehaviour
 {
     protected NavMeshAgent agent;
     protected PlayerInformation[] players;
-
     protected PlayerInformation currentPlayer = null;
     protected Animator animator;
 
@@ -20,6 +19,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (currentPlayer)
         {
+            //checks if the current player has the following charm
             if (currentPlayer.HasCharmBool("enemiesRunAway"))
             {
                 runAway = true;
@@ -40,19 +40,23 @@ public class EnemyMove : MonoBehaviour
 
     protected void FollowPlayer()
     {
+        //follows the closest player using nav mesh
         agent.destination = GetClosestPlayer().position;
     }
 
     protected void FollowEnemy()
     {
-        agent.destination = GetClosestEnemy("Slime").position;
+        //follows the closest enemy
+        agent.destination = GetClosestEnemy().position;
     }
 
     protected void Roam(float timeBetweenRoam) 
     { 
         roamCounter++; 
+        //a simple counter to stop recurring every frame
         if (roamCounter > timeBetweenRoam * 60) 
         { 
+            //roams to a random position on the current tile
             agent.destination = LevelGenerator.Instance.currentTile.GetPosInTile(1, 1); 
             roamCounter = 0; 
         } 
@@ -60,6 +64,7 @@ public class EnemyMove : MonoBehaviour
 
     protected bool IsInDistanceOfPlayer(float radius)
     {
+        //checks to see if the player is in the radius of the enemy
         float distance = Vector3.Distance(transform.position, GetClosestPlayer().position);
         if (distance < radius)
         {
@@ -70,13 +75,18 @@ public class EnemyMove : MonoBehaviour
 
     protected void RunAwayFromPlayer()
     {
+        //rotates away from the player
         transform.rotation = Quaternion.LookRotation(transform.position - currentPlayer.transform.position);
+
+        //Gets a new vector position in front of the enemy 
         Vector3 runTo = transform.position + transform.forward * 5;
 
         NavMeshHit hit;
 
+        //checks to make sure the point is reachable on the nav mesh
         NavMesh.SamplePosition(runTo, out hit, 5, 1 << NavMesh.GetAreaFromName("Walkable"));
 
+        //moves to that position
         agent.SetDestination(hit.position);
     }
 
@@ -85,6 +95,7 @@ public class EnemyMove : MonoBehaviour
         float previousPlayerDistance = float.MaxValue;
         foreach (PlayerInformation player in players) 
         {
+            //loops through both players and finds out which player is closest
             float distance = Vector3.Distance (player.transform.position, transform.position);
             if (distance < previousPlayerDistance) 
             {
@@ -95,13 +106,15 @@ public class EnemyMove : MonoBehaviour
         return currentPlayer.transform;
     }
 
-    protected Transform GetClosestEnemy(string enemyTag)
+    protected Transform GetClosestEnemy()
     {
         GameObject closestEnemy = null;
         float maxDistance = float.MaxValue;
+        //gets all enemies in a specific radius
         Collider[] enemies = Physics.OverlapSphere(transform.position, 100);
         foreach (Collider enemy in enemies)
         {
+            //loops through each enemy and finds which enemy is closest
             float dist = Vector3.Distance(transform.position, enemy.transform.position);
             if (dist < maxDistance)
             {
@@ -109,6 +122,7 @@ public class EnemyMove : MonoBehaviour
                 maxDistance = dist;
             }
         }
+        //returns the closest enemy
         return closestEnemy.transform;
     }
 }
