@@ -11,6 +11,7 @@ public class Slash : MonoBehaviour {
     public float xScaleIncrease;
     public float yScaleIncrease;
     public CharacterController cc;
+    public GameObject particle;
 
     [Header("Camera Shake Values")]
     public float magnitude = 1;
@@ -76,31 +77,33 @@ public class Slash : MonoBehaviour {
         transform.localScale += new Vector3(xScaleIncrease, yScaleIncrease, 0);
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnCollisionEnter(Collision col)
     {
         //check if the collider is on the enemy layer
         if (col.gameObject.layer == 11)
         {
-            if (col.GetComponent<Health>())
+            if (col.gameObject.GetComponent<Health>())
             {
                 //calculates knockback depending on direction
-                col.GetComponent<Health>().Knockback(playerInfo, direction);
+                col.gameObject.GetComponent<Health>().Knockback(playerInfo, direction);
                 //checks if the player has a status condition
+                GameObject p = Instantiate(particle, col.contacts[0].point, Quaternion.Euler(0, 0, 0)) as GameObject;
+                Destroy(p, .2f);
                 if (playerHealth.HasStatusCondition())
                 {
                     //if the player is burned or poisoned, a charm may affect the damage output
                     if (playerHealth.isBurned || playerHealth.isPoisoned)
                     {
-                        col.GetComponent<Health>().AffectHealth((-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * playerInfo.GetCharmFloat("dmgMultiWhenBurned") * playerInfo.GetCharmFloat("dmgMultiWhenPoisoned"));
+                        col.gameObject.GetComponent<Health>().AffectHealth((-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * playerInfo.GetCharmFloat("dmgMultiWhenBurned") * playerInfo.GetCharmFloat("dmgMultiWhenPoisoned"));
                     }
                     else
                     {
-                        col.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
+                        col.gameObject.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
                     }
                 }
                 else
                 {
-                    col.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
+                    col.gameObject.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
                 }
                 CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
             }

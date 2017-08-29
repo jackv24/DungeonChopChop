@@ -74,15 +74,24 @@ public class PlayerAttack : MonoBehaviour
             //if combo is equal to or greater than 3, do rapid slash
             if (comboAmount >= 3)
             {
-                //rapid slash
-                //doRapidSlash();
+                //if needed
             } 
             //basic slash
             if (canAttack)
             {
+                //checks if player is in idle to do the first attack
                 if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
                 {
                     doSlash();
+                }
+                //if the user tries to attack when the user is already attacking, it'll do the second attack once completed
+                else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
+                {
+                    doSecondSlash();
+                }
+                else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                {
+                    doRapidSlash();
                 }
             }
         } 
@@ -248,6 +257,19 @@ public class PlayerAttack : MonoBehaviour
         //do slash things
     }
 
+    void doSecondSlash()
+    {
+        StartCoroutine(slashWait("SecondAttack"));
+    }
+
+    IEnumerator slashWait(string boolName)
+    {
+        animator.SetBool(boolName, true);
+        yield return animator.GetCurrentAnimatorStateInfo(1);
+        yield return new WaitForSeconds(.1f);
+        animator.SetBool(boolName, false);
+    }
+
     public void DisplaySlash()
     {
         GameObject slash = ObjectPooler.GetPooledObject(slashFX);
@@ -261,8 +283,7 @@ public class PlayerAttack : MonoBehaviour
     void doRapidSlash()
     {
         //do rapid slash things
-        rapidSlashCoolingDown = true;
-        canAttack = false;
+        StartCoroutine(slashWait("TripleAttack"));
         ResetCombo();
         //Debug.Log ("Rapid Slash");
     }
