@@ -58,6 +58,10 @@ public class Health : MonoBehaviour
 		}
         if (IsEnemy)
         {
+            if (animator)
+            {
+                animator.SetTrigger("GetHit");
+            }
             DoHitParticle();
             HitFlash();
         }
