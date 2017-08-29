@@ -13,6 +13,8 @@ public class EnemyMove : MonoBehaviour
 
     protected bool runAway = false;
 
+    public bool usingNav = true;
+
     private int roamCounter = 0;
 
     void FixedUpdate()
@@ -41,13 +43,15 @@ public class EnemyMove : MonoBehaviour
     protected void FollowPlayer()
     {
         //follows the closest player using nav mesh
-        agent.destination = GetClosestPlayer().position;
+        if (usingNav)
+            agent.destination = GetClosestPlayer().position;
     }
 
     protected void FollowEnemy()
     {
         //follows the closest enemy
-        agent.destination = GetClosestEnemy().position;
+        if (usingNav)
+            agent.destination = GetClosestEnemy().position;
     }
 
     protected void Roam(float timeBetweenRoam) 
@@ -57,7 +61,8 @@ public class EnemyMove : MonoBehaviour
         if (roamCounter > timeBetweenRoam * 60) 
         { 
             //roams to a random position on the current tile
-            agent.destination = LevelGenerator.Instance.currentTile.GetPosInTile(1, 1); 
+            if (usingNav)
+                agent.destination = LevelGenerator.Instance.currentTile.GetPosInTile(1, 1); 
             roamCounter = 0; 
         } 
     } 
@@ -87,7 +92,8 @@ public class EnemyMove : MonoBehaviour
         NavMesh.SamplePosition(runTo, out hit, 5, 1 << NavMesh.GetAreaFromName("Walkable"));
 
         //moves to that position
-        agent.SetDestination(hit.position);
+        if (usingNav)
+            agent.SetDestination(hit.position);
     }
 
     protected Transform GetClosestPlayer()

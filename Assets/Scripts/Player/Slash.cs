@@ -83,10 +83,8 @@ public class Slash : MonoBehaviour {
         {
             if (col.GetComponent<Health>())
             {
-                //gets the direction of the collision
-                Vector3 dir = transform.position - col.transform.position;
                 //calculates knockback depending on direction
-                col.GetComponent<Health>().Knockback(playerInfo, -dir);
+                col.GetComponent<Health>().Knockback(playerInfo, direction);
                 //checks if the player has a status condition
                 if (playerHealth.HasStatusCondition())
                 {

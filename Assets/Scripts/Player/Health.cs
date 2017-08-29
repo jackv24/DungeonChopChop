@@ -34,6 +34,9 @@ public class Health : MonoBehaviour
 	private Animator animator;
     private Rigidbody rb;
 
+    private MeshRenderer[] renderers;
+    private SkinnedMeshRenderer[] skinrends;
+
 	public void AffectHealth(float healthDeta)
 	{
 		health += healthDeta;
@@ -72,12 +75,19 @@ public class Health : MonoBehaviour
 
     void OnEnable()
     {
+        if (IsEnemy)
+        {
+            EnableRenderers();
+        }
         health = maxHealth;
         isDead = false;
     }
 
 	void Start()
 	{
+        renderers = GetComponentsInChildren<MeshRenderer>();
+        skinrends = GetComponentsInChildren<SkinnedMeshRenderer>();
+
         rb = GetComponent<Rigidbody>();
 		OnHealthChange += TemporaryInvincibility;
 
@@ -110,7 +120,17 @@ public class Health : MonoBehaviour
     public void Knockback(PlayerInformation playerInfo, Vector3 direction)
     {
         if (rb)
+        {
+            StartCoroutine(DisableNav(1));
             rb.AddForce(direction * (playerInfo.knockback / weight) * playerInfo.GetCharmFloat("kockbackMultiplier"), ForceMode.Impulse);
+        }
+    }
+
+    IEnumerator DisableNav(float seconds)
+    {
+        GetComponent<EnemyMove>().usingNav = false;
+        yield return new WaitForSeconds(seconds);
+        GetComponent<EnemyMove>().usingNav = true;
     }
 
     public void HitFlash()
@@ -121,33 +141,51 @@ public class Health : MonoBehaviour
     IEnumerator DoHitFlash()
     {
         //Gets all mesh renderers and skin renderers
-        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
-        SkinnedMeshRenderer[] skinrends = GetComponentsInChildren<SkinnedMeshRenderer>();
         for (int i = 0; i <= amountToFlash; i++)
         {
-            //loops through each and disables them
-            foreach (SkinnedMeshRenderer renderer in skinrends)
-            {
-                renderer.enabled = false;
-            }
-            foreach (MeshRenderer renderer in renderers)
-            {
-                renderer.enabled = false;
-            }
+            DisableRenderers();
             yield return new WaitForSeconds(timeBetweenFlash);
-
-            //loops through each and enables them
-            foreach (SkinnedMeshRenderer renderer in skinrends)
-            {
-                renderer.enabled = true;
-            }
-            foreach (MeshRenderer renderer in renderers)
-            {
-                renderer.enabled = true;
-            }
+            EnableRenderers();
             yield return new WaitForSeconds(timeBetweenFlash);
         }
+    }
 
+    void DisableRenderers()
+    {
+        //loops through each and disables them
+        if (skinrends != null)
+        {
+            foreach (SkinnedMeshRenderer renderer in skinrends)
+            {
+                renderer.enabled = false;
+            }
+        }
+        if (renderers != null)
+        {
+            foreach (MeshRenderer renderer in renderers)
+            {
+                renderer.enabled = false;
+            }
+        }
+    }
+
+    void EnableRenderers()
+    {
+        //loops through each and disables them
+        if (skinrends != null)
+        {
+            foreach (SkinnedMeshRenderer renderer in skinrends)
+            {
+                renderer.enabled = true;
+            }
+        }
+        if (renderers != null)
+        {
+            foreach (MeshRenderer renderer in renderers)
+            {
+                renderer.enabled = true;
+            }
+        }
     }
 
 	void Update()
