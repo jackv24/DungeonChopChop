@@ -505,7 +505,7 @@ Transform:
   m_GameObject: {fileID: 1877086586426536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.800604, y: 3.3853283, z: 17.691196}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4565791447466242}
   m_Father: {fileID: 0}
@@ -709,7 +709,7 @@ MonoBehaviour:
   thrust: 50
   attackStrength: 1
   damageOnTouch: 1
-  knockbackStrength: 5
+  knockbackStrength: 2
   projAmount: 25
   timeTillInterval: 1
   minInterval: 1
@@ -725,6 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f7605f1bcb7594db6d22987c58d97f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usingNav: 1
   radius: 20
 --- !u!114 &114734326495790028
 MonoBehaviour:
@@ -774,8 +775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  health: 10
+  maxHealth: 8
+  health: 8
   weight: 2
   IsEnemy: 1
   isPoisoned: 0

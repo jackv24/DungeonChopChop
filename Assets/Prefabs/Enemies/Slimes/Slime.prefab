@@ -629,8 +629,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  health: 10
+  maxHealth: 2
+  health: 2
   weight: 2
   IsEnemy: 1
   isPoisoned: 0
@@ -654,10 +654,10 @@ MonoBehaviour:
   attackingType: 0
   projecticle: {fileID: 114985999745943196, guid: 2f5e09f5d3b8b784aa23dbea116343df,
     type: 2}
-  thrust: 50
+  thrust: 20
   attackStrength: 1
   damageOnTouch: 1
-  knockbackStrength: 5
+  knockbackStrength: 2
   projAmount: 25
   timeTillInterval: 1
   minInterval: 1
@@ -712,7 +712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usingNav: 1
   minTimeBetweenHops: 1
-  maxTimeBetweenHops: 4
+  maxTimeBetweenHops: 1
   damageToEnemies: 1
   friendly: 0
 --- !u!114 &114964125105130556
@@ -956,11 +956,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
