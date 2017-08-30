@@ -1022,10 +1022,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   health: 3
-  isDead: 0
+  weight: 0
+  IsEnemy: 0
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
+  isDead: 0
+  hitParticles: []
+  timeBetweenFlash: 0.1
+  amountToFlash: 5
 --- !u!114 &114201249485541928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1120,8 +1125,6 @@ MonoBehaviour:
   invincible: 0
   charmAmount: 2
   currentCharms: []
-  timeBetweenFlash: 0.05
-  amountToFlash: 5
   invincibleSphere: {fileID: 1758117403070862}
 --- !u!114 &114674394065060938
 MonoBehaviour:
@@ -1147,8 +1150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e12b6b668ad0b499ef88df05383d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 286e353daac31e14696c3dff76e16ad6, type: 3}
-  color: {r: 0.19999981, g: 0, b: 1, a: 1}
+  sprite: {fileID: 21300000, guid: 96a1786eb91a5d74a8f91a658b66e68d, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
   setLastSibling: 1
   showOnTileEnter: 0
 --- !u!114 &114964807783437542
