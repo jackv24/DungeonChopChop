@@ -272,12 +272,12 @@ public class PlayerAttack : MonoBehaviour
 
     public void DisplaySlash()
     {
-        GameObject slash = ObjectPooler.GetPooledObject(slashFX);
-        slash.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-        slash.transform.eulerAngles = transform.eulerAngles - slashFX.transform.eulerAngles;
-        slash.transform.localScale = slashFX.transform.localScale;
-        slash.GetComponent<Slash>().direction = transform.forward;
-        slash.GetComponent<Slash>().cc = characterController;
+//        GameObject slash = ObjectPooler.GetPooledObject(slashFX);
+//        slash.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+//        slash.transform.eulerAngles = transform.eulerAngles - slashFX.transform.eulerAngles;
+//        slash.transform.localScale = slashFX.transform.localScale;
+//        slash.GetComponent<Slash>().direction = transform.forward;
+//        slash.GetComponent<Slash>().cc = characterController;
     }
 
     void doRapidSlash()
