@@ -72,8 +72,7 @@ public class Health : MonoBehaviour
         if (hitParticles.Length > 0)
         {
             int random = Random.Range(0, hitParticles.Length);
-            GameObject particle = ObjectPooler.GetPooledObject(hitParticles[random]);
-            particle.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+            GameObject particle = Instantiate(hitParticles[random], transform.position, Quaternion.Euler(0, 0, 0));
         }
     }
 

@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public float comboIncrease = .04f;
 
     [Header("Rapid Slash Vars")]
-    public int slashAmount;
+    public int slashAmount = 5;
     public float rapidSlashCooldown;
     [Tooltip("The amount added to the rapid slash cooldown (60 times a second)")]
     public float rapidSlashIncrease = .04f;
@@ -38,6 +38,7 @@ public class PlayerAttack : MonoBehaviour
     private CharacterController characterController;
     private float comboCounter;
     private float rapidSlashCounter;
+    private float rapidSlashTimer;
     private float normalMoveSpeed;
 
     private bool canDash = true;
@@ -63,35 +64,53 @@ public class PlayerAttack : MonoBehaviour
         normalMoveSpeed = playerInformation.maxMoveSpeed;
     }
 
-
     void Update()
     {
+        if (comboStarted)
+        {
+            animator.SetBool("Attacking", true);
+            CountCombo();
+            //check if combo has ended
+            if (comboCounter > timeInbetween)
+            {
+                ResetCombo();
+            }
+        }
+        else
+        {
+            animator.SetBool("Attacking", false);
+        }
+
         //check if can actually attack
         //do basic attack
         if (input.BasicAttack.WasPressed)
         {
-            //CheckCombo();
+            CheckCombo();
             //if combo is equal to or greater than 3, do rapid slash
-            if (comboAmount >= 3)
+            if (comboAmount >= slashAmount)
             {
-                //if needed
+                 doRapidSlash();
             } 
             //basic slash
             if (canAttack)
             {
-                //checks if player is in idle to do the first attack
-                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
+                if (comboAmount < slashAmount)
                 {
-                    doSlash();
-                }
-                //if the user tries to attack when the user is already attacking, it'll do the second attack once completed
-                else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                {
-                    doSecondSlash();
-                }
-                else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
-                {
-                    doRapidSlash();
+                    //checks if player is in idle to do the first attack
+                    if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
+                    {
+                        ResetRapidSlash();
+                        doSlash();
+                    }
+                    //if the user tries to attack when the user is already attacking, it'll do the second attack once completed
+                    else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
+                    {
+                        doSecondSlash();
+                    }
+                    else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                    {
+                        doSlash();
+                    }
                 }
             }
         } 
@@ -126,30 +145,6 @@ public class PlayerAttack : MonoBehaviour
             if (shield)
             {
                 StopBlock();
-            }
-        }
-        //}
-    }
-
-    void FixedUpdate()
-    {
-        if (comboStarted)
-        {
-            CountCombo();
-            //check if combo has ended
-            if (comboCounter > timeInbetween)
-            {
-                ResetCombo();
-            }
-        }
-
-        if (rapidSlashCoolingDown)
-        {
-            RapidSlashCooldownCounter();
-            //check if rapid slash cooldown is over
-            if (rapidSlashCounter > rapidSlashCooldown)
-            {
-                ResetRapidSlash();
             }
         }
     }
@@ -253,13 +248,15 @@ public class PlayerAttack : MonoBehaviour
 
     void doSlash()
     {
-        StartCoroutine(boolWait("Attack"));
+        animator.SetTrigger("Attack");
+        //StartCoroutine(slashWait("Attack"));
         //do slash things
     }
 
     void doSecondSlash()
     {
-        StartCoroutine(slashWait("SecondAttack"));
+        animator.SetTrigger("Attack");
+        //StartCoroutine(slashWait("SecondAttack"));
     }
 
     IEnumerator slashWait(string boolName)
@@ -283,8 +280,7 @@ public class PlayerAttack : MonoBehaviour
     void doRapidSlash()
     {
         //do rapid slash things
-        StartCoroutine(slashWait("TripleAttack"));
-        ResetCombo();
+        animator.SetTrigger("TripleAttack");
         //Debug.Log ("Rapid Slash");
     }
 
@@ -292,6 +288,7 @@ public class PlayerAttack : MonoBehaviour
     {
         rapidSlashCoolingDown = false;
         rapidSlashCounter = 0;
+        ResetCombo();
         canAttack = true;
     }
 

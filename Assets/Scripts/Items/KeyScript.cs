@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GemScript : MonoBehaviour {
-
-	public int coinAmount;
+public class KeyScript : MonoBehaviour {
 
     public float floatSpeed = 1.0f;
     public float rotateSpeed = 5;
@@ -25,14 +23,14 @@ public class GemScript : MonoBehaviour {
     }
 
 
-	void OnTriggerEnter(Collider col)
-	{
+    void OnTriggerEnter(Collider col)
+    {
         //checks if the player collides with the item
-		if (col.tag == "Player1" || col.tag == "Player2") {
-            ItemsManager.Instance.Coins += coinAmount * (int)col.GetComponent<PlayerInformation>().GetCharmFloat("coinMultiplier");
-			gameObject.SetActive (false);
-		}
-	}
+        if (col.tag == "Player1" || col.tag == "Player2") {
+            ItemsManager.Instance.Keys += 1 * (int)col.GetComponent<PlayerInformation>().GetCharmFloat("keyMultiplier");
+            gameObject.SetActive (false);
+        }
+    }
 
     void OnEnable()
     {
@@ -62,23 +60,16 @@ public class GemScript : MonoBehaviour {
 
     void FixedUpdate()
     {
-        transform.LookAt(Camera.main.transform);
         //makes item float
         if (doFloat)
         {
+            transform.eulerAngles += rotation * Time.fixedDeltaTime;
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, initialPos + Vector3.up * Mathf.Sin(Time.time * floatSpeed) * floatMagnitude, Time.fixedDeltaTime * floatSpeed);
-            if (transform.position.y < 1)
-            {
-                transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-            }
         }
 
         if (transform.position.y > 5)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 0, transform.position.z), 10 * Time.deltaTime);
         }
-
-
     }
-
 }
