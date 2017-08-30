@@ -20,6 +20,10 @@ public class PlayerInformation : MonoBehaviour
     public int charmAmount;
     public List<Charm> currentCharms = new List<Charm>();
 
+    [Header("Items")]
+    public int itemAmount;
+    public List<InventoryItem> currentItems = new List<InventoryItem>();
+
     public GameObject invincibleSphere;
 
     private Health health;
@@ -35,6 +39,7 @@ public class PlayerInformation : MonoBehaviour
 
     private Dictionary<string, float> charmFloats = new Dictionary<string, float>();
     private Dictionary<string, bool> charmBools = new Dictionary<string, bool>();
+    private Dictionary<string, float> itemFloats = new Dictionary<string, float>();
     private LayerMask layerMask;
 
     private 
@@ -120,6 +125,40 @@ public class PlayerInformation : MonoBehaviour
             if (playerIndex == img.id)
                 img.UpdateCharms(this);
         }
+    }
+
+    public void PickupItem(InventoryItem item)
+    {
+        if (item)
+        {
+            //adds a item to the start of the list
+            currentItems.Insert(0, item);
+            //checks to see if the amount of items the player has is greater then the amount they can hold
+            if (currentItems.Count > itemAmount)
+            {
+                //creates a new item and adds it to the list
+                InventoryItem oldItem = currentItems[currentItems.Count - 1];
+                //removes the older item
+                currentItems.Remove(oldItem);
+
+                oldItem.Drop(this);
+            }
+
+            item.Pickup(this);
+        }
+    }
+
+    public void SetItemFloat(string key, float value)
+    {
+        itemFloats[key] = value;
+    }
+
+    public float GetItemFloat(string key)
+    {
+        if (itemFloats.ContainsKey(key))
+            return itemFloats[key];
+        else
+            return 1.0f;
     }
 
     public void RemoveCharmFloat(string key)
