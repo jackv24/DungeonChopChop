@@ -72,7 +72,7 @@ public class EnemyDrops : MonoBehaviour {
 						GameObject item = ObjectPooler.GetPooledObject (drop.Drop);
                         item.transform.rotation = UnityEngine.Random.rotation;
                         item.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-                        item.GetComponent<Rigidbody>().AddForce(transform.forward, ForceMode.Impulse);
+                        item.GetComponent<Rigidbody>().AddForce(transform.forward / 2, ForceMode.Impulse);
 						break;
 					}
 				}
