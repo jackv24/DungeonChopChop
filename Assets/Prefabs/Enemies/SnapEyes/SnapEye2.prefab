@@ -283,10 +283,10 @@ GameObject:
   - component: {fileID: 54978146272706598}
   - component: {fileID: 114664987438233800}
   - component: {fileID: 114323156268701244}
-  - component: {fileID: 114734326495790028}
   - component: {fileID: 114686528381887930}
   - component: {fileID: 65998716630822540}
   - component: {fileID: 195439560608668190}
+  - component: {fileID: 114341440145475626}
   m_Layer: 11
   m_Name: SnapEye2
   m_TagString: Enemy
@@ -692,6 +692,46 @@ MonoBehaviour:
   splitEnemy: {fileID: 0}
   deathParticle: {fileID: 1610516251936186, guid: aabac15b66e176941ad24fc8c572fc86,
     type: 2}
+--- !u!114 &114341440145475626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1877086586426536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8af6fba017eb594f9bbe87f903e9f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - Drop: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    minPercentage: 0
+    maxPercentage: 30
+  - Drop: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
+    minPercentage: 31
+    maxPercentage: 50
+  - Drop: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
+    minPercentage: 51
+    maxPercentage: 65
+  - Drop: {fileID: 1616226106310662, guid: 0c71fc111242199438e231f8efa50564, type: 2}
+    minPercentage: 66
+    maxPercentage: 70
+  - Drop: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
+    minPercentage: 71
+    maxPercentage: 80
+  - Drop: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
+    minPercentage: 81
+    maxPercentage: 100
+  numberOfDrops:
+  - dropAmount: 0
+    minPercentage: 0
+    maxPercentage: 50
+  - dropAmount: 1
+    minPercentage: 51
+    maxPercentage: 80
+  - dropAmount: 2
+    minPercentage: 81
+    maxPercentage: 100
 --- !u!114 &114664987438233800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -727,43 +767,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usingNav: 1
   radius: 20
---- !u!114 &114734326495790028
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877086586426536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8af6fba017eb594f9bbe87f903e9f7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drops:
-  - Drop: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
-    minPercentage: 0
-    maxPercentage: 40
-  - Drop: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
-    minPercentage: 41
-    maxPercentage: 65
-  - Drop: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
-    minPercentage: 66
-    maxPercentage: 85
-  - Drop: {fileID: 1616226106310662, guid: 0c71fc111242199438e231f8efa50564, type: 2}
-    minPercentage: 86
-    maxPercentage: 95
-  - Drop: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
-    minPercentage: 96
-    maxPercentage: 100
-  numberOfDrops:
-  - dropAmount: 0
-    minPercentage: 0
-    maxPercentage: 50
-  - dropAmount: 1
-    minPercentage: 51
-    maxPercentage: 80
-  - dropAmount: 2
-    minPercentage: 81
-    maxPercentage: 100
 --- !u!114 &114770606805809696
 MonoBehaviour:
   m_ObjectHideFlags: 1

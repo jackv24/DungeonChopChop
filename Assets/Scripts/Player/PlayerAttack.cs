@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     public float rapidSlashCooldown;
     [Tooltip("The amount added to the rapid slash cooldown (60 times a second)")]
     public float rapidSlashIncrease = .04f;
+    public float multiSpeedMultiplier = .7f;
 
     [Header("Dash Vars")]
     public float dashTime = 1.0f;
@@ -79,6 +80,19 @@ public class PlayerAttack : MonoBehaviour
         else
         {
             animator.SetBool("Attacking", false);
+        }
+
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
+        {
+            if (playerInformation.maxMoveSpeed == normalMoveSpeed)
+                playerInformation.maxMoveSpeed = playerInformation.maxMoveSpeed * multiSpeedMultiplier;
+        }
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
+        {
+            if (playerInformation.maxMoveSpeed != normalMoveSpeed)
+            {
+                playerInformation.maxMoveSpeed = normalMoveSpeed;
+            }
         }
 
         //check if can actually attack
@@ -183,7 +197,6 @@ public class PlayerAttack : MonoBehaviour
 		
 
     //-------------------------- Block
-
 
     void DoBlock()
     {
@@ -294,6 +307,7 @@ public class PlayerAttack : MonoBehaviour
 
     void doDash()
     {
+        animator.SetTrigger("Dash");
         canDash = false;
         StartCoroutine(dash());
         StartCoroutine(dashCooldownTimer());
