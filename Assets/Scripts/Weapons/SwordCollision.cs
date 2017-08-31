@@ -29,7 +29,7 @@ public class SwordCollision : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack") || animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack") || animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack") || animator.GetCurrentAnimatorStateInfo(1).IsTag("DashAttack"))
         {
             col.enabled = true;
             trail.SetActive(true);
