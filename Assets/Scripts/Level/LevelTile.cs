@@ -239,8 +239,6 @@ public class LevelTile : MonoBehaviour
 		{
 			p.gameObject.SetActive(value);
 		}
-
-		Debug.Log("Show particles " + value);
 	}
 
 	public void SetCurrent(LevelTile oldTile)

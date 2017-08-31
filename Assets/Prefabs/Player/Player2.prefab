@@ -1029,6 +1029,7 @@ MonoBehaviour:
   isSlowlyDying: 0
   isDead: 0
   hitParticles: []
+  hitColor: {r: 0, g: 0, b: 0, a: 0}
   timeBetweenFlash: 0.1
   amountToFlash: 5
 --- !u!114 &114201249485541928
@@ -1081,8 +1082,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9895ff768b4c6e46ab7655adb386fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftFoot: {fileID: 4798361860611036}
-  rightFoot: {fileID: 4210212024195822}
+  leftFoot: {fileID: 4916487504083942, guid: 5ef9bf02cc08baf42a423dacc0c70b61, type: 2}
+  rightFoot: {fileID: 4813496186276890, guid: 5ef9bf02cc08baf42a423dacc0c70b61, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 4096
@@ -1101,6 +1102,9 @@ MonoBehaviour:
       type: 2}
   - groundMaterial: {fileID: 2100000, guid: e9746cc04d5b35142a792803f0956ae5, type: 2}
     particlePrefab: {fileID: 1240315760738564, guid: 9a044de563ccb5b4f8c33a27f08d0bb2,
+      type: 2}
+  - groundMaterial: {fileID: 2100000, guid: 3107c67ba6cbe3c4a8c873d9277f1624, type: 2}
+    particlePrefab: {fileID: 1240315760738564, guid: e61b502ea66fecc4d83e8a8a706b6bd7,
       type: 2}
 --- !u!114 &114594443601044814
 MonoBehaviour:
@@ -1125,6 +1129,8 @@ MonoBehaviour:
   invincible: 0
   charmAmount: 2
   currentCharms: []
+  itemAmount: 0
+  currentItems: []
   invincibleSphere: {fileID: 1758117403070862}
 --- !u!114 &114674394065060938
 MonoBehaviour:
@@ -1170,9 +1176,11 @@ MonoBehaviour:
   slashAmount: 3
   rapidSlashCooldown: 3
   rapidSlashIncrease: 0.04
+  multiSpeedMultiplier: 0.7
   dashTime: 0.5
   dashSpeed: 15
   dashCooldown: 4
+  canDashAttack: 1
   blocking: 0
   slashFX: {fileID: 1454523227821080, guid: ff3d3a84a294e1f43b09bc0c018e38df, type: 2}
   shield: {fileID: 114423900462314808}

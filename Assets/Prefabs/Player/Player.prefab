@@ -1294,6 +1294,9 @@ MonoBehaviour:
   - groundMaterial: {fileID: 2100000, guid: e9746cc04d5b35142a792803f0956ae5, type: 2}
     particlePrefab: {fileID: 1240315760738564, guid: 9a044de563ccb5b4f8c33a27f08d0bb2,
       type: 2}
+  - groundMaterial: {fileID: 2100000, guid: 3107c67ba6cbe3c4a8c873d9277f1624, type: 2}
+    particlePrefab: {fileID: 1240315760738564, guid: e61b502ea66fecc4d83e8a8a706b6bd7,
+      type: 2}
 --- !u!114 &114107598264742354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1321,9 +1324,11 @@ MonoBehaviour:
   slashAmount: 10
   rapidSlashCooldown: 3
   rapidSlashIncrease: 0.04
+  multiSpeedMultiplier: 0.7
   dashTime: 0.5
   dashSpeed: 20
   dashCooldown: 1
+  canDashAttack: 1
   blocking: 0
   slashFX: {fileID: 1454523227821080, guid: ff3d3a84a294e1f43b09bc0c018e38df, type: 2}
   shield: {fileID: 114260781433272238}
@@ -1422,6 +1427,8 @@ MonoBehaviour:
   invincible: 0
   charmAmount: 2
   currentCharms: []
+  itemAmount: 0
+  currentItems: []
   invincibleSphere: {fileID: 1522217988136000}
 --- !u!114 &114899894684300704
 MonoBehaviour:
@@ -1454,6 +1461,7 @@ MonoBehaviour:
   isSlowlyDying: 0
   isDead: 0
   hitParticles: []
+  hitColor: {r: 0, g: 0, b: 0, a: 0}
   timeBetweenFlash: 0.1
   amountToFlash: 5
 --- !u!135 &135784751365130204
