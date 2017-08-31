@@ -313,7 +313,7 @@ public class PlayerAttack : MonoBehaviour
         if (canDashAttack)
         {
             animator.SetTrigger("DashAttack");
-            playerHealth.InvincibilityForSecs(dashTime);
+            playerHealth.InvincibilityForSecs(dashTime + 1);
         }
         else
         {

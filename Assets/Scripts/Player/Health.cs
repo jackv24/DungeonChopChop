@@ -24,6 +24,7 @@ public class Health : MonoBehaviour
 
     [Space()]
     public GameObject[] hitParticles;
+    public Color hitColor;
 
     [Space()]
     [Header("Other Vals")]
@@ -34,8 +35,8 @@ public class Health : MonoBehaviour
 	private Animator animator;
     private Rigidbody rb;
 
-    private MeshRenderer[] renderers;
-    private SkinnedMeshRenderer[] skinrends;
+    private Renderer[] renderers;
+    private List<Color> originalColors = new List<Color>();
 
 	public void AffectHealth(float healthDeta)
 	{
@@ -63,7 +64,7 @@ public class Health : MonoBehaviour
                 animator.SetTrigger("GetHit");
             }
             DoHitParticle();
-            HitFlash();
+            HitColorFlash();
         }
 	}
 
@@ -83,7 +84,8 @@ public class Health : MonoBehaviour
     {
         if (IsEnemy)
         {
-            EnableRenderers();
+            //sets the color of the enemies back to normal
+            SetOGColor();
         }
         health = maxHealth;
         isDead = false;
@@ -91,8 +93,15 @@ public class Health : MonoBehaviour
 
 	void Start()
 	{
-        renderers = GetComponentsInChildren<MeshRenderer>();
-        skinrends = GetComponentsInChildren<SkinnedMeshRenderer>();
+        renderers = GetComponentsInChildren<Renderer>();
+        if (IsEnemy)
+        {
+            //loops through and get the original color on each renderer
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                originalColors.Add(renderers[i].material.color);
+            }
+        }
 
         rb = GetComponent<Rigidbody>();
 		OnHealthChange += TemporaryInvincibility;
@@ -156,6 +165,11 @@ public class Health : MonoBehaviour
         StartCoroutine(DoHitFlash());
     }
 
+    public void HitColorFlash()
+    {
+        StartCoroutine(DoHitColourFlash());
+    }
+
     IEnumerator DoHitFlash()
     {
         //Gets all mesh renderers and skin renderers
@@ -168,19 +182,47 @@ public class Health : MonoBehaviour
         }
     }
 
+    IEnumerator DoHitColourFlash()
+    {
+        for (int i = 0; i <= amountToFlash; i++)
+        {
+            SetHitColor();
+            yield return new WaitForSeconds(timeBetweenFlash);
+            SetOGColor();
+            yield return new WaitForSeconds(timeBetweenFlash);
+        }
+    }
+
+    void SetHitColor()
+    {
+        if (renderers != null)
+        {
+            //loops through each and sets the hit color
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.material.color = hitColor;
+            }
+        }
+    }
+
+    void SetOGColor()
+    {
+        if (renderers != null)
+        {
+            //loops through each and sets the hit color
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                renderers[i].material.color = originalColors[i];
+            }
+        }
+    }
+
     void DisableRenderers()
     {
         //loops through each and disables them
-        if (skinrends != null)
-        {
-            foreach (SkinnedMeshRenderer renderer in skinrends)
-            {
-                renderer.enabled = false;
-            }
-        }
         if (renderers != null)
         {
-            foreach (MeshRenderer renderer in renderers)
+            foreach (Renderer renderer in renderers)
             {
                 renderer.enabled = false;
             }
@@ -190,16 +232,9 @@ public class Health : MonoBehaviour
     void EnableRenderers()
     {
         //loops through each and disables them
-        if (skinrends != null)
-        {
-            foreach (SkinnedMeshRenderer renderer in skinrends)
-            {
-                renderer.enabled = true;
-            }
-        }
         if (renderers != null)
         {
-            foreach (MeshRenderer renderer in renderers)
+            foreach (Renderer renderer in renderers)
             {
                 renderer.enabled = true;
             }
