@@ -69,8 +69,24 @@ public class SwordCollision : MonoBehaviour {
                 {
                     col.gameObject.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
                 }
+                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("TripleAttack"))
+                {
+                    Debug.Log(animator.GetCurrentAnimatorStateInfo(1).normalizedTime < .7f);
+                    if (animator.GetCurrentAnimatorStateInfo(1).normalizedTime < .7f)
+                    {
+                        StartCoroutine(QuickGamePause());
+                    }
+                }
                 CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
             }
         }
     }
+
+    IEnumerator QuickGamePause()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(.1f);
+        Time.timeScale = 1;
+    }
+
 }
