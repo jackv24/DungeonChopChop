@@ -73,7 +73,7 @@ public class MapCamera : MonoBehaviour
 				icon.rectTransform.position = new Vector3(worldPos.x - mapRect.sizeDelta.x * ratio, worldPos.y, 1f);
 
 				//Make sure icon does not go off screen
-				LimitToRadius(icon.rectTransform, rawMapRect, mapRadius);
+				LimitToRadius(icon.rectTransform, rawMapRect, mapRadius * ratio);
 			}
 		}
 	}
