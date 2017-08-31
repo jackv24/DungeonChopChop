@@ -231,6 +231,18 @@ public class LevelTile : MonoBehaviour
 		}
 	}
 
+	public void ShowParticles(bool value)
+	{
+		ParticleSystem[] particles = GetComponentsInChildren<ParticleSystem>(true);
+
+		foreach(ParticleSystem p in particles)
+		{
+			p.gameObject.SetActive(value);
+		}
+
+		Debug.Log("Show particles " + value);
+	}
+
 	public void SetCurrent(LevelTile oldTile)
 	{
 		if (oldTile)
@@ -252,6 +264,8 @@ public class LevelTile : MonoBehaviour
 				oldTile.mapTile.SetOutside();
 			}
 
+			oldTile.ShowParticles(false);
+
 			LevelGenerator.Instance.currentTile = this;
 			LevelGenerator.Instance.EnterTile();
 		}
@@ -264,6 +278,8 @@ public class LevelTile : MonoBehaviour
 		}
 
 		ShowTile();
+
+		ShowParticles(true);
 
 		if (OnTileEnter != null)
 			OnTileEnter();
