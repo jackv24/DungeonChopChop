@@ -72,7 +72,10 @@ public class Health : MonoBehaviour
         if (hitParticles.Length > 0)
         {
             int random = Random.Range(0, hitParticles.Length);
-            GameObject particle = Instantiate(hitParticles[random], transform.position, Quaternion.Euler(0, 0, 0));
+            if (hitParticles[random] != null)
+            {
+                GameObject particle = Instantiate(hitParticles[random], transform.position, Quaternion.Euler(0, 0, 0));
+            }
         }
     }
 
@@ -119,6 +122,18 @@ public class Health : MonoBehaviour
 		yield return new WaitForSeconds(playerInfo.invincibilityTimeAfterHit);
 		playerInfo.invincible = false;
 	}
+
+    public void InvincibilityForSecs(float seconds)
+    {
+        StartCoroutine(InvincibilityForSeconds(seconds));
+    }
+
+    IEnumerator InvincibilityForSeconds(float seconds)
+    {
+        playerInfo.invincible = true;
+        yield return new WaitForSeconds(seconds);
+        playerInfo.invincible = false;
+    }
 
     public void Knockback(PlayerInformation playerInfo, Vector3 direction)
     {

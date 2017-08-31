@@ -20,6 +20,7 @@ public class PlayerAttack : MonoBehaviour
     public float dashTime = 1.0f;
     public float dashSpeed = 5.0f;
     public float dashCooldown = 0.5f;
+    public bool canDashAttack = true;
 
     [Header("Other Vars")]
     public bool blocking = false;
@@ -31,6 +32,7 @@ public class PlayerAttack : MonoBehaviour
     private PlayerInputs input;
     private PlayerMove playerMove;
     private PlayerInformation playerInformation;
+    private Health playerHealth;
     private Animator animator;
 
     public ShieldStats shield;
@@ -48,6 +50,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+        playerHealth = GetComponent<Health>();
         animator = GetComponentInChildren<Animator>();
         characterController = GetComponent<CharacterController>();
         playerInformation = GetComponent<PlayerInformation>();
@@ -307,7 +310,15 @@ public class PlayerAttack : MonoBehaviour
 
     void doDash()
     {
-        animator.SetTrigger("Dash");
+        if (canDashAttack)
+        {
+            animator.SetTrigger("DashAttack");
+            playerHealth.InvincibilityForSecs(dashTime);
+        }
+        else
+        {
+            animator.SetTrigger("Dash");
+        }
         canDash = false;
         StartCoroutine(dash());
         StartCoroutine(dashCooldownTimer());
