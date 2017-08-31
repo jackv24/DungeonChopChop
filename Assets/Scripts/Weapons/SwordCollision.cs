@@ -29,7 +29,7 @@ public class SwordCollision : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack") || animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack") || animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack") || animator.GetCurrentAnimatorStateInfo(1).IsTag("DashAttack"))
         {
             col.enabled = true;
             trail.SetActive(true);
@@ -69,8 +69,24 @@ public class SwordCollision : MonoBehaviour {
                 {
                     col.gameObject.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
                 }
+                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("TripleAttack"))
+                {
+                    Debug.Log(animator.GetCurrentAnimatorStateInfo(1).normalizedTime < .7f);
+                    if (animator.GetCurrentAnimatorStateInfo(1).normalizedTime < .7f)
+                    {
+                        StartCoroutine(QuickGamePause());
+                    }
+                }
                 CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
             }
         }
     }
+
+    IEnumerator QuickGamePause()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(.1f);
+        Time.timeScale = 1;
+    }
+
 }

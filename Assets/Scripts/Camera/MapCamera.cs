@@ -8,6 +8,8 @@ public class MapCamera : MonoBehaviour
 	public static MapCamera Instance;
 
 	public Canvas canvas;
+	private CanvasScaler canvasScaler;
+
 	public RectTransform mapRect;
 	public RectTransform rawMapRect;
 
@@ -42,6 +44,9 @@ public class MapCamera : MonoBehaviour
 
 		if (LevelGenerator.Instance)
 			LevelGenerator.Instance.OnGenerationStart += ClearIcons;
+
+		if (canvas)
+			canvasScaler = canvas.GetComponent<CanvasScaler>();
 	}
 
 	void LateUpdate()
@@ -62,8 +67,10 @@ public class MapCamera : MonoBehaviour
 				Vector2 localPos = new Vector2(viewPos.x * mapRect.sizeDelta.x, viewPos.y * mapRect.sizeDelta.y);
 				Vector3 worldPos = mapRect.TransformPoint(localPos);
 
+				float ratio = Screen.height / canvasScaler.referenceResolution.y;
+
 				//Set icon position
-				icon.rectTransform.position = new Vector3(worldPos.x - mapRect.sizeDelta.x, worldPos.y, 1f);
+				icon.rectTransform.position = new Vector3(worldPos.x - mapRect.sizeDelta.x * ratio, worldPos.y, 1f);
 
 				//Make sure icon does not go off screen
 				LimitToRadius(icon.rectTransform, rawMapRect, mapRadius);

@@ -406,6 +406,8 @@ public class LevelGenerator : MonoBehaviour
 				generatedTiles[i].walls.SetActive(false);
 			else
 				Debug.Log("Tile: " + generatedTiles[i].gameObject.name + " has no walls");
+
+			generatedTiles[i].ShowParticles(false);
 		}
 
 		generatedTiles[0].SetCurrent(null);
