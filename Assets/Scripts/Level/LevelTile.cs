@@ -6,6 +6,7 @@ public class LevelTile : MonoBehaviour
 {
 	public delegate void NormalEvent();
 	public event NormalEvent OnTileEnter;
+	public event NormalEvent OnTileExit;
 
 	public int index = 0;
 
@@ -269,6 +270,9 @@ public class LevelTile : MonoBehaviour
 
 			LevelGenerator.Instance.currentTile = this;
 			LevelGenerator.Instance.EnterTile();
+
+			if (oldTile.OnTileExit != null)
+				oldTile.OnTileExit();
 		}
 		else
 		{

@@ -279,6 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4871141947302372}
   - component: {fileID: 114790541551944728}
+  - component: {fileID: 114247492726478610}
   m_Layer: 0
   m_Name: Tile2x2Layout
   m_TagString: Untagged
@@ -788,6 +789,20 @@ MonoBehaviour:
   prefab: {fileID: 1084036274993698, guid: 12dad2d4f34f07048bdb19d06b95fcb6, type: 2}
   replaceOnAwake: 0
   pooled: 0
+--- !u!114 &114247492726478610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1897015692428800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2935583a9e9f4ea43ae6b566dc8a167f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 40, y: 15, z: 40}
+  offset: {x: 0, y: 10, z: 0}
+  origin: {fileID: 4202818410992614}
 --- !u!114 &114402148758531112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -866,6 +881,7 @@ MonoBehaviour:
   - {fileID: 4393330498672328}
   - {fileID: 4860998691950112}
   layoutCollider: {fileID: 65000390673133842}
+  limitToHorizontal: 0
   blockedDoorPrefab: {fileID: 1394040778180736, guid: 12de34da3690cc5468bffbdbcb31edaa,
     type: 2}
   minBlocks: 1

@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4354502564898286}
   - component: {fileID: 114229437737001782}
+  - component: {fileID: 114246785146903148}
   m_Layer: 0
   m_Name: Tile2x3Layout
   m_TagString: Untagged
@@ -872,6 +873,7 @@ MonoBehaviour:
   - {fileID: 4053126680692076}
   - {fileID: 4657414735839660}
   layoutCollider: {fileID: 65534767527592030}
+  limitToHorizontal: 0
   blockedDoorPrefab: {fileID: 1394040778180736, guid: 12de34da3690cc5468bffbdbcb31edaa,
     type: 2}
   minBlocks: 1
@@ -899,6 +901,20 @@ MonoBehaviour:
   dungeonTiles:
   - prefab: {fileID: 1798159649641726, guid: 03210b25cedbd064e8fbef6c6b1ad1ba, type: 2}
     probability: 1
+--- !u!114 &114246785146903148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1056703978444932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2935583a9e9f4ea43ae6b566dc8a167f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 60, y: 15, z: 40}
+  offset: {x: 0, y: 10, z: 0}
+  origin: {fileID: 4727974052465884}
 --- !u!114 &114286696528996592
 MonoBehaviour:
   m_ObjectHideFlags: 1
