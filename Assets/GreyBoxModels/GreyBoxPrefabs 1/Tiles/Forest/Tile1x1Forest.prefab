@@ -1269,7 +1269,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4887772758269178}
-  - component: {fileID: 114722882083409544}
   - component: {fileID: 114654301427680876}
   m_Layer: 0
   m_Name: Tile1x1Forest
@@ -7683,7 +7682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e550e5919706843a8fcbd3d5cdb7db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  chestType: 0
+  spawnType: 0
 --- !u!114 &114654301427680876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7712,19 +7712,6 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &114722882083409544
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1562480923804566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f540a4525f2d4c74583f06e619f32852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replaceTile: {fileID: 1562480923804566, guid: 9f8797fb657f11c49b349d2a3117c4e8,
-    type: 2}
 --- !u!198 &198317802964124892
 ParticleSystem:
   m_ObjectHideFlags: 1
