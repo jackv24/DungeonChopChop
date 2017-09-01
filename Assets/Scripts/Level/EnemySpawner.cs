@@ -5,6 +5,11 @@ using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
+	public delegate void NormalEvent();
+	public event NormalEvent OnEnemiesDefeated;
+
+	public bool spawned = false;
+
 	public Transform[] spawnPoints;
 
 	[Space()]
@@ -35,6 +40,29 @@ public class EnemySpawner : MonoBehaviour
 	private List<EnemySpawnPair> undefeatedEnemies = new List<EnemySpawnPair>();
 
 	private bool shouldSpawn = false;
+
+	//Only has to happen occasionally
+	void FixedUpdate()
+	{
+		if(spawned)
+		{
+			int aliveCount = 0;
+
+			foreach(var enemy in spawnedEnemies)
+			{
+				if (enemy.activeSelf)
+					aliveCount++;
+			}
+
+			if(aliveCount <= 0)
+			{
+				if (OnEnemiesDefeated != null)
+					OnEnemiesDefeated();
+
+				spawned = false;
+			}
+		}
+	}
 
 	public void Spawn()
 	{
@@ -157,11 +185,15 @@ public class EnemySpawner : MonoBehaviour
 					}
 				}
 			}
+
+			spawned = true;
 		}
 	}
 
 	public void Despawn()
 	{
+		spawned = false;
+
 		//Interrupt spawning routine if yet to happen
 		shouldSpawn = false;
 		List<EnemySpawnPair> toRemove = new List<EnemySpawnPair>();
