@@ -6,6 +6,8 @@ public class TileParticles : MonoBehaviour
 {
 	public Vector3 size;
 	public Vector3 offset;
+
+	[Tooltip("Doesn't need to be set. If set, overrides default GameObject transform.")]
 	public Transform origin;
 
 	private LevelTile tile;
@@ -17,6 +19,7 @@ public class TileParticles : MonoBehaviour
 
 		if (tile)
 		{
+			//Subscribe to tile enter/exit events
 			tile.OnTileEnter += OnEnter;
 			tile.OnTileExit += OnExit;
 		}
@@ -26,22 +29,27 @@ public class TileParticles : MonoBehaviour
 
 	void OnEnter()
 	{
+		//Get correct prefab for biome
 		GameObject prefab = GetParticles();
 
 		if(prefab)
 		{
+			//Spawn particle prefab
 			GameObject obj = ObjectPooler.GetPooledObject(prefab, origin ? origin.position : transform.position);
 			spawnedParticles = obj;
 
+			//Particle effect can have multiple children systems
 			ParticleSystem[] systems = obj.GetComponentsInChildren<ParticleSystem>();
 
 			foreach(ParticleSystem system in systems)
 			{
 				var shape = system.shape;
 				
+				//make emission shape fit set tile shape
 				shape.position = offset;
 				shape.scale = size;
 
+				//Play particle system prewarmed
 				system.Simulate(system.main.duration);
 				system.Play();
 			}
@@ -56,10 +64,12 @@ public class TileParticles : MonoBehaviour
 
 			foreach (ParticleSystem system in systems)
 			{
+				//Make sure to stop and clear particles, as they'll be reused
 				system.Stop();
 				system.Clear();
 			}
 
+			//Disable GameObject for object pooling
 			spawnedParticles.SetActive(false);
 			spawnedParticles = null;
 		}
