@@ -25,8 +25,6 @@ public class ChestSpawn : MonoBehaviour
 
 	public bool Spawn()
 	{
-		Debug.Log("Spawning chest");
-
 		if(LevelVars.Instance && !spawned)
 		{
 			GameObject prefab = null;
