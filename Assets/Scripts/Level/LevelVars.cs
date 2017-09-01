@@ -14,6 +14,14 @@ public class LevelVars : MonoBehaviour
 	public GameObject normalChestPrefab;
 	public GameObject specialChestPrefab;
 
+	[Header("Biome Particles")]
+	public GameObject grassParticles;
+	public GameObject forestParticles;
+	public GameObject desertParticles;
+	public GameObject iceParticles;
+	public GameObject fireParticles;
+	public GameObject dungeonParticles;
+
 	[Header("Misc")]
 	public GameObject droppedItemPrefab;
 
