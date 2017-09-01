@@ -41,7 +41,7 @@ public class SlimeMove : EnemyMove {
         }
         else
         {
-            AttackPlayer();
+            FollowEnemy();
         }
 
         foreach (PlayerInformation player in players)

@@ -11,6 +11,7 @@ public class SwordCollision : MonoBehaviour {
     public float magnitude = 1;
     public float shakeAmount = 1;
     public float duration = 1;
+    public float pauseTime = .1f;
 
     private PlayerAttack playerAttack;
     private PlayerInformation playerInfo;
@@ -69,8 +70,8 @@ public class SwordCollision : MonoBehaviour {
 
     IEnumerator QuickGamePause()
     {
-        Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(.1f);
+        Time.timeScale = .1f;
+        yield return new WaitForSecondsRealtime(pauseTime);
         Time.timeScale = 1;
     }
 
