@@ -25,6 +25,8 @@ public class ChestSpawn : MonoBehaviour
 
 	public bool Spawn()
 	{
+		Debug.Log("Spawning chest");
+
 		if(LevelVars.Instance && !spawned)
 		{
 			GameObject prefab = null;
@@ -55,7 +57,7 @@ public class ChestSpawn : MonoBehaviour
 
 	public void SetSpawnOnClear(LevelTile parentTile)
 	{
-		EnemySpawner spawner = parentTile.GetComponent<EnemySpawner>();
+		EnemySpawner spawner = parentTile.GetComponentInChildren<EnemySpawner>();
 
 		if(spawner)
 		{

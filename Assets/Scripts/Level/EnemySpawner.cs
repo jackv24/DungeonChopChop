@@ -46,7 +46,15 @@ public class EnemySpawner : MonoBehaviour
 	{
 		if(spawned)
 		{
-			if(spawnedEnemies.Count <= 0)
+			int aliveCount = 0;
+
+			foreach(var enemy in spawnedEnemies)
+			{
+				if (enemy.activeSelf)
+					aliveCount++;
+			}
+
+			if(aliveCount <= 0)
 			{
 				if (OnEnemiesDefeated != null)
 					OnEnemiesDefeated();
@@ -62,8 +70,6 @@ public class EnemySpawner : MonoBehaviour
 			return;
 
 		shouldSpawn = true;
-
-		spawned = true;
 
 		StartCoroutine(SpawnWithEffect());
 	}
@@ -179,6 +185,8 @@ public class EnemySpawner : MonoBehaviour
 					}
 				}
 			}
+
+			spawned = true;
 		}
 	}
 

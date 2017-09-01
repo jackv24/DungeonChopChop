@@ -483,31 +483,6 @@ public class LevelGenerator : MonoBehaviour
 					chestsNotSpawned.Add(spawns[i]);
 			}
 		}
-
-		//Calculate how many chests are needed to fulfill quota
-		int chestsNeeded = profile.minChests - chestsSpawned.Count;
-
-		while(chestsNeeded > 0 && chestsNotSpawned.Count > 0)
-		{
-			int index = Random.Range(0, chestsNotSpawned.Count);
-
-			if (chestsNotSpawned[index].Spawn())
-				chestsNotSpawned.RemoveAt(index);
-
-			chestsNeeded--;
-		}
-
-		//Remove chest spawners
-		foreach (ChestSpawn spawn in spawns)
-			Destroy(spawn.gameObject);
-
-		//Generation did not succeed if not enough chests spawned
-		if(chestsNeeded > 0)
-		{
-			profile.succeeded = false;
-
-			Debug.LogWarning("Not enough chests spawned!");
-		}
 	}
 
 	public void EnterTile()
