@@ -463,15 +463,17 @@ public class LevelGenerator : MonoBehaviour
 			//Make sure something is spawned at all dead ends
 			LevelTile parentTile = spawns[i].GetComponentInParent<LevelTile>();
 
-			if (parentTile && parentTile.doors.Count <= 1)
+			if (spawns[i].spawnType == ChestSpawn.SpawnType.AlwaysSpawn)
 				shouldSpawn = true;
-			else
+			else if (spawns[i].spawnType == ChestSpawn.SpawnType.Probability)
 			{
 				//If not a dead end, spawn based on probability
 				float value = Random.Range(0, 1f);
 				if (value <= profile.chestSpawnProbability)
 					shouldSpawn = true;
 			}
+			else if (spawns[i].spawnType == ChestSpawn.SpawnType.ClearRoom)
+				spawns[i].SetSpawnOnClear(parentTile);
 
 			if(shouldSpawn)
 			{

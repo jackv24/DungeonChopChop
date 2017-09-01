@@ -4,26 +4,37 @@ using UnityEngine;
 
 public class ChestSpawn : MonoBehaviour
 {
-	public enum Type
+	public enum ChestType
 	{
 		Normal,
 		Special
 	}
 
-	public Type type;
+	public ChestType chestType;
+
+	public enum SpawnType
+	{
+		Probability,
+		AlwaysSpawn,
+		ClearRoom
+	}
+
+	public SpawnType spawnType;
+
+	private bool spawned = false;
 
 	public bool Spawn()
 	{
-		if(LevelVars.Instance)
+		if(LevelVars.Instance && !spawned)
 		{
 			GameObject prefab = null;
 
-			switch(type)
+			switch(chestType)
 			{
-				case Type.Normal:
+				case ChestType.Normal:
 					prefab = LevelVars.Instance.normalChestPrefab;
 					break;
-				case Type.Special:
+				case ChestType.Special:
 					prefab = LevelVars.Instance.specialChestPrefab;
 					break;
 			}
@@ -33,12 +44,22 @@ public class ChestSpawn : MonoBehaviour
 				GameObject obj = Instantiate(prefab, transform.parent);
 				obj.transform.localPosition = transform.localPosition;
 
-				return true;
+				spawned = true;
 			}
 			else
 				Debug.LogWarning("Chest could not spawn, no prefab assigned in LevelVars!");
 		}
 
-		return false;
+		return spawned;
+	}
+
+	public void SetSpawnOnClear(LevelTile parentTile)
+	{
+		EnemySpawner spawner = parentTile.GetComponent<EnemySpawner>();
+
+		if(spawner)
+		{
+			spawner.OnEnemiesDefeated += delegate { Spawn(); };
+		}
 	}
 }
