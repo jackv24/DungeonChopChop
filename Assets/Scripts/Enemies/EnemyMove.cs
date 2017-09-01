@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class EnemyMove : MonoBehaviour 
 {
     public float runAwayAfterAttackTime = 1;
+    protected float originalSpeed;
 
     protected NavMeshAgent agent;
     protected PlayerInformation[] players;
@@ -40,6 +41,7 @@ public class EnemyMove : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         players = FindObjectsOfType<PlayerInformation>();
         agent = GetComponent<NavMeshAgent>();
+        originalSpeed = agent.speed;
     }
 
     protected void FollowPlayer()

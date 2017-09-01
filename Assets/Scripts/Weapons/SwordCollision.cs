@@ -57,7 +57,6 @@ public class SwordCollision : MonoBehaviour {
                 }
                 if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("TripleAttack"))
                 {
-                    Debug.Log(animator.GetCurrentAnimatorStateInfo(1).normalizedTime < .7f);
                     if (animator.GetCurrentAnimatorStateInfo(1).normalizedTime < .7f)
                     {
                         StartCoroutine(QuickGamePause());

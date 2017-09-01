@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 114247223238490646}
   - component: {fileID: 65654352111419090}
   - component: {fileID: 195058487053570074}
+  - component: {fileID: 65586272220320986}
   m_Layer: 11
   m_Name: Slime2
   m_TagString: Slime
@@ -589,6 +590,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!65 &65586272220320986
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1900345625037602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4625237, y: 4.314159, z: 2.4668694}
+  m_Center: {x: -0.0073489123, y: 2.0153208, z: -0.02063615}
 --- !u!65 &65654352111419090
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -696,7 +709,7 @@ MonoBehaviour:
   isSlowlyDying: 0
   isDead: 0
   hitParticles: []
-  hitColor: {r: 1, g: 0.19852942, b: 0.19852942, a: 1}
+  hitColor: {r: 1, g: 0.19852942, b: 0.19852942, a: 0.528}
   timeBetweenFlash: 0.1
   amountToFlash: 2
 --- !u!114 &114344270020129990
@@ -966,7 +979,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

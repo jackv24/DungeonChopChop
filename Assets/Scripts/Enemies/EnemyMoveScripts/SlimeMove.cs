@@ -13,22 +13,24 @@ public class SlimeMove : EnemyMove {
     private int hopCounter = 0;
     private float currentTimeBetweenHop = 0;
 
-    private Collider col;
+    private BoxCollider col;
     private Rigidbody rb;
 
     public bool friendly = false;
 
     private bool attacking = false;
+    private bool inLeeping = false;
+    private bool doingLeep = false;
 
 	// Use this for initialization
 	void Awake () {
         rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
+        col = GetComponent<BoxCollider>();
         Setup();
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () 
+	void Update () 
     {
         if (!friendly)
         {
@@ -54,6 +56,20 @@ public class SlimeMove : EnemyMove {
                 friendly = false;
             }
         }
+
+        //checks if the slime is in mid air, if so disable the collider
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Midair"))
+        {
+            col.enabled = false;
+        }
+        else
+        {
+            //renable the collider
+            if (!col.enabled)
+            {
+                col.enabled = true;
+            }
+        }
 	}
 
     void AttackPlayer()
@@ -64,36 +80,27 @@ public class SlimeMove : EnemyMove {
         }
         else
         {
-            if (!attacking)
-            {
-                StartCoroutine(LeepAtEnemy(radiusAttack, waitTillLeep));
-            }
+            if (!inLeeping)
+                StartCoroutine(LeepAtEnemy(waitTillLeep));
+        }
+        if (doingLeep)
+        {
+            FollowPlayer();
         }
     }
 
-    void Update()
+    IEnumerator LeepAtEnemy(float waitTillLeep)
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Midair"))
-        {
-            col.enabled = false;
-        }
-        else
-        {
-            if (!col.enabled)
-            {
-                col.enabled = true;
-            }
-        }
-    }
-
-    IEnumerator LeepAtEnemy(float radius, float waitTillLeep)
-    {
-        attacking = true;
-        agent.velocity = agent.velocity / 5;
+        inLeeping = true;
+        agent.speed = 0;
         yield return new WaitForSeconds(waitTillLeep);
-        Hop();
-        rb.AddForce(transform.forward * leepPower, ForceMode.Impulse);
-        attacking = false;
+        animator.SetTrigger("Hop");
+        doingLeep = true;
+        agent.speed = originalSpeed * 2;
+        yield return new WaitForSeconds(1);
+        agent.speed = originalSpeed;
+        inLeeping = false;
+        doingLeep = false;
     }
 
     void Hop()
@@ -101,11 +108,11 @@ public class SlimeMove : EnemyMove {
         animator.SetTrigger("Hop");
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
         if (friendly)
         {
-            if (col.collider.tag != "Player" || col.collider.tag != "Slime")
+            if (col.GetComponent<Collider>().tag != "Player" || col.GetComponent<Collider>().tag != "Slime")
             {
                 if (col.gameObject.GetComponent<Health>())
                 {
