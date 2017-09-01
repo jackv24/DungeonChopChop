@@ -36,6 +36,7 @@ public class PlayerAttack : MonoBehaviour
     private Animator animator;
 
     public ShieldStats shield;
+    public SwordStats sword;
 
     private int comboAmount;
     private CharacterController characterController;
@@ -96,6 +97,11 @@ public class PlayerAttack : MonoBehaviour
             {
                 playerInformation.maxMoveSpeed = normalMoveSpeed;
             }
+        }
+
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
+        {
+            DisableSword();
         }
 
         //check if can actually attack
@@ -164,6 +170,20 @@ public class PlayerAttack : MonoBehaviour
                 StopBlock();
             }
         }
+    }
+
+    public void EnableSword()
+    {
+        //enables collider and trail
+        sword.GetComponent<Collider>().enabled = true;
+        sword.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void DisableSword()
+    {
+        //disables collider and trail
+        sword.GetComponent<Collider>().enabled = false;
+        sword.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     //-------------------------- Combo stuff

@@ -5,38 +5,41 @@ using UnityEngine;
 public class SlimeMove : EnemyMove {
 
     [Tooltip("In seconds")]
-    public float minTimeBetweenHops;
-    public float maxTimeBetweenHops;
-    public float damageToEnemies = 1;
+    public float damageToEnemies = 1; 
+    public float radiusAttack = 5;
+    public float waitTillLeep = 1;
+    public float leepPower = 10;
 
     private int hopCounter = 0;
     private float currentTimeBetweenHop = 0;
 
     private Collider col;
+    private Rigidbody rb;
 
     public bool friendly = false;
 
+    private bool attacking = false;
+
 	// Use this for initialization
 	void Awake () {
+        rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
-        currentTimeBetweenHop = Random.Range(minTimeBetweenHops, maxTimeBetweenHops);
         Setup();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () 
     {
-        DoHop();
         if (!friendly)
         {
             if (!runAway)
-                FollowPlayer();
+                AttackPlayer();
             else
                 RunAwayFromPlayer();
         }
         else
         {
-            FollowEnemy();
+            AttackPlayer();
         }
 
         foreach (PlayerInformation player in players)
@@ -53,6 +56,21 @@ public class SlimeMove : EnemyMove {
         }
 	}
 
+    void AttackPlayer()
+    {
+        if (!InDistance(radiusAttack))
+        {
+            FollowPlayer();
+        }
+        else
+        {
+            if (!attacking)
+            {
+                StartCoroutine(LeepAtEnemy(radiusAttack, waitTillLeep));
+            }
+        }
+    }
+
     void Update()
     {
         if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Midair"))
@@ -68,15 +86,14 @@ public class SlimeMove : EnemyMove {
         }
     }
 
-    void DoHop()
+    IEnumerator LeepAtEnemy(float radius, float waitTillLeep)
     {
-        hopCounter++;
-        if (hopCounter > currentTimeBetweenHop * 60)
-        {
-            Hop();
-            currentTimeBetweenHop = Random.Range(minTimeBetweenHops, maxTimeBetweenHops);
-            hopCounter = 0;
-        }
+        attacking = true;
+        agent.velocity = agent.velocity / 5;
+        yield return new WaitForSeconds(waitTillLeep);
+        Hop();
+        rb.AddForce(transform.forward * leepPower, ForceMode.Impulse);
+        attacking = false;
     }
 
     void Hop()

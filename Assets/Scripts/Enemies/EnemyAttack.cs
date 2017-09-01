@@ -42,6 +42,13 @@ public class EnemyAttack : MonoBehaviour
     private float angle = 0;
     private float randomInterval = 0;
 
+    private EnemyMove enemyMove;
+
+    void Start()
+    {
+        enemyMove = GetComponent<EnemyMove>();
+    }
+
     void FixedUpdate()
     {
         circleAngle = 360 / projAmount;
@@ -165,6 +172,7 @@ public class EnemyAttack : MonoBehaviour
                         col.transform.GetComponent<Health>().Damaged();
                         col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch * playerInfo.resistance * col.transform.GetComponent<PlayerAttack>().shield.blockingResistance);
                     }
+                    enemyMove.runAwayForSeconds();
                 }
             }
         }

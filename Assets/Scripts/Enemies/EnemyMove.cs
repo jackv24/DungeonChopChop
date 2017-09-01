@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour 
 {
+    public float runAwayAfterAttackTime = 1;
+
     protected NavMeshAgent agent;
     protected PlayerInformation[] players;
     protected PlayerInformation currentPlayer = null;
@@ -67,11 +69,27 @@ public class EnemyMove : MonoBehaviour
         } 
     } 
 
-    protected bool IsInDistanceOfPlayer(float radius)
+    protected bool InDistance(float radius)
     {
         //checks to see if the player is in the radius of the enemy
         float distance = Vector3.Distance(transform.position, GetClosestPlayer().position);
         if (distance < radius)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    protected float GetDistance()
+    {
+        return Vector3.Distance(transform.position, GetClosestPlayer().position);
+    }
+
+    protected bool InDistanceBetweenTwoRadius(float radius, float greaterThenRadius)
+    {
+        //checks to see if the player is in the radius of the enemy
+        float distance = Vector3.Distance(transform.position, GetClosestPlayer().position);
+        if (distance < radius && distance > greaterThenRadius)
         {
             return true;
         }
@@ -130,5 +148,17 @@ public class EnemyMove : MonoBehaviour
         }
         //returns the closest enemy
         return closestEnemy.transform;
+    }
+
+    public void runAwayForSeconds()
+    {
+        StartCoroutine(runAwayFor());
+    }
+
+    IEnumerator runAwayFor()
+    {
+        runAway = true;
+        yield return new WaitForSeconds(runAwayAfterAttackTime);
+        runAway = false;
     }
 }

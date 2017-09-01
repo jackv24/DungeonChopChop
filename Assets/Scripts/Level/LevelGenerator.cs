@@ -255,6 +255,8 @@ public class LevelGenerator : MonoBehaviour
 			GameObject tileObj = (GameObject)Instantiate(possibleTile.tile.gameObject, transform);
 			LevelTile tile = tileObj.GetComponent<LevelTile>();
 
+			int rotation = 0;
+
 			//Loop through and test all doors to connect to
 			for(int i = 0; i < tile.doors.Count; i++)
 			{
@@ -263,7 +265,17 @@ public class LevelGenerator : MonoBehaviour
 				{
 					//Rotate another 90 degrees every time after the first loop
 					if (rotationCount > 0)
-						tileObj.transform.Rotate(new Vector3(0, 90, 0));
+						rotation += 90;
+					else
+						rotation = 0;
+
+					//Limit tile rotation
+					if ((rotation == 90 || rotation == 270) && tile.limitToHorizontal)
+					{
+						continue;
+					}
+
+					tileObj.transform.eulerAngles = new Vector3(0, rotation, 0);
 
 					//Reset tile position to door
 					tileObj.transform.position = connectingDoor.position;
@@ -323,6 +335,9 @@ public class LevelGenerator : MonoBehaviour
 				//Generate another tile for each door
 				foreach (Transform door in nextTile.doors)
 				{
+					if (connectedDoorIndex > nextTile.doors.Count - 1)
+						Debug.Log(connectedDoorIndex + ", " + nextTile.doors.Count);
+
 					//No need to check the door that was just connected
 					if (door == nextTile.doors[connectedDoorIndex])
 						continue;
