@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d6fceea24963a4393f16a2b3530407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeDisabled: 0.5
+  timeBeforeDisabled: 0.3
 --- !u!198 &198458778445505592
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -62,8 +62,8 @@ ParticleSystem:
   m_GameObject: {fileID: 1610516251936186}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
-  looping: 1
+  simulationSpeed: 0.6
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -113,7 +113,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -949899917
+  randomSeed: -647723245
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -161,7 +161,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1.6459506
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -509,7 +509,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 63
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -557,7 +557,7 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 4
-    angle: 25
+    angle: 4.742986
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -3330,7 +3330,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e10c031bd2f70f8459c58b11c5558cfe, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -3350,7 +3350,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
