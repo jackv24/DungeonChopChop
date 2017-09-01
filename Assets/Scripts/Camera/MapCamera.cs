@@ -19,11 +19,14 @@ public class MapCamera : MonoBehaviour
 
 	class Icon
 	{
+		public int id = 0;
+
 		public RectTransform rectTransform;
 		public Transform targetTransform;
 
 		public bool setLastSibling = false;
 	}
+	private int lastID = 0;
 
 	private List<Icon> icons = new List<Icon>();
 
@@ -84,16 +87,24 @@ public class MapCamera : MonoBehaviour
 		{
 			Destroy(icon.rectTransform.gameObject);
 		}
-
 		icons.Clear();
 	}
 
-	public void RegisterIcon(Sprite sprite, Transform target, Color color, bool setLastSibling = false)
+	/// <summary>
+	/// Displays an icon on the map.
+	/// </summary>
+	/// <param name="sprite">The sprite to use for the icon.</param>
+	/// <param name="target">World transform that the icon represents.</param>
+	/// <param name="color">Tint color.</param>
+	/// <param name="setLastSibling">Sets this icon as the last sibling in the heirarchy, drawing above other icons.</param>
+	/// <returns>Returns the assigned ID of the new icon.</returns>
+	public int RegisterIcon(Sprite sprite, Transform target, Color color, bool setLastSibling = false)
 	{
 		//Create new icon and set values
 		Icon icon = new Icon();
 		icon.targetTransform = target;
 		icon.setLastSibling = setLastSibling;
+		icon.id = lastID++;
 
 		//Make new gameobject in heirarchy for this icon
 		GameObject obj = new GameObject(target.gameObject.name + "_Icon");
@@ -119,6 +130,30 @@ public class MapCamera : MonoBehaviour
 
 		//Reorder in heirarchy if required
 		SetIconOrder();
+
+		return icon.id;
+	}
+
+	public void RemoveIcon(int id)
+	{
+		int index = -1;
+
+		//Find icon with ID
+		foreach(Icon icon in icons)
+		{
+			if (icon.id == id)
+				index = icons.IndexOf(icon);
+		}
+
+		//If icon match was found
+		if (index >= 0)
+		{
+			//Delete from UI
+			Destroy(icons[index].rectTransform.gameObject);
+
+			//Remove icon from list
+			icons.RemoveAt(index);
+		}
 	}
 
 	void SetIconOrder()
