@@ -15,7 +15,7 @@ public class SnapEyeMove : EnemyMove
 	// Update is called once per frame
 	void Update () 
     {
-        if (IsInDistanceOfPlayer(radius))
+        if (InDistance(radius))
         {
             if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle"))
             {

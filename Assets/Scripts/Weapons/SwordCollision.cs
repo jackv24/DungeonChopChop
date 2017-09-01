@@ -26,20 +26,6 @@ public class SwordCollision : MonoBehaviour {
         animator = GetComponentInParent<Animator>();
         col = GetComponent<Collider>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack") || animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack") || animator.GetCurrentAnimatorStateInfo(1).IsTag("DashAttack"))
-        {
-            col.enabled = true;
-            trail.SetActive(true);
-        }
-        else
-        {
-            col.enabled = false;
-            trail.SetActive(false);
-        }
-	}
 
     void OnCollisionEnter(Collision col)
     {
