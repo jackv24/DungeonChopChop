@@ -49,6 +49,11 @@ public class Chest : MonoBehaviour
 
 		if(containingItem)
 			StartCoroutine(ReleaseItems());
+
+		//Remove icon from map once opened
+		MapTracker icon = GetComponent<MapTracker>();
+		if (icon)
+			icon.Remove();
 	}
 
 	IEnumerator ReleaseItems()
