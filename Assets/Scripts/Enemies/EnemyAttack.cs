@@ -148,7 +148,7 @@ public class EnemyAttack : MonoBehaviour
         } 
     }
 
-    void OnCollisionStay(Collision col)
+    void CheckCollisions(Collider col)
     {
         if (col.transform.GetComponent<Health>())
         {
@@ -177,4 +177,14 @@ public class EnemyAttack : MonoBehaviour
             }
         }
     }
+
+    void OnCollisionStay(Collision col)
+    {
+        CheckCollisions(col.collider);
+    }
+    void OnTriggerStay(Collider col)
+    {
+        CheckCollisions(col);
+    }
+
 }

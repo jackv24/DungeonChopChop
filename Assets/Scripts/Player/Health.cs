@@ -156,8 +156,10 @@ public class Health : MonoBehaviour
     IEnumerator DisableNav(float seconds)
     {
         GetComponent<EnemyMove>().usingNav = false;
+        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
         yield return new WaitForSeconds(seconds);
         GetComponent<EnemyMove>().usingNav = true;
+        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
     }
 
     public void HitFlash()

@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 114747209592000936}
   - component: {fileID: 65766634527232394}
   - component: {fileID: 195040792718675142}
+  - component: {fileID: 65807528499727176}
   m_Layer: 11
   m_Name: Slime
   m_TagString: Slime
@@ -422,7 +423,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761846842308470}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 47.544533, y: -0.73647714, z: -89.682755}
+  m_LocalPosition: {x: 12, y: 2, z: 11.41}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4134790035015018}
@@ -601,6 +602,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2016816, y: 4.0908375, z: 2.2792568}
   m_Center: {x: 0.015663028, y: 1.9993687, z: -0.016053915}
+--- !u!65 &65807528499727176
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1761846842308470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4625237, y: 4.314159, z: 2.4668694}
+  m_Center: {x: -0.0073489123, y: 2.0153208, z: -0.02063615}
 --- !u!95 &95466263464759850
 Animator:
   serializedVersion: 3
@@ -638,7 +651,7 @@ MonoBehaviour:
   isSlowlyDying: 0
   isDead: 0
   hitParticles: []
-  hitColor: {r: 1, g: 0.19852942, b: 0.19852942, a: 1}
+  hitColor: {r: 1, g: 0.19852942, b: 0.19852942, a: 0.528}
   timeBetweenFlash: 0.1
   amountToFlash: 2
 --- !u!114 &114262389343349236
@@ -966,7 +979,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
