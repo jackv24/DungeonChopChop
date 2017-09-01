@@ -5,6 +5,7 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     public bool opened = false;
+    public bool requireKeys = false;
 
 	public Helper.ProbabilityItem[] possibleItems;
 	public BaseItem containingItem;
@@ -29,11 +30,18 @@ public class Chest : MonoBehaviour
             {
 				if (ItemsManager.Instance)
 				{
-					if (ItemsManager.Instance.Keys > 0)
-					{
-						Open();
-						ItemsManager.Instance.Keys -= 1;
-					}
+                    if (requireKeys)
+                    {
+                        if (ItemsManager.Instance.Keys > 0)
+                        {
+                            Open();
+                            ItemsManager.Instance.Keys -= 1;
+                        }
+                    }
+                    else
+                    {
+                        Open();
+                    }
 				}
 				else //If there is no items manager, just open the chest anyway (for testing)
 					Open();

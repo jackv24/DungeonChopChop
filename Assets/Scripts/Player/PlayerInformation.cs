@@ -42,8 +42,6 @@ public class PlayerInformation : MonoBehaviour
     private Dictionary<string, float> itemFloats = new Dictionary<string, float>();
     private LayerMask layerMask;
 
-    private 
-
 	void Start()
     {
         health = GetComponent<Health>();
