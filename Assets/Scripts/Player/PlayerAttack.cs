@@ -186,7 +186,6 @@ public class PlayerAttack : MonoBehaviour
         //resets everything to do with combo
         if (comboAmount > slashAmount)
         {
-            Debug.Log("reset");
             playerInformation.ResetMoveSpeed();
         }
         comboAmount = 0;
