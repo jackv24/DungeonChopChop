@@ -36,6 +36,7 @@ public class TileParticles : MonoBehaviour
 		{
 			//Spawn particle prefab
 			GameObject obj = ObjectPooler.GetPooledObject(prefab, origin ? origin.position : transform.position);
+			obj.transform.rotation = origin ? origin.rotation : transform.rotation;
 			spawnedParticles = obj;
 
 			//Particle effect can have multiple children systems
@@ -110,6 +111,8 @@ public class TileParticles : MonoBehaviour
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawWireCube((origin ? origin.position : transform.position) + offset, size);
+		Gizmos.matrix = transform.localToWorldMatrix;
+
+		Gizmos.DrawWireCube((origin ? origin.localPosition : Vector3.zero) + offset, size);
 	}
 }
