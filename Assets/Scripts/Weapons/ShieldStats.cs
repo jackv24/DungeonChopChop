@@ -7,7 +7,7 @@ public class ShieldStats : MonoBehaviour {
 	[Header("Shield values")]
 	[Tooltip("0 = not move, 1 = move at normal speed")]
     public float blockingResistance;
-	public float speedDamping = 0; 
+	public float speedDamping = .5f; 
 
 	// Use this for initialization
 	void Start () {

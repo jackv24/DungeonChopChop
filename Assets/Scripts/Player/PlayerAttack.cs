@@ -26,9 +26,6 @@ public class PlayerAttack : MonoBehaviour
     public bool blocking = false;
     public GameObject slashFX;
 
-
-    bool canAttack = true;
-
     private PlayerInputs input;
     private PlayerMove playerMove;
     private PlayerInformation playerInformation;
@@ -43,7 +40,6 @@ public class PlayerAttack : MonoBehaviour
     private float comboCounter;
     private float rapidSlashCounter;
     private float rapidSlashTimer;
-    private float normalMoveSpeed;
 
     private bool canDash = true;
     private bool rapidSlashCoolingDown = false;
@@ -66,7 +62,6 @@ public class PlayerAttack : MonoBehaviour
             input = new PlayerInputs();
             input.SetupBindings();
         }
-        normalMoveSpeed = playerInformation.maxMoveSpeed;
     }
 
     void Update()
@@ -86,19 +81,6 @@ public class PlayerAttack : MonoBehaviour
             animator.SetBool("Attacking", false);
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
-        {
-            if (playerInformation.maxMoveSpeed == normalMoveSpeed)
-                playerInformation.maxMoveSpeed = playerInformation.maxMoveSpeed * multiSpeedMultiplier;
-        }
-        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
-        {
-            if (playerInformation.maxMoveSpeed != normalMoveSpeed)
-            {
-                playerInformation.maxMoveSpeed = normalMoveSpeed;
-            }
-        }
-
         if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
         {
             DisableSword();
@@ -112,28 +94,24 @@ public class PlayerAttack : MonoBehaviour
             //if combo is equal to or greater than 3, do rapid slash
             if (comboAmount >= slashAmount)
             {
-                 doRapidSlash();
-            } 
+                doRapidSlash();
+            }
             //basic slash
-            if (canAttack)
+            if (comboAmount < slashAmount)
             {
-                if (comboAmount < slashAmount)
+                //checks if player is in idle to do the first attack
+                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
                 {
-                    //checks if player is in idle to do the first attack
-                    if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
-                    {
-                        ResetRapidSlash();
-                        doSlash();
-                    }
+                    doSlash();
+                }
                     //if the user tries to attack when the user is already attacking, it'll do the second attack once completed
                     else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                    {
-                        doSecondSlash();
-                    }
-                    else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
-                    {
-                        doSlash();
-                    }
+                {
+                    doSecondSlash();
+                }
+                else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                {
+                    doSlash();
                 }
             }
         } 
@@ -206,6 +184,11 @@ public class PlayerAttack : MonoBehaviour
     void ResetCombo()
     {
         //resets everything to do with combo
+        if (comboAmount > slashAmount)
+        {
+            Debug.Log("reset");
+            playerInformation.ResetMoveSpeed();
+        }
         comboAmount = 0;
         comboCounter = 0;
         comboStarted = false;
@@ -224,12 +207,7 @@ public class PlayerAttack : MonoBehaviour
     void DoBlock()
     {
         //do block things
-        if (playerInformation.maxMoveSpeed == normalMoveSpeed)
-        {
-            playerInformation.maxMoveSpeed = playerInformation.maxMoveSpeed * shield.speedDamping;
-        }
-        if (playerInformation.HasCharmFloat("blockSpeedMultiplier"))
-            playerInformation.maxMoveSpeed = playerInformation.maxMoveSpeed * shield.speedDamping * playerInformation.GetCharmFloat("blockSpeedMultiplier");
+        playerInformation.SetMoveSpeed(playerInformation.GetOriginalMoveSpeed() * shield.speedDamping * playerInformation.GetCharmFloat("blockSpeedMultiplier"));
 		
         if (animator)
         {
@@ -243,7 +221,7 @@ public class PlayerAttack : MonoBehaviour
     void StopBlock()
     {
         //stop block things
-        playerInformation.maxMoveSpeed = normalMoveSpeed;
+        playerInformation.ResetMoveSpeed();
         if (animator)
         {
             animator.SetBool("Blocking", false);
@@ -317,15 +295,8 @@ public class PlayerAttack : MonoBehaviour
     {
         //do rapid slash things
         animator.SetTrigger("TripleAttack");
+        playerInformation.SetMoveSpeed(playerInformation.GetOriginalMoveSpeed() * multiSpeedMultiplier);
         //Debug.Log ("Rapid Slash");
-    }
-
-    void ResetRapidSlash()
-    {
-        rapidSlashCoolingDown = false;
-        rapidSlashCounter = 0;
-        ResetCombo();
-        canAttack = true;
     }
 
     void doDash()

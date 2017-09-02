@@ -28,7 +28,8 @@ public class PlayerMove : MonoBehaviour
 	private Vector2 inputVector;
 	private Vector3 targetMoveVector;
 	private Vector3 fromMoveVector = Vector3.zero;
-	private float originalMoveSpeed = 0;
+
+    private float slowdownMultiplier = 1;
 
 	// Use this for initialization
 	void Start()
@@ -89,8 +90,8 @@ public class PlayerMove : MonoBehaviour
 		if (inputVector.magnitude > 1)
 			inputVector.Normalize();
 
-		targetMoveVector.x = inputVector.x * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier");
-		targetMoveVector.z = inputVector.y * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier");
+        targetMoveVector.x = inputVector.x * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * slowdownMultiplier;
+        targetMoveVector.z = inputVector.y * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * slowdownMultiplier;
 
 		if (CameraFollow.Instance)
 			targetMoveVector = CameraFollow.Instance.ValidateMovePos(transform.position, targetMoveVector);
@@ -120,7 +121,7 @@ public class PlayerMove : MonoBehaviour
 	{
 		if (col.tag == "Mud")
 		{
-			originalMoveSpeed = playerInformation.maxMoveSpeed;
+            slowdownMultiplier = inMudSpeed;
 		}
 		if (col.tag == "Ice")
 		{
@@ -135,10 +136,6 @@ public class PlayerMove : MonoBehaviour
 		{
 			acceleration = 1;
 		}
-		else if (col.tag == "Mud")
-		{
-			playerInformation.maxMoveSpeed = inMudSpeed;
-		}
 	}
 
 	void OnTriggerExit(Collider col)
@@ -150,7 +147,7 @@ public class PlayerMove : MonoBehaviour
 		}
 		else if (col.tag == "Mud")
 		{
-			playerInformation.maxMoveSpeed = originalMoveSpeed;
+            slowdownMultiplier = 1;
 		}
 	}
 

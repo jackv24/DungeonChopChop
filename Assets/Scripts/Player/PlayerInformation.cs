@@ -31,6 +31,8 @@ public class PlayerInformation : MonoBehaviour
     private bool speedBoost = false;
     private bool paralysed = false;
 
+    private float originalSpeed;
+
     private WeaponStats currentWeaponStats;
     private PlayerMove playerMove;
     private Animator animator;
@@ -44,6 +46,7 @@ public class PlayerInformation : MonoBehaviour
 
 	void Start()
     {
+        originalSpeed = maxMoveSpeed;
         health = GetComponent<Health>();
         playerMove = GetComponent<PlayerMove>();
         animator = GetComponentInChildren<Animator>();
@@ -292,6 +295,25 @@ public class PlayerInformation : MonoBehaviour
                 StartCoroutine(ParalysedForSeconds(GetCharmFloat("paralysisTime")));
             }
         }
+    }
+
+    public void SetMoveSpeed(float moveSpeed)
+    {
+        if (maxMoveSpeed != moveSpeed)
+        {
+            originalSpeed = maxMoveSpeed;
+            maxMoveSpeed = moveSpeed;
+        }
+    }
+
+    public void ResetMoveSpeed()
+    {
+        maxMoveSpeed = originalSpeed;
+    }
+
+    public float GetOriginalMoveSpeed()
+    {
+        return originalSpeed;
     }
 
     IEnumerator ParalysedForSeconds(float seconds)
