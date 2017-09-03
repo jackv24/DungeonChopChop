@@ -42,9 +42,6 @@ public class LevelTile : MonoBehaviour
 	public Helper.ProbabilityGameObject[] forestTiles;
 	public Helper.ProbabilityGameObject[] dungeonTiles;
 
-	//Shared material that all walls return to after fading (set by first wall fade)
-	private static Material wallMaterial = null;
-
 	private MapTile mapTile;
 
 	private bool layoutReplaced = false;
@@ -249,7 +246,7 @@ public class LevelTile : MonoBehaviour
 	{
 		if (oldTile)
 		{
-			StartCoroutine(FadeWalls(CameraFollow.Instance.wallFadeOutTime, CameraFollow.Instance.wallFadeInTime, CameraFollow.Instance.wallFadeDelay, this, oldTile));
+			StartCoroutine(SwitchTile(this, oldTile));
 
 			EnemySpawner oldSpawner = oldTile.GetComponentInChildren<EnemySpawner>();
 			EnemySpawner newSpawner = GetComponentInChildren<EnemySpawner>();
@@ -321,80 +318,25 @@ public class LevelTile : MonoBehaviour
 		}
 	}
 
-	IEnumerator FadeWalls(float fadeOutTime, float fadeInTime, float wallFadeDelay, LevelTile newTile, LevelTile oldTile)
+	IEnumerator SwitchTile(LevelTile newTile, LevelTile oldTile)
 	{
+		if (FadeScreen.Instance)
+			FadeScreen.Instance.FadeInOut();
+
 		GameObject newWalls = newTile.walls;
 		GameObject oldWalls = oldTile.walls;
 
-		//Get mesh renderers
-		MeshRenderer[] newRends = newWalls.GetComponentsInChildren<MeshRenderer>();
-		MeshRenderer[] oldRends = oldWalls.GetComponentsInChildren<MeshRenderer>();
+		//Wait until screen has faded until moving to new tile
+		if (FadeScreen.Instance)
+			yield return new WaitForSeconds(FadeScreen.Instance.fadeInTime);
 
-		//Cache shared material to return at end
-		if(wallMaterial == null)
-			wallMaterial = newRends[0].sharedMaterial;
+		//Disable walls on old tile
+		oldWalls.SetActive(false);
 
-		//Fade old out
-		{
-			Material oldMat = oldRends[0].material;
+		//Move to new tile
+		newWalls.SetActive(true);
 
-			for (int i = 0; i < oldRends.Length; i++)
-				oldRends[i].sharedMaterial = oldMat;
-
-			Color startColor = wallMaterial.GetColor("_TintColor");
-			Color endColor = oldMat.GetColor("_TintColor");
-			endColor.a = 0;
-
-			float elapsedTime = 0;
-
-			while (elapsedTime <= fadeOutTime)
-			{
-				yield return new WaitForEndOfFrame();
-				elapsedTime += Time.deltaTime;
-
-				oldMat.SetColor("_TintColor", Color.Lerp(startColor, endColor, elapsedTime / fadeOutTime));
-			}
-
-			oldWalls.SetActive(false);
-		}
-
-		//Fade new in
-		{
-			Material newMat = newRends[0].material;
-
-			for (int i = 0; i < newRends.Length; i++)
-				newRends[i].sharedMaterial = newMat;
-
-			Color startColor = wallMaterial.GetColor("_TintColor");
-			startColor.a = 0;
-			Color endColor = newMat.GetColor("_TintColor");
-
-			newMat.SetColor("_TintColor", startColor);
-
-			newWalls.SetActive(true);
-
-			if(newTile.layoutCollider)
-				CameraFollow.Instance.UpdateCameraBounds(newTile.layoutCollider.bounds);
-
-			yield return new WaitForSeconds(wallFadeDelay);
-
-			float elapsedTime = 0;
-
-			while (elapsedTime <= fadeInTime)
-			{
-				yield return new WaitForEndOfFrame();
-				elapsedTime += Time.deltaTime;
-
-				newMat.SetColor("_TintColor", Color.Lerp(startColor, endColor, elapsedTime / fadeInTime));
-			}
-
-		}
-
-		//Restore shared material
-		foreach(MeshRenderer rend in oldRends)
-			rend.sharedMaterial = wallMaterial;
-
-		foreach (MeshRenderer rend in newRends)
-			rend.sharedMaterial = wallMaterial;
+		if(newTile.layoutCollider)
+			CameraFollow.Instance.UpdateCameraBounds(newTile.layoutCollider.bounds);
 	}
 }

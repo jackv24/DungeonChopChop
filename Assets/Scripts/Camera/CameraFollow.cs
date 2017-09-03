@@ -30,11 +30,6 @@ public class CameraFollow : MonoBehaviour
 	public float paddingLeft = 2.0f;
 	public float paddingRight = 2.0f;
 
-	[Header("Walls")]
-	public float wallFadeOutTime = 0.1f;
-	public float wallFadeInTime = 0.25f;
-	public float wallFadeDelay = 0.1f;
-
 	public Vector3 targetPos;
 
 	private bool resetCamera = true;
@@ -110,6 +105,8 @@ public class CameraFollow : MonoBehaviour
 	{
 		min = tileBounds.min;
 		max = tileBounds.max;
+
+		resetCamera = true;
 	}
 
 	/// <summary>
