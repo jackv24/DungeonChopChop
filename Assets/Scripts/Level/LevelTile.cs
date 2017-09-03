@@ -328,7 +328,7 @@ public class LevelTile : MonoBehaviour
 
 		//Wait until screen has faded until moving to new tile
 		if (FadeScreen.Instance)
-			yield return new WaitForSeconds(FadeScreen.Instance.fadeInTime);
+			yield return new WaitForSeconds(FadeScreen.Instance.fadeOutTime);
 
 		//Disable walls on old tile
 		oldWalls.SetActive(false);
