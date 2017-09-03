@@ -40,9 +40,9 @@ public class FadeScreen : MonoBehaviour
 
 		//Fade image in
 		float elapsed = 0;
-		while(elapsed < fadeInTime)
+		while(elapsed < fadeOutTime)
 		{
-			color.a = Mathf.Lerp(0, 1, elapsed / fadeInTime);
+			color.a = Mathf.Lerp(0, 1, elapsed / fadeOutTime);
 			image.color = color;
 
 			yield return new WaitForEndOfFrame();
