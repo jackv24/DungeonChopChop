@@ -4,36 +4,44 @@ using UnityEngine;
 
 public class LinkState : MonoBehaviour
 {
+	private static List<LinkState> states = new List<LinkState>();
+
+	public bool disableOnStart = false;
 	public bool isTarget = false;
 
 	public string identifier;
 
+	private void Awake()
+	{
+		states.Add(this);
+	}
+
+	private void Start()
+	{
+		if(disableOnStart)
+			gameObject.SetActive(false);
+	}
+
 	private void OnEnable()
 	{
-		if (isTarget)
-			return;
-
-		UpdateLinkedStates(true);
+		if (!isTarget)
+			UpdateLinkedStates(true);
 	}
 
 	private void OnDisable()
 	{
-		if (isTarget)
-			return;
-
-		UpdateLinkedStates(false);
+		if (!isTarget)
+			UpdateLinkedStates(false);
 	}
 
 	void UpdateLinkedStates(bool enabled)
 	{
-		LinkState[] foundStates = FindObjectsOfType<LinkState>();
-
 		List<LinkState> matchedStates = new List<LinkState>();
 
-		foreach(LinkState state in foundStates)
+		foreach(var s in states)
 		{
-			if (state.identifier == identifier)
-				matchedStates.Add(state);
+			if (s.identifier == identifier && s != this)
+				matchedStates.Add(s);
 		}
 
 		foreach(LinkState state in matchedStates)
