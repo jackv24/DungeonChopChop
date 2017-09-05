@@ -35,6 +35,8 @@ public class Charm : BaseItem
 	{
 		base.Pickup (playerInfo);
 
+        GameObject.FindGameObjectWithTag("ItemInfo").GetComponent<ItemInfo>().ShowItemInfo(this);
+
 		if (charmFloats.Length > 0)
 		{
 			foreach (CharmFloat charmFloat in charmFloats)
