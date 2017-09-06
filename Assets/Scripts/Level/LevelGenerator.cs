@@ -426,11 +426,11 @@ public class LevelGenerator : MonoBehaviour
 		}
 
 		//Show already visited dungeons
-		if (LevelVars.Instance && !LevelVars.Instance.levelData.inDungeon)
+		if (LevelVars.Instance)
 		{
 			for (int i = 0; i < generatedTiles.Count; i++)
 			{
-				if (LevelVars.Instance.levelData.clearedTiles.Contains(generatedTiles[i].index))
+				if (!LevelVars.Instance.levelData.inDungeon && LevelVars.Instance.levelData.clearedTiles.Contains(generatedTiles[i].index))
 					generatedTiles[i].ShowTile(false);
 				else
 					generatedTiles[i].ShowTile(false, false);

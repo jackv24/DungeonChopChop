@@ -45,6 +45,7 @@ public class PlayerAttack : MonoBehaviour
     private float rapidSlashTimer;
 
     private bool canDash = true;
+	private bool cancelDash = false;
     private bool rapidSlashCoolingDown = false;
     private bool comboStarted = false;
 
@@ -66,6 +67,16 @@ public class PlayerAttack : MonoBehaviour
             input.SetupBindings();
         }
     }
+
+	void OnDisable()
+	{
+		cancelDash = true;
+	}
+
+	void OnEnable()
+	{
+		cancelDash = false;
+	}
 
     void FixedUpdate()
     {
@@ -368,6 +379,9 @@ public class PlayerAttack : MonoBehaviour
         float timer = dashTime * playerInformation.GetCharmFloat("dashTime");
         while (elapsedTime < timer)
         {
+			if (cancelDash)
+				break;
+
             characterController.Move(transform.forward * dashSpeed * playerInformation.GetCharmFloat("dashSpeed") * Time.deltaTime);
             yield return new WaitForEndOfFrame();
             elapsedTime += Time.deltaTime;
