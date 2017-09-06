@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SwordStats : MonoBehaviour {
 
+    public float damageMultiplier = 1;
+
 	// Use this for initialization
 	void Start () {
 		

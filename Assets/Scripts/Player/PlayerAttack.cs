@@ -32,6 +32,9 @@ public class PlayerAttack : MonoBehaviour
     private Health playerHealth;
     private Animator animator;
 
+    [Header("Weapon Stuff")]
+    public GameObject swordBone;
+    public GameObject shieldBone;
     public ShieldStats shield;
     public SwordStats sword;
 
@@ -154,17 +157,40 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    public void DropSword()
+    {
+        if (sword)
+        {
+            sword.transform.parent = null;
+            sword.transform.position = Vector3.forward;
+            sword = null;
+            sword.GetComponent<SwordPickup>().enabled = true;
+        }
+    }
+
+    public void AddSword(SwordStats sword)
+    {
+        if (sword)
+        {
+            DropSword();
+        }
+        sword.transform.parent = swordBone.transform;
+        sword.transform.localPosition = new Vector3(0, 0, 0);
+        sword.transform.localEulerAngles = new Vector3(0, 0, 0);
+        sword.GetComponent<SwordPickup>().enabled = false;
+    }
+
     public void EnableSword()
     {
         //enables collider and trail
-        sword.GetComponent<Collider>().enabled = true;
+        sword.GetComponent<BoxCollider>().enabled = true;
         sword.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void DisableSword()
     {
         //disables collider and trail
-        sword.GetComponent<Collider>().enabled = false;
+        sword.GetComponent<BoxCollider>().enabled = false;
         sword.transform.GetChild(0).gameObject.SetActive(false);
     }
 
