@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4162579617725446}
   - component: {fileID: 33902032406184680}
   - component: {fileID: 23255257130655256}
+  - component: {fileID: 114831059718937538}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -69,7 +70,7 @@ Transform:
   m_GameObject: {fileID: 1362859695216548}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -35.290367, y: 4.06573, z: -30.549854}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4162579617725446}
   m_Father: {fileID: 0}
@@ -88,7 +89,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1189d9b30128eac40866a3313baab5c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,7 +114,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276569824085324}
-  m_Mesh: {fileID: 4300000, guid: afe349e67a1832f44b7f674602d75c76, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 6437f247e9711e540bf83282cddf4249, type: 3}
 --- !u!54 &54884102005358022
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -139,8 +140,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14863871, y: 0.119901225, z: 0.12558506}
-  m_Center: {x: 0.00094381307, y: -0.0022927749, z: 0.0008767993}
+  m_Size: {x: 0.14863871, y: 0.36703396, z: 0.12558506}
+  m_Center: {x: 0.00094380975, y: 0.10601854, z: 0.0008767992}
 --- !u!114 &114359568845917262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,9 +168,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAmount: 50
-  floatSpeed: 2
-  rotateSpeed: 15
-  floatMagnitude: 0.5
+--- !u!114 &114831059718937538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276569824085324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27fd6ff902ab8ca4bb48232debfda91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
 --- !u!135 &135358393245933134
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -181,4 +191,4 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.10169329
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.09, z: 0}

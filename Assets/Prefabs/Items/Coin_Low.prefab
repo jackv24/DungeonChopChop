@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4492547294963504}
   - component: {fileID: 33049616506558950}
   - component: {fileID: 23692105034327910}
+  - component: {fileID: 114397238589385688}
   m_Layer: 15
   m_Name: GameObject
   m_TagString: Untagged
@@ -39,7 +40,7 @@ GameObject:
   - component: {fileID: 65845466603290990}
   - component: {fileID: 135463263758225904}
   - component: {fileID: 114791067924745746}
-  - component: {fileID: 114374617037957592}
+  - component: {fileID: 114422802649022572}
   - component: {fileID: 54771499155417648}
   m_Layer: 15
   m_Name: Coin_Low
@@ -55,8 +56,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1058312351290586}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 38.408882, y: 1.9719021, z: -64.89366}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -27.047428, y: 0.7167771, z: -27.570305}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4492547294963504}
   m_Father: {fileID: 0}
@@ -70,7 +71,7 @@ Transform:
   m_GameObject: {fileID: 1028060243792360}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9, y: 2, z: 9}
+  m_LocalScale: {x: 19.200665, y: 4.2668138, z: 19.200663}
   m_Children: []
   m_Father: {fileID: 4058575356050020}
   m_RootOrder: 0
@@ -88,7 +89,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e328be6e24a8f9049b33cd2ec81f9afa, type: 2}
+  - {fileID: 2100000, guid: 1189d9b30128eac40866a3313baab5c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,7 +114,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1028060243792360}
-  m_Mesh: {fileID: 4300000, guid: f080464fd80355c49900d4ccbc895376, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 91087d58c43b5c84eb222fb11a90bec6, type: 3}
 --- !u!54 &54771499155417648
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -139,9 +140,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.11513955, y: 0.25498602, z: 0.11854778}
-  m_Center: {x: 0.00026402032, y: 0.0067294375, z: -0.00092477497}
---- !u!114 &114374617037957592
+  m_Size: {x: 0.421587, y: 0.5655429, z: 0.11854778}
+  m_Center: {x: -0.01097393, y: 0.021995336, z: -0.0009247735}
+--- !u!114 &114397238589385688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1028060243792360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27fd6ff902ab8ca4bb48232debfda91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
+--- !u!114 &114422802649022572
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -153,9 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAmount: 1
-  floatSpeed: 2
-  rotateSpeed: 15
-  floatMagnitude: 0.5
 --- !u!114 &114791067924745746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,5 +190,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.08
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.25
+  m_Center: {x: -0.01, y: 0, z: 0.01}
