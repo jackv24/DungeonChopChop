@@ -12,6 +12,7 @@ public class LevelGenerator : MonoBehaviour
 	public event NormalEvent OnBeforeMergeMeshes;
 	public event NormalEvent OnGenerationFinished;
 	public event NormalEvent OnTileEnter;
+	public event NormalEvent OnTileClear;
 
 	[Tooltip("The level generator profile to use when generating levels.")]
 	public LevelGeneratorProfile profile;
@@ -489,6 +490,12 @@ public class LevelGenerator : MonoBehaviour
 	{
 		if (OnTileEnter != null)
 			OnTileEnter();
+	}
+
+	public void ClearTile()
+	{
+		if (OnTileClear != null)
+			OnTileClear();
 	}
 
 	public void RegenerateWithProfile(LevelGeneratorProfile p, int seed)
