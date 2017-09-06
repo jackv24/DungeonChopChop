@@ -25,9 +25,6 @@ public class LevelTile : MonoBehaviour
 	[Space()]
 	public Transform tileOrigin;
 
-	[Space()]
-	public GameObject walls;
-
     [Header("Alternate Tiles")]
     [Tooltip("The graphic that will be replaced by the below prefabs.")]
     public GameObject currentGraphic;
@@ -232,89 +229,45 @@ public class LevelTile : MonoBehaviour
 		}
 	}
 
-	public void ShowParticles(bool value)
-	{
-		ParticleSystem[] particles = GetComponentsInChildren<ParticleSystem>(true);
-
-		foreach(ParticleSystem p in particles)
-		{
-			p.gameObject.SetActive(value);
-		}
-	}
-
 	public void SetCurrent(LevelTile oldTile)
 	{
-		if (oldTile)
+		StartCoroutine(SwitchTile(this, oldTile));
+	}
+
+	public void ShowTile(bool inside, bool revealMap = true)
+	{
+		//Show/hide meshes
+		Renderer[] rends = GetComponentsInChildren<Renderer>();
+
+		foreach (Renderer rend in rends)
 		{
-			StartCoroutine(SwitchTile(this, oldTile));
+			rend.enabled = inside;
+		}
 
-			EnemySpawner oldSpawner = oldTile.GetComponentInChildren<EnemySpawner>();
-			EnemySpawner newSpawner = GetComponentInChildren<EnemySpawner>();
-
-			if (oldSpawner)
-				oldSpawner.Despawn();
-
-			if (newSpawner)
-				newSpawner.Spawn();
-
-			if (oldTile.mapTile)
+		if (revealMap)
+		{
+			//Show tile on map
+			if (mapTile)
 			{
-				oldTile.mapTile.biome = oldTile.biome;
-				oldTile.mapTile.SetOutside();
+				mapTile.biome = biome;
+
+				if (inside)
+					mapTile.SetInside();
+				else
+					mapTile.SetOutside();
 			}
 
-			oldTile.ShowParticles(false);
+			if (LevelVars.Instance)
+				LevelVars.Instance.levelData.SetClearedTile(index);
 
-			LevelGenerator.Instance.currentTile = this;
-			LevelGenerator.Instance.EnterTile();
+			//Show doors on map
+			foreach (Transform door in doors)
+			{
+				LevelDoor d = door.GetComponent<LevelDoor>();
 
-			if (oldTile.OnTileExit != null)
-				oldTile.OnTileExit();
-		}
-		else
-		{
-			walls.SetActive(true);
-
-			if (layoutCollider)
-				CameraFollow.Instance.UpdateCameraBounds(layoutCollider.bounds);
-		}
-
-		ShowTile();
-
-		ShowParticles(true);
-
-		if (OnTileEnter != null)
-			OnTileEnter();
-	}
-
-	public void ShowTile()
-	{
-		ShowTile(true);
-	}
-
-	public void ShowTile(bool inside)
-	{
-		//Show tile on map
-		if (mapTile)
-		{
-			mapTile.biome = biome;
-
-			if (inside)
-				mapTile.SetInside();
-			else
-				mapTile.SetOutside();
-		}
-
-		if (LevelVars.Instance)
-			LevelVars.Instance.levelData.SetClearedTile(index);
-
-		//Show doors on map
-		foreach (Transform door in doors)
-		{
-			LevelDoor d = door.GetComponent<LevelDoor>();
-
-			if (d)
-				d.ShowOnMap();
+				if (d)
+					d.ShowOnMap();
+			}
 		}
 	}
 
@@ -323,20 +276,46 @@ public class LevelTile : MonoBehaviour
 		if (FadeScreen.Instance)
 			FadeScreen.Instance.FadeInOut();
 
-		GameObject newWalls = newTile.walls;
-		GameObject oldWalls = oldTile.walls;
-
 		//Wait until screen has faded until moving to new tile
 		if (FadeScreen.Instance)
 			yield return new WaitForSeconds(FadeScreen.Instance.fadeOutTime);
 
-		//Disable walls on old tile
-		oldWalls.SetActive(false);
+		///Exit old tile
+		if (oldTile)
+		{
+			//Despawn enemies
+			EnemySpawner oldSpawner = oldTile.GetComponentInChildren<EnemySpawner>();
+			if (oldSpawner)
+				oldSpawner.Despawn();
 
-		//Move to new tile
-		newWalls.SetActive(true);
+			if (oldTile.OnTileExit != null)
+				oldTile.OnTileExit();
 
-		if(newTile.layoutCollider)
-			CameraFollow.Instance.UpdateCameraBounds(newTile.layoutCollider.bounds);
+			//Disable rendering of old tile
+			oldTile.ShowTile(false);
+		}
+
+		///Enter new tile
+		if (newTile)
+		{
+			//Enable rendering of new tile
+			ShowTile(true);
+
+			//Spawn enemies in new tile
+			EnemySpawner newSpawner = GetComponentInChildren<EnemySpawner>();
+			if (newSpawner)
+				newSpawner.Spawn();
+
+			if (OnTileEnter != null)
+				OnTileEnter();
+
+			//Move camera to new tile
+			if (newTile.layoutCollider)
+				CameraFollow.Instance.UpdateCameraBounds(newTile.layoutCollider.bounds);
+		}
+
+		//Set as current tile and call events
+		LevelGenerator.Instance.currentTile = this;
+		LevelGenerator.Instance.EnterTile();
 	}
 }

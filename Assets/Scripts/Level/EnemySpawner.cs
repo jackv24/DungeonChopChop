@@ -59,6 +59,9 @@ public class EnemySpawner : MonoBehaviour
 				if (OnEnemiesDefeated != null)
 					OnEnemiesDefeated();
 
+				if (LevelGenerator.Instance)
+					LevelGenerator.Instance.ClearTile();
+
 				spawned = false;
 			}
 		}
