@@ -67,8 +67,12 @@ public class LevelDoor : MonoBehaviour
 	{
 		PlayerInformation playerInfo = player.GetComponent<PlayerInformation>();
 		PlayerMove playerMove = player.GetComponent<PlayerMove>();
+		PlayerAttack playerAttack = player.GetComponent<PlayerAttack>();
 
 		Vector3 direction = -transform.forward;
+
+		if (playerAttack)
+			playerAttack.enabled = false;
 
 		if (playerMove && playerInfo)
 		{
@@ -97,6 +101,9 @@ public class LevelDoor : MonoBehaviour
 			//Return player control
 			playerMove.enabled = true;
 		}
+
+		if (playerAttack)
+			playerAttack.enabled = true;
 
 		//Position other player outside door
 		PlayerInformation[] players = FindObjectsOfType<PlayerInformation>();
