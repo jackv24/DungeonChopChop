@@ -20,6 +20,11 @@ public class EnemyMove : MonoBehaviour
 
     private int roamCounter = 0;
 
+    void OnEnable()
+    {
+        usingNav = true;
+    }
+
     void FixedUpdate()
     {
         if (currentPlayer)

@@ -62,14 +62,19 @@ public class PlayerMove : MonoBehaviour
 
 	void doAnimations()
 	{
-        if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Blocking"))
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Blocking"))
+        {
+            //float speed = targetMoveVector.magnitude / maxMoveSpeed * shield damping;
+            animator.SetFloat("move", characterController.velocity.magnitude / maxMoveSpeed * playerAttack.shield.speedDamping);
+			
+        }
+        else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
+        {
+            animator.SetFloat("move", characterController.velocity.magnitude / maxMoveSpeed * playerAttack.multiSpeedMultiplier);
+        }
+        else
 		{
-			//float speed = targetMoveVector.magnitude / maxMoveSpeed;
-			animator.SetFloat("move", characterController.velocity.magnitude / maxMoveSpeed);
-		}
-		else
-		{
-			animator.SetFloat("move", characterController.velocity.magnitude / maxMoveSpeed * playerAttack.shield.speedDamping);
+            animator.SetFloat("move", characterController.velocity.magnitude / maxMoveSpeed);
 		}
 	}
 	

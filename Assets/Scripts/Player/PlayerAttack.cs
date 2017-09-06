@@ -64,12 +64,16 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        CountCombo();
+    }
+
     void Update()
     {
         if (comboStarted)
         {
             animator.SetBool("Attacking", true);
-            CountCombo();
             //check if combo has ended
             if (comboCounter > timeInbetween)
             {
@@ -184,8 +188,9 @@ public class PlayerAttack : MonoBehaviour
     void ResetCombo()
     {
         //resets everything to do with combo
-        if (comboAmount > slashAmount)
+        if (comboAmount >= slashAmount)
         {
+            animator.SetBool("TripleAttack", false);
             playerInformation.ResetMoveSpeed();
         }
         comboAmount = 0;
@@ -293,9 +298,11 @@ public class PlayerAttack : MonoBehaviour
     void doRapidSlash()
     {
         //do rapid slash things
-        animator.SetTrigger("TripleAttack");
-        playerInformation.SetMoveSpeed(playerInformation.GetOriginalMoveSpeed() * multiSpeedMultiplier);
-        //Debug.Log ("Rapid Slash");
+        animator.SetBool("TripleAttack", true);
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
+        {
+            playerInformation.SetMoveSpeed(playerInformation.GetOriginalMoveSpeed() * multiSpeedMultiplier);
+        }
     }
 
     void doDash()
