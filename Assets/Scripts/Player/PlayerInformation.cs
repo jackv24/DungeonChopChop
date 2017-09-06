@@ -38,15 +38,17 @@ public class PlayerInformation : MonoBehaviour
     private Animator animator;
     private Rigidbody rb;
     private CharacterController characterController;
+    private PlayerAttack playerAttack;
 
     private Dictionary<string, float> charmFloats = new Dictionary<string, float>();
     private Dictionary<string, bool> charmBools = new Dictionary<string, bool>();
     private Dictionary<string, float> itemFloats = new Dictionary<string, float>();
     private LayerMask layerMask;
 
-	void Start()
+    void Start()
     {
         originalSpeed = maxMoveSpeed;
+        playerAttack = GetComponent<PlayerAttack>();
         health = GetComponent<Health>();
         playerMove = GetComponent<PlayerMove>();
         animator = GetComponentInChildren<Animator>();
@@ -370,10 +372,10 @@ public class PlayerInformation : MonoBehaviour
             //checks to make sure player has a charm with burn tick time
             if (HasCharmFloat("burnTickTime"))
             {
-                //the enemy can't be burned more then once, check to make sure it's not burned already
-                if (!col.gameObject.GetComponent<Health>().isBurned)
+                if (col.transform.GetComponent<Health>())
                 {
-                    if (col.transform.GetComponent<Health>())
+                    //the enemy can't be burned more then once, check to make sure it's not burned already
+                    if (!col.gameObject.GetComponent<Health>().isBurned)
                     {
                         //set the enemy to burned with the following values
                         col.transform.GetComponent<Health>().SetBurned(GetCharmFloat("burnTickDamage"), GetCharmFloat("burnTickTotalTime"), GetCharmFloat("burnTickTime"));
@@ -383,10 +385,10 @@ public class PlayerInformation : MonoBehaviour
             //checks to make sure player has a charm with poison tick time
             if (HasCharmFloat("poisonTickTime"))
             {
-                //the enemy can't be poisoned more then once, check to make sure it's not poisoned already
-                if (!col.gameObject.GetComponent<Health>().isPoisoned)
+                if (col.transform.GetComponent<Health>())
                 {
-                    if (col.transform.GetComponent<Health>())
+                    //the enemy can't be poisoned more then once, check to make sure it's not poisoned already
+                    if (!col.gameObject.GetComponent<Health>().isPoisoned)
                     {
                         //set the enemy to poisoned with the following values
                         col.transform.GetComponent<Health>().SetPoison(GetCharmFloat("poisonTickDamage"), GetCharmFloat("poisonTickTotalTime"), GetCharmFloat("poisonTickTime"));
@@ -396,10 +398,11 @@ public class PlayerInformation : MonoBehaviour
             //checks to make sure player has a charm with poison tick time
             if (HasCharmFloat("slowDeathTickTime"))
             {
-                //the enemy can't be poisoned more then once, check to make sure it's not poisoned already
-                if (!col.gameObject.GetComponent<Health>().isSlowlyDying)
+                
+                if (col.transform.GetComponent<Health>())
                 {
-                    if (col.transform.GetComponent<Health>())
+                    //the enemy can't be poisoned more then once, check to make sure it's not poisoned already
+                    if (!col.gameObject.GetComponent<Health>().isSlowlyDying)
                     {
                         //set the enemy to poisoned with the following values
                         col.transform.GetComponent<Health>().SetSlowDeath(GetCharmFloat("slowDeathTickDamage"), GetCharmFloat("slowDeathTickTotalTime"), GetCharmFloat("slowDeathTickTime"));
@@ -413,6 +416,17 @@ public class PlayerInformation : MonoBehaviour
                 {
                     col.gameObject.GetComponent<Health>().AffectHealth(-GetCharmFloat("damageOnTouch"));
                     col.gameObject.GetComponent<Health>().Knockback(this, -col.transform.forward);
+                }
+            }
+            if (HasCharmBool("touchKnockBack"))
+            {
+                if (col.transform.GetComponent<Health>())
+                {
+                    col.gameObject.GetComponent<Health>().Knockback(this, -col.transform.forward);
+                    if (playerAttack.criticalHit() != 1)
+                    {
+                        col.gameObject.GetComponent<Health>().AffectHealth(-playerAttack.criticalHit());
+                    }
                 }
             }
         }

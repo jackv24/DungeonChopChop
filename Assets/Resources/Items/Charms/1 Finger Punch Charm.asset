@@ -15,10 +15,19 @@ MonoBehaviour:
   itemInfo: KnockBack Enemies on touch 50% critical chance
   itemIcon: {fileID: 21300000, guid: af7b8b69c438f904e8c15086bf705eb9, type: 3}
   charmFloats:
-  - floatKey: kockbackMultiplier
+  - floatKey: knockbackMultiplier
     floatValue: 2
     global: 0
-  charmBools: []
+  - floatKey: critChance
+    floatValue: 50
+    global: 0
+  - floatKey: critMultiplier
+    floatValue: 100
+    global: 0
+  charmBools:
+  - boolKey: touchKnockBack
+    boolValue: 1
+    global: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 0
