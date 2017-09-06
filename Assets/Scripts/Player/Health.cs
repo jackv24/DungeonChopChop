@@ -149,7 +149,7 @@ public class Health : MonoBehaviour
         if (rb)
         {
             StartCoroutine(DisableNav(1));
-            rb.AddForce(direction * (playerInfo.knockback / weight) * playerInfo.GetCharmFloat("kockbackMultiplier"), ForceMode.Impulse);
+            rb.AddForce(direction * (playerInfo.knockback / weight) * playerInfo.GetCharmFloat("knockbackMultiplier"), ForceMode.Impulse);
         }
     }
 
