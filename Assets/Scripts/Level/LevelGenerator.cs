@@ -416,18 +416,6 @@ public class LevelGenerator : MonoBehaviour
 		//Combine level for batching
 		StaticBatchingUtility.Combine(gameObject);
 
-		for (int i = 0; i < generatedTiles.Count; i++)
-		{
-			if (generatedTiles[i].walls)
-				generatedTiles[i].walls.SetActive(false);
-			else
-				Debug.Log("Tile: " + generatedTiles[i].gameObject.name + " has no walls");
-
-			generatedTiles[i].ShowParticles(false);
-		}
-
-		generatedTiles[0].SetCurrent(null);
-
 		//Move players to tile centre
 		PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
 
@@ -444,9 +432,13 @@ public class LevelGenerator : MonoBehaviour
 			{
 				if (LevelVars.Instance.levelData.clearedTiles.Contains(generatedTiles[i].index))
 					generatedTiles[i].ShowTile(false);
+				else
+					generatedTiles[i].ShowTile(false, false);
 			}
 		}
-    }
+
+		generatedTiles[0].SetCurrent(null);
+	}
 
 	void SpawnChests()
 	{
