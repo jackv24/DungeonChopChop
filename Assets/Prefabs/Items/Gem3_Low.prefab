@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 4880215889809944}
   - component: {fileID: 33103008986569374}
   - component: {fileID: 23580173817720082}
+  - component: {fileID: 114070487542708650}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -56,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 1616226106310662}
   m_LocalRotation: {x: 0.38268346, y: -0, z: -0, w: 0.92387956}
   m_LocalPosition: {x: -35.46718, y: 6.0608773, z: -22.29717}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4880215889809944}
   m_Father: {fileID: 0}
@@ -69,8 +70,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1941464977816252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13, y: 13, z: 13}
+  m_LocalPosition: {x: 0, y: -0.24742, z: 0.24742}
+  m_LocalScale: {x: 62.483894, y: 62.48389, z: 62.48389}
   m_Children: []
   m_Father: {fileID: 4141472547166488}
   m_RootOrder: 0
@@ -88,7 +89,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6a70180efe1cb434db96d10a938f615c, type: 2}
+  - {fileID: 2100000, guid: 1189d9b30128eac40866a3313baab5c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,7 +114,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1941464977816252}
-  m_Mesh: {fileID: 4300000, guid: 69023cbb0f303b84bad618598f95d89f, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 4e3d1bd7b8bfc4d40ba6ba69c17612ff, type: 3}
 --- !u!54 &54456966546081410
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -141,6 +142,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7091789, y: 0.8985219, z: 0.77340484}
   m_Center: {x: 0.012220383, y: 0.018912436, z: 0.015594989}
+--- !u!114 &114070487542708650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1941464977816252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27fd6ff902ab8ca4bb48232debfda91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
 --- !u!114 &114167149829681834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,9 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAmount: 20
-  floatSpeed: 2
-  rotateSpeed: 15
-  floatMagnitude: 0.5
 --- !u!114 &114797713548918308
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4277050418578426}
   - component: {fileID: 33993178296638492}
   - component: {fileID: 23678427927776762}
+  - component: {fileID: 114804777726807910}
   m_Layer: 15
   m_Name: GameObject
   m_TagString: Untagged
@@ -69,7 +70,7 @@ Transform:
   m_GameObject: {fileID: 1500886815647376}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -35.489, y: 6.265194, z: -21.090288}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4277050418578426}
   m_Father: {fileID: 0}
@@ -88,7 +89,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 415d8fcf5f881424d8a571c8c06327a2, type: 2}
+  - {fileID: 2100000, guid: 1189d9b30128eac40866a3313baab5c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,7 +114,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1326514624238436}
-  m_Mesh: {fileID: 4300000, guid: 25de1d97656eb994fa82cfbeaa74b459, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 4f607f5379b5e764a8ec5f0d0c0c54ed, type: 3}
 --- !u!54 &54006736554122974
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -139,8 +140,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14202641, y: 0.072218314, z: 0.091800705}
-  m_Center: {x: 0.007948525, y: -0.0017933276, z: -0.00013410924}
+  m_Size: {x: 0.14202641, y: 0.30695403, z: 0.091800705}
+  m_Center: {x: 0.007948525, y: 0.11557454, z: -0.00013411045}
 --- !u!114 &114638644984236718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,9 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAmount: 10
-  floatSpeed: 2
-  rotateSpeed: 15
-  floatMagnitude: 0.5
 --- !u!114 &114654669773840514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,6 +168,18 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 0}
   pickupDelay: 1
+--- !u!114 &114804777726807910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1326514624238436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27fd6ff902ab8ca4bb48232debfda91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
 --- !u!135 &135779134138573050
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -180,5 +190,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.12
+  m_Center: {x: 0, y: 0.1, z: 0}

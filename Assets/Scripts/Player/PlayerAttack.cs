@@ -273,7 +273,7 @@ public class PlayerAttack : MonoBehaviour
 
     void doSecondSlash()
     {
-        animator.SetTrigger("Attack");
+        animator.SetTrigger("SecondAttack");
         //StartCoroutine(slashWait("SecondAttack"));
     }
 

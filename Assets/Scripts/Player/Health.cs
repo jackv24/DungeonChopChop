@@ -2,25 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour 
+public class Health : MonoBehaviour
 {
-	public float maxHealth;
-	public float health;
+    public float maxHealth;
+    public float health;
     [Tooltip("The heavier the weight, less knockback")]
     public float weight;
-	
 
-	public delegate void HealthEvent();
-	public event HealthEvent OnDeath;
-	public event HealthEvent OnHealthChange;
+
+    public delegate void HealthEvent();
+
+    public event HealthEvent OnDeath;
+    public event HealthEvent OnHealthChange;
 
     [Space()]
     public bool IsEnemy;
-	public bool isPoisoned = false;
-	public bool isBurned = false;
-	public bool isSlowlyDying = false;
+    public bool isPoisoned = false;
+    public bool isBurned = false;
+    public bool isSlowlyDying = false;
 
     public bool isDead = false;
+
+    [Header("Tick Colors")]
+    public Color poisonColor;
+    public Color burnColor;
+    public Color slowlyDyingColor;
+    public int tickFlashAmount;
+    public float tickTimeBetweenFlash;
 
     [Space()]
     public GameObject[] hitParticles;
@@ -31,42 +39,45 @@ public class Health : MonoBehaviour
     public float timeBetweenFlash = 0.1f;
     public int amountToFlash = 5;
 
-	private PlayerInformation playerInfo;
-	private Animator animator;
+    private PlayerInformation playerInfo;
+    private Animator animator;
     private Rigidbody rb;
 
     private Renderer[] renderers;
     private List<Color> originalColors = new List<Color>();
 
-	public void AffectHealth(float healthDeta)
-	{
-		health += healthDeta;
-		if (OnHealthChange != null) 
-		{
-			OnHealthChange ();
-		}
-		if (health > maxHealth) 
-		{
-			health = maxHealth;
-		}
-		if (health <= 0 && isDead == false) 
-		{
-			isDead = true;
-			if (OnDeath != null) 
-			{
-				OnDeath ();
-			}
-		}
+    public void AffectHealth(float healthDeta)
+    {
+        health += healthDeta;
+        if (OnHealthChange != null)
+        {
+            OnHealthChange();
+        }
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        if (health <= 0 && isDead == false)
+        {
+            isDead = true;
+            if (OnDeath != null)
+            {
+                OnDeath();
+            }
+        }
         if (IsEnemy)
         {
             if (animator)
             {
                 animator.SetTrigger("GetHit");
             }
-            DoHitParticle();
-            HitColorFlash();
+            if (!HasStatusCondition())
+            {
+                DoHitParticle();
+                HitColorFlash();
+            }
         }
-	}
+    }
 
     void DoHitParticle()
     {
@@ -91,8 +102,8 @@ public class Health : MonoBehaviour
         isDead = false;
     }
 
-	void Start()
-	{
+    void Start()
+    {
         renderers = GetComponentsInChildren<Renderer>();
         if (IsEnemy)
         {
@@ -104,33 +115,33 @@ public class Health : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody>();
-		OnHealthChange += TemporaryInvincibility;
+        OnHealthChange += TemporaryInvincibility;
 
-		if (GetComponentInChildren<Animator> ())
-		{
-			animator = GetComponentInChildren<Animator> ();
-		}
-		if (GetComponent<PlayerInformation> ()) 
-		{
-			playerInfo = GetComponent<PlayerInformation> ();
-		}
-	}
+        if (GetComponentInChildren<Animator>())
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+        if (GetComponent<PlayerInformation>())
+        {
+            playerInfo = GetComponent<PlayerInformation>();
+        }
+    }
 
-	public void TemporaryInvincibility()
-	{
-		if (playerInfo)
-		{
-			StartCoroutine(InvincibilityWait(playerInfo));
-		}
-	}
+    public void TemporaryInvincibility()
+    {
+        if (playerInfo)
+        {
+            StartCoroutine(InvincibilityWait(playerInfo));
+        }
+    }
 
-	IEnumerator InvincibilityWait(PlayerInformation playerInfo)
-	{
-		playerInfo.invincible = true;
+    IEnumerator InvincibilityWait(PlayerInformation playerInfo)
+    {
+        playerInfo.invincible = true;
         HitFlash();
-		yield return new WaitForSeconds(playerInfo.invincibilityTimeAfterHit);
-		playerInfo.invincible = false;
-	}
+        yield return new WaitForSeconds(playerInfo.invincibilityTimeAfterHit);
+        playerInfo.invincible = false;
+    }
 
     public void InvincibilityForSecs(float seconds)
     {
@@ -195,6 +206,18 @@ public class Health : MonoBehaviour
         }
     }
 
+    void SetColor(Color color)
+    {
+        if (renderers != null)
+        {
+            //loops through each and sets the hit color
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.material.color = color;
+            }
+        }
+    }
+
     void SetHitColor()
     {
         if (renderers != null)
@@ -243,28 +266,28 @@ public class Health : MonoBehaviour
         }
     }
 
-	void Update()
-	{
+    void Update()
+    {
         //makes sure health doesn't go below 0        
-		if (health <= 0) 
-		{
-			health = 0;
-			isDead = true;
-			Death ();
-		}
-		if (health > maxHealth) 
-		{
-			health = maxHealth;
-		}
-	}
+        if (health <= 0)
+        {
+            health = 0;
+            isDead = true;
+            Death();
+        }
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+    }
 
-	public void Damaged()
-	{
-		if (animator)
-		{
-			//animator.SetTrigger ("Hit");
-		}
-	}
+    public void Damaged()
+    {
+        if (animator)
+        {
+            //animator.SetTrigger ("Hit");
+        }
+    }
 
     public bool HasStatusCondition()
     {
@@ -274,101 +297,113 @@ public class Health : MonoBehaviour
         }
         return false;
     }
-		
-	public void Death()
-	{
-		//do death
-		//checks if the game has an enemy drop script, if it does it is an enemy
-		if (transform.GetComponent<EnemyDrops> ()) 
-		{
-			transform.GetComponent<EnemyDrops> ().DoDrop ();
-		}
-	}
 
-	/// <summary>
-	/// Sets the poison.
-	/// </summary>
-	/// <param name="duration">Duration in seconds.</param>
-	/// <param name="timeBetweenPoison">Time between poison in seconds.</param>
-	public void SetPoison(float damagePerTick, float duration, float timeBetweenPoison)
-	{
-		if (playerInfo)
-			damagePerTick = playerInfo.GetCharmFloat ("poisonMultiplier");
-		isPoisoned = true;
-		StartCoroutine (doPoison (damagePerTick, duration, timeBetweenPoison));
-	}
+    public void Death()
+    {
+        //do death
+        //checks if the game has an enemy drop script, if it does it is an enemy
+        if (transform.GetComponent<EnemyDrops>())
+        {
+            transform.GetComponent<EnemyDrops>().DoDrop();
+        }
+    }
 
-	IEnumerator doPoison(float damagePerTick, float duration, float timeBetweenPoison)
-	{
-		int counter = 0;
-		while (isPoisoned) 
-		{
-			counter++;
-			yield return new WaitForSeconds (timeBetweenPoison);
-			AffectHealth (-damagePerTick);
-			animator.SetTrigger ("Flinch");
-			if (counter >= duration) 
-			{
-				isPoisoned = false;
-			}
-		}
-	}
+    /// <summary>
+    /// Sets the poison.
+    /// </summary>
+    /// <param name="duration">Duration in seconds.</param>
+    /// <param name="timeBetweenPoison">Time between poison in seconds.</param>
+    public void SetPoison(float damagePerTick, float duration, float timeBetweenPoison)
+    {
+        if (playerInfo)
+            damagePerTick = playerInfo.GetCharmFloat("poisonMultiplier");
+        isPoisoned = true;
+        StartCoroutine(doPoison(damagePerTick, duration, timeBetweenPoison));
+    }
 
-	/// <summary>
-	/// Sets the burn.
-	/// </summary>
-	/// <param name="duration">Duration in seconds.</param>
-	/// <param name="timeBetweenBurn">Time between poison in seconds.</param>
-	public void SetBurned(float damagePerTick, float duration, float timeBetweenBurn)
-	{
-		if (playerInfo)
-			damagePerTick = playerInfo.GetCharmFloat ("burnMultiplier");
-		isBurned = true;
-		StartCoroutine (doBurn (damagePerTick, duration, timeBetweenBurn));
-	}
+    IEnumerator doPoison(float damagePerTick, float duration, float timeBetweenPoison)
+    {
+        int counter = 0;
+        while (isPoisoned)
+        {
+            counter++;
+            SetOGColor();
+            yield return new WaitForSeconds(timeBetweenPoison / 2);
+            SetColor(poisonColor);
+            AffectHealth(-damagePerTick);
+            animator.SetTrigger("Flinch");
+            if (counter >= duration)
+            {
+                isPoisoned = false;
+            }
+            yield return new WaitForSeconds(timeBetweenPoison);
+            SetOGColor();
+        }
+    }
 
-	IEnumerator doBurn(float damagePerTick, float duration, float timeBetweenBurn)
-	{
-		int counter = 0;
-		while (isBurned) 
-		{
-			counter++;
-			yield return new WaitForSeconds (timeBetweenBurn);
-			AffectHealth (-damagePerTick);
-			animator.SetTrigger ("Flinch");
-			if (counter >= duration) 
-			{
-				isBurned = false;
-			}
-		}
-	}
+    /// <summary>
+    /// Sets the burn.
+    /// </summary>
+    /// <param name="duration">Duration in seconds.</param>
+    /// <param name="timeBetweenBurn">Time between poison in seconds.</param>
+    public void SetBurned(float damagePerTick, float duration, float timeBetweenBurn)
+    {
+        if (playerInfo)
+            damagePerTick = playerInfo.GetCharmFloat("burnMultiplier");
+        isBurned = true;
+        StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
+    }
 
-	/// <summary>
-	/// Sets the slow death.
-	/// </summary>
-	/// <param name="duration">Duration in seconds.</param>
-	/// <param name="timeBetweenDeathTick">Time between death tick in seconds.</param>
-	public void SetSlowDeath(float damagePerTick, float duration, float timeBetweenDeathTick)
-	{
-		if (playerInfo)
-			damagePerTick = playerInfo.GetCharmFloat ("deathTickMultiplier");
-		isSlowlyDying = true;
-		StartCoroutine (doSlowDeath (damagePerTick, duration, timeBetweenDeathTick));
-	}
+    IEnumerator doBurn(float damagePerTick, float duration, float timeBetweenBurn)
+    {
+        int counter = 0;
+        while (isBurned)
+        {
+            counter++;
+            SetOGColor();
+            yield return new WaitForSeconds(timeBetweenBurn / 2);
+            SetColor(burnColor);
+            AffectHealth(-damagePerTick);
+            animator.SetTrigger("Flinch");
+            if (counter >= duration)
+            {
+                isBurned = false;
+            }
+            yield return new WaitForSeconds(timeBetweenBurn / 2);
+            SetOGColor();
+        }
+    }
 
-	IEnumerator doSlowDeath(float damagePerTick, float duration, float timeBetweenBurn)
-	{
-		int counter = 0;
-		while (isSlowlyDying) 
-		{
-			counter++;
-			yield return new WaitForSeconds (timeBetweenBurn);
-			AffectHealth (-damagePerTick);
-			animator.SetTrigger ("Flinch");
-			if (counter >= duration) 
-			{
-				isSlowlyDying = false;
-			}
-		}
-	}
+    /// <summary>
+    /// Sets the slow death.
+    /// </summary>
+    /// <param name="duration">Duration in seconds.</param>
+    /// <param name="timeBetweenDeathTick">Time between death tick in seconds.</param>
+    public void SetSlowDeath(float damagePerTick, float duration, float timeBetweenDeathTick)
+    {
+        if (playerInfo)
+            damagePerTick = playerInfo.GetCharmFloat("deathTickMultiplier");
+        isSlowlyDying = true;
+        StartCoroutine(doSlowDeath(damagePerTick, duration, timeBetweenDeathTick));
+    }
+
+    IEnumerator doSlowDeath(float damagePerTick, float duration, float timeBetweenBurn)
+    {
+        int counter = 0;
+        while (isSlowlyDying)
+        {
+            counter++;
+            SetOGColor();
+            yield return new WaitForSeconds(timeBetweenBurn / 2);
+            SetColor(slowlyDyingColor);
+            AffectHealth(-damagePerTick);
+            animator.SetTrigger("Flinch");
+            if (counter >= duration)
+            {
+                isSlowlyDying = false;
+            }
+            yield return new WaitForSeconds(timeBetweenBurn / 2);
+            SetOGColor();
+        }
+    }
 }
