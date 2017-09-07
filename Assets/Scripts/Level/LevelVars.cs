@@ -12,7 +12,8 @@ public class LevelVars : MonoBehaviour
 
 	[Header("Chest Spawning")]
 	public GameObject normalChestPrefab;
-	public GameObject specialChestPrefab;
+	public GameObject lockedChestPrefab;
+	public GameObject dungeonChestPrefab;
 
 	[Header("Biome Particles")]
 	public GameObject grassParticles;
