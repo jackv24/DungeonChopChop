@@ -19,7 +19,7 @@ public static class ObjectPooler
             this.prefab = prefab;
         }
 
-		public GameObject GetPooledObject(Vector3 position)
+		public GameObject GetPooledObject()
         {
             //Search for inactive object in pool
             foreach (GameObject o in pooledObjects)
@@ -28,13 +28,12 @@ public static class ObjectPooler
                 {
                     //Activate and return any object found
                     o.SetActive(true);
-					o.transform.position = position;
                     return o;
                 }
             }
 
             //If no object was found, instantiate a new one
-            GameObject obj = GameObject.Instantiate(prefab, position, Quaternion.identity);
+            GameObject obj = GameObject.Instantiate(prefab);
             //Set name to that of prefab for comparisons
             obj.name = prefab.name;
             //Organised under pooled object "maintenance" gameobject
@@ -65,14 +64,7 @@ public static class ObjectPooler
     //An empty gameobject for organising pooled objects in the scene
     private static GameObject poolObject;
 
-	//Gets a pooled object from one of the object pools, or creates a new pool if one does not exist for this prefab
 	public static GameObject GetPooledObject(GameObject prefab)
-	{
-		return GetPooledObject(prefab, Vector3.zero);
-	}
-
-
-	public static GameObject GetPooledObject(GameObject prefab, Vector3 position)
     {
         //Make sure there is a gameobject for organising pooled objects in the scene
         if(!poolObject)
@@ -103,7 +95,7 @@ public static class ObjectPooler
         }
 
         //Get a pooled object from the pool and return it
-        return pool.GetPooledObject(position);
+        return pool.GetPooledObject();
     }
 
     //Clears all object pools

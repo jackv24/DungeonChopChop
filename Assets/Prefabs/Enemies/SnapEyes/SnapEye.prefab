@@ -645,7 +645,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &65852812845789202
 BoxCollider:
@@ -731,6 +731,11 @@ MonoBehaviour:
   isBurned: 0
   isSlowlyDying: 0
   isDead: 0
+  poisonColor: {r: 0.94482803, g: 0, b: 1, a: 1}
+  burnColor: {r: 1, g: 0, b: 0, a: 1}
+  slowlyDyingColor: {r: 0.19999993, g: 1, b: 0, a: 1}
+  tickFlashAmount: 0
+  tickTimeBetweenFlash: 0
   hitParticles:
   - {fileID: 0}
   hitColor: {r: 1, g: 0.19852942, b: 0.19852942, a: 1}
@@ -1009,7 +1014,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 200
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1

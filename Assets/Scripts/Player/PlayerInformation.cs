@@ -367,7 +367,7 @@ public class PlayerInformation : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.transform.tag == "Enemy")
+        if (col.gameObject.layer == 11)
         {
             //checks to make sure player has a charm with burn tick time
             if (HasCharmFloat("burnTickTime"))

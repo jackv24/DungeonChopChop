@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
-public class EnemyMove : MonoBehaviour 
+public class EnemyMove : MonoBehaviour
 {
     public float runAwayAfterAttackTime = 1;
+    public LayerMask layerMask;
     protected float originalSpeed;
 
     protected NavMeshAgent agent;
@@ -25,6 +26,12 @@ public class EnemyMove : MonoBehaviour
         usingNav = true;
     }
 
+	void OnDisable()
+	{
+		if(agent)
+			agent.enabled = false;
+	}
+
     void FixedUpdate()
     {
         if (currentPlayer)
@@ -41,7 +48,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-	protected void Setup()
+    protected void Setup()
     {
         animator = GetComponentInChildren<Animator>();
         players = FindObjectsOfType<PlayerInformation>();
@@ -53,28 +60,30 @@ public class EnemyMove : MonoBehaviour
     {
         //follows the closest player using nav mesh
         if (usingNav)
-            agent.destination = GetClosestPlayer().position;
+            agent.SetDestination(GetClosestPlayer().position);
     }
 
     protected void FollowEnemy()
     {
         //follows the closest enemy
         if (usingNav)
-            agent.destination = GetClosestEnemy().position;
+        {
+            agent.SetDestination(GetClosestEnemy().position);
+        }
     }
 
-    protected void Roam(float timeBetweenRoam) 
+    protected void Roam(float timeBetweenRoam)
     { 
         roamCounter++; 
         //a simple counter to stop recurring every frame
-        if (roamCounter > timeBetweenRoam * 60) 
+        if (roamCounter > timeBetweenRoam * 60)
         { 
             //roams to a random position on the current tile
             if (usingNav)
-                agent.destination = LevelGenerator.Instance.currentTile.GetPosInTile(1, 1); 
+                agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
             roamCounter = 0; 
         } 
-    } 
+    }
 
     protected bool InDistance(float radius)
     {
@@ -124,11 +133,11 @@ public class EnemyMove : MonoBehaviour
     protected Transform GetClosestPlayer()
     {
         float previousPlayerDistance = float.MaxValue;
-        foreach (PlayerInformation player in players) 
+        foreach (PlayerInformation player in players)
         {
             //loops through both players and finds out which player is closest
-            float distance = Vector3.Distance (player.transform.position, transform.position);
-            if (distance < previousPlayerDistance) 
+            float distance = Vector3.Distance(player.transform.position, transform.position);
+            if (distance < previousPlayerDistance)
             {
                 currentPlayer = player;
             }
@@ -142,19 +151,27 @@ public class EnemyMove : MonoBehaviour
         GameObject closestEnemy = null;
         float maxDistance = float.MaxValue;
         //gets all enemies in a specific radius
-        Collider[] enemies = Physics.OverlapSphere(transform.position, 100);
+        Collider[] enemies = Physics.OverlapSphere(transform.position, 500, layerMask);
         foreach (Collider enemy in enemies)
         {
             //loops through each enemy and finds which enemy is closest
             float dist = Vector3.Distance(transform.position, enemy.transform.position);
             if (dist < maxDistance)
             {
-                closestEnemy = enemy.gameObject;
+                if (enemy.name != name)
+                {
+                    if (enemy.gameObject.layer == 11)
+                    {
+                        closestEnemy = enemy.gameObject;
+                    }
+                }
                 maxDistance = dist;
             }
         }
         //returns the closest enemy
-        return closestEnemy.transform;
+        if (closestEnemy)
+            return closestEnemy.transform;
+        return transform;
     }
 
     public void runAwayForSeconds()

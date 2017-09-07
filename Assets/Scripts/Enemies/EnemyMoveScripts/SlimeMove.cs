@@ -35,9 +35,13 @@ public class SlimeMove : EnemyMove {
         if (!friendly)
         {
             if (!runAway)
+            {
                 AttackPlayer();
+            }
             else
+            {
                 RunAwayFromPlayer();
+            }
         }
         else
         {
@@ -112,7 +116,7 @@ public class SlimeMove : EnemyMove {
     {
         if (friendly)
         {
-            if (col.GetComponent<Collider>().tag != "Player" || col.GetComponent<Collider>().tag != "Slime")
+            if (col.GetComponent<Collider>().tag != "Player")
             {
                 if (col.gameObject.GetComponent<Health>())
                 {

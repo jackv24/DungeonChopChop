@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4585451669150816}
+  - component: {fileID: 114535505049568280}
   m_Layer: 0
   m_Name: MistAreaParticleDesert
   m_TagString: Untagged
@@ -93,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1765421568924026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -186, y: 0, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4556444211919010}
@@ -101,6 +102,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114535505049568280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1765421568924026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ae9d79bc0317e40bbc91228b7029fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referenceSize: {x: 40, y: 7, z: 40}
 --- !u!198 &198694987351284878
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -160,7 +173,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1665045313
+  randomSeed: -361157318
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -611,7 +624,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 5, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 38.256744, y: 8, z: 39.035236}
+    m_Scale: {x: 40, y: 7, z: 40}
     placementMode: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
@@ -3422,7 +3435,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -783775018
+  randomSeed: -1231910738
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3873,7 +3886,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 5, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 39.573868, y: 8, z: 39.379345}
+    m_Scale: {x: 40, y: 7, z: 40}
     placementMode: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
@@ -6662,7 +6675,7 @@ ParticleSystemRenderer:
   m_RenderMode: 2
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 2
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -6714,7 +6727,7 @@ ParticleSystemRenderer:
   m_RenderMode: 2
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 2
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2

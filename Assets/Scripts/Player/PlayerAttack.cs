@@ -22,6 +22,10 @@ public class PlayerAttack : MonoBehaviour
     public float dashCooldown = 0.5f;
     public bool canDashAttack = true;
 
+    [Header("Block Vars")]
+    public float rotationSpeed = 5;
+    public LayerMask enemyMask;
+
     [Header("Other Vars")]
     public bool blocking = false;
     public GameObject slashFX;
@@ -32,6 +36,9 @@ public class PlayerAttack : MonoBehaviour
     private Health playerHealth;
     private Animator animator;
 
+    [Header("Weapon Stuff")]
+    public GameObject swordBone;
+    public GameObject shieldBone;
     public ShieldStats shield;
     public SwordStats sword;
 
@@ -42,6 +49,7 @@ public class PlayerAttack : MonoBehaviour
     private float rapidSlashTimer;
 
     private bool canDash = true;
+	private bool cancelDash = false;
     private bool rapidSlashCoolingDown = false;
     private bool comboStarted = false;
 
@@ -63,6 +71,16 @@ public class PlayerAttack : MonoBehaviour
             input.SetupBindings();
         }
     }
+
+	void OnDisable()
+	{
+		cancelDash = true;
+	}
+
+	void OnEnable()
+	{
+		cancelDash = false;
+	}
 
     void FixedUpdate()
     {
@@ -154,17 +172,57 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    void AddSwordPlayerComponenets(SwordCollision newSword)
+    {
+        newSword.playerInfo = playerInformation;
+        newSword.playerHealth = playerHealth;
+        newSword.playerAttack = this;
+        newSword.animator = animator;
+    }
+
+    public void DropSword()
+    {
+        if (sword)
+        {
+            //sets the swords parent to be nothing
+            sword.transform.parent = null;
+            //places the sword in the world
+            //sword.transform.localPosition = transform.right;
+            sword.transform.position = new Vector3(sword.transform.position.x, 2, sword.transform.position.z);
+            sword.transform.eulerAngles = new Vector3(21.458f, 90, 180);
+            sword.GetComponent<SwordPickup>().canPickUp = true;
+            sword = null;
+        }
+    }
+
+    public void AddSword(SwordStats newSword)
+    {
+        if (sword)
+        {
+            DropSword();
+        }
+        sword = newSword;
+        //sets the swords parent to be the sword bone
+        sword.transform.parent = swordBone.transform;
+        //resets the position
+        sword.transform.localPosition = new Vector3(0, 0, 0);
+        //sets the rotation
+        sword.transform.localEulerAngles = new Vector3(-117.677f, -48.953f, 25.159f);
+        sword.GetComponent<SwordPickup>().canPickUp = false;
+        AddSwordPlayerComponenets(sword.GetComponent<SwordCollision>());
+    }
+
     public void EnableSword()
     {
         //enables collider and trail
-        sword.GetComponent<Collider>().enabled = true;
+        sword.GetComponent<BoxCollider>().enabled = true;
         sword.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void DisableSword()
     {
         //disables collider and trail
-        sword.GetComponent<Collider>().enabled = false;
+        sword.GetComponent<BoxCollider>().enabled = false;
         sword.transform.GetChild(0).gameObject.SetActive(false);
     }
 
@@ -208,10 +266,40 @@ public class PlayerAttack : MonoBehaviour
 
     //-------------------------- Block
 
+    Transform GetClosestEnemy()
+    {
+        GameObject closestEnemy = null;
+        float maxDistance = float.MaxValue;
+        //gets all enemies in a specific radius
+        Collider[] enemies = Physics.OverlapSphere(transform.position, 500, enemyMask);
+        foreach (Collider enemy in enemies)
+        {
+            //loops through each enemy and finds which enemy is closest
+            float dist = Vector3.Distance(transform.position, enemy.transform.position);
+            if (dist < maxDistance)
+            {
+                if (enemy.name != name)
+                {
+                    if (enemy.gameObject.layer == 11)
+                    {
+                        closestEnemy = enemy.gameObject;
+                    }
+                }
+                maxDistance = dist;
+            }
+        }
+        //returns the closest enemy
+        if (closestEnemy)
+            return closestEnemy.transform;
+        return transform;
+    }
+
     void DoBlock()
     {
         //do block things
         playerInformation.SetMoveSpeed(playerInformation.GetOriginalMoveSpeed() * shield.speedDamping * playerInformation.GetCharmFloat("blockSpeedMultiplier"));
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(GetClosestEnemy().position - transform.position), rotationSpeed * Time.deltaTime);
 		
         if (animator)
         {
@@ -273,7 +361,7 @@ public class PlayerAttack : MonoBehaviour
 
     void doSecondSlash()
     {
-        animator.SetTrigger("Attack");
+        animator.SetTrigger("SecondAttack");
         //StartCoroutine(slashWait("SecondAttack"));
     }
 
@@ -342,6 +430,9 @@ public class PlayerAttack : MonoBehaviour
         float timer = dashTime * playerInformation.GetCharmFloat("dashTime");
         while (elapsedTime < timer)
         {
+			if (cancelDash)
+				break;
+
             characterController.Move(transform.forward * dashSpeed * playerInformation.GetCharmFloat("dashSpeed") * Time.deltaTime);
             yield return new WaitForEndOfFrame();
             elapsedTime += Time.deltaTime;

@@ -54,7 +54,8 @@ public class FootstepParticles : MonoBehaviour
 						if(pair.groundMaterial == mat && pair.particlePrefab)
 						{
 							//Spawn particles at foot position
-							GameObject obj = ObjectPooler.GetPooledObject(pair.particlePrefab, point.position);
+							GameObject obj = ObjectPooler.GetPooledObject(pair.particlePrefab);
+							obj.transform.position = hit.point;
 
 							return;
 						}

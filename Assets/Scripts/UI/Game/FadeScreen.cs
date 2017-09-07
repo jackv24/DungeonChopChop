@@ -13,6 +13,8 @@ public class FadeScreen : MonoBehaviour
 
 	private Image image;
 
+	private Coroutine lastRoutine;
+
 	private void Awake()
 	{
 		Instance = this;
@@ -27,8 +29,10 @@ public class FadeScreen : MonoBehaviour
 	{
 		if (image)
 		{
-			StopCoroutine("Fade");
-			StartCoroutine(Fade());
+			if(lastRoutine != null)
+				StopCoroutine(lastRoutine);
+
+			lastRoutine = StartCoroutine(Fade());
 		}
 	}
 
@@ -37,12 +41,13 @@ public class FadeScreen : MonoBehaviour
 		image.gameObject.SetActive(true);
 
 		Color color = image.color;
+		float initialAlpha = color.a;
 
 		//Fade image in
 		float elapsed = 0;
 		while(elapsed < fadeOutTime)
 		{
-			color.a = Mathf.Lerp(0, 1, elapsed / fadeOutTime);
+			color.a = Mathf.Lerp(initialAlpha, 1, elapsed / fadeOutTime);
 			image.color = color;
 
 			yield return new WaitForEndOfFrame();

@@ -20,13 +20,24 @@ public class ItemInfo : MonoBehaviour {
     {  
         foreach (Animator animator in animators)
         {
-            if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Default"))
+            animator.SetTrigger("Reset");
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Default"))
             {
-                itemNameText.text = "" + item.displayName;
-                itemInfoText.text = "" + item.itemInfo;
-                animator.SetTrigger("ShowItemInfo");
+                StartCoroutine(wait(animator, item, .5f));
+            }
+            else
+            {
+                StartCoroutine(wait(animator, item, .1f));
             }
         }
+    }
+
+    IEnumerator wait(Animator animator, BaseItem item, float time)
+    {
+        yield return new WaitForSeconds(time);
+        animator.SetTrigger("ShowItemInfo");
+        itemNameText.text = "" + item.displayName;
+        itemInfoText.text = "" + item.itemInfo;
     }
 
 }

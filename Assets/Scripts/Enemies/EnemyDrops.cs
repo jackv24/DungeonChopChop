@@ -27,10 +27,11 @@ public class EnemyDrops : MonoBehaviour {
 
 	public Drops[] drops;
 	public PercentageOfDropAmount[] numberOfDrops;
+    Collider col;
 
 	// Use this for initialization
 	void Start () {
-
+        col = GetComponent<Collider>();
 	}
 	
 	// Update is called once per frame
@@ -71,8 +72,10 @@ public class EnemyDrops : MonoBehaviour {
 						//creates the item and sets the position to the enemies position
 						GameObject item = ObjectPooler.GetPooledObject (drop.Drop);
                         item.transform.rotation = UnityEngine.Random.rotation;
-                        item.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-                        item.GetComponent<Rigidbody>().AddForce(transform.forward / 2, ForceMode.Impulse);
+                        float x = UnityEngine.Random.Range(col.bounds.min.x, col.bounds.max.x);
+                        float y = UnityEngine.Random.Range(col.bounds.min.y, col.bounds.max.y);
+                        float z = UnityEngine.Random.Range(col.bounds.min.z, col.bounds.max.z);
+                        item.transform.position = new Vector3(x, y, z);
 						break;
 					}
 				}

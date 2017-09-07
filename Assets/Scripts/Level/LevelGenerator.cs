@@ -12,6 +12,7 @@ public class LevelGenerator : MonoBehaviour
 	public event NormalEvent OnBeforeMergeMeshes;
 	public event NormalEvent OnGenerationFinished;
 	public event NormalEvent OnTileEnter;
+	public event NormalEvent OnTileClear;
 
 	[Tooltip("The level generator profile to use when generating levels.")]
 	public LevelGeneratorProfile profile;
@@ -415,18 +416,6 @@ public class LevelGenerator : MonoBehaviour
 		//Combine level for batching
 		StaticBatchingUtility.Combine(gameObject);
 
-		for (int i = 0; i < generatedTiles.Count; i++)
-		{
-			if (generatedTiles[i].walls)
-				generatedTiles[i].walls.SetActive(false);
-			else
-				Debug.Log("Tile: " + generatedTiles[i].gameObject.name + " has no walls");
-
-			generatedTiles[i].ShowParticles(false);
-		}
-
-		generatedTiles[0].SetCurrent(null);
-
 		//Move players to tile centre
 		PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
 
@@ -437,15 +426,19 @@ public class LevelGenerator : MonoBehaviour
 		}
 
 		//Show already visited dungeons
-		if (LevelVars.Instance && !LevelVars.Instance.levelData.inDungeon)
+		if (LevelVars.Instance)
 		{
 			for (int i = 0; i < generatedTiles.Count; i++)
 			{
-				if (LevelVars.Instance.levelData.clearedTiles.Contains(generatedTiles[i].index))
+				if (!LevelVars.Instance.levelData.inDungeon && LevelVars.Instance.levelData.clearedTiles.Contains(generatedTiles[i].index))
 					generatedTiles[i].ShowTile(false);
+				else
+					generatedTiles[i].ShowTile(false, false);
 			}
 		}
-    }
+
+		generatedTiles[0].SetCurrent(null);
+	}
 
 	void SpawnChests()
 	{
@@ -489,6 +482,12 @@ public class LevelGenerator : MonoBehaviour
 	{
 		if (OnTileEnter != null)
 			OnTileEnter();
+	}
+
+	public void ClearTile()
+	{
+		if (OnTileClear != null)
+			OnTileClear();
 	}
 
 	public void RegenerateWithProfile(LevelGeneratorProfile p, int seed)

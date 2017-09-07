@@ -35,7 +35,8 @@ public class TileParticles : MonoBehaviour
 		if(prefab)
 		{
 			//Spawn particle prefab
-			GameObject obj = ObjectPooler.GetPooledObject(prefab, origin ? origin.position : transform.position);
+			GameObject obj = ObjectPooler.GetPooledObject(prefab);
+			obj.transform.position = origin ? origin.position : transform.position;
 			obj.transform.rotation = origin ? origin.rotation : transform.rotation;
 			spawnedParticles = obj;
 
@@ -48,7 +49,7 @@ public class TileParticles : MonoBehaviour
 				
 				//make emission shape fit set tile shape
 				shape.position = offset;
-				shape.scale = size;
+				shape.scale = new Vector3(size.x, shape.scale.y, size.z);
 
 				//Play particle system prewarmed
 				system.Simulate(system.main.duration);

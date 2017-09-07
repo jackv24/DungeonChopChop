@@ -13,10 +13,14 @@ public class SwordCollision : MonoBehaviour {
     public float duration = 1;
     public float pauseTime = .1f;
 
-    private PlayerAttack playerAttack;
-    private PlayerInformation playerInfo;
-    private Health playerHealth;
-    private Animator animator;
+    [HideInInspector()]
+    public PlayerAttack playerAttack;
+    [HideInInspector()]
+    public PlayerInformation playerInfo;
+    [HideInInspector()]
+    public Health playerHealth;
+    [HideInInspector()]
+    public Animator animator;
     private Collider col;
 
 	// Use this for initialization
@@ -45,16 +49,16 @@ public class SwordCollision : MonoBehaviour {
                     //if the player is burned or poisoned, a charm may affect the damage output
                     if (playerHealth.isBurned || playerHealth.isPoisoned)
                     {
-                        col.gameObject.GetComponent<Health>().AffectHealth((-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * playerInfo.GetCharmFloat("dmgMultiWhenBurned") * playerInfo.GetCharmFloat("dmgMultiWhenPoisoned"));
+                        col.gameObject.GetComponent<Health>().AffectHealth((-playerInfo.strength * playerAttack.sword.damageMultiplier * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * playerInfo.GetCharmFloat("dmgMultiWhenBurned") * playerInfo.GetCharmFloat("dmgMultiWhenPoisoned"));
                     }
                     else
                     {
-                        col.gameObject.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
+                        col.gameObject.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerAttack.sword.damageMultiplier * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
                     }
                 }
                 else
                 {
-                    col.gameObject.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
+                    col.gameObject.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerAttack.sword.damageMultiplier * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
                 }
                 if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("TripleAttack"))
                 {

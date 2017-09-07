@@ -16,10 +16,8 @@ MonoBehaviour:
   maxTrailLength: 5
   minTileAmount: 20
   maxAttempts: 100
-  succeeded: 0
+  succeeded: 1
   tilePool:
-  - tile: {fileID: 114644650899757390, guid: d14ab9fc31ee8b143b0f464cf5ae9bc8, type: 2}
-    probability: 1
   - tile: {fileID: 114461406873946128, guid: 5609fa12c91315a4fa858428d6746938, type: 2}
     probability: 2
   - tile: {fileID: 114657946040899270, guid: f502e8836487bb5488f4a1f7d7488ccc, type: 2}
@@ -28,7 +26,9 @@ MonoBehaviour:
     probability: 2
   - tile: {fileID: 114229437737001782, guid: a2e1e4733125bce448667bbc52cd985e, type: 2}
     probability: 1
-  townBiomeRadius: 50
+  chestSpawnProbability: 0.1
+  minChests: 1
+  townBiomeRadius: 100
   townBiome: 0
   topRightBiome: 3
   bottomRightBiome: 2
