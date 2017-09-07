@@ -38,14 +38,24 @@ public class DialogueSpeaker : MonoBehaviour
 				//Set random line
 				if (currentBox)
 				{
-					int index = lastIndex;
+					if (lines.Length > 0)
+					{
+						int index = lastIndex;
 
-					while (index == lastIndex)
-						index = Random.Range(0, lines.Length);
+						if (lines.Length > 1)
+						{
+							while (index == lastIndex)
+								index = Random.Range(0, lines.Length);
+						}
+						else
+							index = 0;
 
-					currentBox.SetDialogue(lines[index]);
+						currentBox.SetDialogue(lines[index]);
 
-					lastIndex = index;
+						lastIndex = index;
+					}
+					else
+						currentBox.SetDialogue("!NO LINES!");
 				}
 			}
 		}
