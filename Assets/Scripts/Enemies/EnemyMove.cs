@@ -26,6 +26,12 @@ public class EnemyMove : MonoBehaviour
         usingNav = true;
     }
 
+	void OnDisable()
+	{
+		if(agent)
+			agent.enabled = false;
+	}
+
     void FixedUpdate()
     {
         if (currentPlayer)
@@ -54,7 +60,7 @@ public class EnemyMove : MonoBehaviour
     {
         //follows the closest player using nav mesh
         if (usingNav)
-            agent.destination = GetClosestPlayer().position;
+            agent.SetDestination(GetClosestPlayer().position);
     }
 
     protected void FollowEnemy()
@@ -62,7 +68,7 @@ public class EnemyMove : MonoBehaviour
         //follows the closest enemy
         if (usingNav)
         {
-            agent.destination = GetClosestEnemy().position;
+            agent.SetDestination(GetClosestEnemy().position);
         }
     }
 
@@ -74,7 +80,7 @@ public class EnemyMove : MonoBehaviour
         { 
             //roams to a random position on the current tile
             if (usingNav)
-                agent.destination = LevelGenerator.Instance.currentTile.GetPosInTile(1, 1); 
+                agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
             roamCounter = 0; 
         } 
     }

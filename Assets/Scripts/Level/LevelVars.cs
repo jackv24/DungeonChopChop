@@ -25,6 +25,9 @@ public class LevelVars : MonoBehaviour
 	[Header("Misc")]
 	public GameObject droppedItemPrefab;
 
+	[Space()]
+	public LayerMask groundLayer;
+
 	public class LevelData
 	{
 		public LevelGeneratorProfile overworldProfile;

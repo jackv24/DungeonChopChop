@@ -41,6 +41,26 @@ public class EnemySpawner : MonoBehaviour
 
 	private bool shouldSpawn = false;
 
+	void Start()
+	{
+		//Make sure all spawn points are on ground
+		if (LevelVars.Instance)
+		{
+			foreach (Transform spawn in spawnPoints)
+			{
+				if (spawn)
+				{
+					RaycastHit hit;
+
+					if (Physics.Raycast(spawn.position + Vector3.up, Vector3.down, out hit, 100f, LevelVars.Instance.groundLayer))
+					{
+						spawn.position = hit.point;
+					}
+				}
+			}
+		}
+	}
+
 	//Only has to happen occasionally
 	void FixedUpdate()
 	{
@@ -170,9 +190,9 @@ public class EnemySpawner : MonoBehaviour
 			{
 				if (spawn.prefab && spawn.spawnPoint)
 				{
-					Vector3 pos = spawn.spawnPoint.position + Vector3.up;
+					Vector3 pos = spawn.spawnPoint.position;
 
-					GameObject enemy = ObjectPooler.GetPooledObject(spawn.prefab, pos);
+					GameObject enemy = ObjectPooler.GetPooledObject(spawn.prefab);
 
 					if (enemy)
 					{
@@ -181,10 +201,15 @@ public class EnemySpawner : MonoBehaviour
 						if (newEnemies)
 							undefeatedEnemies.Add(spawn);
 
+						enemy.transform.position = pos;
+
 						NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
 
 						if (agent)
+						{
+							agent.enabled = true;
 							agent.Warp(pos);
+						}
 					}
 				}
 			}
