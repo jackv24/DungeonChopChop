@@ -64,7 +64,7 @@ public class SwordCollision : MonoBehaviour {
                 {
                     if (animator.GetCurrentAnimatorStateInfo(1).normalizedTime < .7f)
                     {
-                        StartCoroutine(QuickGamePause());
+                        StartCoroutine(QuickGamePause(col.collider));
                     }
                 }
                 CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
@@ -72,11 +72,13 @@ public class SwordCollision : MonoBehaviour {
         }
     }
 
-    IEnumerator QuickGamePause()
+    IEnumerator QuickGamePause(Collider col)
     {
-        Time.timeScale = .1f;
+        animator.enabled = false;
+        col.GetComponentInChildren<Animator>().enabled = false;
         yield return new WaitForSecondsRealtime(pauseTime);
-        Time.timeScale = 1;
+        col.GetComponentInChildren<Animator>().enabled = true;
+        animator.enabled = true;
     }
 
 }
