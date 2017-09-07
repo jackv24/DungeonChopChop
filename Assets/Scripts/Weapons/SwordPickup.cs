@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SwordPickup : MonoBehaviour {
 
+    public bool canPickUp;
+
 	// Use this for initialization
 	void Start () {
-		
+        
 	}
 	
 	// Update is called once per frame
@@ -18,9 +20,12 @@ public class SwordPickup : MonoBehaviour {
     {
         if (col.GetComponent<PlayerAttack>())
         {
-            PlayerAttack playerAttack = col.GetComponent<PlayerAttack>();
-            //playerAttack.AddSword(GetComponent<SwordStats>());
-
+            if (canPickUp)
+            {
+                PlayerAttack playerAttack = col.GetComponent<PlayerAttack>();
+                playerAttack.AddSword(GetComponent<SwordStats>());
+                Debug.Log(transform.name);
+            }
         }
     }
 }

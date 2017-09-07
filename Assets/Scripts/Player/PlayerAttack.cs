@@ -168,27 +168,44 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    void AddSwordPlayerComponenets(SwordCollision newSword)
+    {
+        newSword.playerInfo = playerInformation;
+        newSword.playerHealth = playerHealth;
+        newSword.playerAttack = this;
+        newSword.animator = animator;
+    }
+
     public void DropSword()
     {
         if (sword)
         {
+            //sets the swords parent to be nothing
             sword.transform.parent = null;
-            sword.transform.position = Vector3.forward;
+            //places the sword in the world
+            //sword.transform.localPosition = transform.right;
+            sword.transform.position = new Vector3(sword.transform.position.x, 2, sword.transform.position.z);
+            sword.transform.eulerAngles = new Vector3(21.458f, 90, 180);
+            sword.GetComponent<SwordPickup>().canPickUp = true;
             sword = null;
-            sword.GetComponent<SwordPickup>().enabled = true;
         }
     }
 
-    public void AddSword(SwordStats sword)
+    public void AddSword(SwordStats newSword)
     {
         if (sword)
         {
             DropSword();
         }
+        sword = newSword;
+        //sets the swords parent to be the sword bone
         sword.transform.parent = swordBone.transform;
+        //resets the position
         sword.transform.localPosition = new Vector3(0, 0, 0);
-        sword.transform.localEulerAngles = new Vector3(0, 0, 0);
-        sword.GetComponent<SwordPickup>().enabled = false;
+        //sets the rotation
+        sword.transform.localEulerAngles = new Vector3(-117.677f, -48.953f, 25.159f);
+        sword.GetComponent<SwordPickup>().canPickUp = false;
+        AddSwordPlayerComponenets(sword.GetComponent<SwordCollision>());
     }
 
     public void EnableSword()
