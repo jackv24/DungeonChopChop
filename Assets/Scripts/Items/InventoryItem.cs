@@ -24,7 +24,7 @@ public class InventoryItem : BaseItem
             {
                 if (itemFloat.itemKey != "")
                 {
-                    playerInfo.SetCharmFloat (itemFloat.itemKey, itemFloat.floatValue);
+                    playerInfo.SetItemFloat (itemFloat.itemKey, itemFloat.floatValue);
                 }
             }
         }
