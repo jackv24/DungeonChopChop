@@ -24,7 +24,6 @@ public class SwordPickup : MonoBehaviour {
             {
                 PlayerAttack playerAttack = col.GetComponent<PlayerAttack>();
                 playerAttack.AddSword(GetComponent<SwordStats>());
-                Debug.Log(transform.name);
             }
         }
     }
