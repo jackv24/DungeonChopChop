@@ -6,7 +6,6 @@ public class LevelDoor : MonoBehaviour
 {
 	[Tooltip("How far the player must walk out after entering this door.")]
 	public float exitDistance = 2.0f;
-	public float secondaryExitDistance = 1.0f;
 
 	[Header("Set by Generator")]
 	public LevelTile targetTile;
@@ -51,9 +50,34 @@ public class LevelDoor : MonoBehaviour
 				//if this door was entered on the current tile, enable target tile
 				targetDoor.entered = true;
 
-				targetTile.SetCurrent(parentTile);
-
+				//Walk out into next tile
 				StartCoroutine(WalkOut(col.gameObject));
+
+				//Create event to restore player movement on tile enter
+				LevelTile.NormalEvent enterEvent = null;
+				enterEvent = delegate
+				{
+					PlayerInformation[] players = FindObjectsOfType<PlayerInformation>();
+
+					foreach (PlayerInformation p in players)
+					{
+						p.transform.position = transform.position + (-transform.forward) * exitDistance;
+
+						//Re-enable all player scripts
+						PlayerMove move = p.GetComponent<PlayerMove>();
+						PlayerAttack attack = p.GetComponent<PlayerAttack>();
+						move.enabled = true;
+						attack.enabled = true;
+					}
+
+					//Remove self once complete
+					targetTile.OnTileEnter -= enterEvent;
+				};
+				//Subscribe event
+				targetTile.OnTileEnter += enterEvent;
+
+				//Transition to new tile
+				targetTile.SetCurrent(parentTile);
 			}
 			else
 			{
@@ -65,20 +89,23 @@ public class LevelDoor : MonoBehaviour
 
 	IEnumerator WalkOut(GameObject player)
 	{
-		PlayerInformation playerInfo = player.GetComponent<PlayerInformation>();
-		PlayerMove playerMove = player.GetComponent<PlayerMove>();
-		PlayerAttack playerAttack = player.GetComponent<PlayerAttack>();
+		PlayerInformation[] players = FindObjectsOfType<PlayerInformation>();
+
+		//Disable player scripts
+		foreach (PlayerInformation p in players)
+		{
+			PlayerMove move = p.GetComponent<PlayerMove>();
+			PlayerAttack attack = p.GetComponent<PlayerAttack>();
+			move.enabled = false;
+			attack.enabled = false;
+		}
 
 		Vector3 direction = -transform.forward;
 
-		if (playerAttack)
-			playerAttack.enabled = false;
+		PlayerInformation playerInfo = player.GetComponent<PlayerInformation>();
 
-		if (playerMove && playerInfo)
+		if (playerInfo)
 		{
-			//Revoke player control
-			playerMove.enabled = false;
-
 			//Get move speed and direction
 			float moveSpeed = playerInfo.maxMoveSpeed;
 
@@ -97,20 +124,6 @@ public class LevelDoor : MonoBehaviour
 				yield return new WaitForEndOfFrame();
 				elapsedTime += Time.deltaTime;
 			}
-
-			//Return player control
-			playerMove.enabled = true;
-		}
-
-		if (playerAttack)
-			playerAttack.enabled = true;
-
-		//Position other player outside door
-		PlayerInformation[] players = FindObjectsOfType<PlayerInformation>();
-		foreach(PlayerInformation p in players)
-		{
-			if (p.gameObject != player)
-				p.transform.position = transform.position + direction * secondaryExitDistance;
 		}
 	}
 }

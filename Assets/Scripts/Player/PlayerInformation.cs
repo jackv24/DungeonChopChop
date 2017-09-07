@@ -32,6 +32,7 @@ public class PlayerInformation : MonoBehaviour
     private bool paralysed = false;
 
     private float originalSpeed;
+    private float originalResistance;
 
     private WeaponStats currentWeaponStats;
     private PlayerMove playerMove;
@@ -48,6 +49,7 @@ public class PlayerInformation : MonoBehaviour
     void Start()
     {
         originalSpeed = maxMoveSpeed;
+        originalResistance = resistance;
         playerAttack = GetComponent<PlayerAttack>();
         health = GetComponent<Health>();
         playerMove = GetComponent<PlayerMove>();
@@ -95,8 +97,11 @@ public class PlayerInformation : MonoBehaviour
             currentWeaponStats = GetComponentInChildren<WeaponStats>();
         }
 
-        if (HasCharmFloat("resistanceMultiplier"))
-            resistance = resistance * GetCharmFloat("resistanceMuliplier");
+        //sets the players resistance
+        if (resistance != originalResistance * GetCharmFloat("resistanceMuliplier") * GetItemFloat("resistanceMultiplier"))
+        {
+            resistance = originalResistance * GetCharmFloat("resistanceMuliplier") * GetItemFloat("resistanceMultiplier");
+        }
 			
         MagnetizeItems();
         PullEnemies();

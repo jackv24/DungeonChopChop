@@ -52,6 +52,11 @@ public class PlayerAttack : MonoBehaviour
 	private bool cancelDash = false;
     private bool rapidSlashCoolingDown = false;
     private bool comboStarted = false;
+    private bool movingForward = false;
+
+    private Vector3 targetPosition = Vector3.zero;
+
+    private Coroutine moveRoutine;
 
     void Start()
     {
@@ -169,6 +174,11 @@ public class PlayerAttack : MonoBehaviour
             {
                 StopBlock();
             }
+        }
+
+        if (movingForward)
+        {
+            MoveForward();
         }
     }
 
@@ -352,9 +362,27 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool(boolName, false);
     }
 
+    void MoveForward()
+    {
+        targetPosition = Vector3.Lerp(targetPosition, transform.forward * 2, playerInformation.maxMoveSpeed * Time.deltaTime);
+        characterController.Move(targetPosition * Time.deltaTime);
+    }
+
+    IEnumerator waitForSeconds(float seconds)
+    {
+        movingForward = true;
+        targetPosition = new Vector3(0, 0, 0);
+        yield return new WaitForSeconds(seconds);
+        movingForward = false;
+    }
+
     void doSlash()
     {
         animator.SetTrigger("Attack");
+
+        if (moveRoutine != null)
+            StopCoroutine(moveRoutine);
+        moveRoutine = StartCoroutine(waitForSeconds(.2f));
         //StartCoroutine(slashWait("Attack"));
         //do slash things
     }
@@ -362,6 +390,9 @@ public class PlayerAttack : MonoBehaviour
     void doSecondSlash()
     {
         animator.SetTrigger("SecondAttack");
+        if (moveRoutine != null)
+            StopCoroutine(moveRoutine);
+        moveRoutine = StartCoroutine(waitForSeconds(.2f));
         //StartCoroutine(slashWait("SecondAttack"));
     }
 

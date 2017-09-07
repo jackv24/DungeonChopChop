@@ -95,8 +95,8 @@ public class PlayerMove : MonoBehaviour
 		if (inputVector.magnitude > 1)
 			inputVector.Normalize();
 
-        targetMoveVector.x = inputVector.x * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * slowdownMultiplier;
-        targetMoveVector.z = inputVector.y * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * slowdownMultiplier;
+        targetMoveVector.x = inputVector.x * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
+        targetMoveVector.z = inputVector.y * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
 
 		if (CameraFollow.Instance)
 			targetMoveVector = CameraFollow.Instance.ValidateMovePos(transform.position, targetMoveVector);
