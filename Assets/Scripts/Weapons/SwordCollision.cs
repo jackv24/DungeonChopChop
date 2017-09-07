@@ -13,10 +13,14 @@ public class SwordCollision : MonoBehaviour {
     public float duration = 1;
     public float pauseTime = .1f;
 
-    private PlayerAttack playerAttack;
-    private PlayerInformation playerInfo;
-    private Health playerHealth;
-    private Animator animator;
+    [HideInInspector()]
+    public PlayerAttack playerAttack;
+    [HideInInspector()]
+    public PlayerInformation playerInfo;
+    [HideInInspector()]
+    public Health playerHealth;
+    [HideInInspector()]
+    public Animator animator;
     private Collider col;
 
 	// Use this for initialization
