@@ -60,20 +60,6 @@ public class SlimeMove : EnemyMove {
                 friendly = false;
             }
         }
-
-        //checks if the slime is in mid air, if so disable the collider
-        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Midair"))
-        {
-            col.enabled = false;
-        }
-        else
-        {
-            //renable the collider
-            if (!col.enabled)
-            {
-                col.enabled = true;
-            }
-        }
 	}
 
     void AttackPlayer()

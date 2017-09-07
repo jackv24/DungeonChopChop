@@ -98,6 +98,12 @@ public class Health : MonoBehaviour
             //sets the color of the enemies back to normal
             SetOGColor();
         }
+        if (HasStatusCondition())
+        {
+            isPoisoned = false;
+            isBurned = false;
+            isSlowlyDying = false;
+        }
         health = maxHealth;
         isDead = false;
     }

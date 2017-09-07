@@ -7,7 +7,8 @@ public class ChestSpawn : MonoBehaviour
 	public enum ChestType
 	{
 		Normal,
-		Special
+		Locked,
+		Dungeon
 	}
 
 	public ChestType chestType;
@@ -34,8 +35,11 @@ public class ChestSpawn : MonoBehaviour
 				case ChestType.Normal:
 					prefab = LevelVars.Instance.normalChestPrefab;
 					break;
-				case ChestType.Special:
-					prefab = LevelVars.Instance.specialChestPrefab;
+				case ChestType.Locked:
+					prefab = LevelVars.Instance.lockedChestPrefab;
+					break;
+				case ChestType.Dungeon:
+					prefab = LevelVars.Instance.dungeonChestPrefab;
 					break;
 			}
 
