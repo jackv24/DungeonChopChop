@@ -48,8 +48,13 @@ public class PlayerInputs : PlayerActionSet
 			Down.AddDefaultBinding (Key.S);
 
 			BasicAttack.AddDefaultBinding(Key.J);
+			BasicAttack.AddDefaultBinding(Mouse.LeftButton);
+
             Block.AddDefaultBinding(Key.K);
+			Block.AddDefaultBinding(Mouse.RightButton);
+
             DashSlash.AddDefaultBinding (Key.L);
+			DashSlash.AddDefaultBinding(Key.LeftShift);
 
 			isKeyboard = true;
 		}

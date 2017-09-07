@@ -35,7 +35,8 @@ public class TileParticles : MonoBehaviour
 		if(prefab)
 		{
 			//Spawn particle prefab
-			GameObject obj = ObjectPooler.GetPooledObject(prefab, origin ? origin.position : transform.position);
+			GameObject obj = ObjectPooler.GetPooledObject(prefab);
+			obj.transform.position = origin ? origin.position : transform.position;
 			obj.transform.rotation = origin ? origin.rotation : transform.rotation;
 			spawnedParticles = obj;
 
