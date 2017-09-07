@@ -48,7 +48,7 @@ public class TileParticles : MonoBehaviour
 				
 				//make emission shape fit set tile shape
 				shape.position = offset;
-				shape.scale = size;
+				shape.scale = new Vector3(size.x, shape.scale.y, size.z);
 
 				//Play particle system prewarmed
 				system.Simulate(system.main.duration);
