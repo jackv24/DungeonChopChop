@@ -34,6 +34,11 @@ public class LinkState : MonoBehaviour
 			UpdateLinkedStates(false);
 	}
 
+	private void OnDestroy()
+	{
+		states.Remove(this);
+	}
+
 	void UpdateLinkedStates(bool enabled)
 	{
 		List<LinkState> matchedStates = new List<LinkState>();

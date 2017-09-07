@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4638559182788468}
+  - component: {fileID: 114617556908889212}
   - component: {fileID: 114618357632506736}
   m_Layer: 0
   m_Name: MistAreaParticleFire
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1354180124179512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -80, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4702778356533042}
@@ -102,6 +103,18 @@ Transform:
   m_Father: {fileID: 4638559182788468}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114617556908889212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354180124179512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ae9d79bc0317e40bbc91228b7029fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referenceSize: {x: 40, y: 7, z: 40}
 --- !u!114 &114618357632506736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63854d97e97d33146b5d54f7aed8c86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableOnStart: 0
   isTarget: 0
   identifier: heat
 --- !u!198 &198728387002256086
@@ -174,7 +188,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 501499578
+  randomSeed: -1560062439
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -625,7 +639,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 5, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 38.256744, y: 8, z: 39.035236}
+    m_Scale: {x: 40, y: 7, z: 40}
     placementMode: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
@@ -3436,7 +3450,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -809118490
+  randomSeed: 235499491
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3887,7 +3901,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 5, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 39.573868, y: 8, z: 39.379345}
+    m_Scale: {x: 40, y: 7, z: 40}
     placementMode: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
@@ -6676,7 +6690,7 @@ ParticleSystemRenderer:
   m_RenderMode: 2
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 2
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -6728,7 +6742,7 @@ ParticleSystemRenderer:
   m_RenderMode: 2
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 2
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
