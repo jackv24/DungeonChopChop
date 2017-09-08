@@ -22,6 +22,7 @@ public class PlayerMove : MonoBehaviour
 	private PlayerInformation playerInformation;
 	private Animator animator;
 	private PlayerAttack playerAttack;
+    private Health playerHealth;
 
 	private float speed;
 
@@ -34,6 +35,7 @@ public class PlayerMove : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+        playerHealth = GetComponent<Health>();
 		playerAttack = GetComponent<PlayerAttack>();
 		animator = GetComponentInChildren<Animator>();
 		playerInformation = GetComponent<PlayerInformation>();
@@ -86,40 +88,43 @@ public class PlayerMove : MonoBehaviour
 		if (!allowMove)
 			return;
 
-		//sets movespeed to playerinformation movespeed;
-		maxMoveSpeed = playerInformation.maxMoveSpeed;
-
-		//sets the input vector
-		inputVector = input.Move;
-
-		if (inputVector.magnitude > 1)
-			inputVector.Normalize();
-
-        targetMoveVector.x = inputVector.x * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
-        targetMoveVector.z = inputVector.y * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
-
-		if (CameraFollow.Instance)
-			targetMoveVector = CameraFollow.Instance.ValidateMovePos(transform.position, targetMoveVector);
-
-		//rotate player
-        if (inputVector.magnitude > 0.01f)
+        if (!playerHealth.isDead)
         {
-            if (!playerAttack.blocking)
+            //sets movespeed to playerinformation movespeed;
+            maxMoveSpeed = playerInformation.maxMoveSpeed;
+
+            //sets the input vector
+            inputVector = input.Move;
+
+            if (inputVector.magnitude > 1)
+                inputVector.Normalize();
+
+            targetMoveVector.x = inputVector.x * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
+            targetMoveVector.z = inputVector.y * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
+
+            if (CameraFollow.Instance)
+                targetMoveVector = CameraFollow.Instance.ValidateMovePos(transform.position, targetMoveVector);
+
+            //rotate player
+            if (inputVector.magnitude > 0.01f)
             {
-                //transform.rotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y));
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y)), rotateSpeed * Time.deltaTime);
+                if (!playerAttack.blocking)
+                {
+                    //transform.rotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y));
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y)), rotateSpeed * Time.deltaTime);
+                }
             }
-        }
-		//checks to see if the user is grounded, if not apply gravity
-		if (!characterController.isGrounded)
-		{
-			targetMoveVector.y += gravity * Time.deltaTime;
-		}
+            //checks to see if the user is grounded, if not apply gravity
+            if (!characterController.isGrounded)
+            {
+                targetMoveVector.y += gravity * Time.deltaTime;
+            }
 			
-		//moves the player using the input axis and move speed
-		//checks if the player is on ice or not
-        fromMoveVector = Vector3.Lerp(fromMoveVector, targetMoveVector, acceleration * playerInformation.GetCharmFloat("slipMultiplier") * Time.deltaTime);
-		characterController.Move(fromMoveVector * Time.deltaTime);
+            //moves the player using the input axis and move speed
+            //checks if the player is on ice or not
+            fromMoveVector = Vector3.Lerp(fromMoveVector, targetMoveVector, acceleration * playerInformation.GetCharmFloat("slipMultiplier") * Time.deltaTime);
+            characterController.Move(fromMoveVector * Time.deltaTime);
+        }
 	}
 
 	void OnTriggerEnter(Collider col)

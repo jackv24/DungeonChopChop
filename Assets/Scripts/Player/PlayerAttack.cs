@@ -28,6 +28,7 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Other Vars")]
     public bool blocking = false;
+    public float speedWhenBurned = 10;
     public GameObject slashFX;
 
     private PlayerInputs input;
@@ -115,70 +116,78 @@ public class PlayerAttack : MonoBehaviour
 
         //check if can actually attack
         //do basic attack
-        if (input.BasicAttack.WasPressed)
+        if (!playerHealth.isDead)
         {
-            CheckCombo();
-            //if combo is equal to or greater than 3, do rapid slash
-            if (comboAmount >= slashAmount)
+            if (input.BasicAttack.WasPressed)
             {
-                doRapidSlash();
-            }
-            //basic slash
-            if (comboAmount < slashAmount)
-            {
-                //checks if player is in idle to do the first attack
-                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
+                CheckCombo();
+                //if combo is equal to or greater than 3, do rapid slash
+                if (comboAmount >= slashAmount)
                 {
-                    doSlash();
+                    doRapidSlash();
                 }
+                //basic slash
+                if (comboAmount < slashAmount)
+                {
+                    //checks if player is in idle to do the first attack
+                    if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
+                    {
+                        doSlash();
+                    }
                     //if the user tries to attack when the user is already attacking, it'll do the second attack once completed
                     else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                {
-                    doSecondSlash();
+                    {
+                        doSecondSlash();
+                    }
+                    else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                    {
+                        doSlash();
+                    }
                 }
-                else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
-                {
-                    doSlash();
-                }
-            }
-        } 
-        if (input.DashSlash.WasPressed)
-        {
-            if (!playerInformation.HasCharmBool("cantDash"))
+            } 
+            if (input.DashSlash.WasPressed)
             {
-                //dash slash
-                if (canDash)
+                if (!playerInformation.HasCharmBool("cantDash"))
                 {
-                    doDash();
+                    //dash slash
+                    if (canDash)
+                    {
+                        doDash();
+                    }
+                }
+            } 
+            
+            if (input.Block)
+            {
+                if (!playerInformation.HasCharmBool("cantBlock"))
+                {
+                    //block
+                    if (shield)
+                    {
+                        if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
+                            DoBlock();
+                    }
                 }
             }
-        } 
-            
-        if (input.Block)
-        {
-            if (!playerInformation.HasCharmBool("cantBlock"))
+
+            if (input.Block.WasReleased)
             {
                 //block
                 if (shield)
                 {
-                    if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                        DoBlock();
+                    StopBlock();
                 }
             }
-        }
 
-        if (input.Block.WasReleased)
-        {
-            //block
-            if (shield)
+            if (movingForward)
             {
-                StopBlock();
+                MoveForward(2);
             }
-        }
 
-        if (movingForward)
-        {
-            MoveForward();
+            if (playerHealth.isBurned)
+            {
+                MoveForward(speedWhenBurned);
+            }
         }
     }
 
@@ -362,9 +371,9 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool(boolName, false);
     }
 
-    void MoveForward()
+    public void MoveForward(float speed)
     {
-        targetPosition = Vector3.Lerp(targetPosition, transform.forward * 2, playerInformation.maxMoveSpeed * Time.deltaTime);
+        targetPosition = Vector3.Lerp(targetPosition, transform.forward * speed, playerInformation.maxMoveSpeed * Time.deltaTime);
         characterController.Move(targetPosition * Time.deltaTime);
     }
 

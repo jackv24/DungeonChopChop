@@ -46,6 +46,7 @@ public class Health : MonoBehaviour
 
     private Renderer[] renderers;
     private List<Color> originalColors = new List<Color>();
+    private Vector3 targetPosition;
 
     public void AffectHealth(float healthDeta)
     {
@@ -317,10 +318,25 @@ public class Health : MonoBehaviour
     {
         //do death
         //checks if the game has an enemy drop script, if it does it is an enemy
-        if (transform.GetComponent<EnemyDrops>())
+        if (IsEnemy)
         {
-            transform.GetComponent<EnemyDrops>().DoDrop();
+            if (transform.GetComponent<EnemyDrops>())
+            {
+                transform.GetComponent<EnemyDrops>().DoDrop();
+            }
         }
+        else
+        {
+            animator.SetTrigger("Die");
+            StartCoroutine(WaitForRestart());
+        }
+    }
+
+    IEnumerator WaitForRestart()
+    {
+        yield return new WaitForSeconds(2);
+        ObjectPooler.PurgePools();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 
     void DoParticle(string particleName, float duration)
@@ -377,7 +393,7 @@ public class Health : MonoBehaviour
     public void SetBurned(float damagePerTick, float duration, float timeBetweenBurn)
     {
         if (playerInfo)
-            damagePerTick = playerInfo.GetCharmFloat("burnMultiplier");
+            damagePerTick = damagePerTick * playerInfo.GetCharmFloat("burnMultiplier");
         isBurned = true;
         DoParticle("FireTickParticle", duration);
         StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
