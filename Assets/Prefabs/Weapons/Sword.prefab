@@ -56,14 +56,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1390890990404562}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.6117296, y: 5.423491, z: 5.8660555}
+  m_LocalRotation: {x: -0.80680794, y: -0.03962396, z: -0.24345784, w: 0.5368606}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.866183, y: 1.8661846, z: 1.8661844}
   m_Children:
   - {fileID: 4508209109364336}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -117.677, y: -48.953, z: 25.159}
 --- !u!4 &4508209109364336
 Transform:
   m_ObjectHideFlags: 1
@@ -141,8 +141,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.54513216, y: 1.4598594, z: 0.6201497}
-  m_Center: {x: -0.023232771, y: 0.53847605, z: 0.003674897}
+  m_Size: {x: 0.2069461, y: 1.9077743, z: 0.36072293}
+  m_Center: {x: -0.008849071, y: 0.7624335, z: 0.0020022434}
 --- !u!96 &96732126418423316
 TrailRenderer:
   serializedVersion: 2
@@ -245,8 +245,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a927be7f714cb4c9ea35f1f69acd16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 1527843105965146, guid: ffacd196c5f1ec64b8177a7c087bdcbf, type: 2}
   trail: {fileID: 1998079004921924}
+  hitParticles:
+  - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
+  - {fileID: 1928837666263156, guid: e644d976e5cf25d41a8dc76393b7f5a8, type: 2}
+  - {fileID: 1549528525467566, guid: 8bc140c546c0b184e8a3878a1a2be22d, type: 2}
+  - {fileID: 1004915465583228, guid: 2a2d6f42c0139774880df8b9f1374650, type: 2}
+  - {fileID: 1827767987465284, guid: 900be820c1e06ce4aa92c0828c02d200, type: 2}
+  - {fileID: 1354737460173572, guid: 4b29ec138600e1141817e3a90d959d5d, type: 2}
   magnitude: 0.1
   shakeAmount: 1
   duration: 1
