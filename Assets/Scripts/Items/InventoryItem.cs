@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "Data/Items/Item")]
 public class InventoryItem : BaseItem
 {
+	public int cost = 0;
+
+	public GameObject itemPrefab;
+
     [System.Serializable]
     public class Item
     {

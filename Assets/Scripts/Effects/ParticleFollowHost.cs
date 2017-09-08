@@ -5,14 +5,24 @@ using UnityEngine;
 public class ParticleFollowHost : MonoBehaviour {
 
     public Transform host;
+    ParticleSystem ps;
+    ParticleSystem.MainModule main;
+
+    bool hostDie = false;
 
 	// Use this for initialization
 	void Start () {
-		
+        ps = GetComponent<ParticleSystem>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         transform.position = host.position;
-	}
+        if (host.GetComponent<Health>().health <= 0)
+        {
+            hostDie = true;
+            ps.Stop();
+        }
+    }
+
 }
