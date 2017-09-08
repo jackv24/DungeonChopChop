@@ -12097,7 +12097,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637455600117208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100, y: 0, z: -170}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4770925178948380}
@@ -40495,10 +40495,18 @@ MonoBehaviour:
   decoratorPrefabs:
   - {fileID: 1537551300635328, guid: 81fd9243b92af6947b7add56ca543ac9, type: 2}
   - {fileID: 1160371636132376, guid: 53d26fc80f502cd4d8f3f83aaff071d6, type: 2}
-  shopSpacing: 4
-  decoratorSpacing: 2
+  - {fileID: 1870889608829320, guid: d64b7c52f8e23a04f8b4a98cd6063697, type: 2}
+  shopSpacing: 4.75
+  decoratorSpacing: 2.5
   direction: 0
-  shopStalls: 3
+  itemDatabase: {fileID: 11400000, guid: d37f8af6cb82a3f46907a80674a41cda, type: 2}
+  shopStalls:
+  - itemType: 0
+    itemTier: 0
+  - itemType: 1
+    itemTier: 0
+  - itemType: 2
+    itemTier: 0
 --- !u!114 &114519413110179016
 MonoBehaviour:
   m_ObjectHideFlags: 1

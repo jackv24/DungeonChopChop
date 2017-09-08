@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SwordCollision : MonoBehaviour {
 
-    public GameObject particle;
     public GameObject trail;
+    public GameObject[] hitParticles;
 
     [Header("Camera Shake Values")]
     public float magnitude = 1;
@@ -32,6 +32,13 @@ public class SwordCollision : MonoBehaviour {
         col = GetComponent<Collider>();
 	}
 
+    void DoParticle(Collision col)
+    {
+        int random = Random.Range(0, hitParticles.Length);
+        GameObject particle = ObjectPooler.GetPooledObject(hitParticles[random]);
+        particle.transform.position = col.contacts[0].point;
+    }
+
     void OnCollisionEnter(Collision col)
     {
         //check if the collider is on the enemy layer
@@ -42,8 +49,7 @@ public class SwordCollision : MonoBehaviour {
                 //calculates knockback depending on direction
                 col.gameObject.GetComponent<Health>().Knockback(playerInfo, playerAttack.transform.forward);
                 //checks if the player has a status condition
-                GameObject p = Instantiate(particle, col.contacts[0].point, Quaternion.Euler(0, 0, 0)) as GameObject;
-                Destroy(p, .2f);
+                DoParticle(col);
                 if (playerHealth.HasStatusCondition())
                 {
                     //if the player is burned or poisoned, a charm may affect the damage output
