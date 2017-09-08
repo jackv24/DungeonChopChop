@@ -42,7 +42,9 @@ public class KeyScript : MonoBehaviour {
     void OnDisable()
     {
         doFloat = false;
-        rb.isKinematic = false;
+
+		if(rb)
+			rb.isKinematic = false;
     }
 
     IEnumerator wait()

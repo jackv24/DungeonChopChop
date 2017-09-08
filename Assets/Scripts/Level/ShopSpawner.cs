@@ -30,6 +30,7 @@ public class ShopSpawner : MonoBehaviour
 	public ItemDatabase itemDatabase;
 	[Space()]
 	public List<ShopStall> shopStalls = new List<ShopStall>();
+	private List<Shop> shops = new List<Shop>();
 
 	void Start()
 	{
@@ -58,6 +59,8 @@ public class ShopSpawner : MonoBehaviour
 
 						if(shop)
 						{
+							shops.Add(shop);
+
 							shop.SpawnItem(item);
 						}
 					}
@@ -69,6 +72,11 @@ public class ShopSpawner : MonoBehaviour
 					GameObject decoratorObj = Instantiate(GetRandomDecorator(), transform);
 					decoratorObj.transform.localPosition = shopObj.transform.localPosition + OffsetDirection * decoratorSpacing;
 				}
+
+				foreach(Shop shop in shops)
+				{
+					shop.SetGroup(shops);
+				}
 			}
 		}
 		else
@@ -77,6 +85,8 @@ public class ShopSpawner : MonoBehaviour
 
 	public void DeleteChildren()
 	{
+		shops.Clear();
+
 		for (int i = transform.childCount - 1; i >= 0; i--)
 		{
 			DestroyImmediate(transform.GetChild(i).gameObject, false);
