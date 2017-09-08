@@ -1361,6 +1361,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   blocking: 0
+  speedWhenBurned: 10
   slashFX: {fileID: 1454523227821080, guid: ff3d3a84a294e1f43b09bc0c018e38df, type: 2}
   swordBone: {fileID: 1860295746227366}
   shieldBone: {fileID: 1105099310863798}
@@ -1411,7 +1412,7 @@ MonoBehaviour:
   maxMoveSpeed: 11
   strength: 1
   attackSpeed: 1
-  resistance: 1
+  resistance: 3
   knockback: 20
   invincibilityTimeAfterHit: 2
   invincible: 0
@@ -1431,8 +1432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a927be7f714cb4c9ea35f1f69acd16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 1527843105965146, guid: ffacd196c5f1ec64b8177a7c087bdcbf, type: 2}
   trail: {fileID: 1930824890574888}
+  hitParticles: []
   magnitude: 0.1
   shakeAmount: 1
   duration: 1
@@ -1515,8 +1516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  health: 3
+  maxHealth: 5
+  health: 5
   weight: 0
   IsEnemy: 0
   isPoisoned: 0
@@ -1532,6 +1533,7 @@ MonoBehaviour:
   hitColor: {r: 1, g: 0, b: 0, a: 1}
   timeBetweenFlash: 0.1
   amountToFlash: 5
+  fireParticle: {fileID: 0}
 --- !u!114 &114831452265403212
 MonoBehaviour:
   m_ObjectHideFlags: 1
