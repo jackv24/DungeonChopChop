@@ -330,7 +330,7 @@ public class Health : MonoBehaviour
         ParticleSystem ps = particle.GetComponent<ParticleSystem>();
         ps.Stop();
         ParticleSystem.MainModule main = ps.main;
-        main.duration = duration * main.simulationSpeed;
+        main.duration = duration * main.simulationSpeed ;
         ps.Play();
         Destroy(particle, duration + 2);
     }
