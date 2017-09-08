@@ -38,6 +38,7 @@ public class Health : MonoBehaviour
     [Header("Other Vals")]
     public float timeBetweenFlash = 0.1f;
     public int amountToFlash = 5;
+    public GameObject fireParticle;
 
     private PlayerInformation playerInfo;
     private Animator animator;
@@ -111,16 +112,14 @@ public class Health : MonoBehaviour
     void Start()
     {
         renderers = GetComponentsInChildren<Renderer>();
-        if (IsEnemy)
+        //loops through and get the original color on each renderer
+        for (int i = 0; i < renderers.Length; i++)
         {
-            //loops through and get the original color on each renderer
-            for (int i = 0; i < renderers.Length; i++)
-            {
-                originalColors.Add(renderers[i].material.color);
-            }
+            originalColors.Add(renderers[i].material.color);
         }
 
         rb = GetComponent<Rigidbody>();
+
         OnHealthChange += TemporaryInvincibility;
 
         if (GetComponentInChildren<Animator>())
@@ -137,7 +136,10 @@ public class Health : MonoBehaviour
     {
         if (playerInfo)
         {
-            StartCoroutine(InvincibilityWait(playerInfo));
+            if (!HasStatusCondition())
+            {
+                StartCoroutine(InvincibilityWait(playerInfo));
+            }
         }
     }
 
@@ -226,6 +228,7 @@ public class Health : MonoBehaviour
 
     void SetHitColor()
     {
+        renderers = GetComponentsInChildren<Renderer>();
         if (renderers != null)
         {
             //loops through each and sets the hit color
@@ -238,18 +241,23 @@ public class Health : MonoBehaviour
 
     void SetOGColor()
     {
+        renderers = GetComponentsInChildren<Renderer>();
         if (renderers != null)
         {
-            //loops through each and sets the hit color
-            for (int i = 0; i < renderers.Length; i++)
+            if (originalColors.Count > 0)
             {
-                renderers[i].material.color = originalColors[i];
+                //loops through each and sets the hit color
+                for (int i = 0; i < renderers.Length; i++)
+                {
+                    renderers[i].material.color = originalColors[i];
+                }
             }
         }
     }
 
     void DisableRenderers()
     {
+        renderers = GetComponentsInChildren<Renderer>();
         //loops through each and disables them
         if (renderers != null)
         {
@@ -262,6 +270,7 @@ public class Health : MonoBehaviour
 
     void EnableRenderers()
     {
+        renderers = GetComponentsInChildren<Renderer>();
         //loops through each and disables them
         if (renderers != null)
         {
@@ -314,6 +323,18 @@ public class Health : MonoBehaviour
         }
     }
 
+    void DoParticle(string particleName, float duration)
+    {
+        GameObject particle = Instantiate(Resources.Load<GameObject>(particleName), transform.position, Quaternion.Euler(0, 0, 0));
+        particle.GetComponent<ParticleFollowHost>().host = transform;
+        ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+        ps.Stop();
+        ParticleSystem.MainModule main = ps.main;
+        main.duration = duration * main.simulationSpeed;
+        ps.Play();
+        Destroy(particle, duration + 2);
+    }
+
     /// <summary>
     /// Sets the poison.
     /// </summary>
@@ -324,6 +345,7 @@ public class Health : MonoBehaviour
         if (playerInfo)
             damagePerTick = playerInfo.GetCharmFloat("poisonMultiplier");
         isPoisoned = true;
+        DoParticle("PoisonTickParticle", duration);
         StartCoroutine(doPoison(damagePerTick, duration, timeBetweenPoison));
     }
 
@@ -351,12 +373,13 @@ public class Health : MonoBehaviour
     /// Sets the burn.
     /// </summary>
     /// <param name="duration">Duration in seconds.</param>
-    /// <param name="timeBetweenBurn">Time between poison in seconds.</param>
+    /// <param name="timeBetweenBurn">Time between burn in seconds.</param>
     public void SetBurned(float damagePerTick, float duration, float timeBetweenBurn)
     {
         if (playerInfo)
             damagePerTick = playerInfo.GetCharmFloat("burnMultiplier");
         isBurned = true;
+        DoParticle("FireTickParticle", duration);
         StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
     }
 
