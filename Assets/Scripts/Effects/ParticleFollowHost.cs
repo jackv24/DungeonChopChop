@@ -17,11 +17,14 @@ public class ParticleFollowHost : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = host.position;
-        if (host.GetComponent<Health>().health <= 0)
+        if (host)
         {
-            hostDie = true;
-            ps.Stop();
+            transform.position = host.position;
+            if (host.GetComponent<Health>().health <= 0)
+            {
+                hostDie = true;
+                ps.Stop();
+            }
         }
     }
 

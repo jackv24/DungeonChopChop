@@ -21,7 +21,9 @@ public class SwordCollision : MonoBehaviour {
     public Health playerHealth;
     [HideInInspector()]
     public Animator animator;
+
     private Collider col;
+    private SwordStats swordStats;
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +32,7 @@ public class SwordCollision : MonoBehaviour {
         playerHealth = GetComponentInParent<Health>();
         animator = GetComponentInParent<Animator>();
         col = GetComponent<Collider>();
+        swordStats = GetComponent<SwordStats>();
 	}
 
     void DoParticle(Collision col)
@@ -46,8 +49,9 @@ public class SwordCollision : MonoBehaviour {
         {
             if (col.gameObject.GetComponent<Health>())
             {
+                Health enemyHealth = col.gameObject.GetComponent<Health>();
                 //calculates knockback depending on direction
-                col.gameObject.GetComponent<Health>().Knockback(playerInfo, playerAttack.transform.forward);
+                enemyHealth.Knockback(playerInfo, playerAttack.transform.forward);
                 //checks if the player has a status condition
                 DoParticle(col);
                 if (playerHealth.HasStatusCondition())
@@ -55,23 +59,38 @@ public class SwordCollision : MonoBehaviour {
                     //if the player is burned or poisoned, a charm may affect the damage output
                     if (playerHealth.isBurned || playerHealth.isPoisoned)
                     {
-                        col.gameObject.GetComponent<Health>().AffectHealth((-playerInfo.strength * playerAttack.sword.damageMultiplier * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * playerInfo.GetCharmFloat("dmgMultiWhenBurned") * playerInfo.GetCharmFloat("dmgMultiWhenPoisoned"));
+                        enemyHealth.AffectHealth((-playerInfo.strength * playerAttack.sword.damageMultiplier * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * playerInfo.GetCharmFloat("dmgMultiWhenBurned") * playerInfo.GetCharmFloat("dmgMultiWhenPoisoned"));
                     }
                     else
                     {
-                        col.gameObject.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerAttack.sword.damageMultiplier * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
+                        enemyHealth.AffectHealth(-playerInfo.strength * playerAttack.sword.damageMultiplier * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
                     }
                 }
                 else
                 {
-                    col.gameObject.GetComponent<Health>().AffectHealth(-playerInfo.strength * playerAttack.sword.damageMultiplier * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
+                    //else just do the normal damage
+                    enemyHealth.AffectHealth(-playerInfo.strength * playerAttack.sword.damageMultiplier * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
                 }
+                //checks what state the players animation is in
                 if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("TripleAttack"))
                 {
                     if (animator.GetCurrentAnimatorStateInfo(1).normalizedTime < .7f)
                     {
+                        //do the little pause for feelings
                         StartCoroutine(QuickGamePause(col.collider));
                     }
+                }
+                if (swordStats.weaponEffect == WeaponEffect.Burn)
+                {
+                    enemyHealth.SetBurned(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
+                }
+                else if (swordStats.weaponEffect == WeaponEffect.Poison)
+                {
+                    enemyHealth.SetPoison(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
+                }
+                else if (swordStats.weaponEffect == WeaponEffect.SlowDeath)
+                {
+                    enemyHealth.SetSlowDeath(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
                 }
                 CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
             }

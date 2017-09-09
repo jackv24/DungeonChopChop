@@ -2,9 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum WeaponEffect
+{
+    Nothing,
+    Burn,
+    Poison,
+    SlowDeath,
+}
+
 public class SwordStats : MonoBehaviour {
 
     public float damageMultiplier = 1;
+    public WeaponEffect weaponEffect;
+    public float damagePerTick;
+    public float duration;
+    public float timeBetweenEffect;
 
 	// Use this for initialization
 	void Start () {
