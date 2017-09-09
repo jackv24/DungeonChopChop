@@ -278,6 +278,7 @@ public class Health : MonoBehaviour
             foreach (Renderer renderer in renderers)
             {
                 renderer.enabled = true;
+
             }
         }
     }
@@ -346,7 +347,7 @@ public class Health : MonoBehaviour
         ParticleSystem ps = particle.GetComponent<ParticleSystem>();
         ps.Stop();
         ParticleSystem.MainModule main = ps.main;
-        main.duration = duration * main.simulationSpeed ;
+        main.duration = duration * main.simulationSpeed;
         ps.Play();
         Destroy(particle, duration + 2);
     }
@@ -405,9 +406,9 @@ public class Health : MonoBehaviour
         while (isBurned)
         {
             counter++;
-            SetOGColor();
+           // SetOGColor();
             yield return new WaitForSeconds(timeBetweenBurn / 2);
-            SetColor(burnColor);
+            //SetColor(burnColor);
             AffectHealth(-damagePerTick);
             animator.SetTrigger("Flinch");
             if (counter >= duration)
@@ -415,7 +416,7 @@ public class Health : MonoBehaviour
                 isBurned = false;
             }
             yield return new WaitForSeconds(timeBetweenBurn / 2);
-            SetOGColor();
+            //SetOGColor();
         }
     }
 

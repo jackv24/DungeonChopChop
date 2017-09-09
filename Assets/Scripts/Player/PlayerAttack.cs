@@ -51,7 +51,6 @@ public class PlayerAttack : MonoBehaviour
 
     private bool canDash = true;
 	private bool cancelDash = false;
-    private bool rapidSlashCoolingDown = false;
     private bool comboStarted = false;
     private bool movingForward = false;
 
