@@ -242,7 +242,6 @@ public class Health : MonoBehaviour
 
     void SetOGColor()
     {
-        renderers = GetComponentsInChildren<Renderer>();
         if (renderers != null)
         {
             if (originalColors.Count > 0)
@@ -406,9 +405,9 @@ public class Health : MonoBehaviour
         while (isBurned)
         {
             counter++;
-           // SetOGColor();
+            SetOGColor();
             yield return new WaitForSeconds(timeBetweenBurn / 2);
-            //SetColor(burnColor);
+            SetColor(burnColor);
             AffectHealth(-damagePerTick);
             animator.SetTrigger("Flinch");
             if (counter >= duration)
@@ -416,7 +415,7 @@ public class Health : MonoBehaviour
                 isBurned = false;
             }
             yield return new WaitForSeconds(timeBetweenBurn / 2);
-            //SetOGColor();
+            SetOGColor();
         }
     }
 
