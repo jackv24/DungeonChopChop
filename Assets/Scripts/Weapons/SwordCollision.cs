@@ -5,7 +5,8 @@ using UnityEngine;
 public class SwordCollision : MonoBehaviour {
 
     public GameObject trail;
-    public GameObject[] hitParticles;
+    public GameObject[] hitSmokes;
+    public GameObject[] hitEffects;
 
     [Header("Camera Shake Values")]
     public float magnitude = 1;
@@ -37,9 +38,12 @@ public class SwordCollision : MonoBehaviour {
 
     void DoParticle(Collision col)
     {
-        int random = Random.Range(0, hitParticles.Length);
-        GameObject particle = ObjectPooler.GetPooledObject(hitParticles[random]);
-        particle.transform.position = col.contacts[0].point;
+        int randomSmoke = Random.Range(0, hitSmokes.Length);
+        int randomEffect = Random.Range(0, hitEffects.Length);
+        GameObject smoke = ObjectPooler.GetPooledObject(hitSmokes[randomSmoke]);
+        smoke.transform.position = col.contacts[0].point;
+        GameObject effect = ObjectPooler.GetPooledObject(hitEffects[randomEffect]);
+        effect.transform.position = col.contacts[0].point;
     }
 
     void OnCollisionEnter(Collision col)
