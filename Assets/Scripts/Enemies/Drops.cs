@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class Drops
+public class DropKinds
 {
 	public GameObject Drop;
 	[Tooltip("eg 0 (inclusive)")]
@@ -23,9 +23,9 @@ public class PercentageOfDropAmount
 	public int maxPercentage;
 };
 
-public class EnemyDrops : MonoBehaviour {
+public class Drops : MonoBehaviour {
 
-	public Drops[] drops;
+    public DropKinds[] drops;
 	public PercentageOfDropAmount[] numberOfDrops;
     Collider col;
 
@@ -64,7 +64,7 @@ public class EnemyDrops : MonoBehaviour {
 			{
 				//gets a number between 0 and 100 which will act as a percentage
 				int randomPercent = UnityEngine.Random.Range (0, 101);
-				foreach (Drops drop in drops)
+                foreach (DropKinds drop in drops)
 				{
 					//loop through each drop and find which drops min and max percentage have the percentage inbetween
 					if (randomPercent >= drop.minPercentage && randomPercent <= drop.maxPercentage)

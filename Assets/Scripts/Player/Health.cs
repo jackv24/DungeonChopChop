@@ -320,9 +320,9 @@ public class Health : MonoBehaviour
         //checks if the game has an enemy drop script, if it does it is an enemy
         if (IsEnemy)
         {
-            if (transform.GetComponent<EnemyDrops>())
+            if (transform.GetComponent<Drops>())
             {
-                transform.GetComponent<EnemyDrops>().DoDrop();
+                transform.GetComponent<Drops>().DoDrop();
             }
         }
         else

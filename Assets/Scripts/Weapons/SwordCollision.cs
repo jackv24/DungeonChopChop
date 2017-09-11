@@ -84,6 +84,7 @@ public class SwordCollision : MonoBehaviour {
                         StartCoroutine(QuickGamePause(col.collider));
                     }
                 }
+                //set the status effect depending on the weapons effect
                 if (swordStats.weaponEffect == WeaponEffect.Burn)
                 {
                     enemyHealth.SetBurned(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
@@ -98,6 +99,13 @@ public class SwordCollision : MonoBehaviour {
                 }
                 CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
             }
+        }
+        //if the player == Prop
+        else if (col.gameObject.layer == 17)
+        {
+            //do the props effect then destroy it
+            col.gameObject.GetComponent<PropDestroy>().DoEffect(col.contacts[0].point);
+            Destroy(col.gameObject);
         }
     }
 
