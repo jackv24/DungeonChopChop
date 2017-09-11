@@ -198,18 +198,66 @@ public class PlayerAttack : MonoBehaviour
         newSword.animator = animator;
     }
 
+    IEnumerator ThrowDroppedSword(Transform newSword)
+    {
+        newSword.transform.eulerAngles = new Vector3(0, 0, 0);
+
+        newSword.GetComponent<SwordCollision>().trail.SetActive(true);
+
+        //sets the target position above the player
+        Vector3 targetPosition = new Vector3(sword.transform.position.x, 10, sword.transform.position.z);
+
+        //adds right to the vector so its not directly ontop of the player
+        targetPosition += newSword.transform.right;
+
+        sword = null;
+
+        //moves the sword to the target position with rotations
+        while (newSword.transform.position != targetPosition)
+        {
+            newSword.transform.position = Vector3.MoveTowards(newSword.transform.position, targetPosition, 50 * Time.deltaTime);
+            newSword.transform.eulerAngles = Vector3.Lerp(newSword.transform.eulerAngles, new Vector3(0, 0, 0), 10 * Time.deltaTime);
+            yield return new WaitForSeconds(.01f);
+        }
+
+        //once completed, wait
+        yield return new WaitForEndOfFrame();
+
+        //sets the target position to the floor
+        targetPosition = new Vector3(newSword.transform.position.x, 2, newSword.transform.position.z);
+
+        //moves the sword to the floor
+        while (newSword.transform.position != targetPosition)
+        {
+            //if not target position, move towards it
+            if (newSword.transform.position != targetPosition)
+            {
+                newSword.transform.position = Vector3.MoveTowards(newSword.transform.position, targetPosition, 50 * Time.deltaTime);
+            }
+            //if the rotations doesn't equal the target rotation, lerp towards it
+            newSword.transform.eulerAngles = Vector3.Lerp(newSword.transform.eulerAngles, new Vector3(0, 0, 180), 10 * Time.deltaTime);
+            yield return new WaitForSeconds(.01f);
+        }
+
+        newSword.GetComponent<SwordCollision>().trail.SetActive(false);
+
+        newSword.GetComponent<SwordPickup>().canPickUp = true;
+
+    }
+
     public void DropSword()
     {
         if (sword)
         {
             //sets the swords parent to be nothing
             sword.transform.parent = null;
+            StartCoroutine(ThrowDroppedSword(sword.transform));
             //places the sword in the world
-            //sword.transform.localPosition = transform.right;
-            sword.transform.position = new Vector3(sword.transform.position.x, 2, sword.transform.position.z);
-            sword.transform.eulerAngles = new Vector3(21.458f, 90, 180);
-            sword.GetComponent<SwordPickup>().canPickUp = true;
-            sword = null;
+
+            //sword.transform.position = new Vector3(sword.transform.position.x, 2, sword.transform.position.z);
+            //sword.transform.eulerAngles = new Vector3(21.458f, 90, 180);
+            //sword.GetComponent<SwordPickup>().canPickUp = true;
+            //sword = null;
         }
     }
 
