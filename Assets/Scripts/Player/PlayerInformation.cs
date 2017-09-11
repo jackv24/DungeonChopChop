@@ -40,6 +40,7 @@ public class PlayerInformation : MonoBehaviour
     private Rigidbody rb;
     private CharacterController characterController;
     private PlayerAttack playerAttack;
+    private GameObject mapHUD;
 
     private Dictionary<string, float> charmFloats = new Dictionary<string, float>();
     private Dictionary<string, bool> charmBools = new Dictionary<string, bool>();
@@ -48,6 +49,7 @@ public class PlayerInformation : MonoBehaviour
 
     void Start()
     {
+        mapHUD = GameObject.FindGameObjectWithTag("MapHUD");
         originalSpeed = maxMoveSpeed;
         originalResistance = resistance;
         playerAttack = GetComponent<PlayerAttack>();
@@ -87,6 +89,14 @@ public class PlayerInformation : MonoBehaviour
 
     void Update()
     {
+        if (HasCharmBool("hideMap"))
+        {
+            mapHUD.SetActive(false);
+        }
+        else if (!mapHUD.gameObject.activeSelf)
+        {
+            mapHUD.SetActive(true);
+        }
         //sets stats depending on weapon values
         if (currentWeaponStats)
         {

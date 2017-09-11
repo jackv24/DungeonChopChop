@@ -99,8 +99,16 @@ public class PlayerMove : MonoBehaviour
             if (inputVector.magnitude > 1)
                 inputVector.Normalize();
 
-            targetMoveVector.x = inputVector.x * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
-            targetMoveVector.z = inputVector.y * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
+            if (!playerInformation.HasCharmBool("inverted"))
+            {
+                targetMoveVector.x = inputVector.x * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
+                targetMoveVector.z = inputVector.y * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
+            }
+            else
+            {
+                targetMoveVector.x = -inputVector.x * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
+                targetMoveVector.z = -inputVector.y * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
+            }
 
             if (CameraFollow.Instance)
                 targetMoveVector = CameraFollow.Instance.ValidateMovePos(transform.position, targetMoveVector);
@@ -110,8 +118,15 @@ public class PlayerMove : MonoBehaviour
             {
                 if (!playerAttack.blocking)
                 {
-                    //transform.rotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y));
-                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y)), rotateSpeed * Time.deltaTime);
+                    if (!playerInformation.HasCharmBool("inverted"))
+                    {
+                        //transform.rotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y));
+                        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y)), rotateSpeed * Time.deltaTime);
+                    }
+                    else
+                    {
+                        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(-inputVector.x, 0, -inputVector.y)), rotateSpeed * Time.deltaTime);
+                    }
                 }
             }
             //checks to see if the user is grounded, if not apply gravity
