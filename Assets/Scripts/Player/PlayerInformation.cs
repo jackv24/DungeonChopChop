@@ -24,6 +24,9 @@ public class PlayerInformation : MonoBehaviour
     public int itemAmount;
     public List<InventoryItem> currentItems = new List<InventoryItem>();
 
+    [Header("Average Damage Output")]
+    public float damageOutput;
+
     public GameObject invincibleSphere;
 
     private Health health;
@@ -89,6 +92,9 @@ public class PlayerInformation : MonoBehaviour
 
     void Update()
     {
+        //sets the damage output
+        damageOutput = GetDamage();
+
         if (HasCharmBool("hideMap"))
         {
             mapHUD.SetActive(false);
@@ -444,6 +450,23 @@ public class PlayerInformation : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public float GetDamage()
+    {
+        return (strength * playerAttack.sword.damageMultiplier * GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * GetCharmFloat("dmgMultiWhenBurned") * GetCharmFloat("dmgMultiWhenPoisoned") * CoinDamageMultiplier();
+    }
+
+    float CoinDamageMultiplier()
+    {
+        if (HasCharmFloat("multiplierPerCoin"))
+        {
+            return ItemsManager.Instance.Coins * GetCharmFloat("multiplierPerCoin");
+        }
+        else
+        {
+            return 1.0f;
         }
     }
 

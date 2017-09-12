@@ -54,27 +54,16 @@ public class SwordCollision : MonoBehaviour {
             if (col.gameObject.GetComponent<Health>())
             {
                 Health enemyHealth = col.gameObject.GetComponent<Health>();
+
                 //calculates knockback depending on direction
                 enemyHealth.Knockback(playerInfo, playerAttack.transform.forward);
+
                 //checks if the player has a status condition
                 DoParticle(col);
-                if (playerHealth.HasStatusCondition())
-                {
-                    //if the player is burned or poisoned, a charm may affect the damage output
-                    if (playerHealth.isBurned || playerHealth.isPoisoned)
-                    {
-                        enemyHealth.AffectHealth((-playerInfo.strength * playerAttack.sword.damageMultiplier * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * playerInfo.GetCharmFloat("dmgMultiWhenBurned") * playerInfo.GetCharmFloat("dmgMultiWhenPoisoned"));
-                    }
-                    else
-                    {
-                        enemyHealth.AffectHealth(-playerInfo.strength * playerAttack.sword.damageMultiplier * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
-                    }
-                }
-                else
-                {
-                    //else just do the normal damage
-                    enemyHealth.AffectHealth(-playerInfo.strength * playerAttack.sword.damageMultiplier * playerInfo.GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit());
-                }
+
+                //else just do the normal damage
+                enemyHealth.AffectHealth(-playerInfo.GetDamage());
+
                 //checks what state the players animation is in
                 if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("TripleAttack"))
                 {
@@ -117,5 +106,4 @@ public class SwordCollision : MonoBehaviour {
         col.GetComponentInChildren<Animator>().enabled = true;
         animator.enabled = true;
     }
-
 }
