@@ -54,7 +54,6 @@ public class PlayerAttack : MonoBehaviour
 	private bool cancelDash = false;
     private bool comboStarted = false;
     private bool movingForward = false;
-    private bool movingBack = false;
 
     private Vector3 targetPosition = Vector3.zero;
 
@@ -178,11 +177,6 @@ public class PlayerAttack : MonoBehaviour
             if (movingForward)
             {
                 MoveForward(2);
-            }
-
-            if (movingBack)
-            {
-                MoveBack(moveBackOnHit);
             }
 
             if (playerHealth.isBurned)
@@ -429,26 +423,12 @@ public class PlayerAttack : MonoBehaviour
         characterController.Move(targetPosition * Time.deltaTime);
     }
 
-    void MoveBack(float speed)
-    {
-        Debug.Log("yo");
-        targetPosition = Vector3.Lerp(targetPosition, -transform.forward * speed, playerInformation.maxMoveSpeed * Time.deltaTime);
-        characterController.Move(targetPosition * Time.deltaTime);
-    }
-
     IEnumerator waitForSeconds(float seconds, bool movingBool)
     {
         movingBool = true;
         targetPosition = new Vector3(0, 0, 0);
         yield return new WaitForSeconds(seconds);
         movingBool = false;
-    }
-
-    public void DoMoveBack()
-    {
-        if (moveRoutine != null)
-            StopCoroutine(moveRoutine);
-        moveRoutine = StartCoroutine(waitForSeconds(.2f, movingBack));
     }
 
     void doSlash()

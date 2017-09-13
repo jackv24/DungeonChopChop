@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SwordCollision : MonoBehaviour {
 
+
+    public float knockbackOnHit = 5;
     public GameObject trail;
     public GameObject[] hitSmokes;
     public GameObject[] hitEffects;
@@ -88,7 +90,7 @@ public class SwordCollision : MonoBehaviour {
                 }
                 CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
 
-                playerAttack.DoMoveBack();
+                playerInfo.KnockbackPlayer(-playerInfo.transform.forward, knockbackOnHit);
             }
         }
         //if the player == Prop
