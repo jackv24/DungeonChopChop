@@ -110,11 +110,6 @@ public class PlayerAttack : MonoBehaviour
             animator.SetBool("Attacking", false);
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
-        {
-            DisableSword();
-        }
-
         //check if can actually attack
         //do basic attack
         if (!playerHealth.isDead)
@@ -459,6 +454,7 @@ public class PlayerAttack : MonoBehaviour
     void doSlash()
     {
         StartCoroutine(boolWait("Attack"));
+        animator.SetTrigger("SecondAttack");
         //if (moveRoutine != null)
         //    StopCoroutine(moveRoutine);
         //moveRoutine = StartCoroutine(waitForSeconds(.2f));
