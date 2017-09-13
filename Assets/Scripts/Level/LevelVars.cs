@@ -50,6 +50,11 @@ public class LevelVars : MonoBehaviour
 	}
 	public LevelData levelData = new LevelData();
 
+	private void Awake()
+	{
+		Instance = this;
+	}
+
 	void Start()
 	{
 		if(LevelGenerator.Instance)
@@ -59,8 +64,9 @@ public class LevelVars : MonoBehaviour
 		}
 	}
 
-	private void Awake()
+	void OnDestroy()
 	{
-		Instance = this;
+		if (Instance == this)
+			Instance = null;
 	}
 }

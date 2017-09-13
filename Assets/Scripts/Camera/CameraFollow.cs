@@ -55,7 +55,13 @@ public class CameraFollow : MonoBehaviour
 		}
 	}
 
-    void LateUpdate()
+	void OnDestroy()
+	{
+		if (Instance == this)
+			Instance = null;
+	}
+
+	void LateUpdate()
     {
 		targetPos = Vector3.zero;
 

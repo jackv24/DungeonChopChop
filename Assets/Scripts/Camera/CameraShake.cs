@@ -14,11 +14,11 @@ public class CameraShake : MonoBehaviour
 		Instance = this;
 	}
 
-	//void Update()
-	//{
-	//	if (Input.GetKeyDown(KeyCode.P))
-	//		ShakeScreen(0.2f, 1.0f, 0.2f);
-	//}
+	void OnDestroy()
+	{
+		if (Instance == this)
+			Instance = null;
+	}
 
 	/// <summary>
 	/// Causes the screen to shake according to parameters.
