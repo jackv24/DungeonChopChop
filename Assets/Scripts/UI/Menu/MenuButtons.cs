@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour {
 
 	public int SceneIndex = 2;
+	public float sceneLoadDelay = 0.5f;
+
+	private bool clicked = false;
 
 	// Use this for initialization
 	void Start () {
@@ -19,12 +22,27 @@ public class MenuButtons : MonoBehaviour {
 
 	public void ClickSinglePlayer()
 	{
-		GameManager.Instance.ChangeScene (SceneIndex);
+		if (!clicked)
+		{
+			clicked = true;
+			StartCoroutine(ChangeSceneDelay(SceneIndex));
+		}
 	}
 
 	public void ClickCoOp()
 	{
-		GameManager.Instance.ChangeScene (SceneIndex);
+		if (!clicked)
+		{
+			clicked = true;
+			StartCoroutine(ChangeSceneDelay(SceneIndex));
+		}
+	}
+
+	IEnumerator ChangeSceneDelay(int index)
+	{
+		yield return new WaitForSeconds(sceneLoadDelay);
+
+		GameManager.Instance.ChangeScene(index);
 	}
 
 	public void ClickOptions()
