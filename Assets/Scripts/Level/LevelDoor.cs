@@ -7,6 +7,16 @@ public class LevelDoor : MonoBehaviour
 	[Tooltip("How far the player must walk out after entering this door.")]
 	public float exitDistance = 2.0f;
 
+	[Header("Exit Decals")]
+	public GameObject grassDecalPrefab;
+	public GameObject desertDecalPrefab;
+	public GameObject fireDecalPrefab;
+	public GameObject iceDecalPrefab;
+	public GameObject forestDecalPrefab;
+	public GameObject dungeonDecalPrefab;
+
+	private GameObject oldDecalGraphic = null;
+
 	[Header("Set by Generator")]
 	public LevelTile targetTile;
 	public LevelDoor targetDoor;
@@ -124,6 +134,45 @@ public class LevelDoor : MonoBehaviour
 				yield return new WaitForEndOfFrame();
 				elapsedTime += Time.deltaTime;
 			}
+		}
+	}
+
+	public void ReplaceGraphic(LevelTile.Biomes biome)
+	{
+		GameObject newGraphic = null;
+
+		switch (biome)
+		{
+			case LevelTile.Biomes.Grass:
+				newGraphic = grassDecalPrefab;
+				break;
+			case LevelTile.Biomes.Desert:
+				newGraphic = desertDecalPrefab;
+				break;
+			case LevelTile.Biomes.Fire:
+				newGraphic = fireDecalPrefab;
+				break;
+			case LevelTile.Biomes.Ice:
+				newGraphic = iceDecalPrefab;
+				break;
+			case LevelTile.Biomes.Forest:
+				newGraphic = forestDecalPrefab;
+				break;
+			case LevelTile.Biomes.Dungeon:
+				newGraphic = dungeonDecalPrefab;
+				break;
+		}
+
+		if (newGraphic)
+		{
+			GameObject obj = Instantiate(newGraphic, transform);
+			obj.transform.localPosition = Vector3.zero;
+			obj.transform.localRotation = Quaternion.identity;
+
+			if (oldDecalGraphic)
+				DestroyImmediate(oldDecalGraphic);
+
+			oldDecalGraphic = obj;
 		}
 	}
 }
