@@ -27,6 +27,7 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask enemyMask;
 
     [Header("Other Vars")]
+    public float moveBackOnHit = 5;
     public bool blocking = false;
     public float speedWhenBurned = 10;
     public GameObject slashFX;
@@ -53,6 +54,7 @@ public class PlayerAttack : MonoBehaviour
 	private bool cancelDash = false;
     private bool comboStarted = false;
     private bool movingForward = false;
+    private bool movingBack = false;
 
     private Vector3 targetPosition = Vector3.zero;
 
@@ -181,6 +183,11 @@ public class PlayerAttack : MonoBehaviour
             if (movingForward)
             {
                 MoveForward(2);
+            }
+
+            if (movingBack)
+            {
+                MoveBack(moveBackOnHit);
             }
 
             if (playerHealth.isBurned)
@@ -421,27 +428,40 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool(boolName, false);
     }
 
-    public void MoveForward(float speed)
+    void MoveForward(float speed)
     {
         targetPosition = Vector3.Lerp(targetPosition, transform.forward * speed, playerInformation.maxMoveSpeed * Time.deltaTime);
         characterController.Move(targetPosition * Time.deltaTime);
     }
 
-    IEnumerator waitForSeconds(float seconds)
+    void MoveBack(float speed)
     {
-        movingForward = true;
+        Debug.Log("yo");
+        targetPosition = Vector3.Lerp(targetPosition, -transform.forward * speed, playerInformation.maxMoveSpeed * Time.deltaTime);
+        characterController.Move(targetPosition * Time.deltaTime);
+    }
+
+    IEnumerator waitForSeconds(float seconds, bool movingBool)
+    {
+        movingBool = true;
         targetPosition = new Vector3(0, 0, 0);
         yield return new WaitForSeconds(seconds);
-        movingForward = false;
+        movingBool = false;
+    }
+
+    public void DoMoveBack()
+    {
+        if (moveRoutine != null)
+            StopCoroutine(moveRoutine);
+        moveRoutine = StartCoroutine(waitForSeconds(.2f, movingBack));
     }
 
     void doSlash()
     {
-        animator.SetTrigger("Attack");
-
-        if (moveRoutine != null)
-            StopCoroutine(moveRoutine);
-        moveRoutine = StartCoroutine(waitForSeconds(.2f));
+        StartCoroutine(boolWait("Attack"));
+        //if (moveRoutine != null)
+        //    StopCoroutine(moveRoutine);
+        //moveRoutine = StartCoroutine(waitForSeconds(.2f));
         //StartCoroutine(slashWait("Attack"));
         //do slash things
     }
@@ -449,9 +469,9 @@ public class PlayerAttack : MonoBehaviour
     void doSecondSlash()
     {
         animator.SetTrigger("SecondAttack");
-        if (moveRoutine != null)
-            StopCoroutine(moveRoutine);
-        moveRoutine = StartCoroutine(waitForSeconds(.2f));
+        //if (moveRoutine != null)
+        //    StopCoroutine(moveRoutine);
+        //moveRoutine = StartCoroutine(waitForSeconds(.2f));
         //StartCoroutine(slashWait("SecondAttack"));
     }
 

@@ -196,12 +196,17 @@ public class LevelTile : MonoBehaviour
         }
 
         LevelBlock[] levelBlocks = GetComponentsInChildren<LevelBlock>();
-
         for(int i = 0; i < levelBlocks.Length; i++)
         {
             levelBlocks[i].Replace(biome);
         }
-    }
+
+		LevelDoor[] levelDoors = GetComponentsInChildren<LevelDoor>();
+		for (int i = 0; i < levelDoors.Length; i++)
+		{
+			levelDoors[i].ReplaceGraphic(biome);
+		}
+	}
 
 	public void EnsureBiomeContinuity()
 	{

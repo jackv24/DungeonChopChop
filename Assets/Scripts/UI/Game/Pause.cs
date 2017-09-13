@@ -47,6 +47,12 @@ public class Pause : MonoBehaviour {
     public void MainMenu()
     {
         ObjectPooler.PurgePools();
+
+		if (LevelGenerator.Instance)
+			LevelGenerator.Instance.Clear();
+
+		UnPauseGame();
+
         SceneManager.LoadScene("Game");
     }
 }
