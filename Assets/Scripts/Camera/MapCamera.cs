@@ -52,6 +52,12 @@ public class MapCamera : MonoBehaviour
 			canvasScaler = canvas.GetComponent<CanvasScaler>();
 	}
 
+	void OnDestroy()
+	{
+		if (Instance == this)
+			Instance = null;
+	}
+
 	void LateUpdate()
 	{
 		if (cameraFollow)
@@ -64,19 +70,22 @@ public class MapCamera : MonoBehaviour
 			//Update all icons
 			foreach (Icon icon in icons)
 			{
-				//Transform position from world to map viewport
-				Vector2 viewPos = cam.WorldToViewportPoint(icon.targetTransform.position);
-				//Map to actual UI image
-				Vector2 localPos = new Vector2(viewPos.x * mapRect.sizeDelta.x, viewPos.y * mapRect.sizeDelta.y);
-				Vector3 worldPos = mapRect.TransformPoint(localPos);
+				if (icon.targetTransform)
+				{
+					//Transform position from world to map viewport
+					Vector2 viewPos = cam.WorldToViewportPoint(icon.targetTransform.position);
+					//Map to actual UI image
+					Vector2 localPos = new Vector2(viewPos.x * mapRect.sizeDelta.x, viewPos.y * mapRect.sizeDelta.y);
+					Vector3 worldPos = mapRect.TransformPoint(localPos);
 
-				float ratio = Screen.height / canvasScaler.referenceResolution.y;
+					float ratio = Screen.height / canvasScaler.referenceResolution.y;
 
-				//Set icon position
-				icon.rectTransform.position = new Vector3(worldPos.x - mapRect.sizeDelta.x * ratio, worldPos.y, 1f);
+					//Set icon position
+					icon.rectTransform.position = new Vector3(worldPos.x - mapRect.sizeDelta.x * ratio, worldPos.y, 1f);
 
-				//Make sure icon does not go off screen
-				LimitToRadius(icon.rectTransform, rawMapRect, mapRadius * ratio);
+					//Make sure icon does not go off screen
+					LimitToRadius(icon.rectTransform, rawMapRect, mapRadius * ratio);
+				}
 			}
 		}
 	}

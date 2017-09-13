@@ -59,6 +59,12 @@ public class LevelGenerator : MonoBehaviour
 		showDebugMenu = Application.isEditor;
     }
 
+	void OnDestroy()
+	{
+		if (Instance == this)
+			Instance = null;
+	}
+
 	private void Update()
 	{
 		if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.D))

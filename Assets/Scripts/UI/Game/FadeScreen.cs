@@ -25,6 +25,12 @@ public class FadeScreen : MonoBehaviour
 			image.gameObject.SetActive(false);
 	}
 
+	void OnDestroy()
+	{
+		if (Instance == this)
+			Instance = null;
+	}
+
 	public void FadeInOut()
 	{
 		if (image)

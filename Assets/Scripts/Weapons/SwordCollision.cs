@@ -70,7 +70,7 @@ public class SwordCollision : MonoBehaviour {
                     if (animator.GetCurrentAnimatorStateInfo(1).normalizedTime < .7f)
                     {
                         //do the little pause for feelings
-                        StartCoroutine(QuickGamePause(col.collider));
+                        //StartCoroutine(QuickGamePause(col.collider));
                     }
                 }
                 //set the status effect depending on the weapons effect
@@ -87,6 +87,8 @@ public class SwordCollision : MonoBehaviour {
                     enemyHealth.SetSlowDeath(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
                 }
                 CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
+
+                playerAttack.DoMoveBack();
             }
         }
         //if the player == Prop
@@ -96,6 +98,7 @@ public class SwordCollision : MonoBehaviour {
             col.gameObject.GetComponent<PropDestroy>().DoEffect(col.contacts[0].point);
             Destroy(col.gameObject);
         }
+
     }
 
     IEnumerator QuickGamePause(Collider col)
