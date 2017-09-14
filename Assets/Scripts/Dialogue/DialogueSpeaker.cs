@@ -4,114 +4,100 @@ using UnityEngine;
 
 public class DialogueSpeaker : MonoBehaviour
 {
+	public delegate void PlayerGet(PlayerInformation playerInfo, bool value);
+	public event PlayerGet OnGetPlayer;
+
 	[Multiline]
 	public string[] lines = { "Default text" };
 	private int lastIndex = -1;
 
 	[Space()]
-	public float speakRange = 2.0f;
+	public Vector3 speakOffset;
+	public Vector3 speakArea;
 	public LayerMask playerLayer;
 	public float textBoxHeight = 3.0f;
 	public float textBoxDepth = 0.0f;
 
 	[Space()]
-	public List<DialogueSpeaker> group = new List<DialogueSpeaker>();
-
-	[Space()]
 	public GameObject dialogueBoxPrefab;
 
 	private DialogueBox currentBox;
+	private PlayerInformation playerInfo;
 
 	//Does not need to happen every frame
 	void FixedUpdate()
 	{
-		Collider[] cols = Physics.OverlapSphere(transform.position, speakRange, playerLayer);
+		Collider[] cols = Physics.OverlapBox(transform.position + speakOffset, speakArea / 2, transform.rotation, playerLayer);
 
 		//if colliders were found, player is in range
 		if (cols.Length > 0)
 		{
-			bool show = true;
-
-			if (group.Count > 1)
+			//if box isn't already showing, show box
+			if (!currentBox)
 			{
-				float closestDistance = float.MaxValue;
-				DialogueSpeaker closestSpeaker = null;
-
-				foreach(DialogueSpeaker speaker in group)
-				{
-					float distance = float.MaxValue;
-
-					foreach(Collider col in cols)
-					{
-						float d = Vector3.Distance(speaker.transform.position, col.transform.position);
-
-						if (d < distance)
-							distance = d;
-					}
-
-					if(distance < closestDistance)
-					{
-						closestDistance = distance;
-						closestSpeaker = speaker;
-					}
-				}
-
-				if (closestSpeaker != this)
-					show = false;
+				Open(cols[0].gameObject);
 			}
-
-			if (show)
-			{
-				//if box isn't already showing, show box
-				if (!currentBox)
-				{
-					//Position pooled dialogue box
-					GameObject obj = ObjectPooler.GetPooledObject(dialogueBoxPrefab);
-					obj.transform.position = transform.position + new Vector3(0, textBoxHeight, textBoxDepth);
-
-					currentBox = obj.GetComponent<DialogueBox>();
-
-					//Set random line
-					if (currentBox)
-					{
-						if (lines.Length > 0)
-						{
-							int index = lastIndex;
-
-							if (lines.Length > 1)
-							{
-								while (index == lastIndex)
-									index = Random.Range(0, lines.Length);
-							}
-							else
-								index = 0;
-
-							currentBox.SetDialogue(lines[index]);
-
-							lastIndex = index;
-						}
-						else
-							currentBox.SetDialogue("!NO LINES!");
-					}
-				}
-			}
-			else if (currentBox)
-				Close();
 		}
 		else if (currentBox)
 			Close();
 	}
 
-	void Close()
+	void Open(GameObject player)
 	{
-		//Close dialoue and set null
+		//Position pooled dialogue box
+		GameObject obj = ObjectPooler.GetPooledObject(dialogueBoxPrefab);
+		obj.transform.position = transform.position + new Vector3(0, textBoxHeight, textBoxDepth);
+
+		currentBox = obj.GetComponent<DialogueBox>();
+
+		//Set random line
+		if (currentBox)
+		{
+			if (lines.Length > 0)
+			{
+				int index = lastIndex;
+
+				if (lines.Length > 1)
+				{
+					while (index == lastIndex)
+						index = Random.Range(0, lines.Length);
+				}
+				else
+					index = 0;
+
+				currentBox.SetDialogue(lines[index]);
+
+				lastIndex = index;
+			}
+			else
+				currentBox.SetDialogue("!NO LINES!");
+
+			if (OnGetPlayer != null)
+			{
+				playerInfo = player.GetComponent<PlayerInformation>();
+
+				OnGetPlayer(playerInfo, true);
+			}
+		}
+	}
+
+	public void Close(bool disable = false)
+	{
+		//Close dialouge and set null
 		currentBox.CloseDialogue();
 
 		currentBox = null;
+
+		if (OnGetPlayer != null)
+			OnGetPlayer(playerInfo, false);
+
+		if (disable)
+			enabled = false;
 	}
 
 	void OnDrawGizmosSelected()
 	{
-		Gizmos.DrawWireSphere(transform.position, speakRange);
+		Gizmos.matrix = transform.localToWorldMatrix;
+		Gizmos.DrawWireCube(speakOffset, speakArea);
 	}
 }

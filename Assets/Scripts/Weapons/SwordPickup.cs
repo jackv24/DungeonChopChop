@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordPickup : MonoBehaviour {
+public class SwordPickup : MonoBehaviour
+{
 
     public bool canPickUp;
 
@@ -18,13 +19,19 @@ public class SwordPickup : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.GetComponent<PlayerAttack>())
+        if (col.GetComponent<PlayerInformation>())
         {
             if (canPickUp)
             {
-                PlayerAttack playerAttack = col.GetComponent<PlayerAttack>();
-                playerAttack.AddSword(GetComponent<SwordStats>());
+				Pickup(col.GetComponent<PlayerInformation>());
             }
         }
     }
+
+	void Pickup(PlayerInformation playerInfo)
+	{
+		PlayerAttack playerAttack = playerInfo.GetComponent<PlayerAttack>();
+
+		playerAttack.AddSword(GetComponent<SwordStats>());
+	}
 }

@@ -13,6 +13,8 @@ public class PlayerInputs : PlayerActionSet
 	public PlayerAction DashSlash;
 	public PlayerAction Block;
 
+	public PlayerAction Purchase;
+
 	public PlayerTwoAxisAction Move;
 
 	public InputDevice device = null;
@@ -30,6 +32,8 @@ public class PlayerInputs : PlayerActionSet
 		DashSlash = CreatePlayerAction ("Dash Slash");
 		Block = CreatePlayerAction ("Block");
 		Move = CreateTwoAxisPlayerAction (Left, Right, Down, Up);
+
+		Purchase = CreatePlayerAction("Purchase");
 	}
 
 	public void AssignDevice(InputDevice inputDevice)
@@ -56,6 +60,8 @@ public class PlayerInputs : PlayerActionSet
             DashSlash.AddDefaultBinding (Key.L);
 			DashSlash.AddDefaultBinding(Key.LeftShift);
 
+			Purchase.AddDefaultBinding(Key.E);
+
 			isKeyboard = true;
 		}
 		else
@@ -76,6 +82,8 @@ public class PlayerInputs : PlayerActionSet
 			Block.AddDefaultBinding (InputControlType.LeftTrigger);
 			BasicAttack.AddDefaultBinding (InputControlType.Action3);
 			DashSlash.AddDefaultBinding (InputControlType.RightTrigger);
+
+			Purchase.AddDefaultBinding(InputControlType.Action2);
 
 			IncludeDevices.Add (device);
 		}
