@@ -8,18 +8,49 @@ public class Shop : MonoBehaviour
 	public Transform itemSpawn;
 
 	public InventoryItem sellingItem;
+	private GameObject itemGraphic;
+
+	private DialogueSpeaker speaker;
+
+	private bool canPurchase = false;
+	private PlayerInputs input;
+	private PlayerInformation playerInfo;
+
+	void Update()
+	{
+		if(canPurchase && sellingItem && input != null && input.Purchase.WasPressed)
+		{
+			if(ItemsManager.Instance.Coins >= sellingItem.cost)
+			{
+				ItemsManager.Instance.Coins -= sellingItem.cost;
+
+				sellingItem.Pickup(playerInfo);
+
+				if(sellingItem.usePrefabForPickup && sellingItem.itemPrefab)
+				{
+					GameObject obj = ObjectPooler.GetPooledObject(sellingItem.itemPrefab);
+					obj.transform.position = playerInfo.transform.position;
+				}
+
+				Destroy(itemGraphic);
+				sellingItem = null;
+
+				speaker.Close(true);
+			}
+		}
+	}
 
 	public void SpawnItem(InventoryItem item)
 	{
 		sellingItem = item;
 
-		if(itemSpawn && item.itemPrefab)
+		if (itemSpawn && item.itemPrefab)
 		{
-			GameObject obj = Instantiate(item.itemPrefab, itemSpawn);
-			obj.transform.localPosition = Vector3.zero;
+			itemGraphic = Instantiate(item.itemPrefab, itemSpawn);
+			itemGraphic.transform.localPosition = Vector3.zero;
 
-			Component[] components = obj.GetComponentsInChildren<Component>();
-
+			//Only need to display this item, don't need any behaviours
+			Component[] components = itemGraphic.GetComponentsInChildren<Component>();
 			for(int i = components.Length - 1; i >= 0; i--)
 			{
 				if (!(components[i] is MeshRenderer || components[i] is MeshFilter || components[i] is Transform))
@@ -27,31 +58,28 @@ public class Shop : MonoBehaviour
 			}
 		}
 
-		DialogueSpeaker speaker = GetComponent<DialogueSpeaker>();
+		if (!speaker)
+		{
+			speaker = GetComponent<DialogueSpeaker>();
+
+			speaker.OnGetPlayer += AllowPurchase;
+		}
 
 		if(speaker && speaker.lines.Length > 0)
 		{
-			string text = speaker.lines[0];
+			speaker.enabled = true;
 
+			//Dialogue box should only show piece of text - the shop text
+			string text = speaker.lines[0];
 			speaker.lines = new string[] { string.Format(text, item.displayName, item.cost) };
 		}
 	}
 
-	public void SetGroup(List<Shop> shopGroup)
+	void AllowPurchase(PlayerInformation playerInfo, bool value)
 	{
-		List<DialogueSpeaker> speakers = new List<DialogueSpeaker>();
+		canPurchase = value;
+		this.playerInfo = playerInfo;
 
-		foreach(Shop shop in shopGroup)
-		{
-			DialogueSpeaker speaker = shop.GetComponent<DialogueSpeaker>();
-
-			if (speaker)
-				speakers.Add(speaker);
-		}
-
-		foreach(DialogueSpeaker speaker in speakers)
-		{
-			speaker.group = speakers;
-		}
+		input = InputManager.GetPlayerInput(playerInfo.playerIndex);
 	}
 }

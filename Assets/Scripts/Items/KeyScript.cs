@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyScript : MonoBehaviour {
+public class KeyScript : MonoBehaviour
+{
 
     public float floatSpeed = 1.0f;
     public float rotateSpeed = 5;
     public float floatMagnitude = 1.0f;
+
+	[Space()]
+	public InventoryItem keyItem;
 
     private bool doFloat = false;
     private Rigidbody rb;
@@ -27,10 +31,15 @@ public class KeyScript : MonoBehaviour {
     {
         //checks if the player collides with the item
         if (col.tag == "Player1" || col.tag == "Player2") {
-            ItemsManager.Instance.Keys += 1 * (int)col.GetComponent<PlayerInformation>().GetCharmFloat("keyMultiplier");
-            gameObject.SetActive (false);
+			Pickup(col.GetComponent<PlayerInformation>());
         }
     }
+
+	void Pickup(PlayerInformation playerInfo)
+	{
+		ItemsManager.Instance.Keys += 1 * (int)playerInfo.GetCharmFloat("keyMultiplier");
+		gameObject.SetActive(false);
+	}
 
     void OnEnable()
     {

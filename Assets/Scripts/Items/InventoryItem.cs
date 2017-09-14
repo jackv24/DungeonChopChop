@@ -8,6 +8,7 @@ public class InventoryItem : BaseItem
 	public int cost = 0;
 
 	public GameObject itemPrefab;
+	public bool usePrefabForPickup = false;
 
     [System.Serializable]
     public class Item

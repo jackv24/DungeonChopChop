@@ -22,17 +22,14 @@ public class ProjectileCollision : MonoBehaviour {
 					{
 						if (playerInfo.chanceChecker ("immuneChance") == 0) 
 						{
-							col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer * playerInfo.resistance));
+							col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer / playerInfo.resistance));
 						}
 					} else 
 					{
-						col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer * playerInfo.resistance));
+						col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer / playerInfo.resistance));
 					}
 				}
-			} else
-			{
-				col.transform.GetComponent<Health> ().AffectHealth ((int)(-damageAmount * damageMultiplyer));
-			}
+			} 
 			//check to see if collider has an animator
 			if (col.gameObject.GetComponentInChildren<Animator> ())
 			{
