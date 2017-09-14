@@ -43,9 +43,11 @@ public class EnemyAttack : MonoBehaviour
     private float randomInterval = 0;
 
     private EnemyMove enemyMove;
+    private Animator animator;
 
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         enemyMove = GetComponent<EnemyMove>();
     }
 
@@ -107,7 +109,7 @@ public class EnemyAttack : MonoBehaviour
         } 
     }
 
-    void ShootCircle()
+    public void ShootCircle()
     {
         angle = circleAngle;
         for (int i = 0; i < projAmount; i++)
@@ -131,7 +133,7 @@ public class EnemyAttack : MonoBehaviour
         //count up until the counter has reached the interval time, then shoot bullet and restart
         if (shootIntervalCounter > (timeTillInterval * 60))
         {
-            ShootCircle();
+            animator.SetTrigger("Attack");
             shootIntervalCounter = 0;
         } 
     }

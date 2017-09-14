@@ -64,7 +64,7 @@ public class SwordCollision : MonoBehaviour {
                 DoParticle(col);
 
                 //else just do the normal damage
-                enemyHealth.AffectHealth(-playerInfo.GetDamage());
+                enemyHealth.AffectHealth(-playerInfo.GetSwordDamage());
 
                 //checks what state the players animation is in
                 if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("TripleAttack"))

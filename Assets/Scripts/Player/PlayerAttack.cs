@@ -183,6 +183,11 @@ public class PlayerAttack : MonoBehaviour
             {
                 MoveForward(speedWhenBurned);
             }
+
+            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
+            {
+                DisableSword();
+            }
         }
     }
 
@@ -413,7 +418,7 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator boolWait(string boolName)
     {
         animator.SetBool(boolName, true);
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(.1f);
         animator.SetBool(boolName, false);
     }
 
@@ -433,8 +438,8 @@ public class PlayerAttack : MonoBehaviour
 
     void doSlash()
     {
-        StartCoroutine(boolWait("Attack"));
-        animator.SetTrigger("SecondAttack");
+        animator.SetTrigger("Attack");
+        //animator.SetTrigger("SecondAttack");
         //if (moveRoutine != null)
         //    StopCoroutine(moveRoutine);
         //moveRoutine = StartCoroutine(waitForSeconds(.2f));
@@ -444,7 +449,7 @@ public class PlayerAttack : MonoBehaviour
 
     void doSecondSlash()
     {
-        animator.SetTrigger("SecondAttack");
+        StartCoroutine(boolWait("SecondAttack"));
         //if (moveRoutine != null)
         //    StopCoroutine(moveRoutine);
         //moveRoutine = StartCoroutine(waitForSeconds(.2f));
