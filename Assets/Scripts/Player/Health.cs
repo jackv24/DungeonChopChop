@@ -30,8 +30,6 @@ public class Health : MonoBehaviour
     public Color poisonColor;
     public Color burnColor;
     public Color slowlyDyingColor;
-    public int tickFlashAmount;
-    public float tickTimeBetweenFlash;
 
     [Space()]
     public GameObject[] hitParticles;

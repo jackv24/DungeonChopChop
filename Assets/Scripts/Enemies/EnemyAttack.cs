@@ -173,7 +173,9 @@ public class EnemyAttack : MonoBehaviour
                         col.transform.GetComponent<Health>().Damaged();
                         col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch / playerInfo.resistance / col.transform.GetComponent<PlayerAttack>().shield.blockingResistance);
                     }
-                    enemyMove.runAwayForSeconds();
+
+                    if (enemyMove)
+                        enemyMove.runAwayForSeconds();
                 }
             }
         }
