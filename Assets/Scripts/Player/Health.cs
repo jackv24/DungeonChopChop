@@ -177,7 +177,7 @@ public class Health : MonoBehaviour
 
     IEnumerator DisableNav(float seconds)
     {
-        if (GetComponent<EnemyMove>())
+        if (GetComponent<UnityEngine.AI.NavMeshAgent>())
         {
             GetComponent<EnemyMove>().usingNav = false;
             GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;

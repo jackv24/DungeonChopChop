@@ -69,16 +69,35 @@ public class Chest : MonoBehaviour
 		yield return new WaitForSeconds(releaseItemDelay);
 
 		//Spawn object
-		GameObject obj = ObjectPooler.GetPooledObject(LevelVars.Instance.droppedItemPrefab);
-		obj.transform.position = transform.position + Vector3.up;
+		GameObject obj = null;
 
 		//Set containing item
-		ItemPickup pickup = obj.GetComponent<ItemPickup>();
-		if (pickup)
-			pickup.representingItem = containingItem;
+		if (containingItem is Charm)
+		{
+			obj = ObjectPooler.GetPooledObject(LevelVars.Instance.droppedCharmPrefab);
 
-		//Throw out of chest
-		Rigidbody body = obj.GetComponent<Rigidbody>();
-		body.AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
+			CharmPickup pickup = obj.GetComponent<CharmPickup>();
+			if (pickup)
+				pickup.representingCharm = (Charm)containingItem;
+		}
+		else if(containingItem is InventoryItem)
+		{
+			InventoryItem item = (InventoryItem)containingItem;
+
+			if(item.itemPrefab)
+			{
+				obj = ObjectPooler.GetPooledObject(item.itemPrefab);
+			}
+		}
+
+		if (obj)
+		{
+			obj.transform.position = transform.position + Vector3.up;
+
+			//Throw out of chest
+			Rigidbody body = obj.GetComponent<Rigidbody>();
+			if(body)
+				body.AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
+		}
 	}
 }
