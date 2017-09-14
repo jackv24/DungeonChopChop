@@ -79,11 +79,9 @@ public class EnemyAttack : MonoBehaviour
         GameObject projectile = ObjectPooler.GetPooledObject(projecticle.gameObject);
         projectile.transform.position = transform.position;
         projectile.transform.rotation = transform.rotation;
-        ;
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
         projectile.GetComponent<ProjectileCollision>().damageMultiplyer = attackStrength;
-        //make the projectile move
-        rb.AddForce(transform.forward * thrust, ForceMode.Impulse); 
+        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
+        projectile.GetComponent<ProjectileCollision>().thrust = thrust;
     }
 
     void BasicShootIntervals()
@@ -119,10 +117,9 @@ public class EnemyAttack : MonoBehaviour
             projectile.transform.position = transform.position;
             projectile.transform.rotation = transform.rotation;
             projectile.transform.Rotate(0, angle, 0);
-            Rigidbody rb = projectile.GetComponent<Rigidbody>();
             projectile.GetComponent<ProjectileCollision>().damageMultiplyer = attackStrength;
-            //make the projectile move
-            rb.AddForce(projectile.transform.forward * thrust, ForceMode.Impulse); 
+            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
+            projectile.GetComponent<ProjectileCollision>().thrust = thrust;
             angle += circleAngle;
         }
     }

@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PropDestroy : MonoBehaviour {
 
-    public GameObject[] PropEffects;
+    public int hitAmount;
+    public int maxParticleAmountPerHit;
+    public GameObject[] dustEffects;
+    public GameObject[] smokeEffect;
+    public GameObject[] shrapnelEffect;
 
 	// Use this for initialization
 	void Start () {
@@ -13,14 +17,39 @@ public class PropDestroy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (hitAmount <= 0)
+        {
+            ChoseEffectAndAmount();
+            ChoseEffectAndAmount();
+            gameObject.SetActive(false);
+        }
 	}
+
+    void ChoseEffectAndAmount()
+    {
+        int random = Random.Range(1, maxParticleAmountPerHit);
+        int number = 0;
+        //loop through the amount of particles number
+        for (int i = 0; i < random; i++)
+        {
+            //spawns 1 of each particle
+            number = Random.Range(0, dustEffects.Length);
+            GameObject effect = ObjectPooler.GetPooledObject(dustEffects[number]);
+            effect.transform.position = transform.position + (new Vector3(Random.value, Random.value, Random.value) / 2);
+
+            number = Random.Range(0, smokeEffect.Length);
+            effect = ObjectPooler.GetPooledObject(smokeEffect[number]);
+            effect.transform.position = transform.position + (new Vector3(Random.value, Random.value, Random.value) / 2);
+
+            number = Random.Range(0, dustEffects.Length);
+            effect = ObjectPooler.GetPooledObject(shrapnelEffect[number]);
+            effect.transform.position = transform.position + (new Vector3(Random.value, Random.value, Random.value) / 2);
+        }
+    }
 
     public void DoEffect(Vector3 position)
     {
-        int randomEffect = Random.Range(0, PropEffects.Length);
-        GameObject smoke = ObjectPooler.GetPooledObject(PropEffects[randomEffect]);
-        smoke.transform.position = position;
+        ChoseEffectAndAmount();
 
         //do drop
         GetComponent<Drops>().DoDrop();
