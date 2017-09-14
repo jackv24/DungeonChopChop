@@ -24,7 +24,7 @@ public class LevelVars : MonoBehaviour
 	public GameObject dungeonParticles;
 
 	[Header("Misc")]
-	public GameObject droppedItemPrefab;
+	public GameObject droppedCharmPrefab;
 
 	[Space()]
 	public LayerMask groundLayer;

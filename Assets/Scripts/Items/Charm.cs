@@ -102,12 +102,12 @@ public class Charm : BaseItem
 			}
 		}
 
-		GameObject obj = ObjectPooler.GetPooledObject(LevelVars.Instance.droppedItemPrefab);
+		GameObject obj = ObjectPooler.GetPooledObject(LevelVars.Instance.droppedCharmPrefab);
 		obj.transform.position = playerInfo.transform.position + Vector3.up;
 
-		ItemPickup pickup = obj.GetComponent<ItemPickup>();
+		CharmPickup pickup = obj.GetComponent<CharmPickup>();
 
 		if(pickup)
-			pickup.representingItem = this;
+			pickup.representingCharm = this;
 	}
 }
