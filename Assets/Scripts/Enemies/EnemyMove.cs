@@ -26,11 +26,11 @@ public class EnemyMove : MonoBehaviour
         usingNav = true;
     }
 
-	void OnDisable()
-	{
-		if(agent)
-			agent.enabled = false;
-	}
+    void OnDisable()
+    {
+        if (agent)
+            agent.enabled = false;
+    }
 
     void FixedUpdate()
     {
@@ -52,8 +52,11 @@ public class EnemyMove : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         players = FindObjectsOfType<PlayerInformation>();
-        agent = GetComponent<NavMeshAgent>();
-        originalSpeed = agent.speed;
+        if (GetComponent<NavMeshAgent>())
+        {
+            agent = GetComponent<NavMeshAgent>();
+            originalSpeed = agent.speed;
+        }
     }
 
     protected void FollowPlayer()
@@ -114,20 +117,23 @@ public class EnemyMove : MonoBehaviour
 
     protected void RunAwayFromPlayer()
     {
-        //rotates away from the player
-        transform.rotation = Quaternion.LookRotation(transform.position - currentPlayer.transform.position);
+        if (GetComponent<NavMeshAgent>())
+        {
+            //rotates away from the player
+            transform.rotation = Quaternion.LookRotation(transform.position - currentPlayer.transform.position);
 
-        //Gets a new vector position in front of the enemy 
-        Vector3 runTo = transform.position + transform.forward * 5;
+            //Gets a new vector position in front of the enemy 
+            Vector3 runTo = transform.position + transform.forward * 5;
 
-        NavMeshHit hit;
+            NavMeshHit hit;
 
-        //checks to make sure the point is reachable on the nav mesh
-        NavMesh.SamplePosition(runTo, out hit, 5, 1 << NavMesh.GetAreaFromName("Walkable"));
+            //checks to make sure the point is reachable on the nav mesh
+            NavMesh.SamplePosition(runTo, out hit, 5, 1 << NavMesh.GetAreaFromName("Walkable"));
 
-        //moves to that position
-        if (usingNav)
-            agent.SetDestination(hit.position);
+            //moves to that position
+            if (usingNav)
+                agent.SetDestination(hit.position);
+        }
     }
 
     protected Transform GetClosestPlayer()
@@ -172,6 +178,12 @@ public class EnemyMove : MonoBehaviour
         if (closestEnemy)
             return closestEnemy.transform;
         return transform;
+    }
+
+    protected void LookAtClosestPlayer(float rotateSpeed)
+    {
+        Vector3 rot = Quaternion.LookRotation(GetClosestPlayer().position - transform.position).eulerAngles;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(rot), rotateSpeed * Time.deltaTime);
     }
 
     public void runAwayForSeconds()

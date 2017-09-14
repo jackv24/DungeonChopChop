@@ -16,6 +16,7 @@ public class EnemyAttack : MonoBehaviour
 
     public TypesOfAttack attackingType;
     public ProjecticleVariables projecticle;
+    public GameObject shootPosition;
 
     public float thrust;
     [Tooltip("This values x projectile damage")]
@@ -73,11 +74,11 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    void Shootforward()
+    public void Shootforward()
     {
         //create the projecticle
         GameObject projectile = ObjectPooler.GetPooledObject(projecticle.gameObject);
-        projectile.transform.position = transform.position;
+        projectile.transform.position = shootPosition.transform.position;
         projectile.transform.rotation = transform.rotation;
         projectile.GetComponent<ProjectileCollision>().damageMultiplyer = attackStrength;
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
@@ -114,7 +115,8 @@ public class EnemyAttack : MonoBehaviour
         {
             //create the projecticle
             GameObject projectile = ObjectPooler.GetPooledObject(projecticle.gameObject);
-            projectile.transform.position = transform.position;
+            if (!shootPosition)
+                projectile.transform.position = transform.position;
             projectile.transform.rotation = transform.rotation;
             projectile.transform.Rotate(0, angle, 0);
             projectile.GetComponent<ProjectileCollision>().damageMultiplyer = attackStrength;
