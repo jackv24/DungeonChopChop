@@ -17,10 +17,13 @@ public class Health : MonoBehaviour
 
     [Space()]
     public bool IsEnemy;
+
+    [Space()]
     public bool isPoisoned = false;
     public bool isBurned = false;
     public bool isSlowlyDying = false;
 
+    [Space()]
     public bool isDead = false;
 
     [Header("Tick Colors")]
@@ -38,7 +41,6 @@ public class Health : MonoBehaviour
     [Header("Other Vals")]
     public float timeBetweenFlash = 0.1f;
     public int amountToFlash = 5;
-    public GameObject fireParticle;
 
     private PlayerInformation playerInfo;
     private Animator animator;
@@ -175,11 +177,14 @@ public class Health : MonoBehaviour
 
     IEnumerator DisableNav(float seconds)
     {
-        GetComponent<EnemyMove>().usingNav = false;
-        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-        yield return new WaitForSeconds(seconds);
-        GetComponent<EnemyMove>().usingNav = true;
-        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+        if (GetComponent<EnemyMove>())
+        {
+            GetComponent<EnemyMove>().usingNav = false;
+            GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            yield return new WaitForSeconds(seconds);
+            GetComponent<EnemyMove>().usingNav = true;
+            GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+        }
     }
 
     public void HitFlash()

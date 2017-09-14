@@ -744,8 +744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
-  projecticle: {fileID: 114985999745943196, guid: 2f5e09f5d3b8b784aa23dbea116343df,
-    type: 2}
+  projecticle: {fileID: 0}
   thrust: 50
   attackStrength: 1
   damageOnTouch: 1
@@ -766,6 +765,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runAwayAfterAttackTime: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   usingNav: 1
   radius: 20
 --- !u!114 &114770606805809696
@@ -790,8 +792,8 @@ MonoBehaviour:
   poisonColor: {r: 0.94482803, g: 0, b: 1, a: 1}
   burnColor: {r: 1, g: 0, b: 0, a: 1}
   slowlyDyingColor: {r: 0.19999993, g: 1, b: 0, a: 1}
-  tickFlashAmount: 0
-  tickTimeBetweenFlash: 0
+  tickFlashAmount: 4
+  tickTimeBetweenFlash: 0.2
   hitParticles:
   - {fileID: 0}
   hitColor: {r: 1, g: 0.19852942, b: 0.19852942, a: 1}
