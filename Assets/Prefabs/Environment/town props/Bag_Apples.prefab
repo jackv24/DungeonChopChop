@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4199014337087542}
   - component: {fileID: 33658217627513940}
   - component: {fileID: 23583457404705750}
-  - component: {fileID: 95481996137157710}
   - component: {fileID: 65617308201808466}
   - component: {fileID: 114602784824004894}
   - component: {fileID: 54382971789322114}
@@ -98,7 +97,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &65617308201808466
 BoxCollider:
@@ -112,23 +111,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2145796, y: 0.9740325, z: 0.982687}
   m_Center: {x: 0, y: 0.48701626, z: 0.0000009536743}
---- !u!95 &95481996137157710
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1537551300635328}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 31f3606f7b39d8940b22c120141e20c4, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114602784824004894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,17 +122,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PropEffects:
-  - {fileID: 1549528525467566, guid: 8bc140c546c0b184e8a3878a1a2be22d, type: 2}
-  - {fileID: 1928837666263156, guid: e644d976e5cf25d41a8dc76393b7f5a8, type: 2}
-  - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
-  - {fileID: 1928837666263156, guid: c4a34b5b92c3a504c8ebf8e13fd4f0ad, type: 2}
-  - {fileID: 1928837666263156, guid: 5f01f3575acdaf84b84aef45e526e784, type: 2}
-  - {fileID: 1928837666263156, guid: 354fc149d96266e44b85796b74292878, type: 2}
-  - {fileID: 1537551300635328}
+  hitAmount: 3
+  maxParticleAmountPerHit: 3
+  dustEffects:
   - {fileID: 1004915465583228, guid: 2a2d6f42c0139774880df8b9f1374650, type: 2}
   - {fileID: 1827767987465284, guid: 900be820c1e06ce4aa92c0828c02d200, type: 2}
   - {fileID: 1354737460173572, guid: 4b29ec138600e1141817e3a90d959d5d, type: 2}
+  smokeEffect:
+  - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
+  - {fileID: 1928837666263156, guid: e644d976e5cf25d41a8dc76393b7f5a8, type: 2}
+  - {fileID: 1549528525467566, guid: 8bc140c546c0b184e8a3878a1a2be22d, type: 2}
+  shrapnelEffect:
+  - {fileID: 1928837666263156, guid: c4a34b5b92c3a504c8ebf8e13fd4f0ad, type: 2}
+  - {fileID: 1928837666263156, guid: 5f01f3575acdaf84b84aef45e526e784, type: 2}
+  - {fileID: 1928837666263156, guid: 354fc149d96266e44b85796b74292878, type: 2}
 --- !u!114 &114924582621571980
 MonoBehaviour:
   m_ObjectHideFlags: 1

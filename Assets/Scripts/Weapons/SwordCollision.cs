@@ -98,7 +98,7 @@ public class SwordCollision : MonoBehaviour {
         {
             //do the props effect then destroy it
             col.gameObject.GetComponent<PropDestroy>().DoEffect(col.contacts[0].point);
-            Destroy(col.gameObject);
+            col.gameObject.GetComponent<PropDestroy>().hitAmount--;
         }
 
     }
