@@ -1394,6 +1394,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 2048
+  moveBackOnHit: 5
   blocking: 0
   speedWhenBurned: 10
   slashFX: {fileID: 1454523227821080, guid: ff3d3a84a294e1f43b09bc0c018e38df, type: 2}
@@ -1425,6 +1426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a927be7f714cb4c9ea35f1f69acd16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackOnHit: 5
   trail: {fileID: 1714334807711704}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -1526,6 +1528,7 @@ MonoBehaviour:
   currentCharms: []
   itemAmount: 0
   currentItems: []
+  damageOutput: 0
   invincibleSphere: {fileID: 1522217988136000}
 --- !u!114 &114899894684300704
 MonoBehaviour:
@@ -1560,14 +1563,10 @@ MonoBehaviour:
   poisonColor: {r: 0.986207, g: 0, b: 1, a: 1}
   burnColor: {r: 1, g: 0, b: 0, a: 1}
   slowlyDyingColor: {r: 0.034482718, g: 1, b: 0, a: 1}
-  tickFlashAmount: 0
-  tickTimeBetweenFlash: 0
   hitParticles: []
   hitColor: {r: 1, g: 0, b: 0, a: 1}
   timeBetweenFlash: 0.1
   amountToFlash: 5
-  fireParticle: {fileID: 1786516756489872, guid: df2b406345013c144a8b9c91f1a7991f,
-    type: 2}
 --- !u!114 &114950930933799268
 MonoBehaviour:
   m_ObjectHideFlags: 1
