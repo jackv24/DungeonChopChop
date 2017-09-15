@@ -22,6 +22,10 @@ public class PropDestroy : MonoBehaviour {
             ChoseEffectAndAmount();
             ChoseEffectAndAmount();
 
+            int number = Random.Range(0, shrapnelEffect.Length);
+            GameObject effect = ObjectPooler.GetPooledObject(shrapnelEffect[number]);
+            effect.transform.position = transform.position + (new Vector3(Random.value, Random.value, Random.value) / 2);
+
             //do drop
             GetComponent<Drops>().DoDrop();
 
@@ -43,10 +47,6 @@ public class PropDestroy : MonoBehaviour {
 
             number = Random.Range(0, smokeEffect.Length);
             effect = ObjectPooler.GetPooledObject(smokeEffect[number]);
-            effect.transform.position = transform.position + (new Vector3(Random.value, Random.value, Random.value) / 2);
-
-            number = Random.Range(0, dustEffects.Length);
-            effect = ObjectPooler.GetPooledObject(shrapnelEffect[number]);
             effect.transform.position = transform.position + (new Vector3(Random.value, Random.value, Random.value) / 2);
         }
     }

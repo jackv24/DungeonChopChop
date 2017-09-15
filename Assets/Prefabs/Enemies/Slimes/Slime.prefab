@@ -653,9 +653,8 @@ MonoBehaviour:
   poisonColor: {r: 1, g: 0, b: 0.972414, a: 0.616}
   burnColor: {r: 1, g: 0, b: 0, a: 0.609}
   slowlyDyingColor: {r: 0.07586217, g: 1, b: 0, a: 0.622}
-  tickFlashAmount: 4
-  tickTimeBetweenFlash: 0.2
-  hitParticles: []
+  hitParticles:
+  - {fileID: 1160213654585448, guid: 4437b81ad51e06b43b3b65ff3984ab03, type: 2}
   hitColor: {r: 1, g: 0.19852942, b: 0.19852942, a: 0.528}
   timeBetweenFlash: 0.1
   amountToFlash: 2
@@ -672,6 +671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackingType: 0
   projecticle: {fileID: 0}
+  shootPosition: {fileID: 0}
   thrust: 20
   attackStrength: 1
   damageOnTouch: 1
