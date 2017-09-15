@@ -6,6 +6,8 @@ public class ParticleEmmissionScaler : MonoBehaviour
 {
 	public Vector3 referenceSize = Vector3.one;
 
+    public float multiplier = 1.0f;
+
 	private ParticleSystem[] systems;
 	private float[] initialEmissions;
 
@@ -36,7 +38,7 @@ public class ParticleEmmissionScaler : MonoBehaviour
 			float ratio = shape.scale.magnitude / referenceSize.magnitude;
 
 			var emission = systems[i].emission;
-			emission.rateOverTimeMultiplier = ratio * initialEmissions[i];
+            emission.rateOverTimeMultiplier = ratio * initialEmissions[i] * multiplier;
 		}
 	}
 }

@@ -144,36 +144,45 @@ public class PlayerMove : MonoBehaviour
 
 	void OnTriggerEnter(Collider col)
 	{
-		if (col.tag == "Mud")
-		{
-            slowdownMultiplier = inMudSpeed;
-		}
-		if (col.tag == "Ice")
-		{
-			acceleration = 1;
-		} 
+        if (!ItemsManager.Instance.hasBoots)
+        {
+            if (col.tag == "Mud")
+            {
+                slowdownMultiplier = inMudSpeed;
+            }
+            if (col.tag == "Ice")
+            {
+                acceleration = 1;
+            }
+        }
 	}
 
 	void OnTriggerStay(Collider col)
 	{
-		//checks if the floor is ice
-		if (col.tag == "Ice")
-		{
-			acceleration = 1;
-		}
+        if (!ItemsManager.Instance.hasBoots)
+        {
+            //checks if the floor is ice
+            if (col.tag == "Ice")
+            {
+                acceleration = 1;
+            }
+        }
 	}
 
 	void OnTriggerExit(Collider col)
-	{
-		if (col.tag == "Ice")
-		{
-			fromMoveVector = Vector3.zero;
-			acceleration = 10f;
-		}
-		else if (col.tag == "Mud")
-		{
-            slowdownMultiplier = 1;
-		}
-	}
+    {
+        if (!ItemsManager.Instance.hasBoots)
+        {
+            if (col.tag == "Ice")
+            {
+                fromMoveVector = Vector3.zero;
+                acceleration = 10f;
+            }
+            else if (col.tag == "Mud")
+            {
+                slowdownMultiplier = 1;
+            }
+        }
+    }
 
 }

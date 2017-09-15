@@ -11,6 +11,10 @@ public class ItemsManager : MonoBehaviour {
 	public int Keys;
 	public int Coins;
 
+    [Space()]
+    public bool hasGoggles = false;
+    public bool hasBoots = false;
+
     void Awake()
     {
         Instance = this;
