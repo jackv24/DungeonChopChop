@@ -206,7 +206,7 @@ public class PlayerAttack : MonoBehaviour
         newSword.GetComponent<SwordCollision>().trail.SetActive(true);
 
         //sets the target position above the player
-        Vector3 targetPosition = new Vector3(sword.transform.position.x, 10, sword.transform.position.z);
+        Vector3 targetPosition = new Vector3(sword.transform.position.x, 6, sword.transform.position.z);
 
         //adds right to the vector so its not directly ontop of the player
         targetPosition += newSword.transform.right;
@@ -236,7 +236,7 @@ public class PlayerAttack : MonoBehaviour
                 newSword.transform.position = Vector3.MoveTowards(newSword.transform.position, targetPosition, 50 * Time.deltaTime);
             }
             //if the rotations doesn't equal the target rotation, lerp towards it
-            newSword.transform.eulerAngles = Vector3.Lerp(newSword.transform.eulerAngles, new Vector3(0, 0, 180), 10 * Time.deltaTime);
+            newSword.transform.eulerAngles = Vector3.Lerp(newSword.transform.eulerAngles, new Vector3(0, 0, 180), 50 * Time.deltaTime);
             yield return new WaitForSeconds(.01f);
         }
 

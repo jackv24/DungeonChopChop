@@ -374,9 +374,9 @@ public class Health : MonoBehaviour
         while (isPoisoned)
         {
             counter++;
-            SetOGColor();
-            yield return new WaitForSeconds(timeBetweenPoison / 2);
             SetColor(poisonColor);
+            yield return new WaitForSeconds(timeBetweenPoison / 2);
+            SetOGColor();
             AffectHealth(-damagePerTick);
             animator.SetTrigger("Flinch");
             if (counter >= duration)
@@ -384,7 +384,6 @@ public class Health : MonoBehaviour
                 isPoisoned = false;
             }
             yield return new WaitForSeconds(timeBetweenPoison);
-            SetOGColor();
         }
     }
 
@@ -408,17 +407,17 @@ public class Health : MonoBehaviour
         while (isBurned)
         {
             counter++;
-            SetOGColor();
-            yield return new WaitForSeconds(timeBetweenBurn / 2);
             SetColor(burnColor);
+            yield return new WaitForSeconds(timeBetweenBurn / 2);
+
             AffectHealth(-damagePerTick);
             animator.SetTrigger("Flinch");
             if (counter >= duration)
             {
                 isBurned = false;
             }
-            yield return new WaitForSeconds(timeBetweenBurn / 2);
             SetOGColor();
+            yield return new WaitForSeconds(timeBetweenBurn / 2);
         }
     }
 
@@ -441,9 +440,9 @@ public class Health : MonoBehaviour
         while (isSlowlyDying)
         {
             counter++;
-            SetOGColor();
-            yield return new WaitForSeconds(timeBetweenBurn / 2);
             SetColor(slowlyDyingColor);
+            yield return new WaitForSeconds(timeBetweenBurn / 2);
+            SetOGColor();
             AffectHealth(-damagePerTick);
             animator.SetTrigger("Flinch");
             if (counter >= duration)
@@ -451,7 +450,6 @@ public class Health : MonoBehaviour
                 isSlowlyDying = false;
             }
             yield return new WaitForSeconds(timeBetweenBurn / 2);
-            SetOGColor();
         }
     }
 }
