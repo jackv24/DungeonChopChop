@@ -36,9 +36,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4350144929049676}
-  - component: {fileID: 114613358554336482}
   - component: {fileID: 65631837384974850}
   - component: {fileID: 65477393951073422}
+  - component: {fileID: 114204552900908050}
+  - component: {fileID: 54234136416032906}
   m_Layer: 0
   m_Name: snowBoot_mesh
   m_TagString: Untagged
@@ -65,14 +66,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1590836285822614}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.355, y: 0.019774389, z: 0.030037865}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -369.0907, y: -545.63464, z: 891.66}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4180779028185906}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!23 &23809026382404188
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -112,6 +113,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358769919227964}
   m_Mesh: {fileID: 4300000, guid: 0ee4ecb76b1dd494baf3a83ee2afe859, type: 3}
+--- !u!54 &54234136416032906
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1590836285822614}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!65 &65477393951073422
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -119,7 +135,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1590836285822614}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.12587795, y: 0.14293414, z: 0.20385554}
@@ -136,7 +152,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1269823, z: 0.15063486}
   m_Center: {x: 0, y: 0.05438322, z: -0.025317423}
---- !u!114 &114613358554336482
+--- !u!114 &114204552900908050
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -144,7 +160,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1590836285822614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d981f969f6d3e94b93c175457d3f95f, type: 3}
+  m_Script: {fileID: 11500000, guid: 309151e0638a5064b820311617bca085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   iconRenderer: {fileID: 0}
