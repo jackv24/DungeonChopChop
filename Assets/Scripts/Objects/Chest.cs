@@ -76,7 +76,7 @@ public class Chest : MonoBehaviour
 		{
 			obj = ObjectPooler.GetPooledObject(LevelVars.Instance.droppedCharmPrefab);
 
-			CharmPickup pickup = obj.GetComponent<CharmPickup>();
+			CharmPickup pickup = obj.GetComponentInChildren<CharmPickup>();
 			if (pickup)
 				pickup.representingCharm = (Charm)containingItem;
 		}

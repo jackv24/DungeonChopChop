@@ -35,8 +35,6 @@ public class Charm : BaseItem
 	{
 		base.Pickup (playerInfo);
 
-        GameObject.FindGameObjectWithTag("ItemInfo").GetComponent<ItemInfo>().ShowItemInfo(this);
-
 		if (charmFloats.Length > 0)
 		{
 			foreach (CharmFloat charmFloat in charmFloats)
@@ -102,12 +100,12 @@ public class Charm : BaseItem
 			}
 		}
 
-		GameObject obj = ObjectPooler.GetPooledObject(LevelVars.Instance.droppedCharmPrefab);
-		obj.transform.position = playerInfo.transform.position + Vector3.up;
+		//GameObject obj = ObjectPooler.GetPooledObject(LevelVars.Instance.droppedCharmPrefab);
+		//obj.transform.position = CharmPickup.lastPickupPos;
 
-		CharmPickup pickup = obj.GetComponent<CharmPickup>();
+		//CharmPickup pickup = obj.GetComponentInChildren<CharmPickup>();
 
-		if(pickup)
-			pickup.representingCharm = this;
+		//if(pickup)
+		//	pickup.representingCharm = this;
 	}
 }

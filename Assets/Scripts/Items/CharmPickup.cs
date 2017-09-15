@@ -15,6 +15,12 @@ public class CharmPickup : MonoBehaviour
 	public float pickupDelay = 1.0f;
 	private float pickupTime;
 
+	[Space()]
+	public GameObject pickupUIPrefab;
+	public GameObject pickupEffect;
+
+	public static Vector3 lastPickupPos;
+
 	void OnEnable()
 	{
 		pickupTime = Time.time + pickupDelay;
@@ -47,13 +53,30 @@ public class CharmPickup : MonoBehaviour
 	{
 		if (representingCharm && Time.time >= pickupTime)
 		{
+			lastPickupPos = transform.position;
+
 			PlayerInformation playerInfo = col.GetComponent<PlayerInformation>();
 
 			if (playerInfo)
 			{
 				playerInfo.PickupCharm(representingCharm);
 
-				gameObject.SetActive(false);
+				if(pickupUIPrefab)
+				{
+					GameObject obj = ObjectPooler.GetPooledObject(pickupUIPrefab);
+
+					CharmPopup popup = obj.GetComponent<CharmPopup>();
+					if(popup)
+						popup.Init(representingCharm, playerInfo.transform);
+				}
+
+				if(pickupEffect)
+				{
+					GameObject obj = ObjectPooler.GetPooledObject(pickupEffect);
+					obj.transform.position = transform.position;
+				}
+
+				transform.parent.gameObject.SetActive(false);
 			}
 		}
 	}
