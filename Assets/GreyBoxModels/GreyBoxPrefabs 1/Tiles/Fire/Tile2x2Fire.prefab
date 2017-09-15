@@ -854,8 +854,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawned: 0
-  spawnPoints: []
-  minSpawns: 0
-  maxSpawns: 0
-  enemies: []
+  spawnPoints:
+  - {fileID: 4515650803163444}
+  - {fileID: 4664634937652090}
+  - {fileID: 4257980291504790}
+  - {fileID: 4375995021293026}
+  minSpawns: 2
+  maxSpawns: 4
+  enemies:
+  - prefab: {fileID: 1738883904528832, guid: 9a83c258b0ee25b48a06735249487e66, type: 2}
+    probability: 1
+  - prefab: {fileID: 1709440474477876, guid: df187c08d1ccb4e4aa604929b989a71c, type: 2}
+    probability: 1
   respawnTileCount: 5

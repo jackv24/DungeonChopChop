@@ -21,6 +21,10 @@ public class PropDestroy : MonoBehaviour {
         {
             ChoseEffectAndAmount();
             ChoseEffectAndAmount();
+
+            //do drop
+            GetComponent<Drops>().DoDrop();
+
             gameObject.SetActive(false);
         }
 	}
@@ -50,8 +54,5 @@ public class PropDestroy : MonoBehaviour {
     public void DoEffect(Vector3 position)
     {
         ChoseEffectAndAmount();
-
-        //do drop
-        GetComponent<Drops>().DoDrop();
     }
 }
