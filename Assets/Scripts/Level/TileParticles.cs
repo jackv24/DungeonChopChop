@@ -55,6 +55,16 @@ public class TileParticles : MonoBehaviour
 				system.Simulate(system.main.duration);
 				system.Play();
 			}
+
+            if (ItemsManager.Instance.hasGoggles)
+            {
+                ParticleEmmissionScaler scaler = obj.GetComponent<ParticleEmmissionScaler>();
+
+                if (scaler)
+                {
+                    scaler.multiplier = .4f;
+                }
+            }
 		}
 	}
 

@@ -32,20 +32,25 @@ public class ProjectileCollision : MonoBehaviour {
 			if (col.gameObject.GetComponent<PlayerInformation> ())
 			{
 				PlayerInformation playerInfo = col.gameObject.GetComponent<PlayerInformation> ();
-				if (!playerInfo.invincible) 
-				{
-					if (playerInfo.HasCharmFloat ("immuneChance")) 
-					{
-						if (playerInfo.chanceChecker ("immuneChance") == 0) 
-						{
-							col.transform.GetComponent<Health> ().AffectHealth ((-damageAmount * damageMultiplyer / playerInfo.resistance));
-						}
-					} else 
-					{
-						col.transform.GetComponent<Health> ().AffectHealth ((-damageAmount * damageMultiplyer / playerInfo.resistance));
-					}
-				}
-			} 
+                if (!playerInfo.invincible)
+                {
+                    if (playerInfo.HasCharmFloat("immuneChance"))
+                    {
+                        if (playerInfo.chanceChecker("immuneChance") == 0)
+                        {
+                            col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer / playerInfo.resistance));
+                        }
+                    }
+                    else
+                    {
+                        col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer / playerInfo.resistance));
+                    }
+                }
+			}
+            else
+            {
+                col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer));
+            }
 			//check to see if collider has an animator
 			if (col.gameObject.GetComponentInChildren<Animator> ())
 			{
