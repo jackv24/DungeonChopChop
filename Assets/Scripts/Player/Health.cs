@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
     public Color slowlyDyingColor;
 
     [Space()]
-    public GameObject[] hitParticles;
+    public AmountOfParticleTypes[] hitParticles;
     public Color hitColor;
 
     [Space()]
@@ -47,6 +47,32 @@ public class Health : MonoBehaviour
     private Renderer[] renderers;
     private List<Color> originalColors = new List<Color>();
     private Vector3 targetPosition;
+    private SpawnEffects spawnEffects;
+
+    void Start()
+    {
+        spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
+
+        renderers = GetComponentsInChildren<Renderer>();
+        //loops through and get the original color on each renderer
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            originalColors.Add(renderers[i].material.color);
+        }
+
+        rb = GetComponent<Rigidbody>();
+
+        OnHealthChange += TemporaryInvincibility;
+
+        if (GetComponentInChildren<Animator>())
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+        if (GetComponent<PlayerInformation>())
+        {
+            playerInfo = GetComponent<PlayerInformation>();
+        }
+    }
 
     public void AffectHealth(float healthDeta)
     {
@@ -83,14 +109,7 @@ public class Health : MonoBehaviour
 
     void DoHitParticle()
     {
-        if (hitParticles.Length > 0)
-        {
-            int random = Random.Range(0, hitParticles.Length);
-            if (hitParticles[random] != null)
-            {
-                GameObject particle = Instantiate(hitParticles[random], transform.position, Quaternion.Euler(0, 0, 0));
-            }
-        }
+        spawnEffects.EffectOnHit(hitParticles, transform.position);
     }
 
     void OnEnable()
@@ -109,30 +128,7 @@ public class Health : MonoBehaviour
         health = maxHealth;
         isDead = false;
     }
-
-    void Start()
-    {
-        renderers = GetComponentsInChildren<Renderer>();
-        //loops through and get the original color on each renderer
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            originalColors.Add(renderers[i].material.color);
-        }
-
-        rb = GetComponent<Rigidbody>();
-
-        OnHealthChange += TemporaryInvincibility;
-
-        if (GetComponentInChildren<Animator>())
-        {
-            animator = GetComponentInChildren<Animator>();
-        }
-        if (GetComponent<PlayerInformation>())
-        {
-            playerInfo = GetComponent<PlayerInformation>();
-        }
-    }
-
+       
     public void TemporaryInvincibility()
     {
         if (playerInfo)
