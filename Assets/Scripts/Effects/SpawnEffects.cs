@@ -42,17 +42,20 @@ public class SpawnEffects : MonoBehaviour {
         foreach (AmountOfParticleTypes particleType in typeList)
         {
             //check if the particle is a hit type
-            if (particleType.particleType == ParticleType.Death)
+            if (particleType.particles.Length > 0)
             {
-                //get a random number max being amount of particles
-                int randomParticleNumber = Random.Range(0, particleType.particles.Length);
-                //spawn the particle
-                GameObject particle = ObjectPooler.GetPooledObject(particleType.particles[randomParticleNumber].particle);
-                //sets the particle colors
-                ParticleSystem.MainModule main = particle.GetComponent<ParticleSystem>().main;
-                main.startColor = particleType.particles[randomParticleNumber].gradient;
-                //sets the position
-                particle.transform.position = spawnPosition;
+                if (particleType.particleType == ParticleType.Death)
+                {
+                    //get a random number max being amount of particles
+                    int randomParticleNumber = Random.Range(0, particleType.particles.Length);
+                    //spawn the particle
+                    GameObject particle = ObjectPooler.GetPooledObject(particleType.particles[randomParticleNumber].particle);
+                    //sets the particle colors
+                    ParticleSystem.MainModule main = particle.GetComponent<ParticleSystem>().main;
+                    main.startColor = particleType.particles[randomParticleNumber].gradient;
+                    //sets the position
+                    particle.transform.position = spawnPosition;
+                }
             }
         }
     }
@@ -63,18 +66,20 @@ public class SpawnEffects : MonoBehaviour {
         foreach (AmountOfParticleTypes particleType in typeList)
         {
             //check if the particle is a hit type
-            if (particleType.particleType == ParticleType.Hit)
+            if (particleType.particles.Length > 0)
             {
-                //get a random number max being amount of particles
-                int randomParticleNumber = Random.Range(0, particleType.particles.Length);
-                //spawn the particle
-                GameObject particle = ObjectPooler.GetPooledObject(particleType.particles[randomParticleNumber].particle);
-                //sets the particle colors
-                ParticleSystem.MainModule main = particle.GetComponent<ParticleSystem>().main;
-                main.startColor = particleType.particles[randomParticleNumber].gradient;
-                //sets the position
-                particle.transform.position = spawnPosition;
-                Debug.Log(particleType.particles[randomParticleNumber].particle.name);
+                if (particleType.particleType == ParticleType.Hit)
+                {
+                    //get a random number max being amount of particles
+                    int randomParticleNumber = Random.Range(0, particleType.particles.Length);
+                    //spawn the particle
+                    GameObject particle = ObjectPooler.GetPooledObject(particleType.particles[randomParticleNumber].particle);
+                    //sets the particle colors
+                    ParticleSystem.MainModule main = particle.GetComponent<ParticleSystem>().main;
+                    main.startColor = particleType.particles[randomParticleNumber].gradient;
+                    //sets the position
+                    particle.transform.position = spawnPosition;
+                }
             }
         }
     }

@@ -54,7 +54,7 @@ public class ProjectileCollision : MonoBehaviour {
 			//check to see if collider has an animator
 			if (col.gameObject.GetComponentInChildren<Animator> ())
 			{
-				col.gameObject.GetComponentInChildren<Animator> ().SetTrigger ("Hit");
+				//col.gameObject.GetComponentInChildren<Animator> ().SetTrigger ("Hit");
 			}
 			gameObject.SetActive (false);
 		}

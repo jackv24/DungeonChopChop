@@ -78,7 +78,8 @@ public class EnemyDeath : MonoBehaviour
 	void Die()
 	{
 		//do die particles and stuff
-        spawnEffects.EffectOnDeath(deathParticles, transform.position);
+        if (deathParticles.Length > 0)
+            spawnEffects.EffectOnDeath(deathParticles, transform.position);
 		gameObject.SetActive(false);
 	}
 

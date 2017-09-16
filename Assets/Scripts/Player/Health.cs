@@ -95,10 +95,10 @@ public class Health : MonoBehaviour
         }
         if (IsEnemy)
         {
-            if (animator)
-            {
-                animator.SetTrigger("GetHit");
-            }
+            //if (animator)
+            //{
+            //    animator.SetTrigger("GetHit");
+            //}
             if (!HasStatusCondition())
             {
                 DoHitParticle();
@@ -109,7 +109,8 @@ public class Health : MonoBehaviour
 
     void DoHitParticle()
     {
-        spawnEffects.EffectOnHit(hitParticles, transform.position);
+        if (hitParticles.Length > 0)
+            spawnEffects.EffectOnHit(hitParticles, transform.position);
     }
 
     void OnEnable()
