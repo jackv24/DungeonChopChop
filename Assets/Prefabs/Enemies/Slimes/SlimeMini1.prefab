@@ -642,20 +642,217 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 6
-  health: 6
+  maxHealth: 2
+  health: 2
   weight: 2
   IsEnemy: 1
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
   isDead: 0
-  poisonColor: {r: 1, g: 0, b: 0.972414, a: 0.616}
-  burnColor: {r: 1, g: 0, b: 0, a: 0.609}
-  slowlyDyingColor: {r: 0.07586217, g: 1, b: 0, a: 0.622}
+  poisonColor: {r: 0.64705884, g: 0.43771628, b: 0.6412839, a: 0.616}
+  burnColor: {r: 0.6102941, g: 0.31860942, b: 0.31860942, a: 0.609}
+  slowlyDyingColor: {r: 0.4414226, g: 0.66176474, b: 0.4233348, a: 0.622}
   hitParticles:
-  - {fileID: 1160213654585448, guid: dc6f7457f36bf334f94196c09ebf7bea, type: 2}
-  hitColor: {r: 1, g: 0.19852942, b: 0.19852942, a: 0.528}
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1928837666263156, guid: a6acbdbaf1448264287780b2c34b0df9,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.47794116, g: 0.17922793, b: 0.17922793, a: 1}
+        key1: {r: 0.25, g: 0.044117644, b: 0.044117644, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.43382353, g: 0.3317474, b: 0.3317474, a: 0}
+        key1: {r: 0.7941176, g: 0.7415657, b: 0.7415657, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65451
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 3944
+        atime2: 55382
+        atime3: 65535
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 4
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1004915465583228, guid: 2a2d6f42c0139774880df8b9f1374650,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+  - particleType: 1
+    particles:
+    - particle: {fileID: 1928837666263156, guid: 64773d296b3f5bd42a8e2bdbbd6929be,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.5147059, g: 0.42283142, b: 0.18166089, a: 1}
+        key1: {r: 0.66176474, g: 0.1703071, b: 0.1703071, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+  - particleType: 1
+    particles:
+    - particle: {fileID: 1004915465583228, guid: 5f5ca5dbacf208f4290da200dad79bb8,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+  - particleType: 1
+    particles:
+    - particle: {fileID: 1928837666263156, guid: fb52ffb4991f66944aaf1bcbd4f1c890,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.43529415, g: 0.33966196, b: 0.33333337, a: 0}
+        key1: {r: 0.7921569, g: 0.7548885, b: 0.7411765, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 2350
+        atime2: 50431
+        atime3: 65535
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 4
+  hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
   timeBetweenFlash: 0.1
   amountToFlash: 2
 --- !u!114 &114485792509683898
@@ -672,8 +869,7 @@ MonoBehaviour:
   deathType: 0
   amountToSplit: 4
   splitEnemy: {fileID: 0}
-  deathParticle: {fileID: 1610516251936186, guid: aabac15b66e176941ad24fc8c572fc86,
-    type: 2}
+  deathParticles: []
 --- !u!114 &114686072262747868
 MonoBehaviour:
   m_ObjectHideFlags: 1
