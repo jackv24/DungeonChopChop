@@ -53,7 +53,6 @@ public class SpawnEffects : MonoBehaviour {
                 main.startColor = particleType.particles[randomParticleNumber].gradient;
                 //sets the position
                 particle.transform.position = spawnPosition;
-                break;
             }
         }
     }
@@ -75,7 +74,7 @@ public class SpawnEffects : MonoBehaviour {
                 main.startColor = particleType.particles[randomParticleNumber].gradient;
                 //sets the position
                 particle.transform.position = spawnPosition;
-                break;
+                Debug.Log(particleType.particles[randomParticleNumber].particle.name);
             }
         }
     }
