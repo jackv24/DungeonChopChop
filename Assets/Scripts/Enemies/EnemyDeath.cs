@@ -19,14 +19,16 @@ public class EnemyDeath : MonoBehaviour
 	public int amountToSplit;
 	[HideInInspector]
 	public GameObject splitEnemy;
-    public GameObject deathParticle;
+    public AmountOfParticleTypes[] deathParticles;
 
 	private Health health;
 	private bool dead = false;
+    private SpawnEffects spawnEffects;
 
 	// Use this for initialization
 	void Start () 
 	{
+        spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
 		health = GetComponent<Health> ();
 	}
 	
@@ -76,8 +78,7 @@ public class EnemyDeath : MonoBehaviour
 	void Die()
 	{
 		//do die particles and stuff
-        GameObject particle = ObjectPooler.GetPooledObject(deathParticle);
-        particle.transform.position = transform.position;
+        spawnEffects.EffectOnDeath(deathParticles, transform.position);
 		gameObject.SetActive(false);
 	}
 
