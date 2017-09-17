@@ -40,7 +40,6 @@ public class PlayerInformation : MonoBehaviour
     private WeaponStats currentWeaponStats;
     private PlayerMove playerMove;
     private Animator animator;
-    private Rigidbody rb;
     private CharacterController characterController;
     private PlayerAttack playerAttack;
     private GameObject mapHUD;
@@ -59,7 +58,6 @@ public class PlayerInformation : MonoBehaviour
         health = GetComponent<Health>();
         playerMove = GetComponent<PlayerMove>();
         animator = GetComponentInChildren<Animator>();
-        rb = GetComponent<Rigidbody>();
         characterController = GetComponent<CharacterController>();
 
         if (LevelGenerator.Instance)

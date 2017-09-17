@@ -10,22 +10,13 @@ public class SlimeMove : EnemyMove {
     public float waitTillLeep = 1;
     public float leepPower = 10;
 
-    private int hopCounter = 0;
-    private float currentTimeBetweenHop = 0;
-
-    private BoxCollider col;
-    private Rigidbody rb;
-
     public bool friendly = false;
 
-    private bool attacking = false;
     private bool inLeeping = false;
     private bool doingLeep = false;
 
 	// Use this for initialization
 	void Awake () {
-        rb = GetComponent<Rigidbody>();
-        col = GetComponent<BoxCollider>();
         Setup();
 	}
 	

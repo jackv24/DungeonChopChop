@@ -25,7 +25,6 @@ public class SwordCollision : MonoBehaviour {
     [HideInInspector()]
     public Animator animator;
 
-    private Collider col;
     private SwordStats swordStats;
 
 	// Use this for initialization
@@ -34,7 +33,6 @@ public class SwordCollision : MonoBehaviour {
         playerAttack = GetComponentInParent<PlayerAttack>();
         playerHealth = GetComponentInParent<Health>();
         animator = GetComponentInParent<Animator>();
-        col = GetComponent<Collider>();
         swordStats = GetComponent<SwordStats>();
 	}
 

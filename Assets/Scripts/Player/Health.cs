@@ -22,6 +22,7 @@ public class Health : MonoBehaviour
     public bool isPoisoned = false;
     public bool isBurned = false;
     public bool isSlowlyDying = false;
+    public bool isFrozen = false;
 
     [Space()]
     public bool isDead = false;
@@ -30,6 +31,7 @@ public class Health : MonoBehaviour
     public Color poisonColor;
     public Color burnColor;
     public Color slowlyDyingColor;
+    public Color frozenColor;
 
     [Space()]
     public AmountOfParticleTypes[] hitParticles;
@@ -432,22 +434,62 @@ public class Health : MonoBehaviour
         StartCoroutine(doSlowDeath(damagePerTick, duration, timeBetweenDeathTick));
     }
 
-    IEnumerator doSlowDeath(float damagePerTick, float duration, float timeBetweenBurn)
+    IEnumerator doSlowDeath(float damagePerTick, float duration, float timeBetweenSlowDeath)
     {
         int counter = 0;
         while (isSlowlyDying)
         {
             counter++;
             SetColor(slowlyDyingColor);
-            yield return new WaitForSeconds(timeBetweenBurn / 2);
+            yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
             AffectHealth(-damagePerTick);
             animator.SetTrigger("Flinch");
             if (counter >= duration)
             {
                 isSlowlyDying = false;
             }
-            yield return new WaitForSeconds(timeBetweenBurn / 2);
+            yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
         }
+        SetOGColor();
+    }
+
+    /// <summary>
+    /// Sets to ice.
+    /// </summary>
+    /// <param name="duration">Duration in seconds.</param>
+    public void SetIce(float damagePerTick, float duration)
+    {
+        if (playerInfo)
+            damagePerTick = playerInfo.GetCharmFloat("iceMultiplier");
+        isFrozen = true;
+        StartCoroutine(doIce(damagePerTick, duration));
+    }
+
+    IEnumerator doIce(float damagePerTick, float duration)
+    {
+        //sets the color
+        SetColor(frozenColor);
+        //does damage
+        AffectHealth(-damagePerTick);
+        //disables animator
+        animator.enabled = false;
+
+        //disable move script
+        if (GetComponent<PlayerMove>())
+            GetComponent<PlayerMove>().enabled = false;
+        else if (GetComponent<EnemyMove>())
+            GetComponent<EnemyMove>().enabled = false;
+        
+        yield return new WaitForSeconds(duration);
+
+        //enable move script
+        animator.enabled = false;
+        if (GetComponent<PlayerMove>())
+            GetComponent<PlayerMove>().enabled = true;
+        else if (GetComponent<EnemyMove>())
+            GetComponent<EnemyMove>().enabled = true;
+        
+        isFrozen = false;
         SetOGColor();
     }
 }

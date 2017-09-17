@@ -8,6 +8,7 @@ public enum StatusType
     poison,
     burn,
     slowlyDying,
+    Ice
 }
 
 public class StatusOnTouch : MonoBehaviour {
@@ -39,6 +40,8 @@ public class StatusOnTouch : MonoBehaviour {
                     col.gameObject.GetComponent<Health>().SetPoison(damagePerTick, duration, timeBetweenDamage);
                else if (statusType == StatusType.slowlyDying)
                    col.gameObject.GetComponent<Health>().SetSlowDeath(damagePerTick, duration, timeBetweenDamage);
+                else if (statusType == StatusType.Ice)
+                    col.gameObject.GetComponent<Health>().SetIce(damagePerTick, duration);
             }
         }
     }

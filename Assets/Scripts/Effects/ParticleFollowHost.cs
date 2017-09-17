@@ -8,7 +8,6 @@ public class ParticleFollowHost : MonoBehaviour {
     ParticleSystem ps;
     ParticleSystem.MainModule main;
 
-    bool hostDie = false;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +21,6 @@ public class ParticleFollowHost : MonoBehaviour {
             transform.position = host.position;
             if (host.GetComponent<Health>().health <= 0)
             {
-                hostDie = true;
                 ps.Stop();
             }
         }

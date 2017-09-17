@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ProjecticleVariables : MonoBehaviour 
 {
-
 	public float hideTime;
 
 	private Rigidbody rb;

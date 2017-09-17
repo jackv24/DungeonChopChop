@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54781701368035202}
   - component: {fileID: 114544690897862316}
   - component: {fileID: 65201457492427614}
+  - component: {fileID: 114257050356409100}
   m_Layer: 0
   m_Name: Poison Projectile
   m_TagString: Untagged
@@ -175,6 +176,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.018215336, z: 0.017487574}
   m_Center: {x: 0, y: -0.0000009536743, z: 0}
+--- !u!114 &114257050356409100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192050029559186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e835c48d15c08240ad72fe07736a33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusType: 0
+  damagePerTick: 1
+  duration: 5
+  timeBetweenDamage: 1
 --- !u!114 &114544690897862316
 MonoBehaviour:
   m_ObjectHideFlags: 1
