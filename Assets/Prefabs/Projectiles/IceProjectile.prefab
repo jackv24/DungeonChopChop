@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54817452538036078}
   - component: {fileID: 114760651461372696}
   - component: {fileID: 65685206790226598}
+  - component: {fileID: 114390902144145532}
   m_Layer: 0
   m_Name: IceProjectile
   m_TagString: Untagged
@@ -216,6 +217,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114390902144145532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1187050147648304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e835c48d15c08240ad72fe07736a33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusType: 3
+  damagePerTick: 1
+  duration: 0.5
+  timeBetweenDamage: 1
 --- !u!114 &114760651461372696
 MonoBehaviour:
   m_ObjectHideFlags: 1

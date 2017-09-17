@@ -59,7 +59,8 @@ public class Health : MonoBehaviour
         //loops through and get the original color on each renderer
         for (int i = 0; i < renderers.Length; i++)
         {
-            originalColors.Add(renderers[i].material.color);
+            if (renderers[i].material.HasProperty("_Color"))
+                originalColors.Add(renderers[i].material.color);
         }
 
         rb = GetComponent<Rigidbody>();
@@ -483,7 +484,7 @@ public class Health : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         //enable move script
-        animator.enabled = false;
+        animator.enabled = true;
         if (GetComponent<PlayerMove>())
             GetComponent<PlayerMove>().enabled = true;
         else if (GetComponent<EnemyMove>())

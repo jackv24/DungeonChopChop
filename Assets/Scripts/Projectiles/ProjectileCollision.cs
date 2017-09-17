@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileCollision : MonoBehaviour {
 
 	public int damageAmount;
+    public float knockbackAmount;
     public GameObject[] hitParticles;
 
 	[HideInInspector]
@@ -38,14 +39,30 @@ public class ProjectileCollision : MonoBehaviour {
                     {
                         if (playerInfo.chanceChecker("immuneChance") == 0)
                         {
-                            col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer / playerInfo.resistance));
+                            if (!col.transform.GetComponent<PlayerAttack>().blocking)
+                            {
+                                col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer / playerInfo.resistance));
+                            }
+                            else
+                            {
+                                col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer / playerInfo.resistance / playerInfo.GetComponent<PlayerAttack>().shield.blockingResistance));
+                            }
                         }
                     }
                     else
                     {
-                        col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer / playerInfo.resistance));
+                        if (!col.transform.GetComponent<PlayerAttack>().blocking)
+                        {
+                            col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer / playerInfo.resistance));
+                        }
+                        else
+                        {
+                            col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer / playerInfo.resistance / playerInfo.GetComponent<PlayerAttack>().shield.blockingResistance));
+                        }
                     }
                 }
+                //knockback player
+                col.gameObject.GetComponent<PlayerInformation>().KnockbackPlayer(transform.forward, knockbackAmount);
 			}
             else
             {
