@@ -113,14 +113,14 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1663313366
+  randomSeed: 1294130749
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -728,7 +728,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 5
+      scalar: 10
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -736,14 +736,14 @@ ParticleSystem:
         - serializedVersion: 2
           time: 0
           value: 0.0079956055
-          inSlope: 3.210499
-          outSlope: 3.210499
+          inSlope: 2.6683965
+          outSlope: 2.6683965
           tangentMode: 0
         - serializedVersion: 2
-          time: 0.9993359
-          value: 0.9759991
-          inSlope: 0.08912371
-          outSlope: 0.08912371
+          time: 1
+          value: 0.45640945
+          inSlope: -0.21161148
+          outSlope: -0.21161148
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -964,7 +964,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -974,7 +974,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 0}
         key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 1, g: 0, b: 0, a: 1}
+        key2: {r: 1, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -990,7 +990,7 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 3084
-        atime2: 41646
+        atime2: 65535
         atime3: 65535
         atime4: 0
         atime5: 0
@@ -998,7 +998,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 4
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
