@@ -373,7 +373,6 @@ public class Health : MonoBehaviour
             counter++;
             SetColor(poisonColor);
             yield return new WaitForSeconds(timeBetweenPoison / 2);
-            SetOGColor();
             AffectHealth(-damagePerTick);
             animator.SetTrigger("Flinch");
             if (counter >= duration)
@@ -382,6 +381,7 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenPoison);
         }
+        SetOGColor();
     }
 
     /// <summary>
@@ -413,9 +413,10 @@ public class Health : MonoBehaviour
             {
                 isBurned = false;
             }
-            SetOGColor();
+
             yield return new WaitForSeconds(timeBetweenBurn / 2);
         }
+        SetOGColor();
     }
 
     /// <summary>
@@ -439,7 +440,6 @@ public class Health : MonoBehaviour
             counter++;
             SetColor(slowlyDyingColor);
             yield return new WaitForSeconds(timeBetweenBurn / 2);
-            SetOGColor();
             AffectHealth(-damagePerTick);
             animator.SetTrigger("Flinch");
             if (counter >= duration)
@@ -448,5 +448,6 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenBurn / 2);
         }
+        SetOGColor();
     }
 }
