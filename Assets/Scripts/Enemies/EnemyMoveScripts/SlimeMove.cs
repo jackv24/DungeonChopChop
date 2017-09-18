@@ -2,14 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum SlimeType
+{
+    Green,
+    Blue,
+    Red
+}
+
 public class SlimeMove : EnemyMove {
 
-    [Tooltip("In seconds")]
+    public SlimeType type;
+
     public float damageToEnemies = 1; 
+
+    [Header("Movement Vars")]
+    public float followProximity = 20;
     public float radiusAttack = 5;
     public float waitTillLeep = 1;
-    public float leepPower = 10;
+    public float timeBetweenRoam = 2;
 
+    [Space()]
     public bool friendly = false;
 
     private bool inLeeping = false;
@@ -27,7 +40,7 @@ public class SlimeMove : EnemyMove {
         {
             if (!runAway)
             {
-                AttackPlayer();
+                DoMove();
             }
             else
             {
@@ -52,6 +65,28 @@ public class SlimeMove : EnemyMove {
             }
         }
 	}
+
+    void DoMove()
+    {
+        //if red, attack player
+        if (type == SlimeType.Red)
+        {
+            AttackPlayer();
+        }
+        //if blue, roam until in distance, then attac
+        else if (type == SlimeType.Blue)
+        {
+            if (!InDistance(followProximity))
+                Roam(timeBetweenRoam);
+            else
+                AttackPlayer();
+        }
+        //if green, just roam
+        else if (type == SlimeType.Green)
+        {
+            Roam(timeBetweenRoam);
+        }
+    }
 
     void AttackPlayer()
     {
@@ -82,11 +117,6 @@ public class SlimeMove : EnemyMove {
         agent.speed = originalSpeed;
         inLeeping = false;
         doingLeep = false;
-    }
-
-    void Hop()
-    {
-        animator.SetTrigger("Hop");
     }
 
     void OnTriggerEnter(Collider col)
