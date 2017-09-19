@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 65654352111419090}
   - component: {fileID: 195058487053570074}
   - component: {fileID: 65586272220320986}
+  - component: {fileID: 82009907320629638}
   m_Layer: 11
   m_Name: Slime2
   m_TagString: Slime
@@ -614,6 +615,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2016816, y: 4.530942, z: 2.2792568}
   m_Center: {x: 0.015663028, y: 2.219421, z: -0.016053915}
+--- !u!82 &82009907320629638
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1900345625037602}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 200
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95368996593365184
 Animator:
   serializedVersion: 3
@@ -690,10 +771,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   usingNav: 1
+  type: 0
   damageToEnemies: 1
+  followProximity: 20
   radiusAttack: 5
   waitTillLeep: 1
-  leepPower: 5
+  timeBetweenRoam: 2
   friendly: 0
 --- !u!114 &114248074078564020
 MonoBehaviour:
@@ -819,6 +902,10 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  hitSounds:
+  - {fileID: 8300000, guid: 94fe3317e53832b49acfdd534adc3cf8, type: 3}
+  - {fileID: 8300000, guid: 47bad35d66298d14fb44be72caf8b42f, type: 3}
+  - {fileID: 8300000, guid: ff5f4a1fe1eacc347bb5623fe9d8125f, type: 3}
   hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
   timeBetweenFlash: 0.3
   amountToFlash: 2
@@ -969,6 +1056,10 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  deathSounds:
+  - {fileID: 8300000, guid: 94fe3317e53832b49acfdd534adc3cf8, type: 3}
+  - {fileID: 8300000, guid: 47bad35d66298d14fb44be72caf8b42f, type: 3}
+  - {fileID: 8300000, guid: ff5f4a1fe1eacc347bb5623fe9d8125f, type: 3}
 --- !u!114 &114424690620493658
 MonoBehaviour:
   m_ObjectHideFlags: 1

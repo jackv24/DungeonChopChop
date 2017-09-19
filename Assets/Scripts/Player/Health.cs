@@ -35,6 +35,7 @@ public class Health : MonoBehaviour
 
     [Space()]
     public AmountOfParticleTypes[] hitParticles;
+    public AudioClip[] hitSounds;
     public Color hitColor;
 
     [Space()]
@@ -105,8 +106,19 @@ public class Health : MonoBehaviour
             if (!HasStatusCondition())
             {
                 DoHitParticle();
+                DoHitSound();
                 HitColorFlash();
             }
+        }
+    }
+
+    void DoHitSound()
+    {
+        if (hitSounds.Length > 0)
+        {
+            int random = Random.Range(0, hitSounds.Length);
+            if (GetComponent<AudioSource>())
+                GetComponent<AudioSource>().PlayOneShot(hitSounds[random]);
         }
     }
 
@@ -258,7 +270,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    void DisableRenderers()
+    public void DisableRenderers()
     {
         renderers = GetComponentsInChildren<Renderer>();
         //loops through each and disables them

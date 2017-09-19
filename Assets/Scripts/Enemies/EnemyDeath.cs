@@ -20,14 +20,17 @@ public class EnemyDeath : MonoBehaviour
 	[HideInInspector]
 	public GameObject splitEnemy;
     public AmountOfParticleTypes[] deathParticles;
+    public AudioClip[] deathSounds;
 
 	private Health health;
 	private bool dead = false;
     private SpawnEffects spawnEffects;
+    private AudioSource AS;
 
 	// Use this for initialization
 	void Start () 
 	{
+        AS = GetComponent<AudioSource>();
         spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
 		health = GetComponent<Health> ();
 	}
@@ -43,9 +46,6 @@ public class EnemyDeath : MonoBehaviour
 				dead = true;
 				ChoseDeath ();
 			}
-		}
-		if (health.health <= 0) {
-			ChoseDeath ();
 		}
 	}
 
@@ -75,12 +75,28 @@ public class EnemyDeath : MonoBehaviour
 		}
 	}
 
+    void CreateSoundObject()
+    {
+        //play sound
+        GameObject obj = new GameObject();
+        obj.transform.position = transform.position;
+        obj.AddComponent<AudioSource>();
+        if (deathSounds.Length > 0)
+        {
+            int random = Random.Range(0, deathSounds.Length);
+            obj.GetComponent<AudioSource>().PlayOneShot(deathSounds[random]);
+        }
+        obj.AddComponent<SoundObject>();
+    }
+
 	void Die()
 	{
 		//do die particles and stuff
         if (deathParticles.Length > 0)
             spawnEffects.EffectOnDeath(deathParticles, transform.position);
-		gameObject.SetActive(false);
-	}
 
+        CreateSoundObject();
+            
+        gameObject.SetActive(false);
+	}
 }

@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 65766634527232394}
   - component: {fileID: 195040792718675142}
   - component: {fileID: 65807528499727176}
+  - component: {fileID: 82224358880708368}
   m_Layer: 11
   m_Name: Slime
   m_TagString: Slime
@@ -614,6 +615,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4625237, y: 4.314159, z: 2.4668694}
   m_Center: {x: -0.0073489123, y: 2.0153208, z: -0.02063615}
+--- !u!82 &82224358880708368
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1761846842308470}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 200
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95466263464759850
 Animator:
   serializedVersion: 3
@@ -755,6 +836,10 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  hitSounds:
+  - {fileID: 8300000, guid: 94fe3317e53832b49acfdd534adc3cf8, type: 3}
+  - {fileID: 8300000, guid: 47bad35d66298d14fb44be72caf8b42f, type: 3}
+  - {fileID: 8300000, guid: ff5f4a1fe1eacc347bb5623fe9d8125f, type: 3}
   hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
   timeBetweenFlash: 0.3
   amountToFlash: 2
@@ -993,6 +1078,10 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  deathSounds:
+  - {fileID: 8300000, guid: 94fe3317e53832b49acfdd534adc3cf8, type: 3}
+  - {fileID: 8300000, guid: 47bad35d66298d14fb44be72caf8b42f, type: 3}
+  - {fileID: 8300000, guid: ff5f4a1fe1eacc347bb5623fe9d8125f, type: 3}
 --- !u!137 &137131265313166922
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

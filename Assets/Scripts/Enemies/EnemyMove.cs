@@ -120,7 +120,7 @@ public class EnemyMove : MonoBehaviour
         if (GetComponent<NavMeshAgent>())
         {
             //rotates away from the player
-            transform.rotation = Quaternion.LookRotation(transform.position - currentPlayer.transform.position);
+            transform.rotation = Quaternion.LookRotation(transform.position - GetClosestPlayer().position);
 
             //Gets a new vector position in front of the enemy 
             Vector3 runTo = transform.position + transform.forward * 5;
