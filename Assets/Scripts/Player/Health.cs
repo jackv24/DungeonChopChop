@@ -333,14 +333,7 @@ public class Health : MonoBehaviour
     {
         //do death
         //checks if the game has an enemy drop script, if it does it is an enemy
-        if (IsEnemy)
-        {
-            if (transform.GetComponent<Drops>())
-            {
-                transform.GetComponent<Drops>().DoDrop();
-            }
-        }
-        else
+        if (!IsEnemy)
         {
             animator.SetTrigger("Die");
             StartCoroutine(WaitForRestart());
