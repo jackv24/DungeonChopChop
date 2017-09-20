@@ -498,10 +498,32 @@ public class LevelGenerator : MonoBehaviour
 
 	public void RegenerateWithProfile(LevelGeneratorProfile p, int seed)
 	{
+		RegenerateWithProfile(p, seed, Vector3.zero, -1);
+	}
+	public void RegenerateWithProfile(LevelGeneratorProfile p, int seed, Vector3 position, int tileIndex)
+	{
 		Clear();
 
 		profile = p;
 
 		StartCoroutine(Generate(seed));
+
+		NormalEvent handler = null;
+		handler = () =>
+		{
+			PlayerInformation[] infos = FindObjectsOfType<PlayerInformation>();
+
+			foreach (PlayerInformation info in infos)
+				info.gameObject.transform.position = position;
+
+			if(tileIndex >= 0)
+			{
+				currentTile = generatedTiles[tileIndex];
+				currentTile.SetCurrent(null);
+			}
+
+			OnGenerationFinished -= handler;
+		};
+		OnGenerationFinished += handler;
 	}
 }

@@ -13,7 +13,7 @@ public class MapTracker : MonoBehaviour
 	[Space()]
 	public bool showOnTileEnter = false;
 
-	private int id = 0;
+	private int id = -1;
 
 	void Start()
 	{
@@ -42,13 +42,15 @@ public class MapTracker : MonoBehaviour
 			LevelGenerator.Instance.OnGenerationFinished -= Register;
 	}
 
-	void Register()
+	public void Register()
 	{
-		id = MapCamera.Instance.RegisterIcon(sprite, transform, color, setLastSibling);
+		if(id < 0)
+			id = MapCamera.Instance.RegisterIcon(sprite, transform, color, setLastSibling);
 	}
 
 	public void Remove()
 	{
-		MapCamera.Instance.RemoveIcon(id);
+		if(id >= 0)
+			MapCamera.Instance.RemoveIcon(id);
 	}
 }

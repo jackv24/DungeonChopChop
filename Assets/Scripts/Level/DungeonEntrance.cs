@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DungeonEntrance : MonoBehaviour
 {
+	public static Vector3 dungeonEntrancePos;
+	public static int dungeonEntranceTile;
+
 	public LevelGeneratorProfile profile;
 
 	public int seed = 0;
@@ -39,7 +42,15 @@ public class DungeonEntrance : MonoBehaviour
 
 		if (LevelGenerator.Instance && profile)
 		{
-			LevelGenerator.Instance.RegenerateWithProfile(profile, seed);
+			if (!overworldEntrance)
+			{
+				dungeonEntrancePos = transform.position - Vector3.forward * 2 + Vector3.up;
+				dungeonEntranceTile = LevelGenerator.Instance.generatedTiles.IndexOf(LevelGenerator.Instance.currentTile);
+
+				LevelGenerator.Instance.RegenerateWithProfile(profile, seed);
+			}
+			else
+				LevelGenerator.Instance.RegenerateWithProfile(profile, seed, dungeonEntrancePos, dungeonEntranceTile);
 		}
 	}
 }
