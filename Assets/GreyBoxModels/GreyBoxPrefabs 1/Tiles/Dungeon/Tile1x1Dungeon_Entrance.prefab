@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 23519394218741344}
   - component: {fileID: 114313034267963874}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,22 +286,6 @@ GameObject:
   m_Layer: 12
   m_Name: Terrain01
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1570116934355490
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4308848223992854}
-  - component: {fileID: 114733687691818104}
-  m_Layer: 0
-  m_Name: Door (3)
-  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -548,7 +532,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4894080053339332}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4281184411401222
 Transform:
@@ -562,19 +546,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4833363580966798}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4308848223992854
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570116934355490}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4894080053339332}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4344026103416722
 Transform:
@@ -661,8 +632,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1193418235769918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 0.5, z: 7.5}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: 0.5, z: -8.25}
+  m_LocalScale: {x: 5.5, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4894080053339332}
   m_RootOrder: 2
@@ -730,7 +701,7 @@ Transform:
   m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 4894080053339332}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4881564996014692
 Transform:
@@ -761,7 +732,6 @@ Transform:
   - {fileID: 4389389469266306}
   - {fileID: 4114245648759372}
   - {fileID: 4707945845753684}
-  - {fileID: 4308848223992854}
   - {fileID: 4181429600596838}
   - {fileID: 4978038041910214}
   - {fileID: 4875132948906242}
@@ -848,7 +818,7 @@ Transform:
   - {fileID: 4881564996014692}
   - {fileID: 4946658878028340}
   m_Father: {fileID: 4894080053339332}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4980352890121302
 Transform:
@@ -1507,18 +1477,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a4d3b8f5f8d5949b23c396132a2f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   doors:
   - {fileID: 4389389469266306}
   - {fileID: 4114245648759372}
   - {fileID: 4707945845753684}
-  - {fileID: 4308848223992854}
   layoutCollider: {fileID: 65418985695463694}
+  limitToHorizontal: 0
   blockedDoorPrefab: {fileID: 1394040778180736, guid: 12de34da3690cc5468bffbdbcb31edaa,
     type: 2}
   minBlocks: 1
   maxBlocks: 2
   tileOrigin: {fileID: 4181429600596838}
-  walls: {fileID: 1112412651988752}
   currentGraphic: {fileID: 0}
   grassTiles: []
   desertTiles: []
@@ -1532,20 +1502,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1139020050555508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f384e8b41ef2ce14fb37765daef56b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 1084036274993698, guid: 12dad2d4f34f07048bdb19d06b95fcb6, type: 2}
-  replaceOnAwake: 0
-  pooled: 0
---- !u!114 &114733687691818104
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570116934355490}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f384e8b41ef2ce14fb37765daef56b4b, type: 3}

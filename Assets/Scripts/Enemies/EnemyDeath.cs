@@ -34,6 +34,11 @@ public class EnemyDeath : MonoBehaviour
         spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
 		health = GetComponent<Health> ();
 	}
+
+    void OnEnable()
+    {
+        dead = false;
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -81,11 +86,8 @@ public class EnemyDeath : MonoBehaviour
         GameObject obj = new GameObject();
         obj.transform.position = transform.position;
         obj.AddComponent<AudioSource>();
-        if (deathSounds.Length > 0)
-        {
-            int random = Random.Range(0, deathSounds.Length);
-            obj.GetComponent<AudioSource>().PlayOneShot(deathSounds[random]);
-        }
+        int random = Random.Range(0, deathSounds.Length);
+        obj.GetComponent<AudioSource>().PlayOneShot(deathSounds[random]);
         obj.AddComponent<SoundObject>();
     }
 
@@ -95,7 +97,10 @@ public class EnemyDeath : MonoBehaviour
         if (deathParticles.Length > 0)
             spawnEffects.EffectOnDeath(deathParticles, transform.position);
 
-        CreateSoundObject();
+        if (deathSounds.Length > 0)
+        {
+            CreateSoundObject();
+        }
             
         gameObject.SetActive(false);
 	}

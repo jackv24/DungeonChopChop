@@ -23,6 +23,7 @@ public class ChestSpawn : MonoBehaviour
 	public SpawnType spawnType;
 
 	private bool spawned = false;
+	private bool spawnOnClear = false;
 
 	public bool Spawn()
 	{
@@ -49,6 +50,14 @@ public class ChestSpawn : MonoBehaviour
 				obj.transform.localPosition = transform.localPosition;
 
 				spawned = true;
+
+				if(spawnOnClear)
+				{
+					MapTracker tracker = obj.GetComponent<MapTracker>();
+
+					if (tracker)
+						tracker.Register();
+				}
 			}
 			else
 				Debug.LogWarning("Chest could not spawn, no prefab assigned in LevelVars!");
@@ -65,5 +74,7 @@ public class ChestSpawn : MonoBehaviour
 		{
 			spawner.OnEnemiesDefeated += delegate { Spawn(); };
 		}
+
+		spawnOnClear = true;
 	}
 }
