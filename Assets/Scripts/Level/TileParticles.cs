@@ -62,7 +62,7 @@ public class TileParticles : MonoBehaviour
 
                 if (scaler)
                 {
-                    scaler.multiplier = .4f;
+                    scaler.multiplier = .3f;
                 }
             }
 		}
