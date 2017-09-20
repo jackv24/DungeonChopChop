@@ -42,6 +42,7 @@ public class Health : MonoBehaviour
     [Header("Other Vals")]
     public float timeBetweenFlash = 0.1f;
     public int amountToFlash = 5;
+    public float fadeToColorTime = 5;
 
     private PlayerInformation playerInfo;
     private Animator animator;
@@ -51,6 +52,8 @@ public class Health : MonoBehaviour
     private List<Color> originalColors = new List<Color>();
     private Vector3 targetPosition;
     private SpawnEffects spawnEffects;
+
+    private bool fadeToColor = false;
 
     void Start()
     {
@@ -223,12 +226,13 @@ public class Health : MonoBehaviour
 
     IEnumerator DoHitColourFlash()
     {
-        for (int i = 0; i <= amountToFlash; i++)
+        for (int i = 0; i < amountToFlash; i++)
         {
             SetHitColor();
             yield return new WaitForSeconds(timeBetweenFlash);
-            SetOGColor();
+            fadeToColor = true;
             yield return new WaitForSeconds(timeBetweenFlash);
+            fadeToColor = false;
         }
     }
 
@@ -267,6 +271,30 @@ public class Health : MonoBehaviour
                 for (int i = 0; i < renderers.Length; i++)
                 {
                     renderers[i].material.color = originalColors[i];
+                }
+            }
+        }
+    }
+
+    void SetOGFade()
+    {
+        if (renderers != null)
+        {
+            if (originalColors.Count > 0)
+            {
+                //loops through each and sets the hit color
+                for (int i = 0; i < renderers.Length; i++)
+                {
+                    
+                    renderers[i].material.color = Color.Lerp (renderers[i].material.color, originalColors[i], fadeToColorTime * Time.deltaTime);
+                    if (renderers[i].material.color == originalColors[i])
+                    {
+                        fadeToColor = false;
+                    }
+                    else
+                    {
+                        fadeToColor = true;
+                    }
                 }
             }
         }
@@ -311,6 +339,11 @@ public class Health : MonoBehaviour
         if (health > maxHealth)
         {
             health = maxHealth;
+        }
+
+        if (fadeToColor)
+        {
+            SetOGFade();
         }
     }
 
