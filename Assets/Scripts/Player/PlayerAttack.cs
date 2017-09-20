@@ -20,7 +20,10 @@ public class PlayerAttack : MonoBehaviour
     public float dashTime = 1.0f;
     public float dashSpeed = 5.0f;
     public float dashCooldown = 0.5f;
+
     public bool canDashAttack = true;
+    public bool canTripleAttack = true;
+    public bool canSpinAttack = true;
 
     [Header("Block Vars")]
     public float rotationSpeed = 5;
@@ -113,13 +116,23 @@ public class PlayerAttack : MonoBehaviour
         //do basic attack
         if (!playerHealth.isDead)
         {
+            if (input.BasicAttack)
+            {
+                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                {
+                    
+                }
+            }
             if (input.BasicAttack.WasPressed)
             {
-                CheckCombo();
-                //if combo is equal to or greater than 3, do rapid slash
-                if (comboAmount >= slashAmount)
+                if (canTripleAttack)
                 {
-                    doRapidSlash();
+                    CheckCombo();
+                    //if combo is equal to or greater than 3, do rapid slash
+                    if (comboAmount >= slashAmount)
+                    {
+                        doRapidSlash();
+                    }
                 }
                 //basic slash
                 if (comboAmount < slashAmount)
