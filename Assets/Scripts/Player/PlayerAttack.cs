@@ -29,6 +29,9 @@ public class PlayerAttack : MonoBehaviour
     public float rotationSpeed = 5;
     public LayerMask enemyMask;
 
+    [Header("Spin Charge Vars")]
+    public float timeToCharge = 2;
+
     [Header("Other Vars")]
     public float moveBackOnHit = 5;
     public bool blocking = false;
@@ -57,6 +60,10 @@ public class PlayerAttack : MonoBehaviour
 	private bool cancelDash = false;
     private bool comboStarted = false;
     private bool movingForward = false;
+
+    private bool spinAttackReady = false;
+    private float spinCounter = 0;
+    private float heldDownCounter = 0;
 
     private Vector3 targetPosition = Vector3.zero;
 
@@ -94,6 +101,22 @@ public class PlayerAttack : MonoBehaviour
     void FixedUpdate()
     {
         CountCombo();
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+        {
+            spinCounter++;
+        }
+
+        //check if attack button is held
+        if (input.BasicAttack.IsPressed)
+        {
+            //check what state you're in
+            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+            {
+                heldDownCounter++;
+                if (heldDownCounter > 30)
+                    animator.SetBool("SpinCharge", true);
+            }
+        }
     }
 
     void Update()
@@ -111,16 +134,23 @@ public class PlayerAttack : MonoBehaviour
         {
             animator.SetBool("Attacking", false);
         }
-
+            
         //check if can actually attack
         //do basic attack
         if (!playerHealth.isDead)
         {
-            if (input.BasicAttack)
+            if (input.BasicAttack.WasReleased)
             {
-                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                if (spinCounter < (timeToCharge * 60))
                 {
-                    
+                    animator.SetBool("SpinCharge", false);
+                    spinCounter = 0;
+                }
+                else
+                {
+                    spinCounter = 0;
+                    animator.SetBool("SpinCharge", false);
+                    animator.SetTrigger("Spin");
                 }
             }
             if (input.BasicAttack.WasPressed)
@@ -199,6 +229,7 @@ public class PlayerAttack : MonoBehaviour
 
             if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
             {
+                animator.SetBool("SpinCharge", false);
                 DisableSword();
             }
         }

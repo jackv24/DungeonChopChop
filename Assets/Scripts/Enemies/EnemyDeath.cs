@@ -26,10 +26,12 @@ public class EnemyDeath : MonoBehaviour
 	private bool dead = false;
     private SpawnEffects spawnEffects;
     private AudioSource AS;
+    private Drops enemyDrop;
 
 	// Use this for initialization
 	void Start () 
 	{
+        enemyDrop = GetComponent<Drops>();
         AS = GetComponent<AudioSource>();
         spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
 		health = GetComponent<Health> ();
@@ -101,6 +103,9 @@ public class EnemyDeath : MonoBehaviour
         {
             CreateSoundObject();
         }
+
+        if (enemyDrop)
+            enemyDrop.DoDrop();
             
         gameObject.SetActive(false);
 	}
