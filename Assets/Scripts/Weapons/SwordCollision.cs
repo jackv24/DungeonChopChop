@@ -41,9 +41,9 @@ public class SwordCollision : MonoBehaviour {
         int randomSmoke = Random.Range(0, hitSmokes.Length);
         int randomEffect = Random.Range(0, hitEffects.Length);
         GameObject smoke = ObjectPooler.GetPooledObject(hitSmokes[randomSmoke]);
-        smoke.transform.position = col.contacts[0].point;
+        smoke.transform.position = new Vector3(col.contacts[0].point.x, .6f, col.contacts[0].point.z);
         GameObject effect = ObjectPooler.GetPooledObject(hitEffects[randomEffect]);
-        effect.transform.position = col.contacts[0].point;
+        effect.transform.position = new Vector3(col.contacts[0].point.x, .6f, col.contacts[0].point.z);
     }
 
     void OnCollisionEnter(Collision col)

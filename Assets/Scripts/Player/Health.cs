@@ -99,16 +99,18 @@ public class Health : MonoBehaviour
         }
         if (IsEnemy)
         {
-            //if (animator)
-            //{
-            //    animator.SetTrigger("GetHit");
-            //}
             if (!HasStatusCondition())
             {
                 DoHitParticle();
                 DoHitSound();
                 HitColorFlash();
             }
+        }
+        else
+        {
+            animator.SetTrigger("Hit");
+            DoHitParticle();
+            DoHitSound();
         }
     }
 
