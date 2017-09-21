@@ -68,7 +68,7 @@ public class TileParticles : MonoBehaviour
 		}
 	}
 
-	void OnExit()
+	public void OnExit()
 	{
 		if(spawnedParticles)
 		{
