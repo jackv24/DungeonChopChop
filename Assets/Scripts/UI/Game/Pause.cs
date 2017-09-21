@@ -7,12 +7,18 @@ using UnityEngine.SceneManagement;
 public class Pause : MonoBehaviour {
 
     public GameObject pauseMenu;
+    public GameObject player1Stats;
+    public GameObject player2Stats;
 
     bool paused = false;
 
 	// Use this for initialization
 	void Start () {
-		
+        PlayerInformation[] players = FindObjectsOfType<PlayerInformation>();
+        if (players.Length < 2)
+        {
+            player2Stats.SetActive(false);
+        }
 	}
 	
 	// Update is called once per frame

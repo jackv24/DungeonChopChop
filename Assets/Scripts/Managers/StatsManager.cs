@@ -20,18 +20,30 @@ public enum StatName
 public class Stat
 {
 	public StatName statName;
-	public int statLevel = 1;
 	public float[] levelValue;
+}
+
+[Serializable]
+public class StatLevel
+{
+    public StatName statName;
+    public int level;
 }
 
 public class StatsManager : MonoBehaviour 
 {
-
 	public Stat[] stats;
+    public StatLevel[] playerOneLevel;
+    public StatLevel[] playerTwoLevel;
 
 	private PlayerInformation playerOneInfo;
-	private Health playerHealth;
-	private GameObject player;
+	private Health playerOneHealth;
+
+    private PlayerInformation playerTwoInfo;
+    private Health playerTwoHealth;
+
+	private GameObject player1;
+    private GameObject player2;
 
 	// Use this for initialization
 	void Start () 
@@ -49,13 +61,27 @@ public class StatsManager : MonoBehaviour
 		return 0;
 	}
 
-	public int GetStatLevel(StatName statName)
+    public int GetStatLevel(StatName statName, PlayerInformation player)
 	{
-		foreach (Stat stat in stats) 
-		{
-			if (stat.statName == statName)
-				return stat.statLevel;
-		}
+        //checks if the player info is the same as the player passed through
+        if (player == playerOneInfo)
+        {
+            //loop through each stat and return the level
+            foreach (StatLevel stat in playerOneLevel)
+            {
+                if (stat.statName == statName)
+                    return stat.level;
+            }
+        } 
+        else if (player == playerTwoInfo)
+        {
+            //loop through each stat and return the level
+            foreach (StatLevel stat in playerTwoLevel)
+            {
+                if (stat.statName == statName)
+                    return stat.level;
+            }
+        }
 		return 0;
 	}
 
@@ -81,48 +107,64 @@ public class StatsManager : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update ()
-	{
-		if (!player) 
-		{
-			player = GameObject.FindGameObjectWithTag ("Player1");
-		}
-		if (player) 
-		{
-			if (!playerOneInfo) 
-			{
-				playerOneInfo = player.GetComponent<PlayerInformation> ();
-			}
-			if (!playerHealth) 
-			{
-				playerHealth = player.GetComponent<Health> ();
-			}
-		} 
+	{ 
+        if (enabled)
+        {
+            if (!player1)
+            {
+                player1 = GameObject.FindGameObjectWithTag("Player1");
+                if (player1)
+                {
+                    playerOneInfo = player1.GetComponent<PlayerInformation>();
+                    playerOneHealth = player1.GetComponent<Health>();
+                }
+            }
+            if (!player2)
+            {
+                player2 = GameObject.FindGameObjectWithTag("Player2");
+                if (player2)
+                {
+                    playerTwoInfo = player2.GetComponent<PlayerInformation>();
+                    playerTwoHealth = player2.GetComponent<Health>();
+                }
+            }
 
-		//sets the ui to display the correct stat level
-		if (player) 
-		{
-			foreach (Stat stat in stats) 
-			{
-				if (stat != null) {
-					if (stat.statName == StatName.RunSpeed)
-						stat.statLevel = GetClosestLevel(StatName.RunSpeed, playerOneInfo.maxMoveSpeed);
-					else if (stat.statName == StatName.maxHealth)
-						stat.statLevel = GetClosestLevel(StatName.maxHealth, playerHealth.maxHealth);
-					else if (stat.statName == StatName.AttackSpeed)
-						stat.statLevel = GetClosestLevel(StatName.AttackSpeed, playerOneInfo.attackSpeed);
-					else if (stat.statName == StatName.Range)
-						stat.statLevel = GetClosestLevel(StatName.Range, playerOneInfo.attackDistance);
-					else if (stat.statName == StatName.Resistance)
-						stat.statLevel = GetClosestLevel(StatName.Resistance, playerOneInfo.resistance);
-					else if (stat.statName == StatName.Spread)
-						stat.statLevel = GetClosestLevel(StatName.Spread, playerOneInfo.attackMinAngle);
-					else if (stat.statName == StatName.Strength)
-						stat.statLevel = GetClosestLevel(StatName.Strength, playerOneInfo.strength);
-					else if (stat.statName == StatName.Knockback)
-						stat.statLevel = GetClosestLevel(StatName.Knockback, playerOneInfo.knockback);
-					
-				}
-			}
-		}
+
+
+            //sets the ui to display the correct stat level
+            if (player1)
+            {
+                SetStats(playerOneInfo, playerOneHealth, playerOneLevel);
+            }
+            if (player2)
+            {
+                SetStats(playerTwoInfo, playerTwoHealth, playerTwoLevel);
+            }
+        }
 	}
+
+    void SetStats(PlayerInformation pI, Health pH, StatLevel[] pL)
+    {
+        for (int i = 0; i < stats.Length; i++) 
+        {
+            if (stats.Length > 0) {
+                if (stats[i].statName == StatName.RunSpeed)
+                    pL[i].level = GetClosestLevel(StatName.RunSpeed, pI.maxMoveSpeed);
+                else if (stats[i].statName == StatName.maxHealth)
+                    pL[i].level = GetClosestLevel(StatName.maxHealth, pH.maxHealth);
+                else if (stats[i].statName == StatName.AttackSpeed)
+                    pL[i].level = GetClosestLevel(StatName.AttackSpeed, pI.attackSpeed);
+                else if (stats[i].statName == StatName.Range)
+                    pL[i].level = GetClosestLevel(StatName.Range, pI.attackDistance);
+                else if (stats[i].statName == StatName.Resistance)
+                    pL[i].level = GetClosestLevel(StatName.Resistance, pI.resistance);
+                else if (stats[i].statName == StatName.Spread)
+                    pL[i].level = GetClosestLevel(StatName.Spread, pI.attackMinAngle);
+                else if (stats[i].statName == StatName.Strength)
+                    pL[i].level = GetClosestLevel(StatName.Strength, pI.strength);
+                else if (stats[i].statName == StatName.Knockback)
+                    pL[i].level = GetClosestLevel(StatName.Knockback, pI.knockback);
+            }
+        }
+    }
 }
