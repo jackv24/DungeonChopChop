@@ -29,6 +29,7 @@ public class LevelVars : MonoBehaviour
 	[Space()]
 	public LayerMask groundLayer;
 
+	[System.Serializable]
 	public class LevelData
 	{
 		public LevelGeneratorProfile overworldProfile;
@@ -48,6 +49,7 @@ public class LevelVars : MonoBehaviour
 			}
 		}
 	}
+	[Header("Used by Level Generator")]
 	public LevelData levelData = new LevelData();
 
 	private void Awake()

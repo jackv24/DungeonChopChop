@@ -89,6 +89,8 @@ public class LevelGenerator : MonoBehaviour
 
 	public IEnumerator Generate(int seed)
     {
+		Debug.Log("Starting generation with seed: " + seed);
+
 		if (OnGenerationStart != null)
 			OnGenerationStart();
 
@@ -502,6 +504,14 @@ public class LevelGenerator : MonoBehaviour
 	}
 	public void RegenerateWithProfile(LevelGeneratorProfile p, int seed, Vector3 position, int tileIndex)
 	{
+		if (currentTile)
+		{
+			TileParticles particles = currentTile.GetComponent<TileParticles>();
+
+			if (particles)
+				particles.OnExit();
+		}
+
 		Clear();
 
 		profile = p;
