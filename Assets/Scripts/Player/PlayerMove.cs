@@ -46,7 +46,8 @@ public class PlayerMove : MonoBehaviour
 		else
 		{
 			input = new PlayerInputs();
-			input.SetupBindings();
+			input.AddKeyboardBindings();
+			input.AddControllerBindings();
 		}
 		characterController = GetComponent<CharacterController>();
 
