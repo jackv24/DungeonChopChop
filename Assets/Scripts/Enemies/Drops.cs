@@ -6,80 +6,73 @@ using System;
 [Serializable]
 public class DropKinds
 {
-	public GameObject Drop;
-	[Tooltip("eg 0 (inclusive)")]
-	public int minPercentage;
-	[Tooltip("eg 30 (inclusive)")]
-	public int maxPercentage;
+    public GameObject Drop;
+    [Range(0, 100)]
+    public int dropChance;
 };
 
-[Serializable]
-public class PercentageOfDropAmount
+public class Drops : MonoBehaviour
 {
-	public int dropAmount;
-	[Tooltip("eg 0 (inclusive)")]
-	public int minPercentage;
-	[Tooltip("eg 30 (inclusive)")]
-	public int maxPercentage;
-};
-
-public class Drops : MonoBehaviour {
 
     public DropKinds[] drops;
-	public PercentageOfDropAmount[] numberOfDrops;
+    [Tooltip("0 to this value")]
+    public int maxAmountOfDrops;
+
     Collider col;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         col = GetComponent<Collider>();
-	}
+    }
 	
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
 		
-	}
+    }
 
-	public void DoDrop()
-	{
-		int dropAmount = 0;
-		//gets a number between 0 and 100 which will act as a percentage
-		int randomPercent = UnityEngine.Random.Range (0, 101);
-		foreach (PercentageOfDropAmount drop in numberOfDrops) {
-			//loop through each drop and find which drops min and max percentage have the percentage inbetween
-			if (randomPercent >= drop.minPercentage && randomPercent <= drop.maxPercentage) {
-				//this then finds how many items to drops
-				dropAmount = drop.dropAmount;
-                break;
-			}
-		}
-		DropItem (dropAmount);
-	}
+    public void DoDrop()
+    {
+        float percentage = 100 / maxAmountOfDrops;
+        float counter = 100;
+        while (counter > 1)
+        {
+            DropItem();
+            counter -= percentage;
+        }
+    }
 
-	void DropItem(int dropAmount)
-	{
-		if (dropAmount != 0) 
-		{
-			//loop through the amount of items to drop
-			for (int i = 0; i <= dropAmount; i++) 
-			{
-				//gets a number between 0 and 100 which will act as a percentage
-				int randomPercent = UnityEngine.Random.Range (0, 101);
-                foreach (DropKinds drop in drops)
-				{
-					//loop through each drop and find which drops min and max percentage have the percentage inbetween
-					if (randomPercent >= drop.minPercentage && randomPercent <= drop.maxPercentage)
-					{
-						//creates the item and sets the position to the enemies position
-						GameObject item = ObjectPooler.GetPooledObject (drop.Drop);
-                        item.transform.rotation = UnityEngine.Random.rotation;
-                        float x = UnityEngine.Random.Range(col.bounds.min.x, col.bounds.max.x);
-                        float y = UnityEngine.Random.Range(col.bounds.min.y, col.bounds.max.y);
-                        float z = UnityEngine.Random.Range(col.bounds.min.z, col.bounds.max.z);
-                        item.transform.position = new Vector3(x, y, z);
-						break;
-					}
-				}
-			}
-		}
-	}
+    void DropItem()
+    {
+        //gets a number between 0 and 100 which will act as a percentage
+        int randomPercent = UnityEngine.Random.Range(0, 101);
+        for (int j = 0; j < drops.Length; j++)
+        {
+            //loop through each drop and find which drops min and max percentage have the percentage inbetween
+            if (j != drops.Length)
+            {
+                if (randomPercent >= drops[j].dropChance && randomPercent < drops[j + 1].dropChance)
+                {
+                    Drop(j);
+                    break;
+                }
+            }
+            else
+            {
+                Drop(j);
+            }
+        }
+    }
+
+    void Drop(int number)
+    {
+        //creates the item and sets the position to the enemies position
+        GameObject item = ObjectPooler.GetPooledObject(drops[number].Drop);
+        item.transform.rotation = UnityEngine.Random.rotation;
+        float x = UnityEngine.Random.Range(col.bounds.min.x, col.bounds.max.x);
+        float y = UnityEngine.Random.Range(col.bounds.min.y, col.bounds.max.y);
+        float z = UnityEngine.Random.Range(col.bounds.min.z, col.bounds.max.z);
+        item.transform.position = new Vector3(x, y, z);
+    }
 }
