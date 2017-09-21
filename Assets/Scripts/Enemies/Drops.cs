@@ -34,12 +34,15 @@ public class Drops : MonoBehaviour
 
     public void DoDrop()
     {
-        float percentage = 100 / maxAmountOfDrops;
-        float counter = 100;
-        while (counter > 1)
+        if (maxAmountOfDrops > 0)
         {
-            DropItem();
-            counter -= percentage;
+            float percentage = 100 / maxAmountOfDrops;
+            float counter = 100;
+            while (counter > 1)
+            {
+                DropItem();
+                counter -= percentage;
+            }
         }
     }
 
@@ -50,7 +53,7 @@ public class Drops : MonoBehaviour
         for (int j = 0; j < drops.Length; j++)
         {
             //loop through each drop and find which drops min and max percentage have the percentage inbetween
-            if (j != drops.Length)
+            if (j != drops.Length - 1)
             {
                 if (randomPercent >= drops[j].dropChance && randomPercent < drops[j + 1].dropChance)
                 {
