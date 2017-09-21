@@ -66,11 +66,20 @@ public class PlayerManager : MonoBehaviour {
 	//sets up everything if co op
 	public void CoOp()
 	{
-		if (InControl.InputManager.Devices.Count > 0 && InControl.InputManager.Devices.Count < 2) 
+        int temp = 0;
+        for (int i = 0; i < InControl.InputManager.Devices.Count; i++)
+        {
+            if (InControl.InputManager.Devices[i].Name != "Unknown Device")
+            {
+                temp++;
+            }
+        }
+
+		if (temp > 0 && temp < 2) 
 		{
 			SetUpCoOpOneController ();
 		} 
-		else if (InControl.InputManager.Devices.Count > 1) 
+        else if (temp > 1) 
 		{
 			SetUpCoOpTwoControllers ();
 		}
