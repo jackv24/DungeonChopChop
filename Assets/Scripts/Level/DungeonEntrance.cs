@@ -47,6 +47,8 @@ public class DungeonEntrance : MonoBehaviour
 				dungeonEntrancePos = transform.position - Vector3.forward * 2 + Vector3.up;
 				dungeonEntranceTile = LevelGenerator.Instance.generatedTiles.IndexOf(LevelGenerator.Instance.currentTile);
 
+				LevelVars.Instance.lastOverworldBiome = LevelGenerator.Instance.currentTile.Biome;
+
 				LevelGenerator.Instance.RegenerateWithProfile(profile, seed);
 			}
 			else

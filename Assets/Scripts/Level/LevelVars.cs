@@ -51,6 +51,7 @@ public class LevelVars : MonoBehaviour
 	}
 	[Header("Used by Level Generator")]
 	public LevelData levelData = new LevelData();
+	public LevelTile.Biomes lastOverworldBiome;
 
 	private void Awake()
 	{
