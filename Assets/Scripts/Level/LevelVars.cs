@@ -49,6 +49,7 @@ public class LevelVars : MonoBehaviour
 			}
 		}
 	}
+	[Header("Used by Level Generator")]
 	public LevelData levelData = new LevelData();
 
 	private void Awake()
