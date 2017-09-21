@@ -78,7 +78,7 @@ public class SpawnEffects : MonoBehaviour {
                     ParticleSystem.MainModule main = particle.GetComponent<ParticleSystem>().main;
                     main.startColor = particleType.particles[randomParticleNumber].gradient;
                     //sets the position
-                    particle.transform.position = new Vector3(spawnPosition.x, .6f, spawnPosition.z);
+                    particle.transform.position = spawnPosition;
                 }
             }
         }

@@ -30,9 +30,9 @@ public class PropDestroy : MonoBehaviour {
         }
 	}
 
-    public void DoEffect(Vector3 position)
+    public void DoEffect()
     {
         if (spawnEffects)
-            spawnEffects.EffectOnHit(amountOfParticleTypes, transform.position);
+            spawnEffects.EffectOnHit(amountOfParticleTypes, new Vector3(transform.position.x, GetComponent<Collider>().bounds.max.y + .1f, transform.position.z));
     }
 }
