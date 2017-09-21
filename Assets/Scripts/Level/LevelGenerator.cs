@@ -89,6 +89,8 @@ public class LevelGenerator : MonoBehaviour
 
 	public IEnumerator Generate(int seed)
     {
+		Debug.Log("Starting generation with seed: " + seed);
+
 		if (OnGenerationStart != null)
 			OnGenerationStart();
 
