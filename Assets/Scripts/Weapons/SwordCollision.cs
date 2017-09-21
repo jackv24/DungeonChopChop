@@ -41,9 +41,9 @@ public class SwordCollision : MonoBehaviour {
         int randomSmoke = Random.Range(0, hitSmokes.Length);
         int randomEffect = Random.Range(0, hitEffects.Length);
         GameObject smoke = ObjectPooler.GetPooledObject(hitSmokes[randomSmoke]);
-        smoke.transform.position = new Vector3(col.contacts[0].point.x, .6f, col.contacts[0].point.z);
+        smoke.transform.position = new Vector3(col.contacts[0].point.x, col.collider.bounds.max.y + .1f, col.contacts[0].point.z);
         GameObject effect = ObjectPooler.GetPooledObject(hitEffects[randomEffect]);
-        effect.transform.position = new Vector3(col.contacts[0].point.x, .6f, col.contacts[0].point.z);
+        effect.transform.position = new Vector3(col.contacts[0].point.x, col.collider.bounds.max.y + .1f, col.contacts[0].point.z);
     }
 
     void OnCollisionEnter(Collision col)
@@ -95,7 +95,7 @@ public class SwordCollision : MonoBehaviour {
         else if (col.gameObject.layer == 17)
         {
             //do the props effect then destroy it
-            col.gameObject.GetComponent<PropDestroy>().DoEffect(col.contacts[0].point);
+            col.gameObject.GetComponent<PropDestroy>().DoEffect();
             col.gameObject.GetComponent<PropDestroy>().hitAmount--;
         }
 
