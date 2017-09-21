@@ -142,50 +142,32 @@ public class PlayerMove : MonoBehaviour
                 fromMoveVector = Vector3.Lerp(fromMoveVector, targetMoveVector, acceleration * playerInformation.GetCharmFloat("slipMultiplier") * Time.deltaTime);
                 characterController.Move(fromMoveVector * Time.deltaTime);
             }
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 50))
+            {
+                if (!ItemsManager.Instance.hasBoots)
+                {
+                    //if in mud, slown down
+                    if (hit.collider.tag == "Mud")
+                    {
+                        slowdownMultiplier = inMudSpeed;
+                    }
+                    else
+                    {
+                        slowdownMultiplier = 1;
+                    }
+                    //if on ice, slip
+                    if (hit.collider.tag == "Ice")
+                    {
+                        acceleration = 1;
+                    }
+                    else
+                    {
+                        acceleration = 10f;
+                    }
+                }
+            }
         }
 	}
-
-	void OnTriggerEnter(Collider col)
-	{
-        if (!ItemsManager.Instance.hasBoots)
-        {
-            if (col.tag == "Mud")
-            {
-                slowdownMultiplier = inMudSpeed;
-            }
-            if (col.tag == "Ice")
-            {
-                acceleration = 1;
-            }
-        }
-	}
-
-	void OnTriggerStay(Collider col)
-	{
-        if (!ItemsManager.Instance.hasBoots)
-        {
-            //checks if the floor is ice
-            if (col.tag == "Ice")
-            {
-                acceleration = 1;
-            }
-        }
-	}
-
-	void OnTriggerExit(Collider col)
-    {
-        if (!ItemsManager.Instance.hasBoots)
-        {
-            if (col.tag == "Ice")
-            {
-                fromMoveVector = Vector3.zero;
-                acceleration = 10f;
-            }
-            else if (col.tag == "Mud")
-            {
-                slowdownMultiplier = 1;
-            }
-        }
-    }
-
 }
