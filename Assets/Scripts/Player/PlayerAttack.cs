@@ -84,7 +84,8 @@ public class PlayerAttack : MonoBehaviour
         else
         {
             input = new PlayerInputs();
-            input.SetupBindings();
+			input.AddKeyboardBindings();
+			input.AddControllerBindings();
         }
     }
 

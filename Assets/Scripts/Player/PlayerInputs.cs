@@ -46,46 +46,56 @@ public class PlayerInputs : PlayerActionSet
 		//sets the bindings if the device is a keyboard
 		if (device == null)
 		{
-			Left.AddDefaultBinding (Key.A);
-			Right.AddDefaultBinding (Key.D);
-			Up.AddDefaultBinding (Key.W);
-			Down.AddDefaultBinding (Key.S);
-
-			BasicAttack.AddDefaultBinding(Key.J);
-			BasicAttack.AddDefaultBinding(Mouse.LeftButton);
-
-            Block.AddDefaultBinding(Key.K);
-			Block.AddDefaultBinding(Mouse.RightButton);
-
-            DashSlash.AddDefaultBinding (Key.L);
-			DashSlash.AddDefaultBinding(Key.LeftShift);
-
-			Purchase.AddDefaultBinding(Key.E);
+			AddKeyboardBindings();
 
 			isKeyboard = true;
 		}
 		else
 		{
-			//sets the bindings if the device is a controller
-			Left.AddDefaultBinding (InputControlType.DPadLeft);
-			Left.AddDefaultBinding (InputControlType.LeftStickLeft);
-
-			Right.AddDefaultBinding (InputControlType.DPadRight);
-			Right.AddDefaultBinding (InputControlType.LeftStickRight);
-
-			Up.AddDefaultBinding (InputControlType.DPadUp);
-			Up.AddDefaultBinding (InputControlType.LeftStickUp);
-
-			Down.AddDefaultBinding (InputControlType.DPadDown);
-			Down.AddDefaultBinding (InputControlType.LeftStickDown);
-
-			Block.AddDefaultBinding (InputControlType.LeftTrigger);
-			BasicAttack.AddDefaultBinding (InputControlType.Action3);
-			DashSlash.AddDefaultBinding (InputControlType.RightTrigger);
-
-			Purchase.AddDefaultBinding(InputControlType.Action2);
+			AddControllerBindings();
 
 			IncludeDevices.Add (device);
 		}
+	}
+
+	public void AddKeyboardBindings()
+	{
+		Left.AddDefaultBinding(Key.A);
+		Right.AddDefaultBinding(Key.D);
+		Up.AddDefaultBinding(Key.W);
+		Down.AddDefaultBinding(Key.S);
+
+		BasicAttack.AddDefaultBinding(Key.J);
+		BasicAttack.AddDefaultBinding(Mouse.LeftButton);
+
+		Block.AddDefaultBinding(Key.K);
+		Block.AddDefaultBinding(Mouse.RightButton);
+
+		DashSlash.AddDefaultBinding(Key.L);
+		DashSlash.AddDefaultBinding(Key.LeftShift);
+
+		Purchase.AddDefaultBinding(Key.E);
+	}
+
+	public void AddControllerBindings()
+	{
+		//sets the bindings if the device is a controller
+		Left.AddDefaultBinding(InputControlType.DPadLeft);
+		Left.AddDefaultBinding(InputControlType.LeftStickLeft);
+
+		Right.AddDefaultBinding(InputControlType.DPadRight);
+		Right.AddDefaultBinding(InputControlType.LeftStickRight);
+
+		Up.AddDefaultBinding(InputControlType.DPadUp);
+		Up.AddDefaultBinding(InputControlType.LeftStickUp);
+
+		Down.AddDefaultBinding(InputControlType.DPadDown);
+		Down.AddDefaultBinding(InputControlType.LeftStickDown);
+
+		Block.AddDefaultBinding(InputControlType.LeftTrigger);
+		BasicAttack.AddDefaultBinding(InputControlType.Action3);
+		DashSlash.AddDefaultBinding(InputControlType.RightTrigger);
+
+		Purchase.AddDefaultBinding(InputControlType.Action2);
 	}
 }
