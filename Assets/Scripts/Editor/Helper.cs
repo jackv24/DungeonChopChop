@@ -28,4 +28,25 @@ public class Helper
 			}
 		}
 	}
+
+	[MenuItem("Jack's Helper Functions/Refresh Object Spawners")]
+	private static void RefreshObjectSpawners()
+	{
+		GameObject[] parents = Selection.gameObjects;
+
+		if (parents.Length <= 0)
+			Debug.LogWarning("Nothing selected! Please select a parent gameobject to update it's children object spawners.");
+		else
+		{
+			foreach (GameObject parent in parents)
+			{
+				ObjectSpawner[] spawners = parent.GetComponentsInChildren<ObjectSpawner>();
+
+				foreach (ObjectSpawner spawner in spawners)
+					spawner.Replace();
+
+				Debug.Log("Refreshed " + spawners.Length + " object spawners on " + parent.name);
+			}
+		}
+	}
 }
