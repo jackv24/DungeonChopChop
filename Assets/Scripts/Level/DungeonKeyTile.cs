@@ -9,7 +9,6 @@ public class DungeonKeyTile : MonoBehaviour
 		Key,
 		Chest
 	}
-	public Type type;
 
 	public GameObject keyReplaceTile;
 	public GameObject chestReplaceTile;
