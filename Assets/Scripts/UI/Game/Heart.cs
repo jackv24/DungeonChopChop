@@ -52,6 +52,14 @@ public class Heart : MonoBehaviour {
 			if (heartNumber == playerHealth.health) {
 				image.fillAmount = 1;
 			}
+            //check if number is an int
+            if (playerHealth.health % 1 == 0)
+            {
+                if (heartNumber > playerHealth.health)
+                {
+                    image.fillAmount = 0;
+                }
+            }
 			//hide heart container
 			if (heartNumber > playerHealth.maxHealth) 
 			{
