@@ -435,7 +435,14 @@ public class Health : MonoBehaviour
     public void SetBurned(float damagePerTick, float duration, float timeBetweenBurn)
     {
         if (playerInfo)
+        {
             damagePerTick = damagePerTick * playerInfo.GetCharmFloat("burnMultiplier");
+            if (ItemsManager.Instance.hasArmourPiece)
+            {
+                damagePerTick = 0;
+            }
+        }
+       
         isBurned = true;
         DoParticle("FireTickParticle", duration);
         StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));

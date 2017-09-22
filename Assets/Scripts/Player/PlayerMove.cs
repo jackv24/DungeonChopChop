@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
 
 	[Header("Other vals")]
 	public float inMudSpeed = 2.5f;
+    public float windSpeed = 2;
 
 	private bool allowMove = true;
 
@@ -80,6 +81,33 @@ public class PlayerMove : MonoBehaviour
             animator.SetFloat("move", characterController.velocity.magnitude / maxMoveSpeed);
 		}
 	}
+
+    Vector3 WindPush()
+    {
+        if (!ItemsManager.Instance.hasBoots)
+        {
+            if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>())
+            {
+                if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Desert || LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Ice)
+                {
+                    if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>().HasParticles)
+                        return LevelGenerator.Instance.currentTile.transform.forward * windSpeed;
+                    else
+                        return Vector3.zero;
+                }
+                else
+                {
+                    return Vector3.zero;
+                }
+            }
+            else
+                return Vector3.zero;
+        }
+        else
+        {
+            return Vector3.zero;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update()
@@ -110,6 +138,8 @@ public class PlayerMove : MonoBehaviour
                 targetMoveVector.x = -inputVector.x * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
                 targetMoveVector.z = -inputVector.y * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("speedMultiplier") * slowdownMultiplier;
             }
+
+            targetMoveVector += WindPush();
 
             if (CameraFollow.Instance)
                 targetMoveVector = CameraFollow.Instance.ValidateMovePos(transform.position, targetMoveVector);
