@@ -54,7 +54,9 @@ public class EnemyAttack : MonoBehaviour
 
     void FixedUpdate()
     {
-        circleAngle = 360 / projAmount;
+        if(projAmount != 0)
+            circleAngle = 360 / projAmount;
+
         randomInterval = Random.Range(minInterval, maxInterval);
         if (attackingType == TypesOfAttack.BasicShootIntervals)
         {

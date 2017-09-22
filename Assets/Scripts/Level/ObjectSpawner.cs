@@ -10,8 +10,11 @@ public class ObjectSpawner : MonoBehaviour
 
 	void Start()
 	{
-		Replace();
-		oldPrefab = prefab;
+		if (transform.childCount <= 0 || Application.isPlaying)
+		{
+			Replace();
+			oldPrefab = prefab;
+		}
 	}
 
 	void Update()
