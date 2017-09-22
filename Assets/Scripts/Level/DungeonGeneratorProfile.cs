@@ -43,22 +43,38 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 			DungeonKeyTile keyTile = null;
 			DungeonKeyTile chestTile = null;
 
-			//Key tile can be any random potential tile
-			keyTile = potentialTiles[Random.Range(0, potentialTiles.Count)];
-			//Key tile should not be considered for chest tile
-			potentialTiles.Remove(keyTile);
-
-			//Chest tile should be furthest away from key tile
 			float furthestDistance = 0;
+
+			//Key tile should be furthest from the entrance
 			foreach (DungeonKeyTile tile in potentialTiles)
 			{
-				float distance = Vector3.Distance(tile.transform.position, keyTile.transform.position);
+				float distance = Vector3.Distance(tile.transform.position, levelGenerator.generatedTiles[0].transform.position);
 
 				if (distance > furthestDistance)
 				{
 					furthestDistance = distance;
 
-					chestTile = tile;
+					keyTile = tile;
+				}
+			}
+
+			//Key tile should not be considered for chest tile
+			if (keyTile)
+			{
+				potentialTiles.Remove(keyTile);
+
+				furthestDistance = 0;
+				//Chest tile should be furthest away from key tile
+				foreach (DungeonKeyTile tile in potentialTiles)
+				{
+					float distance = Vector3.Distance(tile.transform.position, keyTile.transform.position);
+
+					if (distance > furthestDistance)
+					{
+						furthestDistance = distance;
+
+						chestTile = tile;
+					}
 				}
 			}
 
