@@ -23,8 +23,8 @@ public class HealthOrb : MonoBehaviour {
         {
             col.gameObject.GetComponent<Health>().health += healthAmount;
             GameObject particle = ObjectPooler.GetPooledObject(particleOnCollect);
-            particle.transform.position = transform.position;
             particle.GetComponent<ParticleFollowHost>().host = col.transform;
+            particle.transform.position = transform.position;
             gameObject.SetActive(false);
         }
     }
