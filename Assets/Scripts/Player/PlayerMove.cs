@@ -88,10 +88,17 @@ public class PlayerMove : MonoBehaviour
         {
             if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>())
             {
-                if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>().HasParticles)
-                    return LevelGenerator.Instance.currentTile.transform.forward * windSpeed;
+                if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Desert || LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Ice)
+                {
+                    if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>().HasParticles)
+                        return LevelGenerator.Instance.currentTile.transform.forward * windSpeed;
+                    else
+                        return Vector3.zero;
+                }
                 else
+                {
                     return Vector3.zero;
+                }
             }
             else
                 return Vector3.zero;

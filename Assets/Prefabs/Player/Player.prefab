@@ -1327,7 +1327,7 @@ Animator:
     already bound by a Humanoid avatar. These transforms can only be changed by Humanoid
     clips.\n\tTransform 'Head_JNT'\n\tTransform 'Spine_JNT'\n\tFrom animation clip
     'DashAttack'\n\tFrom animation clip 'Chop'\n\tFrom animation clip 'Chop2'\n\tFrom
-    animation clip 'RapidAttack'"
+    animation clip 'RapidAttack'\n\tFrom animation clip 'SpinCharge'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!96 &96421586140620566
@@ -1605,7 +1605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53ea374599a91c46b17789ad490db9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockingResistance: 0.2
+  blockingResistance: 2
   speedDamping: 0.5
 --- !u!114 &114337624245840656
 MonoBehaviour:
@@ -1660,6 +1660,7 @@ MonoBehaviour:
   acceleration: 10
   rotateSpeed: 20
   inMudSpeed: 0.5
+  windSpeed: 2
 --- !u!114 &114646258548207922
 MonoBehaviour:
   m_ObjectHideFlags: 1
