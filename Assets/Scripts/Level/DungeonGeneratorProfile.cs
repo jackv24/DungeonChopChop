@@ -29,10 +29,13 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 		//Get tiles that can be replaced from level generator
 		foreach(LevelTile tile in levelGenerator.generatedTiles)
 		{
-			DungeonKeyTile key = tile.GetComponent<DungeonKeyTile>();
+			if (tile.currentGraphic)
+			{
+				DungeonKeyTile key = tile.currentGraphic.GetComponent<DungeonKeyTile>();
 
-			if (key)
-				potentialTiles.Add(key);
+				if (key)
+					potentialTiles.Add(key);
+			}
 		}
 
 		if (potentialTiles.Count >= 2)
@@ -60,18 +63,23 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 			}
 
 			//Make sure there is a key/chest pair
-			if(!keyTile)
+			if (!keyTile)
 			{
 				Debug.LogWarning("Did not spawn a dungeon <b>key</b> tile!");
 
 				succeeded = false;
 			}
-			if(!chestTile)
+			else
+				keyTile.Replace(DungeonKeyTile.Type.Key);
+
+			if (!chestTile)
 			{
 				Debug.LogWarning("Did not spawn a dungeon <b>chest</b> tile!");
 
 				succeeded = false;
 			}
+			else
+				chestTile.Replace(DungeonKeyTile.Type.Chest);
 		}
 		else
 		{
