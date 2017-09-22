@@ -39,6 +39,10 @@ public class DungeonItemPickup : MonoBehaviour
             {
                 ItemsManager.Instance.hasBoots = true;
             }
+            else if (itemType == DungeonItemType.Armor)
+            {
+                ItemsManager.Instance.hasArmourPiece = true;
+            }
             gameObject.SetActive(false);
         }
     }

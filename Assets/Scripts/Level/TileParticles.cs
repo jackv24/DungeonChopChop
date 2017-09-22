@@ -13,6 +13,8 @@ public class TileParticles : MonoBehaviour
 	private LevelTile tile;
 	private GameObject spawnedParticles;
 
+    public bool HasParticles { get { return spawnedParticles; } }
+
 	private void Start()
 	{
 		tile = GetComponent<LevelTile>();
