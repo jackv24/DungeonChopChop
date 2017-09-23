@@ -53,6 +53,8 @@ public class Health : MonoBehaviour
     private Vector3 targetPosition;
     private SpawnEffects spawnEffects;
 
+    private Coroutine coroutine;
+
     private bool fadeToColor = false;
 
     void Start()
@@ -209,6 +211,14 @@ public class Health : MonoBehaviour
 
     public void HitColorFlash()
     {
+        if (coroutine != null)
+        {
+            Debug.Log("hi");
+            StopCoroutine(coroutine);
+            fadeToColor = false;
+        }
+        
+        coroutine = StartCoroutine(DoHitColourFlash());
         StartCoroutine(DoHitColourFlash());
     }
 

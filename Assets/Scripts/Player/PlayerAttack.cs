@@ -61,7 +61,6 @@ public class PlayerAttack : MonoBehaviour
     private bool comboStarted = false;
     private bool movingForward = false;
 
-    private bool spinAttackReady = false;
     private float spinCounter = 0;
     private float heldDownCounter = 0;
 
@@ -298,12 +297,6 @@ public class PlayerAttack : MonoBehaviour
             //sets the swords parent to be nothing
             sword.transform.parent = null;
             StartCoroutine(ThrowDroppedSword(sword.transform));
-            //places the sword in the world
-
-            //sword.transform.position = new Vector3(sword.transform.position.x, 2, sword.transform.position.z);
-            //sword.transform.eulerAngles = new Vector3(21.458f, 90, 180);
-            //sword.GetComponent<SwordPickup>().canPickUp = true;
-            //sword = null;
         }
     }
 
@@ -484,21 +477,12 @@ public class PlayerAttack : MonoBehaviour
     void doSlash()
     {
         animator.SetTrigger("Attack");
-        //animator.SetTrigger("SecondAttack");
-        //if (moveRoutine != null)
-        //    StopCoroutine(moveRoutine);
-        //moveRoutine = StartCoroutine(waitForSeconds(.2f));
-        //StartCoroutine(slashWait("Attack"));
         //do slash things
     }
 
     void doSecondSlash()
     {
         StartCoroutine(boolWait("SecondAttack"));
-        //if (moveRoutine != null)
-        //    StopCoroutine(moveRoutine);
-        //moveRoutine = StartCoroutine(waitForSeconds(.2f));
-        //StartCoroutine(slashWait("SecondAttack"));
     }
 
     IEnumerator slashWait(string boolName)
@@ -507,16 +491,6 @@ public class PlayerAttack : MonoBehaviour
         yield return animator.GetCurrentAnimatorStateInfo(1);
         yield return new WaitForSeconds(.1f);
         animator.SetBool(boolName, false);
-    }
-
-    public void DisplaySlash()
-    {
-//        GameObject slash = ObjectPooler.GetPooledObject(slashFX);
-//        slash.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-//        slash.transform.eulerAngles = transform.eulerAngles - slashFX.transform.eulerAngles;
-//        slash.transform.localScale = slashFX.transform.localScale;
-//        slash.GetComponent<Slash>().direction = transform.forward;
-//        slash.GetComponent<Slash>().cc = characterController;
     }
 
     void doRapidSlash()
