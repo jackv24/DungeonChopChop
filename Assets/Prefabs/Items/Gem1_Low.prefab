@@ -68,7 +68,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1658681933412678}
-  m_LocalRotation: {x: 0, y: -0, z: -0.38268346, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -27.059916, y: 0.6066805, z: -27.630505}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
@@ -128,7 +128,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &65403598528603804
 BoxCollider:
@@ -153,9 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d981f969f6d3e94b93c175457d3f95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconRenderer: {fileID: 0}
-  representingItem: {fileID: 0}
+  iconRenderers: []
+  representingCharm: {fileID: 0}
   pickupDelay: 1
+  pickupUIPrefab: {fileID: 0}
+  pickupEffect: {fileID: 0}
 --- !u!114 &114333133431193708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 1
+  axis: Y
 --- !u!114 &114515260749511122
 MonoBehaviour:
   m_ObjectHideFlags: 1

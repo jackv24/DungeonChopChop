@@ -55,8 +55,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616226106310662}
-  m_LocalRotation: {x: 0.38268346, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -21.627214, y: -2.9435117, z: -23.852982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 31.092247, y: -2.8318257, z: -50.211628}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4880215889809944}
@@ -128,7 +128,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &65370483673710546
 BoxCollider:
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 1
+  axis: Y
 --- !u!114 &114167149829681834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,9 +178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d981f969f6d3e94b93c175457d3f95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconRenderer: {fileID: 0}
-  representingItem: {fileID: 0}
+  iconRenderers: []
+  representingCharm: {fileID: 0}
   pickupDelay: 1
+  pickupUIPrefab: {fileID: 0}
+  pickupEffect: {fileID: 0}
 --- !u!135 &135586965857579908
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -128,7 +128,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &65022833869450978
 BoxCollider:
@@ -153,9 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d981f969f6d3e94b93c175457d3f95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconRenderer: {fileID: 0}
-  representingItem: {fileID: 0}
+  iconRenderers: []
+  representingCharm: {fileID: 0}
   pickupDelay: 1
+  pickupUIPrefab: {fileID: 0}
+  pickupEffect: {fileID: 0}
 --- !u!114 &114823998200661782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 1
+  axis: Y
 --- !u!135 &135358393245933134
 SphereCollider:
   m_ObjectHideFlags: 1
