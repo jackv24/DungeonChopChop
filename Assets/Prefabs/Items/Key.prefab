@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 135350754291648554}
   - component: {fileID: 54563963810366998}
   - component: {fileID: 114679948939090866}
+  - component: {fileID: 114188261107923378}
   m_Layer: 15
   m_Name: Key
   m_TagString: Untagged
@@ -170,8 +171,25 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0414082, y: 1.5923153, z: 0.7769952}
-  m_Center: {x: -0.0030796528, y: 0.052400082, z: 0.0047652125}
+  m_Size: {x: 1.0414082, y: 1.194015, z: 0.7769952}
+  m_Center: {x: 0.63, y: 0.09276256, z: 0.0047652125}
+--- !u!114 &114188261107923378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1119699910917224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d981f969f6d3e94b93c175457d3f95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconRenderers: []
+  representingCharm: {fileID: 0}
+  pickupDelay: 1
+  pickupUIPrefab: {fileID: 0}
+  pickupEffect: {fileID: 1928837666263156, guid: 389b9ff2e2cd82a4e8a489bb9126b750,
+    type: 2}
 --- !u!114 &114679948939090866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,7 +225,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.39
-  m_Center: {x: -0.11999989, y: 0.0035047424, z: 1.9490892e-25}
+  m_Center: {x: 0.52, y: 0.0035047424, z: 1.9490892e-25}
 --- !u!198 &198612212221830698
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -264,10 +282,10 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2021253358
+  randomSeed: -725609290
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -357,7 +375,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 2
       minColor: {r: 1, g: 0.75040585, b: 0.21323532, a: 0.472}
-      maxColor: {r: 1, g: 0.93103456, b: 0, a: 0.278}
+      maxColor: {r: 1, g: 0.94878304, b: 0.25735295, a: 0.278}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -710,7 +728,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 5
     enabled: 1
-    type: 10
+    type: 0
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
