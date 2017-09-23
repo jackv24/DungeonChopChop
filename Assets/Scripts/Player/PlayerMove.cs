@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
 	public float gravity = -9.8f;
 	public float acceleration;
 	public float rotateSpeed = 4f;
+    public bool LockY;
 
 	[Header("Other vals")]
 	public float inMudSpeed = 2.5f;
@@ -112,6 +113,14 @@ public class PlayerMove : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+        if (LockY)
+        {
+            if (transform.position.y > .14f)
+            {
+                transform.position = new Vector3(transform.position.x, .14f, transform.position.z);
+            }
+        }
+
 		doAnimations();
 
 		if (!allowMove)

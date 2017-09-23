@@ -8,6 +8,8 @@ public class EnemyMove : MonoBehaviour
 {
     public float runAwayAfterAttackTime = 1;
     public LayerMask layerMask;
+    public bool LockY = true;
+
     protected float originalSpeed;
 
     protected NavMeshAgent agent;
@@ -30,6 +32,17 @@ public class EnemyMove : MonoBehaviour
     {
         if (agent)
             agent.enabled = false;
+    }
+
+    void Update()
+    {
+        if (LockY)
+        {
+            if (transform.position.y > .14f)
+            {
+                transform.position = new Vector3(transform.position.x, .14f, transform.position.z);
+            }
+        }
     }
 
     void FixedUpdate()

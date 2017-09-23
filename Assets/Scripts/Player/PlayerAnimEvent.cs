@@ -16,11 +16,6 @@ public class PlayerAnimEvent : MonoBehaviour {
 		
 	}
 
-    public void PlaySlash()
-    {
-        playerAttack.DisplaySlash();
-    }
-
     public void EnableSword()
     {
         playerAttack.EnableSword();
