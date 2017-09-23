@@ -89,6 +89,7 @@ public class EnemyDeath : MonoBehaviour
         obj.transform.position = transform.position;
         obj.AddComponent<AudioSource>();
         int random = Random.Range(0, deathSounds.Length);
+        obj.GetComponent<AudioSource>().volume = AS.volume;
         obj.GetComponent<AudioSource>().PlayOneShot(deathSounds[random]);
         obj.AddComponent<SoundObject>();
     }
