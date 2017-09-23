@@ -51,6 +51,8 @@ public class OptionsUI : MonoBehaviour
 			//Add names to dropdown and select current quaity level
 			qualityDropdown.AddOptions(qualityLevels);
 			qualityDropdown.value = QualitySettings.GetQualityLevel();
+
+			qualityDropdown.onValueChanged.AddListener((int index) => { QualitySettings.SetQualityLevel(index, true); });
 		}
 	}
 
