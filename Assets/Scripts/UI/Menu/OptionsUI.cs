@@ -6,14 +6,17 @@ using UnityEngine.UI;
 public class OptionsUI : MonoBehaviour
 {
 	public Dropdown resolutionDropdown;
+	public Toggle fullscreenToggle;
 	public Dropdown qualityDropdown;
+
+	private List<Resolution> resolutions;
 
 	void Start()
 	{
 		if(resolutionDropdown)
 		{
 			//Get list of available resolutions
-			List<Resolution> resolutions = new List<Resolution>(Screen.resolutions);
+			resolutions = new List<Resolution>(Screen.resolutions);
 
 			//Add resolutions as a list of strings
 			List<string> resStrings = new List<string>();
@@ -26,6 +29,15 @@ public class OptionsUI : MonoBehaviour
 			//Add dropdown options strings and select current resolution
 			resolutionDropdown.AddOptions(resStrings);
 			resolutionDropdown.value = resolutions.IndexOf(Screen.currentResolution);
+
+			resolutionDropdown.onValueChanged.AddListener(delegate { UpdateResolution(); });
+
+			if (fullscreenToggle)
+			{
+				fullscreenToggle.isOn = Screen.fullScreen;
+
+				fullscreenToggle.onValueChanged.AddListener(delegate { UpdateResolution(); });
+			}
 		}
 
 		if (qualityDropdown)
@@ -40,5 +52,12 @@ public class OptionsUI : MonoBehaviour
 			qualityDropdown.AddOptions(qualityLevels);
 			qualityDropdown.value = QualitySettings.GetQualityLevel();
 		}
+	}
+
+	void UpdateResolution()
+	{
+		Resolution res = resolutions[resolutionDropdown.value];
+
+		Screen.SetResolution(res.width, res.height, fullscreenToggle.isOn);
 	}
 }
