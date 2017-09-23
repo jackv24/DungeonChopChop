@@ -14,6 +14,13 @@ public class SlimeMove : EnemyMove {
 
     public SlimeType type;
 
+    [Header("Split Values")]
+    public bool doesSplit;
+    public float splitInterval = 2;
+    public float splitAmount;
+    public GameObject slime;
+
+    [Space()]
     public float damageToEnemies = 1; 
 
     [Header("Movement Vars")]
@@ -28,10 +35,28 @@ public class SlimeMove : EnemyMove {
     private bool inLeeping = false;
     private bool doingLeep = false;
 
+    private float splitCounter = 0;
+
 	// Use this for initialization
 	void Awake () {
         Setup();
 	}
+
+    void FixedUpdate()
+    {
+        if (doesSplit)
+        {
+            splitCounter++;
+            if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle"))
+            {
+                if (splitCounter >= (splitInterval * 60))
+                {
+                    DoSplit();
+                    splitCounter = 0;
+                }
+            }
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -65,6 +90,19 @@ public class SlimeMove : EnemyMove {
             }
         }
 	}
+
+    void DoSplit()
+    {
+        int currentFrame = ((int)(animator.GetCurrentAnimatorStateInfo(0).normalizedTime * (35))) % 35;
+        if (currentFrame >= 25)
+        {
+            for (int i = 0; i < splitAmount; i++)
+            {
+                GameObject newSlime = ObjectPooler.GetPooledObject(slime);
+                newSlime.transform.localPosition = transform.localPosition;
+            }
+        }
+    }
 
     void DoMove()
     {
