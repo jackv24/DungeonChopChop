@@ -55,7 +55,7 @@ ModelImporter:
     400044: Toe_R_END
     400046: Wrist_L_JNT
     400048: Wrist_R_JNT
-    7400000: Take 001
+    7400000: Spin
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -68,14 +68,34 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'Hip_L_JNT'
+      : position error = 92.742981 mm\n\t'Knee_L_JNT' : position error = 240.300034
+      mm\n\t'Foot_L_JNT' : position error = 154.985840 mm\n\t'Hip_R_JNT' : position
+      error = 92.742928 mm\n\t'Knee_R_JNT' : position error = 240.300049 mm\n\t'Foot_R_JNT'
+      : position error = 154.985870 mm\n"
     animationImportErrors: 
-    animationImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length
-      in copied configuration does not match position in animation file\nPlayer@Spin\nClip
-      'Take 001' has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest_JNT'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
-    animationRetargetingWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'Chest_JNT' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n"
+    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Take 001':\n\tLeftLowerLeg
+      average position error 259.5 mm and maximum position error 275.7 mm at time
+      10: 7 (75.0%) Frame 247\n\tLeftFoot average position error 382.2 mm and maximum
+      position error 409.3 mm at time 9: 7 (0.0%) Frame 223\n\tRightLowerLeg average
+      position error 278.1 mm and maximum position error 306.8 mm at time 9:16 (28.1%)
+      Frame 232\n\tRightFoot average position error 382.1 mm and maximum position
+      error 413.4 mm at time 10:10 (84.4%) Frame 250\n\tLeftUpperArm average position
+      error 334.4 mm and maximum position error 354.9 mm at time 9:20 (40.6%) Frame
+      236\n\tLeftLowerArm average position error 337.9 mm and maximum position error
+      367.2 mm at time 10: 4 (65.6%) Frame 244\n\tLeftHand average position error
+      390.4 mm and maximum position error 454.9 mm at time 10: 4 (65.6%) Frame 244\n\tRightUpperArm
+      average position error 332.1 mm and maximum position error 347.4 mm at time
+      9:20 (40.6%) Frame 236\n\tRightLowerArm average position error 337.3 mm and
+      maximum position error 368.6 mm at time 9:20 (40.6%) Frame 236\n\tRightHand
+      average position error 373.9 mm and maximum position error 420.5 mm at time
+      9:16 (28.1%) Frame 232\n\tHead average position error 415.3 mm and maximum position
+      error 421.6 mm at time 9:20 (40.6%) Frame 236\n"
     animationDoRetargetingWarnings: 1
     animationCompression: 1
     animationRotationError: 0.5
@@ -84,7 +104,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Spin
+      takeName: Take 001
+      firstFrame: 223
+      lastFrame: 255
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
