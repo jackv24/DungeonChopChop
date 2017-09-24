@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 4582113171297060}
   - component: {fileID: 65711643047417132}
   - component: {fileID: 135779134138573050}
-  - component: {fileID: 114654669773840514}
   - component: {fileID: 114638644984236718}
   - component: {fileID: 54006736554122974}
   m_Layer: 15
@@ -85,13 +84,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976745179188518}
-  m_LocalRotation: {x: -0, y: 1, z: -1.0339757e-24, w: 1.0339757e-24}
-  m_LocalPosition: {x: 0.015, y: 0.009, z: -0.043967057}
+  m_LocalRotation: {x: -0.01740405, y: 0.9998097, z: 0.0018638194, w: 0.008618282}
+  m_LocalPosition: {x: -0.005, y: 0.0454, z: 0.0009}
   m_LocalScale: {x: 0.87903994, y: 0.87903994, z: 0.87903994}
   m_Children: []
   m_Father: {fileID: 4582113171297060}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.231, y: 179.016, z: -1.9930001}
 --- !u!4 &4582113171297060
 Transform:
   m_ObjectHideFlags: 1
@@ -185,23 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAmount: 10
---- !u!114 &114654669773840514
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1500886815647376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d981f969f6d3e94b93c175457d3f95f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iconRenderers: []
-  representingCharm: {fileID: 0}
-  pickupDelay: 1
-  pickupUIPrefab: {fileID: 0}
-  pickupEffect: {fileID: 1928837666263156, guid: 389b9ff2e2cd82a4e8a489bb9126b750,
-    type: 2}
 --- !u!114 &114804777726807910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -286,7 +268,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 288634724
+  randomSeed: 181049464
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -737,7 +719,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 0.5}
+    m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
@@ -751,7 +733,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 1.0997686
       mode: 0
       spread: 0
       speed:

@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4141472547166488}
   - component: {fileID: 65370483673710546}
   - component: {fileID: 135586965857579908}
-  - component: {fileID: 114797713548918308}
   - component: {fileID: 114167149829681834}
   - component: {fileID: 54456966546081410}
   m_Layer: 15
@@ -198,23 +197,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAmount: 20
---- !u!114 &114797713548918308
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1616226106310662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d981f969f6d3e94b93c175457d3f95f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iconRenderers: []
-  representingCharm: {fileID: 0}
-  pickupDelay: 1
-  pickupUIPrefab: {fileID: 0}
-  pickupEffect: {fileID: 1928837666263156, guid: 389b9ff2e2cd82a4e8a489bb9126b750,
-    type: 2}
 --- !u!135 &135586965857579908
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -438,8 +420,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
-      minScalar: 0.2
+      scalar: 0.7
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -737,7 +719,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 0.5}
+    m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
