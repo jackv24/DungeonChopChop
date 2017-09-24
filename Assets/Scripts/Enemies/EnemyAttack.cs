@@ -15,10 +15,13 @@ public class EnemyAttack : MonoBehaviour
 {
 
     public TypesOfAttack attackingType;
+
+    [Header("Projectile Vars")]
     public ProjecticleVariables projecticle;
     public GameObject shootPosition;
-
     public float thrust;
+
+    [Space()]
     [Tooltip("This values x projectile damage")]
     public float attackStrength;
     public float damageOnTouch;

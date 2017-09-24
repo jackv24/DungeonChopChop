@@ -27,6 +27,8 @@ public class SlimeMove : EnemyMove {
     public float followProximity = 20;
     public float radiusAttack = 5;
     public float waitTillLeep = 1;
+    [Tooltip("Normal speed multiplier")]
+    public float inAirSpeed = 2;
     public float timeBetweenRoam = 2;
 
     [Space()]
@@ -96,10 +98,10 @@ public class SlimeMove : EnemyMove {
         int currentFrame = ((int)(animator.GetCurrentAnimatorStateInfo(0).normalizedTime * (35))) % 35;
         if (currentFrame >= 25)
         {
-            for (int i = 0; i < splitAmount; i++)
+            for (int i = 1; i <= splitAmount; i++)
             {
                 GameObject newSlime = ObjectPooler.GetPooledObject(slime);
-                newSlime.transform.localPosition = transform.localPosition;
+                newSlime.transform.localPosition = new Vector3(transform.localPosition.x + newSlime.transform.lossyScale.x * i, transform.localPosition.y, transform.localPosition.z);
             }
         }
     }
@@ -150,7 +152,7 @@ public class SlimeMove : EnemyMove {
         yield return new WaitForSeconds(waitTillLeep);
         animator.SetTrigger("Hop");
         doingLeep = true;
-        agent.speed = originalSpeed * 2;
+        agent.speed = originalSpeed * inAirSpeed;
         yield return new WaitForSeconds(1);
         agent.speed = originalSpeed;
         inLeeping = false;
