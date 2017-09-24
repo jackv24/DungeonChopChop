@@ -76,7 +76,10 @@ public class EnemyMove : MonoBehaviour
     {
         //follows the closest player using nav mesh
         if (usingNav)
-            agent.SetDestination(GetClosestPlayer().position);
+        {
+            if (agent.isOnNavMesh)
+                agent.SetDestination(GetClosestPlayer().position);
+        }
     }
 
     protected void FollowEnemy()
@@ -84,7 +87,8 @@ public class EnemyMove : MonoBehaviour
         //follows the closest enemy
         if (usingNav)
         {
-            agent.SetDestination(GetClosestEnemy().position);
+            if (agent.isOnNavMesh)
+                agent.SetDestination(GetClosestEnemy().position);
         }
     }
 
@@ -96,7 +100,10 @@ public class EnemyMove : MonoBehaviour
         { 
             //roams to a random position on the current tile
             if (usingNav)
-                agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
+            {
+                if (agent.isOnNavMesh)
+                    agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
+            }
             roamCounter = 0; 
         } 
     }
@@ -145,7 +152,10 @@ public class EnemyMove : MonoBehaviour
 
             //moves to that position
             if (usingNav)
-                agent.SetDestination(hit.position);
+            {
+                if (agent.isOnNavMesh)
+                    agent.SetDestination(hit.position);
+            }
         }
     }
 
@@ -177,7 +187,7 @@ public class EnemyMove : MonoBehaviour
             float dist = Vector3.Distance(transform.position, enemy.transform.position);
             if (dist < maxDistance)
             {
-                if (enemy.name != name)
+                if (enemy != GetComponent<Collider>())
                 {
                     if (enemy.gameObject.layer == 11)
                     {
