@@ -24,6 +24,9 @@ public class PlayerInformation : MonoBehaviour
     public int itemAmount;
     public List<InventoryItem> currentItems = new List<InventoryItem>();
 
+    [Header("Other Vals")]
+    public float absorbDistance = 1;
+
     [Header("Average Damage Output")]
     public float damageOutput;
 
@@ -239,7 +242,7 @@ public class PlayerInformation : MonoBehaviour
     void MagnetizeItems()
     {
         //gets all items in radius
-        Collider[] items = Physics.OverlapSphere(transform.position, (GetCharmFloat("radialValue") + 1));
+        Collider[] items = Physics.OverlapSphere(transform.position, (GetCharmFloat("radialValue") + absorbDistance));
         if (items.Length > 0)
         {
             foreach (Collider item in items)
