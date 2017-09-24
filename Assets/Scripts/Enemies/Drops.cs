@@ -34,14 +34,18 @@ public class Drops : MonoBehaviour
 
     public void DoDrop()
     {
+        int randomDropAmount = UnityEngine.Random.Range(0, maxAmountOfDrops);
         if (maxAmountOfDrops > 0)
         {
-            float percentage = 100 / maxAmountOfDrops;
-            float counter = 100;
-            while (counter > 1)
+            if (randomDropAmount > 0)
             {
-                DropItem();
-                counter -= percentage;
+                float percentage = 100 / randomDropAmount;
+                float counter = 100;
+                while (counter > 1)
+                {
+                    DropItem();
+                    counter -= percentage;
+                }
             }
         }
     }
@@ -49,13 +53,15 @@ public class Drops : MonoBehaviour
     void DropItem()
     {
         //gets a number between 0 and 100 which will act as a percentage
-        int randomPercent = UnityEngine.Random.Range(0, 101);
+        int randomPercent = 0;
         for (int j = 0; j < drops.Length; j++)
         {
+            randomPercent = UnityEngine.Random.Range(0, 101);
+            Debug.Log(randomPercent);
             //loop through each drop and find which drops min and max percentage have the percentage inbetween
-            if (j != drops.Length - 1)
+            if (j != 0)
             {
-                if (randomPercent >= drops[j].dropChance && randomPercent < drops[j + 1].dropChance)
+                if (randomPercent <= drops[j].dropChance && randomPercent > drops[j - 1].dropChance)
                 {
                     Drop(j);
                     break;

@@ -213,7 +213,6 @@ public class Health : MonoBehaviour
     {
         if (coroutine != null)
         {
-            Debug.Log("hi");
             StopCoroutine(coroutine);
             fadeToColor = false;
         }
