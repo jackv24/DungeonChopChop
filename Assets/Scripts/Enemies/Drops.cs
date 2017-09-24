@@ -34,7 +34,8 @@ public class Drops : MonoBehaviour
 
     public void DoDrop()
     {
-        int randomDropAmount = UnityEngine.Random.Range(0, maxAmountOfDrops);
+        int randomDropAmount = UnityEngine.Random.Range(0, maxAmountOfDrops + 1);
+
         if (maxAmountOfDrops > 0)
         {
             if (randomDropAmount > 0)
@@ -43,6 +44,7 @@ public class Drops : MonoBehaviour
                 float counter = 100;
                 while (counter > 1)
                 {
+                    Debug.Log("hi");
                     DropItem();
                     counter -= percentage;
                 }
