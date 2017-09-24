@@ -25,26 +25,26 @@ public class Drops : MonoBehaviour
     {
         col = GetComponent<Collider>();
     }
-	
-    // Update is called once per frame
-    void Update()
-    {
-		
-    }
 
     public void DoDrop()
     {
-        int randomDropAmount = UnityEngine.Random.Range(0, maxAmountOfDrops + 1);
+        //checks if the number of drops is 0
+        int randomDropAmount = 0;
+        if (maxAmountOfDrops == 1)
+            randomDropAmount = UnityEngine.Random.Range(0, maxAmountOfDrops + 1);
+        else
+            randomDropAmount = UnityEngine.Random.Range(0, maxAmountOfDrops);
 
         if (maxAmountOfDrops > 0)
         {
             if (randomDropAmount > 0)
             {
+                //gets the percentage, eg if number = 3, 100 / 3 = 33.333
                 float percentage = 100 / randomDropAmount;
                 float counter = 100;
                 while (counter > 1)
                 {
-                    Debug.Log("hi");
+                    //do drop
                     DropItem();
                     counter -= percentage;
                 }
@@ -59,7 +59,6 @@ public class Drops : MonoBehaviour
         for (int j = 0; j < drops.Length; j++)
         {
             randomPercent = UnityEngine.Random.Range(0, 101);
-            Debug.Log(randomPercent);
             //loop through each drop and find which drops min and max percentage have the percentage inbetween
             if (j != 0)
             {
