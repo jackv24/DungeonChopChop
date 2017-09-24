@@ -557,7 +557,7 @@ Transform:
   m_GameObject: {fileID: 1305525527743298}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 92.41652, y: 0.5, z: -192.1843}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 4475221051208160}
   m_Father: {fileID: 0}
@@ -728,8 +728,8 @@ MonoBehaviour:
   shootPosition: {fileID: 0}
   thrust: 80
   attackStrength: 2
-  damageOnTouch: 2
-  knockbackStrength: 2
+  damageOnTouch: 3
+  knockbackStrength: 3
   projAmount: 25
   timeTillInterval: 1
   minInterval: 1
@@ -755,8 +755,8 @@ MonoBehaviour:
         type: 2}
       gradient:
         serializedVersion: 2
-        key0: {r: 0.29350471, g: 0.21853374, b: 0.6911765, a: 1}
-        key1: {r: 0.19463666, g: 0.20882943, b: 0.35294116, a: 1}
+        key0: {r: 0.6259844, g: 0.6911765, b: 0.21853374, a: 1}
+        key1: {r: 0.34420714, g: 0.35294116, b: 0.19463666, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -832,20 +832,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drops:
   - Drop: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
-    dropChance: 79
+    dropChance: 90
   - Drop: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
-    dropChance: 82
-  - Drop: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
-    dropChance: 85
-  - Drop: {fileID: 1616226106310662, guid: 0c71fc111242199438e231f8efa50564, type: 2}
-    dropChance: 87
-  - Drop: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
-    dropChance: 88
-  - Drop: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
-    dropChance: 91
+    dropChance: 93
+  - Drop: {fileID: 0}
+    dropChance: 97
   - Drop: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
-    dropChance: 100
-  maxAmountOfDrops: 2
+    dropChance: 95
+  maxAmountOfDrops: 3
 --- !u!114 &114382322386837200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -859,7 +853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 4
   health: 4
-  weight: 2
+  weight: 1.5
   IsEnemy: 1
   isPoisoned: 0
   isBurned: 0
@@ -935,10 +929,11 @@ MonoBehaviour:
   splitAmount: 0
   slime: {fileID: 0}
   damageToEnemies: 1
-  followProximity: 7
+  followProximity: 10
   radiusAttack: 5
   waitTillLeep: 0.5
-  timeBetweenRoam: 2
+  inAirSpeed: 4
+  timeBetweenRoam: 1
   friendly: 0
 --- !u!137 &137267875160906948
 SkinnedMeshRenderer:
@@ -1165,8 +1160,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 6
-  m_Acceleration: 7
+  m_Speed: 10
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 1
