@@ -101,7 +101,7 @@ public class SlimeMove : EnemyMove {
             for (int i = 1; i <= splitAmount; i++)
             {
                 GameObject newSlime = ObjectPooler.GetPooledObject(slime);
-                newSlime.transform.localPosition = new Vector3(transform.localPosition.x + newSlime.transform.lossyScale.x * i, transform.localPosition.y, transform.localPosition.z);
+                newSlime.transform.localPosition = transform.localPosition;
             }
         }
     }

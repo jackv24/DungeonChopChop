@@ -107,14 +107,17 @@ public class PlayerAttack : MonoBehaviour
         }
 
         //check if attack button is held
-        if (input.BasicAttack.IsPressed)
+        if (canSpinAttack)
         {
-            //check what state you're in
-            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+            if (input.BasicAttack.IsPressed)
             {
-                heldDownCounter++;
-                if (heldDownCounter > 30)
-                    animator.SetBool("SpinCharge", true);
+                //check what state you're in
+                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                {
+                    heldDownCounter++;
+                    if (heldDownCounter > 30)
+                        animator.SetBool("SpinCharge", true);
+                }
             }
         }
     }
@@ -151,6 +154,7 @@ public class PlayerAttack : MonoBehaviour
                     spinCounter = 0;
                     animator.SetBool("SpinCharge", false);
                     animator.SetTrigger("Spin");
+                    playerHealth.InvincibilityForSecs(2);
                 }
             }
             if (input.BasicAttack.WasPressed)
