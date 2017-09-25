@@ -13,9 +13,11 @@ public class PlayerMove : MonoBehaviour
 	public float rotateSpeed = 4f;
     public bool LockY;
 
-	[Header("Other vals")]
+	[Header("Environment vals")]
 	public float inMudSpeed = 2.5f;
     public float windSpeed = 2;
+    public float damageInFireBiome = .1f;
+    public float timeBetweenBiomeBurn = 2;
 
 	private bool allowMove = true;
 
@@ -26,13 +28,13 @@ public class PlayerMove : MonoBehaviour
 	private PlayerAttack playerAttack;
     private Health playerHealth;
 
-	private float speed;
-
 	private Vector2 inputVector;
 	private Vector3 targetMoveVector;
 	private Vector3 fromMoveVector = Vector3.zero;
 
+    private float speed;
     private float slowdownMultiplier = 1;
+    private float fireBiomeTickCounter = 0;
 
 	// Use this for initialization
 	void Start()
@@ -107,6 +109,22 @@ public class PlayerMove : MonoBehaviour
         else
         {
             return Vector3.zero;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (!ItemsManager.Instance.hasArmourPiece)
+        {
+            if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Fire)
+            {
+                fireBiomeTickCounter++;
+                if (fireBiomeTickCounter > (timeBetweenBiomeBurn * 60))
+                {
+                    playerHealth.AffectHealth(-damageInFireBiome);
+                    fireBiomeTickCounter = 0;
+                }
+            }
         }
     }
 	
