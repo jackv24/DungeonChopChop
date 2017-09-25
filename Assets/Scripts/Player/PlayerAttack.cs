@@ -231,7 +231,7 @@ public class PlayerAttack : MonoBehaviour
                 MoveForward(speedWhenBurned);
             }
 
-            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
+            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
             {
                 animator.SetBool("SpinCharge", false);
                 DisableSword();
@@ -325,14 +325,14 @@ public class PlayerAttack : MonoBehaviour
     {
         //enables collider and trail
         sword.GetComponent<BoxCollider>().enabled = true;
-        sword.transform.GetChild(0).gameObject.SetActive(true);
+        sword.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = true;
     }
 
     public void DisableSword()
     {
         //disables collider and trail
         sword.GetComponent<BoxCollider>().enabled = false;
-        sword.transform.GetChild(0).gameObject.SetActive(false);
+        sword.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = false;
     }
 
     //-------------------------- Combo stuff
