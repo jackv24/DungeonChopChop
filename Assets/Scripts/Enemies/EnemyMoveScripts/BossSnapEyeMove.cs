@@ -3,32 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BossSnapEyeMove : EnemyMove {
-    
+
+    public bool spawnEnemies = false;
     public int enemiesToSpawn = 10;
     public GameObject enemy;
 
     private bool Attacking = false;
+    private Collider[] enemyColliders = new Collider[0];
     private List<GameObject> enemies = new List<GameObject>();
+    private Health enemyHealth;
 
     // Use this for initialization
     void Start () 
     {
         Setup(); 
-        SpawnEnemies();
+        enemyHealth = GetComponent<Health>();
+        if (spawnEnemies)
+            SpawnEnemies();
     }
 
     // Update is called once per frame
     void Update () 
     {
+        if (enemyColliders.Length == 0 || enemyColliders == null)
+        {
+            GetEnemies();
+        }
+
         if (!Attacking)
         {
-            if (EnemiesDead())
+            enemyHealth.enabled = false;
+            if (spawnEnemies)
             {
-                StartAttacking();
+                if (EnemiesDead())
+                {
+                    StartAttacking();
+                }
+            }
+            else
+            {
+                if (EnemiesDeadCol())
+                {
+                    StartAttacking();
+                }
             }
         }
         else
         {
+            enemyHealth.enabled = true;
             FollowPlayer();
         }
     }
@@ -43,6 +65,26 @@ public class BossSnapEyeMove : EnemyMove {
             }
         }
         return true;
+    }
+
+    bool EnemiesDeadCol()
+    {
+        foreach (Collider enemy in enemyColliders)
+        {
+            if (enemy != GetComponent<Collider>())
+            {
+                if (enemy.gameObject.activeSelf)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    void GetEnemies()
+    {
+        enemyColliders = Physics.OverlapSphere(transform.position, 100, layerMask);
     }
         
     void SpawnEnemies()
