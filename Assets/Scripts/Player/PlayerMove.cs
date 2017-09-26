@@ -116,13 +116,16 @@ public class PlayerMove : MonoBehaviour
     {
         if (!ItemsManager.Instance.hasArmourPiece)
         {
-            if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Fire)
+            if (LevelGenerator.Instance.currentTile)
             {
-                fireBiomeTickCounter++;
-                if (fireBiomeTickCounter > (timeBetweenBiomeBurn * 60))
+                if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Fire)
                 {
-                    playerHealth.AffectHealth(-damageInFireBiome);
-                    fireBiomeTickCounter = 0;
+                    fireBiomeTickCounter++;
+                    if (fireBiomeTickCounter > (timeBetweenBiomeBurn * 60))
+                    {
+                        playerHealth.AffectHealth(-damageInFireBiome);
+                        fireBiomeTickCounter = 0;
+                    }
                 }
             }
         }
