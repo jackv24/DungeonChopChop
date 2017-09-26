@@ -13,8 +13,7 @@ public class DropKinds
 
 public class Drops : MonoBehaviour
 {
-
-    public DropKinds[] drops;
+    public Helper.ProbabilityGameObject[] drops;
     [Tooltip("0 to this value")]
     public int maxAmountOfDrops;
 
@@ -54,31 +53,14 @@ public class Drops : MonoBehaviour
 
     void DropItem()
     {
-        //gets a number between 0 and 100 which will act as a percentage
-        int randomPercent = 0;
-        for (int j = 0; j < drops.Length; j++)
-        {
-            randomPercent = UnityEngine.Random.Range(0, 101);
-            //loop through each drop and find which drops min and max percentage have the percentage inbetween
-            if (j != 0)
-            {
-                if (randomPercent <= drops[j].dropChance && randomPercent > drops[j - 1].dropChance)
-                {
-                    Drop(j);
-                    break;
-                }
-            }
-            else
-            {
-                Drop(j);
-            }
-        }
+        GameObject obj = Helper.GetRandomGameObjectByProbability(drops);
+        Drop(obj);
     }
 
-    void Drop(int number)
+    void Drop(GameObject obj)
     {
         //creates the item and sets the position to the enemies position
-        GameObject item = ObjectPooler.GetPooledObject(drops[number].Drop);
+        GameObject item = ObjectPooler.GetPooledObject(obj);
         float x = UnityEngine.Random.Range(col.bounds.min.x, col.bounds.max.x);
         float y = UnityEngine.Random.Range(col.bounds.min.y, col.bounds.max.y);
         float z = UnityEngine.Random.Range(col.bounds.min.z, col.bounds.max.z);

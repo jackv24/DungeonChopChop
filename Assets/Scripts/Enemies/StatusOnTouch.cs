@@ -41,7 +41,7 @@ public class StatusOnTouch : MonoBehaviour {
                else if (statusType == StatusType.slowlyDying)
                    col.gameObject.GetComponent<Health>().SetSlowDeath(damagePerTick, duration, timeBetweenDamage);
                 else if (statusType == StatusType.Ice)
-                    col.gameObject.GetComponent<Health>().SetIce(damagePerTick, duration);
+                    col.gameObject.GetComponent<Health>().SetIce(duration);
             }
         }
     }

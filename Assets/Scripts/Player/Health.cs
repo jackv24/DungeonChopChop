@@ -445,7 +445,7 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenPoison);
         }
-        SetOGColor();
+        PlayerSetOG();
     }
 
     /// <summary>
@@ -487,7 +487,7 @@ public class Health : MonoBehaviour
 
             yield return new WaitForSeconds(timeBetweenBurn / 2);
         }
-        SetOGColor();
+        PlayerSetOG();
     }
 
     /// <summary>
@@ -519,27 +519,23 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
         }
-        SetOGColor();
+        PlayerSetOG();
     }
 
     /// <summary>
     /// Sets to ice.
     /// </summary>
     /// <param name="duration">Duration in seconds.</param>
-    public void SetIce(float damagePerTick, float duration)
+    public void SetIce(float duration)
     {
-        if (playerInfo)
-            damagePerTick = playerInfo.GetCharmFloat("iceMultiplier");
         isFrozen = true;
-        StartCoroutine(doIce(damagePerTick, duration));
+        StartCoroutine(doIce(duration));
     }
 
-    IEnumerator doIce(float damagePerTick, float duration)
+    IEnumerator doIce(float duration)
     {
         //sets the color
         SetColor(frozenColor);
-        //does damage
-        AffectHealth(-damagePerTick);
         //disables animator
         animator.enabled = false;
 
@@ -559,6 +555,6 @@ public class Health : MonoBehaviour
             GetComponent<EnemyMove>().enabled = true;
         
         isFrozen = false;
-        SetOGColor();
+        PlayerSetOG();
     }
 }

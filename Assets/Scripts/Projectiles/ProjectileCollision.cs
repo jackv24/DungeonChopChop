@@ -55,10 +55,6 @@ public class ProjectileCollision : MonoBehaviour {
                         {
                             col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer / playerInfo.resistance));
                         }
-                        else
-                        {
-                            col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer / playerInfo.resistance / playerInfo.GetComponent<PlayerAttack>().shield.blockingResistance));
-                        }
                     }
                 }
                 //knockback player
