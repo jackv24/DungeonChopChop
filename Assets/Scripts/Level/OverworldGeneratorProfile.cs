@@ -7,18 +7,55 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 {
 	[Header("Biomes")]
 	public float townBiomeRadius = 60.0f;
-	public LevelTile.Biomes townBiome;
-	[Space()]
-	public LevelTile.Biomes topRightBiome;
-	public LevelTile.Biomes bottomRightBiome;
-	public LevelTile.Biomes bottomLeftBiome;
-	public LevelTile.Biomes topLeftBiome;
+	public LevelTile.Biomes townBiome = LevelTile.Biomes.Grass;
+
+	private LevelTile.Biomes topRightBiome;
+	private LevelTile.Biomes bottomRightBiome;
+	private LevelTile.Biomes bottomLeftBiome;
+	private LevelTile.Biomes topLeftBiome;
 
 	public override void Generate(LevelGenerator levelGenerator)
 	{
+		RandomiseBiomes();
+
 		ReplaceBiomes(levelGenerator);
 
 		GenerateDungeons(levelGenerator);
+	}
+
+	void RandomiseBiomes()
+	{
+		List<LevelTile.Biomes> unusedBiomes = new List<LevelTile.Biomes>();
+
+		//Add the four overworld biomes to list (excluding town biome and dungeons)
+		unusedBiomes.Add(LevelTile.Biomes.Desert);
+		unusedBiomes.Add(LevelTile.Biomes.Forest);
+		unusedBiomes.Add(LevelTile.Biomes.Ice);
+		unusedBiomes.Add(LevelTile.Biomes.Fire);
+
+		for(int i = 0; i < 4; i++)
+		{
+			//Get random biome and remove from list (only use once)
+			LevelTile.Biomes biome = unusedBiomes[Random.Range(0, unusedBiomes.Count)];
+			unusedBiomes.Remove(biome);
+
+			//Set one of 4 directions tot his biome
+			switch(i)
+			{
+				case 0:
+					topRightBiome = biome;
+					break;
+				case 1:
+					bottomRightBiome = biome;
+					break;
+				case 2:
+					bottomLeftBiome = biome;
+					break;
+				case 3:
+					topLeftBiome = biome;
+					break;
+			}
+		}
 	}
 
 	void ReplaceBiomes(LevelGenerator levelGenerator)
