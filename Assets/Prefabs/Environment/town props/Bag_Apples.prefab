@@ -40,7 +40,7 @@ Transform:
   m_GameObject: {fileID: 1537551300635328}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 49.81218, y: 28.086166, z: -234.90044}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -367,18 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drops:
-  - Drop: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
-    dropChance: 10
-  - Drop: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
-    dropChance: 25
-  - Drop: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
-    dropChance: 45
-  - Drop: {fileID: 1616226106310662, guid: 0c71fc111242199438e231f8efa50564, type: 2}
-    dropChance: 60
-  - Drop: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
-    dropChance: 65
-  - Drop: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
-    dropChance: 70
-  - Drop: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
-    dropChance: 90
-  maxAmountOfDrops: 3
+  - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
+    probability: 0.8
+  minAmountOfDrops: 1
+  maxAmountOfDrops: 1
