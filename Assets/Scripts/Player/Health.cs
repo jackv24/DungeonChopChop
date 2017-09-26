@@ -245,7 +245,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    void SetColor(Color color)
+    public void SetColor(Color color)
     {
         if (renderers != null)
         {
@@ -253,6 +253,18 @@ public class Health : MonoBehaviour
             foreach (Renderer renderer in renderers)
             {
                 renderer.material.color = color;
+            }
+        }
+    }
+
+    public void PlayerSetOG()
+    {
+        if (renderers != null)
+        {
+            //loops through each and sets the hit color
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.material.color = Color.white;
             }
         }
     }
@@ -270,7 +282,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    void SetOGColor()
+    public void SetOGColor()
     {
         if (renderers != null)
         {
