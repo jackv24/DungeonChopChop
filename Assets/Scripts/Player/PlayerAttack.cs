@@ -31,6 +31,8 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Spin Charge Vars")]
     public float timeToCharge = 2;
+    public float timeBetweenFlash = 1;
+    public Color spinFlashColor;
 
     [Header("Other Vars")]
     public float moveBackOnHit = 5;
@@ -57,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
     private float rapidSlashTimer;
 
     private bool canDash = true;
-	private bool cancelDash = false;
+    private bool cancelDash = false;
     private bool comboStarted = false;
     private bool movingForward = false;
 
@@ -66,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
 
     private Vector3 targetPosition = Vector3.zero;
 
-    private Coroutine moveRoutine;
+    private Coroutine spinChargeRoutine;
 
     void Start()
     {
@@ -83,20 +85,34 @@ public class PlayerAttack : MonoBehaviour
         else
         {
             input = new PlayerInputs();
-			input.AddKeyboardBindings();
-			input.AddControllerBindings();
+            input.AddKeyboardBindings();
+            input.AddControllerBindings();
         }
     }
 
-	void OnDisable()
-	{
-		cancelDash = true;
-	}
+    void OnDisable()
+    {
+        cancelDash = true;
+    }
 
-	void OnEnable()
-	{
-		cancelDash = false;
-	}
+    void OnEnable()
+    {
+        cancelDash = false;
+    }
+
+    IEnumerator ChargeSpinFlash()
+    {
+        yield return new WaitForSeconds(.2f);
+        while (spinCounter < (timeToCharge * 60))
+        {
+            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+                break;
+            playerHealth.SetColor(spinFlashColor);
+            yield return new WaitForSeconds(timeBetweenFlash);
+            playerHealth.PlayerSetOG();
+            yield return new WaitForSeconds(timeBetweenFlash);
+        }
+    }
 
     void FixedUpdate()
     {
@@ -116,7 +132,11 @@ public class PlayerAttack : MonoBehaviour
                 {
                     heldDownCounter++;
                     if (heldDownCounter > 30)
+                    {
                         animator.SetBool("SpinCharge", true);
+                        spinChargeRoutine = StartCoroutine(ChargeSpinFlash());
+                        StartCoroutine(ChargeSpinFlash());
+                    }
                 }
             }
         }
@@ -148,9 +168,12 @@ public class PlayerAttack : MonoBehaviour
                 {
                     animator.SetBool("SpinCharge", false);
                     spinCounter = 0;
+                    if( spinChargeRoutine != null)
+                        StopCoroutine(spinChargeRoutine);
                 }
                 else
                 {
+                    StopCoroutine(spinChargeRoutine);
                     spinCounter = 0;
                     animator.SetBool("SpinCharge", false);
                     animator.SetTrigger("Spin");
@@ -544,8 +567,8 @@ public class PlayerAttack : MonoBehaviour
         float timer = dashTime * playerInformation.GetCharmFloat("dashTime");
         while (elapsedTime < timer)
         {
-			if (cancelDash)
-				break;
+            if (cancelDash)
+                break;
 
             characterController.Move(transform.forward * dashSpeed * playerInformation.GetCharmFloat("dashSpeed") * Time.deltaTime);
             yield return new WaitForEndOfFrame();
