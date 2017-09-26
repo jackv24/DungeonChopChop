@@ -438,6 +438,7 @@ public class Health : MonoBehaviour
             SetColor(poisonColor);
             yield return new WaitForSeconds(timeBetweenPoison / 2);
             AffectHealth(-damagePerTick);
+            StartCoroutine(DisablePlayerFor(.1f));
             animator.SetTrigger("Flinch");
             if (counter >= duration)
             {
@@ -477,8 +478,8 @@ public class Health : MonoBehaviour
             counter++;
             SetColor(burnColor);
             yield return new WaitForSeconds(timeBetweenBurn / 2);
-
             AffectHealth(-damagePerTick);
+            StartCoroutine(DisablePlayerFor(.2f));
             animator.SetTrigger("Flinch");
             if (counter >= duration)
             {
@@ -512,6 +513,7 @@ public class Health : MonoBehaviour
             SetColor(slowlyDyingColor);
             yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
             AffectHealth(-damagePerTick);
+            StartCoroutine(DisablePlayerFor(.2f));
             animator.SetTrigger("Flinch");
             if (counter >= duration)
             {
@@ -556,5 +558,19 @@ public class Health : MonoBehaviour
         
         isFrozen = false;
         PlayerSetOG();
+    }
+
+    IEnumerator DisablePlayerFor(float seconds)
+    {
+        if (playerInfo)
+        {
+            PlayerMove move = GetComponent<PlayerMove>();
+            PlayerAttack attack = GetComponent<PlayerAttack>();
+            move.enabled = false;
+            attack.enabled = false;
+            yield return new WaitForSeconds(seconds);
+            move.enabled = true;
+            attack.enabled = true;
+        }
     }
 }
