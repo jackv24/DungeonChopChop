@@ -14,7 +14,7 @@ public class DropKinds
 public class Drops : MonoBehaviour
 {
     public Helper.ProbabilityGameObject[] drops;
-    [Tooltip("0 to this value")]
+    public int minAmountOfDrops;
     public int maxAmountOfDrops;
 
     Collider col;
@@ -30,9 +30,9 @@ public class Drops : MonoBehaviour
         //checks if the number of drops is 0
         int randomDropAmount = 0;
         if (maxAmountOfDrops == 1)
-            randomDropAmount = UnityEngine.Random.Range(0, maxAmountOfDrops + 1);
+            randomDropAmount = UnityEngine.Random.Range(minAmountOfDrops, maxAmountOfDrops + 1);
         else
-            randomDropAmount = UnityEngine.Random.Range(0, maxAmountOfDrops);
+            randomDropAmount = UnityEngine.Random.Range(minAmountOfDrops, maxAmountOfDrops);
 
         if (maxAmountOfDrops > 0)
         {

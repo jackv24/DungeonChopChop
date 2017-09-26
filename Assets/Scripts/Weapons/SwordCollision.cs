@@ -58,7 +58,6 @@ public class SwordCollision : MonoBehaviour {
                 //calculates knockback depending on direction
                 enemyHealth.Knockback(playerInfo, playerAttack.transform.forward);
 
-                //checks if the player has a status condition
                 DoParticle(col);
 
                 //else just do the normal damage
