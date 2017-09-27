@@ -21,11 +21,14 @@ public class HealthOrb : MonoBehaviour {
     {
         if (col.tag == "Player1" || col.tag == "Player2")
         {
-            col.gameObject.GetComponent<Health>().health += healthAmount;
-            GameObject particle = ObjectPooler.GetPooledObject(particleOnCollect);
-            particle.GetComponent<ParticleFollowHost>().host = col.transform;
-            particle.transform.position = transform.position;
-            gameObject.SetActive(false);
+            if (col.GetComponent<Health>().health < col.GetComponent<Health>().maxHealth)
+            {
+                col.gameObject.GetComponent<Health>().health += healthAmount;
+                GameObject particle = ObjectPooler.GetPooledObject(particleOnCollect);
+                particle.GetComponent<ParticleFollowHost>().host = col.transform;
+                particle.transform.position = transform.position;
+                gameObject.SetActive(false);
+            }
         }
     }
 }
