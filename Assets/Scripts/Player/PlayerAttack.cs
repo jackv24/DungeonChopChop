@@ -33,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
     public float timeToCharge = 2;
     public float timeBetweenFlash = 1;
     public Color spinFlashColor;
+    public bool spinChargeReady = false;
 
     [Header("Other Vars")]
     public float moveBackOnHit = 5;
@@ -134,6 +135,7 @@ public class PlayerAttack : MonoBehaviour
                     if (heldDownCounter > 30)
                     {
                         animator.SetBool("SpinCharge", true);
+                        sword.GetComponent<SwordCollision>().DoChargeParticle();
                         spinChargeRoutine = StartCoroutine(ChargeSpinFlash());
                         StartCoroutine(ChargeSpinFlash());
                     }
@@ -144,6 +146,15 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        if (spinCounter < (timeToCharge * 60))
+        {
+            spinChargeReady = false;
+        }
+        else
+        {
+            spinChargeReady = true;
+        }
+
         if (comboStarted)
         {
             animator.SetBool("Attacking", true);
