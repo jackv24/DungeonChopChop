@@ -21,6 +21,7 @@ public class PlayerAttack : MonoBehaviour
     public float dashSpeed = 5.0f;
     public float dashCooldown = 0.5f;
 
+    public bool canDash = true;
     public bool canDashAttack = true;
     public bool canTripleAttack = true;
     public bool canSpinAttack = true;
@@ -59,7 +60,6 @@ public class PlayerAttack : MonoBehaviour
     private float rapidSlashCounter;
     private float rapidSlashTimer;
 
-    private bool canDash = true;
     private bool cancelDash = false;
     private bool comboStarted = false;
     private bool movingForward = false;
@@ -225,11 +225,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 if (!playerInformation.HasCharmBool("cantDash"))
                 {
-                    //dash slash
-                    if (canDash)
-                    {
-                        doDash();
-                    }
+                    //dash
+                    doDash();
                 }
             } 
             
@@ -543,18 +540,21 @@ public class PlayerAttack : MonoBehaviour
 
     void doDash()
     {
-        if (canDashAttack)
+        if (canDash)
         {
-            animator.SetTrigger("DashAttack");
-            playerHealth.InvincibilityForSecs(dashTime + 1);
+            if (canDashAttack)
+            {
+                animator.SetTrigger("DashAttack");
+                playerHealth.InvincibilityForSecs(dashTime + 1);
+            }
+            else
+            {
+                animator.SetTrigger("Dash");
+            }
+            canDash = false;
+            StartCoroutine(dash());
+            StartCoroutine(dashCooldownTimer());
         }
-        else
-        {
-            animator.SetTrigger("Dash");
-        }
-        canDash = false;
-        StartCoroutine(dash());
-        StartCoroutine(dashCooldownTimer());
     }
 
     IEnumerator dashCooldownTimer()

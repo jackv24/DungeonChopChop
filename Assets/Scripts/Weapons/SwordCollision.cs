@@ -138,7 +138,8 @@ public class SwordCollision : MonoBehaviour {
                 if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
                 {
                     particle.SetActive(false);
-                    break;
+                    chargeCoroutine = null;
+                    yield break;
                 }
                 //move towards the tip
                 particle.transform.localPosition = Vector3.Lerp(particle.transform.localPosition, new Vector3(mesh.sharedMesh.bounds.center.x, mesh.sharedMesh.bounds.max.y, mesh.sharedMesh.bounds.center.z), 1.05f * Time.deltaTime);
@@ -154,6 +155,12 @@ public class SwordCollision : MonoBehaviour {
 
             yield return new WaitForSeconds(.5f);
             particle.SetActive(false);
+
+            while (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
             readyParticle.GetComponent<ParticleSystem>().Stop();
 
             yield return new WaitForSeconds(.5f);
