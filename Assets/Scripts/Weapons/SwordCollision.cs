@@ -9,6 +9,8 @@ public class SwordCollision : MonoBehaviour {
     public GameObject trail;
     public GameObject[] hitSmokes;
     public GameObject[] hitEffects;
+    public GameObject chargeParticle;
+    public GameObject spinReadyParticle;
 
     [Header("Camera Shake Values")]
     public float magnitude = 1;
@@ -26,6 +28,7 @@ public class SwordCollision : MonoBehaviour {
     public Animator animator;
 
     private SwordStats swordStats;
+    private Coroutine chargeCoroutine;
 
 	// Use this for initialization
 	void Start () {
@@ -107,5 +110,66 @@ public class SwordCollision : MonoBehaviour {
         yield return new WaitForSecondsRealtime(pauseTime);
         col.GetComponentInChildren<Animator>().enabled = true;
         animator.enabled = true;
+    }
+
+    public void DoChargeParticle()
+    {
+        if (chargeCoroutine == null)
+        {
+            chargeCoroutine = StartCoroutine(ChargeParticle());
+        }
+    }
+
+    IEnumerator ChargeParticle()
+    {
+        yield return new WaitForSeconds(.2f);
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+        {
+            GameObject particle = ObjectPooler.GetPooledObject(chargeParticle);
+            MeshFilter mesh = GetComponent<MeshFilter>();
+            //set the parent to the sword
+            particle.transform.parent = transform;
+            //sets the position to the hielt of the sword
+            particle.transform.localPosition = new Vector3(mesh.sharedMesh.bounds.center.x, mesh.sharedMesh.bounds.min.y, mesh.sharedMesh.bounds.center.z);
+            //while the particle is not at the tip of the sword
+            while (!playerAttack.spinChargeReady)
+            {
+                //stop if in idle state
+                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
+                {
+                    particle.SetActive(false);
+                    chargeCoroutine = null;
+                    yield break;
+                }
+                //move towards the tip
+                particle.transform.localPosition = Vector3.Lerp(particle.transform.localPosition, new Vector3(mesh.sharedMesh.bounds.center.x, mesh.sharedMesh.bounds.max.y, mesh.sharedMesh.bounds.center.z), 1.05f * Time.deltaTime);
+                //stop if charge ready
+                yield return new WaitForEndOfFrame();
+            }
+            particle.GetComponent<ParticleSystem>().Stop();
+
+            //create the particle that shows when the spin attack is ready
+            GameObject readyParticle = ObjectPooler.GetPooledObject(spinReadyParticle);
+            readyParticle.transform.parent = transform;
+            readyParticle.transform.localPosition = new Vector3(mesh.sharedMesh.bounds.center.x, mesh.sharedMesh.bounds.max.y, mesh.sharedMesh.bounds.center.z);
+
+            yield return new WaitForSeconds(.5f);
+            particle.SetActive(false);
+
+            while (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
+            readyParticle.GetComponent<ParticleSystem>().Stop();
+
+            yield return new WaitForSeconds(.5f);
+            readyParticle.SetActive(false);
+            chargeCoroutine = null;
+        }
+        else
+        {
+            chargeCoroutine = null;
+        }
     }
 }

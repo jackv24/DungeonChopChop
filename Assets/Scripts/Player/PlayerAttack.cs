@@ -21,6 +21,7 @@ public class PlayerAttack : MonoBehaviour
     public float dashSpeed = 5.0f;
     public float dashCooldown = 0.5f;
 
+    public bool canDash = true;
     public bool canDashAttack = true;
     public bool canTripleAttack = true;
     public bool canSpinAttack = true;
@@ -33,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
     public float timeToCharge = 2;
     public float timeBetweenFlash = 1;
     public Color spinFlashColor;
+    public bool spinChargeReady = false;
 
     [Header("Other Vars")]
     public float moveBackOnHit = 5;
@@ -58,7 +60,6 @@ public class PlayerAttack : MonoBehaviour
     private float rapidSlashCounter;
     private float rapidSlashTimer;
 
-    private bool canDash = true;
     private bool cancelDash = false;
     private bool comboStarted = false;
     private bool movingForward = false;
@@ -134,6 +135,7 @@ public class PlayerAttack : MonoBehaviour
                     if (heldDownCounter > 30)
                     {
                         animator.SetBool("SpinCharge", true);
+                        sword.GetComponent<SwordCollision>().DoChargeParticle();
                         spinChargeRoutine = StartCoroutine(ChargeSpinFlash());
                         StartCoroutine(ChargeSpinFlash());
                     }
@@ -144,6 +146,15 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        if (spinCounter < (timeToCharge * 60))
+        {
+            spinChargeReady = false;
+        }
+        else
+        {
+            spinChargeReady = true;
+        }
+
         if (comboStarted)
         {
             animator.SetBool("Attacking", true);
@@ -214,11 +225,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 if (!playerInformation.HasCharmBool("cantDash"))
                 {
-                    //dash slash
-                    if (canDash)
-                    {
-                        doDash();
-                    }
+                    //dash
+                    doDash();
                 }
             } 
             
@@ -532,18 +540,21 @@ public class PlayerAttack : MonoBehaviour
 
     void doDash()
     {
-        if (canDashAttack)
+        if (canDash)
         {
-            animator.SetTrigger("DashAttack");
-            playerHealth.InvincibilityForSecs(dashTime + 1);
+            if (canDashAttack)
+            {
+                animator.SetTrigger("DashAttack");
+                playerHealth.InvincibilityForSecs(dashTime + 1);
+            }
+            else
+            {
+                animator.SetTrigger("Dash");
+            }
+            canDash = false;
+            StartCoroutine(dash());
+            StartCoroutine(dashCooldownTimer());
         }
-        else
-        {
-            animator.SetTrigger("Dash");
-        }
-        canDash = false;
-        StartCoroutine(dash());
-        StartCoroutine(dashCooldownTimer());
     }
 
     IEnumerator dashCooldownTimer()
