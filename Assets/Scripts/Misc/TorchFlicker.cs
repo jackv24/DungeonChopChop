@@ -13,6 +13,7 @@ public class TorchFlicker : MonoBehaviour
 	private Light light;
 
 	private Coroutine flickerRoutine;
+	private LevelTile parentTile;
 
 	void Awake()
 	{
@@ -21,12 +22,12 @@ public class TorchFlicker : MonoBehaviour
 
 	void Start()
 	{
-		LevelTile parentTile = GetComponentInParent<LevelTile>();
+		parentTile = GetComponentInParent<LevelTile>();
 
 		if(parentTile)
 		{
-			parentTile.OnTileEnter += delegate { gameObject.SetActive(true); };
-			parentTile.OnTileExit += delegate { gameObject.SetActive(false); };
+			parentTile.OnTileEnter += SetActive;
+			parentTile.OnTileExit += SetInactive;
 
 			gameObject.SetActive(false);
 		}
@@ -44,6 +45,24 @@ public class TorchFlicker : MonoBehaviour
 	void OnDisable()
 	{
 		StopCoroutine(flickerRoutine);
+	}
+
+	void OnDestroy()
+	{
+		if (parentTile)
+		{
+			parentTile.OnTileEnter -= SetActive;
+			parentTile.OnTileExit -= SetInactive;
+		}
+	}
+
+	void SetActive()
+	{
+		gameObject.SetActive(true);
+	}
+	void SetInactive()
+	{
+		gameObject.SetActive(false);
 	}
 
 	IEnumerator Flicker()
