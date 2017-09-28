@@ -8,26 +8,40 @@ public class ObjectSpawner : MonoBehaviour
 	public GameObject prefab;
 	private GameObject oldPrefab;
 
+	public bool spawnAfterMerging = false;
+
 	void Start()
 	{
 		if (transform.childCount <= 0 || Application.isPlaying)
 		{
-			Replace();
-			oldPrefab = prefab;
+			if (spawnAfterMerging && Application.isPlaying && LevelGenerator.Instance)
+				LevelGenerator.Instance.OnGenerationFinished += Replace;
+			else
+				Replace();
 		}
+	}
+
+	void OnDestroy()
+	{
+		if (spawnAfterMerging && Application.isPlaying && LevelGenerator.Instance)
+			LevelGenerator.Instance.OnGenerationFinished -= Replace;
 	}
 
 	void Update()
 	{
-		if(prefab != oldPrefab)
+		if (!Application.isPlaying)
 		{
-			oldPrefab = prefab;
-			Replace();
+			if (prefab != oldPrefab)
+			{
+				Replace();
+			}
 		}
 	}
 
 	public void Replace()
 	{
+		oldPrefab = prefab;
+
 		//Remove children
 		int childAmount = transform.childCount;
 		for (int i = 0; i < childAmount; i++)
