@@ -961,10 +961,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   health: 2
-  isDead: 0
+  weight: 0
+  IsEnemy: 0
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
+  isFrozen: 0
+  isDead: 0
+  poisonColor: {r: 0, g: 0, b: 0, a: 0}
+  burnColor: {r: 0, g: 0, b: 0, a: 0}
+  slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
+  frozenColor: {r: 0, g: 0, b: 0, a: 0}
+  hitParticles: []
+  hitSounds: []
+  hitColor: {r: 0, g: 0, b: 0, a: 0}
+  timeBetweenFlash: 0.1
+  amountToFlash: 5
+  fadeToColorTime: 5
 --- !u!114 &114432314400619826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -979,6 +992,14 @@ MonoBehaviour:
   deathType: 0
   amountToSplit: 4
   splitEnemy: {fileID: 1886692293410826, guid: 965cb136b7648c347a5ec502fd398ed7, type: 2}
+  explodeRadius: 10
+  statusType: 0
+  damagePerTick: 0.5
+  timeBetweenTick: 1
+  duration: 5
+  damageOnExplode: 2
+  deathParticles: []
+  deathSounds: []
 --- !u!114 &114534789570036512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -993,9 +1014,11 @@ MonoBehaviour:
   attackingType: 0
   projecticle: {fileID: 114985999745943196, guid: 2f5e09f5d3b8b784aa23dbea116343df,
     type: 2}
+  shootPosition: {fileID: 0}
   thrust: 50
   attackStrength: 1
   damageOnTouch: 1
+  knockbackStrength: 0
   projAmount: 25
   timeTillInterval: 1
   minInterval: 1
@@ -1012,31 +1035,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drops:
-  - Drop: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
-    minPercentage: 0
-    maxPercentage: 40
-  - Drop: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
-    minPercentage: 41
-    maxPercentage: 65
-  - Drop: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
-    minPercentage: 66
-    maxPercentage: 85
-  - Drop: {fileID: 1616226106310662, guid: 0c71fc111242199438e231f8efa50564, type: 2}
-    minPercentage: 86
-    maxPercentage: 95
-  - Drop: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
-    minPercentage: 96
-    maxPercentage: 100
-  numberOfDrops:
-  - dropAmount: 0
-    minPercentage: 0
-    maxPercentage: 50
-  - dropAmount: 1
-    minPercentage: 51
-    maxPercentage: 80
-  - dropAmount: 2
-    minPercentage: 81
-    maxPercentage: 100
+  - prefab: {fileID: 0}
+    probability: 1
+  - prefab: {fileID: 0}
+    probability: 1
+  - prefab: {fileID: 0}
+    probability: 1
+  - prefab: {fileID: 0}
+    probability: 1
+  - prefab: {fileID: 0}
+    probability: 1
+  minAmountOfDrops: 0
+  maxAmountOfDrops: 0
 --- !u!114 &114911463680278248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1048,6 +1058,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b74eeb56ea599104ba6b96ef5283910b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runAwayAfterAttackTime: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  LockY: 1
+  usingNav: 1
   opened: 0
 --- !u!137 &137333971940221826
 SkinnedMeshRenderer:

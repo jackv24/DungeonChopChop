@@ -1408,6 +1408,7 @@ MonoBehaviour:
     probability: 0.1
   - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
     probability: 0.1
+  minAmountOfDrops: 0
   maxAmountOfDrops: 2
 --- !u!114 &114138336425301988
 MonoBehaviour:
@@ -1450,8 +1451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 3
-  projecticle: {fileID: 114760651461372696, guid: 0626ec082ff09fc4abf49e6bb4c961ec,
-    type: 2}
+  projecticle: {fileID: 0}
   shootPosition: {fileID: 1025652347346600}
   thrust: 10
   attackStrength: 1
@@ -1475,6 +1475,12 @@ MonoBehaviour:
   deathType: 0
   amountToSplit: 0
   splitEnemy: {fileID: 0}
+  explodeRadius: 10
+  statusType: 0
+  damagePerTick: 0.5
+  timeBetweenTick: 1
+  duration: 5
+  damageOnExplode: 2
   deathParticles:
   - particleType: 1
     particles:

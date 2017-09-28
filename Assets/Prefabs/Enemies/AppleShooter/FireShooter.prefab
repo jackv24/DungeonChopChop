@@ -963,6 +963,12 @@ MonoBehaviour:
   deathType: 0
   amountToSplit: 0
   splitEnemy: {fileID: 0}
+  explodeRadius: 10
+  statusType: 0
+  damagePerTick: 0.5
+  timeBetweenTick: 1
+  duration: 5
+  damageOnExplode: 2
   deathParticles:
   - particleType: 1
     particles:
@@ -1076,8 +1082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 3
-  projecticle: {fileID: 114760651461372696, guid: 4b445a5311d16c64c9546c5303681f3c,
-    type: 2}
+  projecticle: {fileID: 0}
   shootPosition: {fileID: 1962818300246980}
   thrust: 10
   attackStrength: 1
@@ -1205,6 +1210,7 @@ MonoBehaviour:
     probability: 0.1
   - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
     probability: 0.1
+  minAmountOfDrops: 0
   maxAmountOfDrops: 2
 --- !u!137 &137492341341724670
 SkinnedMeshRenderer:

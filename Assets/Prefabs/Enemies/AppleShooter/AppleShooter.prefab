@@ -821,6 +821,12 @@ MonoBehaviour:
   deathType: 0
   amountToSplit: 0
   splitEnemy: {fileID: 0}
+  explodeRadius: 10
+  statusType: 0
+  damagePerTick: 0.5
+  timeBetweenTick: 1
+  duration: 5
+  damageOnExplode: 2
   deathParticles:
   - particleType: 1
     particles:
@@ -934,8 +940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 3
-  projecticle: {fileID: 114544690897862316, guid: b8fcbf8ea167dd449a0190253da89df5,
-    type: 2}
+  projecticle: {fileID: 0}
   shootPosition: {fileID: 1698748386678826}
   thrust: 40
   attackStrength: 1
