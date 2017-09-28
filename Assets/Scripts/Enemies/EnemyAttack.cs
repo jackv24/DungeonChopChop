@@ -17,8 +17,11 @@ public class EnemyAttack : MonoBehaviour
     public TypesOfAttack attackingType;
 
     [Header("Projectile Vars")]
-    public ProjecticleVariables projecticle;
+    [HideInInspector]
+    public GameObject projecticle;
+    [HideInInspector]
     public GameObject shootPosition;
+    [HideInInspector]
     public float thrust;
 
     [Space()]
@@ -46,11 +49,13 @@ public class EnemyAttack : MonoBehaviour
     private float angle = 0;
     private float randomInterval = 0;
 
-    private EnemyMove enemyMove;
-    private Animator animator;
+    protected EnemyMove enemyMove;
+    protected Animator animator;
+    protected Health enemyHealth;
 
     void Start()
     {
+        enemyHealth = GetComponent<Health>();
         animator = GetComponentInChildren<Animator>();
         enemyMove = GetComponent<EnemyMove>();
     }
@@ -82,7 +87,7 @@ public class EnemyAttack : MonoBehaviour
     public void Shootforward()
     {
         //create the projecticle
-        GameObject projectile = ObjectPooler.GetPooledObject(projecticle.gameObject);
+        GameObject projectile = ObjectPooler.GetPooledObject(projecticle);
         projectile.transform.position = shootPosition.transform.position;
         projectile.transform.rotation = transform.rotation;
         projectile.GetComponent<ProjectileCollision>().damageMultiplyer = attackStrength;
@@ -119,7 +124,7 @@ public class EnemyAttack : MonoBehaviour
         for (int i = 0; i < projAmount; i++)
         {
             //create the projecticle
-            GameObject projectile = ObjectPooler.GetPooledObject(projecticle.gameObject);
+            GameObject projectile = ObjectPooler.GetPooledObject(projecticle);
             if (!shootPosition)
                 projectile.transform.position = transform.position;
             projectile.transform.rotation = transform.rotation;
