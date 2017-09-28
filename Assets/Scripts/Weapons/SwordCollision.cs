@@ -148,12 +148,19 @@ public class SwordCollision : MonoBehaviour {
             }
             particle.GetComponent<ParticleSystem>().Stop();
 
+            //set player white
+            playerHealth.SetWhite();
+
             //create the particle that shows when the spin attack is ready
             GameObject readyParticle = ObjectPooler.GetPooledObject(spinReadyParticle);
             readyParticle.transform.parent = transform;
             readyParticle.transform.localPosition = new Vector3(mesh.sharedMesh.bounds.center.x, mesh.sharedMesh.bounds.max.y, mesh.sharedMesh.bounds.center.z);
 
             yield return new WaitForSeconds(.5f);
+
+            //set player normal color
+            playerHealth.UnsetWhite();
+
             particle.SetActive(false);
 
             while (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
