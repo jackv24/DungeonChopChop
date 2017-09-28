@@ -39,11 +39,6 @@ public class SlimeMove : EnemyMove {
 
     private float splitCounter = 0;
 
-	// Use this for initialization
-	void Awake () {
-        Setup();
-	}
-
     void FixedUpdate()
     {
         if (doesSplit)

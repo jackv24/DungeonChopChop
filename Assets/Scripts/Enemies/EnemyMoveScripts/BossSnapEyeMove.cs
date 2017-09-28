@@ -16,7 +16,6 @@ public class BossSnapEyeMove : EnemyMove {
     // Use this for initialization
     void Start () 
     {
-        Setup(); 
         enemyHealth = GetComponent<Health>();
         if (spawnEnemies)
             SpawnEnemies();
