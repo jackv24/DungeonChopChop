@@ -21,16 +21,12 @@ public class PlayerAttack : MonoBehaviour
     public float dashSpeed = 5.0f;
     public float dashCooldown = 0.5f;
 
-    public bool canDash = true;
-    public bool canDashAttack = true;
-    public bool canTripleAttack = true;
-    public bool canSpinAttack = true;
-
     [Header("Block Vars")]
     public float rotationSpeed = 5;
     public LayerMask enemyMask;
 
     [Header("Spin Charge Vars")]
+    public bool spinChargeReady = false;
     public float timeToCharge = 2;
     public float timeBetweenFlash = 1;
     public Color spinFlashColor;
@@ -40,6 +36,12 @@ public class PlayerAttack : MonoBehaviour
     public bool blocking = false;
     public float speedWhenBurned = 10;
     public GameObject slashFX;
+
+    [Header("Dungeon Abilities")]
+    public bool canDash = true;
+    public bool canDashAttack = true;
+    public bool canTripleAttack = true;
+    public bool canSpinAttack = true;
 
     private PlayerInputs input;
     private PlayerMove playerMove;
@@ -134,6 +136,7 @@ public class PlayerAttack : MonoBehaviour
                     if (heldDownCounter > 30)
                     {
                         animator.SetBool("SpinCharge", true);
+                        sword.GetComponent<SwordCollision>().DoChargeParticle();
                         spinChargeRoutine = StartCoroutine(ChargeSpinFlash());
                         StartCoroutine(ChargeSpinFlash());
                     }
@@ -144,6 +147,15 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        if (spinCounter < (timeToCharge * 60))
+        {
+            spinChargeReady = false;
+        }
+        else
+        {
+            spinChargeReady = true;
+        }
+
         if (comboStarted)
         {
             animator.SetBool("Attacking", true);

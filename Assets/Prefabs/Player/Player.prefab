@@ -1326,7 +1326,7 @@ Animator:
     already bound by a Humanoid avatar. These transforms can only be changed by Humanoid
     clips.\n\tTransform 'Head_JNT'\n\tTransform 'Spine_JNT'\n\tFrom animation clip
     'DashAttack'\n\tFrom animation clip 'Chop'\n\tFrom animation clip 'Chop2'\n\tFrom
-    animation clip 'RapidAttack'\n\tFrom animation clip 'SpinCharge'"
+    animation clip 'RapidAttack'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!96 &96003975070714008
@@ -1577,13 +1577,11 @@ MonoBehaviour:
   dashTime: 0.2
   dashSpeed: 35
   dashCooldown: 0.5
-  canDashAttack: 1
-  canTripleAttack: 1
-  canSpinAttack: 1
   rotationSpeed: 5
   enemyMask:
     serializedVersion: 2
     m_Bits: 2048
+  spinChargeReady: 0
   timeToCharge: 1.5
   timeBetweenFlash: 0.5
   spinFlashColor: {r: 0.666, g: 0.9723586, b: 1, a: 0.791}
@@ -1591,6 +1589,10 @@ MonoBehaviour:
   blocking: 0
   speedWhenBurned: 10
   slashFX: {fileID: 1454523227821080, guid: ff3d3a84a294e1f43b09bc0c018e38df, type: 2}
+  canDash: 1
+  canDashAttack: 1
+  canTripleAttack: 1
+  canSpinAttack: 1
   swordBone: {fileID: 1184968488414574}
   shieldBone: {fileID: 1858419517052020}
   shield: {fileID: 114687959010350608}
@@ -1612,6 +1614,10 @@ MonoBehaviour:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
   hitEffects:
   - {fileID: 1004915465583228, guid: 2a2d6f42c0139774880df8b9f1374650, type: 2}
+  spinReadyParticle: {fileID: 1004915465583228, guid: b2ae8ccac2850d3439d0219b89db842a,
+    type: 2}
+  chargeParticle: {fileID: 1534452683028486, guid: bc2437c3be2526340ba8c431b9fd70cd,
+    type: 2}
   magnitude: 0.1
   shakeAmount: 1
   duration: 1
