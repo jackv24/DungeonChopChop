@@ -5,6 +5,11 @@ using UnityEngine;
 public class AppleShooterMove : EnemyMove {
 
     public float rotateSpeed = 5;
+
+    void Start()
+    {
+        Setup();
+    }
 	
 	// Update is called once per frame
 	void Update () {

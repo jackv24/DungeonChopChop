@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 54227888501693744}
   - component: {fileID: 114568598747523298}
   - component: {fileID: 114051769807747158}
+  - component: {fileID: 114123716065675064}
   m_Layer: 11
   m_Name: PaddyBum
   m_TagString: Untagged
@@ -177,6 +178,34 @@ MonoBehaviour:
     m_Bits: 0
   LockY: 1
   usingNav: 1
+--- !u!114 &114123716065675064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1337815962632390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8af6fba017eb594f9bbe87f903e9f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 0.9
+  - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
+    probability: 0.3
+  - prefab: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
+    probability: 0.2
+  - prefab: {fileID: 1616226106310662, guid: 0c71fc111242199438e231f8efa50564, type: 2}
+    probability: 0.1
+  - prefab: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
+    probability: 0.05
+  - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
+    probability: 0.1
+  - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
+    probability: 0.1
+  minAmountOfDrops: 0
+  maxAmountOfDrops: 2
 --- !u!114 &114568598747523298
 MonoBehaviour:
   m_ObjectHideFlags: 1
