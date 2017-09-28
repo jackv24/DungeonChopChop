@@ -105,5 +105,44 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 		}
 
 		GameObject.FindWithTag("SunLight").SetActive(false);
+
+		//Self-removing event
+		LevelGenerator.NormalEvent tempEvent = null;
+		tempEvent = delegate
+		{
+			//Find and place item in chests
+			Chest dungeonChest = levelGenerator.GetComponentInChildren<Chest>();
+
+			if (dungeonChest)
+			{
+				BaseItem item = null;
+
+				switch(biome)
+				{
+					case LevelTile.Biomes.Desert:
+						item = desertItem;
+						break;
+					case LevelTile.Biomes.Fire:
+						item = fireItem;
+						break;
+					case LevelTile.Biomes.Forest:
+						item = forestItem;
+						break;
+					case LevelTile.Biomes.Ice:
+						item = iceItem;
+						break;
+				}
+
+				if (item)
+					dungeonChest.SetItem(item);
+				else
+					Debug.LogWarning("No dungeon item assigned for " + biome.ToString());
+			}
+			else
+				Debug.LogWarning("No dungeon chest found!");
+
+			levelGenerator.OnAfterSpawnChests -= tempEvent;
+		};
+		levelGenerator.OnAfterSpawnChests += tempEvent;
 	}
 }

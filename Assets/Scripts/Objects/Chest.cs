@@ -12,6 +12,7 @@ public class Chest : MonoBehaviour
 
 	public Helper.ProbabilityItem[] possibleItems;
 	public BaseItem containingItem;
+	private bool randomise = true;
 
 	public float releaseItemDelay = 1.5f;
 	public float releaseItemForce = 10.0f;
@@ -22,7 +23,14 @@ public class Chest : MonoBehaviour
 	{
         animator = GetComponentInChildren<Animator>();
 
-		containingItem = Helper.GetRandomItemByProbability(possibleItems);
+		if(randomise)
+			containingItem = Helper.GetRandomItemByProbability(possibleItems);
+	}
+
+	public void SetItem(BaseItem item)
+	{
+		randomise = false;
+		containingItem = item;
 	}
 
     void OnCollisionEnter(Collision col)

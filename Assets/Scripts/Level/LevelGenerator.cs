@@ -10,6 +10,7 @@ public class LevelGenerator : MonoBehaviour
 	public delegate void NormalEvent();
 	public event NormalEvent OnGenerationStart;
 	public event NormalEvent OnBeforeMergeMeshes;
+	public event NormalEvent OnAfterSpawnChests;
 	public event NormalEvent OnGenerationFinished;
 	public event NormalEvent OnTileEnter;
 	public event NormalEvent OnTileClear;
@@ -188,6 +189,9 @@ public class LevelGenerator : MonoBehaviour
 
 		//Spawn chests AFTER meshes are merged
 		SpawnChests();
+
+		if (OnAfterSpawnChests != null)
+			OnAfterSpawnChests();
 
 		//Wait for players to be spawned, then call done event
 		yield return new WaitForEndOfFrame();
