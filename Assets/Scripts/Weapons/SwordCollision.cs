@@ -9,6 +9,8 @@ public class SwordCollision : MonoBehaviour {
     public GameObject trail;
     public GameObject[] hitSmokes;
     public GameObject[] hitEffects;
+    public GameObject spinReadyParticle;
+    public GameObject chargeParticle;
 
     [Header("Camera Shake Values")]
     public float magnitude = 1;
@@ -26,6 +28,7 @@ public class SwordCollision : MonoBehaviour {
     public Animator animator;
 
     private SwordStats swordStats;
+    private Coroutine chargeCoroutine;
 
 	// Use this for initialization
 	void Start () {
