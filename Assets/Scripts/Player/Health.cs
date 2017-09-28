@@ -65,8 +65,8 @@ public class Health : MonoBehaviour
         //loops through and get the original color on each renderer
         for (int i = 0; i < renderers.Length; i++)
         {
-            if (renderers[i].material.HasProperty("_Color"))
-                originalColors.Add(renderers[i].material.color);
+            if (renderers[i].sharedMaterial.HasProperty("_Color"))
+                originalColors.Add(renderers[i].sharedMaterial.color);
         }
 
         rb = GetComponent<Rigidbody>();
@@ -252,7 +252,7 @@ public class Health : MonoBehaviour
             //loops through each and sets the hit color
             foreach (Renderer renderer in renderers)
             {
-                renderer.material.color = color;
+                renderer.sharedMaterial.color = color;
             }
         }
     }
@@ -264,7 +264,7 @@ public class Health : MonoBehaviour
             //loops through each and sets the hit color
             foreach (Renderer renderer in renderers)
             {
-                renderer.material.color = Color.white;
+                renderer.sharedMaterial.color = Color.white;
             }
         }
     }
@@ -277,7 +277,7 @@ public class Health : MonoBehaviour
             //loops through each and sets the hit color
             foreach (Renderer renderer in renderers)
             {
-                renderer.material.color = hitColor;
+                renderer.sharedMaterial.color = hitColor;
             }
         }
     }
@@ -291,7 +291,7 @@ public class Health : MonoBehaviour
                 //loops through each and sets the hit color
                 for (int i = 0; i < renderers.Length; i++)
                 {
-                    renderers[i].material.color = originalColors[i];
+                    renderers[i].sharedMaterial.color = originalColors[i];
                 }
             }
         }
@@ -307,8 +307,8 @@ public class Health : MonoBehaviour
                 for (int i = 0; i < renderers.Length; i++)
                 {
                     
-                    renderers[i].material.color = Color.Lerp (renderers[i].material.color, originalColors[i], fadeToColorTime * Time.deltaTime);
-                    if (renderers[i].material.color == originalColors[i])
+                    renderers[i].sharedMaterial.color = Color.Lerp (renderers[i].sharedMaterial.color, originalColors[i], fadeToColorTime * Time.deltaTime);
+                    if (renderers[i].sharedMaterial.color == originalColors[i])
                     {
                         fadeToColor = false;
                     }
@@ -317,6 +317,28 @@ public class Health : MonoBehaviour
                         fadeToColor = true;
                     }
                 }
+            }
+        }
+    }
+
+    public void SetWhite()
+    {
+        if (renderers != null)
+        {
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.sharedMaterial.SetFloat("_FlashAmount", .5f);
+            }
+        }
+    }
+
+    public void UnsetWhite()
+    {
+        if (renderers != null)
+        {
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.sharedMaterial.SetFloat("_FlashAmount", 0);
             }
         }
     }
