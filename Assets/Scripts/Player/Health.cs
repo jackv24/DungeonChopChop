@@ -252,7 +252,7 @@ public class Health : MonoBehaviour
             //loops through each and sets the hit color
             foreach (Renderer renderer in renderers)
             {
-                renderer.sharedMaterial.color = color;
+                renderer.material.color = color;
             }
         }
     }
@@ -264,7 +264,7 @@ public class Health : MonoBehaviour
             //loops through each and sets the hit color
             foreach (Renderer renderer in renderers)
             {
-                renderer.sharedMaterial.color = Color.white;
+                renderer.material.color = Color.white;
             }
         }
     }
@@ -277,7 +277,7 @@ public class Health : MonoBehaviour
             //loops through each and sets the hit color
             foreach (Renderer renderer in renderers)
             {
-                renderer.sharedMaterial.color = hitColor;
+                renderer.material.color = hitColor;
             }
         }
     }
@@ -291,7 +291,7 @@ public class Health : MonoBehaviour
                 //loops through each and sets the hit color
                 for (int i = 0; i < renderers.Length; i++)
                 {
-                    renderers[i].sharedMaterial.color = originalColors[i];
+                    renderers[i].material.color = originalColors[i];
                 }
             }
         }
@@ -307,8 +307,8 @@ public class Health : MonoBehaviour
                 for (int i = 0; i < renderers.Length; i++)
                 {
                     
-                    renderers[i].sharedMaterial.color = Color.Lerp (renderers[i].sharedMaterial.color, originalColors[i], fadeToColorTime * Time.deltaTime);
-                    if (renderers[i].sharedMaterial.color == originalColors[i])
+                    renderers[i].material.color = Color.Lerp (renderers[i].material.color, originalColors[i], fadeToColorTime * Time.deltaTime);
+                    if (renderers[i].material.color == originalColors[i])
                     {
                         fadeToColor = false;
                     }
@@ -327,7 +327,7 @@ public class Health : MonoBehaviour
         {
             foreach (Renderer renderer in renderers)
             {
-                renderer.sharedMaterial.SetFloat("_FlashAmount", .5f);
+                renderer.material.SetFloat("_FlashAmount", .5f);
             }
         }
     }
@@ -338,7 +338,7 @@ public class Health : MonoBehaviour
         {
             foreach (Renderer renderer in renderers)
             {
-                renderer.sharedMaterial.SetFloat("_FlashAmount", 0);
+                renderer.material.SetFloat("_FlashAmount", 0);
             }
         }
     }
@@ -445,7 +445,7 @@ public class Health : MonoBehaviour
     public void SetPoison(float damagePerTick, float duration, float timeBetweenPoison)
     {
         if (playerInfo)
-            damagePerTick = playerInfo.GetCharmFloat("poisonMultiplier");
+            damagePerTick *= playerInfo.GetCharmFloat("poisonMultiplier");
         isPoisoned = true;
         DoParticle("PoisonTickParticle", duration);
         StartCoroutine(doPoison(damagePerTick, duration, timeBetweenPoison));
@@ -521,7 +521,7 @@ public class Health : MonoBehaviour
     public void SetSlowDeath(float damagePerTick, float duration, float timeBetweenDeathTick)
     {
         if (playerInfo)
-            damagePerTick = playerInfo.GetCharmFloat("deathTickMultiplier");
+            damagePerTick *= playerInfo.GetCharmFloat("deathTickMultiplier");
         isSlowlyDying = true;
         StartCoroutine(doSlowDeath(damagePerTick, duration, timeBetweenDeathTick));
     }
