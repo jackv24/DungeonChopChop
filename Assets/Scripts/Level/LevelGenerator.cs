@@ -81,7 +81,18 @@ public class LevelGenerator : MonoBehaviour
 			string text = "<b>Debug Menu:</b>\n";
 
 			text += "Start Seed: " + startSeed + "\n\n";
-			text += "Current Tile: " + (currentTile ? currentTile.gameObject.name : "NULL") + "\n";
+			text += "Current Tile: " + (currentTile ? currentTile.gameObject.name : "NULL") + "\n\n";
+
+			if (profile is OverworldGeneratorProfile)
+			{
+				OverworldGeneratorProfile p = (OverworldGeneratorProfile)profile;
+
+				text += "<b>Biomes</b>\n";
+				text += "Top Left: " + p.topLeftBiome.ToString() + "\n";
+				text += "Top Right: " + p.topRightBiome.ToString() + "\n";
+				text += "Bottom Left: " + p.bottomLeftBiome.ToString() + "\n";
+				text += "Bottom Right: " + p.bottomRightBiome.ToString() + "\n";
+			}
 
 			GUI.Label(new Rect(pos, size), text);
 		}

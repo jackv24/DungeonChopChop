@@ -9,10 +9,12 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 	public float townBiomeRadius = 60.0f;
 	public LevelTile.Biomes townBiome = LevelTile.Biomes.Grass;
 
-	private LevelTile.Biomes topRightBiome;
-	private LevelTile.Biomes bottomRightBiome;
-	private LevelTile.Biomes bottomLeftBiome;
-	private LevelTile.Biomes topLeftBiome;
+	[HideInInspector] public LevelTile.Biomes topRightBiome;
+	[HideInInspector] public LevelTile.Biomes bottomRightBiome;
+	[HideInInspector] public LevelTile.Biomes bottomLeftBiome;
+	[HideInInspector] public LevelTile.Biomes topLeftBiome;
+
+	private GameObject sun;
 
 	public override void Generate(LevelGenerator levelGenerator)
 	{
@@ -21,6 +23,12 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 		ReplaceBiomes(levelGenerator);
 
 		GenerateDungeons(levelGenerator);
+
+		if(!sun)
+			sun = GameObject.FindWithTag("SunLight");
+
+		if (sun)
+			sun.SetActive(true);
 	}
 
 	void RandomiseBiomes()

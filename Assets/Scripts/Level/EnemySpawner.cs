@@ -7,7 +7,9 @@ public class EnemySpawner : MonoBehaviour
 {
 	public delegate void NormalEvent();
 	public event NormalEvent OnEnemiesDefeated;
+	public event NormalEvent OnEnemiesSpawned;
 
+	[HideInInspector]
 	public bool spawned = false;
 
 	public Transform[] spawnPoints;
@@ -93,6 +95,9 @@ public class EnemySpawner : MonoBehaviour
 			return;
 
 		shouldSpawn = true;
+
+		if (OnEnemiesSpawned != null)
+			OnEnemiesSpawned();
 
 		StartCoroutine(SpawnWithEffect());
 	}
