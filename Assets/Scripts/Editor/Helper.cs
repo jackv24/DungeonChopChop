@@ -43,7 +43,10 @@ public class Helper
 				ObjectSpawner[] spawners = parent.GetComponentsInChildren<ObjectSpawner>();
 
 				foreach (ObjectSpawner spawner in spawners)
-					spawner.Replace();
+				{
+					if(spawner)
+						spawner.Replace();
+				}
 
 				Debug.Log("Refreshed " + spawners.Length + " object spawners on " + parent.name);
 			}

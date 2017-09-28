@@ -4,6 +4,7 @@
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
+		_BumpMap("Normal", 2D) = "bump" {}
 		_Scale ("Tile Scale", Float) = 1.0
 	}
 	SubShader {
@@ -18,9 +19,11 @@
 		#pragma target 3.0
 
 		sampler2D _MainTex;
+		sampler2D _BumpMap;
 
 		struct Input {
 			float2 uv_MainTex;
+			float2 uv_BumpMap;
 			float3 worldPos;
 		};
 
@@ -37,13 +40,16 @@
 		UNITY_INSTANCING_CBUFFER_END
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
+			float2 uv = IN.worldPos.xz / _Scale;
+			
 			// Albedo comes from a texture tinted by color
-			fixed4 c = tex2D(_MainTex, IN.worldPos.xz / _Scale) * _Color;
+			fixed4 c = tex2D(_MainTex, uv) * _Color;
 			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;
 			o.Alpha = c.a;
+			o.Normal = UnpackNormal(tex2D(_BumpMap, uv));
 		}
 		ENDCG
 	}
