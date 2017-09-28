@@ -9,6 +9,7 @@ public class ItemsManager : MonoBehaviour {
 
 	[Header("Items")]
 	public int Keys;
+	public int DungeonKeys;
 	public int Coins;
 
     [Space()]

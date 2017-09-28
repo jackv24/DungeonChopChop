@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
+	[HideInInspector]
     public bool opened = false;
     public bool requireKeys = false;
+
+	public KeyScript.Type keyType = KeyScript.Type.Normal;
 
 	public Helper.ProbabilityItem[] possibleItems;
 	public BaseItem containingItem;
@@ -32,11 +35,15 @@ public class Chest : MonoBehaviour
 				{
                     if (requireKeys)
                     {
-                        if (ItemsManager.Instance.Keys > 0)
+                        if ((keyType == KeyScript.Type.Normal && ItemsManager.Instance.Keys > 0) || (keyType == KeyScript.Type.Dungeon && ItemsManager.Instance.DungeonKeys > 0))
                         {
                             Open();
-                            ItemsManager.Instance.Keys -= 1;
-                        }
+
+							if(keyType == KeyScript.Type.Normal)
+								ItemsManager.Instance.Keys -= 1;
+							else
+								ItemsManager.Instance.DungeonKeys -= 1;
+						}
                     }
                     else
                     {
