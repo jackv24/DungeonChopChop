@@ -199,6 +199,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4408457613176834}
+  - component: {fileID: 54292746121252500}
+  - component: {fileID: 114269779837626216}
   m_Layer: 0
   m_Name: CactusLarge01
   m_TagString: Untagged
@@ -614,7 +616,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1350247369833798}
-  m_LocalRotation: {x: 0.6224992, y: -0.709404, z: 0.26389933, w: -0.19899197}
+  m_LocalRotation: {x: 0.6224993, y: -0.70940405, z: 0.26389936, w: -0.19899198}
   m_LocalPosition: {x: -0.330829, y: -2.4849775, z: 0.0690999}
   m_LocalScale: {x: 26.358738, y: 46.999313, z: 26.358751}
   m_Children: []
@@ -1388,6 +1390,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1435638255526086}
   m_Mesh: {fileID: 4300000, guid: c651cb989dc8d4a4c88dc8a642c0a3ea, type: 3}
+--- !u!54 &54292746121252500
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413412204032608}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!95 &95036637285733280
 Animator:
   serializedVersion: 3
@@ -1711,3 +1728,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114269779837626216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413412204032608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f297d4c0fe33c54db93b22cef6727cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackingType: 0
+  projecticle: {fileID: 0}
+  shootPosition: {fileID: 0}
+  thrust: 0
+  attackStrength: 0
+  damageOnTouch: 1
+  knockbackStrength: 1.5
+  projAmount: 0
+  timeTillInterval: 0
+  minInterval: 0
+  maxInterval: 0
