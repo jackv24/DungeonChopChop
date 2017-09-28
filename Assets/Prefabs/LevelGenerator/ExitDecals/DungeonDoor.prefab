@@ -54,6 +54,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4651281010939506}
+  - component: {fileID: 65763177960837792}
+  - component: {fileID: 65091927817416992}
   m_Layer: 0
   m_Name: DungeonDoor
   m_TagString: Untagged
@@ -180,6 +182,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1042420857445478}
   m_Mesh: {fileID: 4300000, guid: 9291140a8b7352f4ca624c60a5db8dc0, type: 3}
+--- !u!65 &65091927817416992
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518362359455040}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4, y: 4.5, z: 1}
+  m_Center: {x: -1.5, y: 2.25, z: 1}
+--- !u!65 &65763177960837792
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518362359455040}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4, y: 4.5, z: 1}
+  m_Center: {x: 1.5, y: 2.25, z: 1}
 --- !u!95 &95656094135043094
 Animator:
   serializedVersion: 3
