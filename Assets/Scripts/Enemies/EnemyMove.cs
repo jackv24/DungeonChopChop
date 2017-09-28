@@ -21,6 +21,11 @@ public class EnemyMove : MonoBehaviour
     public bool usingNav = true;
     private int roamCounter = 0;
 
+    void Start()
+    {
+        Setup();
+    }
+
     void OnEnable()
     {
         usingNav = true;
