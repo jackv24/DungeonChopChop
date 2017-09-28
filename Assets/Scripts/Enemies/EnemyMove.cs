@@ -21,11 +21,6 @@ public class EnemyMove : MonoBehaviour
     public bool usingNav = true;
     private int roamCounter = 0;
 
-    void Start()
-    {
-        Setup();
-    }
-
     void OnEnable()
     {
         usingNav = true;
@@ -41,7 +36,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (LockY)
         {
-            if (transform.position.y > .14f)
+            if (transform.position.y > .14f || transform.position.y < .14f)
             {
                 transform.position = new Vector3(transform.position.x, .14f, transform.position.z);
             }

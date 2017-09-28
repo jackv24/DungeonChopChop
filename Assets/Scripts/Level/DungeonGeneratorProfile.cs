@@ -103,5 +103,7 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 
 			succeeded = false;
 		}
+
+		GameObject.FindWithTag("SunLight").SetActive(false);
 	}
 }
