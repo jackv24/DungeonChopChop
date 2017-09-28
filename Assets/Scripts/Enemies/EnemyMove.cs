@@ -18,10 +18,13 @@ public class EnemyMove : MonoBehaviour
     protected Animator animator;
 
     protected bool runAway = false;
-
     public bool usingNav = true;
-
     private int roamCounter = 0;
+
+    void Start()
+    {
+        Setup();
+    }
 
     void OnEnable()
     {
@@ -108,7 +111,7 @@ public class EnemyMove : MonoBehaviour
         } 
     }
 
-    protected bool InDistance(float radius)
+    public bool InDistance(float radius)
     {
         //checks to see if the player is in the radius of the enemy
         float distance = Vector3.Distance(transform.position, GetClosestPlayer().position);
