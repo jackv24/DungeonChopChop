@@ -6,6 +6,11 @@ public class SnapEyeMove : EnemyMove
 {
     public float radius;
 
+    void Start()
+    {
+        Setup();
+    }
+
 	// Update is called once per frame
 	void Update () 
     {
