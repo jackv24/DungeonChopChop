@@ -15,14 +15,17 @@ public class BiomeLighting : MonoBehaviour
 		[Space()]
 		public Material skyboxMaterial;
 		public float ambientIntensity = 1.0f;
+
+		[Space()]
+		public float playerLightIntensity = 0.0f;
 	}
 
-	public LightProfile grassProfile;
-	public LightProfile forestProfile;
-	public LightProfile fireProfile;
-	public LightProfile iceProfile;
-	public LightProfile desertProfile;
-	public LightProfile dungeonProfile;
+	[Space()] public LightProfile grassProfile;
+	[Space()] public LightProfile forestProfile;
+	[Space()] public LightProfile fireProfile;
+	[Space()] public LightProfile iceProfile;
+	[Space()] public LightProfile desertProfile;
+	[Space()] public LightProfile dungeonProfile;
 
 	void Start()
 	{
@@ -91,6 +94,24 @@ public class BiomeLighting : MonoBehaviour
 
 			RenderSettings.skybox = profile.skyboxMaterial;
 			RenderSettings.ambientIntensity = profile.ambientIntensity;
+
+			//Set light intensity for each player
+			PlayerInformation[] players = FindObjectsOfType<PlayerInformation>();
+
+			foreach(PlayerInformation player in players)
+			{
+				Light light = player.GetComponentInChildren<Light>(true);
+
+				if (light)
+				{
+					light.intensity = profile.playerLightIntensity;
+
+					if (light.intensity <= 0)
+						light.gameObject.SetActive(false);
+					else
+						light.gameObject.SetActive(true);
+				}
+			}
 		}
 		else
 			Debug.LogWarning("No profile for current biome!");
