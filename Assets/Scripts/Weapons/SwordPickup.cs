@@ -23,7 +23,7 @@ public class SwordPickup : MonoBehaviour
         {
             if (canPickUp)
             {
-				Pickup(col.GetComponent<PlayerInformation>());
+				//Pickup(col.GetComponent<PlayerInformation>());
             }
         }
     }

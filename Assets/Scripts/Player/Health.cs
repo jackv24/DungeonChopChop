@@ -257,6 +257,18 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void SetColorSeconds(Color color, float seconds)
+    {
+        StartCoroutine(SetColorCoroutine(color, seconds));
+    }
+
+    IEnumerator SetColorCoroutine(Color color, float seconds)
+    {
+        SetColor(color);
+        yield return new WaitForSeconds(seconds);
+        SetOGFade();
+    }
+
     public void PlayerSetOG()
     {
         if (renderers != null)

@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114466407839788422}
   - component: {fileID: 114932756082997370}
   - component: {fileID: 135234165294189744}
+  - component: {fileID: 114226165806897114}
+  - component: {fileID: 114558843332230342}
   m_Layer: 16
   m_Name: BroadSword
   m_TagString: Untagged
@@ -263,6 +265,28 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114226165806897114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210518989845254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - 
+  speakOffset: {x: 0, y: 0, z: 0}
+  speakArea: {x: 5, y: 5, z: 5}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  textBoxHeight: 3
+  textBoxDepth: 0
+  dialogueBoxPrefab: {fileID: 1983791718684604, guid: 02a22f90cc96eba468275f9733fa7a29,
+    type: 2}
 --- !u!114 &114466407839788422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,10 +299,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 2
+  range: 1
   weaponEffect: 0
   damagePerTick: 0
   duration: 0
   timeBetweenEffect: 0
+--- !u!114 &114558843332230342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210518989845254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63bfff935947a846bcae53df6cd2356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114932756082997370
 MonoBehaviour:
   m_ObjectHideFlags: 1
