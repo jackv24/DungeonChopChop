@@ -263,7 +263,7 @@ public class PlayerAttack : MonoBehaviour
                 MoveForward(speedWhenBurned);
             }
 
-            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
+            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
             {
                 animator.SetBool("SpinCharge", false);
                 DisableSword();
@@ -332,7 +332,9 @@ public class PlayerAttack : MonoBehaviour
         {
             //sets the swords parent to be nothing
             sword.transform.parent = null;
-            StartCoroutine(ThrowDroppedSword(sword.transform));
+            Destroy(sword.gameObject);
+            sword = null;
+            //StartCoroutine(ThrowDroppedSword(sword.transform));
         }
     }
 

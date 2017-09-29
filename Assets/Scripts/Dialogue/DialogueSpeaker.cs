@@ -21,6 +21,8 @@ public class DialogueSpeaker : MonoBehaviour
 	[Space()]
 	public GameObject dialogueBoxPrefab;
 
+    public PlayerInformation CurrentPlayer { get { return currentBox ? playerInfo : null; } }
+
 	private DialogueBox currentBox;
 	private PlayerInformation playerInfo;
 
@@ -35,7 +37,21 @@ public class DialogueSpeaker : MonoBehaviour
 			//if box isn't already showing, show box
 			if (!currentBox)
 			{
-				Open(cols[0].gameObject);
+                float closestDistance = float.MaxValue;
+                GameObject closestObject = null;
+
+                foreach (Collider col in cols)
+                {
+                    float distance = Vector3.Distance(col.transform.position, transform.position);
+
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        closestObject = col.gameObject;
+                    }
+                }
+
+                Open(closestObject);
 			}
 		}
 		else if (currentBox)
@@ -53,33 +69,39 @@ public class DialogueSpeaker : MonoBehaviour
 		//Set random line
 		if (currentBox)
 		{
-			if (lines.Length > 0)
-			{
-				int index = lastIndex;
+            UpdateLines();
 
-				if (lines.Length > 1)
-				{
-					while (index == lastIndex)
-						index = Random.Range(0, lines.Length);
-				}
-				else
-					index = 0;
-
-				currentBox.SetDialogue(lines[index]);
-
-				lastIndex = index;
-			}
-			else
-				currentBox.SetDialogue("!NO LINES!");
+            playerInfo = player.GetComponent<PlayerInformation>();
 
 			if (OnGetPlayer != null)
-			{
-				playerInfo = player.GetComponent<PlayerInformation>();
-
-				OnGetPlayer(playerInfo, true);
-			}
+                OnGetPlayer(playerInfo, true);
 		}
 	}
+
+    public void UpdateLines()
+    {
+        if (currentBox)
+        {
+            if (lines.Length > 0)
+            {
+                int index = lastIndex;
+
+                if (lines.Length > 1)
+                {
+                    while (index == lastIndex)
+                        index = Random.Range(0, lines.Length);
+                }
+                else
+                    index = 0;
+
+                currentBox.SetDialogue(lines[index]);
+
+                lastIndex = index;
+            }
+            else
+                currentBox.SetDialogue("!NO LINES!");
+        }
+    }
 
 	public void Close(bool disable = false)
 	{

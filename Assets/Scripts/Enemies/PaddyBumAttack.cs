@@ -62,7 +62,12 @@ public class PaddyBumAttack : EnemyAttack {
             if (paddyType == PaddyType.TouchExplode)
             {
                 //kill itself
-                enemyHealth.AffectHealth(-enemyHealth.maxHealth);
+                if (!waitingToExplode)
+                {
+                    enemyHealth.SetColorSeconds(Color.red, .5f);
+                    animator.SetTrigger("Exploding");
+                    waitingToExplode = true;
+                }
             }
         }
         //check if sword is colliding
@@ -72,7 +77,12 @@ public class PaddyBumAttack : EnemyAttack {
             if (paddyType == PaddyType.HitExplode)
             {
                 //kill itself
-                enemyHealth.AffectHealth(-enemyHealth.maxHealth);
+                if (!waitingToExplode)
+                {
+                    enemyHealth.SetColorSeconds(Color.red, .5f);
+                    animator.SetTrigger("Exploding");
+                    waitingToExplode = true;
+                }
             }
         }
     }
