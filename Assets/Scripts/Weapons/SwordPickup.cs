@@ -17,18 +17,7 @@ public class SwordPickup : MonoBehaviour
 		
 	}
 
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.GetComponent<PlayerInformation>())
-        {
-            if (canPickUp)
-            {
-				//Pickup(col.GetComponent<PlayerInformation>());
-            }
-        }
-    }
-
-	void Pickup(PlayerInformation playerInfo)
+	public void Pickup(PlayerInformation playerInfo)
 	{
 		PlayerAttack playerAttack = playerInfo.GetComponent<PlayerAttack>();
 
