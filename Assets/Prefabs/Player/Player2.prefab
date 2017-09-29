@@ -1098,7 +1098,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.797}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1732,6 +1732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36dcc67cb2010304f9d7ca7906cd8952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordName: Sword
   damageMultiplier: 0.5
   range: 1
   weaponEffect: 0
@@ -1757,6 +1758,9 @@ MonoBehaviour:
   windSpeed: 2
   damageInFireBiome: 0.1
   timeBetweenBiomeBurn: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114604372105757236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1798,6 +1802,7 @@ MonoBehaviour:
   absorbDistance: 1
   damageOutput: 0
   invincibleSphere: {fileID: 1900534686197628}
+  playerMove: {fileID: 0}
 --- !u!114 &114897967170071644
 MonoBehaviour:
   m_ObjectHideFlags: 1
