@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4796346440850674}
   - component: {fileID: 114191678609527650}
   - component: {fileID: 114740568696611766}
+  - component: {fileID: 114238236851428588}
   m_Layer: 0
   m_Name: LevelGenerator
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2eef7226fb5cb94985b19829954522a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: d5c7811195c420349baf805ff0762063, type: 2}
+  profile: {fileID: 11400000, guid: 4a836367755de76499bcd2352702ba0c, type: 2}
   layoutLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -65,6 +66,48 @@ MonoBehaviour:
   generatedTiles: []
   currentTile: {fileID: 0}
   showDebugMenu: 0
+--- !u!114 &114238236851428588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498972118277296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ee4ad703292b94c976bcf633ab87e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sunLight: {fileID: 0}
+  grassProfile:
+    sunColor: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+    sunIntensity: 1
+    skyboxMaterial: {fileID: 2100000, guid: 230604052f95590448e3c715ddea0f90, type: 2}
+    ambientIntensity: 1
+  forestProfile:
+    sunColor: {r: 0.862069, g: 1, b: 0.75, a: 1}
+    sunIntensity: 0.8
+    skyboxMaterial: {fileID: 2100000, guid: 10212c5ad134796498107519f2957165, type: 2}
+    ambientIntensity: 1
+  fireProfile:
+    sunColor: {r: 1, g: 0.73590267, b: 0.6911765, a: 1}
+    sunIntensity: 1.2
+    skyboxMaterial: {fileID: 2100000, guid: 7d79ad9481b0e114baaeb1d165d9a789, type: 2}
+    ambientIntensity: 0.5
+  iceProfile:
+    sunColor: {r: 0.78676474, g: 0.9735294, b: 1, a: 1}
+    sunIntensity: 1.1
+    skyboxMaterial: {fileID: 2100000, guid: b6f20bfcdbd26ef41bca408a37574347, type: 2}
+    ambientIntensity: 1.1
+  desertProfile:
+    sunColor: {r: 1, g: 0.9967546, b: 0.88235295, a: 1}
+    sunIntensity: 0.8
+    skyboxMaterial: {fileID: 2100000, guid: 2937fb35f9662014cb383ab2f950b140, type: 2}
+    ambientIntensity: 0.9
+  dungeonProfile:
+    sunColor: {r: 1, g: 1, b: 1, a: 1}
+    sunIntensity: 0
+    skyboxMaterial: {fileID: 2100000, guid: e9f0f4a516ee0cc4ebd30eaf750cda47, type: 2}
+    ambientIntensity: 1.25
 --- !u!114 &114740568696611766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,3 +143,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 4096
+  levelData:
+    overworldProfile: {fileID: 0}
+    overworldSeed: 0
+    inDungeon: 0
+    clearedTiles: 
+  lastOverworldBiome: 0

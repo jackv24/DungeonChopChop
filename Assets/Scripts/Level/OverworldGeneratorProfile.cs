@@ -14,8 +14,6 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 	[HideInInspector] public LevelTile.Biomes bottomLeftBiome;
 	[HideInInspector] public LevelTile.Biomes topLeftBiome;
 
-	private GameObject sun;
-
 	public override void Generate(LevelGenerator levelGenerator)
 	{
 		RandomiseBiomes();
@@ -23,12 +21,6 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 		ReplaceBiomes(levelGenerator);
 
 		GenerateDungeons(levelGenerator);
-
-		if(!sun)
-			sun = GameObject.FindWithTag("SunLight");
-
-		if (sun)
-			sun.SetActive(true);
 	}
 
 	void RandomiseBiomes()

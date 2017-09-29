@@ -104,8 +104,6 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 			succeeded = false;
 		}
 
-		GameObject.FindWithTag("SunLight").SetActive(false);
-
 		//Self-removing event
 		LevelGenerator.NormalEvent tempEvent = null;
 		tempEvent = delegate
