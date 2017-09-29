@@ -68,8 +68,32 @@ public class LevelGenerator : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.D))
-			showDebugMenu = !showDebugMenu;
+		if (Debug.isDebugBuild)
+		{
+			if (Input.GetKey(KeyCode.LeftControl))
+			{
+				if(Input.GetKeyDown(KeyCode.D))
+					showDebugMenu = !showDebugMenu;
+
+				if(Input.GetKeyDown(KeyCode.U))
+				{
+					Debug.Log("Revealing tiles " + generatedTiles.Count);
+
+					foreach(LevelTile tile in generatedTiles)
+					{
+						if(tile != currentTile)
+							tile.ShowTile(false);
+
+						MapTracker[] trackers = tile.GetComponentsInChildren<MapTracker>();
+
+						foreach (MapTracker tracker in trackers)
+						{
+							tracker.Register();
+						}
+					}
+				}
+			}
+		}
 	}
 
 	private void OnGUI()
@@ -82,18 +106,22 @@ public class LevelGenerator : MonoBehaviour
 			string text = "<b>Debug Menu:</b>\n";
 
 			text += "Start Seed: " + startSeed + "\n\n";
-			text += "Current Tile: " + (currentTile ? currentTile.gameObject.name : "NULL") + "\n\n";
+			text += "Current Tile: " + (currentTile ? currentTile.gameObject.name : "NULL") + "\n";
 
 			if (profile is OverworldGeneratorProfile)
 			{
 				OverworldGeneratorProfile p = (OverworldGeneratorProfile)profile;
 
-				text += "<b>Biomes</b>\n";
+				text += "\n<b>Biomes</b>\n";
 				text += "Top Left: " + p.topLeftBiome.ToString() + "\n";
 				text += "Top Right: " + p.topRightBiome.ToString() + "\n";
 				text += "Bottom Left: " + p.bottomLeftBiome.ToString() + "\n";
 				text += "Bottom Right: " + p.bottomRightBiome.ToString() + "\n";
 			}
+
+			text += "\n<b>Hotkeys</b>\n";
+			text += "Debug Menu: CTRL+D\n";
+			text += "Reveal Map: CTRL+U\n";
 
 			GUI.Label(new Rect(pos, size), text);
 		}
