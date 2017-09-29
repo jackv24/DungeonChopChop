@@ -53,11 +53,43 @@ public class EnemyAttack : MonoBehaviour
     protected Animator animator;
     protected Health enemyHealth;
 
+    LevelTile parentTile = null;
+
     void Start()
     {
         enemyHealth = GetComponent<Health>();
         animator = GetComponentInChildren<Animator>();
         enemyMove = GetComponent<EnemyMove>();
+
+        //If this enemy was spawned as a child of a tile, only enable when tile is entered
+        parentTile = GetComponentInParent<LevelTile>();
+
+        if(parentTile)
+        {
+            parentTile.OnTileEnter += SetActive;
+            parentTile.OnTileExit += SetActive;
+
+            SetInactive();
+        }
+    }
+
+    void SetActive()
+    {
+        gameObject.SetActive(true);
+    }
+
+    void SetInactive()
+    {
+        gameObject.SetActive(false);
+    }
+
+    void OnDestroy()
+    {
+        if (parentTile)
+        {
+            parentTile.OnTileEnter -= SetActive;
+            parentTile.OnTileExit -= SetActive;
+        }
     }
 
     void FixedUpdate()
