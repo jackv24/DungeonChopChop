@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 114951671796802022}
   - component: {fileID: 114228626562664882}
   - component: {fileID: 135594424935007724}
+  - component: {fileID: 114033900974420548}
+  - component: {fileID: 114332188571449370}
   m_Layer: 16
   m_Name: Sword_Rusty
   m_TagString: Untagged
@@ -235,6 +237,28 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114033900974420548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433744696121786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - 
+  speakOffset: {x: 0, y: 0, z: 0}
+  speakArea: {x: 5, y: 5, z: 5}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  textBoxHeight: 3
+  textBoxDepth: 0
+  dialogueBoxPrefab: {fileID: 1983791718684604, guid: 02a22f90cc96eba468275f9733fa7a29,
+    type: 2}
 --- !u!114 &114228626562664882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,6 +300,17 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114332188571449370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433744696121786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63bfff935947a846bcae53df6cd2356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114951671796802022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,6 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 0.5
+  range: 1
   weaponEffect: 0
   damagePerTick: 0
   duration: 0

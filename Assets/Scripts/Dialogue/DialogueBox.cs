@@ -20,7 +20,8 @@ public class DialogueBox : MonoBehaviour
 
 	public void SetDialogue(string text)
 	{
-		textElement.text = text;
+        if (textElement != null)
+		    textElement.text = text;
 	}
 
 	public void CloseDialogue()

@@ -14,6 +14,7 @@ public enum WeaponEffect
 public class SwordStats : MonoBehaviour {
 
     public float damageMultiplier = 1;
+    public int range = 1;
     public WeaponEffect weaponEffect;
     public float damagePerTick;
     public float duration;

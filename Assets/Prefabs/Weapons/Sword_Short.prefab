@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114008561556440892}
   - component: {fileID: 114531951200898494}
   - component: {fileID: 135485609731153270}
+  - component: {fileID: 114549201005312952}
+  - component: {fileID: 114204026662703976}
   m_Layer: 0
   m_Name: Sword_Short
   m_TagString: Untagged
@@ -246,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  range: 1
   weaponEffect: 0
   damagePerTick: 0
   duration: 0
@@ -279,6 +282,17 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114204026662703976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297283827874476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63bfff935947a846bcae53df6cd2356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114531951200898494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,6 +305,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickUp: 1
+--- !u!114 &114549201005312952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297283827874476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - 
+  speakOffset: {x: 0, y: 0, z: 0}
+  speakArea: {x: 5, y: 5, z: 5}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  textBoxHeight: 3
+  textBoxDepth: 0
+  dialogueBoxPrefab: {fileID: 1983791718684604, guid: 02a22f90cc96eba468275f9733fa7a29,
+    type: 2}
 --- !u!135 &135485609731153270
 SphereCollider:
   m_ObjectHideFlags: 1
