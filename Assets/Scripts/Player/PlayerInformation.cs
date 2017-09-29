@@ -41,7 +41,8 @@ public class PlayerInformation : MonoBehaviour
     private float originalResistance;
 
     private WeaponStats currentWeaponStats;
-    private PlayerMove playerMove;
+    [HideInInspector]
+    public PlayerMove playerMove;
     private Animator animator;
     private CharacterController characterController;
     private PlayerAttack playerAttack;
