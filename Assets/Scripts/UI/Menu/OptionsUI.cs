@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class OptionsUI : MonoBehaviour
 {
+	public GameObject firstSelected;
+	private GameObject lastSelected;
+
 	public Dropdown resolutionDropdown;
 	public Toggle fullscreenToggle;
 	public Dropdown qualityDropdown;
@@ -13,6 +17,9 @@ public class OptionsUI : MonoBehaviour
 
 	void Start()
 	{
+		if (Pause.Instance)
+			Pause.Instance.OnUnpause += Close;
+
 		if(resolutionDropdown)
 		{
 			//Get list of available resolutions
@@ -54,6 +61,37 @@ public class OptionsUI : MonoBehaviour
 
 			qualityDropdown.onValueChanged.AddListener((int index) => { QualitySettings.SetQualityLevel(index, true); });
 		}
+	}
+
+	void Close()
+	{
+		transform.parent.gameObject.SetActive(false);
+	}
+
+	void OnEnable()
+	{
+		lastSelected = EventSystem.current.currentSelectedGameObject;
+
+		if(firstSelected)
+			StartCoroutine(SwitchSelected(firstSelected));
+	}
+
+	void OnDisable()
+	{
+		if (lastSelected && EventSystem.current)
+			EventSystem.current.SetSelectedGameObject(lastSelected);
+
+		if (Pause.Instance)
+			Pause.Instance.OnUnpause -= Close;
+	}
+
+	IEnumerator SwitchSelected(GameObject newObject)
+	{
+		EventSystem.current.SetSelectedGameObject(null);
+
+		yield return new WaitForEndOfFrame();
+
+		EventSystem.current.SetSelectedGameObject(newObject);
 	}
 
 	void UpdateResolution()
