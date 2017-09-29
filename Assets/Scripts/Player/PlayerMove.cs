@@ -21,6 +21,9 @@ public class PlayerMove : MonoBehaviour
 
 	private bool allowMove = true;
 
+    [Space()]
+    public LayerMask layerMask;
+
     [HideInInspector]
 	public PlayerInputs input;
 	private CharacterController characterController;
@@ -206,7 +209,7 @@ public class PlayerMove : MonoBehaviour
             }
 
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.down, out hit, 50))
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 50, layerMask))
             {
                 if (!ItemsManager.Instance.hasBoots)
                 {
