@@ -20,7 +20,7 @@ public class ShowSwordStats : MonoBehaviour {
     private string rangeText;
     private string weaponEffectText;
 
-    private 
+    private PlayerMove playerMove;
 
 	// Use this for initialization
 	void Start () 
@@ -33,6 +33,20 @@ public class ShowSwordStats : MonoBehaviour {
 
         weaponEffect = thisSwordStats.weaponEffect;
 	}
+
+    void Update()
+    {
+        if (dialogueSpeaker.CurrentPlayer != null)
+        {
+            if (dialogueSpeaker.CurrentPlayer.playerMove.input.Purchase.WasPressed)
+            {
+                swordPickup.Pickup(dialogueSpeaker.CurrentPlayer);
+                dialogueSpeaker.Close();
+                enabled = false;
+                dialogueSpeaker.enabled = false;
+            }
+        }
+    }
 
     void SetTextColor(float value, ref Color color)
     {
@@ -82,6 +96,8 @@ public class ShowSwordStats : MonoBehaviour {
 
         string text = "";
 
+        //sets the panel to have the sword name, sword stats and weapon effect
+        text += thisSwordStats.swordName + "\n"; 
         text += string.Format("Damage: <color=#{1}>{0}</color>\n", damageMultiplierText, ColorUtility.ToHtmlStringRGB(damageColor));
         text += string.Format("Range: <color=#{1}>{0}</color>", rangeText, ColorUtility.ToHtmlStringRGB(rangeColor));
         if (weaponEffect != WeaponEffect.Nothing)

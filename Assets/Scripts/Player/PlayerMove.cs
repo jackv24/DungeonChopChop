@@ -21,7 +21,8 @@ public class PlayerMove : MonoBehaviour
 
 	private bool allowMove = true;
 
-	private PlayerInputs input;
+    [HideInInspector]
+	public PlayerInputs input;
 	private CharacterController characterController;
 	private PlayerInformation playerInformation;
 	private Animator animator;

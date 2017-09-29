@@ -13,6 +13,7 @@ public enum WeaponEffect
 
 public class SwordStats : MonoBehaviour {
 
+    public string swordName = "Sword";
     public float damageMultiplier = 1;
     public int range = 1;
     public WeaponEffect weaponEffect;
