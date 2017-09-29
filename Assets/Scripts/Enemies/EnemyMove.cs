@@ -16,6 +16,7 @@ public class EnemyMove : MonoBehaviour
     protected PlayerInformation[] players;
     protected PlayerInformation currentPlayer = null;
     protected Animator animator;
+    protected EnemyAttack enemyAttack;
 
     protected bool runAway = false;
     public bool usingNav = true;
@@ -66,6 +67,7 @@ public class EnemyMove : MonoBehaviour
 
     protected void Setup()
     {
+        enemyAttack = GetComponent<EnemyAttack>();
         animator = GetComponentInChildren<Animator>();
         players = FindObjectsOfType<PlayerInformation>();
         if (GetComponent<NavMeshAgent>())
@@ -127,11 +129,11 @@ public class EnemyMove : MonoBehaviour
         return Vector3.Distance(transform.position, GetClosestPlayer().position);
     }
 
-    protected bool InDistanceBetweenTwoRadius(float radius, float greaterThenRadius)
+    public bool InDistanceBetweenTwoRadius(float HigherRadius, float LowerRadius)
     {
         //checks to see if the player is in the radius of the enemy
         float distance = Vector3.Distance(transform.position, GetClosestPlayer().position);
-        if (distance < radius && distance > greaterThenRadius)
+        if (distance < HigherRadius && distance > LowerRadius)
         {
             return true;
         }

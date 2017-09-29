@@ -263,7 +263,7 @@ public class PlayerAttack : MonoBehaviour
                 MoveForward(speedWhenBurned);
             }
 
-            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
+            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
             {
                 animator.SetBool("SpinCharge", false);
                 DisableSword();
@@ -359,7 +359,8 @@ public class PlayerAttack : MonoBehaviour
     {
         //enables collider and trail
         sword.GetComponent<BoxCollider>().enabled = true;
-        sword.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = true;
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
+            sword.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = true;
     }
 
     public void DisableSword()

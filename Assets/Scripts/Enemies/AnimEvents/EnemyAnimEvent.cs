@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AppleShooterAnimEvent : MonoBehaviour {
+public class EnemyAnimEvent : MonoBehaviour {
 
     EnemyAttack enemyAttack;
 

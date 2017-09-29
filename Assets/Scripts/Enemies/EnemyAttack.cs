@@ -133,6 +133,7 @@ public class EnemyAttack : MonoBehaviour
         //count up until the counter has reached the interval time, then shoot bullet and restart
         if (shootIntervalCounter > (timeTillInterval * 60))
         {
+            animator.SetTrigger("Attack");
             Shootforward();
             shootIntervalCounter = 0;
         } 
@@ -145,6 +146,7 @@ public class EnemyAttack : MonoBehaviour
         if (shootIntervalCounter > (randomInterval * 60))
         {
             randomInterval = Random.Range(minInterval, maxInterval);
+            animator.SetTrigger("Attack");
             Shootforward();
             shootIntervalCounter = 0;
         } 

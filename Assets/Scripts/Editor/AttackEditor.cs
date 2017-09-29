@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using UnityEditor;
 #endif
 
-[CustomEditor(typeof(EnemyAttack))]
+[CustomEditor(typeof(EnemyAttack), true)]
 public class AttackEditor : Editor {
 
 	private EnemyAttack enemyAttack;
