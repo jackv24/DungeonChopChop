@@ -19,14 +19,11 @@ public class MapCamera : MonoBehaviour
 
 	class Icon
 	{
-		public int id = 0;
-
 		public RectTransform rectTransform;
 		public Transform targetTransform;
 
 		public bool setLastSibling = false;
 	}
-	private int lastID = 0;
 
 	private List<Icon> icons = new List<Icon>();
 
@@ -99,6 +96,19 @@ public class MapCamera : MonoBehaviour
 		icons.Clear();
 	}
 
+	public void RegisterPlayers()
+	{
+		//Re-register players after clearing
+		PlayerInformation[] players = FindObjectsOfType<PlayerInformation>();
+		foreach (PlayerInformation player in players)
+		{
+			MapTracker tracker = player.GetComponent<MapTracker>();
+
+			if (tracker)
+				tracker.Register();
+		}
+	}
+
 	/// <summary>
 	/// Displays an icon on the map.
 	/// </summary>
@@ -107,13 +117,19 @@ public class MapCamera : MonoBehaviour
 	/// <param name="color">Tint color.</param>
 	/// <param name="setLastSibling">Sets this icon as the last sibling in the heirarchy, drawing above other icons.</param>
 	/// <returns>Returns the assigned ID of the new icon.</returns>
-	public int RegisterIcon(Sprite sprite, Transform target, Color color, bool setLastSibling = false)
+	public void RegisterIcon(Sprite sprite, Transform target, Color color, bool setLastSibling = false)
 	{
+		//Only add tracker if this transform isn't already tracked
+		foreach(Icon i in icons)
+		{
+			if (i.targetTransform == target)
+				return;
+		}
+
 		//Create new icon and set values
 		Icon icon = new Icon();
 		icon.targetTransform = target;
 		icon.setLastSibling = setLastSibling;
-		icon.id = lastID++;
 
 		//Make new gameobject in heirarchy for this icon
 		GameObject obj = new GameObject(target.gameObject.name + "_Icon");
@@ -139,18 +155,16 @@ public class MapCamera : MonoBehaviour
 
 		//Reorder in heirarchy if required
 		SetIconOrder();
-
-		return icon.id;
 	}
 
-	public void RemoveIcon(int id)
+	public void RemoveIcon(Transform t)
 	{
 		int index = -1;
 
 		//Find icon with ID
 		foreach(Icon icon in icons)
 		{
-			if (icon.id == id)
+			if (icon.targetTransform == t)
 				index = icons.IndexOf(icon);
 		}
 
