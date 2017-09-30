@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ChestSpawn : MonoBehaviour
 {
+	public delegate void NormalEvent();
+	public event NormalEvent OnChestSpawned;
+
 	public enum ChestType
 	{
 		Normal,
@@ -61,6 +64,12 @@ public class ChestSpawn : MonoBehaviour
 			}
 			else
 				Debug.LogWarning("Chest could not spawn, no prefab assigned in LevelVars!");
+		}
+
+		if(spawned)
+		{
+			if (OnChestSpawned != null)
+				OnChestSpawned();
 		}
 
 		return spawned;

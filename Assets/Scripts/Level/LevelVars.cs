@@ -25,6 +25,7 @@ public class LevelVars : MonoBehaviour
 
 	[Header("Misc")]
 	public GameObject droppedCharmPrefab;
+	public Sprite chestSpawnerIcon;
 
 	[Space()]
 	public LayerMask groundLayer;
@@ -64,6 +65,30 @@ public class LevelVars : MonoBehaviour
 		{
 			levelData.overworldProfile = LevelGenerator.Instance.profile;
 			levelData.overworldSeed = LevelGenerator.Instance.startSeed;
+
+			//Show icon for unspawned chests, event run once
+			LevelGenerator.NormalEvent tempEvent = null;
+			tempEvent = delegate
+			{
+				ChestSpawn[] spawns = FindObjectsOfType<ChestSpawn>();
+
+				foreach(ChestSpawn spawn in spawns)
+				{
+					if(spawn.spawnType == ChestSpawn.SpawnType.ClearRoom)
+					{
+						MapTracker tracker = spawn.gameObject.AddComponent<MapTracker>();
+						tracker.sprite = chestSpawnerIcon;
+						tracker.showOnTileEnter = true;
+						tracker.registerOnce = true;
+						tracker.Setup();
+
+						spawn.OnChestSpawned += tracker.Remove;
+					}
+				}
+
+				LevelGenerator.Instance.OnAfterSpawnChests -= tempEvent;
+			};
+			LevelGenerator.Instance.OnAfterSpawnChests += tempEvent;
 		}
 	}
 

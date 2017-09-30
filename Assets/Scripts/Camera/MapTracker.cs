@@ -13,16 +13,27 @@ public class MapTracker : MonoBehaviour
 	[Space()]
 	public bool showOnTileEnter = false;
 
+	public bool registerOnce = false;
+	private bool registered = false;
+
+	private LevelTile parentTile;
+
 	void Start()
 	{
-		if (sprite && MapCamera.Instance)
+		if (sprite)
+			Setup();
+	}
+
+	public void Setup()
+	{
+		if (MapCamera.Instance)
 		{
 			if (showOnTileEnter)
 			{
-				LevelTile tile = GetComponentInParent<LevelTile>();
+				parentTile = GetComponentInParent<LevelTile>();
 
-				if (tile)
-					tile.OnTileEnter += Register;
+				if (parentTile)
+					parentTile.OnTileEnter += Register;
 			}
 			else
 			{
@@ -38,15 +49,42 @@ public class MapTracker : MonoBehaviour
 	{
 		if (LevelGenerator.Instance)
 			LevelGenerator.Instance.OnGenerationFinished -= Register;
+
+		if (MapCamera.Instance)
+			Remove(false);
 	}
 
 	public void Register()
 	{
+		if (registerOnce && registered)
+			return;
+
 		MapCamera.Instance.RegisterIcon(sprite, transform, color, setLastSibling);
+
+		registered = true;
 	}
 
 	public void Remove()
 	{
+		Remove(true);
+	}
+
+	public void Remove(bool unsubcribe)
+	{
 		MapCamera.Instance.RemoveIcon(transform);
+
+		if(unsubcribe)
+		{
+			if(showOnTileEnter)
+			{
+				if (parentTile)
+					parentTile.OnTileEnter -= Register;
+			}
+			else
+			{
+				if (LevelGenerator.Instance)
+					LevelGenerator.Instance.OnGenerationFinished -= Register;
+			}
+		}
 	}
 }
