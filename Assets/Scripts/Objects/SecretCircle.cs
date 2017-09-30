@@ -6,10 +6,12 @@ public class SecretCircle : MonoBehaviour {
 
     private Drops[] drops;
     public bool didDrops = false;
+    private SpawnEffects spawnEffects;
 
 	// Use this for initialization
 	void Start () {
         drops = GetComponentsInChildren<Drops>();
+        spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
 	}
 	
 	// Update is called once per frame
@@ -26,6 +28,7 @@ public class SecretCircle : MonoBehaviour {
                 foreach (Drops drop in drops)
                 {
                     drop.DoDrop();
+                    spawnEffects.EffectOnHit(drop.GetComponent<SecretCircleParticles>().particles, drop.transform.position);
                 }
                 didDrops = true;
             }

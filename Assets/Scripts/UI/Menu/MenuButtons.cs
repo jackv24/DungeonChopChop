@@ -20,6 +20,12 @@ public class MenuButtons : MonoBehaviour {
 		
 	}
 
+    public void MainMenu()
+    {
+        ObjectPooler.PurgePools();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+    }
+
 	public void ClickSinglePlayer()
 	{
 		if (!clicked)
@@ -44,10 +50,4 @@ public class MenuButtons : MonoBehaviour {
 
 		GameManager.Instance.ChangeScene(index);
 	}
-
-	public void ClickOptions()
-	{
-
-	}
-
 }

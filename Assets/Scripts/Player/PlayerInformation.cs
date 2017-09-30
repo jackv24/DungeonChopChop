@@ -43,7 +43,8 @@ public class PlayerInformation : MonoBehaviour
     private WeaponStats currentWeaponStats;
     [HideInInspector]
     public PlayerMove playerMove;
-    private Animator animator;
+    [HideInInspector]
+    public Animator animator;
     private CharacterController characterController;
     private PlayerAttack playerAttack;
     private GameObject mapHUD;

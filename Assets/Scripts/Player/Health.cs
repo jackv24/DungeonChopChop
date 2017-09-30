@@ -426,15 +426,7 @@ public class Health : MonoBehaviour
         if (!IsEnemy)
         {
             animator.SetTrigger("Die");
-            StartCoroutine(WaitForRestart());
         }
-    }
-
-    IEnumerator WaitForRestart()
-    {
-        yield return new WaitForSeconds(2);
-        ObjectPooler.PurgePools();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 
     void DoParticle(string particleName, float duration)
