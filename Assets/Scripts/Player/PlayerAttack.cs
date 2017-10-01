@@ -326,6 +326,16 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
+    public void DropShield()
+    {
+        if (shield)
+        {
+            shield.transform.parent = null;
+            Destroy(shield.gameObject);
+            shield = null;
+        }
+    }
+
     public void DropSword()
     {
         if (sword)
@@ -353,6 +363,19 @@ public class PlayerAttack : MonoBehaviour
         sword.transform.localEulerAngles = new Vector3(-117.677f, -48.953f, 25.159f);
         sword.GetComponent<SwordPickup>().canPickUp = false;
         AddSwordPlayerComponenets(sword.GetComponent<SwordCollision>());
+    }
+
+    public void AddShield(ShieldStats newShield)
+    {
+        if (newShield)
+        {
+            DropShield();
+        }
+        shield = newShield;
+        shield.transform.parent = shieldBone.transform;
+        shield.transform.localPosition = new Vector3(0, 0, 0);
+        shield.transform.localEulerAngles = new Vector3(0, 0, shield.transform.localEulerAngles.z);
+        shield.GetComponent<ShieldPickup>().canPickUp = false;
     }
 
     public void EnableSword()
