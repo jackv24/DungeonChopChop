@@ -83,13 +83,6 @@ public class LevelGenerator : MonoBehaviour
 					{
 						if(tile != currentTile)
 							tile.ShowTile(false);
-
-						MapTracker[] trackers = tile.GetComponentsInChildren<MapTracker>();
-
-						foreach (MapTracker tracker in trackers)
-						{
-							tracker.Register();
-						}
 					}
 				}
 			}

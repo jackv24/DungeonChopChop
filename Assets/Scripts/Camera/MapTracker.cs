@@ -33,7 +33,7 @@ public class MapTracker : MonoBehaviour
 				parentTile = GetComponentInParent<LevelTile>();
 
 				if (parentTile)
-					parentTile.OnTileEnter += Register;
+					parentTile.OnTileReveal += Register;
 			}
 			else
 			{
@@ -78,7 +78,7 @@ public class MapTracker : MonoBehaviour
 			if(showOnTileEnter)
 			{
 				if (parentTile)
-					parentTile.OnTileEnter -= Register;
+					parentTile.OnTileReveal -= Register;
 			}
 			else
 			{

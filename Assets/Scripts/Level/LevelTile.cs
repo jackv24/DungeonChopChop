@@ -7,6 +7,7 @@ public class LevelTile : MonoBehaviour
 	public delegate void NormalEvent();
 	public event NormalEvent OnTileEnter;
 	public event NormalEvent OnTileExit;
+	public event NormalEvent OnTileReveal;
 
 	public int index = 0;
 
@@ -273,6 +274,9 @@ public class LevelTile : MonoBehaviour
 				if (d)
 					d.ShowOnMap();
 			}
+
+			if (OnTileReveal != null)
+				OnTileReveal();
 		}
 	}
 
