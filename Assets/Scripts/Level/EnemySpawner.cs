@@ -23,11 +23,6 @@ public class EnemySpawner : MonoBehaviour
 
 	private List<GameObject> spawnedEnemies = new List<GameObject>();
 
-	[Space()]
-	[Tooltip("How many tiles must be entered until this one respawns enemies?")]
-	public int respawnTileCount = 5;
-	private int tilesLeftUntilRespawn = 0;
-
 	private class EnemySpawnPair
 	{
 		public EnemySpawnPair(GameObject prefab, Transform spawnPoint)
@@ -42,6 +37,8 @@ public class EnemySpawner : MonoBehaviour
 	private List<EnemySpawnPair> undefeatedEnemies = new List<EnemySpawnPair>();
 
 	private bool shouldSpawn = false;
+
+	private bool cleared = false;
 
 	void Start()
 	{
@@ -91,7 +88,7 @@ public class EnemySpawner : MonoBehaviour
 
 	public void Spawn()
 	{
-		if (tilesLeftUntilRespawn > 0)
+		if (cleared)
 			return;
 
 		shouldSpawn = true;
@@ -253,26 +250,10 @@ public class EnemySpawner : MonoBehaviour
 	
 		spawnedEnemies.Clear();
 
-		//If tile was just cleared, setup tile reset counter
-		if (undefeatedEnemies.Count <= 0 && tilesLeftUntilRespawn <= 0)
+		//If tile was just cleared, don't allow respawning
+		if (undefeatedEnemies.Count <= 0)
 		{
-			tilesLeftUntilRespawn = respawnTileCount;
-
-			LevelGenerator.Instance.OnTileEnter += MinusTilesLeft;
-		}
-	}
-
-	void MinusTilesLeft()
-	{
-		tilesLeftUntilRespawn--;
-
-		if (tilesLeftUntilRespawn <= 0)
-		{
-			//If time to reset tile, just clear undefeated enemies
-			undefeatedEnemies.Clear();
-
-			//If no tiles are left, remove reset counter
-			LevelGenerator.Instance.OnTileEnter -= MinusTilesLeft;
+			cleared = true;
 		}
 	}
 }
