@@ -86,6 +86,6 @@ public class ShopSpawner : MonoBehaviour
 		if (decoratorPrefabs.Length <= 0)
 			Debug.LogError("Shop spawner has no decorator prefabs!");
 
-		return decoratorPrefabs[Random.Range(0, decoratorPrefabs.Length)];
+		return decoratorPrefabs[LevelGenerator.Random.Next(0, decoratorPrefabs.Length)];
 	}
 }

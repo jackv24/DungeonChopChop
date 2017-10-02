@@ -36,7 +36,7 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 		for(int i = 0; i < 4; i++)
 		{
 			//Get random biome and remove from list (only use once)
-			LevelTile.Biomes biome = unusedBiomes[Random.Range(0, unusedBiomes.Count)];
+			LevelTile.Biomes biome = unusedBiomes[LevelGenerator.Random.Next(0, unusedBiomes.Count)];
 			unusedBiomes.Remove(biome);
 
 			//Set one of 4 directions tot his biome
@@ -95,7 +95,7 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 		{
 			LevelTile.Biomes biome = LevelTile.Biomes.Grass;
 
-			int seed = Random.Range(0, 1000);
+			int seed = LevelGenerator.Random.Next(0, 1000);
 
 			//Figure out which quadrant to work in
 			switch (i)

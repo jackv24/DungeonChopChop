@@ -7,6 +7,9 @@ public class LevelGenerator : MonoBehaviour
 {
 	public static LevelGenerator Instance;
 
+	//Random instance specific to level generator - should prevent realtime random numbers from interfering
+	public static System.Random Random;
+
 	public delegate void NormalEvent();
 	public event NormalEvent OnGenerationStart;
 	public event NormalEvent OnBeforeMergeMeshes;
@@ -124,6 +127,8 @@ public class LevelGenerator : MonoBehaviour
     {
 		Debug.Log("Starting generation with seed: " + seed);
 
+		Random = new System.Random(seed);
+
 		if (OnGenerationStart != null)
 			OnGenerationStart();
 
@@ -145,12 +150,12 @@ public class LevelGenerator : MonoBehaviour
 			//If first seed did not work, try another
 			if (iterations > 0)
 			{
-				seed = Random.Range(0, 1000);
+				seed = Random.Next(0, 1000);
 
 				Debug.LogWarning("Generation did not succeed, trying seed: " + seed);
 			}
 
-			Random.InitState(seed);
+			Random = new System.Random(seed);
 
 			iterations++;
 
@@ -282,7 +287,7 @@ public class LevelGenerator : MonoBehaviour
                 maxProbability += t.probability;
 
             //Generate random number up to max probability
-            float num = Random.Range(0, maxProbability);
+            float num = Random.NextFloat(0, maxProbability);
 
             //Get random tile using cumulative probability
             float runningProbability = 0;
@@ -505,7 +510,7 @@ public class LevelGenerator : MonoBehaviour
 			else if (spawns[i].spawnType == ChestSpawn.SpawnType.Probability)
 			{
 				//If not a dead end, spawn based on probability
-				float value = Random.Range(0, 1f);
+				float value = Random.NextFloat(0, 1f);
 				if (value <= profile.chestSpawnProbability)
 					shouldSpawn = true;
 			}

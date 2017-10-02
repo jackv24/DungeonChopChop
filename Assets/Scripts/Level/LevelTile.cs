@@ -86,8 +86,8 @@ public class LevelTile : MonoBehaviour
 
 		Vector3 pos = Vector3.zero;
 
-		pos.x = Random.Range(col.bounds.min.x + width / 2, col.bounds.max.x - width / 2);
-		pos.z = Random.Range(col.bounds.min.z + height / 2, col.bounds.max.z - height / 2);
+		pos.x = LevelGenerator.Random.NextFloat(col.bounds.min.x + width / 2, col.bounds.max.x - width / 2);
+		pos.z = LevelGenerator.Random.NextFloat(col.bounds.min.z + height / 2, col.bounds.max.z - height / 2);
 
 		return pos;
 	}
@@ -100,13 +100,13 @@ public class LevelTile : MonoBehaviour
 		if (maxBlocks >= doors.Count)
 			maxBlocks = doors.Count - 1;
 
-		int blockAmount = Random.Range(minBlocks, maxBlocks + 1);
+		int blockAmount = LevelGenerator.Random.Next(minBlocks, maxBlocks + 1);
 
 		int spawnedBlockAmount = 0;
 
 		while(spawnedBlockAmount < blockAmount)
 		{
-			int index = Random.Range(0, doors.Count);
+			int index = LevelGenerator.Random.Next(0, doors.Count);
 
 			//Don't block the door that this tile was spawned from
 			if (index == ignoreIndex)
@@ -160,22 +160,22 @@ public class LevelTile : MonoBehaviour
             switch(biome)
             {
                 case Biomes.Grass:
-                    newGraphic = Helper.GetRandomGameObjectByProbability(grassTiles);
+                    newGraphic = Helper.GetRandomGameObjectByProbability(grassTiles, LevelGenerator.Random);
                     break;
                 case Biomes.Desert:
-                    newGraphic = Helper.GetRandomGameObjectByProbability(desertTiles);
+                    newGraphic = Helper.GetRandomGameObjectByProbability(desertTiles, LevelGenerator.Random);
                     break;
                 case Biomes.Fire:
-                    newGraphic = Helper.GetRandomGameObjectByProbability(fireTiles);
+                    newGraphic = Helper.GetRandomGameObjectByProbability(fireTiles, LevelGenerator.Random);
                     break;
 				case Biomes.Ice:
-					newGraphic = Helper.GetRandomGameObjectByProbability(iceTiles);
+					newGraphic = Helper.GetRandomGameObjectByProbability(iceTiles, LevelGenerator.Random);
 					break;
 				case Biomes.Forest:
-					newGraphic = Helper.GetRandomGameObjectByProbability(forestTiles);
+					newGraphic = Helper.GetRandomGameObjectByProbability(forestTiles, LevelGenerator.Random);
 					break;
 				case Biomes.Dungeon:
-					newGraphic = Helper.GetRandomGameObjectByProbability(dungeonTiles);
+					newGraphic = Helper.GetRandomGameObjectByProbability(dungeonTiles, LevelGenerator.Random);
 					break;
 			}
 
@@ -229,7 +229,7 @@ public class LevelTile : MonoBehaviour
 		//If not, replace it with a random biome that it is connected to
 		if(!connected && biomeOptions.Count > 0)
 		{
-			Biomes newBiome = biomeOptions[Random.Range(0, biomeOptions.Count)];
+			Biomes newBiome = biomeOptions[LevelGenerator.Random.Next(0, biomeOptions.Count)];
 
 			Replace(newBiome);
 		}

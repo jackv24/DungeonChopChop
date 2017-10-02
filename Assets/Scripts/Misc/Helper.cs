@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Helper : MonoBehaviour
+public static class Helper
 {
 	[System.Serializable]
 	public class ProbabilityGameObject
@@ -30,7 +30,7 @@ public class Helper : MonoBehaviour
 		}
 	}
 
-	public static GameObject GetRandomGameObjectByProbability(ProbabilityGameObject[] array)
+	public static GameObject GetRandomGameObjectByProbability(ProbabilityGameObject[] array, System.Random random = null)
 	{
 		List<ProbabilityGameObject> possibleGameObjects = new List<ProbabilityGameObject>(array);
 
@@ -46,7 +46,11 @@ public class Helper : MonoBehaviour
 			maxProbability += e.probability != 0 ? e.probability : 1;
 
 		//Generate random number up to max probability
-		float num = Random.Range(0, maxProbability);
+		float num;
+		if (random != null)
+			num = random.NextFloat(0, maxProbability);
+		else
+			num = Random.Range(0, maxProbability);
 
 		//Get random tile using cumulative probability
 		float runningProbability = 0;
@@ -61,7 +65,7 @@ public class Helper : MonoBehaviour
 		return possibleGameObject.prefab;
 	}
 
-	public static BaseItem GetRandomItemByProbability(ProbabilityItem[] array)
+	public static BaseItem GetRandomItemByProbability(ProbabilityItem[] array, System.Random random = null)
 	{
 		List<ProbabilityItem> possibleGameObjects = new List<ProbabilityItem>(array);
 
@@ -77,7 +81,11 @@ public class Helper : MonoBehaviour
 			maxProbability += e.probability != 0 ? e.probability : 1;
 
 		//Generate random number up to max probability
-		float num = Random.Range(0, maxProbability);
+		float num;
+		if (random != null)
+			num = random.NextFloat(0, maxProbability);
+		else
+			num = Random.Range(0, maxProbability);
 
 		//Get random tile using cumulative probability
 		float runningProbability = 0;
@@ -90,5 +98,14 @@ public class Helper : MonoBehaviour
 		}
 
 		return possibleGameObject.item;
+	}
+
+	public static float NextFloat(this System.Random random, float min, float max)
+	{
+		double range = (double)max - (double)min;
+		double sample = random.NextDouble();
+		double scaled = (sample * range) + min;
+
+		return (float)scaled;
 	}
 }

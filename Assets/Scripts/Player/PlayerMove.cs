@@ -93,7 +93,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (!ItemsManager.Instance.hasBoots)
         {
-            if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>())
+            if (LevelGenerator.Instance.currentTile && LevelGenerator.Instance.currentTile.GetComponent<TileParticles>())
             {
                 if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Desert || LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Ice)
                 {
