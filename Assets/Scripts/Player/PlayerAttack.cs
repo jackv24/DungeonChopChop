@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public float comboIncrease = .04f;
 
     [Header("Rapid Slash Vars")]
+    public float rapidDmgMultiplier = 1;
     public int slashAmount = 5;
     public float rapidSlashCooldown;
     [Tooltip("The amount added to the rapid slash cooldown (60 times a second)")]
@@ -17,6 +18,7 @@ public class PlayerAttack : MonoBehaviour
     public float multiSpeedMultiplier = .7f;
 
     [Header("Dash Vars")]
+    public float dashAtkDmgMultiplier = 2;
     public float dashTime = 1.0f;
     public float dashSpeed = 5.0f;
     public float dashCooldown = 0.5f;
@@ -25,7 +27,8 @@ public class PlayerAttack : MonoBehaviour
     public float rotationSpeed = 5;
     public LayerMask enemyMask;
 
-    [Header("Spin Charge Vars")]
+    [Header("Spin Vars")]
+    public float spinDmgMultiplier = 2;
     public bool spinChargeReady = false;
     public float timeToCharge = 2;
     public float timeBetweenFlash = 1;
