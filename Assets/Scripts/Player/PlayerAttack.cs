@@ -180,7 +180,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     animator.SetBool("SpinCharge", false);
                     spinCounter = 0;
-                    if( spinChargeRoutine != null)
+                    if (spinChargeRoutine != null)
                         StopCoroutine(spinChargeRoutine);
                 }
                 else
@@ -192,64 +192,67 @@ public class PlayerAttack : MonoBehaviour
                     playerHealth.InvincibilityForSecs(2);
                 }
             }
-            if (input.BasicAttack.WasPressed)
+            //make sure not spinning or spin charging, otherwise the animation looks wrong
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning") && !animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
             {
-                if (canTripleAttack)
+                if (input.BasicAttack.WasPressed)
                 {
-                    CheckCombo();
-                    //if combo is equal to or greater than 3, do rapid slash
-                    if (comboAmount >= slashAmount)
+                    if (canTripleAttack)
                     {
-                        doRapidSlash();
+                        CheckCombo();
+                        //if combo is equal to or greater than 3, do rapid slash
+                        if (comboAmount >= slashAmount)
+                        {
+                            doRapidSlash();
+                        }
                     }
-                }
-                //basic slash
-                if (comboAmount < slashAmount)
-                {
-                    //checks if player is in idle to do the first attack
-                    if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
+                    //basic slash
+                    if (comboAmount < slashAmount)
                     {
-                        doSlash();
-                    }
+                        //checks if player is in idle to do the first attack
+                        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
+                        {
+                            doSlash();
+                        }
                     //if the user tries to attack when the user is already attacking, it'll do the second attack once completed
                     else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                    {
-                        doSecondSlash();
+                        {
+                            doSecondSlash();
+                        }
+                        else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                        {
+                            doSlash();
+                        }
                     }
-                    else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
-                    {
-                        doSlash();
-                    }
-                }
-            } 
-            if (input.DashSlash.WasPressed)
-            {
-                if (!playerInformation.HasCharmBool("cantDash"))
+                } 
+                if (input.DashSlash.WasPressed)
                 {
-                    //dash
-                    doDash();
-                }
-            } 
+                    if (!playerInformation.HasCharmBool("cantDash"))
+                    {
+                        //dash
+                        doDash();
+                    }
+                } 
             
-            if (input.Block)
-            {
-                if (!playerInformation.HasCharmBool("cantBlock"))
+                if (input.Block)
+                {
+                    if (!playerInformation.HasCharmBool("cantBlock"))
+                    {
+                        //block
+                        if (shield)
+                        {
+                            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
+                                DoBlock();
+                        }
+                    }
+                }
+                if (input.Block.WasReleased)
                 {
                     //block
                     if (shield)
                     {
-                        if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                            DoBlock();
+                        StopBlock();
                     }
-                }
-            }
-
-            if (input.Block.WasReleased)
-            {
-                //block
-                if (shield)
-                {
-                    StopBlock();
                 }
             }
 
