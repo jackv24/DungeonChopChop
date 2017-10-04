@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEditor;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -12,29 +13,25 @@ public class EnemySpawner : MonoBehaviour
 	[HideInInspector]
 	public bool spawned = false;
 
-	public Transform[] spawnPoints;
-
-	[Space()]
-	public int minSpawns = 0;
-	public int maxSpawns = 0;
-
-	[Space()]
-	public Helper.ProbabilityGameObject[] enemies;
-
-	private List<GameObject> spawnedEnemies = new List<GameObject>();
-
-	private class EnemySpawnPair
+	[System.Serializable]
+	public struct Profile
 	{
-		public EnemySpawnPair(GameObject prefab, Transform spawnPoint)
+		[System.Serializable]
+		public class Spawn
 		{
-			this.prefab = prefab;
-			this.spawnPoint = spawnPoint;
+			public GameObject enemyPrefab;
+			public Vector3 position;
 		}
 
-		public GameObject prefab;
-		public Transform spawnPoint;
+		public Spawn[] spawns;
 	}
-	private List<EnemySpawnPair> undefeatedEnemies = new List<EnemySpawnPair>();
+
+	public int currentProfileIndex = 0;
+	public Profile[] profiles;
+	private Profile currentProfile;
+
+	private List<GameObject> spawnedEnemies = new List<GameObject>();
+	private List<Profile.Spawn> undefeatedEnemies = new List<Profile.Spawn>();
 
 	private bool shouldSpawn = false;
 
@@ -42,22 +39,8 @@ public class EnemySpawner : MonoBehaviour
 
 	void Start()
 	{
-		//Make sure all spawn points are on ground
-		if (LevelVars.Instance)
-		{
-			foreach (Transform spawn in spawnPoints)
-			{
-				if (spawn)
-				{
-					RaycastHit hit;
-
-					if (Physics.Raycast(spawn.position + Vector3.up, Vector3.down, out hit, 100f, LevelVars.Instance.groundLayer))
-					{
-						spawn.position = hit.point;
-					}
-				}
-			}
-		}
+		if(profiles.Length > 0)
+			currentProfile = profiles[currentProfileIndex];
 	}
 
 	//Only has to happen occasionally
@@ -103,59 +86,21 @@ public class EnemySpawner : MonoBehaviour
 	{
 		bool newEnemies = false;
 
-		List<EnemySpawnPair> toSpawn = new List<EnemySpawnPair>();
+		List<Profile.Spawn> toSpawn = new List<Profile.Spawn>();
 
 		//If there were no undefeated enemies...
 		if (undefeatedEnemies.Count <= 0)
 		{
-			//Cache spawn points for non-destructive editing
-			List<Transform> potentialSpawns = new List<Transform>(spawnPoints);
+			//Select random profile
+			currentProfile = profiles[Random.Range(0, profiles.Length)];
 
-			if (maxSpawns > 0)
-			{
-				//Check if min/max is valid
-				if (maxSpawns <= minSpawns || minSpawns < 0)
-					Debug.LogWarning("Enemy spawner min/max spawns mismatch!");
-				else
-				{
-					//Randomly choose amount to spawn
-					int spawnAmount = Random.Range(minSpawns, maxSpawns + 1);
-
-					//Remove random elements until desired spawn amount is reached
-					while (potentialSpawns.Count > spawnAmount)
-						potentialSpawns.RemoveAt(Random.Range(0, potentialSpawns.Count));
-				}
-			}
-
-			//Spawn a new random set
-			foreach (Transform spawn in potentialSpawns)
-			{
-				GameObject enemyPrefab = Helper.GetRandomGameObjectByProbability(enemies);
-
-				//Add to list to be spawned
-				if (enemyPrefab)
-					toSpawn.Add(new EnemySpawnPair(enemyPrefab, spawn));
-			}
+			toSpawn.AddRange(currentProfile.spawns);
 
 			newEnemies = true;
 		}
 		else
 		{
-			//Copy list of spawn points for non-destructive removal
-			List<Transform> spawns = new List<Transform>(spawnPoints);
-
-			//If there were enemies undefeated, just respawn them
-			foreach (EnemySpawnPair undefeatedEnemy in undefeatedEnemies)
-			{
-				//Get random spawn and remove from temp list
-				Transform spawn = spawns[Random.Range(0, spawns.Count)];
-				spawns.Remove(spawn);
-
-				//Enemy should spawn at new random point
-				undefeatedEnemy.spawnPoint = spawn;
-
-				toSpawn.Add(undefeatedEnemy);
-			}
+			toSpawn.AddRange(undefeatedEnemies);
 		}
 
 		if (LevelVars.Instance)
@@ -165,16 +110,16 @@ public class EnemySpawner : MonoBehaviour
 				//Get particle effect from pool
 				GameObject effectPrefab = LevelVars.Instance.enemySpawnEffect;
 
-				foreach(EnemySpawnPair spawn in toSpawn)
+				foreach(Profile.Spawn spawn in toSpawn)
 				{
 					//Spawn an effect where enemies will spawn
-					if (spawn.prefab && spawn.spawnPoint)
+					if (spawn.enemyPrefab)
 					{
 						GameObject effect = ObjectPooler.GetPooledObject(effectPrefab);
 
 						if (effect)
 						{
-							effect.transform.position = spawn.spawnPoint.position;
+							effect.transform.position = transform.TransformPoint(spawn.position);
 							effect.transform.rotation = effectPrefab.transform.rotation;
 						}
 					}
@@ -188,13 +133,11 @@ public class EnemySpawner : MonoBehaviour
 		//After delay, actually spawn the enemies
 		if (shouldSpawn)
 		{
-			foreach (EnemySpawnPair spawn in toSpawn)
+			foreach (Profile.Spawn spawn in toSpawn)
 			{
-				if (spawn.prefab && spawn.spawnPoint)
+				if (spawn.enemyPrefab)
 				{
-					Vector3 pos = spawn.spawnPoint.position;
-
-					GameObject enemy = ObjectPooler.GetPooledObject(spawn.prefab);
+					GameObject enemy = ObjectPooler.GetPooledObject(spawn.enemyPrefab);
 
 					if (enemy)
 					{
@@ -203,14 +146,14 @@ public class EnemySpawner : MonoBehaviour
 						if (newEnemies)
 							undefeatedEnemies.Add(spawn);
 
-						enemy.transform.position = pos;
+						enemy.transform.position = transform.TransformPoint(spawn.position);
 
 						NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
 
 						if (agent)
 						{
 							agent.enabled = true;
-							agent.Warp(pos);
+							agent.Warp(transform.TransformPoint(spawn.position));
 						}
 					}
 				}
@@ -226,7 +169,7 @@ public class EnemySpawner : MonoBehaviour
 
 		//Interrupt spawning routine if yet to happen
 		shouldSpawn = false;
-		List<EnemySpawnPair> toRemove = new List<EnemySpawnPair>();
+		List<Profile.Spawn> toRemove = new List<Profile.Spawn>();
 
 		//Make sure enemies have actually spawned
 		if (spawnedEnemies.Count > 0)
@@ -240,7 +183,7 @@ public class EnemySpawner : MonoBehaviour
 		}
 
 		//Remove defeated enemies
-		foreach (EnemySpawnPair e in toRemove)
+		foreach (Profile.Spawn e in toRemove)
 			undefeatedEnemies.Remove(e);
 
 		toRemove.Clear();
