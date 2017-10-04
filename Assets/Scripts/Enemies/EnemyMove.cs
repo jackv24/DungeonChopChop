@@ -17,6 +17,7 @@ public class EnemyMove : MonoBehaviour
     protected PlayerInformation currentPlayer = null;
     protected Animator animator;
     protected EnemyAttack enemyAttack;
+    protected Health enemyHealth;
 
     protected bool runAway = false;
     public bool usingNav = true;
@@ -67,6 +68,7 @@ public class EnemyMove : MonoBehaviour
 
     protected void Setup()
     {
+        enemyHealth = GetComponent<Health>();
         enemyAttack = GetComponent<EnemyAttack>();
         animator = GetComponentInChildren<Animator>();
         players = FindObjectsOfType<PlayerInformation>();
