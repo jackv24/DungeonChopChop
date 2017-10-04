@@ -348,7 +348,7 @@ public class PlayerAttack : MonoBehaviour
         {
             //sets the swords parent to be nothing
             sword.transform.parent = null;
-            Destroy(sword.gameObject);
+            sword.gameObject.SetActive(false);
             sword = null;
             //StartCoroutine(ThrowDroppedSword(sword.transform));
         }
