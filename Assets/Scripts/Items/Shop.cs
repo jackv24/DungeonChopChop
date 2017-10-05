@@ -10,11 +10,26 @@ public class Shop : MonoBehaviour
 	public InventoryItem sellingItem;
 	private GameObject itemGraphic;
 
+    [Space()] public AudioClip[] purchaseSounds;
+
+    private AudioSource audioSource;
+
 	private DialogueSpeaker speaker;
 
 	private bool canPurchase = false;
 	private PlayerInputs input;
 	private PlayerInformation playerInfo;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    void PlaySound()
+    {
+        int randomNumber = Random.Range(0, purchaseSounds.Length);
+        audioSource.PlayOneShot(purchaseSounds[randomNumber]);
+    }
 
 	void Update()
 	{
@@ -23,6 +38,8 @@ public class Shop : MonoBehaviour
 			if(ItemsManager.Instance.Coins >= sellingItem.cost)
 			{
 				ItemsManager.Instance.Coins -= sellingItem.cost;
+
+                PlaySound();
 
 				sellingItem.Pickup(playerInfo);
 

@@ -247,6 +247,7 @@ public class Health : MonoBehaviour
 
     public void SetColor(Color color)
     {
+        renderers = GetComponentsInChildren<Renderer>();
         if (renderers != null)
         {
             //loops through each and sets the hit color

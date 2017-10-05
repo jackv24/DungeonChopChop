@@ -458,7 +458,16 @@ public class PlayerInformation : MonoBehaviour
 
     public float GetSwordDamage()
     {
-        return (strength * playerAttack.sword.damageMultiplier * GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * GetCharmFloat("dmgMultiWhenBurned") * GetCharmFloat("dmgMultiWhenPoisoned") * CoinDamageMultiplier();
+        float specialAtkMultiplier = 1;
+        //gets the multiplier for the attack type
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
+            specialAtkMultiplier = playerAttack.spinDmgMultiplier;
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
+            specialAtkMultiplier = playerAttack.dashAtkDmgMultiplier;
+        else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
+            specialAtkMultiplier = playerAttack.rapidDmgMultiplier;
+        
+        return (strength * playerAttack.sword.damageMultiplier * specialAtkMultiplier * GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * GetCharmFloat("dmgMultiWhenBurned") * GetCharmFloat("dmgMultiWhenPoisoned") * CoinDamageMultiplier();
     }
 
     float CoinDamageMultiplier()

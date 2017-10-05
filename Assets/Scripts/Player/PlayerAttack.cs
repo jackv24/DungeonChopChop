@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public float comboIncrease = .04f;
 
     [Header("Rapid Slash Vars")]
+    public float rapidDmgMultiplier = 1;
     public int slashAmount = 5;
     public float rapidSlashCooldown;
     [Tooltip("The amount added to the rapid slash cooldown (60 times a second)")]
@@ -17,6 +18,7 @@ public class PlayerAttack : MonoBehaviour
     public float multiSpeedMultiplier = .7f;
 
     [Header("Dash Vars")]
+    public float dashAtkDmgMultiplier = 2;
     public float dashTime = 1.0f;
     public float dashSpeed = 5.0f;
     public float dashCooldown = 0.5f;
@@ -25,7 +27,8 @@ public class PlayerAttack : MonoBehaviour
     public float rotationSpeed = 5;
     public LayerMask enemyMask;
 
-    [Header("Spin Charge Vars")]
+    [Header("Spin Vars")]
+    public float spinDmgMultiplier = 2;
     public bool spinChargeReady = false;
     public float timeToCharge = 2;
     public float timeBetweenFlash = 1;
@@ -180,7 +183,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     animator.SetBool("SpinCharge", false);
                     spinCounter = 0;
-                    if( spinChargeRoutine != null)
+                    if (spinChargeRoutine != null)
                         StopCoroutine(spinChargeRoutine);
                 }
                 else
@@ -192,64 +195,67 @@ public class PlayerAttack : MonoBehaviour
                     playerHealth.InvincibilityForSecs(2);
                 }
             }
-            if (input.BasicAttack.WasPressed)
+            //make sure not spinning or spin charging, otherwise the animation looks wrong
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning") && !animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
             {
-                if (canTripleAttack)
+                if (input.BasicAttack.WasPressed)
                 {
-                    CheckCombo();
-                    //if combo is equal to or greater than 3, do rapid slash
-                    if (comboAmount >= slashAmount)
+                    if (canTripleAttack)
                     {
-                        doRapidSlash();
+                        CheckCombo();
+                        //if combo is equal to or greater than 3, do rapid slash
+                        if (comboAmount >= slashAmount)
+                        {
+                            doRapidSlash();
+                        }
                     }
-                }
-                //basic slash
-                if (comboAmount < slashAmount)
-                {
-                    //checks if player is in idle to do the first attack
-                    if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
+                    //basic slash
+                    if (comboAmount < slashAmount)
                     {
-                        doSlash();
-                    }
+                        //checks if player is in idle to do the first attack
+                        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
+                        {
+                            doSlash();
+                        }
                     //if the user tries to attack when the user is already attacking, it'll do the second attack once completed
                     else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                    {
-                        doSecondSlash();
+                        {
+                            doSecondSlash();
+                        }
+                        else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                        {
+                            doSlash();
+                        }
                     }
-                    else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
-                    {
-                        doSlash();
-                    }
-                }
-            } 
-            if (input.DashSlash.WasPressed)
-            {
-                if (!playerInformation.HasCharmBool("cantDash"))
+                } 
+                if (input.DashSlash.WasPressed)
                 {
-                    //dash
-                    doDash();
-                }
-            } 
+                    if (!playerInformation.HasCharmBool("cantDash"))
+                    {
+                        //dash
+                        doDash();
+                    }
+                } 
             
-            if (input.Block)
-            {
-                if (!playerInformation.HasCharmBool("cantBlock"))
+                if (input.Block)
+                {
+                    if (!playerInformation.HasCharmBool("cantBlock"))
+                    {
+                        //block
+                        if (shield)
+                        {
+                            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
+                                DoBlock();
+                        }
+                    }
+                }
+                if (input.Block.WasReleased)
                 {
                     //block
                     if (shield)
                     {
-                        if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                            DoBlock();
+                        StopBlock();
                     }
-                }
-            }
-
-            if (input.Block.WasReleased)
-            {
-                //block
-                if (shield)
-                {
-                    StopBlock();
                 }
             }
 
@@ -342,7 +348,7 @@ public class PlayerAttack : MonoBehaviour
         {
             //sets the swords parent to be nothing
             sword.transform.parent = null;
-            Destroy(sword.gameObject);
+            sword.gameObject.SetActive(false);
             sword = null;
             //StartCoroutine(ThrowDroppedSword(sword.transform));
         }

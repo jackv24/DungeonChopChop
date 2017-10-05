@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 65897482843824040}
   - component: {fileID: 114187417094768584}
   - component: {fileID: 114775115009920954}
+  - component: {fileID: 82310068951987646}
   m_Layer: 0
   m_Name: ShopStallNoSale
   m_TagString: Untagged
@@ -607,6 +608,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.31, y: 1, z: 1.03}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!82 &82310068951987646
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939980982098462}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95107406028505722
 Animator:
   serializedVersion: 3
@@ -712,6 +793,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSpawn: {fileID: 4338376837855088}
   sellingItem: {fileID: 0}
+  purchaseSounds:
+  - {fileID: 8300000, guid: f4431f98ea5dc0d4986f1c0853ae48a6, type: 3}
+  - {fileID: 8300000, guid: 8b5322c25abc78d4f9a13a1dd7ed93e1, type: 3}
 --- !u!212 &212466765258699574
 SpriteRenderer:
   m_ObjectHideFlags: 1
