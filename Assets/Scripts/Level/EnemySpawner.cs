@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
 	}
 
 	public int currentProfileIndex = 0;
-	public Profile[] profiles;
+	public List<Profile> profiles = new List<Profile>();
 	private Profile currentProfile;
 
 	private List<GameObject> spawnedEnemies = new List<GameObject>();
@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
 
 	void Start()
 	{
-		if(profiles.Length > 0)
+		if(profiles.Count > 0)
 			currentProfile = profiles[currentProfileIndex];
 	}
 
@@ -92,9 +92,14 @@ public class EnemySpawner : MonoBehaviour
 		if (undefeatedEnemies.Count <= 0)
 		{
 			//Select random profile
-			currentProfile = profiles[Random.Range(0, profiles.Length)];
+			if (profiles.Count > 0)
+			{
+				currentProfile = profiles[Random.Range(0, profiles.Count)];
 
-			toSpawn.AddRange(currentProfile.spawns);
+				toSpawn.AddRange(currentProfile.spawns);
+			}
+			else
+				Debug.LogWarning("No Enemy Spawner profiles assigned to " + gameObject.name);
 
 			newEnemies = true;
 		}
