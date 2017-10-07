@@ -42,12 +42,19 @@ public class SpawnPlayersManager : MonoBehaviour
 	//Instantiates the player prefab
 	void SpawnPlayer(CameraFollow cameraFollow, GameObject obj)
 	{
-		GameObject player = (GameObject)Instantiate (obj, new Vector3(spawnPosition.x + (counter * 10), spawnPosition.y, spawnPosition.z), Quaternion.Euler (0, 0, 0));
+        GameObject player = (GameObject)Instantiate (obj, transform.position, Quaternion.Euler (0, 0, 0));
         GameManager.Instance.players.Add(player.GetComponent<PlayerInformation>());
 		player.GetComponent<PlayerInformation> ().playerIndex = counter;
 		counter++;
 		SetUI ();
+        StartCoroutine(wait(player));
 	}
+
+    IEnumerator wait(GameObject pl)
+    {
+        yield return new WaitForSeconds(1.5f);
+        pl.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, spawnPosition.z);
+    }
 
 	void SetUI()
 	{
