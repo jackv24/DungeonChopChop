@@ -16255,22 +16255,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawned: 0
-  spawnPoints:
-  - {fileID: 4157014006703552}
-  - {fileID: 4708781526758502}
-  - {fileID: 4207142201657916}
-  - {fileID: 4928663311439588}
-  - {fileID: 4653876791885270}
-  minSpawns: 1
-  maxSpawns: 3
-  enemies:
-  - prefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b, type: 2}
-    probability: 1
-  - prefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe, type: 2}
-    probability: 1
-  - prefab: {fileID: 1046337831100730, guid: 9a8dcd637291c384e986851bd8937e1f, type: 2}
-    probability: 2
-  respawnTileCount: 5
+  currentProfileIndex: 0
+  profiles:
+  - spawns:
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -6.0567436, y: 0, z: 1.6907425}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -5.50206, y: 0, z: -3.1325226}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -14.82605, y: 0, z: 1.6278152}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -15.1014805, y: 0, z: -3.446434}
+    - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
+        type: 2}
+      position: {x: -23.555477, y: 0, z: -5.7104797}
+    - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
+        type: 2}
+      position: {x: 4.7878876, y: 0, z: 6.0148773}
+    - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
+        type: 2}
+      position: {x: -24.609152, y: 0, z: 3.8500443}
+    - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
+        type: 2}
+      position: {x: 3.4691505, y: 0, z: -5.6761017}
+  - spawns:
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -10.423815, y: 0, z: -5.8360596}
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -10.268539, y: 0, z: 4.22937}
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -4.7700195, y: 0, z: 0.29841614}
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -14.215851, y: 0, z: 0.1679306}
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -42.107864, y: 0, z: -1.0867081}
+  - spawns:
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: 5.2460213, y: 0, z: -5.4894943}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -24.699678, y: 0, z: -5.7230377}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: 5.2906265, y: 0, z: 5.3766327}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -25.266186, y: 0, z: 5.335579}
 --- !u!212 &212235343979656276
 SpriteRenderer:
   m_ObjectHideFlags: 1

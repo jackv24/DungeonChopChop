@@ -21327,25 +21327,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab8bedca2022eb42ab66d60fd58d259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoints:
-  - {fileID: 4920863236295904}
-  - {fileID: 4722034897526064}
-  - {fileID: 4074635578888362}
-  - {fileID: 4771376497927216}
-  - {fileID: 4799074426783962}
-  minSpawns: 3
-  maxSpawns: 5
-  enemies:
-  - prefab: {fileID: 1900345625037602, guid: 1c7aed8bfcbb87e4eb9b0593b73ba0c2, type: 2}
-    probability: 1
-  - prefab: {fileID: 1761846842308470, guid: 7434c0b4388260e40b908832865451b7, type: 2}
-    probability: 1
-  - prefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451, type: 2}
-    probability: 1
-  - prefab: {fileID: 1778345937751282, guid: e1cb910c04eb74a478c2a9f1b4e3805f, type: 2}
-    probability: 1
-  - prefab: {fileID: 1378222217357978, guid: e7da4400884b2e5468ac181a157ecd91, type: 2}
-    probability: 1
-  - prefab: {fileID: 1877086586426536, guid: a1c2521df5f0b3b4fb9970d6777677ea, type: 2}
-    probability: 1
-  respawnTileCount: 5
+  spawned: 0
+  currentProfileIndex: 0
+  profiles:
+  - spawns: []
+  - spawns:
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: 2.4219856, y: 0, z: -1.3557472}
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -19.967922, y: 0, z: -1.0275993}
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -9.414706, y: 0, z: -1.2777786}
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -30.398249, y: 0, z: -1.2963028}
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -42.107864, y: 0, z: -1.0867081}
+  - spawns:
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -8.617157, y: 0, z: -4.251259}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -31.382364, y: 0, z: -3.9592094}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -7.889287, y: 0, z: 3.0067787}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -30.97947, y: 0, z: 2.8822746}
