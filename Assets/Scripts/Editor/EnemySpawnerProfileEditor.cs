@@ -43,7 +43,10 @@ public class EnemySpawnerProfileEditor : Editor
 			GUI.backgroundColor = new Color(0.5f, 1, 0.5f);
 			if (GUILayout.Button("Add New"))
 			{
-				spawner.profiles.Add(new EnemySpawner.Profile());
+				//Get previous profile and add again to end (duplicates data since this is a struct)
+				EnemySpawner.Profile previous = spawner.profiles[spawner.profiles.Count - 1];
+				spawner.profiles.Add(previous);
+
 				currentIndex = spawner.profiles.Count - 1;
 			}
 			GUI.backgroundColor = new Color(1, 0.5f, 0.5f);
@@ -77,7 +80,7 @@ public class EnemySpawnerProfileEditor : Editor
 
 			EditorGUILayout.Space();
 			SerializedProperty profiles = serializedObject.FindProperty("profiles");
-			if (profiles.arraySize > 0)
+			if (profiles.arraySize > 0 && currentIndex < profiles.arraySize)
 			{
 				SerializedProperty profile = profiles.GetArrayElementAtIndex(currentIndex);
 				if (profile != null)
