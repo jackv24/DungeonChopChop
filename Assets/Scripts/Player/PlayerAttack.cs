@@ -195,85 +195,84 @@ public class PlayerAttack : MonoBehaviour
                     playerHealth.InvincibilityForSecs(2);
                 }
             }
-            //make sure not spinning or spin charging, otherwise the animation looks wrong
-            if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning") && !animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+            if (input.BasicAttack.WasPressed)
             {
-                if (input.BasicAttack.WasPressed)
+                if (canTripleAttack)
                 {
-                    if (canTripleAttack)
+                    CheckCombo();
+                    //if combo is equal to or greater than 3, do rapid slash
+                    if (comboAmount >= slashAmount)
                     {
-                        CheckCombo();
-                        //if combo is equal to or greater than 3, do rapid slash
-                        if (comboAmount >= slashAmount)
-                        {
-                            doRapidSlash();
-                        }
+                        doRapidSlash();
                     }
-                    //basic slash
-                    if (comboAmount < slashAmount)
+                }
+                //basic slash
+                if (comboAmount < slashAmount)
+                {
+                    //checks if player is in idle to do the first attack
+                    if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
                     {
-                        //checks if player is in idle to do the first attack
-                        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
-                        {
-                            doSlash();
-                        }
+                        doSlash();
+                    }
                     //if the user tries to attack when the user is already attacking, it'll do the second attack once completed
                     else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                        {
-                            doSecondSlash();
-                        }
-                        else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
-                        {
-                            doSlash();
-                        }
+                    {
+                        doSecondSlash();
                     }
-                } 
-                if (input.DashSlash.WasPressed)
+                    else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                    {
+                        doSlash();
+                    }
+                }
+            } 
+            if (input.DashSlash.WasPressed)
+            {
+                if (!playerInformation.HasCharmBool("cantDash"))
                 {
-                    if (!playerInformation.HasCharmBool("cantDash"))
+                    if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning") && !animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
                     {
                         //dash
                         doDash();
                     }
-                } 
-            
-                if (input.Block)
-                {
-                    if (!playerInformation.HasCharmBool("cantBlock"))
-                    {
-                        //block
-                        if (shield)
-                        {
-                            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                                DoBlock();
-                        }
-                    }
                 }
-                if (input.Block.WasReleased)
+            } 
+            
+            if (input.Block)
+            {
+                if (!playerInformation.HasCharmBool("cantBlock"))
                 {
                     //block
                     if (shield)
                     {
-                        StopBlock();
+                        if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
+                            DoBlock();
                     }
                 }
             }
-
-            if (movingForward)
+            if (input.Block.WasReleased)
             {
-                MoveForward(2);
+                //block
+                if (shield)
+                {
+                    StopBlock();
+                }
             }
+        }
 
-            if (playerHealth.isBurned)
-            {
-                MoveForward(speedWhenBurned);
-            }
+        if (movingForward)
+        {
+            MoveForward(2);
+        }
 
-            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
-            {
-                animator.SetBool("SpinCharge", false);
-                DisableSword();
-            }
+        if (playerHealth.isBurned)
+        {
+            MoveForward(speedWhenBurned);
+        }
+
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
+        {
+            animator.SetBool("SpinCharge", false);
+            DisableSword();
         }
     }
 
