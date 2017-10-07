@@ -4072,7 +4072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4073953837800054}
   - component: {fileID: 114252338074941860}
-  - component: {fileID: 114179109313510554}
+  - component: {fileID: 114345288920937722}
   m_Layer: 0
   m_Name: Tile1x2Grass1
   m_TagString: Untagged
@@ -16528,34 +16528,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0172577, y: 2.5980568, z: 1.0250397}
   m_Center: {x: 0.06771088, y: 1.2781692, z: 0.07212067}
---- !u!114 &114179109313510554
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1850140236364304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab8bedca2022eb42ab66d60fd58d259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawned: 0
-  spawnPoints:
-  - {fileID: 4753917629110174}
-  - {fileID: 4300026728659102}
-  - {fileID: 4779340294410828}
-  - {fileID: 4895779034531468}
-  - {fileID: 4544143577855406}
-  minSpawns: 1
-  maxSpawns: 3
-  enemies:
-  - prefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b, type: 2}
-    probability: 1
-  - prefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe, type: 2}
-    probability: 1
-  - prefab: {fileID: 1046337831100730, guid: 9a8dcd637291c384e986851bd8937e1f, type: 2}
-    probability: 2
-  respawnTileCount: 5
 --- !u!114 &114252338074941860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16584,6 +16556,74 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &114345288920937722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850140236364304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab8bedca2022eb42ab66d60fd58d259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawned: 0
+  currentProfileIndex: 0
+  profiles:
+  - spawns:
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -3.6355362, y: 0, z: -1.8052216}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -9.309444, y: 0, z: -4.2908173}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -14.204496, y: 0, z: -0.6437988}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -9.273373, y: 0, z: 0.9128418}
+    - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
+        type: 2}
+      position: {x: -25.47436, y: 0, z: -5.836792}
+    - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
+        type: 2}
+      position: {x: 5.326001, y: 0, z: 6.531784}
+    - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
+        type: 2}
+      position: {x: -24.948368, y: 0, z: 5.840973}
+    - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
+        type: 2}
+      position: {x: 5.478593, y: 0, z: -6.0268097}
+  - spawns:
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -3.3955052, y: 0, z: -1.0166473}
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -9.676287, y: 0, z: -0.78430176}
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -9.494369, y: 0, z: 4.1656647}
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -9.92353, y: 0, z: -5.1422577}
+    - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
+        type: 2}
+      position: {x: -14.716891, y: 0, z: -0.876709}
+  - spawns:
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: 6.29, y: 0, z: -6.01}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -24.099998, y: 0, z: -4.528839}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: 5.38, y: 0, z: 23.36}
+    - enemyPrefab: {fileID: 1451545293606024, guid: f746b08ed3dee2d46be123ce6edc53f0,
+        type: 2}
+      position: {x: -24.1, y: 0, z: 23.36}
 --- !u!212 &212027880895610246
 SpriteRenderer:
   m_ObjectHideFlags: 1
