@@ -34,14 +34,17 @@ public class StatusOnTouch : MonoBehaviour {
         {
             if (!col.collider.GetComponent<Health>().HasStatusCondition())
             {
-               if (statusType == StatusType.burn)
-                    col.collider.GetComponent<Health>().SetBurned(damagePerTick, duration, timeBetweenDamage);
-               else if (statusType == StatusType.poison)
-                    col.gameObject.GetComponent<Health>().SetPoison(damagePerTick, duration, timeBetweenDamage);
-               else if (statusType == StatusType.slowlyDying)
-                   col.gameObject.GetComponent<Health>().SetSlowDeath(damagePerTick, duration, timeBetweenDamage);
-                else if (statusType == StatusType.Ice)
-                    col.gameObject.GetComponent<Health>().SetIce(duration);
+                if (!col.collider.GetComponent<PlayerAttack>().blocking)
+                {
+                    if (statusType == StatusType.burn)
+                        col.collider.GetComponent<Health>().SetBurned(damagePerTick, duration, timeBetweenDamage);
+                    else if (statusType == StatusType.poison)
+                        col.gameObject.GetComponent<Health>().SetPoison(damagePerTick, duration, timeBetweenDamage);
+                    else if (statusType == StatusType.slowlyDying)
+                        col.gameObject.GetComponent<Health>().SetSlowDeath(damagePerTick, duration, timeBetweenDamage);
+                    else if (statusType == StatusType.Ice)
+                        col.gameObject.GetComponent<Health>().SetIce(duration);
+                }
             }
         }
     }

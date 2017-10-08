@@ -214,8 +214,11 @@ public class EnemyAttack : MonoBehaviour
                     }
                     else
                     {
-                        col.transform.GetComponent<Health>().Damaged();
-                        col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch / playerInfo.resistance / col.transform.GetComponent<PlayerAttack>().shield.blockingResistance);
+                        if (col.transform.GetComponent<PlayerAttack>().shield.blockingResistance > 0)
+                        {
+                            col.transform.GetComponent<Health>().Damaged();
+                            col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch / playerInfo.resistance * col.transform.GetComponent<PlayerAttack>().shield.blockingResistance);
+                        }
                     }
 
                     if (enemyMove)
