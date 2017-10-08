@@ -43,9 +43,14 @@ public class EnemySpawnerProfileEditor : Editor
 			GUI.backgroundColor = new Color(0.5f, 1, 0.5f);
 			if (GUILayout.Button("Add New"))
 			{
-				//Get previous profile and add again to end (duplicates data since this is a struct)
-				EnemySpawner.Profile previous = spawner.profiles[spawner.profiles.Count - 1];
-				spawner.profiles.Add(previous);
+				if (spawner.profiles.Count > 0)
+				{
+					//Get previous profile and add again to end (duplicates data susing copy constructor)
+					EnemySpawner.Profile previous = spawner.profiles[spawner.profiles.Count - 1];
+					spawner.profiles.Add(new EnemySpawner.Profile(previous));
+				}
+				else
+					spawner.profiles.Add(new EnemySpawner.Profile());
 
 				currentIndex = spawner.profiles.Count - 1;
 			}
@@ -85,8 +90,10 @@ public class EnemySpawnerProfileEditor : Editor
 				SerializedProperty profile = profiles.GetArrayElementAtIndex(currentIndex);
 				if (profile != null)
 				{
-					SerializedProperty spawns = profile.FindPropertyRelative("spawns");
+					EditorGUILayout.PropertyField(profile.FindPropertyRelative("randomised"));
+					EditorGUILayout.Space();
 
+					SerializedProperty spawns = profile.FindPropertyRelative("spawns");
 					EditorGUILayout.PropertyField(spawns, new GUIContent("Profile " + (currentIndex + 1) + " Spawn Points"), true);
 				}
 			}
@@ -99,6 +106,8 @@ public class EnemySpawnerProfileEditor : Editor
 
 	private void OnSceneGUI()
 	{
+		Handles.color = Color.blue;
+
 		if (currentIndex < spawner.profiles.Count && currentIndex >= 0)
 		{
 			EnemySpawner.Profile profile = spawner.profiles[currentIndex];

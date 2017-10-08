@@ -14,16 +14,55 @@ public class EnemySpawner : MonoBehaviour
 	public bool spawned = false;
 
 	[System.Serializable]
-	public struct Profile
+	public class Profile
 	{
+		public bool randomised;
+
 		[System.Serializable]
 		public class Spawn
 		{
 			public GameObject enemyPrefab;
 			public Vector3 position;
+
+			public Spawn()
+			{
+				enemyPrefab = null;
+				position = Vector3.zero;
+			}
+
+			public Spawn(GameObject prefab, Vector3 pos)
+			{
+				enemyPrefab = prefab;
+				position = pos;
+			}
+
+			public Spawn(Spawn other)
+			{
+				enemyPrefab = other.enemyPrefab;
+				position = other.position;
+			}
 		}
 
 		public Spawn[] spawns;
+
+		public Profile()
+		{
+			randomised = true;
+		}
+
+		public Profile(Profile other)
+		{
+			randomised = other.randomised;
+
+			//Setup array of spawnpoints to match length of other, before copying data
+			spawns = new Spawn[other.spawns.Length];
+
+			//Copy spawn points using their copy constructors
+			for(int i = 0; i < spawns.Length; i++)
+			{
+				spawns[i] = new Spawn(other.spawns[i]);
+			}
+		}
 	}
 
 	public int currentProfileIndex = 0;
@@ -138,6 +177,33 @@ public class EnemySpawner : MonoBehaviour
 		//After delay, actually spawn the enemies
 		if (shouldSpawn)
 		{
+			//Randomise enemy positions if desired
+			if (currentProfile.randomised)
+			{
+				//Create new list at the size of old list, and cache old list count for iterating
+				List<Profile.Spawn> newSpawns = new List<Profile.Spawn>(toSpawn.Count);
+				int count = toSpawn.Count;
+
+				//Copy spawn positions to list, since toSpawn list will be removed from
+				Vector3[] positions = new Vector3[count];
+				for (int i = 0; i < count; i++)
+					positions[i] = toSpawn[i].position;
+
+				for(int i = 0; i < count; i++)
+				{
+					//Get random spawnpoint from remaining list, then remove
+					Profile.Spawn spawn = toSpawn[Random.Range(0, toSpawn.Count)];
+					toSpawn.Remove(spawn);
+
+					//Create and add a new spawn with the new random enemy at the same point
+					Profile.Spawn newSpawn = new Profile.Spawn(spawn.enemyPrefab, positions[i]);
+					newSpawns.Add(newSpawn);
+				}
+
+				//Swap old empty list out for new randomised list
+				toSpawn = newSpawns;
+			}
+
 			foreach (Profile.Spawn spawn in toSpawn)
 			{
 				if (spawn.enemyPrefab)
