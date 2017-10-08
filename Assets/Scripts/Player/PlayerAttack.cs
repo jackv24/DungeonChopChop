@@ -119,6 +119,14 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    void ResetSpin()
+    {
+        spinCounter = 0;
+        animator.SetBool("SpinCharge", false);
+        spinChargeReady = false;
+        sword.GetComponent<SwordCollision>().chargeCoroutine = null;
+    }
+
     void FixedUpdate()
     {
         CountCombo();
@@ -145,6 +153,11 @@ public class PlayerAttack : MonoBehaviour
                     }
                 }
             }
+        }
+
+        if (animator.GetCurrentAnimatorStateInfo(1).IsName("GetAttacked"))
+        {
+            ResetSpin();
         }
     }
 

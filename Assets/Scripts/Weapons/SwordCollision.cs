@@ -28,7 +28,8 @@ public class SwordCollision : MonoBehaviour {
     public Animator animator;
 
     private SwordStats swordStats;
-    private Coroutine chargeCoroutine;
+    [HideInInspector]
+    public Coroutine chargeCoroutine;
 
 	// Use this for initialization
 	void Start () {
