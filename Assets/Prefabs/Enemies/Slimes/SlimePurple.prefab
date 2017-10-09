@@ -324,7 +324,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4098906466031216}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4098906466031216
 Transform:
   m_ObjectHideFlags: 1
@@ -356,7 +356,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4098906466031216}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4164257755507624
 Transform:
   m_ObjectHideFlags: 1
@@ -365,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 1676090304618506}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 88.66964, y: 0.5, z: -185.44016}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4827611697577302}
   m_Father: {fileID: 0}
@@ -413,7 +413,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4790227300372288}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4318509635617950
 Transform:
   m_ObjectHideFlags: 1
@@ -426,7 +426,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4790227300372288}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4331752841270292
 Transform:
   m_ObjectHideFlags: 1
@@ -439,7 +439,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4098906466031216}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 1.6127678, z: 90}
 --- !u!4 &4358268835488766
 Transform:
   m_ObjectHideFlags: 1
@@ -465,7 +465,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4790227300372288}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4503257491576786
 Transform:
   m_ObjectHideFlags: 1
@@ -478,7 +478,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4790227300372288}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4649427392800866
 Transform:
   m_ObjectHideFlags: 1
@@ -491,7 +491,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4098906466031216}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4739878074931944
 Transform:
   m_ObjectHideFlags: 1
@@ -535,7 +535,7 @@ Transform:
   - {fileID: 4503257491576786}
   m_Father: {fileID: 4827611697577302}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -7.9298244, y: 0, z: -90}
 --- !u!4 &4798518872220674
 Transform:
   m_ObjectHideFlags: 1
@@ -556,7 +556,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1392252584239244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4790227300372288}
@@ -576,7 +576,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4098906466031216}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!54 &54792098867684454
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -728,8 +728,8 @@ MonoBehaviour:
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 80
-  attackStrength: 1
-  damageOnTouch: 1
+  attackStrength: 0.5
+  damageOnTouch: 0.5
   knockbackStrength: 3
   projAmount: 25
   timeTillInterval: 1
@@ -755,13 +755,7 @@ MonoBehaviour:
     probability: 0.2
   - prefab: {fileID: 1616226106310662, guid: 0c71fc111242199438e231f8efa50564, type: 2}
     probability: 0.1
-  - prefab: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
-    probability: 0.05
-  - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
-    probability: 0.1
-  - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
-    probability: 0.1
-  minAmountOfDrops: 0
+  minAmountOfDrops: 1
   maxAmountOfDrops: 2
 --- !u!114 &114457238054007108
 MonoBehaviour:
@@ -787,10 +781,10 @@ MonoBehaviour:
   slime: {fileID: 0}
   damageToEnemies: 1
   followProximity: 8
-  radiusAttack: 5
+  radiusAttack: 10
   waitTillLeep: 1
   inAirSpeed: 4
-  timeBetweenRoam: 2
+  timeBetweenRoam: 0.5
   friendly: 0
 --- !u!114 &114690075387557218
 MonoBehaviour:
@@ -804,7 +798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusType: 0
-  damagePerTick: 0.1
+  damagePerTick: 0.2
   duration: 3
   timeBetweenDamage: 0.5
 --- !u!114 &114867923339781828
