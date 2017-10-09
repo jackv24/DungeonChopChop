@@ -147,7 +147,7 @@ public class EnemyAttack : MonoBehaviour
         {
             randomInterval = Random.Range(minInterval, maxInterval);
             animator.SetTrigger("Attack");
-            Shootforward();
+            //Shootforward();
             shootIntervalCounter = 0;
         } 
     }
