@@ -17,7 +17,7 @@ public class Drops : MonoBehaviour
     public int minAmountOfDrops;
     public int maxAmountOfDrops;
 
-    Collider col;
+    private Collider col;
 
     // Use this for initialization
     void Start()
@@ -68,6 +68,6 @@ public class Drops : MonoBehaviour
             float z = UnityEngine.Random.Range(col.bounds.min.z, col.bounds.max.z);
             item.transform.position = new Vector3(x, y, z);
         }
-        item.transform.position = transform.position;
+        //item.transform.position = transform.position;
     }
 }

@@ -15,7 +15,6 @@ public class EnableParamOnEnd : StateMachineBehaviour
     {
         enableTime = Time.time + stateInfo.length - endPadding;
         enabled = false;
-        Debug.Log(name);
         animator.SetBool(paramName, false);
 	}
 

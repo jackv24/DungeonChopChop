@@ -134,7 +134,7 @@ public class EnemyAttack : MonoBehaviour
         if (shootIntervalCounter > (timeTillInterval * 60))
         {
             animator.SetTrigger("Attack");
-            Shootforward();
+            //Shootforward();
             shootIntervalCounter = 0;
         } 
     }
