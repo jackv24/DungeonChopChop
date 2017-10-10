@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerInformation : MonoBehaviour
 {
+
+    public delegate void NormalEvent();
+
     [Header("Player Values")]
     public int playerIndex = 0;
     public float attackMinAngle = 130;
@@ -23,6 +26,12 @@ public class PlayerInformation : MonoBehaviour
     [Header("Items")]
     public int itemAmount;
     public List<InventoryItem> currentItems = new List<InventoryItem>();
+
+    //[Header("Cure Orb Vals")]
+    public event NormalEvent cureOrbChange;
+    public int currentCureOrbs = 0;
+    public int maxCureOrbs = 3;
+    public AmountOfParticleTypes[] cureOrbParticles;
 
     [Header("Other Vals")]
     public float absorbDistance = 1;
@@ -76,23 +85,6 @@ public class PlayerInformation : MonoBehaviour
         PickupCharm(null);
     }
 
-    public int chanceChecker(string chanceKey)
-    {
-        if (HasCharmFloat(chanceKey))
-        {
-            float randomPercent = Random.Range(0, 101);
-            if (randomPercent >= GetCharmFloat(chanceKey))
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-        return 0;
-    }
-
     void Update()
     {
         //sets the damage output
@@ -124,6 +116,28 @@ public class PlayerInformation : MonoBehaviour
 			
         MagnetizeItems();
         PullEnemies();
+    }
+
+    public int ChanceChecker(string chanceKey)
+    {
+        if (HasCharmFloat(chanceKey))
+        {
+            float randomPercent = Random.Range(0, 101);
+            if (randomPercent >= GetCharmFloat(chanceKey))
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        return 0;
+    }
+
+    public void CureOrbChanged()
+    {
+        cureOrbChange();
     }
 
     public void PickupCharm(Charm charm)

@@ -2,9 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthOrb : PickupableItems {
+[System.Serializable]
+public enum OrbType {Health, Cure}
 
+public class Orb : PickupableItems {
+
+    public OrbType type;
+
+    [HideInInspector]
     public float healthAmount;
+    [HideInInspector]
+    public int cureAmount;
+
     public GameObject particleOnCollect;
 
     private int counter = 0;
@@ -31,7 +40,20 @@ public class HealthOrb : PickupableItems {
         {
             if (col.tag == "Player1" || col.tag == "Player2")
             {
-                col.gameObject.GetComponent<Health>().health += healthAmount;
+                PlayerInformation playerInfo = col.gameObject.GetComponent<PlayerInformation>();
+                //check what type of orb it is
+                if (type == OrbType.Health)
+                    col.gameObject.GetComponent<Health>().health += healthAmount;
+                else
+                {
+                    if (playerInfo.currentCureOrbs < playerInfo.maxCureOrbs)
+                    {
+                        playerInfo.currentCureOrbs += cureAmount;
+                        playerInfo.CureOrbChanged();
+                    }
+                }
+
+                //do particles
                 GameObject particle = ObjectPooler.GetPooledObject(particleOnCollect);
                 particle.GetComponent<ParticleFollowHost>().host = col.transform;
                 particle.transform.position = transform.position;

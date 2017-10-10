@@ -442,6 +442,23 @@ public class Health : MonoBehaviour
         Destroy(particle, duration + 2);
     }
 
+    bool canBeStatused()
+    {
+        //make sure its a player
+        if (!IsEnemy)
+        {
+            //check if they have any orbs
+            if (playerInfo.currentCureOrbs > 0)
+            {
+                playerInfo.currentCureOrbs--;
+                playerInfo.CureOrbChanged();
+                spawnEffects.EffectOnHit(playerInfo.cureOrbParticles, transform.position);
+                return false;
+            }
+        }
+        return true;
+    }
+
     /// <summary>
     /// Sets the poison.
     /// </summary>
@@ -449,11 +466,14 @@ public class Health : MonoBehaviour
     /// <param name="timeBetweenPoison">Time between poison in seconds.</param>
     public void SetPoison(float damagePerTick, float duration, float timeBetweenPoison)
     {
-        if (playerInfo)
-            damagePerTick *= playerInfo.GetCharmFloat("poisonMultiplier");
-        isPoisoned = true;
-        DoParticle("PoisonTickParticle", duration);
-        StartCoroutine(doPoison(damagePerTick, duration, timeBetweenPoison));
+        if (canBeStatused())
+        {
+            if (playerInfo)
+                damagePerTick *= playerInfo.GetCharmFloat("poisonMultiplier");
+            isPoisoned = true;
+            DoParticle("PoisonTickParticle", duration);
+            StartCoroutine(doPoison(damagePerTick, duration, timeBetweenPoison));
+        }
     }
 
     IEnumerator doPoison(float damagePerTick, float duration, float timeBetweenPoison)
@@ -483,18 +503,21 @@ public class Health : MonoBehaviour
     /// <param name="timeBetweenBurn">Time between burn in seconds.</param>
     public void SetBurned(float damagePerTick, float duration, float timeBetweenBurn)
     {
-        if (playerInfo)
+        if (canBeStatused())
         {
-            damagePerTick = damagePerTick * playerInfo.GetCharmFloat("burnMultiplier");
-            if (ItemsManager.Instance.hasArmourPiece)
+            if (playerInfo)
             {
-                damagePerTick = 0;
+                damagePerTick = damagePerTick * playerInfo.GetCharmFloat("burnMultiplier");
+                if (ItemsManager.Instance.hasArmourPiece)
+                {
+                    damagePerTick = 0;
+                }
             }
-        }
        
-        isBurned = true;
-        DoParticle("FireTickParticle", duration);
-        StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
+            isBurned = true;
+            DoParticle("FireTickParticle", duration);
+            StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
+        }
     }
 
     IEnumerator doBurn(float damagePerTick, float duration, float timeBetweenBurn)
@@ -525,10 +548,13 @@ public class Health : MonoBehaviour
     /// <param name="timeBetweenDeathTick">Time between death tick in seconds.</param>
     public void SetSlowDeath(float damagePerTick, float duration, float timeBetweenDeathTick)
     {
-        if (playerInfo)
-            damagePerTick *= playerInfo.GetCharmFloat("deathTickMultiplier");
-        isSlowlyDying = true;
-        StartCoroutine(doSlowDeath(damagePerTick, duration, timeBetweenDeathTick));
+        if (canBeStatused())
+        {
+            if (playerInfo)
+                damagePerTick *= playerInfo.GetCharmFloat("deathTickMultiplier");
+            isSlowlyDying = true;
+            StartCoroutine(doSlowDeath(damagePerTick, duration, timeBetweenDeathTick));
+        }
     }
 
     IEnumerator doSlowDeath(float damagePerTick, float duration, float timeBetweenSlowDeath)
@@ -557,8 +583,11 @@ public class Health : MonoBehaviour
     /// <param name="duration">Duration in seconds.</param>
     public void SetIce(float duration)
     {
-        isFrozen = true;
-        StartCoroutine(doIce(duration));
+        if (canBeStatused())
+        {
+            isFrozen = true;
+            StartCoroutine(doIce(duration));
+        }
     }
 
     IEnumerator doIce(float duration)
