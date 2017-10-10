@@ -252,8 +252,11 @@ public class PlayerInformation : MonoBehaviour
                 //check the layer
                 if (item.gameObject.layer == 15)
                 {
-                    //moves those items towards the player
-                    item.transform.position = Vector3.MoveTowards(item.transform.position, transform.position, (GetCharmFloat("radialAbsorbSpeed") + 1) * Time.deltaTime);
+                    if (item.GetComponent<PickupableItems>().canPickup)
+                    {
+                        //moves those items towards the player
+                        item.transform.position = Vector3.MoveTowards(item.transform.position, transform.position, (GetCharmFloat("radialAbsorbSpeed") + 1) * Time.deltaTime);
+                    }
                 }
             }
         }
