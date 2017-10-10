@@ -37,7 +37,7 @@ public class ProjectileCollision : MonoBehaviour {
                 {
                     if (playerInfo.HasCharmFloat("immuneChance"))
                     {
-                        if (playerInfo.chanceChecker("immuneChance") == 0)
+                        if (playerInfo.ChanceChecker("immuneChance") == 0)
                         {
                             if (!col.transform.GetComponent<PlayerAttack>().blocking)
                             {
