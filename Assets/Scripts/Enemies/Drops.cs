@@ -68,6 +68,9 @@ public class Drops : MonoBehaviour
             float z = UnityEngine.Random.Range(col.bounds.min.z, col.bounds.max.z);
             item.transform.position = new Vector3(x, y, z);
         }
-        //item.transform.position = transform.position;
+        else
+        {
+            item.transform.position = transform.position;
+        }
     }
 }
