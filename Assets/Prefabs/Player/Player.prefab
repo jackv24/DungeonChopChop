@@ -1562,9 +1562,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeInbetween: 0.4
   comboIncrease: 0.04
-  rapidDmgMultiplier: 1
-  slashAmount: 10
-  rapidSlashCooldown: 0.5
+  rapidDmgMultiplier: 1.5
+  slashAmount: 7
+  rapidSlashCooldown: 0.2
   rapidSlashIncrease: 0.04
   multiSpeedMultiplier: 0.2
   dashAtkDmgMultiplier: 2
@@ -1579,7 +1579,7 @@ MonoBehaviour:
   spinChargeReady: 0
   timeToCharge: 1.2
   timeBetweenFlash: 0.1
-  spinFlashColor: {r: 1, g: 1, b: 1, a: 0.541}
+  spinFlashColor: {r: 1, g: 1, b: 1, a: 0.316}
   moveBackOnHit: 5
   blocking: 0
   speedWhenBurned: 10
@@ -1603,7 +1603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a927be7f714cb4c9ea35f1f69acd16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackOnHit: 5
+  knockbackOnHit: 3
   trail: {fileID: 1173587197747666}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -1720,7 +1720,7 @@ MonoBehaviour:
   strength: 1
   attackSpeed: 1
   resistance: 3
-  knockback: 20
+  knockback: 10
   invincibilityTimeAfterHit: 1.3
   invincible: 0
   charmAmount: 2
@@ -1732,12 +1732,45 @@ MonoBehaviour:
   cureOrbParticles:
   - particleType: 0
     particles:
-    - particle: {fileID: 1928837666263156, guid: a6acbdbaf1448264287780b2c34b0df9,
+    - particle: {fileID: 1928837666263156, guid: 64773d296b3f5bd42a8e2bdbbd6929be,
         type: 2}
       gradient:
         serializedVersion: 2
         key0: {r: 1, g: 0.9724138, b: 0, a: 1}
         key1: {r: 1, g: 0.7241379, b: 0, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1928837666263156, guid: fb52ffb4991f66944aaf1bcbd4f1c890,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 1, g: 0.99006087, b: 0.6397059, a: 1}
+        key1: {r: 0.9705882, g: 0.87215126, b: 0.61375433, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
