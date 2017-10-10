@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 54788984580323172}
   - component: {fileID: 114903360757450450}
   - component: {fileID: 65747249392325048}
+  - component: {fileID: 114706389840376148}
   m_Layer: 0
   m_Name: SandProjectile
   m_TagString: Untagged
@@ -205,6 +206,22 @@ MonoBehaviour:
   - {fileID: 1004915465583228, guid: 2a2d6f42c0139774880df8b9f1374650, type: 2}
   damageMultiplyer: 0
   thrust: 0
+--- !u!114 &114706389840376148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368690437338182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e835c48d15c08240ad72fe07736a33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusType: 4
+  damagePerTick: 0
+  duration: 5
+  timeBetweenDamage: 0
+  speedDamper: 0.5
 --- !u!114 &114894028903047640
 MonoBehaviour:
   m_ObjectHideFlags: 1

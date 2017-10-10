@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Health : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Health : MonoBehaviour
     public bool isBurned = false;
     public bool isSlowlyDying = false;
     public bool isFrozen = false;
+    public bool isSandy = false;
 
     [Space()]
     public bool isDead = false;
@@ -32,6 +34,7 @@ public class Health : MonoBehaviour
     public Color burnColor;
     public Color slowlyDyingColor;
     public Color frozenColor;
+    public Color sandyColor;
 
     [Space()]
     public AmountOfParticleTypes[] hitParticles;
@@ -151,7 +154,7 @@ public class Health : MonoBehaviour
         health = maxHealth;
         isDead = false;
     }
-       
+
     public void TemporaryInvincibility()
     {
         if (playerInfo)
@@ -270,7 +273,7 @@ public class Health : MonoBehaviour
         SetOGFade();
     }
 
-    public void PlayerSetOG()
+    public void SetOGColorRends()
     {
         if (renderers != null)
         {
@@ -320,7 +323,7 @@ public class Health : MonoBehaviour
                 for (int i = 0; i < renderers.Length; i++)
                 {
                     
-                    renderers[i].material.color = Color.Lerp (renderers[i].material.color, originalColors[i], fadeToColorTime * Time.deltaTime);
+                    renderers[i].material.color = Color.Lerp(renderers[i].material.color, originalColors[i], fadeToColorTime * Time.deltaTime);
                     if (renderers[i].material.color == originalColors[i])
                     {
                         fadeToColor = false;
@@ -413,7 +416,7 @@ public class Health : MonoBehaviour
 
     public bool HasStatusCondition()
     {
-        if (isBurned || isPoisoned || isSlowlyDying)
+        if (isBurned || isPoisoned || isSlowlyDying || isSandy || isFrozen)
         {
             return true;
         }
@@ -493,7 +496,7 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenPoison);
         }
-        PlayerSetOG();
+        SetOGColorRends();
     }
 
     /// <summary>
@@ -538,7 +541,7 @@ public class Health : MonoBehaviour
 
             yield return new WaitForSeconds(timeBetweenBurn / 2);
         }
-        PlayerSetOG();
+        SetOGColorRends();
     }
 
     /// <summary>
@@ -574,7 +577,7 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
         }
-        PlayerSetOG();
+        SetOGColorRends();
     }
 
     /// <summary>
@@ -613,7 +616,52 @@ public class Health : MonoBehaviour
             GetComponent<EnemyMove>().enabled = true;
         
         isFrozen = false;
-        PlayerSetOG();
+        SetOGColorRends();
+    }
+
+    /// Sets slow speed.
+    /// </summary>
+    /// <param name="duration">Duration in seconds.</param>
+    public void SetSandy(float duration, float speedDamping)
+    {
+        if (canBeStatused())
+        {
+            isSandy = true;
+            StartCoroutine(doSandy(duration, speedDamping));
+        }
+    }
+
+    IEnumerator doSandy(float duration, float speedDamping)
+    {
+        int counter = 0;
+        float ogEnemySpeed = 0;
+
+        //checks if player or enemy and sets the speeds
+        if (!IsEnemy)
+            playerInfo.SetMoveSpeed(playerInfo.maxMoveSpeed * speedDamping);
+        else
+        {
+            ogEnemySpeed = GetComponent<NavMeshAgent>().speed;
+            GetComponent<NavMeshAgent>().speed = GetComponent<NavMeshAgent>().speed * speedDamping;
+        }
+
+        while (isSandy)
+        {
+            counter++;
+            SetColor(sandyColor);
+            if (counter >= duration)
+            {
+                isSandy = false;
+            }
+            yield return new WaitForSeconds(1);
+        }
+
+        SetOGColorRends();
+
+        if (!IsEnemy)
+            playerInfo.ResetMoveSpeed();
+        else
+            GetComponent<NavMeshAgent>().speed = ogEnemySpeed;
     }
 
     IEnumerator DisablePlayerFor(float seconds)

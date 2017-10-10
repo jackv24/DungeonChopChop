@@ -114,7 +114,7 @@ public class PlayerAttack : MonoBehaviour
                 break;
             playerHealth.SetColor(spinFlashColor);
             yield return new WaitForSeconds(timeBetweenFlash);
-            playerHealth.PlayerSetOG();
+            playerHealth.SetOGColorRends();
             yield return new WaitForSeconds(timeBetweenFlash);
         }
     }

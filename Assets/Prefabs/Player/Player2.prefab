@@ -1522,6 +1522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53ea374599a91c46b17789ad490db9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldName: 
   blockingResistance: 2
   speedDamping: 0.5
 --- !u!114 &114034888420408198
@@ -1568,6 +1569,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   setLastSibling: 1
   showOnTileEnter: 0
+  registerOnce: 0
 --- !u!114 &114285429828349306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1622,11 +1624,13 @@ MonoBehaviour:
   isBurned: 0
   isSlowlyDying: 0
   isFrozen: 0
+  isSandy: 0
   isDead: 0
   poisonColor: {r: 0.7388811, g: 0.46961504, b: 0.74264705, a: 1}
   burnColor: {r: 0.8308824, g: 0.42766005, b: 0.42766005, a: 1}
   slowlyDyingColor: {r: 0.46851507, g: 0.8161765, b: 0.45609862, a: 1}
   frozenColor: {r: 0.4805363, g: 0.73180103, b: 0.74264705, a: 1}
+  sandyColor: {r: 0.5514706, g: 0.44497964, b: 0, a: 1}
   hitParticles:
   - particleType: 0
     particles:
@@ -1799,10 +1803,14 @@ MonoBehaviour:
   currentCharms: []
   itemAmount: 0
   currentItems: []
+  currentCureOrbs: 0
+  maxCureOrbs: 3
+  cureOrbParticles: []
   absorbDistance: 1
   damageOutput: 0
   invincibleSphere: {fileID: 1900534686197628}
   playerMove: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &114897967170071644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1816,10 +1824,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeInbetween: 0.4
   comboIncrease: 0.04
+  rapidDmgMultiplier: 1
   slashAmount: 10
   rapidSlashCooldown: 3
   rapidSlashIncrease: 0.04
   multiSpeedMultiplier: 0.2
+  dashAtkDmgMultiplier: 2
   dashTime: 0.2
   dashSpeed: 35
   dashCooldown: 0.5
@@ -1827,6 +1837,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 2048
+  spinDmgMultiplier: 2
   spinChargeReady: 0
   timeToCharge: 1.2
   timeBetweenFlash: 0.5
