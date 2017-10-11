@@ -225,7 +225,15 @@ public class PlayerAttack : MonoBehaviour
                     //checks if player is in idle to do the first attack
                     if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
                     {
-                        doSlash();
+                        if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
+                            doSlash();
+                        else
+                        {
+                            //check the current frame of animation
+                            int currentFrame = ((int)(animator.GetCurrentAnimatorStateInfo(0).normalizedTime * (17))) % 17;
+                            if (currentFrame > 10)
+                                doSlash();
+                        }
                     }
                     //if the user tries to attack when the user is already attacking, it'll do the second attack once completed
                     else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
@@ -419,7 +427,8 @@ public class PlayerAttack : MonoBehaviour
         //if you attack quick enough, it is counted as a combo
         if (comboCounter < timeInbetween)
         {
-            AddCombo();
+            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                AddCombo();
         } 
 		//if you attack to late, it restarts the combo
 		else
