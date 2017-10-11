@@ -8,25 +8,27 @@ public class FaceForwardInTile : MonoBehaviour
 
 	void Start()
 	{
-		if (LevelGenerator.Instance)
-		{
-			if(beforeMerge)
-				LevelGenerator.Instance.OnBeforeMergeMeshes += FaceForward;
-			else
-				LevelGenerator.Instance.OnGenerationFinished += FaceForward;
-		}
+		//if (LevelGenerator.Instance)
+		//{
+		//	if(beforeMerge)
+		//		LevelGenerator.Instance.OnBeforeMergeMeshes += FaceForward;
+		//	else
+		//		LevelGenerator.Instance.OnGenerationFinished += FaceForward;
+		//}
+
+		FaceForward();
 	}
 
-	void OnDestroy()
-	{
-		if (LevelGenerator.Instance)
-		{
-			if (beforeMerge)
-				LevelGenerator.Instance.OnBeforeMergeMeshes -= FaceForward;
-			else
-				LevelGenerator.Instance.OnGenerationFinished -= FaceForward;
-		}
-	}
+	//void OnDestroy()
+	//{
+	//	if (LevelGenerator.Instance)
+	//	{
+	//		if (beforeMerge)
+	//			LevelGenerator.Instance.OnBeforeMergeMeshes -= FaceForward;
+	//		else
+	//			LevelGenerator.Instance.OnGenerationFinished -= FaceForward;
+	//	}
+	//}
 
 	void FaceForward()
 	{
