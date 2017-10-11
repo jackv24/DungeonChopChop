@@ -10,7 +10,8 @@ public class Shop : MonoBehaviour
 	public InventoryItem sellingItem;
 	private GameObject itemGraphic;
 
-    [Space()] public AudioClip[] purchaseSounds;
+    [Space()]
+	public AudioClip[] purchaseSounds;
 
     private AudioSource audioSource;
 
@@ -23,6 +24,13 @@ public class Shop : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+		if(!InputManager.Instance)
+		{
+			input = new PlayerInputs();
+			input.AddControllerBindings();
+			input.AddKeyboardBindings();
+		}
     }
 
     void PlaySound()
@@ -97,6 +105,7 @@ public class Shop : MonoBehaviour
 		canPurchase = value;
 		this.playerInfo = playerInfo;
 
-		input = InputManager.GetPlayerInput(playerInfo.playerIndex);
+		if(InputManager.Instance)
+			input = InputManager.GetPlayerInput(playerInfo.playerIndex);
 	}
 }
