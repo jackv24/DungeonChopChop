@@ -40,7 +40,7 @@ public class SecretCircle : MonoBehaviour
             if (col.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
             {
                 //gets the frame of the animation
-                int currentFrame = ((int)(col.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime * (33))) % 33;
+                int currentFrame = ((int)(col.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime * (17))) % 17;
 
                 //checks to make sure its inbetween these values, otherwise you can run into the secret circle at any point in time of animation
                 if (currentFrame > 6 && currentFrame < 8)
