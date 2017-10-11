@@ -12,8 +12,6 @@ public class DialogueSpeaker : MonoBehaviour
 	private int lastIndex = -1;
 
 	[Space()]
-	public Vector3 speakOffset;
-	public Vector3 speakArea;
 	public LayerMask playerLayer;
 	public float textBoxHeight = 3.0f;
 	public float textBoxDepth = 0.0f;
@@ -26,13 +24,20 @@ public class DialogueSpeaker : MonoBehaviour
 	private DialogueBox currentBox;
 	private PlayerInformation playerInfo;
 
+	private List<GameObject> objs = new List<GameObject>();
+	private bool allowEntering = false;
+
+	void Start()
+	{
+		//Delay detection of players entering trigger until the next frame
+		StartCoroutine(DelayEntering());
+	}
+
 	//Does not need to happen every frame
 	void FixedUpdate()
 	{
-		Collider[] cols = Physics.OverlapBox(transform.position + speakOffset, speakArea / 2, transform.rotation, playerLayer);
-
 		//if colliders were found, player is in range
-		if (cols.Length > 0)
+		if (objs.Count > 0)
 		{
 			//if box isn't already showing, show box
 			if (!currentBox)
@@ -40,14 +45,14 @@ public class DialogueSpeaker : MonoBehaviour
                 float closestDistance = float.MaxValue;
                 GameObject closestObject = null;
 
-                foreach (Collider col in cols)
+                foreach (GameObject obj in objs)
                 {
-                    float distance = Vector3.Distance(col.transform.position, transform.position);
+                    float distance = Vector3.Distance(obj.transform.position, transform.position);
 
                     if (distance < closestDistance)
                     {
                         closestDistance = distance;
-                        closestObject = col.gameObject;
+                        closestObject = obj;
                     }
                 }
 
@@ -56,6 +61,36 @@ public class DialogueSpeaker : MonoBehaviour
 		}
 		else if (currentBox)
 			Close();
+	}
+
+	IEnumerator DelayEntering()
+	{
+		yield return new WaitForEndOfFrame();
+
+		allowEntering = true;
+	}
+
+	void OnTriggerEnter(Collider collider)
+	{
+		if (allowEntering)
+		{
+			//if collider's layer is in the player layermask
+			if (playerLayer == (playerLayer | (1 << collider.gameObject.layer)))
+			{
+				if(!objs.Contains(collider.gameObject))
+					objs.Add(collider.gameObject);
+			}
+		}
+	}
+
+	void OnTriggerExit(Collider collider)
+	{
+		//if collider's layer is in the player layermask
+		if (playerLayer == (playerLayer | (1 << collider.gameObject.layer)))
+		{
+			if (objs.Contains(collider.gameObject))
+				objs.Remove(collider.gameObject);
+		}
 	}
 
 	void Open(GameObject player)
@@ -115,11 +150,5 @@ public class DialogueSpeaker : MonoBehaviour
 
 		if (disable)
 			enabled = false;
-	}
-
-	void OnDrawGizmosSelected()
-	{
-		Gizmos.matrix = transform.localToWorldMatrix;
-		Gizmos.DrawWireCube(speakOffset, speakArea);
 	}
 }
