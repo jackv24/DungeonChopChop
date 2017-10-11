@@ -18,6 +18,8 @@ public class SlimeMove : EnemyMove {
     public bool doesSplit;
     public float splitInterval = 2;
     public float splitAmount;
+    [Tooltip("If there are this amount of enemies around, it will not split")]
+    public int maxAmountOfSlimes;
     public GameObject slime;
 
     [Space()]
@@ -100,10 +102,31 @@ public class SlimeMove : EnemyMove {
         {
             for (int i = 1; i <= splitAmount; i++)
             {
-                GameObject newSlime = ObjectPooler.GetPooledObject(slime);
-                newSlime.transform.localPosition = transform.localPosition;
+                if (CanSplitSlimes())
+                {
+                    GameObject newSlime = ObjectPooler.GetPooledObject(slime);
+                    newSlime.transform.localPosition = transform.localPosition;
+                }
             }
         }
+    }
+
+    bool CanSplitSlimes()
+    {
+        Collider[] slimes = Physics.OverlapSphere(transform.position, 500, layerMask);
+        Debug.Log(slimes.Length);
+        if (slimes.Length > 0)
+        {
+            if (slimes.Length < (maxAmountOfSlimes + 4))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
     }
 
     void DoMove()

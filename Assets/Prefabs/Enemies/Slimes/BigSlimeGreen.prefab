@@ -753,11 +753,13 @@ MonoBehaviour:
   isBurned: 0
   isSlowlyDying: 0
   isFrozen: 0
+  isSandy: 0
   isDead: 0
   poisonColor: {r: 0.64705884, g: 0.43771628, b: 0.6412839, a: 0.616}
   burnColor: {r: 0.6102941, g: 0.31860942, b: 0.31860942, a: 0.609}
   slowlyDyingColor: {r: 0.4414226, g: 0.66176474, b: 0.4233348, a: 0.622}
   frozenColor: {r: 0.25865054, g: 0.6600049, b: 0.7647059, a: 1}
+  sandyColor: {r: 0, g: 0, b: 0, a: 0}
   hitParticles:
   - particleType: 0
     particles:
@@ -937,10 +939,11 @@ MonoBehaviour:
   LockY: 1
   usingNav: 1
   type: 0
-  doesSplit: 0
+  doesSplit: 1
   splitInterval: 10
   splitAmount: 2
-  slime: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b, type: 2}
+  maxAmountOfSlimes: 0
+  slime: {fileID: 1898849496093584, guid: 85e27a5af6b30c54e8a374acffc3054f, type: 2}
   damageToEnemies: 1
   followProximity: 0
   radiusAttack: 5
