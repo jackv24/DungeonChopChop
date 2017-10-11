@@ -56,18 +56,17 @@ public class Orb : PickupableItems {
                         playerInfo.CureOrbChanged();
                     }
                 }
-                c = col;
-                DoPickUpParticle();
+                DoPickUpParticle(col.transform.position);
                 gameObject.SetActive(false);
             }
         }
     }
 
-    void DoPickUpParticle()
+    void DoPickUpParticle(Vector3 position)
     {
         //do particles
         GameObject particle = ObjectPooler.GetPooledObject(spawnEffects.GetEffectOnDeath(particles));
         particle.GetComponent<ParticleFollowHost>().host = c.transform;
-        particle.transform.position = transform.position;
+        particle.transform.position = position;
     }
 }
