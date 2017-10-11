@@ -129,7 +129,12 @@ public class DialogueSpeaker : MonoBehaviour
                 else
                     index = 0;
 
-                currentBox.SetDialogue(lines[index]);
+				string text = lines[index];
+
+				//Remove whitespace from end of line
+				text = text.Trim();
+
+                currentBox.SetDialogue(text);
 
                 lastIndex = index;
             }
