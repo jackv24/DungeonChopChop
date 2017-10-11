@@ -15,6 +15,7 @@ public class KeyScript : PickupableItems
     {
         counter = 0;
         canPickup = false;
+        DidEnable();
     }
 
     // Update is called once per frame
@@ -46,6 +47,13 @@ public class KeyScript : PickupableItems
 		else
 			ItemsManager.Instance.DungeonKeys += 1;
 
+        DoPickUpParticle();
 		gameObject.SetActive(false);
 	}
+
+    void DoPickUpParticle()
+    {
+        //do particles
+        spawnEffects.EffectOnDeath(particles, transform.position);
+    }
 }

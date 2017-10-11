@@ -12,6 +12,7 @@ public class GemScript : PickupableItems {
     {
         counter = 0;
         canPickup = false;
+        DidEnable();
     }
 
     void FixedUpdate()
@@ -31,8 +32,15 @@ public class GemScript : PickupableItems {
             if (col.tag == "Player1" || col.tag == "Player2")
             {
                 ItemsManager.Instance.Coins += coinAmount * (int)col.GetComponent<PlayerInformation>().GetCharmFloat("coinMultiplier");
+                DoPickUpParticle();
                 gameObject.SetActive(false);
             }
         }
 	}
+
+    void DoPickUpParticle()
+    {
+        //do particles
+        spawnEffects.EffectOnDeath(particles, transform.position);
+    }
 }

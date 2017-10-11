@@ -14,14 +14,15 @@ public class Orb : PickupableItems {
     [HideInInspector]
     public int cureAmount;
 
-    public GameObject particleOnCollect;
-
     private int counter = 0;
+
+    private Collider c;
 
     void OnEnable()
     {
         counter = 0;
         canPickup = false;
+        DidEnable();
     }
 	
 	// Update is called once per frame
@@ -43,7 +44,10 @@ public class Orb : PickupableItems {
                 PlayerInformation playerInfo = col.gameObject.GetComponent<PlayerInformation>();
                 //check what type of orb it is
                 if (type == OrbType.Health)
+                {
                     col.gameObject.GetComponent<Health>().health += healthAmount;
+                    col.gameObject.GetComponent<Health>().HealthChanged();
+                }
                 else
                 {
                     if (playerInfo.currentCureOrbs < playerInfo.maxCureOrbs)
@@ -52,13 +56,18 @@ public class Orb : PickupableItems {
                         playerInfo.CureOrbChanged();
                     }
                 }
-
-                //do particles
-                GameObject particle = ObjectPooler.GetPooledObject(particleOnCollect);
-                particle.GetComponent<ParticleFollowHost>().host = col.transform;
-                particle.transform.position = transform.position;
+                c = col;
+                DoPickUpParticle();
                 gameObject.SetActive(false);
             }
         }
+    }
+
+    void DoPickUpParticle()
+    {
+        //do particles
+        GameObject particle = ObjectPooler.GetPooledObject(spawnEffects.GetEffectOnDeath(particles));
+        particle.GetComponent<ParticleFollowHost>().host = c.transform;
+        particle.transform.position = transform.position;
     }
 }

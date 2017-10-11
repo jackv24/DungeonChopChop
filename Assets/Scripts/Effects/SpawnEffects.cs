@@ -60,6 +60,25 @@ public class SpawnEffects : MonoBehaviour {
         }
     }
 
+    public GameObject GetEffectOnDeath(AmountOfParticleTypes[] typeList)
+    {
+        foreach (AmountOfParticleTypes particleType in typeList)
+        {
+            //check if the particle is a hit type
+            if (particleType.particles.Length > 0)
+            {
+                if (particleType.particleType == ParticleType.Death)
+                {
+                    //get a random number max being amount of particles
+                    int randomParticleNumber = Random.Range(0, particleType.particles.Length);
+                    //get particle
+                    return particleType.particles[randomParticleNumber].particle;
+                }
+            }
+        }
+        return null;
+    }
+
     public void EffectOnHit(AmountOfParticleTypes[] typeList, Vector3 spawnPosition)
     {
         //loop through each amount of particles list
@@ -82,5 +101,24 @@ public class SpawnEffects : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public GameObject GetEffectOnHit(AmountOfParticleTypes[] typeList)
+    {
+        foreach (AmountOfParticleTypes particleType in typeList)
+        {
+            //check if the particle is a hit type
+            if (particleType.particles.Length > 0)
+            {
+                if (particleType.particleType == ParticleType.Hit)
+                {
+                    //get a random number max being amount of particles
+                    int randomParticleNumber = Random.Range(0, particleType.particles.Length);
+                    //get particle
+                    return particleType.particles[randomParticleNumber].particle;
+                }
+            }
+        }
+        return null;
     }
 }
