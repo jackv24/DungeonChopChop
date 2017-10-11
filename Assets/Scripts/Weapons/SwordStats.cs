@@ -9,17 +9,21 @@ public enum WeaponEffect
     Burn,
     Poison,
     SlowDeath,
+    Ice,
+    Sandy
 }
 
 public class SwordStats : MonoBehaviour {
 
     public string swordName = "Sword";
     public float damageMultiplier = 1;
+    [Tooltip("Doesn't effect anything, just for showing stat")]
     public int range = 1;
     public WeaponEffect weaponEffect;
-    public float damagePerTick;
-    public float duration;
-    public float timeBetweenEffect;
+    [HideInInspector] public float damagePerTick;
+    [HideInInspector] public float duration;
+    [HideInInspector] public float timeBetweenEffect;
+    [HideInInspector] public float speedDamper;
 
 	// Use this for initialization
 	void Start () {

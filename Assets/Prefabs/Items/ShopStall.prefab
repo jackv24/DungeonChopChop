@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 114923576532452206}
   - component: {fileID: 82903860356579322}
   - component: {fileID: 114742032783991084}
+  - component: {fileID: 65388893275173396}
   m_Layer: 0
   m_Name: ShopStall
   m_TagString: Untagged
@@ -274,13 +275,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1424652581928188}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4539746926230536}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4673186875509596
 Transform:
   m_ObjectHideFlags: 1
@@ -579,6 +580,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.31, y: 1, z: 1.03}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!65 &65388893275173396
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730422716654826}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.43, y: 3, z: 3.83}
+  m_Center: {x: 0, y: 1.5, z: -1.63}
 --- !u!82 &82903860356579322
 AudioSource:
   m_ObjectHideFlags: 1
@@ -742,8 +755,6 @@ MonoBehaviour:
   - '{0}
 
     <size=26>${1}</size>'
-  speakOffset: {x: 0, y: 1.5, z: -1.5}
-  speakArea: {x: 4, y: 3, z: 3}
   playerLayer:
     serializedVersion: 2
     m_Bits: 16384
@@ -776,7 +787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee6c959ed85a6614e865d57ad6ad65ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSpawn: {fileID: 4338376837855088, guid: 26afabf0e3c71c045800cb37e44f6937, type: 2}
+  itemSpawn: {fileID: 4552680980663622}
   sellingItem: {fileID: 0}
   purchaseSounds:
   - {fileID: 8300000, guid: f4431f98ea5dc0d4986f1c0853ae48a6, type: 3}
