@@ -87,6 +87,10 @@ public class ShowSwordStats : MonoBehaviour {
                 effectColor = Color.magenta;
             else if (weaponEffect == WeaponEffect.SlowDeath)
                 effectColor = Color.green;
+            else if (weaponEffect == WeaponEffect.Ice)
+                effectColor = Color.cyan;
+            else if (weaponEffect == WeaponEffect.Sandy)
+                effectColor = Color.yellow;
         }
     }
 
@@ -108,6 +112,10 @@ public class ShowSwordStats : MonoBehaviour {
                 text += string.Format("\n<color=#{1}>{0}</color>", "Poisons", ColorUtility.ToHtmlStringRGB(effectColor));
             else if (weaponEffect == WeaponEffect.SlowDeath)
                 text += string.Format("\n<color=#{1}>{0}</color>", "Eats Away", ColorUtility.ToHtmlStringRGB(effectColor));
+            else if (weaponEffect == WeaponEffect.Ice)
+                text += string.Format("\n<color=#{1}>{0}</color>", "Freezing", ColorUtility.ToHtmlStringRGB(effectColor));
+            else if (weaponEffect == WeaponEffect.Sandy)
+                text += string.Format("\n<color=#{1}>{0}</color>", "Sandy", ColorUtility.ToHtmlStringRGB(effectColor));
         }
 
         dialogueSpeaker.lines[0] = text;

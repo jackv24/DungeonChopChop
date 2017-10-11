@@ -78,17 +78,17 @@ public class SwordCollision : MonoBehaviour {
                 }
                 //set the status effect depending on the weapons effect
                 if (swordStats.weaponEffect == WeaponEffect.Burn)
-                {
                     enemyHealth.SetBurned(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
-                }
                 else if (swordStats.weaponEffect == WeaponEffect.Poison)
-                {
                     enemyHealth.SetPoison(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
-                }
                 else if (swordStats.weaponEffect == WeaponEffect.SlowDeath)
-                {
                     enemyHealth.SetSlowDeath(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
-                }
+                else if (swordStats.weaponEffect == WeaponEffect.Ice)
+                    enemyHealth.SetIce(swordStats.duration);
+                else if (swordStats.weaponEffect == WeaponEffect.Sandy)
+                    enemyHealth.SetSandy(swordStats.duration, swordStats.speedDamper);
+
+
                 CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
 
                 playerInfo.KnockbackPlayer(-playerInfo.transform.forward, knockbackOnHit);
