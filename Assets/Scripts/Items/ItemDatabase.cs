@@ -28,7 +28,7 @@ public class ItemDatabase : ScriptableObject
 	public Group weapons;
 	public Group armour;
 
-	public InventoryItem GetItem(ItemType type, int tier)
+	public InventoryItem GetItem(ItemType type, int tier, List<InventoryItem> excludeItems = null)
 	{
 		Group group = null;
 
@@ -54,7 +54,20 @@ public class ItemDatabase : ScriptableObject
 			{
 				Group.Tier itemTier = group.tiers[tier];
 
-				InventoryItem item = itemTier.items[Random.Range(0, itemTier.items.Count)];
+				List<InventoryItem> possibleItems = new List<InventoryItem>(itemTier.items);
+
+				//Remove items that are excluded
+				foreach(InventoryItem i in excludeItems)
+				{
+					if (possibleItems.Contains(i))
+						possibleItems.Remove(i);
+				}
+
+				//if resulting list is empty, just use any item
+				if(possibleItems.Count <= 0)
+					possibleItems = new List<InventoryItem>(itemTier.items);
+
+				InventoryItem item = possibleItems[Random.Range(0, possibleItems.Count)];
 
 				if (item)
 					return item;

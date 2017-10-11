@@ -31,6 +31,8 @@ public class ShopSpawner : MonoBehaviour
 	[Space()]
 	public List<ShopStall> shopStalls = new List<ShopStall>();
 
+	private List<InventoryItem> spawnedItems = new List<InventoryItem>();
+
 	void Start()
 	{
 		Generate();
@@ -39,6 +41,8 @@ public class ShopSpawner : MonoBehaviour
 	public void Generate()
 	{
 		DeleteChildren();
+
+		spawnedItems.Clear();
 
 		if (shopPrefab)
 		{
@@ -50,7 +54,8 @@ public class ShopSpawner : MonoBehaviour
 
 				if (itemDatabase)
 				{
-					InventoryItem item = itemDatabase.GetItem(shopStalls[i].itemType, shopStalls[i].itemTier);
+					InventoryItem item = itemDatabase.GetItem(shopStalls[i].itemType, shopStalls[i].itemTier, spawnedItems);
+					spawnedItems.Add(item);
 
 					if(item)
 					{
