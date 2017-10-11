@@ -593,6 +593,7 @@ public class Health : MonoBehaviour
         if (canBeStatused())
         {
             isFrozen = true;
+            DoParticle("IceTickParticle", duration);
             StartCoroutine(doIce(duration));
         }
     }
@@ -631,6 +632,7 @@ public class Health : MonoBehaviour
         if (canBeStatused())
         {
             isSandy = true;
+            DoParticle("SandTickParticle", duration);
             StartCoroutine(doSandy(duration, speedDamping));
         }
     }

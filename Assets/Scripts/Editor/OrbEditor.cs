@@ -22,11 +22,11 @@ public class OrbEditor : Editor {
 
         if (orb.type == OrbType.Health)
         {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("healthAmount"), new GUIContent("Health Amount"));
+            orb.healthAmount = EditorGUILayout.FloatField("Health Amount", orb.healthAmount);
         }
         else if (orb.type == OrbType.Cure)
         {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("cureAmount"), new GUIContent("Cure Amount"));
+            orb.cureAmount = EditorGUILayout.IntField("Cure Amount", orb.cureAmount);
         }
     }
 }
