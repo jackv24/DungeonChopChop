@@ -197,7 +197,7 @@ public class SlimeMove : EnemyMove {
         inLeeping = true;
         agent.speed = 0;
         yield return new WaitForSeconds(waitTillLeep);
-        animator.SetTrigger("Hop");
+        //animator.SetTrigger("Hop");
         doingLeep = true;
         agent.speed = originalSpeed * inAirSpeed;
         yield return new WaitForSeconds(1);
