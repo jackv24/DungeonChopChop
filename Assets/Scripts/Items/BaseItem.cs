@@ -8,6 +8,8 @@ public class BaseItem : ScriptableObject
     public string itemInfo = "";
 	public Sprite itemIcon;
 
+	public int cost = 0;
+
 	public virtual void Pickup(PlayerInformation playerInfo)
 	{
         

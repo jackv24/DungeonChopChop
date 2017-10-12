@@ -14,7 +14,6 @@ public class PaddyBumAttack : EnemyAttack {
     public PaddyType paddyType;
     public float radiusTillExplode;
     public float timeTillExplode = 3;
-    public float animatorMultiplier = 2;
 
     private bool waitingToExplode = false;
     private int counter = 0;

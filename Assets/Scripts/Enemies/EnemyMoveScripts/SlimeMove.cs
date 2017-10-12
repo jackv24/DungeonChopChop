@@ -32,6 +32,10 @@ public class SlimeMove : EnemyMove {
     [Tooltip("Normal speed multiplier")]
     public float inAirSpeed = 2;
     public float timeBetweenRoam = 2;
+    [Space()]
+    public float timeBetweenStopMin = 2;
+    public float timeBetweenStopMax = 4;
+    public float stopTime = 1;
 
     [Space()]
     public bool friendly = false;
@@ -41,9 +45,13 @@ public class SlimeMove : EnemyMove {
 
     private float splitCounter = 0;
 
+    private int counter = 0;
+    private float timeBetweenMove = 0;
+
     void Start()
     {
         Setup();
+        timeBetweenMove = Random.Range(timeBetweenStopMin, timeBetweenStopMax);
     }
 
     void FixedUpdate()
@@ -59,6 +67,14 @@ public class SlimeMove : EnemyMove {
                     splitCounter = 0;
                 }
             }
+        }
+
+        counter++;
+        if (counter > (timeBetweenMove * 60))
+        {
+            StartCoroutine(WaitToMove());
+            timeBetweenMove = Random.Range(timeBetweenStopMin, timeBetweenStopMax);
+            counter = 0;
         }
     }
 	
@@ -111,6 +127,13 @@ public class SlimeMove : EnemyMove {
         }
     }
 
+    IEnumerator WaitToMove()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(stopTime);
+        canMove = true;
+    }
+
     bool CanSplitSlimes()
     {
         BoxCollider[] slimes = (BoxCollider[])Physics.OverlapSphere(transform.position, 500, layerMask);
@@ -153,6 +176,7 @@ public class SlimeMove : EnemyMove {
 
     void AttackPlayer()
     {
+
         if (!InDistance(radiusAttack))
         {
             FollowPlayer();
@@ -173,7 +197,7 @@ public class SlimeMove : EnemyMove {
         inLeeping = true;
         agent.speed = 0;
         yield return new WaitForSeconds(waitTillLeep);
-        animator.SetTrigger("Hop");
+        //animator.SetTrigger("Hop");
         doingLeep = true;
         agent.speed = originalSpeed * inAirSpeed;
         yield return new WaitForSeconds(1);

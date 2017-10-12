@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4403471783915754}
   - component: {fileID: 20711263790970924}
+  - component: {fileID: 114946145990283820}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -215,6 +216,7 @@ GameObject:
   - component: {fileID: 136248845063515268}
   - component: {fileID: 54029703226218690}
   - component: {fileID: 114646258548207922}
+  - component: {fileID: 114747874722987714}
   m_Layer: 14
   m_Name: Player
   m_TagString: Player1
@@ -996,7 +998,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515761076265150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.949591, y: -1.4735879, z: -12.596058}
+  m_LocalPosition: {x: -9.730169, y: 15.088925, z: 19.592747}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4808201594927462}
@@ -1656,6 +1658,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  playerHealth: {fileID: 0}
 --- !u!114 &114595854968452930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1702,6 +1705,18 @@ MonoBehaviour:
   damagePerTick: 0
   duration: 0
   timeBetweenEffect: 0
+  speedDamper: 0
+--- !u!114 &114747874722987714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515761076265150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378ff1da2e550474286a846c46d1bb8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114888587539373240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1910,6 +1925,18 @@ MonoBehaviour:
   timeBetweenFlash: 0.1
   amountToFlash: 5
   fadeToColorTime: 5
+--- !u!114 &114946145990283820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1073195041555706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 345663255d0228448b61d883810a16dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderShader: {fileID: 10, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!135 &135484969688531608
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1943,10 +1970,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.71530676
+  m_Height: 2.632019
   m_Direction: 1
-  m_Center: {x: 0, y: 0.81, z: 0}
+  m_Center: {x: -0.018591285, y: 0.7499628, z: -0.0050549507}
 --- !u!136 &136500385918002184
 CapsuleCollider:
   m_ObjectHideFlags: 1

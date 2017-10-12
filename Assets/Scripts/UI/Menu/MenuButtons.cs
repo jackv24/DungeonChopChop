@@ -2,23 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class MenuButtons : MonoBehaviour {
-
+public class MenuButtons : MonoBehaviour
+{
 	public int SceneIndex = 2;
 	public float sceneLoadDelay = 0.5f;
 
 	private bool clicked = false;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public Image fadeImage;
 
     public void MainMenu()
     {
@@ -46,7 +39,29 @@ public class MenuButtons : MonoBehaviour {
 
 	IEnumerator ChangeSceneDelay(int index)
 	{
-		yield return new WaitForSeconds(sceneLoadDelay);
+		if (fadeImage)
+		{
+			float elapsed = 0;
+
+			Color color = fadeImage.color;
+			color.a = 0;
+
+			while (elapsed < sceneLoadDelay)
+			{
+				color.a = elapsed / sceneLoadDelay;
+				fadeImage.color = color;
+
+				yield return new WaitForEndOfFrame();
+				elapsed += Time.deltaTime;
+			}
+
+			color.a = 1;
+			fadeImage.color = color;
+
+			yield return new WaitForEndOfFrame();
+		}
+		else
+			yield return new WaitForSeconds(sceneLoadDelay);
 
 		GameManager.Instance.ChangeScene(index);
 	}

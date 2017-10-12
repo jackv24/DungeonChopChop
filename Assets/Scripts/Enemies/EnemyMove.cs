@@ -24,6 +24,7 @@ public class EnemyMove : MonoBehaviour
     protected Health enemyHealth;
 
     protected bool runAway = false;
+    protected bool canMove = true;
     public bool usingNav = true;
     private int roamCounter = 0;
 
@@ -86,18 +87,34 @@ public class EnemyMove : MonoBehaviour
     protected void FollowPlayer()
     {
         //follows the closest player using nav mesh
-        if (usingNav)
+        if (canMove)
         {
-            if (InDistance(OverallRadiusFollow))
+            if (usingNav)
             {
-                if (agent.isOnNavMesh)
-                    agent.SetDestination(GetClosestPlayer().position);
+                if (InDistance(OverallRadiusFollow))
+                {
+                    if (agent.isOnNavMesh)
+                    {
+                        if (!GetClosestPlayer().GetComponent<Health>().isDead)
+                            agent.SetDestination(GetClosestPlayer().position);
+                        else
+                        {
+                            if (OtherwiseRoam)
+                                Roam(3);
+                        }
+                    }
+                }
                 else
                 {
                     if (OtherwiseRoam)
                         Roam(3);
                 }
             }
+        }
+        else
+        {
+            if (agent.isOnNavMesh)
+                agent.ResetPath();
         }
     }
 
@@ -118,18 +135,26 @@ public class EnemyMove : MonoBehaviour
 
     protected void Roam(float timeBetweenRoam)
     { 
-        roamCounter++; 
-        //a simple counter to stop recurring every frame
-        if (roamCounter > timeBetweenRoam * 60)
-        { 
-            //roams to a random position on the current tile
-            if (usingNav)
-            {
-                if (agent.isOnNavMesh)
-                    agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
-            }
-            roamCounter = 0; 
-        } 
+        if (canMove)
+        {
+            roamCounter++; 
+            //a simple counter to stop recurring every frame
+            if (roamCounter > timeBetweenRoam * 60)
+            { 
+                //roams to a random position on the current tile
+                if (usingNav)
+                {
+                    if (agent.isOnNavMesh)
+                        agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
+                }
+                roamCounter = 0; 
+            } 
+        }
+        else
+        {
+            if (agent.isOnNavMesh)
+                agent.ResetPath();
+        }
     }
 
     public bool InDistance(float radius)
@@ -192,7 +217,8 @@ public class EnemyMove : MonoBehaviour
             float distance = Vector3.Distance(player.transform.position, transform.position);
             if (distance < previousPlayerDistance)
             {
-                currentPlayer = player;
+                if (!player.playerMove.playerHealth.isDead)
+                    currentPlayer = player;
             }
             previousPlayerDistance = distance;
         }

@@ -31,7 +31,7 @@ public class ShopSpawner : MonoBehaviour
 	[Space()]
 	public List<ShopStall> shopStalls = new List<ShopStall>();
 
-	private List<InventoryItem> spawnedItems = new List<InventoryItem>();
+	private List<BaseItem> spawnedItems = new List<BaseItem>();
 
 	void Start()
 	{
@@ -54,7 +54,7 @@ public class ShopSpawner : MonoBehaviour
 
 				if (itemDatabase)
 				{
-					InventoryItem item = itemDatabase.GetItem(shopStalls[i].itemType, shopStalls[i].itemTier, spawnedItems);
+					BaseItem item = itemDatabase.GetItem(shopStalls[i].itemType, shopStalls[i].itemTier, spawnedItems);
 					spawnedItems.Add(item);
 
 					if(item)
@@ -91,6 +91,6 @@ public class ShopSpawner : MonoBehaviour
 		if (decoratorPrefabs.Length <= 0)
 			Debug.LogError("Shop spawner has no decorator prefabs!");
 
-		return decoratorPrefabs[LevelGenerator.Random.Next(0, decoratorPrefabs.Length)];
+		return decoratorPrefabs[Random.Range(0, decoratorPrefabs.Length)];
 	}
 }
