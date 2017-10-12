@@ -95,17 +95,18 @@ public class EnemyMove : MonoBehaviour
                 {
                     if (agent.isOnNavMesh)
                         agent.SetDestination(GetClosestPlayer().position);
-                    else
-                    {
-                        if (OtherwiseRoam)
-                            Roam(3);
-                    }
+                }
+                else
+                {
+                    if (OtherwiseRoam)
+                        Roam(3);
                 }
             }
         }
         else
         {
-            agent.ResetPath();
+            if (agent.isOnNavMesh)
+                agent.ResetPath();
         }
     }
 
@@ -143,7 +144,8 @@ public class EnemyMove : MonoBehaviour
         }
         else
         {
-            agent.ResetPath();
+            if (agent.isOnNavMesh)
+                agent.ResetPath();
         }
     }
 
