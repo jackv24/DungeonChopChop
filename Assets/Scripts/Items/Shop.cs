@@ -10,8 +10,8 @@ public class Shop : MonoBehaviour
 	public BaseItem sellingItem;
 	private GameObject itemGraphic;
 
-    [Space()]
-	public AudioClip[] purchaseSounds;
+	[Space()]
+	public SoundEffect purchaseSound;
 
     private AudioSource audioSource;
 
@@ -35,8 +35,7 @@ public class Shop : MonoBehaviour
 
     void PlaySound()
     {
-        int randomNumber = Random.Range(0, purchaseSounds.Length);
-        audioSource.PlayOneShot(purchaseSounds[randomNumber]);
+		SoundManager.PlaySound(purchaseSound, transform.position);
     }
 
 	void Update()
