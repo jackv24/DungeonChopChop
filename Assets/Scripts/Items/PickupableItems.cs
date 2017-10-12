@@ -16,12 +16,11 @@ public class PickupableItems : MonoBehaviour {
     protected void DidEnable()
     {
         spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
-        DoSpawnParticle();
     }
 
-    void DoSpawnParticle()
+    protected void DoSpawnParticle(Vector3 position)
     {
-        spawnEffects.EffectOnHit(particles, transform.position);
+        spawnEffects.EffectOnHit(particles, position);
     }
 
 }

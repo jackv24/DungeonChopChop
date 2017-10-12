@@ -768,6 +768,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a60bbd03b5083439968e54b13f9c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OverallRadiusFollow: 20
+  OtherwiseRoam: 1
   runAwayAfterAttackTime: 1
   layerMask:
     serializedVersion: 2
@@ -778,6 +780,7 @@ MonoBehaviour:
   doesSplit: 0
   splitInterval: 2
   splitAmount: 0
+  maxAmountOfSlimes: 0
   slime: {fileID: 0}
   damageToEnemies: 1
   followProximity: 8
@@ -785,6 +788,9 @@ MonoBehaviour:
   waitTillLeep: 1
   inAirSpeed: 4
   timeBetweenRoam: 0.5
+  timeBetweenStopMin: 2
+  timeBetweenStopMax: 4
+  stopTime: 1
   friendly: 0
 --- !u!114 &114690075387557218
 MonoBehaviour:

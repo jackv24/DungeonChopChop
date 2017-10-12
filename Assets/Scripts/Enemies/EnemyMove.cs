@@ -6,6 +6,10 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
+    [Tooltip("All enemies have this radius")]
+    public float OverallRadiusFollow = 30;
+    [Tooltip("If not in radius, roam or not")]
+    public bool OtherwiseRoam = true;
     public float runAwayAfterAttackTime = 1;
     public LayerMask layerMask;
     public bool LockY = true;
@@ -20,6 +24,7 @@ public class EnemyMove : MonoBehaviour
     protected Health enemyHealth;
 
     protected bool runAway = false;
+    protected bool canMove = true;
     public bool usingNav = true;
     private int roamCounter = 0;
 
@@ -82,11 +87,32 @@ public class EnemyMove : MonoBehaviour
     protected void FollowPlayer()
     {
         //follows the closest player using nav mesh
-        if (usingNav)
+        if (canMove)
+        {
+            if (usingNav)
+            {
+                if (InDistance(OverallRadiusFollow))
+                {
+                    if (agent.isOnNavMesh)
+                        agent.SetDestination(GetClosestPlayer().position);
+                }
+                else
+                {
+                    if (OtherwiseRoam)
+                        Roam(3);
+                }
+            }
+        }
+        else
         {
             if (agent.isOnNavMesh)
-                agent.SetDestination(GetClosestPlayer().position);
+                agent.ResetPath();
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, OverallRadiusFollow);
     }
 
     protected void FollowEnemy()
@@ -101,18 +127,26 @@ public class EnemyMove : MonoBehaviour
 
     protected void Roam(float timeBetweenRoam)
     { 
-        roamCounter++; 
-        //a simple counter to stop recurring every frame
-        if (roamCounter > timeBetweenRoam * 60)
-        { 
-            //roams to a random position on the current tile
-            if (usingNav)
-            {
-                if (agent.isOnNavMesh)
-                    agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
-            }
-            roamCounter = 0; 
-        } 
+        if (canMove)
+        {
+            roamCounter++; 
+            //a simple counter to stop recurring every frame
+            if (roamCounter > timeBetweenRoam * 60)
+            { 
+                //roams to a random position on the current tile
+                if (usingNav)
+                {
+                    if (agent.isOnNavMesh)
+                        agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
+                }
+                roamCounter = 0; 
+            } 
+        }
+        else
+        {
+            if (agent.isOnNavMesh)
+                agent.ResetPath();
+        }
     }
 
     public bool InDistance(float radius)

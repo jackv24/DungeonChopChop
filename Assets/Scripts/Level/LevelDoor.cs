@@ -71,7 +71,11 @@ public class LevelDoor : MonoBehaviour
 
 					foreach (PlayerInformation p in players)
 					{
-						p.transform.position = transform.position + (-transform.forward) * exitDistance;
+						Health health = p.GetComponent<Health>();
+
+						//Only move player to door exit if they are alive
+						if(!health || health.health > 0)
+							p.transform.position = transform.position + (-transform.forward) * exitDistance;
 
 						//Re-enable all player scripts
 						PlayerMove move = p.GetComponent<PlayerMove>();

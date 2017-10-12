@@ -97,22 +97,28 @@ public class EnemyAttack : MonoBehaviour
         if(projAmount != 0)
             circleAngle = 360 / projAmount;
 
-        randomInterval = Random.Range(minInterval, maxInterval);
-        if (attackingType == TypesOfAttack.BasicShootIntervals)
+        if (enemyMove)
         {
-            BasicShootIntervals();
-        }
-        else if (attackingType == TypesOfAttack.ShootCircleIntervals)
-        {
-            ShootCircleIntervals();
-        }
-        else if (attackingType == TypesOfAttack.ShootCircleRandIntervals)
-        {
-            ShootCircleRandIntervals();
-        }
-        else if (attackingType == TypesOfAttack.BasicShootRandIntervals)
-        {
-            BasicShootRandIntervals();
+            if (enemyMove.InDistance(enemyMove.OverallRadiusFollow))
+            {
+                randomInterval = Random.Range(minInterval, maxInterval);
+                if (attackingType == TypesOfAttack.BasicShootIntervals)
+                {
+                    BasicShootIntervals();
+                }
+                else if (attackingType == TypesOfAttack.ShootCircleIntervals)
+                {
+                    ShootCircleIntervals();
+                }
+                else if (attackingType == TypesOfAttack.ShootCircleRandIntervals)
+                {
+                    ShootCircleRandIntervals();
+                }
+                else if (attackingType == TypesOfAttack.BasicShootRandIntervals)
+                {
+                    BasicShootRandIntervals();
+                }
+            }
         }
     }
 

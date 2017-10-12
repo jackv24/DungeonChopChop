@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4403471783915754}
   - component: {fileID: 20711263790970924}
+  - component: {fileID: 114946145990283820}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -996,7 +997,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515761076265150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.949591, y: -1.4735879, z: -12.596058}
+  m_LocalPosition: {x: -9.730169, y: 15.088925, z: 19.592747}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4808201594927462}
@@ -1702,6 +1703,7 @@ MonoBehaviour:
   damagePerTick: 0
   duration: 0
   timeBetweenEffect: 0
+  speedDamper: 0
 --- !u!114 &114888587539373240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1910,6 +1912,18 @@ MonoBehaviour:
   timeBetweenFlash: 0.1
   amountToFlash: 5
   fadeToColorTime: 5
+--- !u!114 &114946145990283820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1073195041555706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 345663255d0228448b61d883810a16dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderShader: {fileID: 10, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!135 &135484969688531608
 SphereCollider:
   m_ObjectHideFlags: 1

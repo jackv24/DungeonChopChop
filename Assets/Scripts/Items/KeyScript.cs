@@ -16,6 +16,13 @@ public class KeyScript : PickupableItems
         counter = 0;
         canPickup = false;
         DidEnable();
+        StartCoroutine(wait());
+    }
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(.1f);
+        DoSpawnParticle(transform.position);
     }
 
     // Update is called once per frame

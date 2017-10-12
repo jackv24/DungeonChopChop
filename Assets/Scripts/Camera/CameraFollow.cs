@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
 
 	[Header("Positioning")]
     public List<Transform> players = new List<Transform>();
+	private List<Health> playersHealth = new List<Health>();
 
 	[Space()]
 	public float height = 15.0f;
@@ -44,7 +45,10 @@ public class CameraFollow : MonoBehaviour
 		PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
 
 		foreach (PlayerInformation p in playerInfos)
+		{
 			players.Add(p.transform);
+			playersHealth.Add(p.GetComponent<Health>());
+		}
 
 		if(LevelGenerator.Instance)
 		{
@@ -68,12 +72,18 @@ public class CameraFollow : MonoBehaviour
 		//Calculate average position between players
 		if (players.Count > 0)
 		{
-			foreach (Transform player in players)
+			int numPlayers = 0;
+
+			for(int i = 0; i < Mathf.Min(players.Count, playersHealth.Count); i++)
 			{
-				targetPos += player.position;
+				if (playersHealth[i].health > 0)
+				{
+					targetPos += players[i].position;
+					numPlayers++;
+				}
 			}
 
-			targetPos /= players.Count;
+			targetPos /= numPlayers;
 		}
 
 		///Clamp to tile bounds
