@@ -8,11 +8,20 @@ public class GemScript : PickupableItems {
 
     private int counter = 0;
 
+    private BoxCollider box;
+
+    void Start()
+    {
+        box = GetComponent<BoxCollider>();
+    }
+
     void OnEnable()
     {
         counter = 0;
         canPickup = false;
         DidEnable();
+        box = GetComponent<BoxCollider>();
+        box.enabled = false;
         StartCoroutine(wait());
     }
 
@@ -28,6 +37,7 @@ public class GemScript : PickupableItems {
         if (counter > pickupDelay * 60)
         {
             canPickup = true;
+            box.enabled = true;
         }
     }
 
