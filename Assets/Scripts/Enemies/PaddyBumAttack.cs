@@ -6,7 +6,6 @@ using UnityEngine;
 public enum PaddyType
 {
     RadiusExplode,
-    HitExplode,
     TouchExplode,
 }
 
@@ -31,6 +30,7 @@ public class PaddyBumAttack : EnemyAttack {
                 {
                     if (enemyMove.InDistance(radiusTillExplode))
                     {
+                        enemyHealth.SetColorSeconds(Color.red, .5f);
                         animator.SetTrigger("Exploding");
                         waitingToExplode = true;
                     }
@@ -74,7 +74,7 @@ public class PaddyBumAttack : EnemyAttack {
         if (col.gameObject.layer == 16)
         {
             //if the type is hit explode
-            if (paddyType == PaddyType.HitExplode)
+            if (paddyType == PaddyType.TouchExplode)
             {
                 //kill itself
                 if (!waitingToExplode)

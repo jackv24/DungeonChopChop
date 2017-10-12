@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb1a30bb8926c14b8a8fa1cdbb8a94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathType: 3
+  deathType: 4
   amountToSplit: 0
   splitEnemy: {fileID: 0}
   explodeRadius: 5
@@ -305,8 +305,8 @@ MonoBehaviour:
   minInterval: 0
   maxInterval: 0
   paddyType: 0
-  radiusTillExplode: 10
-  timeTillExplode: 3
+  radiusTillExplode: 5
+  timeTillExplode: 1
   animatorMultiplier: 2
 --- !u!114 &114246489622267872
 MonoBehaviour:
@@ -327,11 +327,13 @@ MonoBehaviour:
   isBurned: 0
   isSlowlyDying: 0
   isFrozen: 0
+  isSandy: 0
   isDead: 0
   poisonColor: {r: 0.64705884, g: 0.43771628, b: 0.6412839, a: 0.616}
   burnColor: {r: 0.6102941, g: 0.31860942, b: 0.31860942, a: 0.609}
   slowlyDyingColor: {r: 0.4414226, g: 0.66176474, b: 0.4233348, a: 0.622}
   frozenColor: {r: 0.25865054, g: 0.6600049, b: 0.7647059, a: 1}
+  sandyColor: {r: 0, g: 0, b: 0, a: 0}
   hitParticles: []
   hitSounds:
   - {fileID: 8300000, guid: 94fe3317e53832b49acfdd534adc3cf8, type: 3}
@@ -380,6 +382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f729e095034461342b067c758042ecf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OverallRadiusFollow: 30
+  OtherwiseRoam: 1
   runAwayAfterAttackTime: 1
   layerMask:
     serializedVersion: 2
