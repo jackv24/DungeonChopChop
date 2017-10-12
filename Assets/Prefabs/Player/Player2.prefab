@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 136903360440838614}
   - component: {fileID: 54182153643785838}
   - component: {fileID: 114775690957346426}
+  - component: {fileID: 114963335786705976}
   m_Layer: 14
   m_Name: Player2
   m_TagString: Player2
@@ -1732,6 +1733,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  playerHealth: {fileID: 0}
 --- !u!114 &114281047081166158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1924,6 +1926,17 @@ MonoBehaviour:
   invincibleSphere: {fileID: 1201333869898874}
   playerMove: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114963335786705976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272509565907242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378ff1da2e550474286a846c46d1bb8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135099825397732412
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1970,10 +1983,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.71530676
+  m_Height: 2.632019
   m_Direction: 1
-  m_Center: {x: 0, y: 0.81, z: 0}
+  m_Center: {x: -0.018591285, y: 0.7499628, z: -0.0050549507}
 --- !u!137 &137516248918457538
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

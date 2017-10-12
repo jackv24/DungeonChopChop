@@ -30,7 +30,8 @@ public class PlayerMove : MonoBehaviour
 	private PlayerInformation playerInformation;
 	private Animator animator;
 	private PlayerAttack playerAttack;
-    private Health playerHealth;
+    [HideInInspector]
+    public Health playerHealth;
 
 	private Vector2 inputVector;
 	private Vector3 targetMoveVector;

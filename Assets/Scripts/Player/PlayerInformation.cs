@@ -135,6 +135,26 @@ public class PlayerInformation : MonoBehaviour
         return 0;
     }
 
+    public void Revive(PlayerInformation deadPlayer, PlayerInformation alivePlayer)
+    {
+        //half the amount of alive players health
+        float health = alivePlayer.health.health / 2;
+        //set the alive players health
+        alivePlayer.health.health = health;
+        //call the event function
+        alivePlayer.health.HealthChanged();
+
+        //sets the dead players health
+        deadPlayer.health.health = health;
+        //call this event function
+        deadPlayer.health.HealthChanged();
+        //do particles and revive stuff
+        //////////////////////////////particles
+        deadPlayer.animator.SetBool("Die", false);
+        //make sure player is no longer dead
+        deadPlayer.health.isDead = false;
+    }
+
     public void CureOrbChanged()
     {
         cureOrbChange();

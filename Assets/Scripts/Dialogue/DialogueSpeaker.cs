@@ -35,13 +35,13 @@ public class DialogueSpeaker : MonoBehaviour
 
 	//Does not need to happen every frame
 	void FixedUpdate()
-	{
-		//if colliders were found, player is in range
-		if (objs.Count > 0)
-		{
-			//if box isn't already showing, show box
-			if (!currentBox)
-			{
+    {
+        //if colliders were found, player is in range
+        if (objs.Count > 0)
+        {
+            //if box isn't already showing, show box
+            if (!currentBox)
+            {
                 float closestDistance = float.MaxValue;
                 GameObject closestObject = null;
 
@@ -57,11 +57,11 @@ public class DialogueSpeaker : MonoBehaviour
                 }
 
                 Open(closestObject);
-			}
-		}
-		else if (currentBox)
-			Close();
-	}
+            }
+        }
+        else if (currentBox)
+            Close();
+    }
 
 	IEnumerator DelayEntering()
 	{
@@ -69,6 +69,14 @@ public class DialogueSpeaker : MonoBehaviour
 
 		allowEntering = true;
 	}
+
+    void OnDestroy()
+    {
+        if (currentBox)
+        {
+            currentBox.gameObject.SetActive(false);
+        }
+    }
 
 	void OnTriggerEnter(Collider collider)
 	{
