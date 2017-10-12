@@ -86,7 +86,8 @@ public class Health : MonoBehaviour
 
     public void AffectHealth(float healthDeta)
     {
-        TemporaryInvincibility();
+        if (health > 0)
+            TemporaryInvincibility();
         health += healthDeta;
         if (OnHealthChange != null)
         {
@@ -433,7 +434,7 @@ public class Health : MonoBehaviour
         //checks if the game has an enemy drop script, if it does it is an enemy
         if (!IsEnemy)
         {
-            animator.SetTrigger("Die");
+            animator.SetBool("Die", true);
         }
     }
 

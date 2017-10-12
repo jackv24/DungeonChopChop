@@ -94,7 +94,15 @@ public class EnemyMove : MonoBehaviour
                 if (InDistance(OverallRadiusFollow))
                 {
                     if (agent.isOnNavMesh)
-                        agent.SetDestination(GetClosestPlayer().position);
+                    {
+                        if (!GetClosestPlayer().GetComponent<Health>().isDead)
+                            agent.SetDestination(GetClosestPlayer().position);
+                        else
+                        {
+                            if (OtherwiseRoam)
+                                Roam(3);
+                        }
+                    }
                 }
                 else
                 {
@@ -209,7 +217,8 @@ public class EnemyMove : MonoBehaviour
             float distance = Vector3.Distance(player.transform.position, transform.position);
             if (distance < previousPlayerDistance)
             {
-                currentPlayer = player;
+                if (!player.playerMove.playerHealth.isDead)
+                    currentPlayer = player;
             }
             previousPlayerDistance = distance;
         }
