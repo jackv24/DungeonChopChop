@@ -7,7 +7,7 @@ public class Shop : MonoBehaviour
 {
 	public Transform itemSpawn;
 
-	public InventoryItem sellingItem;
+	public BaseItem sellingItem;
 	private GameObject itemGraphic;
 
     [Space()]
@@ -51,10 +51,31 @@ public class Shop : MonoBehaviour
 
 				sellingItem.Pickup(playerInfo);
 
-				if(sellingItem.usePrefabForPickup && sellingItem.itemPrefab)
+				if (sellingItem is InventoryItem)
 				{
-					GameObject obj = ObjectPooler.GetPooledObject(sellingItem.itemPrefab);
-					obj.transform.position = playerInfo.transform.position;
+					InventoryItem item = (InventoryItem)sellingItem;
+
+					if (item.usePrefabForPickup && item.itemPrefab)
+					{
+						GameObject obj = ObjectPooler.GetPooledObject(item.itemPrefab);
+						obj.transform.position = playerInfo.transform.position;
+					}
+				}
+				else if(sellingItem is Charm)
+				{
+					if (LevelVars.Instance && LevelVars.Instance.droppedCharmPrefab)
+					{
+						GameObject obj = ObjectPooler.GetPooledObject(LevelVars.Instance.droppedCharmPrefab);
+
+						obj.transform.position = playerInfo.transform.position;
+
+						CharmPickup pickup = obj.GetComponentInChildren<CharmPickup>();
+						if (pickup)
+						{
+							pickup.representingCharm = (Charm)sellingItem;
+							pickup.Pickup(playerInfo);
+						}
+					}
 				}
 
 				Destroy(itemGraphic);
@@ -65,22 +86,34 @@ public class Shop : MonoBehaviour
 		}
 	}
 
-	public void SpawnItem(InventoryItem item)
+	public void SpawnItem(BaseItem item)
 	{
 		sellingItem = item;
 
-		if (itemSpawn && item.itemPrefab)
+		if (item is InventoryItem)
 		{
-			itemGraphic = Instantiate(item.itemPrefab, itemSpawn);
-			itemGraphic.transform.localPosition = Vector3.zero;
+			InventoryItem it = (InventoryItem)item;
 
-			//Only need to display this item, don't need any behaviours
-			Component[] components = itemGraphic.GetComponentsInChildren<Component>();
-			for(int i = components.Length - 1; i >= 0; i--)
+			if (itemSpawn && it.itemPrefab)
 			{
-				if (!(components[i] is MeshRenderer || components[i] is MeshFilter || components[i] is Transform))
-					DestroyImmediate(components[i], false);
+				itemGraphic = Instantiate(it.itemPrefab, itemSpawn);
+				itemGraphic.transform.localPosition = Vector3.zero;
+
+				//Only need to display this item, don't need any behaviours
+				Component[] components = itemGraphic.GetComponentsInChildren<Component>();
+				for (int i = components.Length - 1; i >= 0; i--)
+				{
+					if (!(components[i] is MeshRenderer || components[i] is MeshFilter || components[i] is Transform))
+						DestroyImmediate(components[i], false);
+				}
 			}
+		}
+		else if(item is Charm)
+		{
+			if (LevelGenerator.Instance)
+				LevelGenerator.Instance.OnGenerationFinished += SpawnCharm;
+			else
+				SpawnCharm();
 		}
 
 		if (!speaker)
@@ -97,6 +130,33 @@ public class Shop : MonoBehaviour
 			//Dialogue box should only show piece of text - the shop text
 			string text = speaker.lines[0];
 			speaker.lines = new string[] { string.Format(text, item.displayName, item.cost) };
+		}
+	}
+
+	void OnDestroy()
+	{
+		if (LevelGenerator.Instance)
+			LevelGenerator.Instance.OnGenerationFinished -= SpawnCharm;
+	}
+
+	void SpawnCharm()
+	{
+		if (LevelVars.Instance && LevelVars.Instance.droppedCharmPrefab)
+		{
+			itemGraphic = Instantiate(LevelVars.Instance.droppedCharmPrefab, itemSpawn);
+			itemGraphic.transform.localPosition = Vector3.zero;
+
+			CharmPickup pickup = itemGraphic.GetComponentInChildren<CharmPickup>();
+			if (pickup)
+				pickup.representingCharm = (Charm)sellingItem;
+
+			//Only need to display this item, don't need any behaviours
+			Component[] components = itemGraphic.GetComponentsInChildren<Component>();
+			for (int i = components.Length - 1; i >= 0; i--)
+			{
+				if (components[i] is Collider || components[i] is Rigidbody)
+					DestroyImmediate(components[i], false);
+			}
 		}
 	}
 

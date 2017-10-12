@@ -57,27 +57,32 @@ public class CharmPickup : MonoBehaviour
 
 			PlayerInformation playerInfo = col.GetComponent<PlayerInformation>();
 
-			if (playerInfo)
+			Pickup(playerInfo);
+		}
+	}
+
+	public void Pickup(PlayerInformation playerInfo)
+	{
+		if (playerInfo)
+		{
+			playerInfo.PickupCharm(representingCharm);
+
+			if (pickupUIPrefab)
 			{
-				playerInfo.PickupCharm(representingCharm);
+				GameObject obj = ObjectPooler.GetPooledObject(pickupUIPrefab);
 
-				if(pickupUIPrefab)
-				{
-					GameObject obj = ObjectPooler.GetPooledObject(pickupUIPrefab);
-
-					CharmPopup popup = obj.GetComponent<CharmPopup>();
-					if(popup)
-						popup.Init(representingCharm, playerInfo.transform);
-				}
-
-				if(pickupEffect)
-				{
-					GameObject obj = ObjectPooler.GetPooledObject(pickupEffect);
-					obj.transform.position = transform.position;
-				}
-
-				transform.parent.gameObject.SetActive(false);
+				CharmPopup popup = obj.GetComponent<CharmPopup>();
+				if (popup)
+					popup.Init(representingCharm, playerInfo.transform);
 			}
+
+			if (pickupEffect)
+			{
+				GameObject obj = ObjectPooler.GetPooledObject(pickupEffect);
+				obj.transform.position = transform.position;
+			}
+
+			transform.parent.gameObject.SetActive(false);
 		}
 	}
 }

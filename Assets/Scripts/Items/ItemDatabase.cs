@@ -11,7 +11,7 @@ public class ItemDatabase : ScriptableObject
 		[System.Serializable]
 		public class Tier
 		{
-			public List<InventoryItem> items = new List<InventoryItem>();
+			public List<BaseItem> items = new List<BaseItem>();
 		}
 
 		public List<Tier> tiers = new List<Tier>();
@@ -21,14 +21,16 @@ public class ItemDatabase : ScriptableObject
 	{
 		Consumables,
 		Weapons,
-		Armour
+		Armour,
+		Charms
 	}
 
 	public Group consumables;
 	public Group weapons;
 	public Group armour;
+	public Group charms;
 
-	public InventoryItem GetItem(ItemType type, int tier, List<InventoryItem> excludeItems = null)
+	public BaseItem GetItem(ItemType type, int tier, List<BaseItem> excludeItems = null)
 	{
 		Group group = null;
 
@@ -43,6 +45,9 @@ public class ItemDatabase : ScriptableObject
 			case ItemType.Armour:
 				group = armour;
 				break;
+			case ItemType.Charms:
+				group = charms;
+				break;
 		}
 
 		if(group != null)
@@ -54,10 +59,10 @@ public class ItemDatabase : ScriptableObject
 			{
 				Group.Tier itemTier = group.tiers[tier];
 
-				List<InventoryItem> possibleItems = new List<InventoryItem>(itemTier.items);
+				List<BaseItem> possibleItems = new List<BaseItem>(itemTier.items);
 
 				//Remove items that are excluded
-				foreach(InventoryItem i in excludeItems)
+				foreach(BaseItem i in excludeItems)
 				{
 					if (possibleItems.Contains(i))
 						possibleItems.Remove(i);
@@ -65,9 +70,9 @@ public class ItemDatabase : ScriptableObject
 
 				//if resulting list is empty, just use any item
 				if(possibleItems.Count <= 0)
-					possibleItems = new List<InventoryItem>(itemTier.items);
+					possibleItems = new List<BaseItem>(itemTier.items);
 
-				InventoryItem item = possibleItems[Random.Range(0, possibleItems.Count)];
+				BaseItem item = possibleItems[Random.Range(0, possibleItems.Count)];
 
 				if (item)
 					return item;
