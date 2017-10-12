@@ -40,8 +40,11 @@ public class ReviveScript : MonoBehaviour {
         {
             if (thisPlayer.playerMove.playerHealth.health <= 0)
             {
-                obj = Instantiate(Resources.Load<GameObject>("ReviveObject"), transform.position, Quaternion.Euler(0, 0, 0));
-                spawnedDialogue = true;      
+                if (GameManager.Instance.players.Count > 0)
+                {
+                    obj = Instantiate(Resources.Load<GameObject>("ReviveObject"), transform.position, Quaternion.Euler(0, 0, 0));
+                    spawnedDialogue = true;      
+                }
             }
         }
     }
