@@ -113,11 +113,11 @@ public class SlimeMove : EnemyMove {
 
     bool CanSplitSlimes()
     {
-        Collider[] slimes = Physics.OverlapSphere(transform.position, 500, layerMask);
+        BoxCollider[] slimes = (BoxCollider[])Physics.OverlapSphere(transform.position, 500, layerMask);
         Debug.Log(slimes.Length);
         if (slimes.Length > 0)
         {
-            if (slimes.Length < (maxAmountOfSlimes + 4))
+            if (slimes.Length < maxAmountOfSlimes)
             {
                 return true;
             }

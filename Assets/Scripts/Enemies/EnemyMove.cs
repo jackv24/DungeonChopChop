@@ -6,6 +6,10 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
+    [Tooltip("All enemies have this radius")]
+    public float OverallRadiusFollow = 30;
+    [Tooltip("If not in radius, roam or not")]
+    public bool OtherwiseRoam = true;
     public float runAwayAfterAttackTime = 1;
     public LayerMask layerMask;
     public bool LockY = true;
@@ -84,9 +88,22 @@ public class EnemyMove : MonoBehaviour
         //follows the closest player using nav mesh
         if (usingNav)
         {
-            if (agent.isOnNavMesh)
-                agent.SetDestination(GetClosestPlayer().position);
+            if (InDistance(OverallRadiusFollow))
+            {
+                if (agent.isOnNavMesh)
+                    agent.SetDestination(GetClosestPlayer().position);
+                else
+                {
+                    if (OtherwiseRoam)
+                        Roam(3);
+                }
+            }
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, OverallRadiusFollow);
     }
 
     protected void FollowEnemy()
