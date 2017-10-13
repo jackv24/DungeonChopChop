@@ -22,13 +22,15 @@ public class ItemDatabase : ScriptableObject
 		Consumables,
 		Weapons,
 		Armour,
-		Charms
+		Charms,
+		Map
 	}
 
 	public Group consumables;
 	public Group weapons;
 	public Group armour;
 	public Group charms;
+	public Group maps;
 
 	public BaseItem GetItem(ItemType type, int tier, List<BaseItem> excludeItems = null)
 	{
@@ -47,6 +49,9 @@ public class ItemDatabase : ScriptableObject
 				break;
 			case ItemType.Charms:
 				group = charms;
+				break;
+			case ItemType.Map:
+				group = maps;
 				break;
 		}
 

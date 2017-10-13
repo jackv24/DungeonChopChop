@@ -561,7 +561,11 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-  hitSounds: []
+  hitSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
   timeBetweenFlash: 1
   amountToFlash: 1
@@ -653,7 +657,11 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-  deathSounds: []
+  deathSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
 --- !u!137 &137212706487900252
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -806,7 +814,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1866571608524894}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.05
   m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50

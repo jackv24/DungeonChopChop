@@ -38,7 +38,7 @@ public class Health : MonoBehaviour
 
     [Space()]
     public AmountOfParticleTypes[] hitParticles;
-    public AudioClip[] hitSounds;
+    public SoundEffect hitSounds;
     public Color hitColor;
 
     [Space()]
@@ -88,6 +88,7 @@ public class Health : MonoBehaviour
     {
         if (health > 0)
             TemporaryInvincibility();
+        
         health += healthDeta;
         if (OnHealthChange != null)
         {
@@ -124,12 +125,7 @@ public class Health : MonoBehaviour
 
     void DoHitSound()
     {
-        if (hitSounds.Length > 0)
-        {
-            int random = Random.Range(0, hitSounds.Length);
-            if (GetComponent<AudioSource>())
-                GetComponent<AudioSource>().PlayOneShot(hitSounds[random]);
-        }
+        SoundManager.PlaySound(hitSounds, transform.position);
     }
 
     void DoHitParticle()
