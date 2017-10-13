@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 6
+  hitAmount: 3
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -322,6 +322,18 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  hitSounds:
+    clips:
+    - {fileID: 8300000, guid: 5b1983344967cf14095a25d16fff47c3, type: 3}
+    volume: 1
+    minPitchVariance: -0.3
+    maxPitchVariance: 0.3
+  destroySounds:
+    clips:
+    - {fileID: 8300000, guid: 75fd2ca602aa5de4285c3346ae7ec597, type: 3}
+    volume: 1
+    minPitchVariance: -0.3
+    maxPitchVariance: 0.3
 --- !u!114 &114746231859967636
 MonoBehaviour:
   m_ObjectHideFlags: 1
