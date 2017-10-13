@@ -8,7 +8,7 @@ public class ReplaceMaterialWindow : EditorWindow
 	private Material currentMaterial;
 	private Material replaceMaterial;
 
-	private bool shadows;
+	private bool shadows = true;
 
 	[MenuItem("Jack's Helper Functions/Replace Material")]
 	static void Init()
@@ -21,8 +21,8 @@ public class ReplaceMaterialWindow : EditorWindow
 	{
 		GUILayout.Label("Replace Material", EditorStyles.boldLabel);
 
-		currentMaterial = (Material)EditorGUILayout.ObjectField(currentMaterial, typeof(Material), false);
-		replaceMaterial = (Material)EditorGUILayout.ObjectField(replaceMaterial, typeof(Material), false);
+		currentMaterial = (Material)EditorGUILayout.ObjectField("Material TO replace", currentMaterial, typeof(Material), false);
+		replaceMaterial = (Material)EditorGUILayout.ObjectField("Material to replace WITH", replaceMaterial, typeof(Material), false);
 
 		EditorGUILayout.Space();
 
