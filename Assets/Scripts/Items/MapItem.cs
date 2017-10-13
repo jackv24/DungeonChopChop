@@ -30,34 +30,42 @@ public class MapItem : BaseItem
 			foreach(LevelTile tile in LevelGenerator.Instance.generatedTiles)
 			{
 				bool shouldReveal = false;
+				bool hasDungeonPin = false;
 
 				switch(tile.Biome)
 				{
 					case LevelTile.Biomes.Grass:
-						if (revealGrass)
-							shouldReveal = true;
+						shouldReveal = revealGrass;
 						break;
 					case LevelTile.Biomes.Forest:
-						if (revealForest)
-							shouldReveal = true;
+						shouldReveal = revealForest;
+						hasDungeonPin = revealDungeonForest;
 						break;
 					case LevelTile.Biomes.Desert:
-						if (revealDesert)
-							shouldReveal = true;
+						shouldReveal = revealDesert;
+						hasDungeonPin = revealDungeonDesert;
 						break;
 					case LevelTile.Biomes.Fire:
-						if (revealFire)
-							shouldReveal = true;
+						shouldReveal = revealFire;
+						hasDungeonPin = revealDungeonFire;
 						break;
 					case LevelTile.Biomes.Ice:
-						if (revealIce)
-							shouldReveal = true;
+						shouldReveal = revealIce;
+						hasDungeonPin = revealDungeonIce;
 						break;
 				}
 
 				if(shouldReveal && tile != LevelGenerator.Instance.currentTile)
+					tile.ShowTile(false, false);
+
+				if (hasDungeonPin)
 				{
-					tile.ShowTile(false);
+					DungeonEntrance dungeon = tile.GetComponentInChildren<DungeonEntrance>();
+
+					if(dungeon)
+					{
+						tile.Reveal();
+					}
 				}
 			}
 		}

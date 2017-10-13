@@ -55,14 +55,7 @@ public class SpawnPlayersManager : MonoBehaviour
 		player.GetComponent<PlayerInformation> ().playerIndex = counter;
 		counter++;
 		SetUI ();
-        StartCoroutine(wait(player));
 	}
-
-    IEnumerator wait(GameObject pl)
-    {
-        yield return new WaitForSeconds(1.5f);
-        pl.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, spawnPosition.z);
-    }
 
 	void SetUI()
 	{

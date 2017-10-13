@@ -85,7 +85,7 @@ public class LevelGenerator : MonoBehaviour
 					foreach(LevelTile tile in generatedTiles)
 					{
 						if(tile != currentTile)
-							tile.ShowTile(false);
+							tile.ShowTile(false, true);
 					}
 				}
 			}
@@ -480,9 +480,9 @@ public class LevelGenerator : MonoBehaviour
 			for (int i = 0; i < generatedTiles.Count; i++)
 			{
 				if (!LevelVars.Instance.levelData.inDungeon && LevelVars.Instance.levelData.clearedTiles.Contains(generatedTiles[i].index))
-					generatedTiles[i].ShowTile(false);
+					generatedTiles[i].ShowTile(false, true);
 				else
-					generatedTiles[i].ShowTile(false, false);
+					generatedTiles[i].ShowTile(false, true, false);
 			}
 		}
 

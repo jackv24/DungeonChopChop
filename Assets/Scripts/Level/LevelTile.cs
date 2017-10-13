@@ -240,7 +240,7 @@ public class LevelTile : MonoBehaviour
 		StartCoroutine(SwitchTile(this, oldTile));
 	}
 
-	public void ShowTile(bool inside, bool revealMap = true)
+	public void ShowTile(bool inside, bool reveal, bool revealMap = true)
 	{
 		//Show/hide meshes
 		Renderer[] rends = GetComponentsInChildren<Renderer>();
@@ -275,9 +275,15 @@ public class LevelTile : MonoBehaviour
 					d.ShowOnMap();
 			}
 
-			if (OnTileReveal != null)
-				OnTileReveal();
+			if (reveal)
+				Reveal();
 		}
+	}
+
+	public void Reveal()
+	{
+		if (OnTileReveal != null)
+			OnTileReveal();
 	}
 
 	IEnumerator SwitchTile(LevelTile newTile, LevelTile oldTile)
@@ -301,14 +307,14 @@ public class LevelTile : MonoBehaviour
 				oldTile.OnTileExit();
 
 			//Disable rendering of old tile
-			oldTile.ShowTile(false);
+			oldTile.ShowTile(false, true);
 		}
 
 		///Enter new tile
 		if (newTile)
 		{
 			//Enable rendering of new tile
-			ShowTile(true);
+			ShowTile(true, true);
 
 			//Spawn enemies in new tile
 			EnemySpawner newSpawner = GetComponentInChildren<EnemySpawner>();
