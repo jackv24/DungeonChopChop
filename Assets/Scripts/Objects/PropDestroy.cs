@@ -7,6 +7,8 @@ public class PropDestroy : MonoBehaviour {
     public int hitAmount;
     [Tooltip("Amount of different particle types eg 'Dust, Smoke, Shrapnel'")]
     public AmountOfParticleTypes[] amountOfParticleTypes;
+    public SoundEffect hitSounds;
+    public SoundEffect destroySounds;
 
     private SpawnEffects spawnEffects;
 
@@ -23,6 +25,8 @@ public class PropDestroy : MonoBehaviour {
             if (spawnEffects)
                 spawnEffects.EffectOnDeath(amountOfParticleTypes, transform.position);
 
+            //do sound
+            SoundManager.PlaySound(destroySounds, transform.position);
             //do drop
             GetComponent<Drops>().DoDrop();
 
@@ -34,5 +38,10 @@ public class PropDestroy : MonoBehaviour {
     {
         if (spawnEffects)
             spawnEffects.EffectOnHit(amountOfParticleTypes, new Vector3(transform.position.x, GetComponent<Collider>().bounds.max.y + .1f, transform.position.z));
+    }
+
+    public void HitSound()
+    {
+        SoundManager.PlaySound(hitSounds, transform.position);
     }
 }

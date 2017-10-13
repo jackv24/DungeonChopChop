@@ -67,15 +67,6 @@ public class SwordCollision : MonoBehaviour {
                 //else just do the normal damage
                 enemyHealth.AffectHealth(-playerInfo.GetSwordDamage());
 
-                //checks what state the players animation is in
-                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("TripleAttack"))
-                {
-                    if (animator.GetCurrentAnimatorStateInfo(1).normalizedTime < .7f)
-                    {
-                        //do the little pause for feelings
-                        //StartCoroutine(QuickGamePause(col.collider));
-                    }
-                }
                 //set the status effect depending on the weapons effect
                 if (swordStats.weaponEffect == WeaponEffect.Burn)
                     enemyHealth.SetBurned(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
@@ -100,6 +91,7 @@ public class SwordCollision : MonoBehaviour {
             //do the props effect then destroy it
             col.gameObject.GetComponent<PropDestroy>().DoEffect();
             col.gameObject.GetComponent<PropDestroy>().hitAmount--;
+            col.gameObject.GetComponent<PropDestroy>().HitSound();
         }
 
     }
