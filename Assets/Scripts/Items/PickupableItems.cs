@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PickupableItems : MonoBehaviour {
 
+    [Tooltip("Amount of force the item comes out of whatever its dropped by")]
+    public float force = 5;
+    [Tooltip("The max velocity on the items when they fly out")]
+    public float maxVel = 1;
     [HideInInspector]
     public bool canPickup = false;
     [Tooltip("Time till the player can pick up the coin")]
@@ -14,11 +18,13 @@ public class PickupableItems : MonoBehaviour {
     public AmountOfParticleTypes[] particles;
 
     protected SpawnEffects spawnEffects;
+    protected Rigidbody rb;
 
     private Renderer[] renderers;
 
     protected void DidEnable()
     {
+        rb = GetComponent<Rigidbody>();
         spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
         if (doesDespawn)
             StartCoroutine(WaitToDestroy());

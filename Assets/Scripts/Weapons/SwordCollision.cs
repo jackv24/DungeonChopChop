@@ -144,6 +144,9 @@ public class SwordCollision : MonoBehaviour {
             //set player white
             playerHealth.SetWhite();
 
+            //do sound
+            SoundManager.PlaySound(playerAttack.chargeReadySounds, transform.position);
+
             //create the particle that shows when the spin attack is ready
             GameObject readyParticle = ObjectPooler.GetPooledObject(spinReadyParticle);
             readyParticle.transform.parent = transform;

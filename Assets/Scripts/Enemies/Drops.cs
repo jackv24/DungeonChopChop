@@ -61,16 +61,21 @@ public class Drops : MonoBehaviour
     {
         //creates the item and sets the position to the enemies position
         GameObject item = ObjectPooler.GetPooledObject(obj);
-        if (transform.GetComponent<Collider>())
-        {
-            float x = UnityEngine.Random.Range(col.bounds.min.x, col.bounds.max.x);
-            float y = UnityEngine.Random.Range(col.bounds.min.y, col.bounds.max.y);
-            float z = UnityEngine.Random.Range(col.bounds.min.z, col.bounds.max.z);
-            item.transform.position = new Vector3(x, y, z);
-        }
-        else
-        {
-            item.transform.position = transform.position;
-        }
+
+        item.transform.position = transform.position;
+
+
+
+//        if (transform.GetComponent<Collider>())
+//        {
+//            float x = UnityEngine.Random.Range(col.bounds.min.x, col.bounds.max.x);
+//            float y = UnityEngine.Random.Range(col.bounds.min.y, col.bounds.max.y);
+//            float z = UnityEngine.Random.Range(col.bounds.min.z, col.bounds.max.z);
+//            item.transform.position = new Vector3(x, y, z);
+//        }
+//        else
+//        {
+//            
+//        }
     }
 }

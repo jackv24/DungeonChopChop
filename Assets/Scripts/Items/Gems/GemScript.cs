@@ -8,13 +8,12 @@ public class GemScript : PickupableItems {
 
     private int counter = 0;
 
-    void Start()
-    {
-        
-    }
-
     void OnEnable()
     {
+        //push the item out a bit
+        Vector3 direction = new Vector3(Random.insideUnitSphere.x, 1, Random.insideUnitSphere.z);
+        GetComponent<Rigidbody>().AddForce(direction * force, ForceMode.Impulse);
+
         counter = 0;
         canPickup = false;
         DidEnable();
@@ -35,6 +34,12 @@ public class GemScript : PickupableItems {
         {
             canPickup = true;
             Physics.IgnoreLayerCollision(15, 14, false);
+        }
+        //check if the velocity is greaters then the max, if so reset it to max
+        if (rb.velocity.magnitude > maxVel)
+        {
+            rb.velocity.Normalize();
+            rb.velocity = rb.velocity * maxVel;
         }
     }
 

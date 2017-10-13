@@ -33,7 +33,8 @@ public class CharmPopup : MonoBehaviour
 
 	void Update()
 	{
-		transform.position = followTransform.position + offset;
+        if (followTransform)
+		    transform.position = followTransform.position + offset;
 	}
 
 	public void Init(Charm charm, Transform player)

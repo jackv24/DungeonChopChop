@@ -69,6 +69,7 @@ public class PlayerAttack : MonoBehaviour
     public SoundEffect stopBlockSounds;
     public SoundEffect spinSounds;
     public SoundEffect chargeSpinSounds;
+    public SoundEffect chargeReadySounds;
 
     private int comboAmount;
     private CharacterController characterController;
