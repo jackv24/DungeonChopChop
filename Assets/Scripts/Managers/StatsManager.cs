@@ -10,7 +10,7 @@ public enum StatName
 	Spread,
 	RunSpeed,
 	AttackSpeed,
-	Strength,
+	Damage,
 	maxHealth,
 	Resistance,
 	Knockback,
@@ -160,8 +160,8 @@ public class StatsManager : MonoBehaviour
                     pL[i].level = GetClosestLevel(StatName.Resistance, pI.resistance);
                 else if (stats[i].statName == StatName.Spread)
                     pL[i].level = GetClosestLevel(StatName.Spread, pI.attackMinAngle);
-                else if (stats[i].statName == StatName.Strength)
-                    pL[i].level = GetClosestLevel(StatName.Strength, pI.strength);
+                else if (stats[i].statName == StatName.Damage)
+                    pL[i].level = GetClosestLevel(StatName.Damage, pI.damageOutput);
                 else if (stats[i].statName == StatName.Knockback)
                     pL[i].level = GetClosestLevel(StatName.Knockback, pI.knockback);
             }

@@ -8,11 +8,9 @@ public class GemScript : PickupableItems {
 
     private int counter = 0;
 
-    private BoxCollider box;
-
     void Start()
     {
-        box = GetComponent<BoxCollider>();
+        
     }
 
     void OnEnable()
@@ -20,8 +18,7 @@ public class GemScript : PickupableItems {
         counter = 0;
         canPickup = false;
         DidEnable();
-        box = GetComponent<BoxCollider>();
-        box.enabled = false;
+        Physics.IgnoreLayerCollision(15, 14, true);
         StartCoroutine(wait());
     }
 
@@ -37,7 +34,7 @@ public class GemScript : PickupableItems {
         if (counter > pickupDelay * 60)
         {
             canPickup = true;
-            box.enabled = true;
+            Physics.IgnoreLayerCollision(15, 14, false);
         }
     }
 

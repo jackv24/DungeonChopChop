@@ -33,23 +33,28 @@ public class SoundManager : MonoBehaviour
 		//Make sure there is a sound manager with a template sound source assigned
 		if(Instance && Instance.templateSource)
 		{
-			AudioSource source = Instance.GetSource();
+            AudioClip clip = sound.RandomClip;
 
-			if(source)
+			if(clip)
 			{
-				//Position audiosource at position, for 3D sound
-				source.transform.position = position;
+                AudioSource source = Instance.GetSource();
 
-				source.clip = sound.RandomClip;
-				source.volume = sound.volume;
+                if (source)
+                {
+                    //Position audiosource at position, for 3D sound
+                    source.transform.position = position;
 
-				//Randomise pitch
-				source.pitch = 1.0f + Random.Range(sound.minPitchVariance, sound.maxPitchVariance);
+                    source.clip = clip;
+                    source.volume = sound.volume;
 
-				//Return audio source to pool after the clip has played
-				Instance.StartCoroutine(Instance.ReturnSourceToPool(source, source.clip.length));
+                    //Randomise pitch
+                    source.pitch = 1.0f + Random.Range(sound.minPitchVariance, sound.maxPitchVariance);
 
-				source.Play();
+                    //Return audio source to pool after the clip has played
+                    Instance.StartCoroutine(Instance.ReturnSourceToPool(source, clip.length));
+
+                    source.Play();
+                }
 			}
 		}
 	}
@@ -105,7 +110,7 @@ public class SoundEffect
 	public AudioClip[] clips;
 
 	//Public property that returns a random clip from the clips array
-	public AudioClip RandomClip { get { return clips[Random.Range(0, clips.Length)]; } }
+    public AudioClip RandomClip { get { return clips.Length > 0 ? clips[Random.Range(0, clips.Length)] : null; } }
 
 	[Range(0, 1f)]
 	public float volume = 1.0f;

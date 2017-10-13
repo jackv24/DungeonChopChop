@@ -36,19 +36,17 @@ public class EnemyDeath : MonoBehaviour
     public float damageOnExplode = 2;
 
     public AmountOfParticleTypes[] deathParticles;
-    public AudioClip[] deathSounds;
+    public SoundEffect deathSounds;
 
 	private Health health;
 	private bool dead = false;
     private SpawnEffects spawnEffects;
-    private AudioSource AS;
     private Drops enemyDrop;
 
 	// Use this for initialization
 	void Start () 
 	{
         enemyDrop = GetComponent<Drops>();
-        AS = GetComponent<AudioSource>();
         spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
 		health = GetComponent<Health> ();
 	}
@@ -158,13 +156,7 @@ public class EnemyDeath : MonoBehaviour
     void CreateSoundObject()
     {
         //play sound
-        GameObject obj = new GameObject();
-        obj.transform.position = transform.position;
-        obj.AddComponent<AudioSource>();
-        int random = Random.Range(0, deathSounds.Length);
-        obj.GetComponent<AudioSource>().volume = AS.volume;
-        obj.GetComponent<AudioSource>().PlayOneShot(deathSounds[random]);
-        obj.AddComponent<SoundObject>();
+        SoundManager.PlaySound(deathSounds, transform.position);
     }
 
 	void Die()
@@ -173,10 +165,7 @@ public class EnemyDeath : MonoBehaviour
         if (deathParticles.Length > 0)
             spawnEffects.EffectOnDeath(deathParticles, transform.position);
 
-        if (deathSounds.Length > 0)
-        {
-            CreateSoundObject();
-        }
+        CreateSoundObject();
 
         if (enemyDrop)
             enemyDrop.DoDrop();

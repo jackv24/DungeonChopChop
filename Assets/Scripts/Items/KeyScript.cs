@@ -16,6 +16,7 @@ public class KeyScript : PickupableItems
         counter = 0;
         canPickup = false;
         DidEnable();
+        Physics.IgnoreLayerCollision(15, 14, true);
         StartCoroutine(wait());
     }
 
@@ -31,6 +32,7 @@ public class KeyScript : PickupableItems
         counter++;
         if (counter > pickupDelay * 60)
         {
+            Physics.IgnoreLayerCollision(15, 14, false);
             canPickup = true;
         }
     }

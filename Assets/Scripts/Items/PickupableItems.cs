@@ -22,5 +22,4 @@ public class PickupableItems : MonoBehaviour {
     {
         spawnEffects.EffectOnHit(particles, position);
     }
-
 }
