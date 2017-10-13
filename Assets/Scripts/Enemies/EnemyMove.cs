@@ -35,6 +35,7 @@ public class EnemyMove : MonoBehaviour
 
     void OnEnable()
     {
+        players = FindObjectsOfType<PlayerInformation>();
         usingNav = true;
     }
 

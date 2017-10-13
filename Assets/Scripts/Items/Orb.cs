@@ -20,6 +20,10 @@ public class Orb : PickupableItems {
 
     void OnEnable()
     {
+        //push the item out a bit
+        Vector3 direction = new Vector3(Random.insideUnitSphere.x, 1, Random.insideUnitSphere.z);
+        GetComponent<Rigidbody>().AddForce(direction * force, ForceMode.Impulse);
+
         counter = 0;
         canPickup = false;
         DidEnable();

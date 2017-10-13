@@ -13,6 +13,10 @@ public class KeyScript : PickupableItems
 
     void OnEnable()
     {
+        //push the item out a bit
+        Vector3 direction = new Vector3(Random.insideUnitSphere.x * force, 1, Random.insideUnitSphere.z * force);
+        GetComponent<Rigidbody>().AddForce(direction, ForceMode.Impulse);
+
         counter = 0;
         canPickup = false;
         DidEnable();
