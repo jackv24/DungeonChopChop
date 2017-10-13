@@ -15,29 +15,37 @@ public class SpawnPlayersManager : MonoBehaviour
 	private bool player1Spawned = false;
 	private int counter = 0;
 
+    private CameraFollow cameraFollow;
+
 	void Awake () 
 	{
 		player2UI.SetActive (false);
-		CameraFollow cameraFollow = Camera.main.GetComponent<CameraFollow> ();
-		//loops through each player input and instantiates a player prefab
-		if (InputManager.Instance) 
-		{
-			foreach (PlayerInputs user in InputManager.Instance.playerInput) 
-			{
-				if (user != null) 
-				{
-					if (!player1Spawned) 
-					{
-						player1Spawned = true;
-						SpawnPlayer (cameraFollow, player1Prefab);
-					} 
-					else {
-						SpawnPlayer (cameraFollow, player2Prefab);
-					}
-				}
-			}
-		}
+		cameraFollow = Camera.main.GetComponent<CameraFollow> ();
+		
+        DoSpawning();
 	}
+
+    void DoSpawning()
+    {
+        //loops through each player input and instantiates a player prefab
+        if (InputManager.Instance) 
+        {
+            foreach (PlayerInputs user in InputManager.Instance.playerInput) 
+            {
+                if (user != null) 
+                {
+                    if (!player1Spawned) 
+                    {
+                        player1Spawned = true;
+                        SpawnPlayer (cameraFollow, player1Prefab);
+                    } 
+                    else {
+                        SpawnPlayer (cameraFollow, player2Prefab);
+                    }
+                }
+            }
+        }
+    }
 
 	//Instantiates the player prefab
 	void SpawnPlayer(CameraFollow cameraFollow, GameObject obj)
@@ -65,4 +73,15 @@ public class SpawnPlayersManager : MonoBehaviour
 		}
 	}
 
+    public void ResetMono()
+    {
+        counter = 0;
+        player1Spawned = false;
+        foreach (PlayerInformation player in GameManager.Instance.players)
+        {
+            Destroy(player.gameObject);
+        }
+        GameManager.Instance.players = null;
+        DoSpawning();
+    }
 }

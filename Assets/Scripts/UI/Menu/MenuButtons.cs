@@ -65,4 +65,13 @@ public class MenuButtons : MonoBehaviour
 
 		GameManager.Instance.ChangeScene(index);
 	}
+
+    public void Replay()
+    {
+        SpawnPlayersManager spawnPlayer = GameObject.FindObjectOfType<SpawnPlayersManager>();
+        spawnPlayer.ResetMono();
+        ObjectPooler.PurgePools();
+
+        SceneManager.LoadScene("Overworld");
+    }
 }
