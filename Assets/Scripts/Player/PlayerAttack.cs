@@ -58,6 +58,18 @@ public class PlayerAttack : MonoBehaviour
     public ShieldStats shield;
     public SwordStats sword;
 
+    [Space()]
+    [Header("Sounds")]
+    public SoundEffect firstSlashSounds;
+    public SoundEffect secondSlashSounds;
+    public SoundEffect rapidSounds;
+    public SoundEffect dashSounds;
+    public SoundEffect dashAttackSounds;
+    public SoundEffect startBlockSounds;
+    public SoundEffect stopBlockSounds;
+    public SoundEffect spinSounds;
+    public SoundEffect chargeSpinSounds;
+
     private int comboAmount;
     private CharacterController characterController;
     private float comboCounter;
@@ -146,6 +158,7 @@ public class PlayerAttack : MonoBehaviour
                     heldDownCounter++;
                     if (heldDownCounter > 30)
                     {
+                        SoundManager.PlaySound(chargeSpinSounds, transform.position);
                         animator.SetBool("SpinCharge", true);
                         sword.GetComponent<SwordCollision>().DoChargeParticle();
                         spinChargeRoutine = StartCoroutine(ChargeSpinFlash());
@@ -204,7 +217,11 @@ public class PlayerAttack : MonoBehaviour
                     StopCoroutine(spinChargeRoutine);
                     spinCounter = 0;
                     animator.SetBool("SpinCharge", false);
+                    //play sound
+                    SoundManager.PlaySound(spinSounds, transform.position);
+                    //do spin
                     animator.SetTrigger("Spin");
+                    //set invincibility
                     playerHealth.InvincibilityForSecs(2);
                 }
             }
@@ -491,6 +508,7 @@ public class PlayerAttack : MonoBehaviour
     void DoBlock()
     {
         //do block things
+        SoundManager.PlaySound(startBlockSounds, transform.position);
         playerInformation.SetMoveSpeed(playerInformation.GetOriginalMoveSpeed() * shield.speedDamping * playerInformation.GetCharmFloat("blockSpeedMultiplier"));
 
         if (GetClosestEnemy() != transform)
@@ -510,6 +528,7 @@ public class PlayerAttack : MonoBehaviour
     void StopBlock()
     {
         //stop block things
+        SoundManager.PlaySound(stopBlockSounds, transform.position);
         playerInformation.ResetMoveSpeed();
         if (animator)
         {
@@ -566,12 +585,14 @@ public class PlayerAttack : MonoBehaviour
     void doSlash()
     {
         animator.SetTrigger("Attack");
+        SoundManager.PlaySound(firstSlashSounds, transform.position);
         //do slash things
     }
 
     void doSecondSlash()
     {
         StartCoroutine(boolWait("SecondAttack"));
+        SoundManager.PlaySound(secondSlashSounds, transform.position);
     }
 
     IEnumerator slashWait(string boolName)
@@ -585,6 +606,7 @@ public class PlayerAttack : MonoBehaviour
     void doRapidSlash()
     {
         //do rapid slash things
+        SoundManager.PlaySound(rapidSounds, transform.position);
         animator.SetBool("TripleAttack", true);
         if (animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
         {
@@ -598,11 +620,13 @@ public class PlayerAttack : MonoBehaviour
         {
             if (canDashAttack)
             {
+                SoundManager.PlaySound(dashAttackSounds, transform.position);
                 animator.SetTrigger("DashAttack");
                 playerHealth.InvincibilityForSecs(dashTime + 1);
             }
             else
             {
+                SoundManager.PlaySound(dashSounds, transform.position);
                 animator.SetTrigger("Dash");
             }
             canDash = false;

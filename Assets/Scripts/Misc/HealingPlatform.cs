@@ -6,6 +6,7 @@ public class HealingPlatform : MonoBehaviour {
 
     [Tooltip("Only have Player selected")]
     public LayerMask mask;
+    public float healthIncreaseAmount = .1f;
     public float timeBetweenHealthIncrease = 1;
     public AmountOfParticleTypes[] particles;
     public SoundEffect sound;
@@ -25,20 +26,24 @@ public class HealingPlatform : MonoBehaviour {
 
     void FixedUpdate()
     {
-        Collider[] players = Physics.OverlapSphere(transform.position, 10, mask);
+        counter++;
+        Collider[] players = Physics.OverlapSphere(transform.position, 1, mask);
         if (players.Length > 0)
         {
             foreach (Collider pl in players)
             {
                 if (pl.GetComponent<Health>())
                 {
-                    if (counter > timeBetweenHealthIncrease * 60)
+                    if (pl.GetComponent<Health>().health < pl.GetComponent<Health>().maxHealth)
                     {
-                        pl.GetComponent<Health>().health += .05f;
-                        pl.GetComponent<Health>().HealthChanged();
-                        spawnEffects.EffectOnHit(particles, transform.position);
-                        SoundManager.PlaySound(sound, transform.position);
-                        counter = 0;
+                        if (counter > timeBetweenHealthIncrease * 60)
+                        {
+                            pl.GetComponent<Health>().health += healthIncreaseAmount;
+                            pl.GetComponent<Health>().HealthChanged();
+                            spawnEffects.EffectOnHit(particles, transform.position);
+                            SoundManager.PlaySound(sound, transform.position);
+                            counter = 0;
+                        }
                     }
                 }
             }
