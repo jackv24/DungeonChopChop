@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4758588319889756}
   - component: {fileID: 33749263996494076}
   - component: {fileID: 23531427189917416}
-  - component: {fileID: 95780050041414334}
+  - component: {fileID: 65235800116146014}
   m_Layer: 0
   m_Name: LavaDrift
-  m_TagString: Untagged
+  m_TagString: Lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,20 +81,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1809218549771696}
   m_Mesh: {fileID: 4300000, guid: a6a4b543f2323b14f832aa2459ce0502, type: 3}
---- !u!95 &95780050041414334
-Animator:
-  serializedVersion: 3
+--- !u!65 &65235800116146014
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1809218549771696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a6a4b543f2323b14f832aa2459ce0502, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Size: {x: 0.278431, y: 0.0027999356, z: 0.23708482}
+  m_Center: {x: -0.00033053398, y: 0.0013999583, z: -0.0038203811}
