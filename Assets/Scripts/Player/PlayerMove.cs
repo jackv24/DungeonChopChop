@@ -14,10 +14,23 @@ public class PlayerMove : MonoBehaviour
     public bool LockY;
 
 	[Header("Environment vals")]
-	public float inMudSpeed = 2.5f;
-    public float windSpeed = 2;
+    [Header("Desert")]
+    public float inMudSpeed = .7f;
+    [Header("Fire")]
+    [Tooltip("Little lava spots, the speed damper, set value not multiplier")]
+    public float inLavaSpeed = .7f;
+    [Tooltip("The amount of damage you take just being in the biome without crest")]
     public float damageInFireBiome = .1f;
+    [Tooltip("The multiplier to the above value, when in lava puddle")]
+    public float damageInFireMultiplier = 5;
+    [Tooltip("The time between tick damage in biome")]
     public float timeBetweenBiomeBurn = 2;
+    [Tooltip("The divider of the above value, when in lava puddle")]
+    public float timeBetweenTickDivider = 1.5f;
+    [Header("Ice")]
+    public float windSpeed = 2;
+    public float inSnowSpeed = .7f;
+    public float iceAcceleration = 1;
 
 	private bool allowMove = true;
 
@@ -41,9 +54,15 @@ public class PlayerMove : MonoBehaviour
     private float slowdownMultiplier = 1;
     private float fireBiomeTickCounter = 0;
 
+    private float ogTickDamageInFire;
+    private float ogTimeBetweenTickInFire;
+
 	// Use this for initialization
 	void Start()
 	{
+        ogTickDamageInFire = damageInFireBiome;
+        ogTimeBetweenTickInFire = timeBetweenBiomeBurn;
+        
         playerHealth = GetComponent<Health>();
 		playerAttack = GetComponent<PlayerAttack>();
 		animator = GetComponentInChildren<Animator>();
@@ -103,18 +122,10 @@ public class PlayerMove : MonoBehaviour
                     else
                         return Vector3.zero;
                 }
-                else
-                {
-                    return Vector3.zero;
-                }
             }
-            else
-                return Vector3.zero;
         }
-        else
-        {
-            return Vector3.zero;
-        }
+
+        return Vector3.zero;
     }
 
     void FixedUpdate()
@@ -141,7 +152,7 @@ public class PlayerMove : MonoBehaviour
 	{
         if (LockY)
         {
-            if (transform.position.y > .14f)
+            if (transform.position.y > .5f)
             {
                 transform.position = new Vector3(transform.position.x, .14f, transform.position.z);
             }
@@ -214,23 +225,60 @@ public class PlayerMove : MonoBehaviour
             {
                 if (!ItemsManager.Instance.hasBoots)
                 {
-                    //if in mud, slown down
-                    if (hit.collider.tag == "Mud")
+                    if (hit.collider.tag == "Mud" || hit.collider.tag == "Lava" || hit.collider.tag == "Snow")
                     {
-                        slowdownMultiplier = inMudSpeed;
+                        //if in mud, slown down
+                        if (hit.collider.tag == "Mud")
+                        {
+                            slowdownMultiplier = inMudSpeed;
+                        }
+                        else
+                        {
+                            slowdownMultiplier = 1;
+                        }
+                        if (hit.collider.tag == "Snow")
+                        {
+                            slowdownMultiplier = inSnowSpeed;
+                        }
+                        else
+                        {
+                            slowdownMultiplier = 1;
+                        }
+                        if (hit.collider.tag == "Lava")
+                        {
+                            slowdownMultiplier = inLavaSpeed;
+                        }
                     }
                     else
                     {
                         slowdownMultiplier = 1;
                     }
+
                     //if on ice, slip
                     if (hit.collider.tag == "Ice")
                     {
-                        acceleration = 1;
+                        acceleration = iceAcceleration;
                     }
                     else
                     {
                         acceleration = 10f;
+                    }
+                }
+                else
+                {
+                    if (!ItemsManager.Instance.hasArmourPiece)
+                    {
+                        //sets the in lava puddle vars
+                        if (hit.collider.tag == "Lava")
+                        {
+                            damageInFireBiome *= damageInFireMultiplier;
+                            timeBetweenBiomeBurn /= timeBetweenTickDivider;
+                        }
+                        else
+                        {
+                            damageInFireBiome = ogTickDamageInFire;
+                            timeBetweenBiomeBurn = ogTimeBetweenTickInFire;
+                        }
                     }
                 }
             }
