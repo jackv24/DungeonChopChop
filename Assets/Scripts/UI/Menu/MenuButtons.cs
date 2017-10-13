@@ -21,6 +21,13 @@ public class MenuButtons : MonoBehaviour
 
 	public void ClickSinglePlayer()
 	{
+        if (PlayerPrefs.GetInt("SkipMenu") == 1)
+        {
+            //gets canvas
+            Canvas canv = GameObject.FindObjectOfType<Canvas>();
+            canv.enabled = false;
+            GameManager.Instance.ChangeScene(SceneIndex);
+        }
 		if (!clicked)
 		{
 			clicked = true;
@@ -30,6 +37,13 @@ public class MenuButtons : MonoBehaviour
 
 	public void ClickCoOp()
 	{
+        if (PlayerPrefs.GetInt("SkipMenu") == 1)
+        {
+            //gets canvas
+            Canvas canv = GameObject.FindObjectOfType<Canvas>();
+            canv.enabled = false;
+            GameManager.Instance.ChangeScene(SceneIndex);
+        }
 		if (!clicked)
 		{
 			clicked = true;
@@ -68,10 +82,11 @@ public class MenuButtons : MonoBehaviour
 
     public void Replay()
     {
-        SpawnPlayersManager spawnPlayer = GameObject.FindObjectOfType<SpawnPlayersManager>();
-        spawnPlayer.ResetMono();
         ObjectPooler.PurgePools();
 
-        SceneManager.LoadScene("Overworld");
+        PlayerPrefs.SetInt("SkipMenu", 1);
+        PlayerPrefs.SetInt("PlayerCount", GameManager.Instance.players.Count);
+        SceneManager.LoadScene("Game");
+        Debug.Log(PlayerPrefs.GetInt("SkipMenu"));
     }
 }

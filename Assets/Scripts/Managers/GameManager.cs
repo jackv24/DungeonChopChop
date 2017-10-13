@@ -16,9 +16,41 @@ public class GameManager : MonoBehaviour
 
     public List<PlayerInformation> players = new List<PlayerInformation>();
 
+    [HideInInspector]
+    //0 = don't skip, 1 = do skip
+    public int skipMenu;
+    public int playerCount = 0;
+
     void Awake()
     {
         Instance = this;
+
+        SceneManager.sceneLoaded += SceneChange;
+    }
+
+    void SceneChange(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 1)
+        {
+            skipMenu = PlayerPrefs.GetInt("SkipMenu");
+            playerCount = PlayerPrefs.GetInt("PlayerCount");
+            if (skipMenu == 1)
+            {
+                PlayerManager pm = GameObject.FindObjectOfType<PlayerManager>();
+                MenuButtons mb = GameObject.FindObjectOfType<MenuButtons>();
+                if (playerCount <= 1)
+                {
+                    pm.SinglePlayer();
+                    mb.ClickSinglePlayer();
+                }
+                else
+                {
+                    pm.CoOp();
+                    mb.ClickCoOp();
+                }
+            }
+            PlayerPrefs.SetInt("SkipMenu", 0);
+        }
     }
 
     void Start()
