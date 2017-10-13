@@ -1594,6 +1594,51 @@ MonoBehaviour:
   shieldBone: {fileID: 1858419517052020}
   shield: {fileID: 0}
   sword: {fileID: 114733453890167202}
+  firstSlashSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  secondSlashSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  rapidSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  dashSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  dashAttackSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  startBlockSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  stopBlockSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  spinSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  chargeSpinSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
 --- !u!114 &114360723681280524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1651,10 +1696,15 @@ MonoBehaviour:
   acceleration: 10
   rotateSpeed: 20
   LockY: 1
-  inMudSpeed: 1
-  windSpeed: 2
+  inMudSpeed: 0.7
+  inLavaSpeed: 0.7
   damageInFireBiome: 0.1
+  damageInFireMultiplier: 5
   timeBetweenBiomeBurn: 2
+  timeBetweenTickDivider: 1.5
+  windSpeed: 2
+  inSnowSpeed: 0.7
+  iceAcceleration: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1920,7 +1970,11 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-  hitSounds: []
+  hitSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   hitColor: {r: 0.75, g: 0.3143382, b: 0.3143382, a: 1}
   timeBetweenFlash: 0.1
   amountToFlash: 5
