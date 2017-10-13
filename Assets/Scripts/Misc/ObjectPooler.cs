@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class ObjectPooler
 {
+	private static ObjectPoolerPrewarmer prewarmerInstance;
+
     //private class for organising different pools of gameobjects
     private class Pool
     {
@@ -19,7 +21,7 @@ public static class ObjectPooler
             this.prefab = prefab;
         }
 
-		public GameObject GetPooledObject()
+		public GameObject GetPooledObject(bool register = true)
         {
             //Search for inactive object in pool
             foreach (GameObject o in pooledObjects)
@@ -40,7 +42,11 @@ public static class ObjectPooler
             obj.transform.SetParent(poolObject.transform);
             //Add new gameobject to pool and return
             pooledObjects.Add(obj);
-            return obj;
+
+			if (register && prewarmerInstance)
+				prewarmerInstance.Register(prefab);
+
+			return obj;
         }
 
         public void Purge()
@@ -64,7 +70,7 @@ public static class ObjectPooler
     //An empty gameobject for organising pooled objects in the scene
     private static GameObject poolObject;
 
-	public static GameObject GetPooledObject(GameObject prefab)
+	public static GameObject GetPooledObject(GameObject prefab, bool register = true)
     {
         //Make sure there is a gameobject for organising pooled objects in the scene
         if(!poolObject)
@@ -77,6 +83,11 @@ public static class ObjectPooler
 
 			GameObject.DontDestroyOnLoad(poolObject);
         }
+
+		if(!prewarmerInstance)
+		{
+			prewarmerInstance = GameObject.FindObjectOfType<ObjectPoolerPrewarmer>();
+		}
 
         //Pool starts as null, since one will either be found or created
         Pool pool = null;
@@ -95,7 +106,7 @@ public static class ObjectPooler
         }
 
         //Get a pooled object from the pool and return it
-        return pool.GetPooledObject();
+        return pool.GetPooledObject(register);
     }
 
     //Clears all object pools

@@ -130,7 +130,7 @@ public class Health : MonoBehaviour
 
     void DoHitParticle()
     {
-        if (hitParticles.Length > 0)
+        if (spawnEffects && hitParticles.Length > 0)
             spawnEffects.EffectOnHit(hitParticles, transform.position);
     }
 
