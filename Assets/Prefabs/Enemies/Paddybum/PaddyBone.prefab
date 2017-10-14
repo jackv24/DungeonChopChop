@@ -195,10 +195,10 @@ MonoBehaviour:
   amountToSplit: 0
   splitEnemy: {fileID: 0}
   explodeRadius: 5
-  statusType: 1
-  damagePerTick: 0.5
+  statusType: 4
+  damagePerTick: 0
   timeBetweenTick: 1
-  duration: 5
+  duration: 4
   damageOnExplode: 2
   deathParticles:
   - particleType: 1
@@ -300,7 +300,12 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-  deathSounds: []
+  deathSounds:
+    clips:
+    - {fileID: 8300000, guid: 75fd2ca602aa5de4285c3346ae7ec597, type: 3}
+    volume: 1
+    minPitchVariance: -0.3
+    maxPitchVariance: 0.3
 --- !u!114 &114675975860023570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,8 +345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  health: 1
+  maxHealth: 6
+  health: 6
   weight: 2
   IsEnemy: 1
   isPoisoned: 0
@@ -357,9 +362,11 @@ MonoBehaviour:
   sandyColor: {r: 0, g: 0, b: 0, a: 0}
   hitParticles: []
   hitSounds:
-  - {fileID: 8300000, guid: 94fe3317e53832b49acfdd534adc3cf8, type: 3}
-  - {fileID: 8300000, guid: 47bad35d66298d14fb44be72caf8b42f, type: 3}
-  - {fileID: 8300000, guid: ff5f4a1fe1eacc347bb5623fe9d8125f, type: 3}
+    clips:
+    - {fileID: 8300000, guid: 6fdef9b2e06aec44e8cae71b20afce93, type: 3}
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
   timeBetweenFlash: 1
   amountToFlash: 1
@@ -389,4 +396,3 @@ MonoBehaviour:
   paddyType: 1
   radiusTillExplode: 10
   timeTillExplode: 2
-  animatorMultiplier: 2
