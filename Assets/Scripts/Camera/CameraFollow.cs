@@ -54,7 +54,8 @@ public class CameraFollow : MonoBehaviour
 
 			listenerObj = new GameObject("Audio Listener");
 			listenerObj.transform.SetParent(transform);
-			listenerObj.transform.rotation = Quaternion.identity;
+			listenerObj.transform.localRotation = Quaternion.identity;
+			listenerObj.transform.Rotate(0, 180, 0);
 			listenerObj.AddComponent<AudioListener>();
 		}
 
