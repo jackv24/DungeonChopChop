@@ -24,14 +24,13 @@ public class BispMove : EnemyMove {
 	void Update () {
         if (!InDistance(radiusAttack))
         {
-            Debug.Log("hi");
             FollowPlayer();
         }
-        else
-        {
-            if (!inLeeping)
-                StartCoroutine(LeepAtEnemy(waitTillLeep));
-        }
+        //else
+        //{
+        //    if (!inLeeping)
+        //        StartCoroutine(LeepAtEnemy(waitTillLeep));
+        //}
 //        if (doingLeep)
 //        {
 //            FollowPlayer();
