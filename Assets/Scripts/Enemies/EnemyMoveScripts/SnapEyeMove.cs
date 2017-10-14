@@ -26,7 +26,7 @@ public class SnapEyeMove : EnemyMove
             if (!runAway)
                 FollowPlayer();
             else
-                RunAwayFromPlayer();
+                RunAwayFromPlayer(false);
         }
 	}
 }

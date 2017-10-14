@@ -89,7 +89,7 @@ public class SlimeMove : EnemyMove {
             }
             else
             {
-                RunAwayFromPlayer();
+                RunAwayFromPlayer(false);
             }
         }
         else

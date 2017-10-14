@@ -185,12 +185,13 @@ public class EnemyMove : MonoBehaviour
         return false;
     }
 
-    protected void RunAwayFromPlayer()
+    protected void RunAwayFromPlayer(bool lookAtPlayer)
     {
         if (GetComponent<NavMeshAgent>())
         {
             //rotates away from the player
-            transform.rotation = Quaternion.LookRotation(transform.position - GetClosestPlayer().position);
+            if (!lookAtPlayer)
+                transform.rotation = Quaternion.LookRotation(transform.position - GetClosestPlayer().position);
 
             //Gets a new vector position in front of the enemy 
             Vector3 runTo = transform.position + transform.forward * 5;
