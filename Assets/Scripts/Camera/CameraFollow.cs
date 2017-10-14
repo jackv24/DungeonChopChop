@@ -35,13 +35,30 @@ public class CameraFollow : MonoBehaviour
 
 	private bool resetCamera = true;
 
+	private AudioListener listener;
+	private GameObject listenerObj;
+
 	void Awake()
 	{
 		Instance = this;
+
+		listener = GetComponent<AudioListener>();
 	}
 
 	void Start()
 	{
+		//Move audio listener to child object
+		if(listener)
+		{
+			Destroy(listener);
+
+			listenerObj = new GameObject("Audio Listener");
+			listenerObj.transform.SetParent(transform);
+			listenerObj.transform.rotation = Quaternion.identity;
+			listenerObj.AddComponent<AudioListener>();
+		}
+
+		//Find all players
 		PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
 
 		foreach (PlayerInformation p in playerInfos)
@@ -85,6 +102,9 @@ public class CameraFollow : MonoBehaviour
 
 			targetPos /= numPlayers;
 		}
+
+		if (listenerObj)
+			listenerObj.transform.position = targetPos;
 
 		///Clamp to tile bounds
 		//Only clamp if max is more than min
