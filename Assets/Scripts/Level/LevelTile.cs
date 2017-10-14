@@ -327,6 +327,8 @@ public class LevelTile : MonoBehaviour
 			//Move camera to new tile
 			if (newTile.layoutCollider)
 				CameraFollow.Instance.UpdateCameraBounds(newTile.layoutCollider.bounds);
+
+			SoundManager.FadeMusicByBiome(newTile.biome);
 		}
 
 		//Set as current tile and call events
