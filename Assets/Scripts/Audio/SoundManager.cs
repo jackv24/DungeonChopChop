@@ -9,8 +9,27 @@ public class SoundManager : MonoBehaviour
 
 	private List<AudioSource> sourcePool = new List<AudioSource>();
 
+	[Header("Sound Effects")]
 	[Tooltip("Should be an AudioSource on a child of this GameObject")]
 	public AudioSource templateSource;
+
+	[Header("Music")]
+	public AudioSource musicSource;
+	private AudioSource primaryMusicSource;
+	private AudioSource secondaryMusicSource;
+	public float musicFadeTime = 0.5f;
+	private Coroutine fadeRoutine;
+
+	[Space()]
+	public AudioClip grassBiomeMusic;
+	public AudioClip forestBiomeMusic;
+	public AudioClip desertBiomeMusic;
+	public AudioClip fireBiomeMusic;
+	public AudioClip iceBiomeMusic;
+	public AudioClip dungeonBiomeMusic;
+
+	//Start as dungeon since it'll trigger a change when switching to grass at start
+	private LevelTile.Biomes lastBiome = LevelTile.Biomes.Dungeon;
 
 	private void Awake()
 	{
@@ -21,6 +40,101 @@ public class SoundManager : MonoBehaviour
 	{
 		//Disable template audio source as it is just that, a template
 		templateSource.gameObject.SetActive(false);
+
+		//Setup music sources
+		if(musicSource)
+		{
+			primaryMusicSource = musicSource;
+
+			//Setup secondary source by copying data from primary
+			secondaryMusicSource = musicSource.gameObject.AddComponent<AudioSource>();
+			secondaryMusicSource.outputAudioMixerGroup = primaryMusicSource.outputAudioMixerGroup;
+			secondaryMusicSource.spatialBlend = primaryMusicSource.spatialBlend;
+			secondaryMusicSource.loop = primaryMusicSource.loop;
+		}
+	}
+
+	public static void FadeMusicByBiome(LevelTile.Biomes biome)
+	{
+		if (Instance)
+		{
+			if (biome == Instance.lastBiome)
+				return;
+
+			AudioClip clip = null;
+
+			switch (biome)
+			{
+				case LevelTile.Biomes.Grass:
+					clip = Instance.grassBiomeMusic;
+					break;
+				case LevelTile.Biomes.Forest:
+					clip = Instance.forestBiomeMusic;
+					break;
+				case LevelTile.Biomes.Desert:
+					clip = Instance.desertBiomeMusic;
+					break;
+				case LevelTile.Biomes.Ice:
+					clip = Instance.iceBiomeMusic;
+					break;
+				case LevelTile.Biomes.Fire:
+					clip = Instance.fireBiomeMusic;
+					break;
+				case LevelTile.Biomes.Dungeon:
+					clip = Instance.dungeonBiomeMusic;
+					break;
+			}
+
+			FadeMusic(clip);
+
+			Instance.lastBiome = biome;
+		}
+	}
+
+	public static void FadeMusic(AudioClip musicClip)
+	{
+		if (Instance && Instance.musicSource && musicClip)
+		{
+			//Prevent multiple fades from happening at once
+			if(Instance.fadeRoutine != null)
+				Instance.StopCoroutine(Instance.fadeRoutine);
+
+			Instance.fadeRoutine = Instance.StartCoroutine(Instance.FadeMusicOverTime(musicClip, Instance.musicFadeTime));
+		}
+	}
+
+	IEnumerator FadeMusicOverTime(AudioClip clip, float duration)
+	{
+		//Start secondary source at 0 volume
+		secondaryMusicSource.clip = clip;
+		secondaryMusicSource.volume = 0;
+		secondaryMusicSource.Play();
+
+		float elapsed = 0;
+
+		while(elapsed < duration)
+		{
+			float amount = elapsed / duration;
+
+			//Crossfade sources
+			primaryMusicSource.volume = 1 - amount;
+			secondaryMusicSource.volume = amount;
+
+			yield return new WaitForEndOfFrame();
+			elapsed += Time.deltaTime;
+		}
+
+		//Stop primary source
+		primaryMusicSource.volume = 0;
+		primaryMusicSource.clip = null;
+		primaryMusicSource.Stop();
+
+		secondaryMusicSource.volume = 1;
+
+		//Swap primary and secondary sources
+		AudioSource temp = primaryMusicSource;
+		primaryMusicSource = secondaryMusicSource;
+		secondaryMusicSource = temp;
 	}
 
 	/// <summary>
