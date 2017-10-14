@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 195257283996950086}
   - component: {fileID: 114977226705451282}
   - component: {fileID: 114204993273126844}
+  - component: {fileID: 82057008789918118}
   m_Layer: 11
   m_Name: BispGreen
   m_TagString: Untagged
@@ -282,6 +283,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4486933, y: 0.9571639, z: 0.42388728}
   m_Center: {x: 0.014517739, y: 0.4497188, z: -0.01292105}
+--- !u!82 &82057008789918118
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1657133287944514}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ef8a8c987ae5a4344b143a25e0a1bc97, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2
+  MaxDistance: 5
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95529034432829724
 Animator:
   serializedVersion: 3
@@ -402,8 +483,8 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 6810f18e3ec662346b4b2f5fb5819e85, type: 3}
     volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
+    minPitchVariance: -0.3
+    maxPitchVariance: 0.3
   hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
   timeBetweenFlash: 1
   amountToFlash: 1
@@ -447,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b10b1ffc031d614cbfbcb1ad051f0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverallRadiusFollow: 20
+  OverallRadiusFollow: 3
   OtherwiseRoam: 1
   runAwayAfterAttackTime: 1
   layerMask:
@@ -455,7 +536,7 @@ MonoBehaviour:
     m_Bits: 0
   LockY: 1
   usingNav: 1
-  radiusAttack: 2.52
+  radiusAttack: 2
   waitTillLeep: 1
   leepSpeed: 5
 --- !u!114 &114977226705451282

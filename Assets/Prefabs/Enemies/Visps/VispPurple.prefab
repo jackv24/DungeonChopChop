@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 114323440183060870}
   - component: {fileID: 114819077554164988}
   - component: {fileID: 195623500681136020}
+  - component: {fileID: 82975705179194190}
   m_Layer: 11
   m_Name: VispPurple
   m_TagString: Untagged
@@ -398,6 +399,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0154014, y: 3.0231895, z: 2.6195676}
   m_Center: {x: -0.06341049, y: 1.3200003, z: 0.3707108}
+--- !u!82 &82975705179194190
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479499657155190}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1dd80044bd88df340adb145ed1f21408, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2
+  MaxDistance: 5
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95848340419787930
 Animator:
   serializedVersion: 3
@@ -540,7 +621,8 @@ MonoBehaviour:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   deathSounds:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 186f07124edb6434e9c03725dd77db18, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -555,9 +637,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4220c820a39199c4f99b3bfd7a9fc0ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverallRadiusFollow: 20
+  OverallRadiusFollow: 5
   OtherwiseRoam: 1
-  runAwayAfterAttackTime: 1
+  runAwayAfterAttackTime: 3
   layerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -654,7 +736,8 @@ MonoBehaviour:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   hitSounds:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 09c67448b844b424fbca8c76b5e28172, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1

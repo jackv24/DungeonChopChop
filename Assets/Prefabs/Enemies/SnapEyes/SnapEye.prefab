@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 65852812845789202}
   - component: {fileID: 195797583585432324}
   - component: {fileID: 114912901163433468}
+  - component: {fileID: 82076260364372122}
   m_Layer: 11
   m_Name: SnapEye
   m_TagString: Enemy
@@ -659,6 +660,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2016816, y: 4.581268, z: 2.2792568}
   m_Center: {x: 0.015663028, y: 2.2445838, z: -0.016053915}
+--- !u!82 &82076260364372122
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1663011482531826}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0e20c18081f8af1409e977af62a65459, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 3.4129372
+  MaxDistance: 5.8409615
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95213666120795750
 Animator:
   serializedVersion: 3
@@ -687,7 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f7605f1bcb7594db6d22987c58d97f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverallRadiusFollow: 20
+  OverallRadiusFollow: 8
   OtherwiseRoam: 1
   runAwayAfterAttackTime: 0.5
   layerMask:
@@ -712,7 +793,7 @@ MonoBehaviour:
   shootPosition: {fileID: 0}
   thrust: 50
   attackStrength: 1
-  damageOnTouch: 1
+  damageOnTouch: 2
   knockbackStrength: 2
   projAmount: 25
   timeTillInterval: 1
@@ -778,7 +859,12 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-  hitSounds: []
+  hitSounds:
+    clips:
+    - {fileID: 8300000, guid: f333b32e2f72c7e4c9753caa46000a49, type: 3}
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
   timeBetweenFlash: 1
   amountToFlash: 1
@@ -903,7 +989,12 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-  deathSounds: []
+  deathSounds:
+    clips:
+    - {fileID: 8300000, guid: 44718608cd3f4084b9a8a3275c2c7e9e, type: 3}
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
 --- !u!114 &114912901163433468
 MonoBehaviour:
   m_ObjectHideFlags: 1

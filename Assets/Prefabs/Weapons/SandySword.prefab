@@ -52,19 +52,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1997972217802936
+--- !u!1 &1801885878344558
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4571106443839920}
-  - component: {fileID: 198040063404304254}
-  - component: {fileID: 199994898320764030}
-  - component: {fileID: 114962365616439876}
+  - component: {fileID: 4990611674739928}
+  - component: {fileID: 198905591354940600}
+  - component: {fileID: 199610165655164098}
+  - component: {fileID: 114489078420555870}
+  - component: {fileID: 114214133059582864}
   m_Layer: 0
-  m_Name: SandTickParticle
+  m_Name: SandSwordParticels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,19 +84,6 @@ Transform:
   m_Father: {fileID: 4894701089913448}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 104.608, z: 0}
---- !u!4 &4571106443839920
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997972217802936}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4894701089913448}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4894701089913448
 Transform:
   m_ObjectHideFlags: 1
@@ -107,10 +95,23 @@ Transform:
   m_LocalScale: {x: 1.866183, y: 1.8661846, z: 2.1488152}
   m_Children:
   - {fileID: 4108612514500796}
-  - {fileID: 4571106443839920}
+  - {fileID: 4990611674739928}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -181.878, y: -206.74701, z: 168.605}
+--- !u!4 &4990611674739928
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801885878344558}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.02, y: 0.146, z: 0.012}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4894701089913448}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23392564367371308
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -280,6 +281,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickUp: 1
+--- !u!114 &114214133059582864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801885878344558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f73260e5c0ae254fada45ac1528ffcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  host: {fileID: 0}
 --- !u!114 &114430947139878610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a927be7f714cb4c9ea35f1f69acd16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackOnHit: 2
+  knockbackOnHit: 1.5
   trail: {fileID: 1433295802370406}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -309,6 +322,18 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114489078420555870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801885878344558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad8e974001abc7498f69a598857b9d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstCheckDelay: 0
 --- !u!114 &114566044136808162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -342,12 +367,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordName: Sword
   damageMultiplier: 1
-  range: 1
+  range: 2
   weaponEffect: 5
   damagePerTick: 0.2
   duration: 2
   timeBetweenEffect: 1
-  speedDamper: 0.7
+  speedDamper: 0.5
 --- !u!114 &114788973952273922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -359,18 +384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63bfff935947a846bcae53df6cd2356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114962365616439876
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997972217802936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad8e974001abc7498f69a598857b9d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstCheckDelay: 0
 --- !u!135 &135163718384202502
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -383,12 +396,12 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5958573
   m_Center: {x: 0.000000107158236, y: 0.4043663, z: -0.000000010300685}
---- !u!198 &198040063404304254
+--- !u!198 &198905591354940600
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997972217802936}
+  m_GameObject: {fileID: 1801885878344558}
   serializedVersion: 5
   lengthInSec: 1.6
   simulationSpeed: 0.2
@@ -442,7 +455,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -214853414
+  randomSeed: 820693122
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -593,9 +606,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 3.28
-      minScalar: 1
+      minMaxState: 3
+      scalar: 1.5
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -634,7 +647,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -675,7 +688,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -887,7 +900,7 @@ ParticleSystem:
     enabled: 1
     type: 8
     angle: 0
-    length: 1.0217237
+    length: 0.5991232
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -907,7 +920,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.25
+      value: 0.075500615
       mode: 0
       spread: 0
       speed:
@@ -1002,7 +1015,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 9.8
+      scalar: 32.98
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -3645,13 +3658,13 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
---- !u!199 &199994898320764030
+--- !u!199 &199610165655164098
 ParticleSystemRenderer:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997972217802936}
+  m_GameObject: {fileID: 1801885878344558}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

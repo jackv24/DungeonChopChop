@@ -698,7 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e79657326ba98141b25709a8a859f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverallRadiusFollow: 20
+  OverallRadiusFollow: 5
   OtherwiseRoam: 1
   runAwayAfterAttackTime: 1
   layerMask:
@@ -806,7 +806,12 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-  hitSounds: []
+  hitSounds:
+    clips:
+    - {fileID: 8300000, guid: 0f9c4a752246e8e45a1264122fde545e, type: 3}
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
   timeBetweenFlash: 1
   amountToFlash: 1
@@ -931,7 +936,12 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-  deathSounds: []
+  deathSounds:
+    clips:
+    - {fileID: 8300000, guid: 13e69c102bbbe0947ae50beced856610, type: 3}
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
 --- !u!114 &114865459708245506
 MonoBehaviour:
   m_ObjectHideFlags: 1
