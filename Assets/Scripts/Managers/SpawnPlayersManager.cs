@@ -7,9 +7,8 @@ public class SpawnPlayersManager : MonoBehaviour
 	[Header("Prefabs")]
 	public GameObject player1Prefab;
 	public GameObject player2Prefab;
-	[Header("UI Parents")]
-	public GameObject player1UI;
-	public GameObject player2UI;
+
+    [Space()]
 	public Vector3 spawnPosition;
 
 	private bool player1Spawned = false;
@@ -19,8 +18,15 @@ public class SpawnPlayersManager : MonoBehaviour
 
 	void Awake () 
 	{
-		player2UI.SetActive (false);
 		cameraFollow = Camera.main.GetComponent<CameraFollow> ();
+
+        //If there are no inputs, create one
+        if (InputManager.Instance.playerInput.Count <= 0)
+        {
+            PlayerManager manager = GameObject.FindObjectOfType<PlayerManager>();
+            if (manager)
+                manager.SinglePlayer();
+        }
 		
         DoSpawning();
 	}
@@ -54,16 +60,6 @@ public class SpawnPlayersManager : MonoBehaviour
         GameManager.Instance.players.Add(player.GetComponent<PlayerInformation>());
 		player.GetComponent<PlayerInformation> ().playerIndex = counter;
 		counter++;
-		SetUI ();
-	}
-
-	void SetUI()
-	{
-		if (counter == 1) {
-			player1UI.SetActive (true);
-		} else if (counter == 2) {
-			player2UI.SetActive (true);
-		}
 	}
 
     public void ResetMono()
