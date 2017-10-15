@@ -54,7 +54,6 @@ public class LevelDoor : MonoBehaviour
 		//If player walked into this door
 		if(col.gameObject.layer == 14 && col.GetType() == typeof(CharacterController))
         {
-			//Only player 1 can enter doors
 			if (!entered)
 			{
 				//if this door was entered on the current tile, enable target tile
@@ -74,7 +73,7 @@ public class LevelDoor : MonoBehaviour
 						Health health = p.GetComponent<Health>();
 
 						//Only move player to door exit if they are alive
-						if(!health || health.health > 0)
+						if (!health || health.health > 0)
 							p.transform.position = transform.position + (-transform.forward) * exitDistance;
 
 						//Re-enable all player scripts
@@ -126,7 +125,7 @@ public class LevelDoor : MonoBehaviour
 			Vector3 targetPos = transform.position + direction * exitDistance;
 
 			//Calculate time required to move target distance
-			float moveTime = Vector3.Distance(targetPos, player.transform.position) / moveSpeed;
+			float moveTime = Vector3.Distance(targetPos, transform.position) / moveSpeed;
 
 			//Loop for that amount of time
 			float elapsedTime = 0;
