@@ -17,6 +17,10 @@ public class PickupableItems : MonoBehaviour {
     [Tooltip("Hit == When it spawns, Death == When picked up")]
     public AmountOfParticleTypes[] particles;
 
+    [Header("Audio")]
+    public SoundEffect pickUpSound;
+    public SoundEffect spawnSound;
+
     protected SpawnEffects spawnEffects;
     protected Rigidbody rb;
 
@@ -24,8 +28,11 @@ public class PickupableItems : MonoBehaviour {
 
     protected void DidEnable()
     {
+        SoundManager.PlaySound(spawnSound, transform.position);
+
         rb = GetComponent<Rigidbody>();
         spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
+
         if (doesDespawn)
             StartCoroutine(WaitToDestroy());
 

@@ -24,63 +24,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-
-        SceneManager.sceneLoaded += SceneChange;
-    }
-
-    void SceneChange(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.buildIndex == 1)
-        {
-            skipMenu = PlayerPrefs.GetInt("SkipMenu");
-            playerCount = PlayerPrefs.GetInt("PlayerCount");
-            if (skipMenu == 1)
-            {
-                PlayerManager pm = GameObject.FindObjectOfType<PlayerManager>();
-                MenuButtons mb = GameObject.FindObjectOfType<MenuButtons>();
-                if (playerCount <= 1)
-                {
-                    pm.SinglePlayer();
-                    mb.ClickSinglePlayer();
-                }
-                else
-                {
-                    pm.CoOp();
-                    mb.ClickCoOp();
-                }
-            }
-            PlayerPrefs.SetInt("SkipMenu", 0);
-        }
-    }
-
-    void Start()
-    {
-        if (SceneManager.sceneCount == 1)
-            StartCoroutine(SetupGame(startSceneIndex));
-    }
-
-    IEnumerator SetupGame(int index)
-    {
-        yield return SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
-        currentSceneIndex = index;
-        // After first scene is loaded, do game setup
-    }
-
-    public void ChangeScene(int newSceneIndex)
-    {
-        StartCoroutine(ChangeSceneSequence(newSceneIndex));
-    }
-
-    IEnumerator ChangeSceneSequence(int index)
-    {
-        yield return SceneManager.UnloadSceneAsync(currentSceneIndex);
-
-        //stuff inbetween scenes
-
-        yield return SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(index));
-
-        currentSceneIndex = index;
     }
 
     public void SetGlobalMultiplier(string key, float value)
