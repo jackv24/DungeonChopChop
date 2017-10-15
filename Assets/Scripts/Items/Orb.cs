@@ -81,5 +81,7 @@ public class Orb : PickupableItems {
         GameObject particle = ObjectPooler.GetPooledObject(spawnEffects.GetEffectOnDeath(particles));
         particle.GetComponent<ParticleFollowHost>().host = obj.transform;
         particle.transform.position = obj.transform.position;
+
+        SoundManager.PlaySound(pickUpSound, transform.position);
     }
 }
