@@ -46,7 +46,7 @@ public class BispMove : EnemyMove {
         //then move back
         if (moveBack)
         {
-            RunAwayFromPlayer(true);
+            RunAwayFromPlayer(false);
         }
 	}
 
@@ -57,7 +57,7 @@ public class BispMove : EnemyMove {
         moveBack = true;
 
         //stops the agent
-        agent.speed = 0;
+        agent.speed = .5f;
 
         yield return new WaitForSeconds(waitTillLeep);
 

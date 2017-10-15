@@ -35,13 +35,16 @@ public class VispMove : EnemyMove
     void Update()
     {
         //sets the speed of the visp depending on the range of the player
-        if (InDistanceBetweenTwoRadius(vispAttack.shootRadius, vispAttack.attackRadius))
+        if (!doingLeep)
         {
-            agent.speed = speedDuringShootRadius;
-        }
-        else if (InDistance(vispAttack.attackRadius))
-        {
-            agent.speed = speedDuringAttackRadius;
+            if (InDistanceBetweenTwoRadius(vispAttack.shootRadius, vispAttack.attackRadius))
+            {
+                agent.speed = speedDuringShootRadius;
+            }
+            else if (InDistance(vispAttack.attackRadius))
+            {
+                agent.speed = speedDuringAttackRadius;
+            }
         }
 
         //checks if the visp is in the radius of the player to do leep
@@ -66,7 +69,7 @@ public class VispMove : EnemyMove
         //then move back
         if (moveBack)
         {
-            RunAwayFromPlayer(true);
+            RunAwayFromPlayer(false);
         }
     }
 
@@ -77,7 +80,7 @@ public class VispMove : EnemyMove
         moveBack = true;
 
         //stops the agent
-        agent.speed = 0;
+        agent.speed = .5f;
 
         yield return new WaitForSeconds(waitTillLeep);
 

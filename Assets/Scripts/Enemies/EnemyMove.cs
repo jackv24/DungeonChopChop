@@ -150,6 +150,7 @@ public class EnemyMove : MonoBehaviour
             //a simple counter to stop recurring every frame
             if (roamCounter > timeBetweenRoam * 60)
             { 
+                timeBetweenRoam = Random.Range(3 / 2, 3 * 1.5f);
                 //roams to a random position on the current tile
                 if (usingNav)
                 {
@@ -195,25 +196,28 @@ public class EnemyMove : MonoBehaviour
 
     protected void RunAwayFromPlayer(bool lookAtPlayer)
     {
-        if (GetComponent<NavMeshAgent>())
+        if (agent)
         {
+
+            Vector3 newPosition = -transform.forward * 3;
+
             //rotates away from the player
-            if (!lookAtPlayer)
-                transform.rotation = Quaternion.LookRotation(transform.position - GetClosestPlayer().position);
-
-            //Gets a new vector position in front of the enemy 
-            Vector3 runTo = transform.position + transform.forward * 5;
-
-            NavMeshHit hit;
-
-            //checks to make sure the point is reachable on the nav mesh
-            NavMesh.SamplePosition(runTo, out hit, 5, 1 << NavMesh.GetAreaFromName("Walkable"));
-
-            //moves to that position
+            if (lookAtPlayer)
+               transform.rotation = Quaternion.LookRotation(transform.position - GetClosestPlayer().position);
+//
+//            //Gets a new vector position in front of the enemy 
+//            Vector3 runTo = transform.position + transform.forward * 5;
+//
+//            NavMeshHit hit;
+//
+//            //checks to make sure the point is reachable on the nav mesh
+//            NavMesh.SamplePosition(runTo, out hit, 5, 1 << NavMesh.GetAreaFromName("Walkable"));
+//
+//            //moves to that position
             if (usingNav)
             {
                 if (agent.isOnNavMesh)
-                    agent.SetDestination(hit.position);
+                    agent.SetDestination(newPosition);
             }
         }
     }
