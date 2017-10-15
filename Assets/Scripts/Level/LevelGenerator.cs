@@ -71,6 +71,7 @@ public class LevelGenerator : MonoBehaviour
 
 	private void Update()
 	{
+		//Debug and testing shortcuts
 		if (Debug.isDebugBuild)
 		{
 			if (Input.GetKey(KeyCode.LeftControl))
@@ -86,6 +87,72 @@ public class LevelGenerator : MonoBehaviour
 					{
 						if(tile != currentTile)
 							tile.ShowTile(false, true);
+					}
+				}
+			}
+
+			if(Input.GetKey(KeyCode.T))
+			{
+				//Teleport to dungeons
+				bool dungeonTP = false;
+				LevelTile.Biomes dungeonBiome = LevelTile.Biomes.Grass;
+
+				if (Input.GetKeyDown(KeyCode.Alpha1))
+				{
+					dungeonTP = true;
+					dungeonBiome = LevelTile.Biomes.Forest;
+				}
+				else if (Input.GetKeyDown(KeyCode.Alpha2))
+				{
+					dungeonTP = true;
+					dungeonBiome = LevelTile.Biomes.Desert;
+				}
+				else if (Input.GetKeyDown(KeyCode.Alpha3))
+				{
+					dungeonTP = true;
+					dungeonBiome = LevelTile.Biomes.Ice;
+				}
+				else if (Input.GetKeyDown(KeyCode.Alpha4))
+				{
+					dungeonTP = true;
+					dungeonBiome = LevelTile.Biomes.Fire;
+				}
+
+				if (dungeonTP)
+				{
+					//Find all dungeons, to match to correct biome
+					DungeonEntrance[] dungeons = FindObjectsOfType<DungeonEntrance>();
+
+					foreach (DungeonEntrance entrance in dungeons)
+					{
+						LevelTile tile = entrance.GetComponentInParent<LevelTile>();
+
+						//If this dungeon is on a tile of the correct biome, it is the one
+						if (tile && tile.Biome == dungeonBiome)
+						{
+							//Randomly choose a door to walk in from
+							Transform doorTransform = tile.doors[UnityEngine.Random.Range(0, tile.doors.Count)];
+
+							LevelDoor door = doorTransform.GetComponent<LevelDoor>();
+
+							if (door)
+							{
+								//Walk in from this doors connected door
+								LevelDoor walkIntoDoor = door.targetDoor;
+
+								if (walkIntoDoor)
+								{
+									PlayerInformation playerInfo = FindObjectOfType<PlayerInformation>();
+
+									walkIntoDoor.targetTile.SetCurrent(currentTile);
+
+									playerInfo.transform.position = walkIntoDoor.transform.position + (-walkIntoDoor.transform.forward) * walkIntoDoor.exitDistance;
+								}
+							}
+
+							//Once we've teleported, no need to continue
+							break;
+						}
 					}
 				}
 			}
@@ -118,6 +185,14 @@ public class LevelGenerator : MonoBehaviour
 			text += "\n<b>Hotkeys</b>\n";
 			text += "Debug Menu: CTRL+D\n";
 			text += "Reveal Map: CTRL+U\n";
+
+			if (profile is OverworldGeneratorProfile)
+			{
+				text += "\nTP to Dungeon 1: T+1\n";
+				text += "TP to Dungeon 2: T+2\n";
+				text += "TP to Dungeon 3: T+3\n";
+				text += "TP to Dungeon 4: T+4\n";
+			}
 
 			GUI.Label(new Rect(pos, size), text);
 		}
