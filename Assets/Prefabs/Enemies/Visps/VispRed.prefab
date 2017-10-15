@@ -521,7 +521,6 @@ MonoBehaviour:
   maxInterval: 6
   shootRadius: 20
   attackRadius: 10
-  stabRadius: 10
 --- !u!114 &114241744300685856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -737,6 +736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OverallRadiusFollow: 18
   OtherwiseRoam: 1
+  timeBetweenRoam: 3
   runAwayAfterAttackTime: 3
   layerMask:
     serializedVersion: 2
@@ -745,6 +745,9 @@ MonoBehaviour:
   usingNav: 1
   speedDuringShootRadius: 2
   speedDuringAttackRadius: 3.5
+  radiusAttack: 6
+  waitTillLeep: 1
+  leepSpeed: 5
 --- !u!137 &137124643669932864
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

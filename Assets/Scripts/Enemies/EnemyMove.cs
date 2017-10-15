@@ -10,6 +10,8 @@ public class EnemyMove : MonoBehaviour
     public float OverallRadiusFollow = 30;
     [Tooltip("If not in radius, roam or not")]
     public bool OtherwiseRoam = true;
+    [Tooltip("Time between roam change")]
+    public float timeBetweenRoam = 3;
     public float runAwayAfterAttackTime = 1;
     public LayerMask layerMask;
     public bool LockY = true;
@@ -35,8 +37,14 @@ public class EnemyMove : MonoBehaviour
 
     void OnEnable()
     {
+        //sets the time between so we don't have stallers when they spawn
+        timeBetweenRoam = 0;
         players = FindObjectsOfType<PlayerInformation>();
         usingNav = true;
+
+        //resets the speed so we don't have quick enemies
+        if (agent)
+            agent.speed = originalSpeed;
     }
 
     void OnDisable()
@@ -101,14 +109,14 @@ public class EnemyMove : MonoBehaviour
                         else
                         {
                             if (OtherwiseRoam)
-                                Roam(3);
+                                Roam();
                         }
                     }
                 }
                 else
                 {
                     if (OtherwiseRoam)
-                        Roam(3);
+                        Roam();
                 }
             }
         }
@@ -134,7 +142,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    protected void Roam(float timeBetweenRoam)
+    protected void Roam()
     { 
         if (canMove)
         {

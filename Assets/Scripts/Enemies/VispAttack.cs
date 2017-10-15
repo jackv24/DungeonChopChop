@@ -8,8 +8,6 @@ public class VispAttack : EnemyAttack {
     public float shootRadius = 20;
     [Tooltip("Start attacking if player is in this radius")]
     public float attackRadius = 10;
-    [Tooltip("Try to stab if player is in this radius")]
-    public float stabRadius = 5;
 
     private int counter = 0;
     private VispMove vispMove;
@@ -34,10 +32,6 @@ public class VispAttack : EnemyAttack {
                 counter = 0;
                 shootInterval = Random.Range(minInterval, maxInterval);
             }
-        }
-        else if (vispMove.InDistance(stabRadius))
-        {
-            animator.SetTrigger("Attack");
         }
 	}
 }
