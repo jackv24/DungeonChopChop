@@ -511,7 +511,7 @@ MonoBehaviour:
   projecticle: {fileID: 1368690437338182, guid: 489c1b76cbfbb6b4b8314172c2eab3ec,
     type: 2}
   shootPosition: {fileID: 1367023631746410}
-  thrust: 8
+  thrust: 10
   attackStrength: 1
   damageOnTouch: 0.5
   knockbackStrength: 7
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4220c820a39199c4f99b3bfd7a9fc0ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverallRadiusFollow: 10
+  OverallRadiusFollow: 20
   OtherwiseRoam: 1
   timeBetweenRoam: 3
   runAwayAfterAttackTime: 3
@@ -569,11 +569,11 @@ MonoBehaviour:
     m_Bits: 0
   LockY: 1
   usingNav: 1
-  speedDuringShootRadius: 2
-  speedDuringAttackRadius: 3.5
+  speedDuringShootRadius: 1
+  speedDuringAttackRadius: 15
   radiusAttack: 10
   waitTillLeep: 1
-  leepSpeed: 15
+  leepSpeed: 30
 --- !u!114 &114332006945149444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -678,9 +678,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 6
-  health: 6
-  weight: 3
+  maxHealth: 3
+  health: 3
+  weight: 2
   IsEnemy: 1
   isPoisoned: 0
   isBurned: 0
@@ -700,8 +700,8 @@ MonoBehaviour:
         type: 2}
       gradient:
         serializedVersion: 2
-        key0: {r: 0.5497405, g: 0.8218828, b: 0.9117647, a: 1}
-        key1: {r: 0.063040674, g: 0.12726687, b: 0.7794118, a: 1}
+        key0: {r: 0.38930917, g: 0.7058823, b: 0.36332178, a: 1}
+        key1: {r: 0.010542812, g: 0.28676468, b: 0.058167282, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
