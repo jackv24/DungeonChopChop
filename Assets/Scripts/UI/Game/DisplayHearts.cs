@@ -12,11 +12,17 @@ public class DisplayHearts : MonoBehaviour {
 	{
 		//assign the hearts variable player .... important for 2 player
 		player = GameObject.FindGameObjectWithTag (playerTag);
-		if (player) {
-			foreach (Transform child in transform) {
-				child.GetComponent<Heart> ().player = player;
-			}
-		}
+        if (player)
+        {
+            foreach (Transform child in transform)
+            {
+                child.GetComponent<Heart>().player = player;
+            }
+        }
+        else
+        {
+            transform.parent.gameObject.SetActive(false);
+        }
 	}
 
 }

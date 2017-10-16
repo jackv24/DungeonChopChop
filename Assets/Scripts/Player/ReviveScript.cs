@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReviveScript : MonoBehaviour {
-
+public class ReviveScript : MonoBehaviour
+{
     private DialogueSpeaker dialogueSpeaker;
     private PlayerInformation thisPlayer;
     private bool spawnedDialogue = false;
     private GameObject obj;
 
-	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         thisPlayer = GetComponent<PlayerInformation>();
-        thisPlayer.playerMove.playerHealth.OnHealthChange += DisplayDialogue;
+
+        if(thisPlayer)
+            thisPlayer.playerMove.playerHealth.OnHealthChange += DisplayDialogue;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Update ()
+    {
         if (spawnedDialogue)
         {
             foreach (PlayerInformation player in GameManager.Instance.players)

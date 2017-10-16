@@ -408,17 +408,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b10b1ffc031d614cbfbcb1ad051f0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverallRadiusFollow: 3
+  OverallRadiusFollow: 10
   OtherwiseRoam: 1
+  timeBetweenRoam: 3
   runAwayAfterAttackTime: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 0
   LockY: 1
   usingNav: 1
-  radiusAttack: 2
+  radiusAttack: 10
   waitTillLeep: 1
-  leepSpeed: 5
+  leepSpeed: 16
 --- !u!114 &114310610559257126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -436,7 +437,7 @@ MonoBehaviour:
   thrust: 0
   attackStrength: 1
   damageOnTouch: 1
-  knockbackStrength: 2
+  knockbackStrength: 7
   projAmount: 0
   timeTillInterval: 0
   minInterval: 0
@@ -783,7 +784,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 7
-  m_Acceleration: 8
+  m_Acceleration: 35
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0

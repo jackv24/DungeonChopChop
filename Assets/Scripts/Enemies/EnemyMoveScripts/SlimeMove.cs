@@ -30,8 +30,7 @@ public class SlimeMove : EnemyMove {
     public float radiusAttack = 5;
     public float waitTillLeep = 1;
     [Tooltip("Normal speed multiplier")]
-    public float inAirSpeed = 2;
-    public float timeBetweenRoam = 2;
+    public float leepSpeed = 2;
     [Space()]
     public float timeBetweenStopMin = 2;
     public float timeBetweenStopMax = 4;
@@ -163,14 +162,14 @@ public class SlimeMove : EnemyMove {
         else if (type == SlimeType.Blue)
         {
             if (!InDistance(followProximity))
-                Roam(timeBetweenRoam);
+                Roam();
             else
                 AttackPlayer();
         }
         //if green, just roam
         else if (type == SlimeType.Green)
         {
-            Roam(timeBetweenRoam);
+            Roam();
         }
     }
 
@@ -194,14 +193,25 @@ public class SlimeMove : EnemyMove {
 
     IEnumerator LeepAtEnemy(float waitTillLeep)
     {
+        //sets some values to be true, which starts the leep
         inLeeping = true;
+
+        //stops the agent
         agent.speed = 0;
+
         yield return new WaitForSeconds(waitTillLeep);
-        //animator.SetTrigger("Hop");
+
+        //the waiting has finished, now leep
         doingLeep = true;
-        agent.speed = originalSpeed * inAirSpeed;
+
+        //speed the agent up
+        agent.speed = originalSpeed * leepSpeed;
+
         yield return new WaitForSeconds(1);
+
+        //leep is now over, reset the speed
         agent.speed = originalSpeed;
+
         inLeeping = false;
         doingLeep = false;
     }

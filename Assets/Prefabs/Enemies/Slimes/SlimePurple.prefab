@@ -365,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 1676090304618506}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 88.66964, y: 0.5, z: -185.44016}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4827611697577302}
   m_Father: {fileID: 0}
@@ -728,9 +728,9 @@ MonoBehaviour:
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 80
-  attackStrength: 0.5
-  damageOnTouch: 0.5
-  knockbackStrength: 3
+  attackStrength: 1
+  damageOnTouch: 1
+  knockbackStrength: 7
   projAmount: 25
   timeTillInterval: 1
   minInterval: 1
@@ -768,8 +768,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a60bbd03b5083439968e54b13f9c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverallRadiusFollow: 20
+  OverallRadiusFollow: 12
   OtherwiseRoam: 1
+  timeBetweenRoam: 0.5
   runAwayAfterAttackTime: 1
   layerMask:
     serializedVersion: 2
@@ -786,8 +787,7 @@ MonoBehaviour:
   followProximity: 8
   radiusAttack: 10
   waitTillLeep: 1
-  inAirSpeed: 4
-  timeBetweenRoam: 0.5
+  leepSpeed: 2
   timeBetweenStopMin: 2
   timeBetweenStopMax: 4
   stopTime: 1
@@ -914,7 +914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   health: 1
-  weight: 1.5
+  weight: 2
   IsEnemy: 1
   isPoisoned: 0
   isBurned: 0

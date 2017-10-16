@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BispMove : EnemyMove {
 
+    [Header("Leep Values")]
     [Tooltip("The distance in which the enemy will stop and 'leep'")]
     public float radiusAttack;
     [Tooltip("Time until the enemy leeps at player")]
@@ -22,38 +23,56 @@ public class BispMove : EnemyMove {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!InDistance(radiusAttack))
+        
+        //checks if the bisp is in the radius of the player to do leep
+        if (!doingLeep)
+        {
+            if (!InDistance(radiusAttack))
+            {
+                FollowPlayer();
+            }
+            else
+            {
+                //if so, do that leep
+                if (!inLeeping)
+                    StartCoroutine(LeepAtEnemy(waitTillLeep));
+            }
+        }
+        //follow the player when leeping
+        if (doingLeep)
         {
             FollowPlayer();
         }
-        //else
-        //{
-        //    if (!inLeeping)
-        //        StartCoroutine(LeepAtEnemy(waitTillLeep));
-        //}
-//        if (doingLeep)
-//        {
-//            FollowPlayer();
-//        }
-//
-//        if (moveBack)
-//        {
-//            RunAwayFromPlayer(true);
-//        }
+        //then move back
+        if (moveBack)
+        {
+            RunAwayFromPlayer(false);
+        }
 	}
 
     IEnumerator LeepAtEnemy(float waitTillLeep)
     {
+        //sets some values to be true, which starts the leep
         inLeeping = true;
-        agent.speed = 0;
         moveBack = true;
+
+        //stops the agent
+        agent.speed = .5f;
+
         yield return new WaitForSeconds(waitTillLeep);
+
+        //the waiting has finished, now leep
         moveBack = false;
-        //animator.SetTrigger("Hop");
         doingLeep = true;
+
+        //speed the agent up
         agent.speed = originalSpeed * leepSpeed;
+
         yield return new WaitForSeconds(1);
+
+        //leep is now over, reset the speed
         agent.speed = originalSpeed;
+
         inLeeping = false;
         doingLeep = false;
     }

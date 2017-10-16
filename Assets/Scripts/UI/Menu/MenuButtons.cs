@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MenuButtons : MonoBehaviour
 {
-	public int SceneIndex = 2;
+	public int SceneIndex = 1;
 	public float sceneLoadDelay = 0.5f;
 
 	private bool clicked = false;
@@ -16,40 +16,35 @@ public class MenuButtons : MonoBehaviour
     public void MainMenu()
     {
         ObjectPooler.PurgePools();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
 	public void ClickSinglePlayer()
-	{
-        if (PlayerPrefs.GetInt("SkipMenu") == 1)
+    {
+        //gets canvas
+        Canvas canv = GameObject.FindObjectOfType<Canvas>();
+        canv.enabled = false;
+
+        if (!clicked)
         {
-            //gets canvas
-            Canvas canv = GameObject.FindObjectOfType<Canvas>();
-            canv.enabled = false;
-            GameManager.Instance.ChangeScene(SceneIndex);
+            clicked = true;
+            StartCoroutine(ChangeSceneDelay(SceneIndex));
         }
-		if (!clicked)
-		{
-			clicked = true;
-			StartCoroutine(ChangeSceneDelay(SceneIndex));
-		}
-	}
+    }
 
 	public void ClickCoOp()
-	{
-        if (PlayerPrefs.GetInt("SkipMenu") == 1)
+    {
+
+        //gets canvas
+        Canvas canv = GameObject.FindObjectOfType<Canvas>();
+        canv.enabled = false;
+
+        if (!clicked)
         {
-            //gets canvas
-            Canvas canv = GameObject.FindObjectOfType<Canvas>();
-            canv.enabled = false;
-            GameManager.Instance.ChangeScene(SceneIndex);
+            clicked = true;
+            StartCoroutine(ChangeSceneDelay(SceneIndex));
         }
-		if (!clicked)
-		{
-			clicked = true;
-			StartCoroutine(ChangeSceneDelay(SceneIndex));
-		}
-	}
+    }
 
 	IEnumerator ChangeSceneDelay(int index)
 	{
@@ -77,7 +72,7 @@ public class MenuButtons : MonoBehaviour
 		else
 			yield return new WaitForSeconds(sceneLoadDelay);
 
-		GameManager.Instance.ChangeScene(index);
+        SceneManager.LoadScene("Overworld");
 	}
 
     public void Replay()

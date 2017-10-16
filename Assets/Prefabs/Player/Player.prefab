@@ -1565,8 +1565,8 @@ MonoBehaviour:
   timeInbetween: 0.4
   comboIncrease: 0.04
   rapidDmgMultiplier: 1.5
-  slashAmount: 7
-  rapidSlashCooldown: 1
+  slashAmount: 10
+  rapidSlashCooldown: 0
   rapidSlashIncrease: 0.04
   multiSpeedMultiplier: 0.2
   dashAtkDmgMultiplier: 2.5
@@ -1601,8 +1601,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 7dd3223ef35c6f84cb8667e69aba7ff2, type: 3}
     - {fileID: 8300000, guid: 38970a88eceb0be49994c27000a3ab22, type: 3}
     volume: 1
-    minPitchVariance: 0.1
-    maxPitchVariance: 0.2
+    minPitchVariance: 0.3
+    maxPitchVariance: 0.3
   secondSlashSounds:
     clips:
     - {fileID: 8300000, guid: a4dbaf0848c19d64481ff30ec317b15f, type: 3}
@@ -1612,8 +1612,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 76594e30439647145b24f2e523719147, type: 3}
     - {fileID: 8300000, guid: 891e0cdafb7377645b6d4864908d2392, type: 3}
     volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: -0.2
+    minPitchVariance: -0.3
+    maxPitchVariance: -0.3
   rapidSounds:
     clips:
     - {fileID: 8300000, guid: 678e5a2f747b34549959d4b1befac3c8, type: 3}
@@ -1621,26 +1621,26 @@ MonoBehaviour:
     - {fileID: 8300000, guid: eaa682b163b62624681bbeda6283f185, type: 3}
     - {fileID: 8300000, guid: 5080a89cc2eb1084eacf90483d4dde62, type: 3}
     volume: 1
-    minPitchVariance: -0.2
-    maxPitchVariance: 0.2
+    minPitchVariance: -0.3
+    maxPitchVariance: 0.3
   dashSounds:
     clips:
     - {fileID: 8300000, guid: ac90543d18058534c8dd20ef79b34555, type: 3}
     volume: 1
-    minPitchVariance: -0.2
-    maxPitchVariance: 0.2
+    minPitchVariance: -0.3
+    maxPitchVariance: 0.3
   dashAttackSounds:
     clips:
     - {fileID: 8300000, guid: e0f14f3366902c44ab09cf3b3a999d3c, type: 3}
     volume: 1
     minPitchVariance: 0.2
-    maxPitchVariance: 0.6
+    maxPitchVariance: 0.8
   startBlockSounds:
     clips:
     - {fileID: 8300000, guid: 7215af491900d684cb463f9088d17d50, type: 3}
     volume: 1
-    minPitchVariance: -0.2
-    maxPitchVariance: 0.2
+    minPitchVariance: -0.3
+    maxPitchVariance: 0.3
   stopBlockSounds:
     clips:
     - {fileID: 8300000, guid: 96a1172631abeed4b8fdf76066f22ccf, type: 3}
@@ -1651,14 +1651,14 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 38edae03678125e4e96710b4a2812c6e, type: 3}
     volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
+    minPitchVariance: -0.3
+    maxPitchVariance: 0.3
   chargeSpinSounds:
     clips:
     - {fileID: 0}
     volume: 1
-    minPitchVariance: -0.2
-    maxPitchVariance: 0.2
+    minPitchVariance: -0.3
+    maxPitchVariance: 0.3
   chargeReadySounds:
     clips:
     - {fileID: 8300000, guid: b1606b29a6f871e479e8cf77b7131031, type: 3}
@@ -1997,10 +1997,15 @@ MonoBehaviour:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   hitSounds:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: d1779af910b427842bf8c3535957a99d, type: 3}
+    - {fileID: 8300000, guid: 0e00c35d87d095544b145ce6d9ae9a63, type: 3}
+    - {fileID: 8300000, guid: 48896867dba37cc4590f308bd1f52de7, type: 3}
+    - {fileID: 8300000, guid: 63f77cdbbd0f290468f6f6200a5634bb, type: 3}
+    - {fileID: 8300000, guid: 08094774d8c1bcb47bdfeb6e4c06f84a, type: 3}
     volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
+    minPitchVariance: 0.6
+    maxPitchVariance: 1.2
   hitColor: {r: 0.75, g: 0.3143382, b: 0.3143382, a: 1}
   timeBetweenFlash: 0.1
   amountToFlash: 5
