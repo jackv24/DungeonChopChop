@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 1560298701560840}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.66816455, y: 0.115555525, z: 0.35796547}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4966074370993184}
   m_Father: {fileID: 0}
@@ -174,6 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OverallRadiusFollow: 30
   OtherwiseRoam: 1
+  timeBetweenRoam: 3
   runAwayAfterAttackTime: 1
   layerMask:
     serializedVersion: 2
@@ -194,12 +195,13 @@ MonoBehaviour:
   deathType: 3
   amountToSplit: 0
   splitEnemy: {fileID: 0}
-  explodeRadius: 5
+  explodeRadius: 3
   statusType: 4
   damagePerTick: 0
   timeBetweenTick: 1
   duration: 4
   damageOnExplode: 2
+  knockbackOnExplode: 3
   deathParticles:
   - particleType: 1
     particles:
@@ -207,8 +209,8 @@ MonoBehaviour:
         type: 2}
       gradient:
         serializedVersion: 2
-        key0: {r: 0.5808823, g: 0.14522058, b: 0.3127828, a: 1}
-        key1: {r: 0.49264705, g: 0.27168036, b: 0.35666755, a: 1}
+        key0: {r: 0.53676474, g: 0.47165617, b: 0.33153117, a: 1}
+        key1: {r: 0.30147058, g: 0.20210147, b: 0.024383655, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -236,12 +238,12 @@ MonoBehaviour:
         m_NumAlphaKeys: 2
   - particleType: 1
     particles:
-    - particle: {fileID: 1332512602603502, guid: e1c927ad289fd7c47ab7205864781a62,
+    - particle: {fileID: 1623778839485062, guid: 8dd9a7403eadc5a4cb36168a44dcd526,
         type: 2}
       gradient:
         serializedVersion: 2
-        key0: {r: 0.5808823, g: 0.15803418, b: 0.5342232, a: 1}
-        key1: {r: 0.5808823, g: 0.15803418, b: 0.5342232, a: 1}
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -273,8 +275,8 @@ MonoBehaviour:
         type: 2}
       gradient:
         serializedVersion: 2
-        key0: {r: 0.22098896, g: 0.4705882, b: 0.0934256, a: 1}
-        key1: {r: 0.22098896, g: 0.4705882, b: 0.0934256, a: 1}
+        key0: {r: 0.4497792, g: 0.4705882, b: 0.0934256, a: 1}
+        key1: {r: 0.6094409, g: 0.61764705, b: 0.022707596, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -332,8 +334,8 @@ MonoBehaviour:
     probability: 0.1
   - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
     probability: 0.1
-  minAmountOfDrops: 0
-  maxAmountOfDrops: 2
+  minAmountOfDrops: 1
+  maxAmountOfDrops: 1
 --- !u!114 &114916941400412180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,8 +360,8 @@ MonoBehaviour:
   poisonColor: {r: 0.64705884, g: 0.43771628, b: 0.6412839, a: 0.616}
   burnColor: {r: 0.6102941, g: 0.31860942, b: 0.31860942, a: 0.609}
   slowlyDyingColor: {r: 0.4414226, g: 0.66176474, b: 0.4233348, a: 0.622}
-  frozenColor: {r: 0.25865054, g: 0.6600049, b: 0.7647059, a: 1}
-  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  frozenColor: {r: 0.25865054, g: 0.6600049, b: 0.7647059, a: 0.603}
+  sandyColor: {r: 0.7519031, g: 0.7794118, b: 0.28081748, a: 0.584}
   hitParticles: []
   hitSounds:
     clips:
