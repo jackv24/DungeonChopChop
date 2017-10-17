@@ -92,6 +92,27 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    void ChoseAttackType()
+    {
+        randomInterval = Random.Range(minInterval, maxInterval);
+        if (attackingType == TypesOfAttack.BasicShootIntervals)
+        {
+            BasicShootIntervals();
+        }
+        else if (attackingType == TypesOfAttack.ShootCircleIntervals)
+        {
+            ShootCircleIntervals();
+        }
+        else if (attackingType == TypesOfAttack.ShootCircleRandIntervals)
+        {
+            ShootCircleRandIntervals();
+        }
+        else if (attackingType == TypesOfAttack.BasicShootRandIntervals)
+        {
+            BasicShootRandIntervals();
+        }
+    }
+
     void FixedUpdate()
     {
         if(projAmount != 0)
@@ -101,24 +122,12 @@ public class EnemyAttack : MonoBehaviour
         {
             if (enemyMove.InDistance(enemyMove.OverallRadiusFollow))
             {
-                randomInterval = Random.Range(minInterval, maxInterval);
-                if (attackingType == TypesOfAttack.BasicShootIntervals)
-                {
-                    BasicShootIntervals();
-                }
-                else if (attackingType == TypesOfAttack.ShootCircleIntervals)
-                {
-                    ShootCircleIntervals();
-                }
-                else if (attackingType == TypesOfAttack.ShootCircleRandIntervals)
-                {
-                    ShootCircleRandIntervals();
-                }
-                else if (attackingType == TypesOfAttack.BasicShootRandIntervals)
-                {
-                    BasicShootRandIntervals();
-                }
+                ChoseAttackType();
             }
+        }
+        else
+        {
+            ChoseAttackType();
         }
     }
 
@@ -140,7 +149,6 @@ public class EnemyAttack : MonoBehaviour
         if (shootIntervalCounter > (timeTillInterval * 60))
         {
             animator.SetTrigger("Attack");
-            //Shootforward();
             shootIntervalCounter = 0;
         } 
     }
@@ -153,7 +161,6 @@ public class EnemyAttack : MonoBehaviour
         {
             randomInterval = Random.Range(minInterval, maxInterval);
             animator.SetTrigger("Attack");
-            //Shootforward();
             shootIntervalCounter = 0;
         } 
     }
@@ -194,7 +201,6 @@ public class EnemyAttack : MonoBehaviour
         if (shootIntervalCounter > (randomInterval * 60))
         {
             randomInterval = Random.Range(minInterval, maxInterval);
-            ShootCircle();
             shootIntervalCounter = 0;
         } 
     }

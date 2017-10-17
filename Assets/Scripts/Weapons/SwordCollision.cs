@@ -159,7 +159,7 @@ public class SwordCollision : MonoBehaviour {
 
             particle.SetActive(false);
 
-            while (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+            while (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge") || animator.GetCurrentAnimatorStateInfo(1).IsTag("Blocking"))
             {
                 yield return new WaitForEndOfFrame();
             }
