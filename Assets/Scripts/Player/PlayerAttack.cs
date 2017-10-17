@@ -631,22 +631,27 @@ public class PlayerAttack : MonoBehaviour
 
     void doDash()
     {
-        if (canDash)
+        //make sure the player is not frozen
+        if (!playerHealth.isFrozen)
         {
-            if (canDashAttack)
+            if (canDash)
             {
-                SoundManager.PlaySound(dashAttackSounds, transform.position);
-                animator.SetTrigger("DashAttack");
-                playerHealth.InvincibilityForSecs(dashTime + 1);
+                if (canDashAttack)
+                {
+                    SoundManager.PlaySound(dashAttackSounds, transform.position);
+                    animator.SetTrigger("DashAttack");
+                    playerHealth.InvincibilityForSecs(dashTime + 1);
+                }
+                else
+                {
+                    SoundManager.PlaySound(dashSounds, transform.position);
+                    animator.SetTrigger("Dash");
+                }
+                canDash = false;
+
+                StartCoroutine(dash());
+                StartCoroutine(dashCooldownTimer());
             }
-            else
-            {
-                SoundManager.PlaySound(dashSounds, transform.position);
-                animator.SetTrigger("Dash");
-            }
-            canDash = false;
-            StartCoroutine(dash());
-            StartCoroutine(dashCooldownTimer());
         }
     }
 
