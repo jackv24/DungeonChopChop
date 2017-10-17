@@ -153,17 +153,23 @@ public class PlayerAttack : MonoBehaviour
         {
             if (input.BasicAttack.IsPressed)
             {
-                //check what state you're in
-                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                heldDownCounter++;
+                //make sure not in spinning state
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
                 {
-                    heldDownCounter++;
                     if (heldDownCounter > 30)
                     {
-                        SoundManager.PlaySound(chargeSpinSounds, transform.position);
                         animator.SetBool("SpinCharge", true);
-                        sword.GetComponent<SwordCollision>().DoChargeParticle();
-                        spinChargeRoutine = StartCoroutine(ChargeSpinFlash());
-                        StartCoroutine(ChargeSpinFlash());
+                        //make sure in spin charge state
+                        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+                        {
+                            //do spin charge stuff
+                            SoundManager.PlaySound(chargeSpinSounds, transform.position);
+                            sword.GetComponent<SwordCollision>().DoChargeParticle();
+                            spinChargeRoutine = StartCoroutine(ChargeSpinFlash());
+                            StartCoroutine(ChargeSpinFlash());
+                            heldDownCounter = 0;
+                        }
                     }
                 }
             }
@@ -204,28 +210,37 @@ public class PlayerAttack : MonoBehaviour
         //do basic attack
         if (!playerHealth.isDead)
         {
+            //check if holding down attack
             if (input.BasicAttack.WasReleased)
             {
-                if (spinCounter < (timeToCharge * 60))
+                //make sure not already spinning
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
                 {
-                    animator.SetBool("SpinCharge", false);
-                    spinCounter = 0;
-                    if (spinChargeRoutine != null)
+                    //if the amount of time you're holding down attack is less then the charge time, cancel it
+                    if (spinCounter < (timeToCharge * 60))
+                    {
+                        animator.SetBool("SpinCharge", false);
+                        spinCounter = 0;
+                        if (spinChargeRoutine != null)
+                            StopCoroutine(spinChargeRoutine);
+                    }
+                    //otherwise do spin
+                    else
+                    {
                         StopCoroutine(spinChargeRoutine);
-                }
-                else
-                {
-                    StopCoroutine(spinChargeRoutine);
-                    spinCounter = 0;
-                    animator.SetBool("SpinCharge", false);
-                    //play sound
-                    SoundManager.PlaySound(spinSounds, transform.position);
-                    //do spin
-                    animator.SetTrigger("Spin");
-                    //set invincibility
-                    playerHealth.InvincibilityForSecs(2);
+                        spinCounter = 0;
+                        animator.SetBool("SpinCharge", false);
+                        //play sound
+                        SoundManager.PlaySound(spinSounds, transform.position);
+                        //do spin
+                        animator.SetTrigger("Spin");
+                        //set invincibility
+                        playerHealth.InvincibilityForSecs(2);
+                    }
                 }
             }
+
+
             if (input.BasicAttack.WasPressed)
             {
                 if (canTripleAttack)
@@ -310,7 +325,6 @@ public class PlayerAttack : MonoBehaviour
 
         if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
         {
-            animator.SetBool("SpinCharge", false);
             DisableSword();
         }
     }
