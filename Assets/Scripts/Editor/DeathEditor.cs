@@ -33,11 +33,13 @@ public class DeathEditor : Editor {
             enemyDeath.damagePerTick = EditorGUILayout.FloatField("Damage per tick", enemyDeath.damagePerTick);
             enemyDeath.timeBetweenTick = EditorGUILayout.FloatField("Time between tick", enemyDeath.timeBetweenTick);
             enemyDeath.duration = EditorGUILayout.FloatField("Duration of status", enemyDeath.duration);
+            enemyDeath.knockbackOnExplode = EditorGUILayout.FloatField("Knockback Explode Amount", enemyDeath.knockbackOnExplode);
         }
         else if (enemyDeath.deathType == TypesOfDeath.DamageExplode)
         {
             enemyDeath.explodeRadius = EditorGUILayout.FloatField("Explode Radius", enemyDeath.explodeRadius);
             enemyDeath.damageOnExplode = EditorGUILayout.FloatField("Damage on Explode", enemyDeath.damageOnExplode);
+            enemyDeath.knockbackOnExplode = EditorGUILayout.FloatField("Knockback Explode Amount", enemyDeath.knockbackOnExplode);
         }
 	}
 }

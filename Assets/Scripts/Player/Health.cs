@@ -10,7 +10,6 @@ public class Health : MonoBehaviour
     [Tooltip("The heavier the weight, less knockback")]
     public float weight;
 
-
     public delegate void HealthEvent();
 
     public event HealthEvent OnDeath;
@@ -193,6 +192,15 @@ public class Health : MonoBehaviour
         {
             StartCoroutine(DisableNav(1));
             rb.AddForce(direction * (playerInfo.knockback / weight) * playerInfo.GetCharmFloat("knockbackMultiplier"), ForceMode.Impulse);
+        }
+    }
+
+    public void Knockback2(float knockback, Vector3 direction)
+    {
+        if (rb)
+        {
+            StartCoroutine(DisableNav(1));
+            rb.AddForce(direction * (knockback / weight), ForceMode.Impulse);
         }
     }
 

@@ -34,6 +34,8 @@ public class EnemyDeath : MonoBehaviour
     public float duration = 5;
     [HideInInspector]
     public float damageOnExplode = 2;
+    [HideInInspector]
+    public float knockbackOnExplode = 5;
 
     public AmountOfParticleTypes[] deathParticles;
     public SoundEffect deathSounds;
@@ -125,6 +127,17 @@ public class EnemyDeath : MonoBehaviour
                             col.GetComponent<Health>().SetPoison(damagePerTick, duration, timeBetweenTick);
                         else if (statusType == StatusType.slowlyDying)
                             col.GetComponent<Health>().SetPoison(damagePerTick, duration, timeBetweenTick);
+
+                        //do knockback
+                        Vector3 direction = col.transform.position - transform.position;
+                        if (col.GetComponent<PlayerInformation>())
+                        {
+                            col.GetComponent<PlayerInformation>().KnockbackPlayer(direction, knockbackOnExplode);
+                        }
+                        else
+                        {
+                            col.GetComponent<Health>().Knockback2(knockbackOnExplode, direction);
+                        }
                     }
                 }
             }
@@ -135,6 +148,7 @@ public class EnemyDeath : MonoBehaviour
     {
         Collider[] cols = Physics.OverlapSphere(transform.position, explodeRadius);
         List<GameObject> foundObjects = new List<GameObject>();
+        //loop through each collider
         foreach (Collider col in cols)
         {
             if (!foundObjects.Contains(col.gameObject))
@@ -145,6 +159,17 @@ public class EnemyDeath : MonoBehaviour
                     if (col.GetComponent<Health>() != health)
                     {
                         col.GetComponent<Health>().AffectHealth(-damageOnExplode);
+
+                        //do knockback
+                        Vector3 direction = col.transform.position - transform.position;
+                        if (col.GetComponent<PlayerInformation>())
+                        {
+                            col.GetComponent<PlayerInformation>().KnockbackPlayer(direction, knockbackOnExplode);
+                        }
+                        else
+                        {
+                            col.GetComponent<Health>().Knockback2(knockbackOnExplode, direction);
+                        }
                     }
                 }
             }
