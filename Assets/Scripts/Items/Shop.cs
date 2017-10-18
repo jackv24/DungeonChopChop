@@ -12,10 +12,12 @@ public class Shop : MonoBehaviour
 
 	[Space()]
 	public SoundEffect purchaseSound;
-
     private AudioSource audioSource;
 
-	private DialogueSpeaker speaker;
+    [Space()]
+    public GameObject purchaseEffect;
+
+    private DialogueSpeaker speaker;
 
 	private bool canPurchase = false;
 	private PlayerInputs input;
@@ -48,7 +50,15 @@ public class Shop : MonoBehaviour
 
                 PlaySound();
 
-				sellingItem.Pickup(playerInfo);
+                //Spawn particle effect
+                if (purchaseEffect)
+                {
+                    GameObject purchaseEffectObj = ObjectPooler.GetPooledObject(purchaseEffect);
+                    if (purchaseEffectObj)
+                        purchaseEffectObj.transform.position = itemSpawn.position;
+                }
+
+                sellingItem.Pickup(playerInfo);
 
 				if (sellingItem is InventoryItem)
 				{
@@ -114,6 +124,20 @@ public class Shop : MonoBehaviour
 			else
 				SpawnCharm();
 		}
+		else if(item is MapItem)
+		{
+            if (itemSpawn && item.itemIcon)
+            {
+                itemGraphic = new GameObject("Sprite");
+                itemGraphic.transform.SetParent(itemSpawn);
+                itemGraphic.transform.localPosition = Vector3.zero;
+                itemGraphic.transform.eulerAngles = new Vector3(60, 0, 0);
+
+                SpriteRenderer renderer = itemGraphic.AddComponent<SpriteRenderer>();
+
+                renderer.sprite = item.itemIcon;
+            }
+        }
 
 		if (!speaker)
 		{
