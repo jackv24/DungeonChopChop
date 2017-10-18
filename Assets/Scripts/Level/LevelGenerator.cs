@@ -93,79 +93,128 @@ public class LevelGenerator : MonoBehaviour
 
 			if(Input.GetKey(KeyCode.T))
 			{
-				//Teleport to dungeons
-				bool dungeonTP = false;
-				LevelTile.Biomes dungeonBiome = LevelTile.Biomes.Grass;
+				//Teleport codes for overworld
+                if (profile is OverworldGeneratorProfile)
+                {
+                    //Teleport to dungeons
+                    bool dungeonTP = false;
+                    LevelTile.Biomes dungeonBiome = LevelTile.Biomes.Grass;
 
-				if (Input.GetKeyDown(KeyCode.Alpha1))
-				{
-					dungeonTP = true;
-					dungeonBiome = LevelTile.Biomes.Forest;
-				}
-				else if (Input.GetKeyDown(KeyCode.Alpha2))
-				{
-					dungeonTP = true;
-					dungeonBiome = LevelTile.Biomes.Desert;
-				}
-				else if (Input.GetKeyDown(KeyCode.Alpha3))
-				{
-					dungeonTP = true;
-					dungeonBiome = LevelTile.Biomes.Ice;
-				}
-				else if (Input.GetKeyDown(KeyCode.Alpha4))
-				{
-					dungeonTP = true;
-					dungeonBiome = LevelTile.Biomes.Fire;
-				}
-				else if (Input.GetKeyDown(KeyCode.Alpha0)) //Teleport to town
-				{
-					PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
+                    if (Input.GetKeyDown(KeyCode.Alpha1))
+                    {
+                        dungeonTP = true;
+                        dungeonBiome = LevelTile.Biomes.Forest;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha2))
+                    {
+                        dungeonTP = true;
+                        dungeonBiome = LevelTile.Biomes.Desert;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha3))
+                    {
+                        dungeonTP = true;
+                        dungeonBiome = LevelTile.Biomes.Ice;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha4))
+                    {
+                        dungeonTP = true;
+                        dungeonBiome = LevelTile.Biomes.Fire;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha0)) //Teleport to town
+                    {
+                        PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
 
-					generatedTiles[0].SetCurrent(currentTile);
+                        generatedTiles[0].SetCurrent(currentTile);
 
-					foreach(PlayerInformation playerInfo in playerInfos)
-						playerInfo.transform.position = generatedTiles[0].tileOrigin.position;
-				}
+                        foreach (PlayerInformation playerInfo in playerInfos)
+                            playerInfo.transform.position = generatedTiles[0].tileOrigin.position;
+                    }
 
-				if (dungeonTP)
+                    if (dungeonTP)
+                    {
+                        //Find all dungeons, to match to correct biome
+                        DungeonEntrance[] dungeons = FindObjectsOfType<DungeonEntrance>();
+
+                        foreach (DungeonEntrance entrance in dungeons)
+                        {
+                            LevelTile tile = entrance.GetComponentInParent<LevelTile>();
+
+                            //If this dungeon is on a tile of the correct biome, it is the one
+                            if (tile && tile.Biome == dungeonBiome)
+                            {
+                                //Randomly choose a door to walk in from
+                                Transform doorTransform = tile.doors[UnityEngine.Random.Range(0, tile.doors.Count)];
+
+                                LevelDoor door = doorTransform.GetComponent<LevelDoor>();
+
+                                if (door)
+                                {
+                                    //Walk in from this doors connected door
+                                    LevelDoor walkIntoDoor = door.targetDoor;
+
+                                    if (walkIntoDoor)
+                                    {
+                                        PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
+
+                                        walkIntoDoor.targetTile.SetCurrent(currentTile);
+
+                                        foreach (PlayerInformation playerInfo in playerInfos)
+                                            playerInfo.transform.position = walkIntoDoor.transform.position + (-walkIntoDoor.transform.forward) * walkIntoDoor.exitDistance;
+                                    }
+                                }
+
+                                //Once we've teleported, no need to continue
+                                break;
+                            }
+                        }
+                    }
+                }
+				//Teleport codes for dungeon
+				else if(profile is DungeonGeneratorProfile)
 				{
-					//Find all dungeons, to match to correct biome
-					DungeonEntrance[] dungeons = FindObjectsOfType<DungeonEntrance>();
+                    DungeonGeneratorProfile dungeonProfile = (DungeonGeneratorProfile)profile;
+                    LevelTile tpTile = null;
 
-					foreach (DungeonEntrance entrance in dungeons)
+					//Get tile to teleport to
+                    if(Input.GetKeyDown(KeyCode.Alpha0))
 					{
-						LevelTile tile = entrance.GetComponentInParent<LevelTile>();
+                        tpTile = generatedTiles[0];
+                    }
+					else if(Input.GetKeyDown(KeyCode.Alpha1))
+					{
+                        tpTile = dungeonProfile.keyTileObj.GetComponentInParent<LevelTile>();
+                    }
+					else if(Input.GetKeyDown(KeyCode.Alpha2))
+					{
+                        tpTile = dungeonProfile.chestTileObj.GetComponentInParent<LevelTile>();
+                    }
 
-						//If this dungeon is on a tile of the correct biome, it is the one
-						if (tile && tile.Biome == dungeonBiome)
-						{
-							//Randomly choose a door to walk in from
-							Transform doorTransform = tile.doors[UnityEngine.Random.Range(0, tile.doors.Count)];
+					//if tile was selected to teleport, teleport to it
+					if(tpTile)
+					{
+                        //Randomly choose a door to walk in from
+                        Transform doorTransform = tpTile.doors[UnityEngine.Random.Range(0, tpTile.doors.Count)];
 
-							LevelDoor door = doorTransform.GetComponent<LevelDoor>();
+                        LevelDoor door = doorTransform.GetComponent<LevelDoor>();
 
-							if (door)
-							{
-								//Walk in from this doors connected door
-								LevelDoor walkIntoDoor = door.targetDoor;
+                        if (door)
+                        {
+                            //Walk in from this doors connected door
+                            LevelDoor walkIntoDoor = door.targetDoor;
 
-								if (walkIntoDoor)
-								{
-									PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
+                            if (walkIntoDoor)
+                            {
+                                PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
 
-									walkIntoDoor.targetTile.SetCurrent(currentTile);
+                                walkIntoDoor.targetTile.SetCurrent(currentTile);
 
-									foreach(PlayerInformation playerInfo in playerInfos)
-										playerInfo.transform.position = walkIntoDoor.transform.position + (-walkIntoDoor.transform.forward) * walkIntoDoor.exitDistance;
-								}
-							}
-
-							//Once we've teleported, no need to continue
-							break;
-						}
+                                foreach (PlayerInformation playerInfo in playerInfos)
+                                    playerInfo.transform.position = walkIntoDoor.transform.position + (-walkIntoDoor.transform.forward) * walkIntoDoor.exitDistance;
+                            }
+                        }
 					}
 				}
-			}
+            }
 		}
 	}
 
@@ -204,6 +253,12 @@ public class LevelGenerator : MonoBehaviour
 				text += "TP to Dungeon 4: T+4\n";
 				text += "\nTP to Town: T+0\n";
 			}
+			else if(profile is DungeonGeneratorProfile)
+			{
+                text += "\nTP to Entrance: T+0\n";
+                text += "TP to Key Room: T+1\n";
+                text += "TP to Chest Room: T+2\n";
+            }
 
 			GUI.Label(new Rect(pos, size), text);
 		}
