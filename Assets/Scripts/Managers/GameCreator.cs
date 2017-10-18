@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class GameCreator : MonoBehaviour {
 
+    public bool buildMode = false;
     public GameObject[] managers;
 
 	// Use this for initialization
 	void Awake () {
         //create all the managers
-        foreach (GameObject manager in managers)
+        if (!buildMode)
         {
-            Instantiate(manager, transform.position, Quaternion.Euler(0, 0, 0));
+            foreach (GameObject manager in managers)
+            {
+                Instantiate(manager, transform.position, Quaternion.Euler(0, 0, 0));
+            }
+        }
+        else
+        {
+            Instantiate(managers[managers.Length - 1], transform.position, Quaternion.Euler(0, 0, 0));
         }
 	}
 	

@@ -20,14 +20,17 @@ public class SpawnPlayersManager : MonoBehaviour
 	{
 		cameraFollow = Camera.main.GetComponent<CameraFollow> ();
 
+        //check if there is a player in the world
         //If there are no inputs, create one
         if (InputManager.Instance.playerInput.Count <= 0)
         {
             PlayerManager manager = GameObject.FindObjectOfType<PlayerManager>();
             if (manager)
+            {
                 manager.SinglePlayer();
+            }
         }
-		
+
         DoSpawning();
 	}
 

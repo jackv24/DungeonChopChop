@@ -17,10 +17,19 @@ public class VispMove : EnemyMove
     public float waitTillLeep = 1;
     [Tooltip("The speed when leeping")]
     public float leepSpeed = 5;
+    [Space()]
+    public float minTimeBetweenLeep = 2;
+    public float maxTimeBetweenLeep = 3;
 
     private bool inLeeping = false;
     private bool doingLeep = false;
     private bool moveBack = false;
+    private bool canLeep = true;
+
+    private int leepCounter = 0;
+    private float timeBetweenLeep = 0;
+
+    private Vector3 leepTarget;
 
     private VispAttack vispAttack;
 
@@ -29,6 +38,35 @@ public class VispMove : EnemyMove
     {
         Setup();
         vispAttack = GetComponent<VispAttack>();
+    }
+
+    void OnEnable()
+    {
+        ResetEnable();
+        inLeeping = false;
+        doingLeep = false;
+        moveBack = false;
+        canLeep = true;
+    }
+
+    public override void FixedUpdate()
+    {
+        if (!canLeep)
+        {
+            //can leep or not counter
+            leepCounter++;
+
+            if (leepCounter > timeBetweenLeep * 60)
+            {
+                canLeep = true;
+                //reset values
+                leepCounter = 0;
+                timeBetweenLeep = Random.Range(minTimeBetweenLeep, maxTimeBetweenLeep);
+
+            }
+        }
+
+        base.FixedUpdate();
     }
 	
     // Update is called once per frame
@@ -56,15 +94,20 @@ public class VispMove : EnemyMove
             }
             else
             {
-                //if so, do that leep
-                if (!inLeeping)
-                    StartCoroutine(LeepAtEnemy(waitTillLeep));
+                //check if can leep, is leeping and if the coroutine is already running
+                if (canLeep)
+                {
+                    if (!inLeeping)
+                    {
+                        StartCoroutine(LeepAtEnemy(waitTillLeep));
+                    }
+                }
             }
         }
         //follow the player when leeping
         if (doingLeep)
         {
-            FollowPlayer();
+            GoToTarget(leepTarget);
         }
         //then move back
         if (moveBack)
@@ -84,6 +127,9 @@ public class VispMove : EnemyMove
 
         yield return new WaitForSeconds(waitTillLeep);
 
+        //set leap target
+        leepTarget = GetClosestPlayer().position;
+
         //the waiting has finished, now leep
         moveBack = false;
         doingLeep = true;
@@ -98,6 +144,8 @@ public class VispMove : EnemyMove
 
         //leep is now over, reset the speed
         agent.speed = originalSpeed;
+
+        canLeep = false;
 
         inLeeping = false;
         doingLeep = false;

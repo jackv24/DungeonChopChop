@@ -6,9 +6,19 @@ public class SnapEyeMove : EnemyMove
 {
     public float radius;
 
+    void OnEnable()
+    {
+        ResetEnable();
+    }
+
     void Start()
     {
         Setup();
+    }
+
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
     }
 
 	// Update is called once per frame

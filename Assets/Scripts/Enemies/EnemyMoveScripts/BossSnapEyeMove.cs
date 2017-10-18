@@ -22,6 +22,16 @@ public class BossSnapEyeMove : EnemyMove {
             SpawnEnemies();
     }
 
+    void OnEnable()
+    {
+        ResetEnable();
+    }
+
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
+
     // Update is called once per frame
     void Update () 
     {

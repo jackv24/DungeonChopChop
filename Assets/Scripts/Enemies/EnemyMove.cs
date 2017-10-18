@@ -35,7 +35,7 @@ public class EnemyMove : MonoBehaviour
         Setup();
     }
 
-    void OnEnable()
+    protected void ResetEnable()
     {
         //sets the time between so we don't have stallers when they spawn
         timeBetweenRoam = 0;
@@ -64,7 +64,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         if (currentPlayer)
         {
@@ -90,6 +90,20 @@ public class EnemyMove : MonoBehaviour
         {
             agent = GetComponent<NavMeshAgent>();
             originalSpeed = agent.speed;
+        }
+    }
+
+    protected void GoToTarget(Vector3 target)
+    {
+        if (canMove)
+        {
+            if (usingNav)
+            {
+                if (agent.isOnNavMesh)
+                {
+                    agent.SetDestination(target);
+                }
+            }
         }
     }
 

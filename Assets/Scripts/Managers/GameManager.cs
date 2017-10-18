@@ -24,6 +24,36 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+
+        //make sure we are in the game scene
+        if (SceneManager.GetActiveScene().name == "Game")
+        {
+            StartCoroutine(SetupGame(startSceneIndex));
+        }
+    }
+
+    IEnumerator SetupGame(int index)
+    {
+        yield return SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
+        currentSceneIndex = index;
+        // After first scene is loaded, do game setup
+    }
+
+    public void ChangeScene(int newSceneIndex)
+    {
+        StartCoroutine(ChangeSceneSequence(newSceneIndex));
+    }
+
+    IEnumerator ChangeSceneSequence(int index)
+    {
+        yield return SceneManager.UnloadSceneAsync(currentSceneIndex);
+
+        //stuff inbetween scenes
+
+        yield return SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(index));
+
+        currentSceneIndex = index;
     }
 
     public void SetGlobalMultiplier(string key, float value)

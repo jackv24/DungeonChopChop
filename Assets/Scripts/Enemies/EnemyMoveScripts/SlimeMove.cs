@@ -39,13 +39,13 @@ public class SlimeMove : EnemyMove {
     [Space()]
     public bool friendly = false;
 
-    private bool inLeeping = false;
-    private bool doingLeep = false;
+    protected bool inLeeping = false;
+    protected bool doingLeep = false;
 
-    private float splitCounter = 0;
+    protected float splitCounter = 0;
 
-    private int counter = 0;
-    private float timeBetweenMove = 0;
+    protected int counter = 0;
+    protected float timeBetweenMove = 0;
 
     void Start()
     {
@@ -53,7 +53,12 @@ public class SlimeMove : EnemyMove {
         timeBetweenMove = Random.Range(timeBetweenStopMin, timeBetweenStopMax);
     }
 
-    void FixedUpdate()
+    void OnEnable()
+    {
+        ResetEnable();
+    }
+        
+    public override void FixedUpdate()
     {
         if (doesSplit)
         {

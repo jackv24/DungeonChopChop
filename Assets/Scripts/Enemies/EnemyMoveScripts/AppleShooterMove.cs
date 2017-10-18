@@ -6,9 +6,19 @@ public class AppleShooterMove : EnemyMove {
 
     public float rotateSpeed = 5;
 
+    void OnEnable()
+    {
+        ResetEnable();
+    }
+
     void Start()
     {
         Setup();
+    }
+
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
     }
 	
 	// Update is called once per frame
