@@ -2,12 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum ArmourType
+{
+    Boots,
+    ChestPiece,
+    Helmet
+}
+
 [CreateAssetMenu(fileName = "New Item", menuName = "Data/Items/Item")]
 public class InventoryItem : BaseItem
 {
 	public GameObject itemPrefab;
 	public bool usePrefabForPickup = false;
     public Charm charm;
+    public ArmourType armourType;
 
     [System.Serializable]
     public class Item
@@ -37,7 +46,6 @@ public class InventoryItem : BaseItem
                     {
                         if (charmFloat.floatKey != "")
                         {
-                            Debug.Log(charmFloat.floatKey);
                             playerInfo.SetItemCharmFloat (charmFloat.floatKey, charmFloat.floatValue);
                         }
                     }

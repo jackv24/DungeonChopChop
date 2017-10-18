@@ -23,14 +23,24 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        DontDestroyOnLoad(this);
+
         Instance = this;
 
-        //make sure we are in the game scene
         if (SceneManager.GetActiveScene().name == "Game")
         {
             StartCoroutine(SetupGame(startSceneIndex));
         }
+
+        //make sure we are in the game scene
+        SceneManager.sceneLoaded += SceneChange; 
     }
+
+    void SceneChange(Scene scene, LoadSceneMode mode) 
+    { 
+        if (scene.buildIndex == 1) 
+            ChangeScene(scene.buildIndex);
+    } 
 
     IEnumerator SetupGame(int index)
     {
