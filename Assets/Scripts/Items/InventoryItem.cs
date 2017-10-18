@@ -7,6 +7,7 @@ public class InventoryItem : BaseItem
 {
 	public GameObject itemPrefab;
 	public bool usePrefabForPickup = false;
+    public Charm charm;
 
     [System.Serializable]
     public class Item
@@ -29,12 +30,42 @@ public class InventoryItem : BaseItem
                 {
                     playerInfo.SetItemFloat (itemFloat.itemKey, itemFloat.floatValue);
                 }
+
+                if (charm)
+                {
+                    foreach (Charm.CharmFloat charmFloat in charm.charmFloats)
+                    {
+                        if (charmFloat.floatKey != "")
+                        {
+                            Debug.Log(charmFloat.floatKey);
+                            playerInfo.SetItemCharmFloat (charmFloat.floatKey, charmFloat.floatValue);
+                        }
+                    }
+                }
             }
         }
 	}
 
 	public override void Drop(PlayerInformation playerInfo)
 	{
-		base.Drop(playerInfo);
+        base.Drop(playerInfo);
+
+        foreach (Charm.CharmFloat charmFloat in charm.charmFloats)
+        {
+            if (charmFloat.floatKey != "")
+            {
+                playerInfo.SetItemCharmFloat (charmFloat.floatKey, 1.0f);
+                playerInfo.RemoveItemCharmFloats(charmFloat.floatKey);
+            }
+        }
+
+        foreach (Charm.CharmBool charmBool in charm.charmBools)
+        {
+            if (charmBool.boolKey != "")
+            {
+                playerInfo.SetItemCharmBool(charmBool.boolKey, false);
+                playerInfo.RemoveItemCharmBools(charmBool.boolKey);
+            }
+        }
 	}
 }
