@@ -117,6 +117,15 @@ public class LevelGenerator : MonoBehaviour
 					dungeonTP = true;
 					dungeonBiome = LevelTile.Biomes.Fire;
 				}
+				else if (Input.GetKeyDown(KeyCode.Alpha0)) //Teleport to town
+				{
+					PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
+
+					generatedTiles[0].SetCurrent(currentTile);
+
+					foreach(PlayerInformation playerInfo in playerInfos)
+						playerInfo.transform.position = generatedTiles[0].tileOrigin.position;
+				}
 
 				if (dungeonTP)
 				{
@@ -142,11 +151,12 @@ public class LevelGenerator : MonoBehaviour
 
 								if (walkIntoDoor)
 								{
-									PlayerInformation playerInfo = FindObjectOfType<PlayerInformation>();
+									PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
 
 									walkIntoDoor.targetTile.SetCurrent(currentTile);
 
-									playerInfo.transform.position = walkIntoDoor.transform.position + (-walkIntoDoor.transform.forward) * walkIntoDoor.exitDistance;
+									foreach(PlayerInformation playerInfo in playerInfos)
+										playerInfo.transform.position = walkIntoDoor.transform.position + (-walkIntoDoor.transform.forward) * walkIntoDoor.exitDistance;
 								}
 							}
 
@@ -192,6 +202,7 @@ public class LevelGenerator : MonoBehaviour
 				text += "TP to Dungeon 2: T+2\n";
 				text += "TP to Dungeon 3: T+3\n";
 				text += "TP to Dungeon 4: T+4\n";
+				text += "\nTP to Town: T+0\n";
 			}
 
 			GUI.Label(new Rect(pos, size), text);
