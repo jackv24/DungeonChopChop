@@ -101,25 +101,14 @@ public class Shop : MonoBehaviour
 
 		if (item is InventoryItem)
 		{
-			InventoryItem it = (InventoryItem)item;
-
-			if (itemSpawn && it.itemPrefab)
-			{
-				itemGraphic = Instantiate(it.itemPrefab, itemSpawn);
-				itemGraphic.transform.localPosition = Vector3.zero;
-
-				//Only need to display this item, don't need any behaviours
-				Component[] components = itemGraphic.GetComponentsInChildren<Component>();
-				for (int i = components.Length - 1; i >= 0; i--)
-				{
-					if (!(components[i] is MeshRenderer || components[i] is MeshFilter || components[i] is Transform))
-						DestroyImmediate(components[i], false);
-				}
-			}
+			if (LevelGenerator.Instance && !LevelGenerator.Instance.IsFinished)
+                LevelGenerator.Instance.OnGenerationFinished += SpawnItem;
+            else
+                SpawnItem();
 		}
 		else if(item is Charm)
 		{
-			if (LevelGenerator.Instance)
+			if (LevelGenerator.Instance && !LevelGenerator.Instance.IsFinished)
 				LevelGenerator.Instance.OnGenerationFinished += SpawnCharm;
 			else
 				SpawnCharm();
@@ -158,8 +147,41 @@ public class Shop : MonoBehaviour
 
 	void OnDestroy()
 	{
-		if (LevelGenerator.Instance)
-			LevelGenerator.Instance.OnGenerationFinished -= SpawnCharm;
+        if (LevelGenerator.Instance)
+        {
+			LevelGenerator.Instance.OnGenerationFinished -= SpawnItem;
+            LevelGenerator.Instance.OnGenerationFinished -= SpawnCharm;
+        }
+    }
+
+	void SpawnItem()
+	{
+		InventoryItem it = (InventoryItem)sellingItem;
+
+        if (itemSpawn && it.itemPrefab)
+        {
+            itemGraphic = Instantiate(it.itemPrefab, itemSpawn);
+            itemGraphic.transform.localPosition = it.shopOffset.position;
+            itemGraphic.transform.localEulerAngles = it.shopOffset.rotation;
+
+            Vector3 scale = itemGraphic.transform.localScale;
+            scale.x *= it.shopOffset.scale.x;
+			scale.y *= it.shopOffset.scale.y;
+			scale.z *= it.shopOffset.scale.z;
+            itemGraphic.transform.localScale = scale;
+
+            //Only need to display this item, don't need any behaviours
+            Component[] components = itemGraphic.GetComponentsInChildren<Component>();
+            for (int i = components.Length - 1; i >= 0; i--)
+            {
+                if (!(components[i] is MeshRenderer
+				|| components[i] is MeshFilter
+				|| components[i] is Transform
+				|| components[i] is ParticleSystem
+				|| components[i] is ParticleSystemRenderer))
+                    DestroyImmediate(components[i], false);
+            }
+        }
 	}
 
 	void SpawnCharm()

@@ -6,7 +6,26 @@ using UnityEngine;
 public class InventoryItem : BaseItem
 {
 	public GameObject itemPrefab;
-	public bool usePrefabForPickup = false;
+
+    [System.Serializable]
+    public class Offset
+    {
+        public Vector3 position;
+        public Vector3 rotation;
+        public Vector3 scale;
+
+        public Offset(Vector3 position, Vector3 rotation, Vector3 scale)
+        {
+            this.position = position;
+            this.rotation = rotation;
+            this.scale = scale;
+        }
+    }
+    [Space()]
+    public Offset shopOffset = new Offset(Vector3.zero, new Vector3(-60, 180, 0), Vector3.one);
+
+    [Space()]
+    public bool usePrefabForPickup = false;
     public Charm charm;
 
     [System.Serializable]

@@ -5,20 +5,23 @@ using UnityEngine.AI;
 
 public class LevelGenerator : MonoBehaviour
 {
-	public static LevelGenerator Instance;
+    public static LevelGenerator Instance;
 
-	//Random instance specific to level generator - should prevent realtime random numbers from interfering
-	public static System.Random Random;
+    //Random instance specific to level generator - should prevent realtime random numbers from interfering
+    public static System.Random Random;
 
-	public delegate void NormalEvent();
-	public event NormalEvent OnGenerationStart;
-	public event NormalEvent OnBeforeMergeMeshes;
-	public event NormalEvent OnAfterSpawnChests;
-	public event NormalEvent OnGenerationFinished;
-	public event NormalEvent OnTileEnter;
-	public event NormalEvent OnTileClear;
+    public delegate void NormalEvent();
+    public event NormalEvent OnGenerationStart;
+    public event NormalEvent OnBeforeMergeMeshes;
+    public event NormalEvent OnAfterSpawnChests;
+    public event NormalEvent OnGenerationFinished;
+    public event NormalEvent OnTileEnter;
+    public event NormalEvent OnTileClear;
 
-	[Tooltip("The level generator profile to use when generating levels.")]
+    public bool IsFinished { get { return isFinished; } }
+    private bool isFinished = false;
+
+    [Tooltip("The level generator profile to use when generating levels.")]
 	public LevelGeneratorProfile profile;
 
 	[Tooltip("The collision layer that tile layout colliders are on.")]
@@ -279,8 +282,9 @@ public class LevelGenerator : MonoBehaviour
         int iterations = 0;
 
 		profile.succeeded = false;
+        isFinished = false;
 
-		while (iterations < profile.maxAttempts && !profile.succeeded)
+        while (iterations < profile.maxAttempts && !profile.succeeded)
         {
 			//Assume succeeded until set otherwise
 			profile.succeeded = true;
@@ -365,7 +369,9 @@ public class LevelGenerator : MonoBehaviour
 		if (OnGenerationFinished != null)
 			OnGenerationFinished();
 
-		if (ShowLoadingScreen && loadingText)
+        isFinished = true;
+
+        if (ShowLoadingScreen && loadingText)
 			loadingText.SetFallback();
 		yield return new WaitForEndOfFrame();
 
