@@ -61,6 +61,8 @@ public class PlayerInformation : MonoBehaviour
     private Dictionary<string, float> charmFloats = new Dictionary<string, float>();
     private Dictionary<string, bool> charmBools = new Dictionary<string, bool>();
     private Dictionary<string, float> itemFloats = new Dictionary<string, float>();
+    private Dictionary<string, float> itemCharmFloats = new Dictionary<string, float>();
+    private Dictionary<string, bool> itemCharmBools = new Dictionary<string, bool>();
     private LayerMask layerMask;
 
     void Start()
@@ -209,6 +211,16 @@ public class PlayerInformation : MonoBehaviour
         }
     }
 
+    public void SetItemCharmFloat(string key, float value)
+    {
+        itemCharmFloats[key] = value;
+    }
+
+    public void SetItemCharmBool(string key, bool value)
+    {
+        itemCharmBools[key] = value;
+    }
+
     public void SetItemFloat(string key, float value)
     {
         itemFloats[key] = value;
@@ -220,6 +232,16 @@ public class PlayerInformation : MonoBehaviour
             return itemFloats[key];
         else
             return 1.0f;
+    }
+
+    public void RemoveItemCharmFloats(string key)
+    {
+        itemCharmFloats.Remove(key);
+    }
+
+    public void RemoveItemCharmBools(string key)
+    {
+        itemCharmBools.Remove(key);
     }
 
     public void RemoveCharmFloat(string key)
@@ -252,6 +274,12 @@ public class PlayerInformation : MonoBehaviour
         if (charmFloats.ContainsKey(key))
             return charmFloats[key];
         else
+        {
+            if (itemCharmFloats.ContainsKey(key))
+            {
+                return itemCharmFloats[key];
+            }
+        }
             return 1.0f;
     }
 
@@ -260,6 +288,12 @@ public class PlayerInformation : MonoBehaviour
         if (charmBools.ContainsKey(key))
             return charmBools[key];
         else
+        {
+            if (itemCharmBools.ContainsKey(key))
+            {
+                return itemCharmBools[key];
+            }
+        }
             return false;
     }
 

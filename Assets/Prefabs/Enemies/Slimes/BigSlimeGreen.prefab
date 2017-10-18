@@ -758,8 +758,8 @@ MonoBehaviour:
   poisonColor: {r: 0.64705884, g: 0.43771628, b: 0.6412839, a: 0.616}
   burnColor: {r: 0.6102941, g: 0.31860942, b: 0.31860942, a: 0.609}
   slowlyDyingColor: {r: 0.4414226, g: 0.66176474, b: 0.4233348, a: 0.622}
-  frozenColor: {r: 0.25865054, g: 0.6600049, b: 0.7647059, a: 1}
-  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  frozenColor: {r: 0.25865054, g: 0.6600049, b: 0.7647059, a: 0.634}
+  sandyColor: {r: 0.73333335, g: 0.7490196, b: 0.41960785, a: 0.628}
   hitParticles:
   - particleType: 0
     particles:
@@ -795,9 +795,10 @@ MonoBehaviour:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   hitSounds:
-  - {fileID: 8300000, guid: 94fe3317e53832b49acfdd534adc3cf8, type: 3}
-  - {fileID: 8300000, guid: 47bad35d66298d14fb44be72caf8b42f, type: 3}
-  - {fileID: 8300000, guid: ff5f4a1fe1eacc347bb5623fe9d8125f, type: 3}
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
   timeBetweenFlash: 1
   amountToFlash: 1
@@ -822,6 +823,7 @@ MonoBehaviour:
   timeBetweenTick: 1
   duration: 5
   damageOnExplode: 2
+  knockbackOnExplode: 5
   deathParticles:
   - particleType: 1
     particles:
@@ -890,9 +892,10 @@ MonoBehaviour:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   deathSounds:
-  - {fileID: 8300000, guid: 94fe3317e53832b49acfdd534adc3cf8, type: 3}
-  - {fileID: 8300000, guid: 47bad35d66298d14fb44be72caf8b42f, type: 3}
-  - {fileID: 8300000, guid: ff5f4a1fe1eacc347bb5623fe9d8125f, type: 3}
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
 --- !u!114 &114978526563585490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -934,6 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OverallRadiusFollow: 20
   OtherwiseRoam: 1
+  timeBetweenRoam: 1
   runAwayAfterAttackTime: 1
   layerMask:
     serializedVersion: 2
@@ -950,8 +954,7 @@ MonoBehaviour:
   followProximity: 0
   radiusAttack: 5
   waitTillLeep: 1
-  inAirSpeed: 2
-  timeBetweenRoam: 1
+  leepSpeed: 2
   timeBetweenStopMin: 2
   timeBetweenStopMax: 4
   stopTime: 1

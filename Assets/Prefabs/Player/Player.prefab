@@ -622,7 +622,7 @@ Transform:
   m_GameObject: {fileID: 1918990433577990}
   m_LocalRotation: {x: -0.8257118, y: -0.28963625, z: 0.16855551, w: 0.45376208}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2.569689}
+  m_LocalScale: {x: 4, y: 2, z: 3}
   m_Children:
   - {fileID: 4545073403256376}
   m_Father: {fileID: 4815699288431386}
@@ -785,13 +785,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173587197747666}
-  m_LocalRotation: {x: -0.35969052, y: 0.77745366, z: -0.12691523, w: 0.50008106}
-  m_LocalPosition: {x: -0.009, y: 0.75, z: -0.019}
-  m_LocalScale: {x: 0.93309045, y: 0.93309, z: 0.93309045}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.033, y: 0.54, z: 0}
+  m_LocalScale: {x: 0.93309045, y: 0.8, z: 0.93309045}
   m_Children: []
   m_Father: {fileID: 4150085643066964}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -9.347, y: 118.28901, z: -44.063004}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4547255018236554
 Transform:
   m_ObjectHideFlags: 1
@@ -997,7 +997,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515761076265150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.730169, y: 15.088925, z: 19.592747}
+  m_LocalPosition: {x: -321.5, y: 0.44, z: 31.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4808201594927462}
@@ -1280,7 +1280,7 @@ TrailRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173587197747666}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -1565,9 +1565,9 @@ MonoBehaviour:
   timeInbetween: 0.4
   comboIncrease: 0.04
   rapidDmgMultiplier: 1.5
-  slashAmount: 10
+  slashAmount: 7
   rapidSlashCooldown: 0
-  rapidSlashIncrease: 0.04
+  rapidSlashIncrease: 0.3
   multiSpeedMultiplier: 0.2
   dashAtkDmgMultiplier: 2.5
   dashTime: 0.2
@@ -1580,8 +1580,8 @@ MonoBehaviour:
   spinDmgMultiplier: 2
   spinChargeReady: 0
   timeToCharge: 1.2
-  timeBetweenFlash: 0.1
-  spinFlashColor: {r: 1, g: 1, b: 1, a: 0.316}
+  flashDuration: 0.2
+  spinFlashColor: {r: 1, g: 1, b: 1, a: 0.122}
   moveBackOnHit: 5
   blocking: 0
   speedWhenBurned: 8
@@ -1631,7 +1631,7 @@ MonoBehaviour:
     maxPitchVariance: 0.3
   dashAttackSounds:
     clips:
-    - {fileID: 8300000, guid: e0f14f3366902c44ab09cf3b3a999d3c, type: 3}
+    - {fileID: 0}
     volume: 1
     minPitchVariance: 0.2
     maxPitchVariance: 0.8

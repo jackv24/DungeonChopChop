@@ -58,6 +58,7 @@ public class Health : MonoBehaviour
     private Coroutine coroutine;
 
     private bool fadeToColor = false;
+    private bool fadeToWhite = false;
 
     void Start()
     {
@@ -282,6 +283,11 @@ public class Health : MonoBehaviour
         SetOGFade();
     }
 
+    public void UnfadeWhite()
+    {
+        fadeToWhite = true;
+    }
+
     public void SetOGColorRends()
     {
         if (renderers != null)
@@ -322,6 +328,21 @@ public class Health : MonoBehaviour
         }
     }
 
+    void SetOGWhiteFade(float val)
+    {
+        if (renderers != null)
+        {
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.material.SetFloat("_FlashAmount", renderer.material.GetFloat("_FlashAmount") - val);
+                if (renderer.material.GetFloat("_FlashAmount") <= 0)
+                {
+                    fadeToWhite = false;
+                }
+            }
+        }
+    }
+
     void SetOGFade()
     {
         if (renderers != null)
@@ -346,13 +367,13 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void SetWhite()
+    public void SetWhite(float whiteVal)
     {
         if (renderers != null)
         {
             foreach (Renderer renderer in renderers)
             {
-                renderer.material.SetFloat("_FlashAmount", .5f);
+                renderer.material.SetFloat("_FlashAmount", whiteVal);
             }
         }
     }
@@ -412,6 +433,12 @@ public class Health : MonoBehaviour
         if (fadeToColor)
         {
             SetOGFade();
+        }
+
+        if (fadeToWhite)
+        {
+            if (GetComponent<PlayerAttack>())
+                SetOGWhiteFade(GetComponent<PlayerAttack>().amountOfFadeBack);
         }
     }
 

@@ -142,7 +142,7 @@ public class SwordCollision : MonoBehaviour {
             particle.GetComponent<ParticleSystem>().Stop();
 
             //set player white
-            playerHealth.SetWhite();
+            playerHealth.SetWhite(playerAttack.whiteVal);
 
             //do sound
             SoundManager.PlaySound(playerAttack.chargeReadySounds, transform.position);
@@ -152,10 +152,10 @@ public class SwordCollision : MonoBehaviour {
             readyParticle.transform.parent = transform;
             readyParticle.transform.localPosition = new Vector3(mesh.sharedMesh.bounds.center.x, mesh.sharedMesh.bounds.max.y, mesh.sharedMesh.bounds.center.z);
 
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(playerAttack.flashDuration);
 
             //set player normal color
-            playerHealth.UnsetWhite();
+            playerHealth.UnfadeWhite();
 
             particle.SetActive(false);
 
