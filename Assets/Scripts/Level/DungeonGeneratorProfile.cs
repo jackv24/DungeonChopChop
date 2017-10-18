@@ -11,6 +11,9 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 	public BaseItem desertItem;
 	public BaseItem fireItem;
 
+	[HideInInspector] public GameObject keyTileObj;
+    [HideInInspector] public GameObject chestTileObj;
+
 	public override void Generate(LevelGenerator levelGenerator)
 	{
 		//Replace layout tiles with dungeon tiles
@@ -86,7 +89,7 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 				succeeded = false;
 			}
 			else
-				keyTile.Replace(DungeonKeyTile.Type.Key);
+				keyTileObj = keyTile.Replace(DungeonKeyTile.Type.Key);
 
 			if (!chestTile)
 			{
@@ -95,7 +98,7 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 				succeeded = false;
 			}
 			else
-				chestTile.Replace(DungeonKeyTile.Type.Chest);
+				chestTileObj = chestTile.Replace(DungeonKeyTile.Type.Chest);
 		}
 		else
 		{
