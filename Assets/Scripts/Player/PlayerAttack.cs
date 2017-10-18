@@ -31,8 +31,11 @@ public class PlayerAttack : MonoBehaviour
     public float spinDmgMultiplier = 2;
     public bool spinChargeReady = false;
     public float timeToCharge = 2;
-    public float timeBetweenFlash = 1;
-    public Color spinFlashColor;
+    public float flashDuration = 1;
+    [Tooltip("0 == no white, 1 == fully white")]
+    public float whiteVal;
+    [Tooltip("The amount it fades back from the flash amount per milisecond")]
+    public float amountOfFadeBack = .01f;
 
     [Header("Other Vars")]
     public float moveBackOnHit = 5;
@@ -86,8 +89,6 @@ public class PlayerAttack : MonoBehaviour
 
     private Vector3 targetPosition = Vector3.zero;
 
-    private Coroutine spinChargeRoutine;
-
     void Start()
     {
         playerHealth = GetComponent<Health>();
@@ -116,20 +117,6 @@ public class PlayerAttack : MonoBehaviour
     void OnEnable()
     {
         cancelDash = false;
-    }
-
-    IEnumerator ChargeSpinFlash()
-    {
-        yield return new WaitForSeconds(.2f);
-        while (spinCounter < (timeToCharge * 60))
-        {
-            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
-                break;
-            playerHealth.SetColor(spinFlashColor);
-            yield return new WaitForSeconds(timeBetweenFlash);
-            playerHealth.SetOGColorRends();
-            yield return new WaitForSeconds(timeBetweenFlash);
-        }
     }
 
     void ResetSpin()
@@ -166,8 +153,6 @@ public class PlayerAttack : MonoBehaviour
                             //do spin charge stuff
                             SoundManager.PlaySound(chargeSpinSounds, transform.position);
                             sword.GetComponent<SwordCollision>().DoChargeParticle();
-                            spinChargeRoutine = StartCoroutine(ChargeSpinFlash());
-                            StartCoroutine(ChargeSpinFlash());
                             heldDownCounter = 0;
                         }
                     }
@@ -221,13 +206,10 @@ public class PlayerAttack : MonoBehaviour
                     {
                         animator.SetBool("SpinCharge", false);
                         spinCounter = 0;
-                        if (spinChargeRoutine != null)
-                            StopCoroutine(spinChargeRoutine);
                     }
                     //otherwise do spin
                     else
                     {
-                        StopCoroutine(spinChargeRoutine);
                         spinCounter = 0;
                         animator.SetBool("SpinCharge", false);
                         //play sound
