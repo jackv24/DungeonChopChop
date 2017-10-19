@@ -7,7 +7,10 @@ public class DialogueSpeaker : MonoBehaviour
 	public delegate void PlayerGet(PlayerInformation playerInfo, bool value);
 	public event PlayerGet OnGetPlayer;
 
-	[Multiline]
+    public delegate void PlayerEvent(PlayerInformation playerInfo);
+    public event PlayerEvent OnOpen;
+
+    [Multiline]
 	public string[] lines = { "Default text" };
 	private int lastIndex = -1;
 
@@ -103,8 +106,13 @@ public class DialogueSpeaker : MonoBehaviour
 
 	void Open(GameObject player)
 	{
-		//Position pooled dialogue box
-		GameObject obj = ObjectPooler.GetPooledObject(dialogueBoxPrefab);
+        playerInfo = player.GetComponent<PlayerInformation>();
+
+		if(OnOpen != null)
+            OnOpen(playerInfo);
+
+        //Position pooled dialogue box
+        GameObject obj = ObjectPooler.GetPooledObject(dialogueBoxPrefab);
 		obj.transform.position = transform.position + new Vector3(0, textBoxHeight, textBoxDepth);
 
 		currentBox = obj.GetComponent<DialogueBox>();
@@ -113,8 +121,6 @@ public class DialogueSpeaker : MonoBehaviour
 		if (currentBox)
 		{
             UpdateLines();
-
-            playerInfo = player.GetComponent<PlayerInformation>();
 
 			if (OnGetPlayer != null)
                 OnGetPlayer(playerInfo, true);
