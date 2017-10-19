@@ -55,22 +55,29 @@ public class Orb : PickupableItems {
             if (col.tag == "Player1" || col.tag == "Player2")
             {
                 PlayerInformation playerInfo = col.gameObject.GetComponent<PlayerInformation>();
-                //check what type of orb it is
-                if (type == OrbType.Health)
-                {
-                    col.gameObject.GetComponent<Health>().health += healthAmount;
-                    col.gameObject.GetComponent<Health>().HealthChanged();
-                }
-                else
-                {
-                    if (playerInfo.currentCureOrbs < playerInfo.maxCureOrbs)
-                    {
-                        playerInfo.currentCureOrbs += cureAmount;
-                        playerInfo.CureOrbChanged();
-                    }
-                }
+
+                PickUpOrb(playerInfo);
+
                 DoPickUpParticle(col.gameObject);
                 gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void PickUpOrb(PlayerInformation playerInfo)
+    {
+        //check what type of orb it is
+        if (type == OrbType.Health)
+        {
+            playerInfo.GetComponent<Health>().health += healthAmount;
+            playerInfo.GetComponent<Health>().HealthChanged();
+        }
+        else
+        {
+            if (playerInfo.currentCureOrbs < playerInfo.maxCureOrbs)
+            {
+                playerInfo.currentCureOrbs += cureAmount;
+                playerInfo.CureOrbChanged();
             }
         }
     }

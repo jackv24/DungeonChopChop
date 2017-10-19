@@ -58,36 +58,55 @@ public class Shop : MonoBehaviour
                         purchaseEffectObj.transform.position = itemSpawn.position;
                 }
 
+                if (sellingItem is InventoryItem)
+                {
+                    InventoryItem item = (InventoryItem)sellingItem;
+
+                    if (item.usePrefabForPickup && item.itemPrefab)
+                    {
+                        //check what the item is by getting a specific script on it
+                        if (item.itemPrefab.GetComponent<SwordStats>())
+                        {
+                            GameObject sword = ObjectPooler.GetPooledObject(item.itemPrefab, true);
+                            playerInfo.playerAttack.AddSword(sword.GetComponent<SwordStats>());
+                        } 
+                        else if (item.itemPrefab.GetComponent<ShieldStats>())
+                        {
+                            GameObject shield = ObjectPooler.GetPooledObject(item.itemPrefab, true);
+                            playerInfo.playerAttack.AddShield(shield.GetComponent<ShieldStats>());
+                        }   
+                        else if (item.itemPrefab.GetComponent<Orb>())
+                        {
+                            if (item.itemPrefab.GetComponent<Orb>().type == OrbType.Cure)
+                            {
+                                item.itemPrefab.GetComponent<Orb>().PickUpOrb(playerInfo);
+                            }
+                        }  
+                    }
+
+                    //pick up items
+                    playerInfo.PickupItem((InventoryItem)sellingItem);
+                }
+                else if (sellingItem is Charm)
+                {
+                    if (LevelVars.Instance && LevelVars.Instance.droppedCharmPrefab)
+                    {
+                        GameObject obj = ObjectPooler.GetPooledObject(LevelVars.Instance.droppedCharmPrefab);
+
+                        obj.transform.position = playerInfo.transform.position;
+
+                        CharmPickup pickup = obj.GetComponentInChildren<CharmPickup>();
+                        if (pickup)
+                        {
+                            pickup.representingCharm = (Charm)sellingItem;
+                        }
+                    }
+                }
+
                 sellingItem.Pickup(playerInfo);
 
-				if (sellingItem is InventoryItem)
-				{
-					InventoryItem item = (InventoryItem)sellingItem;
-
-					if (item.usePrefabForPickup && item.itemPrefab)
-					{
-						GameObject obj = ObjectPooler.GetPooledObject(item.itemPrefab);
-						obj.transform.position = playerInfo.transform.position;
-					}
-				}
-				else if(sellingItem is Charm)
-				{
-					if (LevelVars.Instance && LevelVars.Instance.droppedCharmPrefab)
-					{
-						GameObject obj = ObjectPooler.GetPooledObject(LevelVars.Instance.droppedCharmPrefab);
-
-						obj.transform.position = playerInfo.transform.position;
-
-						CharmPickup pickup = obj.GetComponentInChildren<CharmPickup>();
-						if (pickup)
-						{
-							pickup.representingCharm = (Charm)sellingItem;
-							pickup.Pickup(playerInfo);
-						}
-					}
-				}
-
 				Destroy(itemGraphic);
+
 				sellingItem = null;
 
 				speaker.Close(true);

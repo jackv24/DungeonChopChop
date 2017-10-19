@@ -56,7 +56,8 @@ public class PlayerInformation : MonoBehaviour
     [HideInInspector]
     public Animator animator;
     private CharacterController characterController;
-    private PlayerAttack playerAttack;
+    [HideInInspector]
+    public PlayerAttack playerAttack;
     private GameObject mapHUD;
 
     private Dictionary<string, float> charmFloats = new Dictionary<string, float>();
@@ -90,12 +91,9 @@ public class PlayerInformation : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < currentItemCharms.Count; i++)
+        for (int i = 0; i < itemCharmFloats.Count; i++)
         {
-            if (currentItemCharms.ContainsKey(ArmourType.Boots))
-            {
-                Debug.Log(currentItemCharms[ArmourType.Boots].displayName);
-            }
+            Debug.Log(itemCharmFloats.Values);
         }
 
         //sets the damage output
@@ -203,33 +201,38 @@ public class PlayerInformation : MonoBehaviour
     {
         if (item)
         {
+            //checks to see if the amount of items the player has is greater then the amount they can hold
+            for (int i = 0; i < currentItems.Count; i++)
+            {
+                if (currentItems[i].armourType == item.armourType)
+                {
+                    //creates a new item and adds it to the list
+                    InventoryItem oldItem = currentItems[currentItems.Count - 1];
+                    //removes the older item
+                    currentItems.Remove(oldItem);
+
+                    //get tje current item charm that has the same enum
+                    for (int j = 0; j < currentItemCharms.Count; j++)
+                    {
+                        if (currentItemCharms.ContainsKey(item.armourType))
+                        {
+                            Charm oldItemCharm = currentItemCharms[item.armourType];
+                        }
+                    }
+
+                    currentItemCharms.Remove(item.armourType);
+                    currentItemCharms.Add(item.armourType, item.charm);
+
+                    if (oldItem.charm)
+                        oldItem.charm.Drop(this);
+                    oldItem.Drop(this);
+
+                    break;
+                }
+            }
+
             //adds a item to the start of the list
             currentItems.Insert(0, item);
-            currentItemCharms.Add(item.armourType, item.charm);
-            //checks to see if the amount of items the player has is greater then the amount they can hold
-            if (currentItems.Count > itemAmount)
-            {
-                //creates a new item and adds it to the list
-                InventoryItem oldItem = currentItems[currentItems.Count - 1];
-                //removes the older item
-                currentItems.Remove(oldItem);
-
-                Debug.Log("1");
-                //get tje current item charm that has the same enum
-                for (int i = 0; i < currentItemCharms.Count; i++)
-                {
-                    Debug.Log("2");
-                    if (currentItemCharms.ContainsKey(item.armourType))
-                    {
-                        Debug.Log("3");
-                        Charm oldItemCharm = currentItemCharms[item.armourType];
-                    }
-                }
-
-                currentItemCharms.Remove(item.armourType);
-
-                oldItem.Drop(this);
-            }
 
             item.Pickup(this);
         }
@@ -260,6 +263,7 @@ public class PlayerInformation : MonoBehaviour
 
     public void RemoveItemCharmFloats(string key)
     {
+        Debug.Log("removedCharmFloat");
         itemCharmFloats.Remove(key);
     }
 
@@ -304,7 +308,8 @@ public class PlayerInformation : MonoBehaviour
                 return itemCharmFloats[key];
             }
         }
-            return 1.0f;
+            
+        return 1.0f;
     }
 
     public bool GetCharmBool(string key)
@@ -358,20 +363,17 @@ public class PlayerInformation : MonoBehaviour
     {
         if (HasCharmBool("pullEnemy"))
         {
-            if (GetCharmBool("pullEnemy"))
-            {
                 //gets the pull enemy charm
-                foreach (Charm charm in currentCharms)
+            foreach (Charm charm in currentCharms)
+            {
+                //gets all items in radius
+                Collider[] enemies = Physics.OverlapSphere(transform.position, GetCharmFloat("radialValue"), layerMask);
+                if (enemies.Length > 0)
                 {
-                    //gets all items in radius
-                    Collider[] enemies = Physics.OverlapSphere(transform.position, GetCharmFloat("radialValue"), layerMask);
-                    if (enemies.Length > 0)
+                    foreach (Collider enemy in enemies)
                     {
-                        foreach (Collider enemy in enemies)
-                        {
-                            //moves those enemies towards the player
-                            enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, transform.position, GetCharmFloat("radialPullSpeed") * Time.deltaTime);
-                        }
+                        //moves those enemies towards the player
+                        enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, transform.position, GetCharmFloat("radialPullSpeed") * Time.deltaTime);
                     }
                 }
             }
