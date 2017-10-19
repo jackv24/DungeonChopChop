@@ -26,9 +26,6 @@ GameObject:
   - component: {fileID: 54990916083600188}
   - component: {fileID: 114418212522782304}
   - component: {fileID: 114354887427583062}
-  - component: {fileID: 135804698992783754}
-  - component: {fileID: 114533727865510970}
-  - component: {fileID: 114011038412543550}
   m_Layer: 16
   m_Name: FireSword_Rusty
   m_TagString: Untagged
@@ -303,17 +300,6 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114011038412543550
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1168701599439394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c63bfff935947a846bcae53df6cd2356, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114250846980190522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -393,26 +379,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   host: {fileID: 0}
---- !u!114 &114533727865510970
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1168701599439394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lines:
-  - 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 16384
-  textBoxHeight: 3
-  textBoxDepth: 0
-  dialogueBoxPrefab: {fileID: 1983791718684604, guid: fb7b19701c648824c9cb3d7398d3ac6c,
-    type: 2}
 --- !u!114 &114886073081627912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -442,18 +408,6 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
---- !u!135 &135804698992783754
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1168701599439394}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.45
-  m_Center: {x: 0, y: 0.28, z: 0}
 --- !u!198 &198047334212917318
 ParticleSystem:
   m_ObjectHideFlags: 1
