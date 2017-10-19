@@ -217,7 +217,7 @@ public class EnemyMove : MonoBehaviour
 
             //rotates away from the player
             if (lookAtPlayer)
-               transform.rotation = Quaternion.LookRotation(transform.position - GetClosestPlayer().position);
+                transform.LookAt(GetClosestPlayer());
 //
 //            //Gets a new vector position in front of the enemy 
 //            Vector3 runTo = transform.position + transform.forward * 5;
