@@ -11,13 +11,15 @@ public class MapCamera : MonoBehaviour
 	private CanvasScaler canvasScaler;
 
 	public RectTransform mapRect;
-	public RectTransform rawMapRect;
 
-	[Header("Icons")]
+    public RawImage rawImage;
+    private RenderTexture renderTexture;
+
+    [Header("Icons")]
 	public float iconScale = 1.0f;
 	public float mapRadius = 1.0f;
 
-	class Icon
+    class Icon
 	{
 		public RectTransform rectTransform;
 		public Transform targetTransform;
@@ -47,6 +49,15 @@ public class MapCamera : MonoBehaviour
 
 		if (canvas)
 			canvasScaler = canvas.GetComponent<CanvasScaler>();
+
+		if(mapRect && cam && rawImage)
+		{
+            renderTexture = new RenderTexture((int)mapRect.sizeDelta.x, (int)mapRect.sizeDelta.y, 0, RenderTextureFormat.ARGB32);
+
+            cam.targetTexture = renderTexture;
+
+            rawImage.texture = renderTexture;
+        }
 	}
 
 	void OnDestroy()
@@ -62,26 +73,29 @@ public class MapCamera : MonoBehaviour
 			transform.position = cameraFollow.targetPos + Vector3.up * height;
 		}
 
-		if(cam && mapRect)
+		if(cam)
 		{
 			//Update all icons
 			foreach (Icon icon in icons)
 			{
 				if (icon.targetTransform)
 				{
-					//Transform position from world to map viewport
-					Vector2 viewPos = cam.WorldToViewportPoint(icon.targetTransform.position);
-					//Map to actual UI image
-					Vector2 localPos = new Vector2(viewPos.x * mapRect.sizeDelta.x, viewPos.y * mapRect.sizeDelta.y);
-					Vector3 worldPos = mapRect.TransformPoint(localPos);
+                    float ratio = Screen.height / canvasScaler.referenceResolution.y;
 
-					float ratio = Screen.height / canvasScaler.referenceResolution.y;
+                    //Transform position from world to map viewport
+                    Vector2 worldPos = cam.WorldToViewportPoint(icon.targetTransform.position);
+                    worldPos.x *= mapRect.sizeDelta.x;
+                    worldPos.y *= mapRect.sizeDelta.y;
 
-					//Set icon position
-					icon.rectTransform.position = new Vector3(worldPos.x - mapRect.sizeDelta.x * ratio, worldPos.y, 1f);
+                    worldPos = mapRect.TransformPoint(worldPos);
+                    worldPos.x -= (mapRect.sizeDelta.x * ratio) / 2;
+                    worldPos.y -= (mapRect.sizeDelta.y * ratio) / 2;
+
+                    //Set icon position
+                    icon.rectTransform.position = new Vector3(worldPos.x, worldPos.y, 1f);
 
 					//Make sure icon does not go off screen
-					LimitToRadius(icon.rectTransform, rawMapRect, mapRadius * ratio);
+					LimitToRadius(icon.rectTransform, mapRect, mapRadius * ratio);
 				}
 			}
 		}
