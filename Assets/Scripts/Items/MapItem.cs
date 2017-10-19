@@ -5,7 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Map Item", menuName = "Data/Items/Map Item")]
 public class MapItem : BaseItem
 {
-	[Space()]
+    [Space()]
+    public InventoryItem.Offset shopOffset = new InventoryItem.Offset(Vector3.zero, new Vector3(60, 0, 0), Vector3.one);
+
+    [Space()]
 	public bool revealGrass = false;
 	public bool revealForest = false;
 	public bool revealDesert = false;

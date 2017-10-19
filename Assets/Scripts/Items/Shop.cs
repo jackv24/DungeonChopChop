@@ -134,17 +134,10 @@ public class Shop : MonoBehaviour
 		}
 		else if(item is MapItem)
 		{
-            if (itemSpawn && item.itemIcon)
-            {
-                itemGraphic = new GameObject("Sprite");
-                itemGraphic.transform.SetParent(itemSpawn);
-                itemGraphic.transform.localPosition = Vector3.zero;
-                itemGraphic.transform.eulerAngles = new Vector3(60, 0, 0);
-
-                SpriteRenderer renderer = itemGraphic.AddComponent<SpriteRenderer>();
-
-                renderer.sprite = item.itemIcon;
-            }
+            if (LevelGenerator.Instance && !LevelGenerator.Instance.IsFinished)
+                LevelGenerator.Instance.OnGenerationFinished += SpawnMap;
+            else
+                SpawnMap();
         }
 
 		if (!speaker)
@@ -170,6 +163,7 @@ public class Shop : MonoBehaviour
         {
 			LevelGenerator.Instance.OnGenerationFinished -= SpawnItem;
             LevelGenerator.Instance.OnGenerationFinished -= SpawnCharm;
+			LevelGenerator.Instance.OnGenerationFinished -= SpawnMap;
         }
     }
 
@@ -222,6 +216,29 @@ public class Shop : MonoBehaviour
 					DestroyImmediate(components[i], false);
 			}
 		}
+	}
+
+	void SpawnMap()
+	{
+		MapItem it = (MapItem)sellingItem;
+
+        if (itemSpawn && sellingItem.itemIcon)
+        {
+            itemGraphic = new GameObject("Sprite");
+            itemGraphic.transform.SetParent(itemSpawn);
+            itemGraphic.transform.localPosition = it.shopOffset.position;
+            itemGraphic.transform.localEulerAngles = it.shopOffset.rotation;
+
+			Vector3 scale = itemGraphic.transform.localScale;
+            scale.x *= it.shopOffset.scale.x;
+            scale.y *= it.shopOffset.scale.y;
+            scale.z *= it.shopOffset.scale.z;
+            itemGraphic.transform.localScale = scale;
+
+            SpriteRenderer renderer = itemGraphic.AddComponent<SpriteRenderer>();
+
+            renderer.sprite = sellingItem.itemIcon;
+        }
 	}
 
 	void AllowPurchase(PlayerInformation playerInfo, bool value)
