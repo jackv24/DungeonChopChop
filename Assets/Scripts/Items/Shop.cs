@@ -17,9 +17,20 @@ public class Shop : MonoBehaviour
     [Space()]
     public GameObject purchaseEffect;
 
-    private DialogueSpeaker speaker;
+    [Header("Stats Dialogue")]
+    public Color equalColour = Color.white;
+    public Color lessColour = Color.red;
+    public Color moreColour = Color.green;
+    [Space]
+    public string swordDamageName = "Damage";
+    public string swordRangeName = "Range";
+    public string shieldResistanceName = "Strength";
+    public string shieldSpeedDampingName = "Weight";
 
-	private bool canPurchase = false;
+    private DialogueSpeaker speaker;
+    private string dialogueText;
+
+    private bool canPurchase = false;
 	private PlayerInputs input;
 	private PlayerInformation playerInfo;
 
@@ -151,11 +162,106 @@ public class Shop : MonoBehaviour
 		{
 			speaker.enabled = true;
 
-			//Dialogue box should only show piece of text - the shop text
-			string text = speaker.lines[0];
-			speaker.lines = new string[] { string.Format(text, item.displayName, item.cost) };
+            //make sure to remove old event first, so it is not assigned twice
+            speaker.OnOpen -= UpdateSpeaker;
+            speaker.OnOpen += UpdateSpeaker;
+
+            //Dialogue box should only show piece of text - the shop text
+            dialogueText = speaker.lines[0];
 		}
 	}
+
+    void UpdateSpeaker(PlayerInformation player)
+    {
+        string descriptionText = "";
+
+        if (sellingItem is InventoryItem)
+        {
+            InventoryItem it = (InventoryItem)sellingItem;
+
+            //Item prefab might have sword or shield stats attached
+            if (it.itemPrefab)
+            {
+                SwordStats swordStats = it.itemPrefab.GetComponent<SwordStats>();
+                ShieldStats shieldStats = it.itemPrefab.GetComponent<ShieldStats>();
+
+                //Display sword stats
+                if (swordStats)
+                {
+                    //By default is assumed to be higher stats, since there may not currently be a sword
+                    Color damageColour = moreColour;
+                    Color rangeColour = moreColour;
+
+                    SwordStats currentSword = player.playerAttack.sword;
+
+                    //Set colour depending on if stats are better or worse than current
+                    if (currentSword)
+                    {
+                        if (swordStats.damageMultiplier == currentSword.damageMultiplier)
+                            damageColour = equalColour;
+                        else if (swordStats.damageMultiplier < currentSword.damageMultiplier)
+                            damageColour = lessColour;
+
+                        if (swordStats.range == currentSword.range)
+                            rangeColour = equalColour;
+                        else if (swordStats.range < currentSword.range)
+                            rangeColour = lessColour;
+                    }
+
+                    descriptionText += string.Format(
+                        "<color=#{0}>{2}: {1}</color>\n",
+                        ColorUtility.ToHtmlStringRGB(damageColour),
+                        swordStats.damageMultiplier,
+                        swordDamageName
+                        );
+                    descriptionText += string.Format(
+                        "<color=#{0}>{2}: {1}</color>",
+                        ColorUtility.ToHtmlStringRGB(rangeColour),
+                        swordStats.range,
+                        swordRangeName
+                        );
+                }
+                
+                //Display shield statse
+                if (shieldStats)
+                {
+                    Color resistanceColour = moreColour;
+                    Color speedColour = moreColour;
+
+                    ShieldStats currentShield = player.playerAttack.shield;
+
+                    if (currentShield)
+                    {
+                        if (shieldStats.blockingResistance == currentShield.blockingResistance)
+                            resistanceColour = equalColour;
+                        else if (shieldStats.blockingResistance < currentShield.blockingResistance)
+                            resistanceColour = lessColour;
+
+                        if (shieldStats.speedDamping == currentShield.speedDamping)
+                            speedColour = equalColour;
+                        else if (shieldStats.speedDamping < currentShield.speedDamping)
+                            speedColour = lessColour;
+                    }
+
+                    descriptionText += string.Format(
+                        "<color=#{0}>{2}: {1}</color>\n",
+                        ColorUtility.ToHtmlStringRGB(resistanceColour),
+                        shieldStats.blockingResistance,
+                        shieldResistanceName
+                        );
+                    descriptionText += string.Format(
+                        "<color=#{0}>{2}: {1}</color>",
+                        ColorUtility.ToHtmlStringRGB(speedColour),
+                        shieldStats.speedDamping,
+                        shieldSpeedDampingName
+                        );
+                }
+            }
+        }
+
+        //Update speaker to display one line
+        speaker.lines = new string[] { string.Format(dialogueText, sellingItem.displayName, sellingItem.cost, descriptionText).Trim() };
+    }
 
 	void OnDestroy()
 	{

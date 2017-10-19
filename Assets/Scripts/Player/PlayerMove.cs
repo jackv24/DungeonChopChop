@@ -67,20 +67,44 @@ public class PlayerMove : MonoBehaviour
 		playerAttack = GetComponent<PlayerAttack>();
 		animator = GetComponentInChildren<Animator>();
 		playerInformation = GetComponent<PlayerInformation>();
-		if (InputManager.Instance)
-		{
-			input = InputManager.GetPlayerInput(playerInformation.playerIndex);
-		}
-		else
-		{
-			input = new PlayerInputs();
-			input.AddKeyboardBindings();
-			input.AddControllerBindings();
-		}
+		
 		characterController = GetComponent<CharacterController>();
 
-		//Wait until level generation is done to allow movement
-		if (LevelGenerator.Instance)
+        input = new PlayerInputs();
+
+        if (playerInformation.playerIndex == 0)
+        {
+            input.AddKeyboardBindings();
+            if (GameManager.Instance.players.Count > 1)
+            {
+                if (InControl.InputManager.Devices.Count > 1)
+                {
+                    input.AssignDevice(InControl.InputManager.Devices[0]);
+                    input.SetupBindings();
+                }
+            } 
+            else 
+            {
+                input.AssignDevice(InControl.InputManager.Devices[0]);
+                input.SetupBindings();
+            }
+        } 
+        else if (playerInformation.playerIndex == 1)
+        {
+            if (InControl.InputManager.Devices.Count <= 1)
+            {
+                input.AssignDevice(InControl.InputManager.Devices[0]);
+                input.AddControllerBindings();
+            } 
+            else 
+            {
+                input.AssignDevice(InControl.InputManager.Devices[1]);
+                input.SetupBindings();
+            }
+        }
+
+        //Wait until level generation is done to allow movement
+        if (LevelGenerator.Instance)
 		{
 			allowMove = false;
 
