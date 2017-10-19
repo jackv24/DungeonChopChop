@@ -146,6 +146,8 @@ public class Health : MonoBehaviour
             isPoisoned = false;
             isBurned = false;
             isSlowlyDying = false;
+            isFrozen = false;
+            isSandy = false;
         }
         health = maxHealth;
         isDead = false;
@@ -585,7 +587,7 @@ public class Health : MonoBehaviour
     /// </summary>
     /// <param name="duration">Duration in seconds.</param>
     /// <param name="timeBetweenDeathTick">Time between death tick in seconds.</param>
-    public void SetSlowDeath(float damagePerTick, float duration, float timeBetweenDeathTick)
+    public void SetSlowDeath(float damagePerTick = .2f, float duration = 1, float timeBetweenDeathTick = 1)
     {
         if (canBeStatused())
         {

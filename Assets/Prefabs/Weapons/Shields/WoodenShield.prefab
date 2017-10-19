@@ -23,9 +23,6 @@ GameObject:
   - component: {fileID: 23267092985095196}
   - component: {fileID: 114846886546395586}
   - component: {fileID: 114715976146858192}
-  - component: {fileID: 114631814484480872}
-  - component: {fileID: 114508359023100374}
-  - component: {fileID: 135662043925118960}
   m_Layer: 0
   m_Name: WoodenShield
   m_TagString: Untagged
@@ -85,37 +82,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1370514509553698}
   m_Mesh: {fileID: 4300000, guid: 973853a21bae5784bbf952af36283be2, type: 3}
---- !u!114 &114508359023100374
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1370514509553698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lines:
-  - 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 16384
-  textBoxHeight: 3
-  textBoxDepth: 0
-  dialogueBoxPrefab: {fileID: 1983791718684604, guid: fb7b19701c648824c9cb3d7398d3ac6c,
-    type: 2}
---- !u!114 &114631814484480872
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1370514509553698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01ac3b5c73fa75f4c95f909e71b9f57b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114715976146858192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,15 +108,3 @@ MonoBehaviour:
   shieldName: 
   blockingResistance: 0.2
   speedDamping: 0.2
---- !u!135 &135662043925118960
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1370514509553698}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
