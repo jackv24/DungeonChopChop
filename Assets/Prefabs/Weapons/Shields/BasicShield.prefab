@@ -21,9 +21,6 @@ GameObject:
   - component: {fileID: 4341921995868540}
   - component: {fileID: 114924269500038594}
   - component: {fileID: 114269694785455174}
-  - component: {fileID: 114309624189363726}
-  - component: {fileID: 114375351593411472}
-  - component: {fileID: 135507429700358724}
   m_Layer: 0
   m_Name: BasicShield
   m_TagString: Untagged
@@ -126,37 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickUp: 1
---- !u!114 &114309624189363726
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1528175561573820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01ac3b5c73fa75f4c95f909e71b9f57b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114375351593411472
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1528175561573820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lines:
-  - 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 16384
-  textBoxHeight: 3
-  textBoxDepth: 0
-  dialogueBoxPrefab: {fileID: 1983791718684604, guid: fb7b19701c648824c9cb3d7398d3ac6c,
-    type: 2}
 --- !u!114 &114924269500038594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,15 +137,3 @@ MonoBehaviour:
   shieldName: WoodenSheild
   blockingResistance: 0.1
   speedDamping: 0.1
---- !u!135 &135507429700358724
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1528175561573820}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}

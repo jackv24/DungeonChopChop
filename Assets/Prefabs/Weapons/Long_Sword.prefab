@@ -26,9 +26,6 @@ GameObject:
   - component: {fileID: 54897329690455852}
   - component: {fileID: 114497650984800720}
   - component: {fileID: 114177080663977380}
-  - component: {fileID: 135109307814695836}
-  - component: {fileID: 114472325769333212}
-  - component: {fileID: 114641509196340668}
   m_Layer: 16
   m_Name: Long_Sword
   m_TagString: Untagged
@@ -277,26 +274,6 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
---- !u!114 &114472325769333212
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1992342985494866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lines:
-  - 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 16384
-  textBoxHeight: 3
-  textBoxDepth: 0
-  dialogueBoxPrefab: {fileID: 1983791718684604, guid: fb7b19701c648824c9cb3d7398d3ac6c,
-    type: 2}
 --- !u!114 &114497650984800720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,26 +293,3 @@ MonoBehaviour:
   duration: 0
   timeBetweenEffect: 0
   speedDamper: 0
---- !u!114 &114641509196340668
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1992342985494866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c63bfff935947a846bcae53df6cd2356, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!135 &135109307814695836
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1992342985494866}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5966989
-  m_Center: {x: 0, y: 0.44163957, z: 0}
