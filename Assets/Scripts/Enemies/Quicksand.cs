@@ -9,8 +9,8 @@ public class Quicksand : MonoBehaviour {
     public float speedWhenDestroyed = .2f;
     public float distanceToPopUp = 5;
 
-    [Tooltip("Hit == Pop up, Death == When tenticles are destroyed")]
-    public AmountOfParticleTypes[] particles;
+    [Tooltip("Hit == Pop up")]
+    public AmountOfParticleTypes[] popUpParticle;
 
     private float toCenterSpeed = 0;
 
@@ -23,7 +23,9 @@ public class Quicksand : MonoBehaviour {
     private List<GameObject> tenticles = new List<GameObject>();
 
     private Animator animator;
-    private SpawnEffects spawnEffects;
+    [HideInInspector]
+    public SpawnEffects spawnEffects;
+    private Tenticles tenticleScript;
 
     void OnEnable()
     {
@@ -35,6 +37,7 @@ public class Quicksand : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+        tenticleScript = GetComponentInChildren<Tenticles>();
         spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
         //add all the children to a list
         for (int i = 0; i < transform.childCount; i++)
@@ -53,7 +56,7 @@ public class Quicksand : MonoBehaviour {
 
     void HideSpikes()
     {
-        spawnEffects.EffectOnDeath(particles, transform.position);
+        spawnEffects.EffectOnDeath(tenticleScript.particleTypes, transform.position);
         //loop through all children and enable them
         if (tenticles.Count > 0)
         {
@@ -103,7 +106,7 @@ public class Quicksand : MonoBehaviour {
                         tentsPoppedUp = true;
                         animator.SetTrigger("Attack");
 
-                        spawnEffects.EffectOnHit(particles, transform.position);
+                        spawnEffects.EffectOnHit(popUpParticle, transform.position);
 
                         StartCoroutine(StopSpikes());
                     }
