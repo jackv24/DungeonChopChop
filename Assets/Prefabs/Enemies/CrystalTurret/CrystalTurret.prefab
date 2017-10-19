@@ -53,10 +53,7 @@ GameObject:
   - component: {fileID: 4382230582914834}
   - component: {fileID: 33479946614444580}
   - component: {fileID: 23366411741194414}
-  - component: {fileID: 54139523027435668}
-  - component: {fileID: 114696487147914568}
   - component: {fileID: 65563763169024762}
-  - component: {fileID: 114676127402122150}
   m_Layer: 0
   m_Name: IceRockForCrystal (2)
   m_TagString: Untagged
@@ -96,10 +93,7 @@ GameObject:
   - component: {fileID: 4421807026792336}
   - component: {fileID: 33348788862470504}
   - component: {fileID: 23003785484423650}
-  - component: {fileID: 54835238088690498}
-  - component: {fileID: 114336971647821300}
   - component: {fileID: 65598170851816712}
-  - component: {fileID: 114000487880387038}
   m_Layer: 0
   m_Name: IceRockForCrystal
   m_TagString: Untagged
@@ -134,10 +128,7 @@ GameObject:
   - component: {fileID: 4849794219597898}
   - component: {fileID: 33719267498107448}
   - component: {fileID: 23065843745432990}
-  - component: {fileID: 54275760110274506}
-  - component: {fileID: 114884622253691620}
   - component: {fileID: 65979324398858202}
-  - component: {fileID: 114681108051876900}
   m_Layer: 0
   m_Name: IceRockForCrystal (1)
   m_TagString: Untagged
@@ -165,7 +156,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1657792999697602}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.293652, y: 64.39395, z: 123.078026}
+  m_LocalPosition: {x: -78.521355, y: 1.319777, z: 55.20464}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4738042677670878}
@@ -398,36 +389,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1327044755978628}
   m_Mesh: {fileID: 4300000, guid: 2bea3945ead242140bb1ae16def4f3df, type: 3}
---- !u!54 &54139523027435668
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1480727827995050}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
---- !u!54 &54275760110274506
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1949960006874154}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
 --- !u!54 &54350737074892596
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -442,21 +403,6 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!54 &54835238088690498
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1728038730515676}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &65563763169024762
 BoxCollider:
@@ -603,22 +549,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000487880387038
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1728038730515676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e835c48d15c08240ad72fe07736a33e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statusType: 3
-  damagePerTick: 0.3
-  duration: 0.5
-  timeBetweenDamage: 1
-  speedDamper: 0
 --- !u!114 &114068520262359000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -766,18 +696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6594b4a5afb8f8468e0e65192144771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114336971647821300
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1728038730515676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb56e8a9306b4b24d9d2f28102493838, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hideTime: 10
 --- !u!114 &114450716524198820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -806,50 +724,6 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
---- !u!114 &114676127402122150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1480727827995050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e835c48d15c08240ad72fe07736a33e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statusType: 3
-  damagePerTick: 0.3
-  duration: 0.5
-  timeBetweenDamage: 1
-  speedDamper: 0
---- !u!114 &114681108051876900
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1949960006874154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e835c48d15c08240ad72fe07736a33e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statusType: 3
-  damagePerTick: 0.3
-  duration: 0.5
-  timeBetweenDamage: 1
-  speedDamper: 0
---- !u!114 &114696487147914568
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1480727827995050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb56e8a9306b4b24d9d2f28102493838, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hideTime: 10
 --- !u!114 &114746854738991776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -901,15 +775,3 @@ MonoBehaviour:
     probability: 0.1
   minAmountOfDrops: 0
   maxAmountOfDrops: 2
---- !u!114 &114884622253691620
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1949960006874154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb56e8a9306b4b24d9d2f28102493838, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hideTime: 10
