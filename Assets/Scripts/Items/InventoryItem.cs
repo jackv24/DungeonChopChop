@@ -77,22 +77,25 @@ public class InventoryItem : BaseItem
 	{
         base.Drop(playerInfo);
 
-        foreach (Charm.CharmFloat charmFloat in charm.charmFloats)
+        if (charm)
         {
-            if (charmFloat.floatKey != "")
+            foreach (Charm.CharmFloat charmFloat in charm.charmFloats)
             {
-                playerInfo.SetItemCharmFloat (charmFloat.floatKey, 1.0f);
-                playerInfo.RemoveItemCharmFloats(charmFloat.floatKey);
+                if (charmFloat.floatKey != "")
+                {
+                    playerInfo.SetItemCharmFloat(charmFloat.floatKey, 1.0f);
+                    playerInfo.RemoveItemCharmFloats(charmFloat.floatKey);
+                }
             }
-        }
 
-        foreach (Charm.CharmBool charmBool in charm.charmBools)
-        {
-            if (charmBool.boolKey != "")
+            foreach (Charm.CharmBool charmBool in charm.charmBools)
             {
-                playerInfo.SetItemCharmBool(charmBool.boolKey, false);
-                playerInfo.RemoveItemCharmBools(charmBool.boolKey);
+                if (charmBool.boolKey != "")
+                {
+                    playerInfo.SetItemCharmBool(charmBool.boolKey, false);
+                    playerInfo.RemoveItemCharmBools(charmBool.boolKey);
+                }
             }
         }
-	}
+    }
 }

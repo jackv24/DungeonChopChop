@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour {
 	//sets up single player with a controller
 	void SetupControllerSingle()
 	{
-		InputManager.Instance.playerInput.Add (new PlayerInputs ());
+        InputManager.Instance.playerInput.Add (new PlayerInputs ());
 		InputManager.Instance.playerInput [playersReady].SetupBindings ();
 		InputManager.Instance.playerInput [playersReady].AssignDevice (InControl.InputManager.Devices[0]);
 		InputManager.Instance.playerInput [playersReady].SetupBindings ();
@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour {
 	//sets up co op with only one controller
 	void SetUpCoOpOneController()
 	{
+		Debug.Log("Set up controller two player");
 		InputManager.Instance.playerInput.Add (new PlayerInputs ());
 		InputManager.Instance.playerInput [playersReady].SetupBindings ();
 		playersReady++;
@@ -39,6 +40,7 @@ public class PlayerManager : MonoBehaviour {
 	//sets up co op with two controllers
 	void SetUpCoOpTwoControllers()
 	{
+		Debug.Log("Set up two controllers player");
 		InputManager.Instance.playerInput.Add (new PlayerInputs ());
 		InputManager.Instance.playerInput [playersReady].SetupBindings ();
 		InputManager.Instance.playerInput [playersReady].AssignDevice (InControl.InputManager.Devices [0]);
