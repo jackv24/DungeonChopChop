@@ -7,7 +7,26 @@ public class SecretCircle : MonoBehaviour
 
     private Drops[] drops;
     public bool didDrops = false;
+    public GameObject[] flowers;
     private SpawnEffects spawnEffects;
+
+    void OnEnable()
+    {
+        ReEnableCircle();
+    }
+
+    void ReEnableCircle()
+    {
+        if (flowers.Length > 0)
+        {
+            foreach (GameObject flower in flowers)
+            {
+                flower.SetActive(true);
+            }
+        }
+
+        didDrops = false;
+    }
 
     // Use this for initialization
     void Start()
@@ -28,6 +47,15 @@ public class SecretCircle : MonoBehaviour
                     drop.DoDrop();
                     spawnEffects.EffectOnHit(drop.GetComponent<SecretCircleParticles>().particles, drop.transform.position);
                 }
+
+                if (flowers.Length > 0)
+                {
+                    foreach (GameObject flower in flowers)
+                    {
+                        flower.SetActive(false);
+                    }
+                }
+
                 didDrops = true;
             }
         }
