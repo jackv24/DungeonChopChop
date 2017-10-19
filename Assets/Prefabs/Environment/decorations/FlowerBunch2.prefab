@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114734478323870310}
   - component: {fileID: 114851508572742252}
   - component: {fileID: 65443698360577682}
+  - component: {fileID: 54919336096554706}
   m_Layer: 17
   m_Name: FlowerBunch2
   m_TagString: Untagged
@@ -83,6 +84,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298106489440056}
   m_Mesh: {fileID: 4300000, guid: 3801c62ed3077204abfebbb8633aeca9, type: 3}
+--- !u!54 &54919336096554706
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1298106489440056}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!65 &65443698360577682
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -130,77 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 3
+  hitAmount: 1
   amountOfParticleTypes:
-  - particleType: 0
+  - particleType: 1
     particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.34037933, g: 0.50735295, b: 0.2872513, a: 1}
-        key1: {r: 0.60294116, g: 0.58942693, b: 0.5453071, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1004915465583228, guid: 2a2d6f42c0139774880df8b9f1374650,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 76f25b5e416e07a49b5016429ba24b59,
+    - particle: {fileID: 1928837666263156, guid: d5f708f217667dd44ad503edcf699332,
         type: 2}
       gradient:
         serializedVersion: 2
@@ -231,56 +181,21 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-  - particleType: 1
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
+    - particle: {fileID: 1928837666263156, guid: d5f708f217667dd44ad503edcf699332,
         type: 2}
       gradient:
         serializedVersion: 2
-        key0: {r: 0.6831747, g: 0.7941176, b: 0.71607506, a: 1}
-        key1: {r: 0.3925173, g: 0.46993798, b: 0.4852941, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 0.40588236, g: 0.6764706, b: 0.3382353, a: 1}
+        key1: {r: 0.06487889, g: 0.35294116, b: 0.07878537, a: 1}
+        key2: {r: 0.3162846, g: 0.5309511, b: 0.5735294, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
+        ctime0: 84
         ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 65535
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-  - particleType: 1
-    particles:
-    - particle: {fileID: 1004915465583228, guid: 2a2d6f42c0139774880df8b9f1374650,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
+        ctime2: 65535
         ctime3: 0
         ctime4: 0
         ctime5: 0
@@ -299,38 +214,7 @@ MonoBehaviour:
         m_NumAlphaKeys: 2
   - particleType: 1
     particles:
-    - particle: {fileID: 1928837666263156, guid: 2cdeec63cf71588448208da924190ac7,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.34769115, g: 0.58823526, b: 0.31574392, a: 1}
-        key1: {r: 0.57355917, g: 0.8455882, b: 0.5222751, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-    - particle: {fileID: 1928837666263156, guid: 2cdeec63cf71588448208da924190ac7,
+    - particle: {fileID: 1928837666263156, guid: d5f708f217667dd44ad503edcf699332,
         type: 2}
       gradient:
         serializedVersion: 2
@@ -345,6 +229,37 @@ MonoBehaviour:
         ctime0: 0
         ctime1: 65535
         ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+    - particle: {fileID: 1928837666263156, guid: d5f708f217667dd44ad503edcf699332,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.40588236, g: 0.6764706, b: 0.3382353, a: 1}
+        key1: {r: 0.06487889, g: 0.35294116, b: 0.07878537, a: 1}
+        key2: {r: 0.3162846, g: 0.5309511, b: 0.5735294, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 84
+        ctime1: 65535
+        ctime2: 65535
         ctime3: 0
         ctime4: 0
         ctime5: 0
@@ -363,13 +278,14 @@ MonoBehaviour:
         m_NumAlphaKeys: 2
   hitSounds:
     clips:
-    - {fileID: 8300000, guid: 0f9c4a752246e8e45a1264122fde545e, type: 3}
+    - {fileID: 8300000, guid: 6143019375010e54194596d0ead8dd89, type: 3}
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
   destroySounds:
     clips:
-    - {fileID: 8300000, guid: 13e69c102bbbe0947ae50beced856610, type: 3}
+    - {fileID: 8300000, guid: 6143019375010e54194596d0ead8dd89, type: 3}
+    - {fileID: 8300000, guid: 2815e53069b4fee40b9f879c6cb420a8, type: 3}
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3

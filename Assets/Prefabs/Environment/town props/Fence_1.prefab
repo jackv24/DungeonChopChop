@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 2
+  hitAmount: 6
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -365,11 +365,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drops:
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
   - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
-    probability: 0.3
-  - prefab: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
-    probability: 0.3
-  - prefab: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
-    probability: 0.3
-  minAmountOfDrops: 2
-  maxAmountOfDrops: 4
+    probability: 2
+  - prefab: {fileID: 0}
+    probability: 1
+  - prefab: {fileID: 0}
+    probability: 1
+  - prefab: {fileID: 0}
+    probability: 1
+  minAmountOfDrops: 0
+  maxAmountOfDrops: 1

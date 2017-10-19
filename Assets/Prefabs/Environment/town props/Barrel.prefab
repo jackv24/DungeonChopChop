@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 3
+  hitAmount: 8
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -330,7 +330,7 @@ MonoBehaviour:
     maxPitchVariance: 0.3
   destroySounds:
     clips:
-    - {fileID: 8300000, guid: 75fd2ca602aa5de4285c3346ae7ec597, type: 3}
+    - {fileID: 8300000, guid: add8169a97975e147b8d353863e9f59d, type: 3}
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
@@ -346,19 +346,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drops:
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
   - prefab: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
-    probability: 1
-  - prefab: {fileID: 1616226106310662, guid: 0c71fc111242199438e231f8efa50564, type: 2}
-    probability: 1
-  - prefab: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
-    probability: 1
-  - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
-    probability: 1
-  - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
-    probability: 1
+    probability: 0.2
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
     probability: 1
-  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
-    probability: 1
-  minAmountOfDrops: 4
-  maxAmountOfDrops: 6
+  - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
+    probability: 0.3
+  minAmountOfDrops: 1
+  maxAmountOfDrops: 2
