@@ -4,27 +4,35 @@ using UnityEngine;
 
 public class GameCreator : MonoBehaviour {
 
-    public bool buildMode = false;
+    [Header("Managers when running straight from this scene")]
     public GameObject[] managers;
 
 	// Use this for initialization
 	void Awake () {
         //create all the managers
-        if (!buildMode)
+        foreach (GameObject manager in managers)
         {
-            foreach (GameObject manager in managers)
+            if (!ManagerExists(manager.name))
             {
-                Instantiate(manager, transform.position, Quaternion.Euler(0, 0, 0));
+                GameObject obj = Instantiate(manager, transform.position, Quaternion.Euler(0, 0, 0));
+                obj.name = manager.name;
             }
         }
-        else
-        {
-            Instantiate(managers[managers.Length - 1], transform.position, Quaternion.Euler(0, 0, 0));
-        }
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    bool ManagerExists(string name)
+    {
+        GameObject obj = GameObject.Find(name);
+        if (obj)
+        {
+            return true;
+        }
+        Debug.Log("false");
+        return false;
+    }
 }

@@ -22,6 +22,7 @@ public class PlayerInformation : MonoBehaviour
     [Header("Charm")]
     public int charmAmount;
     public List<Charm> currentCharms = new List<Charm>();
+    public Dictionary<ArmourType, Charm> currentItemCharms = new Dictionary<ArmourType, Charm>();
 
     [Header("Items")]
     public int itemAmount;
@@ -89,6 +90,14 @@ public class PlayerInformation : MonoBehaviour
 
     void Update()
     {
+        for (int i = 0; i < currentItemCharms.Count; i++)
+        {
+            if (currentItemCharms.ContainsKey(ArmourType.Boots))
+            {
+                Debug.Log(currentItemCharms[ArmourType.Boots].displayName);
+            }
+        }
+
         //sets the damage output
         damageOutput = GetSwordDamage();
 
@@ -196,6 +205,7 @@ public class PlayerInformation : MonoBehaviour
         {
             //adds a item to the start of the list
             currentItems.Insert(0, item);
+            currentItemCharms.Add(item.armourType, item.charm);
             //checks to see if the amount of items the player has is greater then the amount they can hold
             if (currentItems.Count > itemAmount)
             {
@@ -203,6 +213,20 @@ public class PlayerInformation : MonoBehaviour
                 InventoryItem oldItem = currentItems[currentItems.Count - 1];
                 //removes the older item
                 currentItems.Remove(oldItem);
+
+                Debug.Log("1");
+                //get tje current item charm that has the same enum
+                for (int i = 0; i < currentItemCharms.Count; i++)
+                {
+                    Debug.Log("2");
+                    if (currentItemCharms.ContainsKey(item.armourType))
+                    {
+                        Debug.Log("3");
+                        Charm oldItemCharm = currentItemCharms[item.armourType];
+                    }
+                }
+
+                currentItemCharms.Remove(item.armourType);
 
                 oldItem.Drop(this);
             }

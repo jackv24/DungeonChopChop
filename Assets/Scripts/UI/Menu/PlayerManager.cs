@@ -7,8 +7,8 @@ public class PlayerManager : MonoBehaviour {
 	int playersReady = 0;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Awake () {
+        DontDestroyOnLoad(this);
 	}
 	
 	// Update is called once per frame

@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
 
 	void Awake()
 	{
+        DontDestroyOnLoad(this);
+
 		playerInput = new List<PlayerInputs>();
 		Instance = this;
 	}
@@ -20,5 +22,8 @@ public class InputManager : MonoBehaviour
 		return Instance.playerInput[index];
 	}
 
-
+    void Update()
+    {
+        
+    }
 }
