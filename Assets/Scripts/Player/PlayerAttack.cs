@@ -97,15 +97,37 @@ public class PlayerAttack : MonoBehaviour
         playerInformation = GetComponent<PlayerInformation>();
         playerMove = GetComponent <PlayerMove>();
 
-        if (InputManager.Instance)
+        input = new PlayerInputs();
+
+        if (playerInformation.playerIndex == 0)
         {
-            input = InputManager.GetPlayerInput(playerInformation.playerIndex);
-        }
-        else
-        {
-            input = new PlayerInputs();
             input.AddKeyboardBindings();
-            input.AddControllerBindings();
+            if (GameManager.Instance.players.Count > 1)
+            {
+                if (InControl.InputManager.Devices.Count > 1)
+                {
+                    input.AssignDevice(InControl.InputManager.Devices[0]);
+                    input.SetupBindings();
+                }
+            } 
+            else 
+            {
+                input.AssignDevice(InControl.InputManager.Devices[0]);
+                input.SetupBindings();
+            }
+        } 
+        else if (playerInformation.playerIndex == 1)
+        {
+            if (InControl.InputManager.Devices.Count <= 1)
+            {
+                input.AssignDevice(InControl.InputManager.Devices[0]);
+                input.AddControllerBindings();
+            } 
+            else 
+            {
+                input.AssignDevice(InControl.InputManager.Devices[1]);
+                input.SetupBindings();
+            }
         }
     }
 
