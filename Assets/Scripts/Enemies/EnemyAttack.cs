@@ -237,6 +237,16 @@ public class EnemyAttack : MonoBehaviour
                         enemyMove.runAwayForSeconds();
                 }
             }
+
+            if (enemyHealth)
+            {
+                //if slowly dying, set whatever touches it to slowly dying
+                if (enemyHealth.isSlowlyDying)
+                {
+                    if (!col.gameObject.GetComponent<Health>().isSlowlyDying)
+                        col.gameObject.GetComponent<Health>().SetSlowDeath();
+                }
+            }
         }
     }
 

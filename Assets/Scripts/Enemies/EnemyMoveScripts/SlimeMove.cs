@@ -50,7 +50,7 @@ public class SlimeMove : EnemyMove {
     void Start()
     {
         Setup();
-        timeBetweenMove = Random.Range(timeBetweenStopMin, timeBetweenStopMax);
+        timeBetweenMove = 0;
     }
 
     void OnEnable()
