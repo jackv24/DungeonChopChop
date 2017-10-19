@@ -32,7 +32,6 @@ public class GameCreator : MonoBehaviour {
         {
             return true;
         }
-        Debug.Log("false");
         return false;
     }
 }

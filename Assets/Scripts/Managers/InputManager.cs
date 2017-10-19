@@ -19,11 +19,6 @@ public class InputManager : MonoBehaviour
 
 	public static PlayerInputs GetPlayerInput(int index)
 	{
-		return Instance.playerInput[index];
+        return Instance.playerInput[index];
 	}
-
-    void Update()
-    {
-        
-    }
 }
