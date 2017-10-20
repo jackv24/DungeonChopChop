@@ -17,7 +17,6 @@ public class MapCamera : MonoBehaviour
 
     [Header("Icons")]
 	public float iconScale = 1.0f;
-	public float mapRadius = 1.0f;
 
     class Icon
 	{
@@ -33,7 +32,10 @@ public class MapCamera : MonoBehaviour
 	private CameraFollow cameraFollow;
 	private Camera cam;
 
-	void Awake()
+    private Vector2 initialSize;
+    private float initialOrthographicSize;
+
+    void Awake()
 	{
 		Instance = this;
 	}
@@ -55,8 +57,10 @@ public class MapCamera : MonoBehaviour
             renderTexture = new RenderTexture((int)mapRect.sizeDelta.x, (int)mapRect.sizeDelta.y, 0, RenderTextureFormat.ARGB32);
 
             cam.targetTexture = renderTexture;
-
             rawImage.texture = renderTexture;
+
+            initialSize = mapRect.sizeDelta;
+            initialOrthographicSize = cam.orthographicSize;
         }
 	}
 
@@ -73,10 +77,12 @@ public class MapCamera : MonoBehaviour
 			transform.position = cameraFollow.targetPos + Vector3.up * height;
 		}
 
-		if(cam)
+		if(cam && mapRect)
 		{
-			//Update all icons
-			foreach (Icon icon in icons)
+            cam.orthographicSize = initialOrthographicSize * (mapRect.sizeDelta.x / initialSize.x);
+
+            //Update all icons
+            foreach (Icon icon in icons)
 			{
 				if (icon.targetTransform)
 				{
@@ -94,8 +100,11 @@ public class MapCamera : MonoBehaviour
                     //Set icon position
                     icon.rectTransform.position = new Vector3(worldPos.x, worldPos.y, 1f);
 
-					//Make sure icon does not go off screen
-					LimitToRadius(icon.rectTransform, mapRect, mapRadius * ratio);
+					//Can just use x for radius since map should be equally proportioned
+                    float mapRadius = mapRect.sizeDelta.x / 2;
+
+                    //Make sure icon does not go off screen
+                    LimitToRadius(icon.rectTransform, mapRect, mapRadius * ratio);
 				}
 			}
 		}

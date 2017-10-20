@@ -6,7 +6,11 @@ public class CustomRender : MonoBehaviour
 {
 	public Shader renderShader;
 
-	private Camera cam;
+    [Space()]
+    public string excludeTag = "Player";
+    private List<Renderer> excludeRenderers = new List<Renderer>();
+
+    private Camera cam;
 
 	void Awake()
 	{
@@ -17,15 +21,38 @@ public class CustomRender : MonoBehaviour
 	{
 		if(cam)
 		{
-			cam.enabled = false;
-		}
+            cam.SetReplacementShader(renderShader, "RenderType");
+        }
+
+        GameObject[] exclude = GameObject.FindGameObjectsWithTag(excludeTag);
+
+        foreach(GameObject obj in exclude)
+		{
+            Renderer[] rends = obj.GetComponentsInChildren<Renderer>();
+
+			foreach(Renderer rend in rends)
+			{
+				if(!excludeRenderers.Contains(rend))
+                    excludeRenderers.Add(rend);
+            }
+        }
+    }
+
+	void OnPreCull()
+	{
+        EnableRenderers(false);
+    }
+
+	void OnPostRender()
+	{
+		EnableRenderers(true);
 	}
 
-	void Update()
+	void EnableRenderers(bool value)
 	{
-		if(cam)
-		{
-			cam.RenderWithShader(renderShader, "RenderType");
-		}
+		foreach(Renderer rend in excludeRenderers)
+        {
+        	rend.enabled = value;
+        }
 	}
 }

@@ -7,9 +7,10 @@ using UnityEngine.SceneManagement;
 public class LoadingAnimation : MonoBehaviour
 {
     public int loadScene = 1;
+    public int preloadScene = 2;
 
-    private AsyncOperation async;
     private float minWaitTime = 0;
+    private float minDoneTime;
 
     private VideoPlayer player;
 
@@ -26,26 +27,29 @@ public class LoadingAnimation : MonoBehaviour
             minWaitTime = (float)player.clip.length;
         }
 
-        StartCoroutine(Load());
+        minDoneTime = Time.time + minWaitTime;
+
+        StartCoroutine(Load(loadScene));
+        StartCoroutine(Load(preloadScene, false));
     }
 
-	IEnumerator Load()
+	IEnumerator Load(int scene, bool activate = true)
 	{
-        float minDoneTime = Time.time + minWaitTime;
-
-        async = SceneManager.LoadSceneAsync(1);
+        AsyncOperation async = SceneManager.LoadSceneAsync(scene);
         async.allowSceneActivation = false;
         
 		while(async.progress < 0.9f)
 		{
 			yield return new WaitForEndOfFrame();
-		}
+            Debug.Log("Loading scene " + scene + " progress: " + async.progress);
+        }
 
 		while(Time.time < minDoneTime)
 		{
             yield return new WaitForEndOfFrame();
         }
 		
-        async.allowSceneActivation = true;
+        if(activate)
+            async.allowSceneActivation = true;
     }
 }
