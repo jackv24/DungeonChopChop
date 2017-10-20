@@ -170,6 +170,19 @@ public class PlayerMove : MonoBehaviour
             }
         }
     }
+
+    void RotatesUsingControls()
+    {
+        if (!playerInformation.HasCharmBool("inverted"))
+        {
+            //transform.rotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y));
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y)), rotateSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(-inputVector.x, 0, -inputVector.y)), rotateSpeed * Time.deltaTime);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update()
@@ -217,16 +230,15 @@ public class PlayerMove : MonoBehaviour
             //rotate player
             if (inputVector.magnitude > 0.01f)
             {
-                if (!playerAttack.blocking)
+                if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Blocking"))
                 {
-                    if (!playerInformation.HasCharmBool("inverted"))
+                    RotatesUsingControls();
+                }  
+                else 
+                {
+                    if (!playerAttack.autoBlock)
                     {
-                        //transform.rotation = Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y));
-                        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.y)), rotateSpeed * Time.deltaTime);
-                    }
-                    else
-                    {
-                        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(-inputVector.x, 0, -inputVector.y)), rotateSpeed * Time.deltaTime);
+                        RotatesUsingControls();
                     }
                 }
             }

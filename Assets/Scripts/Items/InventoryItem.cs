@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+public enum Rarity
+{
+    Common,
+    Rare,
+    Mythic,
+    Legendary
+}
+
+[System.Serializable]
 public enum ArmourType
 {
     Boots,
@@ -37,6 +46,7 @@ public class InventoryItem : BaseItem
     public bool usePrefabForPickup = false;
     public Charm charm;
     public ArmourType armourType;
+    public Rarity rarity;
 
     [System.Serializable]
     public class Item

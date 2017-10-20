@@ -1723,14 +1723,14 @@ MonoBehaviour:
   acceleration: 10
   rotateSpeed: 20
   LockY: 1
-  inMudSpeed: 0.7
-  inLavaSpeed: 0.7
+  inMudSpeed: 0.5
+  inLavaSpeed: 0.5
   damageInFireBiome: 0.1
   damageInFireMultiplier: 1.7
   timeBetweenBiomeBurn: 3
   timeBetweenTickDivider: 1.5
   windSpeed: 2
-  inSnowSpeed: 0.7
+  inSnowSpeed: 0.5
   iceAcceleration: 1
   layerMask:
     serializedVersion: 2
@@ -1761,6 +1761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 96a1786eb91a5d74a8f91a658b66e68d, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
+  scale: 1
   setLastSibling: 1
   showOnTileEnter: 0
   registerOnce: 0
@@ -1819,8 +1820,9 @@ MonoBehaviour:
   currentCharms: []
   itemAmount: 5
   currentItems: []
-  currentCureOrbs: 0
-  maxCureOrbs: 3
+  currentCureAmount: 50
+  maxCureAmount: 100
+  cureAmountUsedPerTick: 5
   cureOrbParticles:
   - particleType: 0
     particles:
@@ -1920,6 +1922,7 @@ MonoBehaviour:
   health: 4
   weight: 0
   IsEnemy: 0
+  isProp: 0
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
