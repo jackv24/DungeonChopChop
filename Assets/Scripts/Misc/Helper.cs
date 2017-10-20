@@ -108,4 +108,22 @@ public static class Helper
 
 		return (float)scaled;
 	}
+
+	public static void SetLayerWithChildren(this GameObject gameObject, int layer)
+	{
+        gameObject.layer = layer;
+
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+		{
+            gameObject.transform.GetChild(i).gameObject.SetLayerWithChildren(layer);
+        }
+    }
+
+	public static void DestroyChildren(this GameObject gameObject)
+	{
+		for (int i = gameObject.transform.childCount - 1; i >= 0 ; i--)
+		{
+            GameObject.Destroy(gameObject.transform.GetChild(i).gameObject);
+        }
+	}
 }

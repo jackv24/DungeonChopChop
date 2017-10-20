@@ -10,7 +10,10 @@ public class Shop : MonoBehaviour
 	public BaseItem sellingItem;
 	private GameObject itemGraphic;
 
-	[Space()]
+    [Space()]
+    public GameObject itemPurchasePopup;
+
+    [Space()]
 	public SoundEffect purchaseSound;
     private AudioSource audioSource;
 
@@ -95,6 +98,15 @@ public class Shop : MonoBehaviour
                         }  
                     }
 
+                    if(itemPurchasePopup)
+                    {
+                        GameObject obj = ObjectPooler.GetPooledObject(itemPurchasePopup);
+
+                        ShopItemPopup popup = obj.GetComponent<ShopItemPopup>();
+                        if (popup)
+                            popup.Init(item, playerInfo.transform);
+                    }
+
                     //pick up items
                     playerInfo.PickupItem((InventoryItem)sellingItem);
                 }
@@ -110,6 +122,7 @@ public class Shop : MonoBehaviour
                         if (pickup)
                         {
                             pickup.representingCharm = (Charm)sellingItem;
+                            pickup.Pickup(playerInfo);
                         }
                     }
                 }
@@ -305,10 +318,10 @@ public class Shop : MonoBehaviour
                     if (currentShield)
                     {
                         //gets the blocking difference between current and the shield in the shop
-                        float blockingDifference = Mathf.Abs(swordStats.damageMultiplier - shieldStats.blockingResistance);
+                        float blockingDifference = Mathf.Abs(currentShield.blockingResistance - shieldStats.blockingResistance);
 
                         //gets the speed difference between current and the shield in the shop
-                        float speedDifference = Mathf.Abs(swordStats.damageMultiplier - shieldStats.speedDamping);
+                        float speedDifference = Mathf.Abs(currentShield.speedDamping - shieldStats.speedDamping);
 
                         if (shieldStats.blockingResistance == currentShield.blockingResistance)
                         {

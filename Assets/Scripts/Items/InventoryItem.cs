@@ -31,6 +31,7 @@ public class InventoryItem : BaseItem
     }
     [Space()]
     public Offset shopOffset = new Offset(Vector3.zero, new Vector3(-60, 180, 0), Vector3.one);
+    public Offset popupOffset = new Offset(Vector3.zero, new Vector3(0, 180, 0), Vector3.one);
 
     [Space()]
     public bool usePrefabForPickup = false;

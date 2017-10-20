@@ -91,11 +91,6 @@ public class PlayerInformation : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < itemCharmFloats.Count; i++)
-        {
-            Debug.Log(itemCharmFloats.Values);
-        }
-
         //sets the damage output
         damageOutput = GetSwordDamage();
 
