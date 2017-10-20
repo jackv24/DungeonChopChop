@@ -328,7 +328,12 @@ public class LevelTile : MonoBehaviour
 			if (newTile.layoutCollider)
 				CameraFollow.Instance.UpdateCameraBounds(newTile.layoutCollider.bounds);
 
-			SoundManager.FadeMusicByBiome(newTile.biome);
+			//If this tile has a music override, fade to that, else use biome music
+            TileMusicOverride tileMusic = GetComponentInChildren<TileMusicOverride>();
+            if(tileMusic)
+                tileMusic.SwitchTo();
+			else
+            	SoundManager.FadeMusicByBiome(newTile.biome);
 		}
 
 		//Set as current tile and call events

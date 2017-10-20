@@ -28,9 +28,6 @@ public class SoundManager : MonoBehaviour
 	public AudioClip iceBiomeMusic;
 	public AudioClip dungeonBiomeMusic;
 
-	//Start as dungeon since it'll trigger a change when switching to grass at start
-	private LevelTile.Biomes lastBiome = LevelTile.Biomes.Dungeon;
-
 	private void Awake()
 	{
 		Instance = this;
@@ -58,9 +55,6 @@ public class SoundManager : MonoBehaviour
 	{
 		if (Instance)
 		{
-			if (biome == Instance.lastBiome)
-				return;
-
 			AudioClip clip = null;
 
 			switch (biome)
@@ -85,16 +79,18 @@ public class SoundManager : MonoBehaviour
 					break;
 			}
 
-			FadeMusic(clip);
-
-			Instance.lastBiome = biome;
+            FadeMusic(clip);
 		}
 	}
 
 	public static void FadeMusic(AudioClip musicClip)
 	{
-		if (Instance && Instance.musicSource && musicClip)
+		if (Instance && Instance.musicSource)
 		{
+            //Don't fade if it's the same clip
+            if (musicClip == Instance.primaryMusicSource.clip)
+                return;
+
 			//Prevent multiple fades from happening at once
 			if(Instance.fadeRoutine != null)
 				Instance.StopCoroutine(Instance.fadeRoutine);
