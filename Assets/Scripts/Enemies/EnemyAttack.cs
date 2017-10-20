@@ -226,11 +226,13 @@ public class EnemyAttack : MonoBehaviour
                     }
                     else
                     {
-                        if (col.transform.GetComponent<PlayerAttack>().shield.blockingResistance > 0)
+                        //checks if the user is facing whatever the collision is coming from
+                        float dot = Vector3.Dot(col.transform.forward, (transform.position - col.transform.position).normalized);
+                        if (dot < 0.5f) 
                         {
                             col.transform.GetComponent<Health>().Damaged();
-                            col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch / playerInfo.resistance * col.transform.GetComponent<PlayerAttack>().shield.blockingResistance);
-                        }
+                            col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch / playerInfo.resistance);
+                        } 
                     }
 
                     if (enemyMove)

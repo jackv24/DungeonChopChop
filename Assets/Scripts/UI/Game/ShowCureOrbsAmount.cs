@@ -26,6 +26,5 @@ public class ShowCureOrbsAmount : MonoBehaviour {
     void Update()
     {
         cureBar.fillAmount = (float)playerInfo.currentCureAmount / 100;
-        Debug.Log((float)playerInfo.currentCureAmount / 100);
     }
 }

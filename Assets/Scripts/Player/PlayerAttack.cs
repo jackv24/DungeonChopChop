@@ -24,6 +24,7 @@ public class PlayerAttack : MonoBehaviour
     public float dashCooldown = 0.5f;
 
     [Header("Block Vars")]
+    public bool autoBlock = false;
     public float rotationSpeed = 5;
     public LayerMask enemyMask;
 
@@ -535,7 +536,8 @@ public class PlayerAttack : MonoBehaviour
 
         if (GetClosestEnemy() != transform)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(GetClosestEnemy().position - transform.position), rotationSpeed * Time.deltaTime);
+            if (autoBlock)
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(GetClosestEnemy().position - transform.position), rotationSpeed * Time.deltaTime);
         }
 		
         if (animator)
