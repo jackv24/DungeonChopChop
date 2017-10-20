@@ -7,29 +7,25 @@ public class ShowCureOrbsAmount : MonoBehaviour {
 
     public string playerTag;
 
-    private Text orbAmountText;
     private GameObject player;
     private PlayerInformation playerInfo;
 
-	// Use this for initialization
-	void Start () {
+    private Image cureBar;
+
+    // Use this for initialization
+    void Start () {
         player = GameObject.FindGameObjectWithTag(playerTag);
+        cureBar = GetComponent<Image>();
         if (player)
         {
             playerInfo = player.GetComponent<PlayerInformation>();
-            playerInfo.cureOrbChange += SetText;
+            //playerInfo.cureOrbChange += CureOrbUpdate;
         }
-        orbAmountText = GetComponent<Text>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
-    void SetText()
+    void Update()
     {
-        orbAmountText.text = playerInfo.currentCureOrbs + "/" + playerInfo.maxCureOrbs;
-
+        cureBar.fillAmount = (float)playerInfo.currentCureAmount / 100;
+        Debug.Log((float)playerInfo.currentCureAmount / 100);
     }
 }

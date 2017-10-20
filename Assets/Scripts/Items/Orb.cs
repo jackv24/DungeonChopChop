@@ -74,9 +74,9 @@ public class Orb : PickupableItems {
         }
         else
         {
-            if (playerInfo.currentCureOrbs < playerInfo.maxCureOrbs)
+            if (playerInfo.currentCureAmount < playerInfo.maxCureAmount)
             {
-                playerInfo.currentCureOrbs += cureAmount;
+                playerInfo.currentCureAmount += cureAmount;
                 playerInfo.CureOrbChanged();
             }
         }
