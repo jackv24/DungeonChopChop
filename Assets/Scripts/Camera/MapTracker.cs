@@ -6,8 +6,9 @@ public class MapTracker : MonoBehaviour
 {
 	public Sprite sprite;
 	public Color color = Color.white;
+    public float scale = 1.0f;
 
-	[Space()]
+    [Space()]
 	public bool setLastSibling = false;
 
 	[Space()]
@@ -59,7 +60,7 @@ public class MapTracker : MonoBehaviour
 		if (registerOnce && registered)
 			return;
 
-		MapCamera.Instance.RegisterIcon(sprite, transform, color, setLastSibling);
+		MapCamera.Instance.RegisterIcon(sprite, transform, color, scale, setLastSibling);
 
 		registered = true;
 	}

@@ -140,7 +140,7 @@ public class MapCamera : MonoBehaviour
 	/// <param name="color">Tint color.</param>
 	/// <param name="setLastSibling">Sets this icon as the last sibling in the heirarchy, drawing above other icons.</param>
 	/// <returns>Returns the assigned ID of the new icon.</returns>
-	public void RegisterIcon(Sprite sprite, Transform target, Color color, bool setLastSibling = false)
+	public void RegisterIcon(Sprite sprite, Transform target, Color color, float scale, bool setLastSibling = false)
 	{
 		//Only add tracker if this transform isn't already tracked
 		foreach(Icon i in icons)
@@ -171,7 +171,7 @@ public class MapCamera : MonoBehaviour
 		if (canvas)
 			obj.transform.SetParent(canvas.transform, false);
 
-		obj.transform.localScale *= iconScale;
+		obj.transform.localScale *= iconScale * scale;
 
 		//Add to list
 		icons.Add(icon);

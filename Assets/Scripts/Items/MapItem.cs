@@ -70,6 +70,27 @@ public class MapItem : BaseItem
 						tile.Reveal();
 					}
 				}
+
+				if(revealChests)
+				{
+                    MapTracker[] trackers = tile.GetComponentsInChildren<MapTracker>();
+
+					foreach(MapTracker tracker in trackers)
+					{
+						if(tracker.sprite == LevelVars.Instance.chestSpawnerIcon)
+                            tracker.Register();
+                    }
+
+                    Chest[] chests = tile.GetComponentsInChildren<Chest>();
+
+					foreach(Chest chest in chests)
+					{
+                        MapTracker tracker = chest.GetComponent<MapTracker>();
+
+						if(tracker)
+                            tracker.Register();
+                    }
+                }
 			}
 		}
 	}
