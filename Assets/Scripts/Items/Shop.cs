@@ -251,6 +251,47 @@ public class Shop : MonoBehaviour
                         var2String,
                         swordRangeName
                         );
+
+                    //If the weapon has an effect, set the effect colour
+
+                    Color effectColor = equalColour;
+
+                    var1String = "";
+
+                    if (swordStats.weaponEffect == WeaponEffect.Burn)
+                    {
+                        var1String = "Burns";
+                        effectColor = Color.red;
+                    }
+                    else if (swordStats.weaponEffect == WeaponEffect.Ice)
+                    {
+                        var1String = "Freezes";
+                        effectColor = Color.blue;
+                    }
+                    else if (swordStats.weaponEffect == WeaponEffect.Poison)
+                    {
+                        var1String = "Poisons";
+                        effectColor = Color.magenta;
+                    }
+                    else if (swordStats.weaponEffect == WeaponEffect.Sandy)
+                    {
+                        var1String = "Sandy";
+                        effectColor = Color.yellow;
+                    }
+                    else if (swordStats.weaponEffect == WeaponEffect.SlowDeath)
+                    {
+                        var1String = "Infects";
+                        effectColor = Color.green;
+                    }
+
+                    if (var1String.Length > 0)
+                    {
+                        descriptionText += string.Format(
+                            "<color=#{0}>{1}</color>\n",
+                            ColorUtility.ToHtmlStringRGB(effectColor),
+                            var1String
+                            );
+                    }
                 }
                 
                 //Display shield statse

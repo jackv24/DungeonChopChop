@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
 
     [Space()]
     public bool IsEnemy;
+    public bool isProp;
 
     [Space()]
     public bool isPoisoned = false;
@@ -115,7 +116,7 @@ public class Health : MonoBehaviour
                 HitColorFlash();
             }
         }
-        else
+        else if (!IsEnemy)
         {
             if (animator)
                 animator.SetTrigger("Hit");
@@ -234,7 +235,8 @@ public class Health : MonoBehaviour
         }
         
         coroutine = StartCoroutine(DoHitColourFlash());
-        StartCoroutine(DoHitColourFlash());
+        if (enabled)
+            StartCoroutine(DoHitColourFlash());
     }
 
     IEnumerator DoHitFlash()
@@ -496,7 +498,7 @@ public class Health : MonoBehaviour
     bool canBeStatused()
     {
         //make sure its a player
-        if (!IsEnemy)
+        if (!IsEnemy && !isProp)
         {
             //check if they have any orbs
             if (playerInfo.currentCureOrbs > 0)
@@ -554,20 +556,24 @@ public class Health : MonoBehaviour
     /// <param name="timeBetweenBurn">Time between burn in seconds.</param>
     public void SetBurned(float damagePerTick, float duration, float timeBetweenBurn)
     {
-        if (canBeStatused())
+        if (!isBurned)
         {
-            if (playerInfo)
+            if (canBeStatused())
             {
-                damagePerTick = damagePerTick * playerInfo.GetCharmFloat("burnMultiplier");
-                if (ItemsManager.Instance.hasArmourPiece)
+                if (playerInfo)
                 {
-                    damagePerTick = 0;
+                    damagePerTick = damagePerTick * playerInfo.GetCharmFloat("burnMultiplier");
+                    if (ItemsManager.Instance.hasArmourPiece)
+                    {
+                        damagePerTick = 0;
+                    }
                 }
+
+                isBurned = true;
+                DoParticle("FireTickParticle", duration);
+                if (enabled)
+                    StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
             }
-       
-            isBurned = true;
-            DoParticle("FireTickParticle", duration);
-            StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
         }
     }
 
