@@ -117,7 +117,8 @@ public class Health : MonoBehaviour
         }
         else
         {
-            animator.SetTrigger("Hit");
+            if (animator)
+                animator.SetTrigger("Hit");
             DoHitParticle();
             DoHitSound();
         }
@@ -347,6 +348,8 @@ public class Health : MonoBehaviour
 
     void SetOGFade()
     {
+        int rendersCount = 0;
+        renderers = GetComponentsInChildren<Renderer>();
         if (renderers != null)
         {
             if (originalColors.Count > 0)
@@ -354,17 +357,23 @@ public class Health : MonoBehaviour
                 //loops through each and sets the hit color
                 for (int i = 0; i < renderers.Length; i++)
                 {
-                    
-                    renderers[i].material.color = Color.Lerp(renderers[i].material.color, originalColors[i], fadeToColorTime * Time.deltaTime);
+                    if (renderers[i].material.color != originalColors[i])
+                    {
+                        renderers[i].material.color = Color.Lerp(renderers[i].material.color, originalColors[i], fadeToColorTime * Time.deltaTime);
+                    }
+
                     if (renderers[i].material.color == originalColors[i])
+                    {
+                        rendersCount++;
+                    }
+
+                    if (rendersCount == renderers.Length)
                     {
                         fadeToColor = false;
                     }
-                    else
-                    {
-                        fadeToColor = true;
-                    }
                 }
+
+                rendersCount = 0;
             }
         }
     }
@@ -467,7 +476,8 @@ public class Health : MonoBehaviour
         //checks if the game has an enemy drop script, if it does it is an enemy
         if (!IsEnemy)
         {
-            animator.SetBool("Die", true);
+            if (animator)
+                animator.SetBool("Die", true);
         }
     }
 
@@ -570,8 +580,10 @@ public class Health : MonoBehaviour
             SetColor(burnColor);
             yield return new WaitForSeconds(timeBetweenBurn / 2);
             AffectHealth(-damagePerTick);
-            StartCoroutine(DisablePlayerFor(.2f));
-            animator.SetTrigger("Flinch");
+            if (gameObject.activeSelf)
+                StartCoroutine(DisablePlayerFor(.2f));
+            if (animator)
+                animator.SetTrigger("Flinch");
             if (counter >= duration)
             {
                 isBurned = false;
@@ -579,7 +591,7 @@ public class Health : MonoBehaviour
 
             yield return new WaitForSeconds(timeBetweenBurn / 2);
         }
-        SetOGColorRends();
+        SetOGFade();
     }
 
     /// <summary>
@@ -615,7 +627,7 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
         }
-        SetOGColorRends();
+        SetOGFade();
     }
 
     /// <summary>
@@ -655,7 +667,7 @@ public class Health : MonoBehaviour
             GetComponent<EnemyMove>().enabled = true;
         
         isFrozen = false;
-        SetOGColorRends();
+        SetOGFade();
     }
 
     /// Sets slow speed.
@@ -696,7 +708,7 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
 
-        SetOGColorRends();
+        SetOGFade();
 
         if (!IsEnemy)
             playerInfo.ResetMoveSpeed();
