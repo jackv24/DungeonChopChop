@@ -98,7 +98,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &65001771552777104
 BoxCollider:
@@ -357,8 +357,34 @@ MonoBehaviour:
     probability: 0.3
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
     probability: 1
-  minAmountOfDrops: 1
-  maxAmountOfDrops: 2
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+  - prefab: {fileID: 0}
+    probability: 1
+  - prefab: {fileID: 0}
+    probability: 1
+  - prefab: {fileID: 0}
+    probability: 1
+  - prefab: {fileID: 0}
+    probability: 1
+  - prefab: {fileID: 0}
+    probability: 1
+  - prefab: {fileID: 0}
+    probability: 1
+  minAmountOfDrops: 3
+  maxAmountOfDrops: 10
 --- !u!114 &114588783551213508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -370,9 +396,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  health: 5
-  weight: 1
+  maxHealth: 0.2
+  health: 0.2
+  weight: 0.2
   IsEnemy: 0
   isProp: 1
   isPoisoned: 0
