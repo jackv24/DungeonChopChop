@@ -19,6 +19,7 @@ public class SwordStats : MonoBehaviour {
     public float damageMultiplier = 1;
     [Tooltip("Doesn't effect anything, just for showing stat")]
     public int range = 1;
+    [Header("Weapon Effect Stuff")]
     public WeaponEffect weaponEffect;
     [HideInInspector] public float damagePerTick;
     [HideInInspector] public float duration;

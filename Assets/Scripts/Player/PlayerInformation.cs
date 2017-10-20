@@ -30,8 +30,9 @@ public class PlayerInformation : MonoBehaviour
 
     //[Header("Cure Orb Vals")]
     public event NormalEvent cureOrbChange;
-    public int currentCureOrbs = 0;
-    public int maxCureOrbs = 3;
+    public int currentCureAmount = 0;
+    public int maxCureAmount = 100;
+    public int cureAmountUsedPerTick = 5;
     public AmountOfParticleTypes[] cureOrbParticles;
 
     [Header("Other Vals")]

@@ -70,9 +70,6 @@ public class MenuButtons : MonoBehaviour
     {
         ObjectPooler.PurgePools();
 
-        PlayerPrefs.SetInt("SkipMenu", 1);
-        PlayerPrefs.SetInt("PlayerCount", GameManager.Instance.players.Count);
-        SceneManager.LoadScene("Game");
-        Debug.Log(PlayerPrefs.GetInt("SkipMenu"));
+        SceneManager.LoadScene("Overworld");
     }
 }

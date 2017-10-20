@@ -162,20 +162,24 @@ public class PlayerAttack : MonoBehaviour
         {
             if (input.BasicAttack.IsPressed)
             {
-                heldDownCounter++;
-                //make sure not in spinning state
-                if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
+                //make sure not in rapid attack state
+                if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
                 {
-                    if (heldDownCounter > 30)
+                    heldDownCounter++;
+                    //make sure not in spinning state
+                    if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
                     {
-                        animator.SetBool("SpinCharge", true);
-                        //make sure in spin charge state
-                        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+                        if (heldDownCounter > 30)
                         {
-                            //do spin charge stuff
-                            SoundManager.PlaySound(chargeSpinSounds, transform.position);
-                            sword.GetComponent<SwordCollision>().DoChargeParticle();
-                            heldDownCounter = 0;
+                            animator.SetBool("SpinCharge", true);
+                            //make sure in spin charge state
+                            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+                            {
+                                //do spin charge stuff
+                                SoundManager.PlaySound(chargeSpinSounds, transform.position);
+                                sword.GetComponent<SwordCollision>().DoChargeParticle();
+                                heldDownCounter = 0;
+                            }
                         }
                     }
                 }

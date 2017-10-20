@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
 
     [Space()]
     public bool IsEnemy;
+    public bool isProp;
 
     [Space()]
     public bool isPoisoned = false;
@@ -115,7 +116,7 @@ public class Health : MonoBehaviour
                 HitColorFlash();
             }
         }
-        else
+        else if (!IsEnemy)
         {
             if (animator)
                 animator.SetTrigger("Hit");
@@ -234,7 +235,8 @@ public class Health : MonoBehaviour
         }
         
         coroutine = StartCoroutine(DoHitColourFlash());
-        StartCoroutine(DoHitColourFlash());
+        if (enabled)
+            StartCoroutine(DoHitColourFlash());
     }
 
     IEnumerator DoHitFlash()
@@ -493,17 +495,15 @@ public class Health : MonoBehaviour
         Destroy(particle, duration + 2);
     }
 
-    bool canBeStatused()
+    bool canBeDamagedFromEffect()
     {
         //make sure its a player
-        if (!IsEnemy)
+        if (!IsEnemy && !isProp)
         {
             //check if they have any orbs
-            if (playerInfo.currentCureOrbs > 0)
+            if (playerInfo.currentCureAmount > 0)
             {
-                playerInfo.currentCureOrbs--;
-                playerInfo.CureOrbChanged();
-                spawnEffects.EffectOnHit(playerInfo.cureOrbParticles, transform.position);
+                playerInfo.currentCureAmount -= playerInfo.cureAmountUsedPerTick;
                 return false;
             }
         }
@@ -517,14 +517,11 @@ public class Health : MonoBehaviour
     /// <param name="timeBetweenPoison">Time between poison in seconds.</param>
     public void SetPoison(float damagePerTick, float duration, float timeBetweenPoison)
     {
-        if (canBeStatused())
-        {
-            if (playerInfo)
-                damagePerTick *= playerInfo.GetCharmFloat("poisonMultiplier");
-            isPoisoned = true;
-            DoParticle("PoisonTickParticle", duration);
-            StartCoroutine(doPoison(damagePerTick, duration, timeBetweenPoison));
-        }
+        if (playerInfo)
+            damagePerTick *= playerInfo.GetCharmFloat("poisonMultiplier");
+        isPoisoned = true;
+        DoParticle("PoisonTickParticle", duration);
+        StartCoroutine(doPoison(damagePerTick, duration, timeBetweenPoison));
     }
 
     IEnumerator doPoison(float damagePerTick, float duration, float timeBetweenPoison)
@@ -534,10 +531,19 @@ public class Health : MonoBehaviour
         {
             counter++;
             SetColor(poisonColor);
+
             yield return new WaitForSeconds(timeBetweenPoison / 2);
-            AffectHealth(-damagePerTick);
+
+            if (canBeDamagedFromEffect())
+            {
+                AffectHealth(-damagePerTick);
+            }
+
             StartCoroutine(DisablePlayerFor(.1f));
-            animator.SetTrigger("Flinch");
+
+            if (animator)
+                animator.SetTrigger("Flinch");
+
             if (counter >= duration)
             {
                 isPoisoned = false;
@@ -554,7 +560,7 @@ public class Health : MonoBehaviour
     /// <param name="timeBetweenBurn">Time between burn in seconds.</param>
     public void SetBurned(float damagePerTick, float duration, float timeBetweenBurn)
     {
-        if (canBeStatused())
+        if (!isBurned)
         {
             if (playerInfo)
             {
@@ -564,10 +570,11 @@ public class Health : MonoBehaviour
                     damagePerTick = 0;
                 }
             }
-       
+
             isBurned = true;
             DoParticle("FireTickParticle", duration);
-            StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
+            if (enabled)
+                StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
         }
     }
 
@@ -578,12 +585,20 @@ public class Health : MonoBehaviour
         {
             counter++;
             SetColor(burnColor);
+
             yield return new WaitForSeconds(timeBetweenBurn / 2);
-            AffectHealth(-damagePerTick);
+
+            if (canBeDamagedFromEffect())
+            {
+                AffectHealth(-damagePerTick);
+            }
+
             if (gameObject.activeSelf)
                 StartCoroutine(DisablePlayerFor(.2f));
+
             if (animator)
                 animator.SetTrigger("Flinch");
+
             if (counter >= duration)
             {
                 isBurned = false;
@@ -601,13 +616,10 @@ public class Health : MonoBehaviour
     /// <param name="timeBetweenDeathTick">Time between death tick in seconds.</param>
     public void SetSlowDeath(float damagePerTick = .2f, float duration = 1, float timeBetweenDeathTick = 1)
     {
-        if (canBeStatused())
-        {
-            if (playerInfo)
-                damagePerTick *= playerInfo.GetCharmFloat("deathTickMultiplier");
-            isSlowlyDying = true;
-            StartCoroutine(doSlowDeath(damagePerTick, duration, timeBetweenDeathTick));
-        }
+        if (playerInfo)
+            damagePerTick *= playerInfo.GetCharmFloat("deathTickMultiplier");
+        isSlowlyDying = true;
+        StartCoroutine(doSlowDeath(damagePerTick, duration, timeBetweenDeathTick));
     }
 
     IEnumerator doSlowDeath(float damagePerTick, float duration, float timeBetweenSlowDeath)
@@ -617,10 +629,19 @@ public class Health : MonoBehaviour
         {
             counter++;
             SetColor(slowlyDyingColor);
+
             yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
-            AffectHealth(-damagePerTick);
+
+            if (canBeDamagedFromEffect())
+            {
+                AffectHealth(-damagePerTick);
+            }
+
             StartCoroutine(DisablePlayerFor(.2f));
-            animator.SetTrigger("Flinch");
+
+            if (animator)
+                animator.SetTrigger("Flinch");
+
             if (counter >= duration)
             {
                 isSlowlyDying = false;
@@ -636,38 +657,38 @@ public class Health : MonoBehaviour
     /// <param name="duration">Duration in seconds.</param>
     public void SetIce(float duration)
     {
-        if (canBeStatused())
-        {
-            isFrozen = true;
-            DoParticle("IceTickParticle", duration);
-            StartCoroutine(doIce(duration));
-        }
+        isFrozen = true;
+        DoParticle("IceTickParticle", duration);
+        StartCoroutine(doIce(duration));
     }
 
     IEnumerator doIce(float duration)
     {
-        //sets the color
-        SetColor(frozenColor);
-        //disables animator
-        animator.enabled = false;
+        if (canBeDamagedFromEffect())
+        {
+            //sets the color
+            SetColor(frozenColor);
+            //disables animator
+            animator.enabled = false;
 
-        //disable move script
-        if (GetComponent<PlayerMove>())
-            GetComponent<PlayerMove>().enabled = false;
-        else if (GetComponent<EnemyMove>())
-            GetComponent<EnemyMove>().enabled = false;
-        
-        yield return new WaitForSeconds(duration);
+            //disable move script
+            if (GetComponent<PlayerMove>())
+                GetComponent<PlayerMove>().enabled = false;
+            else if (GetComponent<EnemyMove>())
+                GetComponent<EnemyMove>().enabled = false;
 
-        //enable move script
-        animator.enabled = true;
-        if (GetComponent<PlayerMove>())
-            GetComponent<PlayerMove>().enabled = true;
-        else if (GetComponent<EnemyMove>())
-            GetComponent<EnemyMove>().enabled = true;
-        
-        isFrozen = false;
-        SetOGFade();
+            yield return new WaitForSeconds(duration);
+
+            //enable move script
+            animator.enabled = true;
+            if (GetComponent<PlayerMove>())
+                GetComponent<PlayerMove>().enabled = true;
+            else if (GetComponent<EnemyMove>())
+                GetComponent<EnemyMove>().enabled = true;
+
+            isFrozen = false;
+            SetOGFade();
+        }
     }
 
     /// Sets slow speed.
@@ -675,45 +696,45 @@ public class Health : MonoBehaviour
     /// <param name="duration">Duration in seconds.</param>
     public void SetSandy(float duration, float speedDamping)
     {
-        if (canBeStatused())
-        {
-            isSandy = true;
-            DoParticle("SandTickParticle", duration);
-            StartCoroutine(doSandy(duration, speedDamping));
-        }
+        isSandy = true;
+        DoParticle("SandTickParticle", duration);
+        StartCoroutine(doSandy(duration, speedDamping));
     }
 
     IEnumerator doSandy(float duration, float speedDamping)
     {
-        int counter = 0;
-        float ogEnemySpeed = 0;
-
-        //checks if player or enemy and sets the speeds
-        if (!IsEnemy)
-            playerInfo.SetMoveSpeed(playerInfo.maxMoveSpeed * speedDamping);
-        else
+        if (canBeDamagedFromEffect())
         {
-            ogEnemySpeed = GetComponent<NavMeshAgent>().speed;
-            GetComponent<NavMeshAgent>().speed = GetComponent<NavMeshAgent>().speed * speedDamping;
-        }
+            int counter = 0;
+            float ogEnemySpeed = 0;
 
-        while (isSandy)
-        {
-            counter++;
-            SetColor(sandyColor);
-            if (counter >= duration)
+            //checks if player or enemy and sets the speeds
+            if (!IsEnemy)
+                playerInfo.SetMoveSpeed(playerInfo.maxMoveSpeed * speedDamping);
+            else
             {
-                isSandy = false;
+                ogEnemySpeed = GetComponent<NavMeshAgent>().speed;
+                GetComponent<NavMeshAgent>().speed = GetComponent<NavMeshAgent>().speed * speedDamping;
             }
-            yield return new WaitForSeconds(1);
+
+            while (isSandy)
+            {
+                counter++;
+                SetColor(sandyColor);
+                if (counter >= duration)
+                {
+                    isSandy = false;
+                }
+                yield return new WaitForSeconds(1);
+            }
+
+            SetOGFade();
+
+            if (!IsEnemy)
+                playerInfo.ResetMoveSpeed();
+            else
+                GetComponent<NavMeshAgent>().speed = ogEnemySpeed;
         }
-
-        SetOGFade();
-
-        if (!IsEnemy)
-            playerInfo.ResetMoveSpeed();
-        else
-            GetComponent<NavMeshAgent>().speed = ogEnemySpeed;
     }
 
     IEnumerator DisablePlayerFor(float seconds)
