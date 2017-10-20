@@ -2,24 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PropDestroy : MonoBehaviour {
+public class PropDestroy : MonoBehaviour
+{
 
-    public int hitAmount;
+    [Header("Attacks that destroy this prop")]
+    public bool slashDestroysIt = true;
+    public bool tripleDestroysIt = true;
+    public bool dashDestroysIt = true;
+    public bool spinDestroysIt = true;
+
+    [Header("Particles")]
     [Tooltip("Amount of different particle types eg 'Dust, Smoke, Shrapnel'")]
     public AmountOfParticleTypes[] amountOfParticleTypes;
+
+    [Header("Sounds")]
     public SoundEffect hitSounds;
     public SoundEffect destroySounds;
 
     private SpawnEffects spawnEffects;
+    private Health propHealth;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (hitAmount <= 0)
+        propHealth = GetComponent<Health>();
+        propHealth.OnHealthChange += UpdateProp;
+    }
+
+    // Update is called once per frame
+    void UpdateProp()
+    {
+        if (propHealth.health <= 0)
         {
             //do effects
             if (spawnEffects)
@@ -32,7 +46,7 @@ public class PropDestroy : MonoBehaviour {
 
             gameObject.SetActive(false);
         }
-	}
+    }
 
     public void DoEffect()
     {
@@ -43,5 +57,64 @@ public class PropDestroy : MonoBehaviour {
     public void HitSound()
     {
         SoundManager.PlaySound(hitSounds, transform.position);
+    }
+
+    void DestroyProps(Collider collider)
+    {
+        //if its the sword colliding
+        if (collider.gameObject.layer == 16)
+        {
+            //do the props effect then destroy it
+            if (collider.GetComponent<BoxCollider>().enabled)
+                DoEffect();
+
+            Animator anim = collider.gameObject.GetComponentInParent<Animator>();
+            PlayerInformation playerInfo = collider.gameObject.GetComponentInParent<PlayerInformation>();
+
+            if (propHealth && anim && playerInfo)
+            {
+                if (collider.gameObject.GetComponentInParent<Animator>())
+                {
+                    //check if in slashing state
+                    if (anim.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || anim.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                    {
+                        if (slashDestroysIt)
+                            propHealth.AffectHealth(-playerInfo.GetSwordDamage());
+                    }
+                    //check if in dashing
+                    else if (anim.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
+                    {
+                        if (dashDestroysIt)
+                            propHealth.AffectHealth(-playerInfo.GetSwordDamage());
+                    }
+                    //check if in Spinning
+                    else if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
+                    {
+                        if (spinDestroysIt)
+                            propHealth.AffectHealth(-playerInfo.GetSwordDamage());
+
+                    }
+                    //check if in Spinning
+                    else if (anim.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
+                    {
+                        if (tripleDestroysIt)
+                            propHealth.AffectHealth(-playerInfo.GetSwordDamage());
+                    }
+                }
+            }
+
+            HitSound();
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        DestroyProps(collision.collider);
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (GetComponent<Collider>().isTrigger)
+            DestroyProps(collider);
     }
 }

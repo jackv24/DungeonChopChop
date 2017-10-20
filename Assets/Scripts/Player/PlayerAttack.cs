@@ -463,8 +463,7 @@ public class PlayerAttack : MonoBehaviour
         //if you attack quick enough, it is counted as a combo
         if (comboCounter < timeInbetween)
         {
-            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
-                AddCombo();
+            AddCombo();
         } 
 		//if you attack to late, it restarts the combo
 		else
