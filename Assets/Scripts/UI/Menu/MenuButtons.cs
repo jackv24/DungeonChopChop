@@ -21,10 +21,6 @@ public class MenuButtons : MonoBehaviour
 
 	public void ClickSinglePlayer()
     {
-        //gets canvas
-        Canvas canv = GameObject.FindObjectOfType<Canvas>();
-        canv.enabled = false;
-
         if (!clicked)
         {
             clicked = true;
@@ -34,11 +30,6 @@ public class MenuButtons : MonoBehaviour
 
 	public void ClickCoOp()
     {
-
-        //gets canvas
-        Canvas canv = GameObject.FindObjectOfType<Canvas>();
-        canv.enabled = false;
-
         if (!clicked)
         {
             clicked = true;
