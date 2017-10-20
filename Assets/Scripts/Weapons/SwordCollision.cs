@@ -50,6 +50,21 @@ public class SwordCollision : MonoBehaviour {
         effect.transform.position = new Vector3(col.contacts[0].point.x, col.collider.bounds.max.y + .1f, col.contacts[0].point.z);
     }
 
+    void SetEffect(Health health)
+    {
+        //set the status effect depending on the weapons effect
+        if (swordStats.weaponEffect == WeaponEffect.Burn)
+            health.SetBurned(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
+        else if (swordStats.weaponEffect == WeaponEffect.Poison)
+            health.SetPoison(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
+        else if (swordStats.weaponEffect == WeaponEffect.SlowDeath)
+            health.SetSlowDeath(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
+        else if (swordStats.weaponEffect == WeaponEffect.Ice)
+            health.SetIce(swordStats.duration);
+        else if (swordStats.weaponEffect == WeaponEffect.Sandy)
+            health.SetSandy(swordStats.duration, swordStats.speedDamper);
+    }
+
     void OnCollisionEnter(Collision col)
     {
         //check if the collider is on the enemy layer
@@ -67,33 +82,18 @@ public class SwordCollision : MonoBehaviour {
                 //else just do the normal damage
                 enemyHealth.AffectHealth(-playerInfo.GetSwordDamage());
 
-                //set the status effect depending on the weapons effect
-                if (swordStats.weaponEffect == WeaponEffect.Burn)
-                    enemyHealth.SetBurned(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
-                else if (swordStats.weaponEffect == WeaponEffect.Poison)
-                    enemyHealth.SetPoison(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
-                else if (swordStats.weaponEffect == WeaponEffect.SlowDeath)
-                    enemyHealth.SetSlowDeath(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
-                else if (swordStats.weaponEffect == WeaponEffect.Ice)
-                    enemyHealth.SetIce(swordStats.duration);
-                else if (swordStats.weaponEffect == WeaponEffect.Sandy)
-                    enemyHealth.SetSandy(swordStats.duration, swordStats.speedDamper);
-
+                SetEffect(enemyHealth);
 
                 CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
 
                 playerInfo.KnockbackPlayer(-playerInfo.transform.forward, knockbackOnHit);
             }
-        }
-        //if the player == Prop
+        } 
         else if (col.gameObject.layer == 17)
         {
-            //do the props effect then destroy it
-            col.gameObject.GetComponent<PropDestroy>().DoEffect();
-            col.gameObject.GetComponent<PropDestroy>().hitAmount--;
-            col.gameObject.GetComponent<PropDestroy>().HitSound();
+            if (swordStats.weaponEffect == WeaponEffect.Burn)
+                col.gameObject.GetComponent<Health>().SetBurned(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
         }
-
     }
 
     IEnumerator QuickGamePause(Collider col)

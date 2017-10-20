@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114951054913977436}
   - component: {fileID: 114976293325220858}
   - component: {fileID: 54565043712416234}
+  - component: {fileID: 114142721298448424}
   m_Layer: 17
   m_Name: Fence_2
   m_TagString: Untagged
@@ -129,6 +130,42 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114142721298448424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344767525901680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  health: 5
+  weight: 1
+  IsEnemy: 1
+  isPoisoned: 0
+  isBurned: 0
+  isSlowlyDying: 0
+  isFrozen: 0
+  isSandy: 0
+  isDead: 0
+  poisonColor: {r: 0, g: 0, b: 0, a: 0}
+  burnColor: {r: 0.30882353, g: 0.19757186, b: 0.05676903, a: 0}
+  slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
+  frozenColor: {r: 0, g: 0, b: 0, a: 0}
+  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  hitParticles: []
+  hitSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  hitColor: {r: 1, g: 1, b: 1, a: 1}
+  timeBetweenFlash: 0.1
+  amountToFlash: 5
+  fadeToColorTime: 5
 --- !u!114 &114951054913977436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,7 +177,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 6
+  slashDestroysIt: 0
+  tripleDestroysIt: 1
+  dashDestroysIt: 0
+  spinDestroysIt: 0
   amountOfParticleTypes:
   - particleType: 0
     particles:

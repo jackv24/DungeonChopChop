@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114851508572742252}
   - component: {fileID: 65443698360577682}
   - component: {fileID: 54919336096554706}
+  - component: {fileID: 114349058237368044}
   m_Layer: 17
   m_Name: FlowerBunch2
   m_TagString: Untagged
@@ -106,11 +107,47 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298106489440056}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.8009281, y: 1.2156705, z: 0.8584751}
   m_Center: {x: -0.10291205, y: 0.605375, z: -0.07747817}
+--- !u!114 &114349058237368044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1298106489440056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  health: 1
+  weight: 1
+  IsEnemy: 0
+  isPoisoned: 0
+  isBurned: 0
+  isSlowlyDying: 0
+  isFrozen: 0
+  isSandy: 0
+  isDead: 0
+  poisonColor: {r: 0, g: 0, b: 0, a: 0}
+  burnColor: {r: 0, g: 0, b: 0, a: 0}
+  slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
+  frozenColor: {r: 0, g: 0, b: 0, a: 0}
+  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  hitParticles: []
+  hitSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  hitColor: {r: 0, g: 0, b: 0, a: 0}
+  timeBetweenFlash: 0.1
+  amountToFlash: 5
+  fadeToColorTime: 5
 --- !u!114 &114734478323870310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,7 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 1
+  slashDestroysIt: 1
+  tripleDestroysIt: 1
+  dashDestroysIt: 1
+  spinDestroysIt: 1
   amountOfParticleTypes:
   - particleType: 1
     particles:

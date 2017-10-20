@@ -256,17 +256,9 @@ public class PlayerMove : MonoBehaviour
                         {
                             slowdownMultiplier = inMudSpeed;
                         }
-                        else
-                        {
-                            slowdownMultiplier = 1;
-                        }
                         if (hit.collider.tag == "Snow")
                         {
                             slowdownMultiplier = inSnowSpeed;
-                        }
-                        else
-                        {
-                            slowdownMultiplier = 1;
                         }
                         if (hit.collider.tag == "Lava")
                         {

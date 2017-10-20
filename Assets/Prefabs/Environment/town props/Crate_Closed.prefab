@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54436256031752192}
   - component: {fileID: 114562726027623286}
   - component: {fileID: 114292250858684230}
+  - component: {fileID: 114588783551213508}
   m_Layer: 17
   m_Name: Crate_Closed
   m_TagString: Untagged
@@ -122,7 +123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 5
+  slashDestroysIt: 1
+  tripleDestroysIt: 1
+  dashDestroysIt: 1
+  spinDestroysIt: 1
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -355,3 +359,39 @@ MonoBehaviour:
     probability: 1
   minAmountOfDrops: 1
   maxAmountOfDrops: 2
+--- !u!114 &114588783551213508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530101751580586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  health: 5
+  weight: 1
+  IsEnemy: 1
+  isPoisoned: 0
+  isBurned: 0
+  isSlowlyDying: 0
+  isFrozen: 0
+  isSandy: 0
+  isDead: 0
+  poisonColor: {r: 0, g: 0, b: 0, a: 0}
+  burnColor: {r: 0.30882353, g: 0.19757186, b: 0.05676903, a: 0}
+  slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
+  frozenColor: {r: 0, g: 0, b: 0, a: 0}
+  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  hitParticles: []
+  hitSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  hitColor: {r: 1, g: 1, b: 1, a: 1}
+  timeBetweenFlash: 0.1
+  amountToFlash: 5
+  fadeToColorTime: 5
