@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerInformation : MonoBehaviour
 {
 
-    public delegate void NormalEvent();
-
     [Header("Player Values")]
     public int playerIndex = 0;
     public float attackMinAngle = 130;
@@ -28,8 +26,7 @@ public class PlayerInformation : MonoBehaviour
     public int itemAmount;
     public List<InventoryItem> currentItems = new List<InventoryItem>();
 
-    //[Header("Cure Orb Vals")]
-    public event NormalEvent cureOrbChange;
+    [Header("Cure Orb Vals")]
     public int currentCureAmount = 0;
     public int maxCureAmount = 100;
     public int cureAmountUsedPerTick = 5;
@@ -158,11 +155,6 @@ public class PlayerInformation : MonoBehaviour
         deadPlayer.animator.SetBool("Die", false);
         //make sure player is no longer dead
         deadPlayer.health.isDead = false;
-    }
-
-    public void CureOrbChanged()
-    {
-        cureOrbChange();
     }
 
     public void PickupCharm(Charm charm)

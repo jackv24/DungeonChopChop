@@ -170,16 +170,19 @@ public class PlayerAttack : MonoBehaviour
                     //make sure not in spinning state
                     if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
                     {
-                        if (heldDownCounter > 30)
+                        if (comboAmount <= 0)
                         {
-                            animator.SetBool("SpinCharge", true);
-                            //make sure in spin charge state
-                            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+                            if (heldDownCounter > 30)
                             {
-                                //do spin charge stuff
-                                SoundManager.PlaySound(chargeSpinSounds, transform.position);
-                                sword.GetComponent<SwordCollision>().DoChargeParticle();
-                                heldDownCounter = 0;
+                                animator.SetBool("SpinCharge", true);
+                                //make sure in spin charge state
+                                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+                                {
+                                    //do spin charge stuff
+                                    SoundManager.PlaySound(chargeSpinSounds, transform.position);
+                                    sword.GetComponent<SwordCollision>().DoChargeParticle();
+                                    heldDownCounter = 0;
+                                }
                             }
                         }
                     }
