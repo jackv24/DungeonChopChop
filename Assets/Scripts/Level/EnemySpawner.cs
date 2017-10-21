@@ -9,10 +9,12 @@ public class EnemySpawner : MonoBehaviour
 	public event NormalEvent OnEnemiesDefeated;
 	public event NormalEvent OnEnemiesSpawned;
 
-	[HideInInspector]
 	public bool spawned = false;
 
-	[System.Serializable]
+    public bool waitForSpawnMessage = false;
+    private bool receivedMessage = false;
+
+    [System.Serializable]
 	public class Profile
 	{
 		public bool randomised;
@@ -109,15 +111,33 @@ public class EnemySpawner : MonoBehaviour
 
 	public void Spawn()
 	{
+		//Don't spawn if tile already cleared
 		if (cleared)
 			return;
 
-		shouldSpawn = true;
+		//Don't spawn if we should wait for a message and have not received it
+		if(waitForSpawnMessage && !receivedMessage)
+            return;
+
+        Debug.Log("Spawned");
+
+        shouldSpawn = true;
 
 		if (OnEnemiesSpawned != null)
 			OnEnemiesSpawned();
 
 		StartCoroutine(SpawnWithEffect());
+	}
+
+	public void SetSpawnMessage()
+	{
+		//If spawn was waiting for this message, then spawn
+		if(waitForSpawnMessage && !receivedMessage)
+		{
+            receivedMessage = true;
+
+            Spawn();
+        }
 	}
 
 	IEnumerator SpawnWithEffect()

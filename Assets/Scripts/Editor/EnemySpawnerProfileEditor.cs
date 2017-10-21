@@ -22,7 +22,10 @@ public class EnemySpawnerProfileEditor : Editor
 	{
 		if (!Application.isPlaying)
 		{
-			EditorGUILayout.LabelField(string.Format("Current Profile: {0}/{1}", spawner.profiles.Count > 0 ? currentIndex + 1 : 0, spawner.profiles.Count));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("waitForSpawnMessage"));
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField(string.Format("Current Profile: {0}/{1}", spawner.profiles.Count > 0 ? currentIndex + 1 : 0, spawner.profiles.Count));
 
 			EditorGUILayout.BeginHorizontal();
 			Color defaultColor = GUI.backgroundColor;
@@ -83,8 +86,8 @@ public class EnemySpawnerProfileEditor : Editor
 			if (modified > 0)
 				EditorGUILayout.HelpBox(string.Format("There are {0} unapplied prefab changes on this instance!", modified), MessageType.Warning);
 
-			EditorGUILayout.Space();
-			SerializedProperty profiles = serializedObject.FindProperty("profiles");
+            EditorGUILayout.Space();
+            SerializedProperty profiles = serializedObject.FindProperty("profiles");
 			if (profiles.arraySize > 0 && currentIndex < profiles.arraySize)
 			{
 				SerializedProperty profile = profiles.GetArrayElementAtIndex(currentIndex);

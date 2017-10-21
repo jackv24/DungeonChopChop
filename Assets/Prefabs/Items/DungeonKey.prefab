@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 54738443255910488}
   - component: {fileID: 114619911482762350}
   - component: {fileID: 114367803328178724}
+  - component: {fileID: 114166945156765646}
   m_Layer: 15
   m_Name: DungeonKey
   m_TagString: Untagged
@@ -172,6 +173,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0414082, y: 1.194015, z: 0.7769952}
   m_Center: {x: 0, y: 0.09276256, z: 0.0047652125}
+--- !u!114 &114166945156765646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773314530630038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendType: 0
+  sendTime: 0
+  message: SetSpawnMessage
+  requireReceiver: 1
 --- !u!114 &114367803328178724
 MonoBehaviour:
   m_ObjectHideFlags: 1
