@@ -14,9 +14,9 @@ public enum Rarity
 [System.Serializable]
 public enum ArmourType
 {
+    Nothing,
     Boots,
     ChestPiece,
-    Helmet
 }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Data/Items/Item")]
