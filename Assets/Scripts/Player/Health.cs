@@ -87,8 +87,14 @@ public class Health : MonoBehaviour
 
     public void AffectHealth(float healthDeta)
     {
-        if (health > 0)
-            TemporaryInvincibility();
+        //props don't need to do this
+        if (!isProp)
+        {
+            if (health > 0)
+            {
+                TemporaryInvincibility();
+            }
+        }
         
         health += healthDeta;
         if (OnHealthChange != null)

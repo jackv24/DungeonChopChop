@@ -59,15 +59,21 @@ public class PropDestroy : MonoBehaviour
         SoundManager.PlaySound(hitSounds, transform.position);
     }
 
+    void DoHitEffectAndSound()
+    {
+        //do the props effect then destroy it
+        if (GetComponent<Collider>().GetComponent<BoxCollider>().enabled)
+        {
+            DoEffect();
+            HitSound();
+        }
+    }
+
     void DestroyProps(Collider collider)
     {
         //if its the sword colliding
         if (collider.gameObject.layer == 16)
         {
-            //do the props effect then destroy it
-            if (collider.GetComponent<BoxCollider>().enabled)
-                DoEffect();
-
             Animator anim = collider.gameObject.GetComponentInParent<Animator>();
             PlayerInformation playerInfo = collider.gameObject.GetComponentInParent<PlayerInformation>();
 
@@ -79,31 +85,41 @@ public class PropDestroy : MonoBehaviour
                     if (anim.GetCurrentAnimatorStateInfo(1).IsTag("Attacking") || anim.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
                     {
                         if (slashDestroysIt)
+                        {
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
+                            DoHitEffectAndSound();
+                        }
                     }
                     //check if in dashing
                     else if (anim.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
                     {
                         if (dashDestroysIt)
+                        {
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
+                            DoHitEffectAndSound();
+                        }
                     }
                     //check if in Spinning
                     else if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
                     {
                         if (spinDestroysIt)
+                        {
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
+                            DoHitEffectAndSound();
+                        }
 
                     }
                     //check if in Spinning
                     else if (anim.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
                     {
                         if (tripleDestroysIt)
+                        {
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
+                            DoHitEffectAndSound();
+                        }
                     }
                 }
             }
-
-            HitSound();
         }
     }
 

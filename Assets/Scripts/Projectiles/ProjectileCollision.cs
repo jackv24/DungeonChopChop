@@ -61,7 +61,7 @@ public class ProjectileCollision : MonoBehaviour {
                             float dot = Vector3.Dot(col.transform.forward, (transform.position - col.transform.position).normalized);
                             if (dot < 0.5f)
                             {
-                                col.transform.GetComponent<Health>().AffectHealth(playerInfo.GetSwordDamage());
+                                col.transform.GetComponent<Health>().AffectHealth(-damageAmount * damageMultiplyer / playerInfo.resistance);
                             }
                         }
                     }
