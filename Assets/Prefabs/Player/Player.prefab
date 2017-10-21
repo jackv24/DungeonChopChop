@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1515761076265150}
   m_IsPrefabParent: 1
+--- !u!1 &1060991477999286
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4467907880284192}
+  m_Layer: 14
+  m_Name: ShootPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1073195041555706
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,6 +767,19 @@ Transform:
   m_Father: {fileID: 4547255018236554}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4467907880284192
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1060991477999286}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0, z: 1.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4884170368495762}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4526101236842492
 Transform:
   m_ObjectHideFlags: 1
@@ -1019,6 +1047,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4791651162588270}
+  - {fileID: 4467907880284192}
   m_Father: {fileID: 4808201594927462}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1584,6 +1613,9 @@ MonoBehaviour:
   flashDuration: 0.2
   whiteVal: 0.3
   amountOfFadeBack: 0.02
+  projectile: {fileID: 1368690437338182, guid: a5a1d09709538664aa1ad82a4c31a9de, type: 2}
+  shootPosition: {fileID: 1060991477999286}
+  thrust: 20
   moveBackOnHit: 5
   blocking: 0
   speedWhenBurned: 8

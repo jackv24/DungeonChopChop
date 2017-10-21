@@ -16,6 +16,7 @@ public class ItemsManager : MonoBehaviour {
     public bool hasGoggles = false;
     public bool hasBoots = false;
     public bool hasArmourPiece = false;
+    public bool hasGauntles = false;
 
     void Awake()
     {

@@ -410,31 +410,44 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
-    void ShootProjectile()
+    void Shoot()
     {
-        //check if there is a current projectile
-        if (currentProj)
+        //create the projecticle
+        GameObject proj = ObjectPooler.GetPooledObject(projectile);
+
+        currentProj = proj;
+
+        //sets the projectiles position to be the point of shoot position
+        proj.transform.position = shootPosition.transform.position;
+
+        proj.transform.rotation = transform.rotation;
+
+        //sets the strength of the projectile
+        proj.GetComponent<ProjectileCollision>().damageMultiplyer = playerInformation.strength;
+
+        //pushes the proj
+        proj.GetComponent<Rigidbody>().AddForce(proj.transform.forward * thrust, ForceMode.Impulse);
+
+        proj.GetComponent<ProjectileCollision>().thrust = thrust;
+    }
+
+    public void ShootProjectile()
+    {
+        //check if the player can actually do this move
+        if (ItemsManager.Instance.hasGauntles)
         {
-            //check if the projectile is active
-            if (currentProj.activeSelf)
+        //check if there is a current projectile
+            if (currentProj)
             {
-                //create the projecticle
-                GameObject proj = ObjectPooler.GetPooledObject(projectile);
-
-                proj = currentProj;
-
-                //sets the projectiles position to be the point of shoot position
-                proj.transform.position = shootPosition.transform.position;
-
-                proj.transform.rotation = transform.rotation;
-
-                //sets the strength of the projectile
-                proj.GetComponent<ProjectileCollision>().damageMultiplyer *= playerInformation.strength;
-
-                //pushes the proj
-                proj.GetComponent<Rigidbody>().AddForce(proj.transform.forward * thrust, ForceMode.Impulse);
-
-                proj.GetComponent<ProjectileCollision>().thrust = thrust;
+                //check if the projectile is active
+                if (!currentProj.activeSelf)
+                {
+                    Shoot();
+                }
+            }
+            else
+            {
+                Shoot();
             }
         }
     }

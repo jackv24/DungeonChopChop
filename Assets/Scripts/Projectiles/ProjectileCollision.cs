@@ -72,6 +72,7 @@ public class ProjectileCollision : MonoBehaviour {
             else
             {
                 col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer));
+                Debug.Log(-damageAmount * damageMultiplyer);
             }
 			//check to see if collider has an animator
 			if (col.gameObject.GetComponentInChildren<Animator> ())

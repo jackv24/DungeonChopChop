@@ -25,4 +25,9 @@ public class PlayerAnimEvent : MonoBehaviour {
     {
         playerAttack.DisableSword();
     }
+
+    public void ShootProj()
+    {
+        playerAttack.ShootProjectile();
+    }
 }
