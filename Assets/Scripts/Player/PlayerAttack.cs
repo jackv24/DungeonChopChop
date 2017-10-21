@@ -38,6 +38,12 @@ public class PlayerAttack : MonoBehaviour
     [Tooltip("The amount it fades back from the flash amount per milisecond")]
     public float amountOfFadeBack = .01f;
 
+    [Header("Projectile Vars")]
+    public GameObject projectile;
+    [Tooltip("The position of which the projectile comes out from")]
+    public GameObject shootPosition;
+    public float thrust;
+
     [Header("Other Vars")]
     public float moveBackOnHit = 5;
     public bool blocking = false;
@@ -89,6 +95,7 @@ public class PlayerAttack : MonoBehaviour
     private float heldDownCounter = 0;
 
     private Vector3 targetPosition = Vector3.zero;
+    private GameObject currentProj;
 
     void Start()
     {
@@ -110,15 +117,18 @@ public class PlayerAttack : MonoBehaviour
                     input.AssignDevice(InControl.InputManager.Devices[0]);
                     input.SetupBindings();
                 }
-                else if (InControl.InputManager.Devices.Count == 1)
+            } 
+            else 
+            {
+                if (InControl.InputManager.Devices.Count == 1)
                 {
                     input.AssignDevice(InControl.InputManager.Devices[0]);
                     input.SetupBindings();
                 }
-            } 
-            else 
-            {
-                input.SetupBindings();
+                else
+                {
+                    input.SetupBindings();
+                }
             }
         } 
         else if (playerInformation.playerIndex == 1)
@@ -398,6 +408,35 @@ public class PlayerAttack : MonoBehaviour
 
         newSword.GetComponent<SwordPickup>().canPickUp = true;
 
+    }
+
+    void ShootProjectile()
+    {
+        //check if there is a current projectile
+        if (currentProj)
+        {
+            //check if the projectile is active
+            if (currentProj.activeSelf)
+            {
+                //create the projecticle
+                GameObject proj = ObjectPooler.GetPooledObject(projectile);
+
+                proj = currentProj;
+
+                //sets the projectiles position to be the point of shoot position
+                proj.transform.position = shootPosition.transform.position;
+
+                proj.transform.rotation = transform.rotation;
+
+                //sets the strength of the projectile
+                proj.GetComponent<ProjectileCollision>().damageMultiplyer *= playerInformation.strength;
+
+                //pushes the proj
+                proj.GetComponent<Rigidbody>().AddForce(proj.transform.forward * thrust, ForceMode.Impulse);
+
+                proj.GetComponent<ProjectileCollision>().thrust = thrust;
+            }
+        }
     }
 
     public void DropShield()
