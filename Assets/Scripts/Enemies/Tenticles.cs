@@ -38,11 +38,11 @@ public class Tenticles : MonoBehaviour {
             BoxCollider box = col.GetComponent<BoxCollider>();
             if (box.enabled)
             {
-                quicksand.spawnEffects.EffectOnHit(particleTypes, transform.position);
+                SpawnEffects.EffectOnHit(particleTypes, transform.position);
                 healthPoints--;
                 if (healthPoints <= 0)
                 {
-                    quicksand.spawnEffects.EffectOnDeath(particleTypes, transform.position);
+                    SpawnEffects.EffectOnDeath(particleTypes, transform.position);
                     quicksand.SpikesHit();
                 }
             }

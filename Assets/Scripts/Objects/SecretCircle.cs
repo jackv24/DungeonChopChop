@@ -8,7 +8,6 @@ public class SecretCircle : MonoBehaviour
     private Drops[] drops;
     public bool didDrops = false;
     public GameObject[] flowers;
-    private SpawnEffects spawnEffects;
 
     void OnEnable()
     {
@@ -32,7 +31,6 @@ public class SecretCircle : MonoBehaviour
     void Start()
     {
         drops = GetComponentsInChildren<Drops>();
-        spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
     }
 
     void DoDrops()
@@ -45,7 +43,7 @@ public class SecretCircle : MonoBehaviour
                 foreach (Drops drop in drops)
                 {
                     drop.DoDrop();
-                    spawnEffects.EffectOnHit(drop.GetComponent<SecretCircleParticles>().particles, drop.transform.position);
+                    SpawnEffects.EffectOnHit(drop.GetComponent<SecretCircleParticles>().particles, drop.transform.position);
                 }
 
                 if (flowers.Length > 0)

@@ -12,12 +12,6 @@ public class SwordCollision : MonoBehaviour {
     public GameObject spinReadyParticle;
     public GameObject chargeParticle;
 
-    [Header("Camera Shake Values")]
-    public float magnitude = 1;
-    public float shakeAmount = 1;
-    public float duration = 1;
-    public float pauseTime = .1f;
-
     [HideInInspector()]
     public PlayerAttack playerAttack;
     [HideInInspector()]
@@ -84,7 +78,7 @@ public class SwordCollision : MonoBehaviour {
 
                 SetEffect(enemyHealth);
 
-                CameraShake.ShakeScreen(magnitude, shakeAmount, duration);
+                CameraShake.ShakeScreen(enemyHealth.magnitude, enemyHealth.shakeAmount, enemyHealth.duration);
 
                 playerInfo.KnockbackPlayer(-playerInfo.transform.forward, knockbackOnHit);
             }
@@ -96,14 +90,15 @@ public class SwordCollision : MonoBehaviour {
         }
     }
 
-    IEnumerator QuickGamePause(Collider col)
-    {
-        animator.enabled = false;
-        col.GetComponentInChildren<Animator>().enabled = false;
-        yield return new WaitForSecondsRealtime(pauseTime);
-        col.GetComponentInChildren<Animator>().enabled = true;
-        animator.enabled = true;
-    }
+    ///////this function is in case we want the game to stutter when hitting an enemy
+//    IEnumerator QuickGamePause(Collider col)
+//    {
+//        animator.enabled = false;
+//        col.GetComponentInChildren<Animator>().enabled = false;
+//        yield return new WaitForSecondsRealtime(pauseTime);
+//        col.GetComponentInChildren<Animator>().enabled = true;
+//        animator.enabled = true;
+//    }
 
     public void DoChargeParticle()
     {

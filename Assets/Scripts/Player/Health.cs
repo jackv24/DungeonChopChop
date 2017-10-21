@@ -36,7 +36,7 @@ public class Health : MonoBehaviour
     public Color frozenColor;
     public Color sandyColor;
 
-    [Space()]
+    [Header("Hit Particles and Sounds")]
     public AmountOfParticleTypes[] hitParticles;
     public SoundEffect hitSounds;
     public Color hitColor;
@@ -47,6 +47,12 @@ public class Health : MonoBehaviour
     public int amountToFlash = 5;
     public float fadeToColorTime = 5;
 
+    [Header("Camera Shake Values")]
+    public float magnitude = 1;
+    public float shakeAmount = 1;
+    public float duration = 1;
+    public float pauseTime = .1f;
+
     private PlayerInformation playerInfo;
     private Animator animator;
     private Rigidbody rb;
@@ -54,7 +60,6 @@ public class Health : MonoBehaviour
     private Renderer[] renderers;
     private List<Color> originalColors = new List<Color>();
     private Vector3 targetPosition;
-    private SpawnEffects spawnEffects;
 
     private Coroutine coroutine;
 
@@ -63,8 +68,6 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
-
         renderers = GetComponentsInChildren<Renderer>();
         //loops through and get the original color on each renderer
         for (int i = 0; i < renderers.Length; i++)
@@ -138,8 +141,7 @@ public class Health : MonoBehaviour
 
     void DoHitParticle()
     {
-        if (spawnEffects && hitParticles.Length > 0)
-            spawnEffects.EffectOnHit(hitParticles, transform.position);
+        SpawnEffects.EffectOnHit(hitParticles, transform.position);
     }
 
     void OnEnable()

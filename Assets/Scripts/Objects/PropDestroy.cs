@@ -19,13 +19,11 @@ public class PropDestroy : MonoBehaviour
     public SoundEffect hitSounds;
     public SoundEffect destroySounds;
 
-    private SpawnEffects spawnEffects;
     private Health propHealth;
 
     // Use this for initialization
     void Start()
     {
-        spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
         propHealth = GetComponent<Health>();
         propHealth.OnHealthChange += UpdateProp;
     }
@@ -36,8 +34,7 @@ public class PropDestroy : MonoBehaviour
         if (propHealth.health <= 0)
         {
             //do effects
-            if (spawnEffects)
-                spawnEffects.EffectOnDeath(amountOfParticleTypes, transform.position);
+            SpawnEffects.EffectOnDeath(amountOfParticleTypes, transform.position);
 
             //do sound
             SoundManager.PlaySound(destroySounds, transform.position);
@@ -50,8 +47,7 @@ public class PropDestroy : MonoBehaviour
 
     public void DoEffect()
     {
-        if (spawnEffects)
-            spawnEffects.EffectOnHit(amountOfParticleTypes, new Vector3(transform.position.x, GetComponent<Collider>().bounds.max.y + .1f, transform.position.z));
+        SpawnEffects.EffectOnHit(amountOfParticleTypes, new Vector3(transform.position.x, GetComponent<Collider>().bounds.max.y + .1f, transform.position.z));
     }
 
     public void HitSound()

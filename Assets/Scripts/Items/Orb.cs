@@ -84,7 +84,7 @@ public class Orb : PickupableItems {
     void DoPickUpParticle(GameObject obj)
     {
         //do particles
-        GameObject particle = ObjectPooler.GetPooledObject(spawnEffects.GetEffectOnDeath(particles));
+        GameObject particle = ObjectPooler.GetPooledObject(SpawnEffects.GetEffectOnDeath(particles));
         particle.GetComponent<ParticleFollowHost>().host = obj.transform;
         particle.transform.position = obj.transform.position;
 
