@@ -82,10 +82,14 @@ public class PlayerMove : MonoBehaviour
                     input.AssignDevice(InControl.InputManager.Devices[0]);
                     input.SetupBindings();
                 }
+                else if (InControl.InputManager.Devices.Count == 1)
+                {
+                    input.AssignDevice(InControl.InputManager.Devices[0]);
+                    input.SetupBindings();
+                }
             } 
             else 
             {
-                input.AssignDevice(InControl.InputManager.Devices[0]);
                 input.SetupBindings();
             }
         } 
