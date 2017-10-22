@@ -415,6 +415,11 @@ MonoBehaviour:
   attackStrength: 1
   damageOnTouch: 1
   knockbackStrength: 7
+  shootSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   projAmount: 0
   timeTillInterval: 0
   minInterval: 0
@@ -434,6 +439,7 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 1
+  isProp: 0
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
@@ -486,9 +492,78 @@ MonoBehaviour:
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
   hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
+  poisonTickSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  burnTickSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  slowDeathTickSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  poisonedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  burnSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  sandySound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  slowDeathSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  frozenSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unpoisonedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unburnSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unsandySound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unslowDeathSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unfrozenSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   timeBetweenFlash: 1
   amountToFlash: 1
   fadeToColorTime: 5
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!114 &114784540402295790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -540,6 +615,8 @@ MonoBehaviour:
   radiusAttack: 5
   waitTillLeep: 2
   leepSpeed: 16
+  minTimeBetweenLeep: 2
+  maxTimeBetweenLeep: 3
 --- !u!114 &114977226705451282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -552,15 +629,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 0
-  amountToSplit: 4
-  splitEnemy: {fileID: 0}
-  explodeRadius: 10
-  statusType: 0
-  damagePerTick: 0.5
-  timeBetweenTick: 1
-  duration: 5
-  damageOnExplode: 2
-  knockbackOnExplode: 5
   deathParticles:
   - particleType: 1
     particles:
@@ -634,6 +702,19 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.2
     maxPitchVariance: 0.2
+  deathShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
+  amountToSplit: 4
+  splitEnemy: {fileID: 0}
+  explodeRadius: 10
+  statusType: 0
+  damagePerTick: 0.5
+  timeBetweenTick: 1
+  duration: 5
+  damageOnExplode: 2
+  knockbackOnExplode: 5
 --- !u!137 &137010118852255330
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

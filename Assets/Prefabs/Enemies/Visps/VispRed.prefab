@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 114899753229480656}
   - component: {fileID: 195785466709743786}
   - component: {fileID: 82537600215126118}
+  - component: {fileID: 114731293444320804}
   m_Layer: 11
   m_Name: VispRed
   m_TagString: Untagged
@@ -673,10 +674,10 @@ MonoBehaviour:
   timeBetweenFlash: 1
   amountToFlash: 1
   fadeToColorTime: 5
-  magnitude: 0.1
-  shakeAmount: 0.1
-  duration: 1
-  pauseTime: 0.1
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!114 &114420411891837552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -717,15 +718,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 0
-  amountToSplit: 4
-  splitEnemy: {fileID: 0}
-  explodeRadius: 10
-  statusType: 0
-  damagePerTick: 0.5
-  timeBetweenTick: 1
-  duration: 5
-  damageOnExplode: 2
-  knockbackOnExplode: 5
   deathParticles:
   - particleType: 1
     particles:
@@ -799,6 +791,31 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
+  deathShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
+  amountToSplit: 4
+  splitEnemy: {fileID: 0}
+  explodeRadius: 10
+  statusType: 0
+  damagePerTick: 0.5
+  timeBetweenTick: 1
+  duration: 5
+  damageOnExplode: 2
+  knockbackOnExplode: 5
+--- !u!114 &114731293444320804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531160305826130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc9f32dd481f5f44b7fc3616a630ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
 --- !u!114 &114899753229480656
 MonoBehaviour:
   m_ObjectHideFlags: 1

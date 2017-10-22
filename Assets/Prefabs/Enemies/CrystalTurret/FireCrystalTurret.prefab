@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 114368839511350406}
   - component: {fileID: 114400096719073896}
   - component: {fileID: 82515772023537724}
+  - component: {fileID: 114097318940453756}
   m_Layer: 11
   m_Name: FireCrystalTurret
   m_TagString: Untagged
@@ -564,6 +565,7 @@ MonoBehaviour:
   health: 8
   weight: 2
   IsEnemy: 1
+  isProp: 0
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
@@ -682,9 +684,90 @@ MonoBehaviour:
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
   hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
+  poisonTickSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  burnTickSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  slowDeathTickSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  poisonedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  burnSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  sandySound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  slowDeathSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  frozenSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unpoisonedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unburnSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unsandySound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unslowDeathSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unfrozenSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   timeBetweenFlash: 1
   amountToFlash: 1
   fadeToColorTime: 5
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
+--- !u!114 &114097318940453756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709440474477876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc9f32dd481f5f44b7fc3616a630ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
 --- !u!114 &114176583286639612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -708,6 +791,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 0
+  deathParticles: []
+  deathSounds:
+    clips:
+    - {fileID: 8300000, guid: 18e0a2f65c139e1469f8efc7083eb33a, type: 3}
+    volume: 1
+    minPitchVariance: -0.2
+    maxPitchVariance: 0.2
+  deathShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
   amountToSplit: 0
   splitEnemy: {fileID: 0}
   explodeRadius: 10
@@ -717,13 +811,6 @@ MonoBehaviour:
   duration: 5
   damageOnExplode: 2
   knockbackOnExplode: 5
-  deathParticles: []
-  deathSounds:
-    clips:
-    - {fileID: 8300000, guid: 18e0a2f65c139e1469f8efc7083eb33a, type: 3}
-    volume: 1
-    minPitchVariance: -0.2
-    maxPitchVariance: 0.2
 --- !u!114 &114400096719073896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -771,6 +858,11 @@ MonoBehaviour:
   attackStrength: 1
   damageOnTouch: 2
   knockbackStrength: 2
+  shootSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   projAmount: 4
   timeTillInterval: 2
   minInterval: 0

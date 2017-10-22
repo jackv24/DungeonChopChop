@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114979939115730942}
   - component: {fileID: 114435684450968262}
   - component: {fileID: 114675975860023570}
+  - component: {fileID: 114925951882340604}
   m_Layer: 11
   m_Name: PaddyBone
   m_TagString: Untagged
@@ -193,15 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 3
-  amountToSplit: 0
-  splitEnemy: {fileID: 0}
-  explodeRadius: 3
-  statusType: 4
-  damagePerTick: 0
-  timeBetweenTick: 1
-  duration: 4
-  damageOnExplode: 2
-  knockbackOnExplode: 3
   deathParticles:
   - particleType: 1
     particles:
@@ -308,6 +300,19 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  deathShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
+  amountToSplit: 0
+  splitEnemy: {fileID: 0}
+  explodeRadius: 3
+  statusType: 4
+  damagePerTick: 0
+  timeBetweenTick: 1
+  duration: 4
+  damageOnExplode: 2
+  knockbackOnExplode: 3
 --- !u!114 &114675975860023570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -351,6 +356,7 @@ MonoBehaviour:
   health: 6
   weight: 2
   IsEnemy: 1
+  isProp: 0
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
@@ -370,9 +376,90 @@ MonoBehaviour:
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
+  poisonTickSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  burnTickSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  slowDeathTickSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  poisonedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  burnSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  sandySound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  slowDeathSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  frozenSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unpoisonedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unburnSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unsandySound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unslowDeathSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unfrozenSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   timeBetweenFlash: 1
   amountToFlash: 1
   fadeToColorTime: 5
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
+--- !u!114 &114925951882340604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1560298701560840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc9f32dd481f5f44b7fc3616a630ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 4
 --- !u!114 &114979939115730942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,6 +478,11 @@ MonoBehaviour:
   attackStrength: 0.5
   damageOnTouch: 0.5
   knockbackStrength: 3
+  shootSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   projAmount: 0
   timeTillInterval: 0
   minInterval: 0

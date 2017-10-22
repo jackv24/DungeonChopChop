@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114819077554164988}
   - component: {fileID: 195623500681136020}
   - component: {fileID: 82975705179194190}
+  - component: {fileID: 114644188232926868}
   m_Layer: 11
   m_Name: VispPurple
   m_TagString: Untagged
@@ -537,6 +538,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd0d314a50f19d4e8a0f53bdd4c5733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114644188232926868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479499657155190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc9f32dd481f5f44b7fc3616a630ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!114 &114758017929468380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -549,15 +562,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 0
-  amountToSplit: 4
-  splitEnemy: {fileID: 0}
-  explodeRadius: 10
-  statusType: 0
-  damagePerTick: 0.5
-  timeBetweenTick: 1
-  duration: 5
-  damageOnExplode: 2
-  knockbackOnExplode: 5
   deathParticles:
   - particleType: 1
     particles:
@@ -631,6 +635,19 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
+  deathShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
+  amountToSplit: 4
+  splitEnemy: {fileID: 0}
+  explodeRadius: 10
+  statusType: 0
+  damagePerTick: 0.5
+  timeBetweenTick: 1
+  duration: 5
+  damageOnExplode: 2
+  knockbackOnExplode: 5
 --- !u!114 &114819077554164988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -822,10 +839,10 @@ MonoBehaviour:
   timeBetweenFlash: 1
   amountToFlash: 1
   fadeToColorTime: 5
-  magnitude: 0.1
-  shakeAmount: 0.1
-  duration: 1
-  pauseTime: 0.1
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!137 &137487488703501464
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

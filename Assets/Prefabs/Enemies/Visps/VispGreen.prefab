@@ -593,15 +593,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 0
-  amountToSplit: 4
-  splitEnemy: {fileID: 0}
-  explodeRadius: 10
-  statusType: 0
-  damagePerTick: 0.5
-  timeBetweenTick: 1
-  duration: 5
-  damageOnExplode: 2
-  knockbackOnExplode: 5
   deathParticles:
   - particleType: 1
     particles:
@@ -675,6 +666,19 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
+  deathShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
+  amountToSplit: 4
+  splitEnemy: {fileID: 0}
+  explodeRadius: 10
+  statusType: 0
+  damagePerTick: 0.5
+  timeBetweenTick: 1
+  duration: 5
+  damageOnExplode: 2
+  knockbackOnExplode: 5
 --- !u!114 &114581345132110962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -811,10 +815,10 @@ MonoBehaviour:
   timeBetweenFlash: 1
   amountToFlash: 1
   fadeToColorTime: 5
-  magnitude: 0.1
-  shakeAmount: 0.1
-  duration: 1
-  pauseTime: 0.1
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!114 &114942940986019612
 MonoBehaviour:
   m_ObjectHideFlags: 1
