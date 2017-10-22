@@ -31,6 +31,9 @@ public class Charm : BaseItem
 
 	public LayerMask layerMask;
 
+    [Header("Audio")]
+    public SoundEffect pickUpSound;
+
 	public override void Pickup (PlayerInformation playerInfo)
 	{
 		base.Pickup (playerInfo);
@@ -62,6 +65,9 @@ public class Charm : BaseItem
 				}
 			}
 		}
+
+        // do sound
+        SoundManager.PlaySound(pickUpSound, playerInfo.transform.position);
 
 		playerInfo.SetLayerMask (layerMask);
 	}
