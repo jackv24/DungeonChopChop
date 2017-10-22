@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[System.Serializable]
+public class CameraShakeVars
+{
+    [Header("Camera Shake Values")]
+    public float magnitude = .1f;
+    public float shakeAmount = .1f;
+    public float duration = 1;
+}
+
 public class Health : MonoBehaviour
 {
     public float maxHealth;
@@ -64,17 +73,13 @@ public class Health : MonoBehaviour
     public int amountToFlash = 5;
     public float fadeToColorTime = 5;
 
-    [Header("Camera Shake Values")]
-    public float magnitude = .1f;
-    public float shakeAmount = .1f;
-    public float duration = 1;
-    public float pauseTime = .1f;
+    public CameraShakeVars hitShake;
 
     private PlayerInformation playerInfo;
     private Animator animator;
     private Rigidbody rb;
 
-    private Renderer[] renderers;
+    private List<Renderer> renderers = new List<Renderer>();
     private List<Color> originalColors = new List<Color>();
     private Vector3 targetPosition;
 
@@ -85,9 +90,9 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        renderers = GetComponentsInChildren<Renderer>();
+        AddRenderersToList();
         //loops through and get the original color on each renderer
-        for (int i = 0; i < renderers.Length; i++)
+        for (int i = 0; i < renderers.Count; i++)
         {
             if (renderers[i].material.HasProperty("_Color"))
                 originalColors.Add(renderers[i].material.color);
@@ -146,10 +151,26 @@ public class Health : MonoBehaviour
         }
         else if (!IsEnemy)
         {
-            if (animator)
-                animator.SetTrigger("Hit");
-            DoHitParticle();
-            DoHitSound();
+            if (!HasStatusCondition())
+            {
+                if (animator)
+                    animator.SetTrigger("Hit");
+                DoHitParticle();
+                DoHitSound();
+            }
+        }
+    }
+
+    void AddRenderersToList()
+    {
+        renderers.Clear();
+        foreach (Renderer ren in transform.GetComponentsInChildren<Renderer>())
+        {
+            //we don't want the trail renderer
+            if (ren is TrailRenderer) {}
+                //no
+            else 
+                renderers.Add(ren);
         }
     }
 
@@ -292,7 +313,8 @@ public class Health : MonoBehaviour
 
     public void SetColor(Color color)
     {
-        renderers = GetComponentsInChildren<Renderer>();
+        AddRenderersToList();
+
         if (renderers != null)
         {
             //loops through each and sets the hit color
@@ -312,7 +334,7 @@ public class Health : MonoBehaviour
     {
         SetColor(color);
         yield return new WaitForSeconds(seconds);
-        SetOGFade();
+        SetOGFade(fadeToColorTime);
     }
 
     public void UnfadeWhite()
@@ -334,7 +356,8 @@ public class Health : MonoBehaviour
 
     void SetHitColor()
     {
-        renderers = GetComponentsInChildren<Renderer>();
+        AddRenderersToList();
+
         if (renderers != null)
         {
             //loops through each and sets the hit color
@@ -347,7 +370,7 @@ public class Health : MonoBehaviour
 
     public void SetOGColor()
     {
-        renderers = GetComponentsInChildren<Renderer>();
+        AddRenderersToList();
 
         if (renderers != null)
         {
@@ -380,20 +403,22 @@ public class Health : MonoBehaviour
         }
     }
 
-    void SetOGFade()
+    void SetOGFade(float fadeTime)
     {
         int rendersCount = 0;
-        renderers = GetComponentsInChildren<Renderer>();
+
+        AddRenderersToList();
+
         if (renderers != null)
         {
             if (originalColors.Count > 0)
             {
                 //loops through each and sets the hit color
-                for (int i = 0; i < renderers.Length; i++)
+                for (int i = 0; i < renderers.Count; i++)
                 {
                     if (renderers[i].material.color != originalColors[i])
                     {
-                        renderers[i].material.color = Color.Lerp(renderers[i].material.color, originalColors[i], fadeToColorTime * Time.deltaTime);
+                        renderers[i].material.color = Color.Lerp(renderers[i].material.color, originalColors[i], fadeTime * Time.deltaTime);
                     }
 
                     if (renderers[i].material.color == originalColors[i])
@@ -401,7 +426,7 @@ public class Health : MonoBehaviour
                         rendersCount++;
                     }
 
-                    if (rendersCount == renderers.Length)
+                    if (rendersCount == renderers.Count)
                     {
                         fadeToColor = false;
                     }
@@ -436,7 +461,8 @@ public class Health : MonoBehaviour
 
     public void DisableRenderers()
     {
-        renderers = GetComponentsInChildren<Renderer>();
+        AddRenderersToList();
+
         //loops through each and disables them
         if (renderers != null)
         {
@@ -449,7 +475,8 @@ public class Health : MonoBehaviour
 
     void EnableRenderers()
     {
-        renderers = GetComponentsInChildren<Renderer>();
+        AddRenderersToList();
+
         //loops through each and disables them
         if (renderers != null)
         {
@@ -479,7 +506,7 @@ public class Health : MonoBehaviour
 
         if (fadeToColor)
         {
-            SetOGFade();
+            SetOGFade(fadeToColorTime);
         }
 
         if (fadeToWhite)
@@ -580,21 +607,21 @@ public class Health : MonoBehaviour
                 SoundManager.PlaySound(poisonTickSound, transform.position);
             }
 
-            SetOGFade();
+            SetOGColorRends();
 
             StartCoroutine(DisablePlayerFor(.1f));
 
             if (animator)
                 animator.SetTrigger("Flinch");
 
-            if (finishTime >= duration)
+            if (Time.time >= finishTime)
             {
                 isPoisoned = false;
             }
             yield return new WaitForSeconds(timeBetweenPoison);
         }
 
-        SetOGFade();
+        SetOGFade(fadeToColorTime);
 
         SoundManager.PlaySound(unpoisonedSound, transform.position);
     }
@@ -645,7 +672,7 @@ public class Health : MonoBehaviour
                 SoundManager.PlaySound(burnTickSound, transform.position);
             }
 
-            SetOGFade();
+            SetOGColorRends();
 
             if (gameObject.activeSelf)
                 StartCoroutine(DisablePlayerFor(.2f));
@@ -653,7 +680,7 @@ public class Health : MonoBehaviour
             if (animator)
                 animator.SetTrigger("Flinch");
 
-            if (finishTime >= duration)
+            if (Time.time >= finishTime)
             {
                 isBurned = false;
             }
@@ -661,7 +688,7 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenBurn / 2);
         }
 
-        SetOGFade();
+        SetOGFade(fadeToColorTime);
 
         SoundManager.PlaySound(unburnSound, transform.position);
     }
@@ -700,21 +727,21 @@ public class Health : MonoBehaviour
                 SoundManager.PlaySound(slowDeathTickSound, transform.position);
             }
 
-            SetOGFade();
+            SetOGColorRends();
 
             StartCoroutine(DisablePlayerFor(.2f));
 
             if (animator)
                 animator.SetTrigger("Flinch");
 
-            if (finishTime >= duration)
+            if (Time.time >= finishTime)
             {
                 isSlowlyDying = false;
             }
             yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
         }
 
-        SetOGFade();
+        SetOGFade(fadeToColorTime);
 
         SoundManager.PlaySound(unslowDeathSound, transform.position);
     }
@@ -761,7 +788,7 @@ public class Health : MonoBehaviour
 
             isFrozen = false;
 
-            SetOGFade();
+            SetOGFade(fadeToColorTime);
 
             SoundManager.PlaySound(unfrozenSound, transform.position);
         }
@@ -801,14 +828,14 @@ public class Health : MonoBehaviour
             while (isSandy)
             {
                 SetColor(sandyColor);
-                if (finishTime >= duration)
+                if (Time.time >= finishTime)
                 {
                     isSandy = false;
                 }
                 yield return new WaitForEndOfFrame();
             }
 
-            SetOGFade();
+            SetOGFade(fadeToColorTime);
 
             SoundManager.PlaySound(unsandySound, transform.position);
 
