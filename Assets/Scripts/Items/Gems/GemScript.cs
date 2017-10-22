@@ -60,7 +60,7 @@ public class GemScript : PickupableItems {
     void DoPickUpParticle()
     {
         //do particles
-        spawnEffects.EffectOnDeath(particles, transform.position);
+        SpawnEffects.EffectOnDeath(particles, transform.position);
 
         SoundManager.PlaySound(pickUpSound, transform.position);
     }

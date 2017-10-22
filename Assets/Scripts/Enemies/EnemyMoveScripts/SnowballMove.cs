@@ -9,7 +9,7 @@ public class SnowballMove : EnemyMove {
 
     void OnEnable()
     {
-        ResetEnable();
+        base.OnEnable();
     }
 
 	// Use this for initialization

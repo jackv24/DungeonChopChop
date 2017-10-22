@@ -55,7 +55,7 @@ public class SlimeMove : EnemyMove {
 
     void OnEnable()
     {
-        ResetEnable();
+        base.OnEnable();
     }
         
     public override void FixedUpdate()

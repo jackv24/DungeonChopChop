@@ -48,6 +48,9 @@ public class InventoryItem : BaseItem
     public ArmourType armourType;
     public Rarity rarity;
 
+    [Header("Audio")]
+    public SoundEffect pickUpSound;
+
     [System.Serializable]
     public class Item
     {
@@ -82,6 +85,9 @@ public class InventoryItem : BaseItem
                 }
             }
         }
+
+        //do sound
+        SoundManager.PlaySound(pickUpSound, playerInfo.transform.position);
 	}
 
 	public override void Drop(PlayerInformation playerInfo)

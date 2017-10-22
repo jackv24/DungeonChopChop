@@ -24,7 +24,7 @@ public class BossSnapEyeMove : EnemyMove {
 
     void OnEnable()
     {
-        ResetEnable();
+        base.OnEnable();
     }
 
     public override void FixedUpdate()

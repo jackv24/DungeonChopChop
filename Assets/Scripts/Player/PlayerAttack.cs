@@ -589,10 +589,14 @@ public class PlayerAttack : MonoBehaviour
 
     void DoBlock()
     {
-        //do block things
-        SoundManager.PlaySound(startBlockSounds, transform.position);
+        //do block sound
+        if (!blocking)
+            SoundManager.PlaySound(startBlockSounds, transform.position);
+
+        //sets the players move speed
         playerInformation.SetMoveSpeed(playerInformation.GetOriginalMoveSpeed() * shield.speedDamping * playerInformation.GetCharmFloat("blockSpeedMultiplier"));
 
+        //auto look at the closest player
         if (GetClosestEnemy() != transform)
         {
             if (autoBlock)

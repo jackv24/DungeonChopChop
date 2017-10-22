@@ -12,17 +12,6 @@ public class HealingPlatform : MonoBehaviour {
     public SoundEffect sound;
 
     private int counter = 0;
-    private SpawnEffects spawnEffects;
-
-	// Use this for initialization
-	void Start () {
-        spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     void FixedUpdate()
     {
@@ -40,7 +29,7 @@ public class HealingPlatform : MonoBehaviour {
                         {
                             pl.GetComponent<Health>().health += healthIncreaseAmount;
                             pl.GetComponent<Health>().HealthChanged();
-                            spawnEffects.EffectOnHit(particles, transform.position);
+                            SpawnEffects.EffectOnHit(particles, transform.position);
                             SoundManager.PlaySound(sound, transform.position);
                             counter = 0;
                         }

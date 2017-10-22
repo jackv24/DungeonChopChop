@@ -42,14 +42,12 @@ public class EnemyDeath : MonoBehaviour
 
 	private Health health;
 	private bool dead = false;
-    private SpawnEffects spawnEffects;
     private Drops enemyDrop;
 
 	// Use this for initialization
 	void Start () 
 	{
         enemyDrop = GetComponent<Drops>();
-        spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
 		health = GetComponent<Health> ();
 	}
 
@@ -188,7 +186,7 @@ public class EnemyDeath : MonoBehaviour
 	{
 		//do die particles and stuff
         if (deathParticles.Length > 0)
-            spawnEffects.EffectOnDeath(deathParticles, transform.position);
+            SpawnEffects.EffectOnDeath(deathParticles, transform.position);
 
         CreateSoundObject();
 

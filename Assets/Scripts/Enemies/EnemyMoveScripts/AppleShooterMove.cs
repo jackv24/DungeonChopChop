@@ -6,9 +6,9 @@ public class AppleShooterMove : EnemyMove {
 
     public float rotateSpeed = 5;
 
-    void OnEnable()
+    public override void OnEnable()
     {
-        ResetEnable();
+        base.OnEnable();
     }
 
     void Start()

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameCreator : MonoBehaviour {
 
-    [Header("Managers when running straight from this scene")]
     public GameObject[] managers;
 
 	// Use this for initialization

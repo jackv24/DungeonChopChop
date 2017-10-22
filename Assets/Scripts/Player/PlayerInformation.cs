@@ -115,6 +115,9 @@ public class PlayerInformation : MonoBehaviour
         {
             resistance = originalResistance * GetCharmFloat("resistanceMuliplier") * GetItemFloat("resistanceMultiplier");
         }
+
+        if (currentCureAmount < 0)
+            currentCureAmount = 0;
 			
         MagnetizeItems();
         PullEnemies();

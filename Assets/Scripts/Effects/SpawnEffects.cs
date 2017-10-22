@@ -26,6 +26,8 @@ public class AmountOfParticleTypes
 
 public class SpawnEffects : MonoBehaviour {
 
+    public static SpawnEffects Instance;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -36,7 +38,7 @@ public class SpawnEffects : MonoBehaviour {
 		
 	}
 
-    public void EffectOnDeath(AmountOfParticleTypes[] typeList, Vector3 spawnPosition)
+    public static void EffectOnDeath(AmountOfParticleTypes[] typeList, Vector3 spawnPosition)
     {
         //loop through each amount of particles list
         foreach (AmountOfParticleTypes particleType in typeList)
@@ -60,7 +62,7 @@ public class SpawnEffects : MonoBehaviour {
         }
     }
 
-    public GameObject GetEffectOnDeath(AmountOfParticleTypes[] typeList)
+    public static GameObject GetEffectOnDeath(AmountOfParticleTypes[] typeList)
     {
         foreach (AmountOfParticleTypes particleType in typeList)
         {
@@ -79,7 +81,7 @@ public class SpawnEffects : MonoBehaviour {
         return null;
     }
 
-    public void EffectOnHit(AmountOfParticleTypes[] typeList, Vector3 spawnPosition)
+    public static void EffectOnHit(AmountOfParticleTypes[] typeList, Vector3 spawnPosition)
     {
         //loop through each amount of particles list
         foreach (AmountOfParticleTypes particleType in typeList)
@@ -103,7 +105,7 @@ public class SpawnEffects : MonoBehaviour {
         }
     }
 
-    public GameObject GetEffectOnHit(AmountOfParticleTypes[] typeList)
+    public static GameObject GetEffectOnHit(AmountOfParticleTypes[] typeList)
     {
         foreach (AmountOfParticleTypes particleType in typeList)
         {

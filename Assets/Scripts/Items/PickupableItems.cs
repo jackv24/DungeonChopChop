@@ -21,7 +21,6 @@ public class PickupableItems : MonoBehaviour {
     public SoundEffect pickUpSound;
     public SoundEffect spawnSound;
 
-    protected SpawnEffects spawnEffects;
     protected Rigidbody rb;
 
     private Renderer[] renderers;
@@ -31,17 +30,18 @@ public class PickupableItems : MonoBehaviour {
         SoundManager.PlaySound(spawnSound, transform.position);
 
         rb = GetComponent<Rigidbody>();
-        spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
 
         if (doesDespawn)
             StartCoroutine(WaitToDestroy());
 
         renderers = GetComponentsInChildren<Renderer>();
+
+        EnableRenderers();
     }
 
     protected void DoSpawnParticle(Vector3 position)
     {
-        spawnEffects.EffectOnHit(particles, position);
+        SpawnEffects.EffectOnHit(particles, position);
     }
 
     void DisableRenderers()
@@ -84,7 +84,7 @@ public class PickupableItems : MonoBehaviour {
         yield return new WaitForSeconds(.2f * 12);
         StartCoroutine(flash(10, .1f));
         yield return new WaitForSeconds(.1f * 20);
-        spawnEffects.GetEffectOnDeath(particles);
+        SpawnEffects.GetEffectOnDeath(particles);
         gameObject.SetActive(false);
     }
 }

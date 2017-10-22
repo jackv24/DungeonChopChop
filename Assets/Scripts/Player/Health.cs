@@ -36,16 +36,39 @@ public class Health : MonoBehaviour
     public Color frozenColor;
     public Color sandyColor;
 
-    [Space()]
+    [Header("Hit Particles and Sounds")]
     public AmountOfParticleTypes[] hitParticles;
     public SoundEffect hitSounds;
     public Color hitColor;
+
+    [Header("Ailment Tick Sounds")]
+    public SoundEffect poisonTickSound;
+    public SoundEffect burnTickSound;
+    public SoundEffect slowDeathTickSound;
+    [Header("Ailment start sound")]
+    public SoundEffect poisonedSound;
+    public SoundEffect burnSound;
+    public SoundEffect sandySound;
+    public SoundEffect slowDeathSound;
+    public SoundEffect frozenSound;
+    [Header("Ailment end sound")]
+    public SoundEffect unpoisonedSound;
+    public SoundEffect unburnSound;
+    public SoundEffect unsandySound;
+    public SoundEffect unslowDeathSound;
+    public SoundEffect unfrozenSound;
 
     [Space()]
     [Header("Other Vals")]
     public float timeBetweenFlash = 0.1f;
     public int amountToFlash = 5;
     public float fadeToColorTime = 5;
+
+    [Header("Camera Shake Values")]
+    public float magnitude = .1f;
+    public float shakeAmount = .1f;
+    public float duration = 1;
+    public float pauseTime = .1f;
 
     private PlayerInformation playerInfo;
     private Animator animator;
@@ -54,7 +77,6 @@ public class Health : MonoBehaviour
     private Renderer[] renderers;
     private List<Color> originalColors = new List<Color>();
     private Vector3 targetPosition;
-    private SpawnEffects spawnEffects;
 
     private Coroutine coroutine;
 
@@ -63,8 +85,6 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        spawnEffects = GameObject.FindObjectOfType<SpawnEffects>();
-
         renderers = GetComponentsInChildren<Renderer>();
         //loops through and get the original color on each renderer
         for (int i = 0; i < renderers.Length; i++)
@@ -97,6 +117,7 @@ public class Health : MonoBehaviour
         }
         
         health += healthDeta;
+
         if (OnHealthChange != null)
         {
             OnHealthChange();
@@ -105,6 +126,7 @@ public class Health : MonoBehaviour
         {
             health = maxHealth;
         }
+
         if (health <= 0 && isDead == false)
         {
             isDead = true;
@@ -138,8 +160,7 @@ public class Health : MonoBehaviour
 
     void DoHitParticle()
     {
-        if (spawnEffects && hitParticles.Length > 0)
-            spawnEffects.EffectOnHit(hitParticles, transform.position);
+        SpawnEffects.EffectOnHit(hitParticles, transform.position);
     }
 
     void OnEnable()
@@ -441,7 +462,9 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
+
             isDead = true;
+
             Death();
         }
         if (health > maxHealth)
@@ -482,7 +505,7 @@ public class Health : MonoBehaviour
     {
         //do death
         //checks if the game has an enemy drop script, if it does it is an enemy
-        if (!IsEnemy)
+        if (!IsEnemy && !isProp)
         {
             if (animator)
                 animator.SetBool("Die", true);
@@ -525,9 +548,14 @@ public class Health : MonoBehaviour
     {
         if (playerInfo)
             damagePerTick *= playerInfo.GetCharmFloat("poisonMultiplier");
+        
         isPoisoned = true;
+
         DoParticle("PoisonTickParticle", duration);
+
         StartCoroutine(doPoison(damagePerTick, duration, timeBetweenPoison));
+
+        SoundManager.PlaySound(poisonedSound, transform.position);
     }
 
     IEnumerator doPoison(float damagePerTick, float duration, float timeBetweenPoison)
@@ -543,6 +571,8 @@ public class Health : MonoBehaviour
             if (canBeDamagedFromEffect())
             {
                 AffectHealth(-damagePerTick);
+
+                SoundManager.PlaySound(poisonTickSound, transform.position);
             }
 
             StartCoroutine(DisablePlayerFor(.1f));
@@ -556,7 +586,10 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenPoison);
         }
-        SetOGColorRends();
+
+        SetOGFade();
+
+        SoundManager.PlaySound(unpoisonedSound, transform.position);
     }
 
     /// <summary>
@@ -578,9 +611,13 @@ public class Health : MonoBehaviour
             }
 
             isBurned = true;
+
             DoParticle("FireTickParticle", duration);
+
             if (enabled)
                 StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
+
+            SoundManager.PlaySound(burnSound, transform.position);
         }
     }
 
@@ -597,6 +634,8 @@ public class Health : MonoBehaviour
             if (canBeDamagedFromEffect())
             {
                 AffectHealth(-damagePerTick);
+
+                SoundManager.PlaySound(burnTickSound, transform.position);
             }
 
             if (gameObject.activeSelf)
@@ -612,7 +651,10 @@ public class Health : MonoBehaviour
 
             yield return new WaitForSeconds(timeBetweenBurn / 2);
         }
+
         SetOGFade();
+
+        SoundManager.PlaySound(unburnSound, transform.position);
     }
 
     /// <summary>
@@ -624,8 +666,12 @@ public class Health : MonoBehaviour
     {
         if (playerInfo)
             damagePerTick *= playerInfo.GetCharmFloat("deathTickMultiplier");
+        
         isSlowlyDying = true;
+
         StartCoroutine(doSlowDeath(damagePerTick, duration, timeBetweenDeathTick));
+
+        SoundManager.PlaySound(slowDeathSound, transform.position);
     }
 
     IEnumerator doSlowDeath(float damagePerTick, float duration, float timeBetweenSlowDeath)
@@ -641,6 +687,8 @@ public class Health : MonoBehaviour
             if (canBeDamagedFromEffect())
             {
                 AffectHealth(-damagePerTick);
+
+                SoundManager.PlaySound(slowDeathTickSound, transform.position);
             }
 
             StartCoroutine(DisablePlayerFor(.2f));
@@ -654,7 +702,10 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
         }
+
         SetOGFade();
+
+        SoundManager.PlaySound(unslowDeathSound, transform.position);
     }
 
     /// <summary>
@@ -664,7 +715,9 @@ public class Health : MonoBehaviour
     public void SetIce(float duration)
     {
         isFrozen = true;
+
         DoParticle("IceTickParticle", duration);
+
         StartCoroutine(doIce(duration));
     }
 
@@ -676,6 +729,9 @@ public class Health : MonoBehaviour
             SetColor(frozenColor);
             //disables animator
             animator.enabled = false;
+
+            //do sound
+            SoundManager.PlaySound(frozenSound, transform.position);
 
             //disable move script
             if (GetComponent<PlayerMove>())
@@ -693,7 +749,10 @@ public class Health : MonoBehaviour
                 GetComponent<EnemyMove>().enabled = true;
 
             isFrozen = false;
+
             SetOGFade();
+
+            SoundManager.PlaySound(unfrozenSound, transform.position);
         }
     }
 
@@ -703,7 +762,9 @@ public class Health : MonoBehaviour
     public void SetSandy(float duration, float speedDamping)
     {
         isSandy = true;
+
         DoParticle("SandTickParticle", duration);
+
         StartCoroutine(doSandy(duration, speedDamping));
     }
 
@@ -723,6 +784,8 @@ public class Health : MonoBehaviour
                 GetComponent<NavMeshAgent>().speed = GetComponent<NavMeshAgent>().speed * speedDamping;
             }
 
+            SoundManager.PlaySound(sandySound, transform.position);
+
             while (isSandy)
             {
                 counter++;
@@ -735,6 +798,8 @@ public class Health : MonoBehaviour
             }
 
             SetOGFade();
+
+            SoundManager.PlaySound(unsandySound, transform.position);
 
             if (!IsEnemy)
                 playerInfo.ResetMoveSpeed();

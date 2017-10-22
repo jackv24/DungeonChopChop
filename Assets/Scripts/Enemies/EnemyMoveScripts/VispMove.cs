@@ -44,11 +44,12 @@ public class VispMove : EnemyMove
 
     void OnEnable()
     {
-        ResetEnable();
         inLeeping = false;
         doingLeep = false;
         moveBack = false;
         canLeep = true;
+
+        base.OnEnable();
     }
 
     public override void FixedUpdate()

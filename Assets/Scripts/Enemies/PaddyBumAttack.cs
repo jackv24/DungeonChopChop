@@ -18,6 +18,12 @@ public class PaddyBumAttack : EnemyAttack {
     private bool waitingToExplode = false;
     private int counter = 0;
 
+    void OnEnable()
+    {
+        if (enemyHealth)
+            enemyHealth.health = enemyHealth.maxHealth;
+    }
+
 	// Update is called once per frame
 	void Update () {
         

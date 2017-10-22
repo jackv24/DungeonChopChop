@@ -30,6 +30,9 @@ public class EnemyAttack : MonoBehaviour
     public float damageOnTouch;
     public float knockbackStrength;
 
+    [Header("Audio")]
+    public SoundEffect shootSounds;
+
     //shoot circle vars
     [HideInInspector]
     public int projAmount;
@@ -140,6 +143,9 @@ public class EnemyAttack : MonoBehaviour
         projectile.GetComponent<ProjectileCollision>().damageMultiplyer = attackStrength;
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
         projectile.GetComponent<ProjectileCollision>().thrust = thrust;
+
+        //do sound
+        SoundManager.PlaySound(shootSounds, transform.position);
     }
 
     void BasicShootIntervals()
@@ -181,6 +187,9 @@ public class EnemyAttack : MonoBehaviour
             projectile.GetComponent<ProjectileCollision>().thrust = thrust;
             angle += circleAngle;
         }
+
+        //do sound
+        SoundManager.PlaySound(shootSounds, transform.position);
     }
 
     void ShootCircleIntervals()

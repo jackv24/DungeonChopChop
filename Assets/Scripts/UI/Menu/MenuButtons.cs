@@ -70,6 +70,11 @@ public class MenuButtons : MonoBehaviour
     {
         ObjectPooler.PurgePools();
 
+        GameManager gm = GameObject.FindObjectOfType<GameManager>();
+
+        if (gm)
+            Destroy(gm.gameObject);
+
         SceneManager.LoadScene("Overworld");
     }
 }

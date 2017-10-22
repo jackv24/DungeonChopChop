@@ -34,19 +34,11 @@ public class Shop : MonoBehaviour
     private string dialogueText;
 
     private bool canPurchase = false;
-	private PlayerInputs input;
 	private PlayerInformation playerInfo;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-
-		if(!InputManager.Instance)
-		{
-			input = new PlayerInputs();
-			input.AddControllerBindings();
-			input.AddKeyboardBindings();
-		}
     }
 
     void PlaySound()
@@ -56,7 +48,7 @@ public class Shop : MonoBehaviour
 
 	void Update()
 	{
-		if(canPurchase && sellingItem && input != null && input.Purchase.WasPressed)
+        if(canPurchase && sellingItem && playerInfo.playerMove.input.Purchase.WasPressed)
 		{
 			if(ItemsManager.Instance.Coins >= sellingItem.cost)
 			{
@@ -469,8 +461,5 @@ public class Shop : MonoBehaviour
 	{
 		canPurchase = value;
 		this.playerInfo = playerInfo;
-
-		if(InputManager.Instance)
-			input = InputManager.GetPlayerInput(playerInfo.playerIndex);
 	}
 }

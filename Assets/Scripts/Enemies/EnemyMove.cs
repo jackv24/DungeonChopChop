@@ -35,12 +35,15 @@ public class EnemyMove : MonoBehaviour
         Setup();
     }
 
-    protected void ResetEnable()
+    public virtual void OnEnable()
     {
         //sets the time between so we don't have stallers when they spawn
         timeBetweenRoam = 0;
         players = FindObjectsOfType<PlayerInformation>();
         usingNav = true;
+
+        if (enemyHealth)
+            enemyHealth.health = enemyHealth.maxHealth;
 
         //resets the speed so we don't have quick enemies
         if (agent)
@@ -241,7 +244,10 @@ public class EnemyMove : MonoBehaviour
             }
             previousPlayerDistance = distance;
         }
-        return currentPlayer.transform;
+        if (currentPlayer)
+            return currentPlayer.transform;
+        else
+            return transform;
     }
 
     protected Transform GetClosestEnemy()
@@ -269,7 +275,10 @@ public class EnemyMove : MonoBehaviour
         //returns the closest enemy
         if (closestEnemy)
             return closestEnemy.transform;
-        return transform;
+        else if (enemies.Length > 2)
+            return enemies[2].transform;
+        else
+            return GetClosestPlayer();
     }
 
     protected void LookAtClosestPlayer(float rotateSpeed)
