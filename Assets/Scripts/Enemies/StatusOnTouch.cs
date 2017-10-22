@@ -52,6 +52,11 @@ public class StatusOnTouch : MonoBehaviour {
                             col.gameObject.GetComponent<Health>().SetSandy(duration, speedDamper);
                     }
                 }
+                else if (col.collider.GetComponent<PropDestroy>())
+                {
+                    if (statusType == StatusType.burn)
+                        col.collider.GetComponent<Health>().SetBurned(damagePerTick, duration, timeBetweenDamage);
+                }
             }
         }
     }
