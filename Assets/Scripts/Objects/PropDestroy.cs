@@ -19,6 +19,9 @@ public class PropDestroy : MonoBehaviour
     public SoundEffect hitSounds;
     public SoundEffect destroySounds;
 
+    [Space()]
+    public CameraShakeVars destroyShake;
+
     private Health propHealth;
 
     // Use this for initialization
@@ -40,6 +43,8 @@ public class PropDestroy : MonoBehaviour
             SoundManager.PlaySound(destroySounds, transform.position);
             //do drop
             GetComponent<Drops>().DoDrop();
+
+            CameraShake.ShakeScreen(destroyShake.magnitude, destroyShake.shakeAmount, destroyShake.duration);
 
             Destroy(gameObject);
         }
