@@ -34,19 +34,26 @@ public static class ObjectPooler
                 }
             }
 
-            //If no object was found, instantiate a new one
-            GameObject obj = GameObject.Instantiate(prefab);
-            //Set name to that of prefab for comparisons
-            obj.name = prefab.name;
-            //Organised under pooled object "maintenance" gameobject
-            obj.transform.SetParent(poolObject.transform);
-            //Add new gameobject to pool and return
-            pooledObjects.Add(obj);
+            if (prefab)
+            {
+                //If no object was found, instantiate a new one
+                GameObject obj = GameObject.Instantiate(prefab);
+                //Set name to that of prefab for comparisons
+                obj.name = prefab.name;
+                //Organised under pooled object "maintenance" gameobject
+                obj.transform.SetParent(poolObject.transform);
+                //Add new gameobject to pool and return
+                pooledObjects.Add(obj);
 
-			if (register && prewarmerInstance)
-				prewarmerInstance.Register(prefab);
+                if (register && prewarmerInstance)
+                    prewarmerInstance.Register(prefab);
 
-			return obj;
+                return obj;
+            }
+
+            GameObject empty = new GameObject();
+
+            return empty;
         }
 
         public void Purge()

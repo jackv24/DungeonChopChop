@@ -117,6 +117,7 @@ public class Health : MonoBehaviour
         }
         
         health += healthDeta;
+
         if (OnHealthChange != null)
         {
             OnHealthChange();
@@ -125,6 +126,7 @@ public class Health : MonoBehaviour
         {
             health = maxHealth;
         }
+
         if (health <= 0 && isDead == false)
         {
             isDead = true;
@@ -460,7 +462,9 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
+
             isDead = true;
+
             Death();
         }
         if (health > maxHealth)
@@ -501,7 +505,7 @@ public class Health : MonoBehaviour
     {
         //do death
         //checks if the game has an enemy drop script, if it does it is an enemy
-        if (!IsEnemy)
+        if (!IsEnemy && !isProp)
         {
             if (animator)
                 animator.SetBool("Die", true);

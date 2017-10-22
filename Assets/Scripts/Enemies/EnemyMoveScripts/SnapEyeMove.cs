@@ -8,7 +8,7 @@ public class SnapEyeMove : EnemyMove
 
     void OnEnable()
     {
-        ResetEnable();
+        base.OnEnable();
     }
 
     void Start()

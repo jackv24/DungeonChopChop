@@ -35,12 +35,15 @@ public class EnemyMove : MonoBehaviour
         Setup();
     }
 
-    protected void ResetEnable()
+    public virtual void OnEnable()
     {
         //sets the time between so we don't have stallers when they spawn
         timeBetweenRoam = 0;
         players = FindObjectsOfType<PlayerInformation>();
         usingNav = true;
+
+        if (enemyHealth)
+            enemyHealth.health = enemyHealth.maxHealth;
 
         //resets the speed so we don't have quick enemies
         if (agent)

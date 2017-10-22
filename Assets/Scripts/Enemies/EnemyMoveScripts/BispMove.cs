@@ -32,10 +32,11 @@ public class BispMove : EnemyMove {
 
     void OnEnable()
     {
-        ResetEnable();
         inLeeping = false;
         doingLeep = false;
         moveBack = false;
+
+        base.OnEnable();
     }
 
     public override void FixedUpdate()
