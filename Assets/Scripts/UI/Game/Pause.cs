@@ -79,6 +79,17 @@ public class Pause : MonoBehaviour
 
 		UnPauseGame();
 
+        GameManager gm = GameObject.FindObjectOfType<GameManager>();
+        InputManager im = GameObject.FindObjectOfType<InputManager>();
+        PlayerManager pm = GameObject.FindObjectOfType<PlayerManager>();
+
+        if (gm)
+            Destroy(gm.gameObject);
+        if (im)
+            Destroy(im.gameObject);
+        if (pm)
+            Destroy(pm.gameObject);
+
         SceneManager.LoadScene("MainMenu");
     }
 }
