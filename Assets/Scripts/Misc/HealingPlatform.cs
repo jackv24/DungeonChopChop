@@ -8,6 +8,7 @@ public class HealingPlatform : MonoBehaviour {
     public LayerMask mask;
     public float healthIncreaseAmount = .1f;
     public float timeBetweenHealthIncrease = 1;
+    public float healingRadius = 1;
     public AmountOfParticleTypes[] particles;
     public SoundEffect sound;
 
@@ -16,7 +17,7 @@ public class HealingPlatform : MonoBehaviour {
     void FixedUpdate()
     {
         counter++;
-        Collider[] players = Physics.OverlapSphere(transform.position, 1, mask);
+        Collider[] players = Physics.OverlapSphere(transform.position, healingRadius, mask);
         if (players.Length > 0)
         {
             foreach (Collider pl in players)
@@ -37,5 +38,10 @@ public class HealingPlatform : MonoBehaviour {
                 }
             }
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, healingRadius);
     }
 }
