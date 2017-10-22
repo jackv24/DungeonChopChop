@@ -32,14 +32,12 @@ public class VispMove : EnemyMove
     private Vector3 leepTarget;
 
     private VispAttack vispAttack;
-    private TrailRenderer trailRenderer;
 
     // Use this for initialization
     void Start()
     {
         Setup();
         vispAttack = GetComponent<VispAttack>();
-        trailRenderer = GetComponentInChildren<TrailRenderer>();
     }
 
     void OnEnable()
@@ -121,9 +119,6 @@ public class VispMove : EnemyMove
 
     IEnumerator LeepAtEnemy(float waitTillLeep)
     {
-        //sets some values to be true, which starts the leep
-        trailRenderer.enabled = true;
-
         inLeeping = true;
         moveBack = true;
 
@@ -146,8 +141,6 @@ public class VispMove : EnemyMove
         agent.speed = originalSpeed * leepSpeed;
 
         yield return new WaitForSeconds(1);
-
-        trailRenderer.enabled = false;
 
         //leep is now over, reset the speed
         agent.speed = originalSpeed;

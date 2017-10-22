@@ -89,8 +89,8 @@ public class Health : MonoBehaviour
         //loops through and get the original color on each renderer
         for (int i = 0; i < renderers.Length; i++)
         {
-            if (renderers[i].sharedMaterial.HasProperty("_Color"))
-                originalColors.Add(renderers[i].sharedMaterial.color);
+            if (renderers[i].material.HasProperty("_Color"))
+                originalColors.Add(renderers[i].material.color);
         }
 
         rb = GetComponent<Rigidbody>();
@@ -347,14 +347,19 @@ public class Health : MonoBehaviour
 
     public void SetOGColor()
     {
+        renderers = GetComponentsInChildren<Renderer>();
+
         if (renderers != null)
         {
             if (originalColors.Count > 0)
             {
                 //loops through each and sets the hit color
-                for (int i = 0; i < renderers.Length; i++)
+                for (int i = 0; i < originalColors.Count; i++)
                 {
-                    renderers[i].material.color = originalColors[i];
+                    if (renderers[i].material.HasProperty("_Color"))
+                    {
+                        renderers[i].material.color = originalColors[i];
+                    }
                 }
             }
         }
@@ -560,10 +565,10 @@ public class Health : MonoBehaviour
 
     IEnumerator doPoison(float damagePerTick, float duration, float timeBetweenPoison)
     {
-        int counter = 0;
+        float finishTime = Time.time + duration;
+
         while (isPoisoned)
         {
-            counter++;
             SetColor(poisonColor);
 
             yield return new WaitForSeconds(timeBetweenPoison / 2);
@@ -575,12 +580,14 @@ public class Health : MonoBehaviour
                 SoundManager.PlaySound(poisonTickSound, transform.position);
             }
 
+            SetOGFade();
+
             StartCoroutine(DisablePlayerFor(.1f));
 
             if (animator)
                 animator.SetTrigger("Flinch");
 
-            if (counter >= duration)
+            if (finishTime >= duration)
             {
                 isPoisoned = false;
             }
@@ -623,10 +630,10 @@ public class Health : MonoBehaviour
 
     IEnumerator doBurn(float damagePerTick, float duration, float timeBetweenBurn)
     {
-        int counter = 0;
+        float finishTime = Time.time + duration;
+
         while (isBurned)
         {
-            counter++;
             SetColor(burnColor);
 
             yield return new WaitForSeconds(timeBetweenBurn / 2);
@@ -638,13 +645,15 @@ public class Health : MonoBehaviour
                 SoundManager.PlaySound(burnTickSound, transform.position);
             }
 
+            SetOGFade();
+
             if (gameObject.activeSelf)
                 StartCoroutine(DisablePlayerFor(.2f));
 
             if (animator)
                 animator.SetTrigger("Flinch");
 
-            if (counter >= duration)
+            if (finishTime >= duration)
             {
                 isBurned = false;
             }
@@ -676,10 +685,10 @@ public class Health : MonoBehaviour
 
     IEnumerator doSlowDeath(float damagePerTick, float duration, float timeBetweenSlowDeath)
     {
-        int counter = 0;
+        float finishTime = Time.time + duration;
+
         while (isSlowlyDying)
         {
-            counter++;
             SetColor(slowlyDyingColor);
 
             yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
@@ -691,12 +700,14 @@ public class Health : MonoBehaviour
                 SoundManager.PlaySound(slowDeathTickSound, transform.position);
             }
 
+            SetOGFade();
+
             StartCoroutine(DisablePlayerFor(.2f));
 
             if (animator)
                 animator.SetTrigger("Flinch");
 
-            if (counter >= duration)
+            if (finishTime >= duration)
             {
                 isSlowlyDying = false;
             }
@@ -772,7 +783,8 @@ public class Health : MonoBehaviour
     {
         if (canBeDamagedFromEffect())
         {
-            int counter = 0;
+            float finishTime = Time.time + duration;
+
             float ogEnemySpeed = 0;
 
             //checks if player or enemy and sets the speeds
@@ -788,13 +800,12 @@ public class Health : MonoBehaviour
 
             while (isSandy)
             {
-                counter++;
                 SetColor(sandyColor);
-                if (counter >= duration)
+                if (finishTime >= duration)
                 {
                     isSandy = false;
                 }
-                yield return new WaitForSeconds(1);
+                yield return new WaitForEndOfFrame();
             }
 
             SetOGFade();

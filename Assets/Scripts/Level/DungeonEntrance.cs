@@ -13,8 +13,9 @@ public class DungeonEntrance : MonoBehaviour
 
 	[Tooltip("Does this lead back to the overworld?")]
 	public bool overworldEntrance = false;
+    public bool resetTileAndPos = false;
 
-	void OnEnable()
+    void OnEnable()
 	{
 		//Set profile and seed as overworld if desired
 		if(overworldEntrance)
@@ -51,8 +52,13 @@ public class DungeonEntrance : MonoBehaviour
 
 				LevelGenerator.Instance.RegenerateWithProfile(profile, seed);
 			}
-			else
-				LevelGenerator.Instance.RegenerateWithProfile(profile, seed, dungeonEntrancePos, dungeonEntranceTile);
-		}
+            else
+            {
+				if(resetTileAndPos)
+                	LevelGenerator.Instance.RegenerateWithProfile(profile, seed);
+				else
+					LevelGenerator.Instance.RegenerateWithProfile(profile, seed, dungeonEntrancePos, dungeonEntranceTile);
+            }
+        }
 	}
 }

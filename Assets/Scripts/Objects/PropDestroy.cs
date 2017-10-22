@@ -41,7 +41,7 @@ public class PropDestroy : MonoBehaviour
             //do drop
             GetComponent<Drops>().DoDrop();
 
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
