@@ -5,6 +5,7 @@ using UnityEngine;
 public class SecretCircleParticles : MonoBehaviour {
 
     public AmountOfParticleTypes[] particles;
+    public SoundEffect soundEffect;
 
 	// Use this for initialization
 	void Start () {

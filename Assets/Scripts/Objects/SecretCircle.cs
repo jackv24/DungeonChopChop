@@ -44,6 +44,7 @@ public class SecretCircle : MonoBehaviour
                 {
                     drop.DoDrop();
                     SpawnEffects.EffectOnHit(drop.GetComponent<SecretCircleParticles>().particles, drop.transform.position);
+                    SoundManager.PlaySound(drop.GetComponent<SecretCircleParticles>().soundEffect, drop.transform.position);
                 }
 
                 if (flowers.Length > 0)

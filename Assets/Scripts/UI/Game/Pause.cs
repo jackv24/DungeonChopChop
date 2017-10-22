@@ -79,6 +79,6 @@ public class Pause : MonoBehaviour
 
 		UnPauseGame();
 
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("MainMenu");
     }
 }
