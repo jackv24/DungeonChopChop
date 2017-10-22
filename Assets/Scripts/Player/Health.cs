@@ -65,8 +65,8 @@ public class Health : MonoBehaviour
     public float fadeToColorTime = 5;
 
     [Header("Camera Shake Values")]
-    public float magnitude = 1;
-    public float shakeAmount = 1;
+    public float magnitude = .1f;
+    public float shakeAmount = .1f;
     public float duration = 1;
     public float pauseTime = .1f;
 
@@ -582,7 +582,8 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenPoison);
         }
-        SetOGColorRends();
+
+        SetOGFade();
 
         SoundManager.PlaySound(unpoisonedSound, transform.position);
     }

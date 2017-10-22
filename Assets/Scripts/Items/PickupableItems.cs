@@ -35,6 +35,8 @@ public class PickupableItems : MonoBehaviour {
             StartCoroutine(WaitToDestroy());
 
         renderers = GetComponentsInChildren<Renderer>();
+
+        EnableRenderers();
     }
 
     protected void DoSpawnParticle(Vector3 position)
