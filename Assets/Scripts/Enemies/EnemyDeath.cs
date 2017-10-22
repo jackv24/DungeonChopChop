@@ -13,8 +13,10 @@ public enum TypesOfDeath
 
 public class EnemyDeath : MonoBehaviour 
 {
-
 	public TypesOfDeath deathType;
+    public AmountOfParticleTypes[] deathParticles;
+    public SoundEffect deathSounds;
+    public CameraShakeVars deathShake;
 
 	//splits into enemy vals
 	[HideInInspector]
@@ -36,9 +38,6 @@ public class EnemyDeath : MonoBehaviour
     public float damageOnExplode = 2;
     [HideInInspector]
     public float knockbackOnExplode = 5;
-
-    public AmountOfParticleTypes[] deathParticles;
-    public SoundEffect deathSounds;
 
 	private Health health;
 	private bool dead = false;
@@ -88,6 +87,8 @@ public class EnemyDeath : MonoBehaviour
         {
             StatusExplode();
         }
+
+        CameraShake.ShakeScreen(deathShake.magnitude, deathShake.shakeAmount, deathShake.duration);
 	}
 
 	void SplitEnemy()

@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[System.Serializable]
+public class CameraShakeVars
+{
+    [Header("Camera Shake Values")]
+    public float magnitude = .1f;
+    public float shakeAmount = .1f;
+    public float duration = 1;
+}
+
 public class Health : MonoBehaviour
 {
     public float maxHealth;
@@ -64,11 +73,7 @@ public class Health : MonoBehaviour
     public int amountToFlash = 5;
     public float fadeToColorTime = 5;
 
-    [Header("Camera Shake Values")]
-    public float magnitude = .1f;
-    public float shakeAmount = .1f;
-    public float duration = 1;
-    public float pauseTime = .1f;
+    public CameraShakeVars hitShake;
 
     private PlayerInformation playerInfo;
     private Animator animator;

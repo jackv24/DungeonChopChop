@@ -78,7 +78,7 @@ public class SwordCollision : MonoBehaviour {
 
                 SetEffect(enemyHealth);
 
-                CameraShake.ShakeScreen(enemyHealth.magnitude, enemyHealth.shakeAmount, enemyHealth.duration);
+                CameraShake.ShakeScreen(enemyHealth.hitShake.magnitude, enemyHealth.hitShake.shakeAmount, enemyHealth.hitShake.duration);
 
                 playerInfo.KnockbackPlayer(-playerInfo.transform.forward, knockbackOnHit);
             }
