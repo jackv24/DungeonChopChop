@@ -75,19 +75,26 @@ public class Shop : MonoBehaviour
                         {
                             GameObject sword = ObjectPooler.GetPooledObject(item.itemPrefab, true);
                             playerInfo.playerAttack.AddSword(sword.GetComponent<SwordStats>());
-                        } 
+                        }
                         else if (item.itemPrefab.GetComponent<ShieldStats>())
                         {
                             GameObject shield = ObjectPooler.GetPooledObject(item.itemPrefab, true);
                             playerInfo.playerAttack.AddShield(shield.GetComponent<ShieldStats>());
-                        }   
+                        }
                         else if (item.itemPrefab.GetComponent<Orb>())
                         {
                             if (item.itemPrefab.GetComponent<Orb>().type == OrbType.Cure)
                             {
                                 item.itemPrefab.GetComponent<Orb>().PickUpOrb(playerInfo);
                             }
-                        }  
+                        }
+                        else if (item.itemPrefab.GetComponent<KeyScript>())
+                        {
+                            if (item.itemPrefab.GetComponent<KeyScript>().type == KeyScript.Type.Normal)
+                                ItemsManager.Instance.Keys++;
+                            else if (item.itemPrefab.GetComponent<KeyScript>().type == KeyScript.Type.Dungeon)
+                                ItemsManager.Instance.DungeonKeys++;
+                        }
                     }
 
                     if(itemPurchasePopup)
