@@ -28,6 +28,24 @@ public class SoundManager : MonoBehaviour
 	public AudioClip iceBiomeMusic;
 	public AudioClip dungeonBiomeMusic;
 
+    [Header("Ailment Sounds")]
+    [Header("Ailment Tick Sounds")]
+    public SoundEffect poisonTickSound;
+    public SoundEffect burnTickSound;
+    public SoundEffect slowDeathTickSound;
+    [Header("Ailment start sound")]
+    public SoundEffect poisonedSound;
+    public SoundEffect burnSound;
+    public SoundEffect sandySound;
+    public SoundEffect slowDeathSound;
+    public SoundEffect frozenSound;
+    [Header("Ailment end sound")]
+    public SoundEffect unpoisonedSound;
+    public SoundEffect unburnSound;
+    public SoundEffect unsandySound;
+    public SoundEffect unslowDeathSound;
+    public SoundEffect unfrozenSound;
+
 	private void Awake()
 	{
 		Instance = this;
@@ -169,6 +187,56 @@ public class SoundManager : MonoBehaviour
 		}
 	}
 
+    public static void PlayAilmentSound(StatusType effectType, ailmentSoundType soundType, Vector3 position)
+    {
+        SoundManager.Instance.DoAilmentSound(effectType, soundType, position);
+    }
+
+    void DoAilmentSound(StatusType type, ailmentSoundType soundType, Vector3 position)
+    {
+        if (type == StatusType.burn)
+        {
+            if (soundType == ailmentSoundType.Start)
+                PlaySound(burnSound, position);
+            else if (soundType == ailmentSoundType.Tick)
+                PlaySound(burnTickSound, position);
+            else if (soundType == ailmentSoundType.End)
+                PlaySound(unburnSound, position);
+        }
+        else if (type == StatusType.Ice)
+        {
+            if (soundType == ailmentSoundType.Start)
+                PlaySound(frozenSound, position);
+            else if (soundType == ailmentSoundType.End)
+                PlaySound(unfrozenSound, position);
+        }
+        else if (type == StatusType.poison)
+        {
+            if (soundType == ailmentSoundType.Start)
+                PlaySound(poisonedSound, position);
+            else if (soundType == ailmentSoundType.Tick)
+                PlaySound(poisonTickSound, position);
+            else if (soundType == ailmentSoundType.End)
+                PlaySound(unpoisonedSound, position);
+        }
+        else if (type == StatusType.Sandy)
+        {
+            if (soundType == ailmentSoundType.Start)
+                PlaySound(sandySound, position);
+            else if (soundType == ailmentSoundType.End)
+                PlaySound(unsandySound, position);
+        }
+        else if (type == StatusType.slowlyDying)
+        {
+            if (soundType == ailmentSoundType.Start)
+                PlaySound(slowDeathSound, position);
+            else if (soundType == ailmentSoundType.Tick)
+                PlaySound(slowDeathTickSound, position);
+            else if (soundType == ailmentSoundType.End)
+                PlaySound(unslowDeathSound, position);
+        }
+    }
+
 	IEnumerator ReturnSourceToPool(AudioSource source, float time)
 	{
 		yield return new WaitForSeconds(time);
@@ -227,4 +295,12 @@ public class SoundEffect
 
 	public float minPitchVariance = -0.1f;
 	public float maxPitchVariance = 0.1f;
+}
+
+[System.Serializable]
+public enum ailmentSoundType
+{
+    Start,
+    Tick,
+    End
 }
