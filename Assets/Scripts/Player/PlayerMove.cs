@@ -301,19 +301,23 @@ public class PlayerMove : MonoBehaviour
                 }
                 else
                 {
-                    if (!ItemsManager.Instance.hasArmourPiece)
+                    acceleration = 10f;
+                    slowdownMultiplier = 1;
+                }
+
+
+                if (!ItemsManager.Instance.hasArmourPiece)
+                {
+                    //sets the in lava puddle vars
+                    if (hit.collider.tag == "Lava")
                     {
-                        //sets the in lava puddle vars
-                        if (hit.collider.tag == "Lava")
-                        {
-                            damageInFireBiome *= damageInFireMultiplier;
-                            timeBetweenBiomeBurn /= timeBetweenTickDivider;
-                        }
-                        else
-                        {
-                            damageInFireBiome = ogTickDamageInFire;
-                            timeBetweenBiomeBurn = ogTimeBetweenTickInFire;
-                        }
+                        damageInFireBiome *= damageInFireMultiplier;
+                        timeBetweenBiomeBurn /= timeBetweenTickDivider;
+                    }
+                    else
+                    {
+                        damageInFireBiome = ogTickDamageInFire;
+                        timeBetweenBiomeBurn = ogTimeBetweenTickInFire;
                     }
                 }
             }

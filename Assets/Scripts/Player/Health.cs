@@ -50,23 +50,6 @@ public class Health : MonoBehaviour
     public SoundEffect hitSounds;
     public Color hitColor;
 
-    [Header("Ailment Tick Sounds")]
-    public SoundEffect poisonTickSound;
-    public SoundEffect burnTickSound;
-    public SoundEffect slowDeathTickSound;
-    [Header("Ailment start sound")]
-    public SoundEffect poisonedSound;
-    public SoundEffect burnSound;
-    public SoundEffect sandySound;
-    public SoundEffect slowDeathSound;
-    public SoundEffect frozenSound;
-    [Header("Ailment end sound")]
-    public SoundEffect unpoisonedSound;
-    public SoundEffect unburnSound;
-    public SoundEffect unsandySound;
-    public SoundEffect unslowDeathSound;
-    public SoundEffect unfrozenSound;
-
     [Space()]
     [Header("Other Vals")]
     public float timeBetweenFlash = 0.1f;
@@ -108,6 +91,8 @@ public class Health : MonoBehaviour
         {
             playerInfo = GetComponent<PlayerInformation>();
         }
+
+        OnHealthChange += DoHitSoundAndShake;
     }
 
     public void AffectHealth(float healthDeta)
@@ -140,6 +125,10 @@ public class Health : MonoBehaviour
                 OnDeath();
             }
         }
+    }
+
+    void DoHitSoundAndShake()
+    {
         if (IsEnemy)
         {
             if (!HasStatusCondition())
@@ -159,6 +148,8 @@ public class Health : MonoBehaviour
                 DoHitSound();
             }
         }
+
+        CameraShake.ShakeScreen(hitShake.magnitude, hitShake.shakeAmount, hitShake.duration);
     }
 
     void AddRenderersToList()
@@ -587,7 +578,7 @@ public class Health : MonoBehaviour
 
         StartCoroutine(doPoison(damagePerTick, duration, timeBetweenPoison));
 
-        SoundManager.PlaySound(poisonedSound, transform.position);
+        SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.Start, transform.position);
     }
 
     IEnumerator doPoison(float damagePerTick, float duration, float timeBetweenPoison)
@@ -604,7 +595,7 @@ public class Health : MonoBehaviour
             {
                 AffectHealth(-damagePerTick);
 
-                SoundManager.PlaySound(poisonTickSound, transform.position);
+                SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.Tick, transform.position);
             }
 
             SetOGColorRends();
@@ -623,7 +614,7 @@ public class Health : MonoBehaviour
 
         SetOGFade(fadeToColorTime);
 
-        SoundManager.PlaySound(unpoisonedSound, transform.position);
+        SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.End, transform.position);
     }
 
     /// <summary>
@@ -651,7 +642,7 @@ public class Health : MonoBehaviour
             if (enabled)
                 StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
 
-            SoundManager.PlaySound(burnSound, transform.position);
+            SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.Start, transform.position);
         }
     }
 
@@ -669,7 +660,7 @@ public class Health : MonoBehaviour
             {
                 AffectHealth(-damagePerTick);
 
-                SoundManager.PlaySound(burnTickSound, transform.position);
+                SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.Tick, transform.position);
             }
 
             SetOGColorRends();
@@ -690,7 +681,7 @@ public class Health : MonoBehaviour
 
         SetOGFade(fadeToColorTime);
 
-        SoundManager.PlaySound(unburnSound, transform.position);
+        SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.End, transform.position);
     }
 
     /// <summary>
@@ -707,7 +698,7 @@ public class Health : MonoBehaviour
 
         StartCoroutine(doSlowDeath(damagePerTick, duration, timeBetweenDeathTick));
 
-        SoundManager.PlaySound(slowDeathSound, transform.position);
+        SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.Start, transform.position);
     }
 
     IEnumerator doSlowDeath(float damagePerTick, float duration, float timeBetweenSlowDeath)
@@ -724,7 +715,7 @@ public class Health : MonoBehaviour
             {
                 AffectHealth(-damagePerTick);
 
-                SoundManager.PlaySound(slowDeathTickSound, transform.position);
+                SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.Tick, transform.position);
             }
 
             SetOGColorRends();
@@ -743,7 +734,7 @@ public class Health : MonoBehaviour
 
         SetOGFade(fadeToColorTime);
 
-        SoundManager.PlaySound(unslowDeathSound, transform.position);
+        SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.End, transform.position);
     }
 
     /// <summary>
@@ -769,7 +760,7 @@ public class Health : MonoBehaviour
             animator.enabled = false;
 
             //do sound
-            SoundManager.PlaySound(frozenSound, transform.position);
+            SoundManager.PlayAilmentSound(StatusType.Ice, ailmentSoundType.Start, transform.position);
 
             //disable move script
             if (GetComponent<PlayerMove>())
@@ -790,7 +781,7 @@ public class Health : MonoBehaviour
 
             SetOGFade(fadeToColorTime);
 
-            SoundManager.PlaySound(unfrozenSound, transform.position);
+            SoundManager.PlayAilmentSound(StatusType.Ice, ailmentSoundType.End, transform.position);
         }
     }
 
@@ -823,7 +814,7 @@ public class Health : MonoBehaviour
                 GetComponent<NavMeshAgent>().speed = GetComponent<NavMeshAgent>().speed * speedDamping;
             }
 
-            SoundManager.PlaySound(sandySound, transform.position);
+            SoundManager.PlayAilmentSound(StatusType.Sandy, ailmentSoundType.Start, transform.position);
 
             while (isSandy)
             {
@@ -837,7 +828,7 @@ public class Health : MonoBehaviour
 
             SetOGFade(fadeToColorTime);
 
-            SoundManager.PlaySound(unsandySound, transform.position);
+            SoundManager.PlayAilmentSound(StatusType.Sandy, ailmentSoundType.End, transform.position);
 
             if (!IsEnemy)
                 playerInfo.ResetMoveSpeed();
