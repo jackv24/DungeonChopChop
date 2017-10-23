@@ -129,13 +129,14 @@ public class Health : MonoBehaviour
 
     void DoHitSoundAndShake()
     {
-        if (IsEnemy)
+        if (IsEnemy || isProp)
         {
             if (!HasStatusCondition())
             {
                 DoHitParticle();
                 DoHitSound();
                 HitColorFlash();
+                CameraShake.ShakeScreen(hitShake.magnitude, hitShake.shakeAmount, hitShake.duration);
             }
         }
         else if (!IsEnemy)
@@ -146,10 +147,11 @@ public class Health : MonoBehaviour
                     animator.SetTrigger("Hit");
                 DoHitParticle();
                 DoHitSound();
+                CameraShake.ShakeScreen(hitShake.magnitude, hitShake.shakeAmount, hitShake.duration);
             }
         }
 
-        CameraShake.ShakeScreen(hitShake.magnitude, hitShake.shakeAmount, hitShake.duration);
+
     }
 
     void AddRenderersToList()

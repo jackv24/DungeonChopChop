@@ -39,7 +39,9 @@ public class EnemyMove : MonoBehaviour
     {
         //sets the time between so we don't have stallers when they spawn
         timeBetweenRoam = 0;
+
         players = FindObjectsOfType<PlayerInformation>();
+
         usingNav = true;
 
         if (enemyHealth)
@@ -47,7 +49,13 @@ public class EnemyMove : MonoBehaviour
 
         //resets the speed so we don't have quick enemies
         if (agent)
+        {
             agent.speed = originalSpeed;
+            agent.velocity -= agent.velocity;
+        }
+
+        if (animator)
+            animator.enabled = true;
     }
 
     void OnDisable()
