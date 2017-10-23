@@ -91,8 +91,6 @@ public class Health : MonoBehaviour
         {
             playerInfo = GetComponent<PlayerInformation>();
         }
-
-        OnHealthChange += DoHitSoundAndShake;
     }
 
     public void AffectHealth(float healthDeta)
@@ -125,6 +123,8 @@ public class Health : MonoBehaviour
                 OnDeath();
             }
         }
+
+        DoHitSoundAndShake();
     }
 
     void DoHitSoundAndShake()
