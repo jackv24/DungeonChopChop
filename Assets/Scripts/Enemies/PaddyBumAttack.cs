@@ -76,7 +76,7 @@ public class PaddyBumAttack : EnemyAttack {
             }
         }
         //check if sword is colliding
-        if (col.gameObject.layer == 16)
+        if (col.gameObject.layer == 16 || col.gameObject.layer == 10)
         {
             //if the type is hit explode
             if (paddyType == PaddyType.TouchExplode)

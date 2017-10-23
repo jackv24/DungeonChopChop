@@ -91,6 +91,8 @@ public class Health : MonoBehaviour
         {
             playerInfo = GetComponent<PlayerInformation>();
         }
+
+        OnHealthChange += DoHitSoundAndShake;
     }
 
     public void AffectHealth(float healthDeta)
@@ -123,6 +125,10 @@ public class Health : MonoBehaviour
                 OnDeath();
             }
         }
+    }
+
+    void DoHitSoundAndShake()
+    {
         if (IsEnemy)
         {
             if (!HasStatusCondition())
@@ -142,6 +148,8 @@ public class Health : MonoBehaviour
                 DoHitSound();
             }
         }
+
+        CameraShake.ShakeScreen(hitShake.magnitude, hitShake.shakeAmount, hitShake.duration);
     }
 
     void AddRenderersToList()
