@@ -110,8 +110,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: -0.10291205, y: 0.605375, z: -0.07747817}
+  m_Size: {x: 0.9742737, y: 2, z: 1.0476108}
+  m_Center: {x: -0.054244995, y: 0.60537505, z: 0.2167604}
 --- !u!114 &114349058237368044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,9 +146,78 @@ MonoBehaviour:
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   hitColor: {r: 0, g: 0, b: 0, a: 0}
+  poisonTickSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  burnTickSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  slowDeathTickSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  poisonedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  burnSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  sandySound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  slowDeathSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  frozenSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unpoisonedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unburnSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unsandySound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unslowDeathSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  unfrozenSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   timeBetweenFlash: 0.1
   amountToFlash: 5
   fadeToColorTime: 5
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!114 &114734478323870310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,3 +399,7 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  destroyShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
