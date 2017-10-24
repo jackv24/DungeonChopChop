@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
+  maxHealth: 1
   health: 1
   weight: 1
   IsEnemy: 0
@@ -175,78 +175,13 @@ MonoBehaviour:
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   hitColor: {r: 1, g: 1, b: 1, a: 1}
-  poisonTickSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  burnTickSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  slowDeathTickSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  poisonedSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  burnSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  sandySound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  slowDeathSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  frozenSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unpoisonedSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unburnSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unsandySound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unslowDeathSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unfrozenSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
   timeBetweenFlash: 0.1
   amountToFlash: 5
   fadeToColorTime: 5
   hitShake:
-    magnitude: 0.1
-    shakeAmount: 0.1
-    duration: 1
+    magnitude: 0.3
+    shakeAmount: 2
+    duration: 0.3
 --- !u!114 &114462565450106322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -560,6 +495,6 @@ MonoBehaviour:
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
   destroyShake:
-    magnitude: 0.1
-    shakeAmount: 0.1
-    duration: 1
+    magnitude: 0.3
+    shakeAmount: 0.2
+    duration: 0.1

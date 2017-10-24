@@ -731,6 +731,11 @@ MonoBehaviour:
   attackStrength: 1
   damageOnTouch: 1
   knockbackStrength: 7
+  shootSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   projAmount: 25
   timeTillInterval: 1
   minInterval: 1
@@ -820,15 +825,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 0
-  amountToSplit: 4
-  splitEnemy: {fileID: 0}
-  explodeRadius: 10
-  statusType: 0
-  damagePerTick: 0.5
-  timeBetweenTick: 1
-  duration: 5
-  damageOnExplode: 2
-  knockbackOnExplode: 5
   deathParticles:
   - particleType: 1
     particles:
@@ -902,6 +898,19 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
+  deathShake:
+    magnitude: 0.3
+    shakeAmount: 0.7
+    duration: 0.3
+  amountToSplit: 4
+  splitEnemy: {fileID: 0}
+  explodeRadius: 10
+  statusType: 0
+  damagePerTick: 0.5
+  timeBetweenTick: 1
+  duration: 5
+  damageOnExplode: 2
+  knockbackOnExplode: 5
 --- !u!114 &114973099220344532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -917,6 +926,7 @@ MonoBehaviour:
   health: 1
   weight: 2
   IsEnemy: 1
+  isProp: 0
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
@@ -972,6 +982,10 @@ MonoBehaviour:
   timeBetweenFlash: 1
   amountToFlash: 1
   fadeToColorTime: 5
+  hitShake:
+    magnitude: 0.2
+    shakeAmount: 0.4
+    duration: 0.7
 --- !u!137 &137009276798232266
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

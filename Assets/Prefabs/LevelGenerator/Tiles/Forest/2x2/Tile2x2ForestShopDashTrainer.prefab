@@ -4462,7 +4462,6 @@ GameObject:
   - component: {fileID: 4117816336107140}
   - component: {fileID: 114204542355642202}
   - component: {fileID: 114875874090459320}
-  - component: {fileID: 114326891991389978}
   m_Layer: 0
   m_Name: Tile2x2ForestShopDashTrainer
   m_TagString: Untagged
@@ -25791,7 +25790,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 3
+  slashDestroysIt: 1
+  tripleDestroysIt: 1
+  dashDestroysIt: 1
+  spinDestroysIt: 1
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -26004,6 +26006,10 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  destroyShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!114 &114204542355642202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26016,6 +26022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawned: 0
+  waitForSpawnMessage: 0
   currentProfileIndex: 0
   profiles: []
 --- !u!114 &114287348966520676
@@ -26057,25 +26064,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSpawn: {fileID: 4338376837855088, guid: 26afabf0e3c71c045800cb37e44f6937, type: 2}
   sellingItem: {fileID: 11400000, guid: 5914428b4e71a774c8a6ddeaafbf057a, type: 2}
+  itemPurchasePopup: {fileID: 0}
   purchaseSound:
     clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   purchaseEffect: {fileID: 0}
---- !u!114 &114326891991389978
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1612384305554178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f540a4525f2d4c74583f06e619f32852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replaceTile: {fileID: 1478362487944136, guid: 3c63cb467001c5e49b53010948dc9f62,
-    type: 2}
+  equalColour: {r: 1, g: 1, b: 1, a: 1}
+  lessColour: {r: 1, g: 0, b: 0, a: 1}
+  moreColour: {r: 0, g: 1, b: 0, a: 1}
+  swordDamageName: Damage
+  swordRangeName: Range
+  shieldResistanceName: Strength
+  shieldSpeedDampingName: Weight
 --- !u!114 &114338635369332506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26115,7 +26117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 3
+  slashDestroysIt: 1
+  tripleDestroysIt: 1
+  dashDestroysIt: 1
+  spinDestroysIt: 1
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -26328,6 +26333,10 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  destroyShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!114 &114435440781516530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26341,12 +26350,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSpawn: {fileID: 4398787852368800}
   sellingItem: {fileID: 0}
+  itemPurchasePopup: {fileID: 0}
   purchaseSound:
     clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   purchaseEffect: {fileID: 0}
+  equalColour: {r: 1, g: 1, b: 1, a: 1}
+  lessColour: {r: 1, g: 0, b: 0, a: 1}
+  moreColour: {r: 0, g: 1, b: 0, a: 1}
+  swordDamageName: Damage
+  swordRangeName: Range
+  shieldResistanceName: Strength
+  shieldSpeedDampingName: Weight
 --- !u!114 &114469228511237490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26384,7 +26401,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 3
+  slashDestroysIt: 1
+  tripleDestroysIt: 1
+  dashDestroysIt: 1
+  spinDestroysIt: 1
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -26597,6 +26617,10 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  destroyShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!114 &114514644008562652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26772,7 +26796,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 3
+  slashDestroysIt: 1
+  tripleDestroysIt: 1
+  dashDestroysIt: 1
+  spinDestroysIt: 1
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -26984,6 +27011,10 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  destroyShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!114 &114875874090459320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27050,7 +27081,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 3
+  slashDestroysIt: 1
+  tripleDestroysIt: 1
+  dashDestroysIt: 1
+  spinDestroysIt: 1
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -27262,6 +27296,10 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  destroyShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!136 &136336372480510126
 CapsuleCollider:
   m_ObjectHideFlags: 1
