@@ -256,6 +256,7 @@ MonoBehaviour:
   opened: 0
   requireKeys: 0
   keyType: 0
+  chestType: 0
   possibleItems:
   - item: {fileID: 11400000, guid: 9eb78d5ea2ca3f1478791d40208aa9ed, type: 2}
     probability: 1
@@ -327,9 +328,31 @@ MonoBehaviour:
     probability: 1
   - item: {fileID: 11400000, guid: 577e29feb67fc0741887a6385a92e00c, type: 2}
     probability: 1
+  possibleObjects:
+  - prefab: {fileID: 1182942488517538, guid: 11d61615cdf965344b3a9297d4095326, type: 2}
+    probability: 1
+    maxAmount: 5
+  - prefab: {fileID: 1212131945976636, guid: b5a94e2d3d4a6f24ca2a0527869f0380, type: 2}
+    probability: 1
+    maxAmount: 4
+  - prefab: {fileID: 1197700803608020, guid: eda24e15240a9524783fdc12fb20da01, type: 2}
+    probability: 1
+    maxAmount: 3
+  - prefab: {fileID: 1861342770266516, guid: 9e212fac95d934041bba7be4d05ccee7, type: 2}
+    probability: 1
+    maxAmount: 2
+  - prefab: {fileID: 1737636657484758, guid: 19cc8976b9074984d86b78bbf32086a9, type: 2}
+    probability: 1
+    maxAmount: 1
+  - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
+    probability: 0.5
+    maxAmount: 1
+  minAmountOfObjects: 2
+  maxAmountOfObjects: 5
   containingItem: {fileID: 0}
+  containingObjects: []
   releaseItemDelay: 2
-  releaseItemForce: 50
+  releaseItemForce: 10
 --- !u!114 &114586833487454138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,6 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 4a897ddf8ae5b2c43a40dfbcf654646b, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
+  scale: 1
   setLastSibling: 0
   showOnTileEnter: 1
   registerOnce: 0

@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum ChestType
+{
+    [Tooltip("Spawn Items such as gems, keys etc")]
+    Iron,
+    [Tooltip("Spawns Charms and Weapons")]
+    Gold,
+    [Tooltip("Spawns Dungeon Item")]
+    Dungeon
+}
+
 public class Chest : MonoBehaviour
 {
 	[HideInInspector]
@@ -9,9 +20,25 @@ public class Chest : MonoBehaviour
     public bool requireKeys = false;
 
 	public KeyScript.Type keyType = KeyScript.Type.Normal;
+    public ChestType chestType;
 
+    [Tooltip("Charms")]
 	public Helper.ProbabilityItem[] possibleItems;
+    [Tooltip("Gems, keys, orbs etc")]
+    public Helper.ProbabilityGameObject[] possibleConsumables;
+    [Tooltip("Weapons, armour etc")]
+    public Helper.ProbabilityGameObject[] possibleObjects;
+    public int minAmountOfObjects = 2;
+    public int maxAmountOfObjects = 5;
+
+
+    [HideInInspector]
 	public BaseItem containingItem;
+    [HideInInspector]
+    public GameObject containingObject;
+    [HideInInspector]
+    public List<GameObject> containingConsumables = new List<GameObject>(0);
+
 	private bool randomise = true;
 
 	public float releaseItemDelay = 1.5f;
@@ -23,8 +50,28 @@ public class Chest : MonoBehaviour
 	{
         animator = GetComponentInChildren<Animator>();
 
-		if(randomise)
-			containingItem = Helper.GetRandomItemByProbability(possibleItems);
+        //populate the chest with gold items
+        if (chestType == ChestType.Gold)
+        {
+            if (randomise)
+            {
+                containingItem = Helper.GetRandomItemByProbability(possibleItems);
+                containingObject = Helper.GetRandomGameObjectByProbability(possibleObjects);
+            }
+        }
+        else if (chestType == ChestType.Iron)
+        {
+            if (possibleConsumables.Length > 0)
+            {
+                int random = Random.Range(minAmountOfObjects, maxAmountOfObjects);
+                for (int i = 0; i < random; i++)
+                {
+                    GameObject obj = Helper.GetRandomGameObjectByProbability(possibleConsumables);
+                    Debug.Log(obj.name);
+                    containingConsumables.Add(obj);
+                }
+            }
+        }
 	}
 
 	public void SetItem(BaseItem item)
@@ -70,8 +117,20 @@ public class Chest : MonoBehaviour
 		animator.SetTrigger("Open");
 		opened = true;
 
-		if(containingItem)
-			StartCoroutine(ReleaseItems());
+        if (containingItem || containingConsumables.Count > 0)
+        {
+            if (chestType == ChestType.Gold)
+            {
+                int random = Random.Range(0, 2);
+                if (random == 0)
+                    StartCoroutine(ReleaseItems());
+                else
+                    StartCoroutine(ReleaseObjects());
+            }
+            else if (chestType == ChestType.Iron)
+                StartCoroutine(ReleaseConsumables());
+        }
+			
 
 		//Remove icon from map once opened
 		MapTracker icon = GetComponent<MapTracker>();
@@ -82,6 +141,33 @@ public class Chest : MonoBehaviour
         if (events)
             events.SendDisabledEvent();
 	}
+
+    IEnumerator ReleaseObjects()
+    {
+        yield return new WaitForSeconds(releaseItemDelay);
+
+        GameObject obj = ObjectPooler.GetPooledObject(containingObject);
+
+        //throw out of chest
+        obj.transform.position = transform.position + Vector3.up;
+
+        GetComponent<Rigidbody>().AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
+    }
+
+    IEnumerator ReleaseConsumables()
+    {
+        yield return new WaitForSeconds(releaseItemDelay);
+
+        foreach (GameObject o in containingConsumables)
+        {
+            GameObject obj = ObjectPooler.GetPooledObject(o);
+            //throw out of chest
+            obj.transform.position = transform.position + Vector3.up;
+
+            Vector3 direction = new Vector3(Random.insideUnitSphere.x, 1, Random.insideUnitSphere.z);
+            GetComponent<Rigidbody>().AddForce(direction * releaseItemForce, ForceMode.Impulse);
+        }
+    }
 
 	IEnumerator ReleaseItems()
 	{
