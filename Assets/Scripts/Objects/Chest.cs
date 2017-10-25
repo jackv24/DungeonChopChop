@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum ChestType
+{
+    [Tooltip("Spawn Items such as gems, keys etc")]
+    Iron,
+    [Tooltip("Spawns Charms and Weapons")]
+    Gold,
+    [Tooltip("Spawns Dungeon Item")]
+    Dungeon
+}
+
 public class Chest : MonoBehaviour
 {
 	[HideInInspector]
@@ -9,9 +20,19 @@ public class Chest : MonoBehaviour
     public bool requireKeys = false;
 
 	public KeyScript.Type keyType = KeyScript.Type.Normal;
+    public ChestType chestType;
 
 	public Helper.ProbabilityItem[] possibleItems;
+    public Helper.ProbabilityGameObject[] possibleObjects;
+    public int minAmountOfObjects = 2;
+    public int maxAmountOfObjects = 5;
+
+
+    [HideInInspector]
 	public BaseItem containingItem;
+    [HideInInspector]
+    public List<GameObject> containingObjects = new List<GameObject>(0);
+
 	private bool randomise = true;
 
 	public float releaseItemDelay = 1.5f;
@@ -23,8 +44,25 @@ public class Chest : MonoBehaviour
 	{
         animator = GetComponentInChildren<Animator>();
 
-		if(randomise)
-			containingItem = Helper.GetRandomItemByProbability(possibleItems);
+        //populate the chest with gold items
+        if (chestType == ChestType.Gold)
+        {
+            if (randomise)
+                containingItem = Helper.GetRandomItemByProbability(possibleItems);
+        }
+        else if (chestType == ChestType.Iron)
+        {
+            if (possibleObjects.Length > 0)
+            {
+                int random = Random.Range(minAmountOfObjects, maxAmountOfObjects);
+                for (int i = 0; i < random; i++)
+                {
+                    GameObject obj = Helper.GetRandomGameObjectByProbability(possibleObjects);
+                    Debug.Log(obj.name);
+                    containingObjects.Add(obj);
+                }
+            }
+        }
 	}
 
 	public void SetItem(BaseItem item)
@@ -70,8 +108,14 @@ public class Chest : MonoBehaviour
 		animator.SetTrigger("Open");
 		opened = true;
 
-		if(containingItem)
-			StartCoroutine(ReleaseItems());
+        if (containingItem || containingObjects.Count > 0)
+        {
+            if (chestType == ChestType.Gold)
+                StartCoroutine(ReleaseItems());
+            else if (chestType == ChestType.Iron)
+                StartCoroutine(ReleaseObjects());
+        }
+			
 
 		//Remove icon from map once opened
 		MapTracker icon = GetComponent<MapTracker>();
@@ -82,6 +126,21 @@ public class Chest : MonoBehaviour
         if (events)
             events.SendDisabledEvent();
 	}
+
+    IEnumerator ReleaseObjects()
+    {
+        yield return new WaitForSeconds(releaseItemDelay);
+
+        foreach (GameObject o in containingObjects)
+        {
+            GameObject obj = ObjectPooler.GetPooledObject(o);
+            //throw out of chest
+            obj.transform.position = transform.position + Vector3.up;
+
+            Vector3 direction = new Vector3(Random.insideUnitSphere.x, 1, Random.insideUnitSphere.z);
+            GetComponent<Rigidbody>().AddForce(direction * releaseItemForce, ForceMode.Impulse);
+        }
+    }
 
 	IEnumerator ReleaseItems()
 	{

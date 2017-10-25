@@ -424,6 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 2b65450a888e2fb4683e59c0326d1ed0, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
+  scale: 1
   setLastSibling: 0
   showOnTileEnter: 1
   registerOnce: 0
@@ -453,6 +454,7 @@ MonoBehaviour:
   opened: 0
   requireKeys: 1
   keyType: 0
+  chestType: 1
   possibleItems:
   - item: {fileID: 11400000, guid: 9eb78d5ea2ca3f1478791d40208aa9ed, type: 2}
     probability: 1
@@ -500,6 +502,10 @@ MonoBehaviour:
     probability: 1
   - item: {fileID: 11400000, guid: 6c73818d513989a48b9dd180d6b5f7e9, type: 2}
     probability: 1
+  possibleObjects: []
+  minAmountOfObjects: 2
+  maxAmountOfObjects: 5
   containingItem: {fileID: 0}
+  containingObjects: []
   releaseItemDelay: 2
   releaseItemForce: 50
