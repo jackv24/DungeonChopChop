@@ -51,6 +51,9 @@ public class MapTracker : MonoBehaviour
 		if (LevelGenerator.Instance)
 			LevelGenerator.Instance.OnGenerationFinished -= Register;
 
+		if(parentTile)
+		parentTile.OnTileReveal -= Register;
+
 		if (MapCamera.Instance)
 			Remove(false);
 	}
