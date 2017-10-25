@@ -769,15 +769,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 0
-  amountToSplit: 4
-  splitEnemy: {fileID: 0}
-  explodeRadius: 10
-  statusType: 0
-  damagePerTick: 0.5
-  timeBetweenTick: 1
-  duration: 5
-  damageOnExplode: 2
-  knockbackOnExplode: 5
   deathParticles:
   - particleType: 1
     particles:
@@ -884,6 +875,19 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
+  deathShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
+  amountToSplit: 4
+  splitEnemy: {fileID: 0}
+  explodeRadius: 10
+  statusType: 0
+  damagePerTick: 0.5
+  timeBetweenTick: 1
+  duration: 5
+  damageOnExplode: 2
+  knockbackOnExplode: 5
 --- !u!114 &114341440145475626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -898,18 +902,25 @@ MonoBehaviour:
   drops:
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
     probability: 0.9
+    maxAmount: 0
   - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
     probability: 0.3
+    maxAmount: 0
   - prefab: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
     probability: 0.2
+    maxAmount: 0
   - prefab: {fileID: 1616226106310662, guid: 0c71fc111242199438e231f8efa50564, type: 2}
     probability: 0.1
+    maxAmount: 0
   - prefab: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
     probability: 0.05
+    maxAmount: 0
   - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
     probability: 0.1
+    maxAmount: 0
   - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
     probability: 0.1
+    maxAmount: 0
   minAmountOfDrops: 0
   maxAmountOfDrops: 2
 --- !u!114 &114664987438233800
@@ -929,7 +940,12 @@ MonoBehaviour:
   thrust: 50
   attackStrength: 1
   damageOnTouch: 1
-  knockbackStrength: 2
+  knockbackStrength: 7
+  shootSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   projAmount: 25
   timeTillInterval: 1
   minInterval: 1
@@ -970,6 +986,7 @@ MonoBehaviour:
   health: 2
   weight: 2
   IsEnemy: 1
+  isProp: 0
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
@@ -1025,6 +1042,10 @@ MonoBehaviour:
   timeBetweenFlash: 1
   amountToFlash: 1
   fadeToColorTime: 5
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!137 &137143500713790318
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
