@@ -49,10 +49,10 @@ public class ChestSpawn : MonoBehaviour
 
 			if (prefab)
 			{
-				GameObject obj = Instantiate(prefab, transform.parent);
-				obj.transform.localPosition = transform.localPosition;
+				GameObject obj = Instantiate(prefab, transform);
+                obj.transform.localPosition = Vector3.zero;
 
-				spawned = true;
+                spawned = true;
 
 				if(spawnOnClear)
 				{
@@ -61,6 +61,12 @@ public class ChestSpawn : MonoBehaviour
 					if (tracker)
 						tracker.Register();
 				}
+
+				PersistentObject persistent = GetComponent<PersistentObject>();
+                if (persistent)
+                {
+                    persistent.Setup();
+                }
 			}
 			else
 				Debug.LogWarning("Chest could not spawn, no prefab assigned in LevelVars!");
