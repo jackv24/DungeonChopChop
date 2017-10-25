@@ -79,4 +79,9 @@ public class MenuButtons : MonoBehaviour
 
         SceneManager.LoadScene("Overworld");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
