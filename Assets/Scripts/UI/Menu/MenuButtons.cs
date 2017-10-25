@@ -75,6 +75,8 @@ public class MenuButtons : MonoBehaviour
         if (gm)
             Destroy(gm.gameObject);
 
+        ItemsManager.Instance.Reset();
+
         SceneManager.LoadScene("Overworld");
     }
 }

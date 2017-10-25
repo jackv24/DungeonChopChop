@@ -72,6 +72,9 @@ public class PlayerMove : MonoBehaviour
 
         input = new PlayerInputs();
 
+        Debug.Log("Player Count: " + GameManager.Instance.players.Count);
+        Debug.Log("Devices Count: " + InControl.InputManager.Devices.Count);
+
         if (playerInformation.playerIndex == 0)
         {
             input.AddKeyboardBindings();
