@@ -16,16 +16,13 @@ public class GameManager : MonoBehaviour
 
     public List<PlayerInformation> players = new List<PlayerInformation>();
 
-    [HideInInspector]
-    //0 = don't skip, 1 = do skip
-    public int skipMenu;
     public int playerCount = 0;
 
     void Awake()
     {
-        DontDestroyOnLoad(this);
-
         Instance = this;
+
+        DontDestroyOnLoad(this);
 
         if (SceneManager.GetActiveScene().name == "Game")
         {
@@ -36,10 +33,20 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += SceneChange; 
     }
 
+    public void Reset()
+    {
+        players.Clear();
+        globalMultipliers.Clear();
+        globalBools.Clear();
+    }
+
     void SceneChange(Scene scene, LoadSceneMode mode) 
     { 
-        if (scene.buildIndex == 1) 
-            ChangeScene(scene.buildIndex);
+        if (enabled)
+        {
+            if (scene.buildIndex == 1)
+                ChangeScene(scene.buildIndex);
+        }
     } 
 
     IEnumerator SetupGame(int index)
