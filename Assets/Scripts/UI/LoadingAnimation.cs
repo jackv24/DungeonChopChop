@@ -30,7 +30,7 @@ public class LoadingAnimation : MonoBehaviour
         minDoneTime = Time.time + minWaitTime;
 
         StartCoroutine(Load(loadScene));
-        StartCoroutine(Load(preloadScene, false));
+        //StartCoroutine(Load(preloadScene, false));
     }
 
 	IEnumerator Load(int scene, bool activate = true)
