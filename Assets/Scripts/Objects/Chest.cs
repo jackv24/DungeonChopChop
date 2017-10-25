@@ -77,6 +77,10 @@ public class Chest : MonoBehaviour
 		MapTracker icon = GetComponent<MapTracker>();
 		if (icon)
 			icon.Remove();
+
+		EventSender events = GetComponentInParent<EventSender>();
+        if (events)
+            events.SendDisabledEvent();
 	}
 
 	IEnumerator ReleaseItems()

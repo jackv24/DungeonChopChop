@@ -717,7 +717,9 @@ public class LevelGenerator : MonoBehaviour
 				particles.OnExit();
 		}
 
-		Clear();
+        isFinished = false;
+
+        Clear();
 
 		profile = p;
 

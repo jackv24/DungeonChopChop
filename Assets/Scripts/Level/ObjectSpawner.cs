@@ -54,6 +54,12 @@ public class ObjectSpawner : MonoBehaviour
 			GameObject obj = Instantiate(prefab, transform);
 			obj.transform.localPosition = Vector3.zero;
 			obj.transform.localRotation = Quaternion.identity;
-		}
+
+            PersistentObject persistent = GetComponent<PersistentObject>();
+			if(persistent)
+			{
+                persistent.Setup();
+            }
+        }
 	}
 }
