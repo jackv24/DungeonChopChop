@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Quicksand : MonoBehaviour {
 
+    public bool SarlacsPopUp = false;
     public float moveToCenterSpeed = .7f;
     [Tooltip("The move to center speed when tenticles destroyed")]
     public float speedWhenDestroyed = .2f;
@@ -35,15 +36,19 @@ public class Quicksand : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        tenticleScript = GetComponentInChildren<Tenticles>();
-        //add all the children to a list
-        for (int i = 0; i < transform.childCount; i++)
+        if (SarlacsPopUp)
         {
-            tenticles.Add(transform.GetChild(i).gameObject);
-        }
+            tenticleScript = GetComponentInChildren<Tenticles>();
+
+            //add all the children to a list
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                tenticles.Add(transform.GetChild(i).gameObject);
+            }
         
-        animator = GetComponent<Animator>();
-        onSpikesDestroyed += SetSpeedToCenter;
+            animator = GetComponent<Animator>();
+            onSpikesDestroyed += SetSpeedToCenter;
+        }
 	}
 
     public void SpikesHit()
@@ -92,20 +97,23 @@ public class Quicksand : MonoBehaviour {
         {
             col.transform.position = Vector3.Lerp(col.transform.position, transform.position, toCenterSpeed * Time.deltaTime);
 
-            //get the distance from player to the center of quicksand
-            if (!spikesDestroyed)
+            if (SarlacsPopUp)
             {
-                if (!tentsPoppedUp)
+            //get the distance from player to the center of quicksand
+                if (!spikesDestroyed)
                 {
-                    float distance = Vector3.Distance(transform.position, col.transform.position);
-                    if (distance <= 5)
+                    if (!tentsPoppedUp)
                     {
-                        tentsPoppedUp = true;
-                        animator.SetTrigger("Attack");
+                        float distance = Vector3.Distance(transform.position, col.transform.position);
+                        if (distance <= 5)
+                        {
+                            tentsPoppedUp = true;
+                            animator.SetTrigger("Attack");
 
-                        SpawnEffects.EffectOnHit(popUpParticle, transform.position);
+                            SpawnEffects.EffectOnHit(popUpParticle, transform.position);
 
-                        StartCoroutine(StopSpikes());
+                            StartCoroutine(StopSpikes());
+                        }
                     }
                 }
             }
