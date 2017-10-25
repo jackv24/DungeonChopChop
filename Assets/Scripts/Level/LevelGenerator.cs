@@ -226,12 +226,14 @@ public class LevelGenerator : MonoBehaviour
 		if (showDebugMenu)
 		{
 			Vector2 size = new Vector2(Screen.width - 10, 400);
-			Vector2 pos = new Vector2(10, Screen.height - size.y);
+			Vector2 pos = new Vector2(10, 200);
 
 			string text = "<b>Debug Menu:</b>\n";
 
 			text += "Start Seed: " + startSeed + "\n\n";
 			text += "Current Tile: " + (currentTile ? currentTile.gameObject.name : "NULL") + "\n";
+			if(currentTile)
+				text += "Current Tile Graphic: " + (currentTile.currentGraphic ? currentTile.currentGraphic.gameObject.name : "NULL") + "\n";
 
 			if (profile is OverworldGeneratorProfile)
 			{
