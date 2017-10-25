@@ -79,6 +79,7 @@ public class PlayerMove : MonoBehaviour
             {
                 if (InControl.InputManager.Devices.Count > 1)
                 {
+                    Debug.Log("more then 1 device");
                     input.AssignDevice(InControl.InputManager.Devices[0]);
                     input.SetupBindings();
                 }
@@ -87,6 +88,7 @@ public class PlayerMove : MonoBehaviour
             {
                 if (InControl.InputManager.Devices.Count == 1)
                 {
+                    Debug.Log("1 device");
                     input.AssignDevice(InControl.InputManager.Devices[0]);
                     input.SetupBindings();
                 }

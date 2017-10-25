@@ -53,7 +53,6 @@ GameObject:
   - component: {fileID: 4382230582914834}
   - component: {fileID: 33479946614444580}
   - component: {fileID: 23366411741194414}
-  - component: {fileID: 65563763169024762}
   m_Layer: 0
   m_Name: IceRockForCrystal (2)
   m_TagString: Untagged
@@ -94,7 +93,6 @@ GameObject:
   - component: {fileID: 4421807026792336}
   - component: {fileID: 33348788862470504}
   - component: {fileID: 23003785484423650}
-  - component: {fileID: 65598170851816712}
   m_Layer: 0
   m_Name: IceRockForCrystal
   m_TagString: Untagged
@@ -129,7 +127,6 @@ GameObject:
   - component: {fileID: 4849794219597898}
   - component: {fileID: 33719267498107448}
   - component: {fileID: 23065843745432990}
-  - component: {fileID: 65979324398858202}
   m_Layer: 0
   m_Name: IceRockForCrystal (1)
   m_TagString: Untagged
@@ -405,30 +402,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &65563763169024762
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1480727827995050}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.018215336, z: 0.017487574}
-  m_Center: {x: 0, y: -0.0000009536743, z: 0}
---- !u!65 &65598170851816712
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1728038730515676}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.018215336, z: 0.017487574}
-  m_Center: {x: 0, y: -0.0000009536743, z: 0}
 --- !u!65 &65635824468916036
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -441,18 +414,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.1552763, z: 0.98599625}
   m_Center: {x: 0, y: 0.7890234, z: -0.19752884}
---- !u!65 &65979324398858202
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1949960006874154}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.018215336, z: 0.017487574}
-  m_Center: {x: 0, y: -0.0000009536743, z: 0}
 --- !u!82 &82962452928703580
 AudioSource:
   m_ObjectHideFlags: 1
@@ -684,71 +645,6 @@ MonoBehaviour:
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
   hitColor: {r: 0.7647059, g: 0.41608998, b: 0.41608998, a: 0.528}
-  poisonTickSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  burnTickSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  slowDeathTickSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  poisonedSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  burnSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  sandySound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  slowDeathSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  frozenSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unpoisonedSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unburnSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unsandySound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unslowDeathSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unfrozenSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
   timeBetweenFlash: 1
   amountToFlash: 1
   fadeToColorTime: 5

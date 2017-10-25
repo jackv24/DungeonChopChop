@@ -71,19 +71,22 @@ public class EnemySpawnerProfileEditor : Editor
 			//Check if anything has changed and not applied to the prefab
 			PropertyModification[] propertyModifications = PrefabUtility.GetPropertyModifications(spawner.gameObject);
 			int modified = 0;
-			foreach (var modification in propertyModifications)
-			{
-				if (modification.target.name == spawner.gameObject.name &&
-						  (modification.propertyPath.Contains("m_LocalPosition") || modification.propertyPath.Contains("m_LocalRotation") || modification.propertyPath == "m_RootOrder"))
-				{
-					// Do not consider this as a modification, since it's a modification on the root's transform.
-				}
-				else
-					modified++;
-			}
+            if (propertyModifications != null)
+            {
+                foreach (var modification in propertyModifications)
+                {
+                    if (modification.target.name == spawner.gameObject.name &&
+                              (modification.propertyPath.Contains("m_LocalPosition") || modification.propertyPath.Contains("m_LocalRotation") || modification.propertyPath == "m_RootOrder"))
+                    {
+                        // Do not consider this as a modification, since it's a modification on the root's transform.
+                    }
+                    else
+                        modified++;
+                }
+            }
 
-			//Show warnign if there are instance changes
-			if (modified > 0)
+            //Show warnign if there are instance changes
+            if (modified > 0)
 				EditorGUILayout.HelpBox(string.Format("There are {0} unapplied prefab changes on this instance!", modified), MessageType.Warning);
 
             EditorGUILayout.Space();

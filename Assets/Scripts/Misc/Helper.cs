@@ -11,10 +11,35 @@ public static class Helper
 		[Tooltip("If probability = 0, it will be considered 1.")]
 		public float probability;
 
-		public ProbabilityGameObject()
+		[Tooltip("The maximum amount of this gameobject to be chosen. If 0 it is considered infinite.")]
+        public int maxAmount = 0;
+        private int chosenAmount = 0;
+
+		public bool CanChoose
+		{
+			get
+			{
+				//This boject can be chosen if max is 0, or chosen is less than max
+				if (maxAmount <= 0)
+                    return true;
+				else if (chosenAmount < maxAmount)
+                    return true;
+
+				//Otherwise it can not be chosen
+                return false;
+            }
+		}
+
+        public ProbabilityGameObject()
 		{
 			probability = 1.0f;
-		}
+            maxAmount = 0;
+        }
+
+		public void IncrementChosenAmount()
+		{
+            chosenAmount++;
+        }
 	}
 
 	[System.Serializable]
@@ -32,38 +57,58 @@ public static class Helper
 
 	public static GameObject GetRandomGameObjectByProbability(ProbabilityGameObject[] array, System.Random random = null)
 	{
-		List<ProbabilityGameObject> possibleGameObjects = new List<ProbabilityGameObject>(array);
+		List<ProbabilityGameObject> possibleGameObjects = new List<ProbabilityGameObject>();
 
-		ProbabilityGameObject possibleGameObject = null;
-
-		///Get random enemy with probability
-		//Sort possible enemy list by probability
-		possibleGameObjects.Sort((x, y) => x.probability.CompareTo(y.probability));
-
-		//Get sum of all probabilities
-		float maxProbability = 0;
-		foreach (ProbabilityGameObject e in possibleGameObjects)
-			maxProbability += e.probability != 0 ? e.probability : 1;
-
-		//Generate random number up to max probability
-		float num;
-		if (random != null)
-			num = random.NextFloat(0, maxProbability);
-		else
-			num = Random.Range(0, maxProbability);
-
-		//Get random tile using cumulative probability
-		float runningProbability = 0;
-		foreach (ProbabilityGameObject e in possibleGameObjects)
+		//Only try and choose gameobjects that can be chosen
+		foreach(ProbabilityGameObject obj in array)
 		{
-			if (num >= runningProbability)
-				possibleGameObject = e;
+            if (obj.CanChoose)
+            {
+				//Make sure this object can only be chosen the specified number of times
+                possibleGameObjects.Add(obj);
+                obj.IncrementChosenAmount();
+            }
+        }
 
-			runningProbability += e.probability;
-		}
+        if (possibleGameObjects.Count > 0)
+        {
+            ProbabilityGameObject possibleGameObject = null;
 
-		return possibleGameObject.prefab;
-	}
+            ///Get random enemy with probability
+            //Sort possible enemy list by probability
+            possibleGameObjects.Sort((x, y) => x.probability.CompareTo(y.probability));
+
+            //Get sum of all probabilities
+            float maxProbability = 0;
+            foreach (ProbabilityGameObject e in possibleGameObjects)
+                maxProbability += e.probability != 0 ? e.probability : 1;
+
+            //Generate random number up to max probability
+            float num;
+            if (random != null)
+                num = random.NextFloat(0, maxProbability);
+            else
+                num = Random.Range(0, maxProbability);
+
+            //Get random tile using cumulative probability
+            float runningProbability = 0;
+            foreach (ProbabilityGameObject e in possibleGameObjects)
+            {
+                if (num >= runningProbability)
+                    possibleGameObject = e;
+
+                runningProbability += e.probability;
+            }
+
+            return possibleGameObject.prefab;
+        }
+		else
+		{
+            Debug.LogError("There were no possible gameobjects to choose from!");
+
+            return null;
+        }
+    }
 
 	public static BaseItem GetRandomItemByProbability(ProbabilityItem[] array, System.Random random = null)
 	{

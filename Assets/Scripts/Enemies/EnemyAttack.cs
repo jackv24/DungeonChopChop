@@ -56,10 +56,14 @@ public class EnemyAttack : MonoBehaviour
     protected Animator animator;
     protected Health enemyHealth;
 
+    private Collider col;
+
     LevelTile parentTile = null;
 
     void Start()
     {
+        col = GetComponent<Collider>();
+
         enemyHealth = GetComponent<Health>();
         animator = GetComponentInChildren<Animator>();
         enemyMove = GetComponent<EnemyMove>();
@@ -178,10 +182,15 @@ public class EnemyAttack : MonoBehaviour
         {
             //create the projecticle
             GameObject projectile = ObjectPooler.GetPooledObject(projecticle);
-            if (!shootPosition)
-                projectile.transform.position = transform.position;
+
+            Physics.IgnoreCollision(col, projectile.GetComponent<Collider>(), true);
+
             projectile.transform.rotation = transform.rotation;
             projectile.transform.Rotate(0, angle, 0);
+
+            if (!shootPosition)
+                projectile.transform.position = transform.position;
+            
             projectile.GetComponent<ProjectileCollision>().damageMultiplyer = attackStrength;
             projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
             projectile.GetComponent<ProjectileCollision>().thrust = thrust;
