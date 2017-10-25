@@ -183,6 +183,29 @@ public class Shop : MonoBehaviour
 		}
 	}
 
+    void PositiveOrNegativeString(ref string str, ref Color col, float currentVal, float possibleVal)
+    {
+        float difference = Mathf.Abs(possibleVal - currentVal);
+
+        difference = (float)System.Math.Round(difference, 2);
+
+        if (currentVal == possibleVal)
+        {
+            col = equalColour;
+            str = "" + 0;
+        }
+        else if (possibleVal < currentVal)
+        {
+            col = lessColour;
+            str = "-" + difference;
+        }
+        else if (possibleVal > currentVal)
+        {
+            col = moreColour;
+            str = "+" + difference;
+        }
+    }
+
     void UpdateSpeaker(PlayerInformation player)
     {
         string descriptionText = "";
@@ -196,6 +219,7 @@ public class Shop : MonoBehaviour
             {
                 SwordStats swordStats = it.itemPrefab.GetComponent<SwordStats>();
                 ShieldStats shieldStats = it.itemPrefab.GetComponent<ShieldStats>();
+                ItemPickup item = it.itemPrefab.GetComponent<ItemPickup>();
 
                 //creates a string for both values on sword and shield, they are there to add '+' or '-'
                 string var1String = "";
@@ -213,41 +237,9 @@ public class Shop : MonoBehaviour
                     //Set colour depending on if stats are better or worse than current
                     if (currentSword)
                     {
-                        //gets the damage difference between current and the sword in the shop
-                        float damageDifference = Mathf.Abs(swordStats.damageMultiplier - currentSword.damageMultiplier);
+                        PositiveOrNegativeString(ref var1String, ref damageColour, currentSword.damageMultiplier, swordStats.damageMultiplier);
 
-                        //gets the range difference between current and the sword in the shop
-                        float rangeDifference = Mathf.Abs(swordStats.range - currentSword.range);
-
-                        if (swordStats.damageMultiplier == currentSword.damageMultiplier)
-                        {
-                            damageColour = equalColour;
-                            var1String = "" + 0;
-                        }
-                        else if (swordStats.damageMultiplier < currentSword.damageMultiplier)
-                        {
-                            damageColour = lessColour;
-                            var1String = "-" + damageDifference;
-                        }
-                        else if (swordStats.damageMultiplier > currentSword.damageMultiplier)
-                        {
-                            var1String = "+" + damageDifference;
-                        }
-
-                        if (swordStats.range == currentSword.range)
-                        {
-                            rangeColour = equalColour;
-                            var2String = "" + 0;
-                        }
-                        else if (swordStats.range < currentSword.range)
-                        {
-                            rangeColour = lessColour;
-                            var2String = "-" + rangeDifference;
-                        }
-                        else if (swordStats.range > currentSword.range)
-                        {
-                            var2String = "+" + rangeDifference;
-                        }
+                        PositiveOrNegativeString(ref var2String, ref rangeColour, currentSword.range, swordStats.range);
                     }
 
                     descriptionText += string.Format(
@@ -316,42 +308,9 @@ public class Shop : MonoBehaviour
 
                     if (currentShield)
                     {
-                        //gets the blocking difference between current and the shield in the shop
-                        float blockingDifference = Mathf.Abs(currentShield.blockingResistance - shieldStats.blockingResistance);
+                        PositiveOrNegativeString(ref var1String, ref resistanceColour, currentShield.blockingResistance, shieldStats.blockingResistance);
 
-                        //gets the speed difference between current and the shield in the shop
-                        float speedDifference = Mathf.Abs(currentShield.speedDamping - shieldStats.speedDamping);
-
-                        if (shieldStats.blockingResistance == currentShield.blockingResistance)
-                        {
-                            resistanceColour = equalColour;
-                            var1String = "" + 0;
-                        }
-                        else if (shieldStats.blockingResistance < currentShield.blockingResistance)
-                        {
-                            resistanceColour = lessColour;
-                            var1String = "-" + blockingDifference;
-                        }
-                        else if (shieldStats.blockingResistance > currentShield.blockingResistance)
-                        {
-                            var1String = "+" + blockingDifference;
-                        }
-
-                        if (shieldStats.speedDamping == currentShield.speedDamping)
-                        {
-                            speedColour = equalColour;
-                            var2String = "" + 0;
-                        }
-                        else if (shieldStats.speedDamping < currentShield.speedDamping)
-                        {
-                            speedColour = lessColour;
-                            var2String = "-" + speedDifference;
-                        }
-                        else if (shieldStats.speedDamping > currentShield.speedDamping)
-                        {
-                            speedColour = lessColour;
-                            var2String = "+" + speedDifference;
-                        }
+                        PositiveOrNegativeString(ref var2String, ref speedColour, currentShield.speedDamping, shieldStats.speedDamping);
                     } 
                     else 
                     {
@@ -373,11 +332,87 @@ public class Shop : MonoBehaviour
                         shieldSpeedDampingName
                         );
                 }
+
+                if (item)
+                {
+                    Color newCol = moreColour;
+
+                    BaseItem baseItem = item.representingItem;
+                   
+                    if (baseItem is InventoryItem)
+                    {
+                        InventoryItem invItem = (InventoryItem)baseItem;
+                       
+                        if (player.currentItems.Count > 0)
+                        {
+                            foreach (InventoryItem i in player.currentItems)
+                            {
+                                if (HasTypeInInventory(player, invItem.armourType))
+                                {
+                                    for (int j = 0; j < invItem.items.Length; j++)
+                                    {
+                                        PositiveOrNegativeString(ref var1String, ref newCol, i.items[j].floatValue, invItem.items[j].floatValue);
+
+                                        descriptionText += string.Format(
+                                            "{2}: <color=#{0}>{1}</color>\n",
+                                            ColorUtility.ToHtmlStringRGB(newCol),
+                                            var1String,
+                                            i.items[j].itemKey
+                                        );
+                                    }
+                                }
+                                else
+                                {
+                                    for (int j = 0; j < invItem.items.Length; j++)
+                                    {
+                                        PositiveOrNegativeString(ref var1String, ref newCol, 0, invItem.items[j].floatValue);
+
+                                        descriptionText += string.Format(
+                                            "{2}: <color=#{0}>{1}</color>\n",
+                                            ColorUtility.ToHtmlStringRGB(newCol),
+                                            var1String,
+                                            invItem.items[j].itemKey
+                                        );
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int j = 0; j < invItem.items.Length; j++)
+                            {
+                                PositiveOrNegativeString(ref var1String, ref newCol, 0, invItem.items[j].floatValue);
+
+                                descriptionText += string.Format(
+                                    "{2}: <color=#{0}>{1}</color>\n",
+                                    ColorUtility.ToHtmlStringRGB(newCol),
+                                    var1String,
+                                    invItem.items[j].itemKey
+                                );
+                            }
+                        }
+                    }
+
+                    var1String = "";
+                }
             }
         }
 
         //Update speaker to display one line
         speaker.lines = new string[] { string.Format(dialogueText, sellingItem.displayName, sellingItem.cost, descriptionText).Trim() };
+    }
+
+    bool HasTypeInInventory(PlayerInformation player, ArmourType type)
+    {
+        foreach (InventoryItem item in player.currentItems)
+        {
+            if (item.armourType == type)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 	void OnDestroy()
