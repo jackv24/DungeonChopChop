@@ -226,12 +226,14 @@ public class LevelGenerator : MonoBehaviour
 		if (showDebugMenu)
 		{
 			Vector2 size = new Vector2(Screen.width - 10, 400);
-			Vector2 pos = new Vector2(10, Screen.height - size.y);
+			Vector2 pos = new Vector2(10, 200);
 
 			string text = "<b>Debug Menu:</b>\n";
 
 			text += "Start Seed: " + startSeed + "\n\n";
 			text += "Current Tile: " + (currentTile ? currentTile.gameObject.name : "NULL") + "\n";
+			if(currentTile)
+				text += "Current Tile Graphic: " + (currentTile.currentGraphic ? currentTile.currentGraphic.gameObject.name : "NULL") + "\n";
 
 			if (profile is OverworldGeneratorProfile)
 			{
@@ -315,7 +317,14 @@ public class LevelGenerator : MonoBehaviour
 			GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, transform);
 			startObj.transform.position = transform.position;
 
-			LevelTile startTile = startObj.GetComponent<LevelTile>();
+            //Make sure tile is active to prevent errors if it's accidentally disabled
+            if (!startObj.activeSelf)
+            {
+                Debug.LogWarning(startObj.name + "Spawned Inactive!");
+                startObj.SetActive(true);
+            }
+
+            LevelTile startTile = startObj.GetComponent<LevelTile>();
 			startTile.index = generatedTiles.Count;
 			generatedTiles.Add(startTile);
 			startObj.name += generatedTiles.Count;
@@ -450,6 +459,14 @@ public class LevelGenerator : MonoBehaviour
 
 			//Spawn tile in world
 			GameObject tileObj = (GameObject)Instantiate(possibleTile.tile.gameObject, transform);
+
+            //Make sure tile is active to prevent errors if it's accidentally disabled
+            if (!tileObj.activeSelf)
+            {
+                Debug.LogWarning(tileObj.name + "Spawned Inactive!");
+                tileObj.SetActive(true);
+            }
+
 			LevelTile tile = tileObj.GetComponent<LevelTile>();
 
 			int rotation = 0;

@@ -9,6 +9,7 @@ public class LevelTile : MonoBehaviour
 	public event NormalEvent OnTileExit;
 	public event NormalEvent OnTileReveal;
 
+	[HideInInspector]
 	public int index = 0;
 
 	public List<Transform> doors = new List<Transform>();
