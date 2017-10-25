@@ -22,4 +22,16 @@ public class ItemsManager : MonoBehaviour {
     {
         Instance = this;
     }
+
+    public void Reset()
+    {
+        Keys = 0;
+        DungeonKeys = 0;
+        Coins = 0;
+
+        hasGoggles = false;
+        hasBoots = false;
+        hasArmourPiece = false;
+        hasGauntles = false;
+    }
 }

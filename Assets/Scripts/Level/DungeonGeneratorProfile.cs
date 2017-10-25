@@ -61,9 +61,9 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 				}
 			}
 
-			//Key tile should not be considered for chest tile
 			if (keyTile)
 			{
+				//Key tile should not be considered for chest tile
 				potentialTiles.Remove(keyTile);
 
 				furthestDistance = 0;
@@ -88,10 +88,12 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 
 				succeeded = false;
 			}
-			else
-				keyTileObj = keyTile.Replace(DungeonKeyTile.Type.Key);
+            else
+            {
+                keyTileObj = keyTile.Replace(DungeonKeyTile.Type.Key);
+            }
 
-			if (!chestTile)
+            if (!chestTile)
 			{
 				Debug.LogWarning("Did not spawn a dungeon <b>chest</b> tile!");
 
@@ -145,5 +147,20 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 			levelGenerator.OnAfterSpawnChests -= tempEvent;
 		};
 		levelGenerator.OnAfterSpawnChests += tempEvent;
+
+		//Append biome to all persistent object identifiers, since each dungeon should be considered different
+		foreach(LevelTile tile in levelGenerator.generatedTiles)
+		{
+            PersistentObject[] objs = tile.GetComponentsInChildren<PersistentObject>();
+
+			foreach(PersistentObject obj in objs)
+			{
+                if (!obj.onStart)
+                {
+                    obj.identifier += "_" + biome.ToString();
+                    obj.Setup();
+                }
+            }
+        }
 	}
 }
