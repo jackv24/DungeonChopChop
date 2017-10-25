@@ -22,7 +22,11 @@ public class Chest : MonoBehaviour
 	public KeyScript.Type keyType = KeyScript.Type.Normal;
     public ChestType chestType;
 
+    [Tooltip("Charms")]
 	public Helper.ProbabilityItem[] possibleItems;
+    [Tooltip("Gems, keys, orbs etc")]
+    public Helper.ProbabilityGameObject[] possibleConsumables;
+    [Tooltip("Weapons, armour etc")]
     public Helper.ProbabilityGameObject[] possibleObjects;
     public int minAmountOfObjects = 2;
     public int maxAmountOfObjects = 5;
@@ -31,7 +35,9 @@ public class Chest : MonoBehaviour
     [HideInInspector]
 	public BaseItem containingItem;
     [HideInInspector]
-    public List<GameObject> containingObjects = new List<GameObject>(0);
+    public GameObject containingObject;
+    [HideInInspector]
+    public List<GameObject> containingConsumables = new List<GameObject>(0);
 
 	private bool randomise = true;
 
@@ -48,18 +54,21 @@ public class Chest : MonoBehaviour
         if (chestType == ChestType.Gold)
         {
             if (randomise)
+            {
                 containingItem = Helper.GetRandomItemByProbability(possibleItems);
+                containingObject = Helper.GetRandomGameObjectByProbability(possibleObjects);
+            }
         }
         else if (chestType == ChestType.Iron)
         {
-            if (possibleObjects.Length > 0)
+            if (possibleConsumables.Length > 0)
             {
                 int random = Random.Range(minAmountOfObjects, maxAmountOfObjects);
                 for (int i = 0; i < random; i++)
                 {
-                    GameObject obj = Helper.GetRandomGameObjectByProbability(possibleObjects);
+                    GameObject obj = Helper.GetRandomGameObjectByProbability(possibleConsumables);
                     Debug.Log(obj.name);
-                    containingObjects.Add(obj);
+                    containingConsumables.Add(obj);
                 }
             }
         }
@@ -108,12 +117,18 @@ public class Chest : MonoBehaviour
 		animator.SetTrigger("Open");
 		opened = true;
 
-        if (containingItem || containingObjects.Count > 0)
+        if (containingItem || containingConsumables.Count > 0)
         {
             if (chestType == ChestType.Gold)
-                StartCoroutine(ReleaseItems());
+            {
+                int random = Random.Range(0, 2);
+                if (random == 0)
+                    StartCoroutine(ReleaseItems());
+                else
+                    StartCoroutine(ReleaseObjects());
+            }
             else if (chestType == ChestType.Iron)
-                StartCoroutine(ReleaseObjects());
+                StartCoroutine(ReleaseConsumables());
         }
 			
 
@@ -131,7 +146,19 @@ public class Chest : MonoBehaviour
     {
         yield return new WaitForSeconds(releaseItemDelay);
 
-        foreach (GameObject o in containingObjects)
+        GameObject obj = ObjectPooler.GetPooledObject(containingObject);
+
+        //throw out of chest
+        obj.transform.position = transform.position + Vector3.up;
+
+        GetComponent<Rigidbody>().AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
+    }
+
+    IEnumerator ReleaseConsumables()
+    {
+        yield return new WaitForSeconds(releaseItemDelay);
+
+        foreach (GameObject o in containingConsumables)
         {
             GameObject obj = ObjectPooler.GetPooledObject(o);
             //throw out of chest
