@@ -27,20 +27,6 @@ public class GameCreator : MonoBehaviour {
     bool ManagerExists(string name)
     {
         GameObject obj = GameObject.Find(name);
-
-        #if UNITY_EDITOR
-        if (name == "InputManager")
-        {
-            if (obj)
-                return true;
-            else
-                return false;
-        }
-        #endif
-
-        if (name == "InputManager")
-            return true;
-
         if (obj)
             return true;
         return false;

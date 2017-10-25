@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
 
-	int playersReady = 0;
+	public int playersReady = 0;
 
 	// Use this for initialization
 	void Awake () {
