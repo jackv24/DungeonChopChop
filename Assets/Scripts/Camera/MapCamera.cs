@@ -11,9 +11,13 @@ public class MapCamera : MonoBehaviour
 	private CanvasScaler canvasScaler;
 
 	public RectTransform mapRect;
-
     public RawImage rawImage;
+	
     private RenderTexture renderTexture;
+
+    [Space()]
+    public Animator animator;
+    private bool fullMap = false;
 
     [Header("Icons")]
 	public float iconScale = 1.0f;
@@ -46,7 +50,7 @@ public class MapCamera : MonoBehaviour
 
 	void Start()
 	{
-		height = transform.position.y;
+        height = transform.position.y;
 		cameraFollow = FindObjectOfType<CameraFollow>();
 		cam = GetComponent<Camera>();
 
@@ -79,6 +83,21 @@ public class MapCamera : MonoBehaviour
 		if (Instance == this)
 			Instance = null;
 	}
+
+	void Update()
+	{
+        if (animator)
+        {
+            InControl.InputDevice device = InControl.InputManager.ActiveDevice;
+
+            if (device.Action4.WasPressed || Input.GetKeyDown(KeyCode.M))
+            {
+                fullMap = !fullMap;
+
+                animator.SetBool("FullMap", fullMap);
+            }
+        }
+    }
 
 	void LateUpdate()
 	{
