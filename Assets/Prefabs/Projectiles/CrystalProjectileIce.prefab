@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 54550440517175074}
   - component: {fileID: 114630168372629610}
   - component: {fileID: 65388902922632704}
+  - component: {fileID: 114602707175197692}
   m_Layer: 10
   m_Name: CrystalProjectileIce
   m_TagString: Untagged
@@ -228,6 +229,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114602707175197692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671332070322448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e835c48d15c08240ad72fe07736a33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusType: 3
+  damagePerTick: 0.3
+  duration: 0.5
+  timeBetweenDamage: 1
+  speedDamper: 0
 --- !u!114 &114630168372629610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,8 +259,8 @@ MonoBehaviour:
   damageAmount: 1
   knockbackAmount: 10
   hitParticles:
-  - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
-  - {fileID: 1004915465583228, guid: 2a2d6f42c0139774880df8b9f1374650, type: 2}
+  - {fileID: 1928837666263156, guid: fb52ffb4991f66944aaf1bcbd4f1c890, type: 2}
+  - {fileID: 1004915465583228, guid: 5f5ca5dbacf208f4290da200dad79bb8, type: 2}
   damageMultiplyer: 0
   thrust: 0
 --- !u!114 &114903036393768576
