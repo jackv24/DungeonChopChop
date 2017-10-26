@@ -46,14 +46,13 @@ public class ItemPickup : MonoBehaviour
 			{
 				//if item is a charm, add charm
                 if (representingItem is Charm)
+                {
                     playerInfo.PickupCharm((Charm)representingItem);
+                    gameObject.SetActive(false);
+                }
                 //if item is a item, add item
-                else if (representingItem is InventoryItem)
-                    playerInfo.PickupItem((InventoryItem)representingItem);
 				else
 					Debug.Log("item was not a charm");
-
-				gameObject.SetActive(false);
 			}
 		}
 	}

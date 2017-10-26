@@ -128,5 +128,7 @@ public class ShowArmourStats : MonoBehaviour {
                 );
             }
         }
+
+        dialogueSpeaker.lines[0] = descriptionText;
     }
 }

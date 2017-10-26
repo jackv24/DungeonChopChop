@@ -19,10 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4973758829283834}
-  - component: {fileID: 65060369951973990}
   - component: {fileID: 65814783620404846}
   - component: {fileID: 114071355418534578}
-  - component: {fileID: 54792301502869752}
+  - component: {fileID: 114484589749733242}
   m_Layer: 0
   m_Name: studdedBoot_mesh
   m_TagString: Untagged
@@ -113,33 +112,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1689496498292074}
   m_Mesh: {fileID: 4300000, guid: 7bdbc997be85b384380d3879947a951d, type: 3}
---- !u!54 &54792301502869752
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1009968671380308}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!65 &65060369951973990
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1009968671380308}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1269823, z: 0.15063486}
-  m_Center: {x: 0, y: 0.05438322, z: -0.025317423}
 --- !u!65 &65814783620404846
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -150,7 +122,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.12587795, y: 0.14293414, z: 0.20385554}
+  m_Size: {x: 0.42, y: 0.55, z: 0.44}
   m_Center: {x: 0.0010569543, y: 0.05332242, z: -0.040617865}
 --- !u!114 &114071355418534578
 MonoBehaviour:
@@ -166,3 +138,15 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: f4c6560d3939b7c45839e1b27c9ca7da, type: 2}
   pickupDelay: 1
+--- !u!114 &114484589749733242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009968671380308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b005d6bf0bf148d47b99c08d5d4ca8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPickUp: 1

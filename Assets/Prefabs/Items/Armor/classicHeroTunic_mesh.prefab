@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4713167554843256}
   - component: {fileID: 33177465348343788}
   - component: {fileID: 23310686212532508}
-  - component: {fileID: 65286119187032184}
   - component: {fileID: 65935878482046444}
   - component: {fileID: 114116099615252924}
+  - component: {fileID: 114156419992337648}
   m_Layer: 0
   m_Name: classicHeroTunic_mesh
   m_TagString: Untagged
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1903226540267162}
   m_LocalRotation: {x: 0, y: 0.9914449, z: 0.13052624, w: 0}
-  m_LocalPosition: {x: -363.55606, y: 10, z: 887.7368}
+  m_LocalPosition: {x: 19.771383, y: 3.5928578, z: 10.921703}
   m_LocalScale: {x: 5, y: 3.5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,18 +83,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1903226540267162}
   m_Mesh: {fileID: 4300000, guid: 6bee018dfe645fc4184a094137318967, type: 3}
---- !u!65 &65286119187032184
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1903226540267162}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.28059804, y: 0.41740125, z: 0.23560226}
-  m_Center: {x: 0.00269901, y: 0.16228744, z: 0.0015302002}
 --- !u!65 &65935878482046444
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -105,8 +93,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.33488986, y: 0.5180535, z: 0.3371578}
-  m_Center: {x: 0.005856678, y: 0.12783012, z: 0.03037364}
+  m_Size: {x: 0.76042336, y: 0.8666748, z: 0.5459098}
+  m_Center: {x: 0.049781144, y: 0.12623289, z: 0.014357351}
 --- !u!114 &114116099615252924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,3 +109,15 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: 5893f2067fe12fc4b990373e775c3d1b, type: 2}
   pickupDelay: 1
+--- !u!114 &114156419992337648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1903226540267162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b005d6bf0bf148d47b99c08d5d4ca8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPickUp: 1
