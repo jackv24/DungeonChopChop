@@ -18,6 +18,10 @@ public class MapCamera : MonoBehaviour
     [Header("Icons")]
 	public float iconScale = 1.0f;
 
+    [Space()]
+    public Sprite enemyIconSprite;
+    private List<Transform> trackedEnemies = new List<Transform>();
+
     class Icon
 	{
 		public RectTransform rectTransform;
@@ -62,7 +66,13 @@ public class MapCamera : MonoBehaviour
             initialSize = mapRect.sizeDelta;
             initialOrthographicSize = cam.orthographicSize;
         }
-	}
+
+        LevelGenerator.Instance.OnEnemiesSpawned += delegate
+        {
+            ClearEnemyIcons();
+            RegisterEnemyIcons();
+        };
+    }
 
 	void OnDestroy()
 	{
@@ -86,26 +96,33 @@ public class MapCamera : MonoBehaviour
 			{
 				if (icon.targetTransform)
 				{
-                    float ratio = Screen.height / canvasScaler.referenceResolution.y;
+                    if (icon.targetTransform.gameObject.activeSelf)
+                    {
+						icon.rectTransform.gameObject.SetActive(true);
 
-                    //Transform position from world to map viewport
-                    Vector2 worldPos = cam.WorldToViewportPoint(icon.targetTransform.position);
-                    worldPos.x *= mapRect.sizeDelta.x;
-                    worldPos.y *= mapRect.sizeDelta.y;
+                        float ratio = Screen.height / canvasScaler.referenceResolution.y;
 
-                    worldPos = mapRect.TransformPoint(worldPos);
-                    worldPos.x -= (mapRect.sizeDelta.x * ratio) / 2;
-                    worldPos.y -= (mapRect.sizeDelta.y * ratio) / 2;
+                        //Transform position from world to map viewport
+                        Vector2 worldPos = cam.WorldToViewportPoint(icon.targetTransform.position);
+                        worldPos.x *= mapRect.sizeDelta.x;
+                        worldPos.y *= mapRect.sizeDelta.y;
 
-                    //Set icon position
-                    icon.rectTransform.position = new Vector3(worldPos.x, worldPos.y, 1f);
+                        worldPos = mapRect.TransformPoint(worldPos);
+                        worldPos.x -= (mapRect.sizeDelta.x * ratio) / 2;
+                        worldPos.y -= (mapRect.sizeDelta.y * ratio) / 2;
 
-					//Can just use x for radius since map should be equally proportioned
-                    float mapRadius = mapRect.sizeDelta.x / 2;
+                        //Set icon position
+                        icon.rectTransform.position = new Vector3(worldPos.x, worldPos.y, 1f);
 
-                    //Make sure icon does not go off screen
-                    LimitToRadius(icon.rectTransform, mapRect, mapRadius * ratio);
-				}
+                        //Can just use x for radius since map should be equally proportioned
+                        float mapRadius = mapRect.sizeDelta.x / 2;
+
+                        //Make sure icon does not go off screen
+                        LimitToRadius(icon.rectTransform, mapRect, mapRadius * ratio);
+                    }
+					else
+                        icon.rectTransform.gameObject.SetActive(false);
+                }
 			}
 		}
 	}
@@ -226,5 +243,30 @@ public class MapCamera : MonoBehaviour
 			//Set position as new offset
 			icon.position = newOffset + parent.position;
 		}
+	}
+
+	void RegisterEnemyIcons()
+	{
+        if (enemyIconSprite)
+        {
+            EnemySpawner spawner = LevelGenerator.Instance.currentTile.GetComponentInChildren<EnemySpawner>();
+
+            if (spawner)
+            {
+                foreach (GameObject obj in spawner.spawnedEnemies)
+                {
+                    RegisterIcon(enemyIconSprite, obj.transform, Color.white, 1.0f);
+                    trackedEnemies.Add(obj.transform);
+                }
+            }
+        }
+    }
+
+	void ClearEnemyIcons()
+	{
+		foreach(Transform t in trackedEnemies)
+		{
+            RemoveIcon(t);
+        }
 	}
 }

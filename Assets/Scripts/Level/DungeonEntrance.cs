@@ -30,8 +30,11 @@ public class DungeonEntrance : MonoBehaviour
 
 	private void OnTriggerEnter(Collider col)
 	{
-		//If player walked into this door
-		if (col.gameObject.layer == 14 && col.GetType() == typeof(CharacterController))
+		if(!enabled)
+            return;
+
+        //If player walked into this door
+        if (col.gameObject.layer == 14 && col.GetType() == typeof(CharacterController))
 		{
 			StartCoroutine(EnterDelayed());
 		}

@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
 	public List<Profile> profiles = new List<Profile>();
 	private Profile currentProfile;
 
-	private List<GameObject> spawnedEnemies = new List<GameObject>();
+	public List<GameObject> spawnedEnemies = new List<GameObject>();
 	private List<Profile.Spawn> undefeatedEnemies = new List<Profile.Spawn>();
 
 	private bool shouldSpawn = false;
@@ -251,7 +251,9 @@ public class EnemySpawner : MonoBehaviour
 
 			spawned = true;
 		}
-	}
+
+        LevelGenerator.Instance.EnemiesSpawned();
+    }
 
 	public void Despawn()
 	{

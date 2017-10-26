@@ -74,6 +74,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         AddRenderersToList();
+
         //loops through and get the original color on each renderer
         for (int i = 0; i < renderers.Count; i++)
         {
@@ -160,7 +161,7 @@ public class Health : MonoBehaviour
         foreach (Renderer ren in transform.GetComponentsInChildren<Renderer>())
         {
             //we don't want the trail renderer
-            if (ren is TrailRenderer) {}
+            if (ren is TrailRenderer || ren is ParticleSystemRenderer) {}
                 //no
             else 
                 renderers.Add(ren);
@@ -304,9 +305,25 @@ public class Health : MonoBehaviour
         }
     }
 
+    void AddColorsToList()
+    {
+        if (!IsEnemy && !isProp)
+        {
+            originalColors.Clear();
+
+            for (int i = 0; i < renderers.Count; i++)
+            {
+                if (renderers[i].material.HasProperty("_Color"))
+                    originalColors.Add(renderers[i].material.color);
+            }
+        }
+    }
+
     public void SetColor(Color color)
     {
         AddRenderersToList();
+
+        AddColorsToList();
 
         if (renderers != null)
         {
@@ -600,7 +617,7 @@ public class Health : MonoBehaviour
                 SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.Tick, transform.position);
             }
 
-            SetOGColorRends();
+            SetOGColor();
 
             StartCoroutine(DisablePlayerFor(.1f));
 
@@ -665,7 +682,7 @@ public class Health : MonoBehaviour
                 SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.Tick, transform.position);
             }
 
-            SetOGColorRends();
+            SetOGColor();
 
             if (gameObject.activeSelf)
                 StartCoroutine(DisablePlayerFor(.2f));
@@ -720,7 +737,7 @@ public class Health : MonoBehaviour
                 SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.Tick, transform.position);
             }
 
-            SetOGColorRends();
+            SetOGColor();
 
             StartCoroutine(DisablePlayerFor(.2f));
 
@@ -812,8 +829,11 @@ public class Health : MonoBehaviour
                 playerInfo.SetMoveSpeed(playerInfo.maxMoveSpeed * speedDamping);
             else
             {
-                ogEnemySpeed = GetComponent<NavMeshAgent>().speed;
-                GetComponent<NavMeshAgent>().speed = GetComponent<NavMeshAgent>().speed * speedDamping;
+                if (GetComponent<NavMeshAgent>())
+                {
+                    ogEnemySpeed = GetComponent<NavMeshAgent>().speed;
+                    GetComponent<NavMeshAgent>().speed = GetComponent<NavMeshAgent>().speed * speedDamping;
+                }
             }
 
             SoundManager.PlayAilmentSound(StatusType.Sandy, ailmentSoundType.Start, transform.position);
