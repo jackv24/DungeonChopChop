@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Audio;
 
 public class OptionsUI : MonoBehaviour
 {
@@ -15,7 +16,11 @@ public class OptionsUI : MonoBehaviour
 
 	private List<Resolution> resolutions;
 
-	void Start()
+	public Slider masterVolume;
+    public Slider musicVolume;
+    public AudioMixer audioMixer;
+
+    void Start()
 	{
 		if (Pause.Instance)
 			Pause.Instance.OnUnpause += Close;
@@ -61,7 +66,16 @@ public class OptionsUI : MonoBehaviour
 
 			qualityDropdown.onValueChanged.AddListener((int index) => { QualitySettings.SetQualityLevel(index, true); });
 		}
-	}
+
+        if (audioMixer)
+        {
+            if (masterVolume)
+                masterVolume.onValueChanged.AddListener((float value) => { audioMixer.SetFloat("MasterVolume", Helper.LinearToDecibel(value)); });
+
+            if (musicVolume)
+				musicVolume.onValueChanged.AddListener((float value) => { audioMixer.SetFloat("MusicVolume", Helper.LinearToDecibel(value)); });
+        }
+    }
 
 	void Close()
 	{
@@ -74,7 +88,17 @@ public class OptionsUI : MonoBehaviour
 
 		if(firstSelected)
 			StartCoroutine(SwitchSelected(firstSelected));
-	}
+
+		if (masterVolume && PlayerPrefs.HasKey("MasterVolume"))
+        {
+            masterVolume.value = PlayerPrefs.GetFloat("MasterVolume");
+        }
+
+        if (musicVolume && PlayerPrefs.HasKey("MusicVolume"))
+        {
+            musicVolume.value = PlayerPrefs.GetFloat("MusicVolume");
+        }
+    }
 
 	void OnDisable()
 	{
@@ -83,7 +107,13 @@ public class OptionsUI : MonoBehaviour
 
 		if (Pause.Instance)
 			Pause.Instance.OnUnpause -= Close;
-	}
+
+		if(masterVolume)
+            PlayerPrefs.SetFloat("MasterVolume", masterVolume.value);
+
+		if (musicVolume)
+            PlayerPrefs.SetFloat("MusicVolume", musicVolume.value);
+    }
 
 	IEnumerator SwitchSelected(GameObject newObject)
 	{
