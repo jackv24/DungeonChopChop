@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
@@ -9,7 +10,9 @@ public class SoundManager : MonoBehaviour
 
 	private List<AudioSource> sourcePool = new List<AudioSource>();
 
-	[Header("Sound Effects")]
+    public AudioMixer audioMixer;
+
+    [Header("Sound Effects")]
 	[Tooltip("Should be an AudioSource on a child of this GameObject")]
 	public AudioSource templateSource;
 
@@ -67,7 +70,20 @@ public class SoundManager : MonoBehaviour
 			secondaryMusicSource.spatialBlend = primaryMusicSource.spatialBlend;
 			secondaryMusicSource.loop = primaryMusicSource.loop;
 		}
-	}
+
+		if(audioMixer)
+		{
+			if (PlayerPrefs.HasKey("MasterVolume"))
+            {
+                audioMixer.SetFloat("MasterVolume", Helper.LinearToDecibel(PlayerPrefs.GetFloat("MasterVolume")));
+            }
+
+            if (PlayerPrefs.HasKey("MusicVolume"))
+            {
+                audioMixer.SetFloat("MusicVolume", Helper.LinearToDecibel(PlayerPrefs.GetFloat("MusicVolume")));
+            }
+		}
+    }
 
 	public static void FadeMusicByBiome(LevelTile.Biomes biome)
 	{

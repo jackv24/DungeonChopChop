@@ -171,4 +171,16 @@ public static class Helper
             GameObject.Destroy(gameObject.transform.GetChild(i).gameObject);
         }
 	}
+
+    public static float LinearToDecibel(float linear)
+    {
+        float dB;
+
+        if (linear != 0)
+            dB = 20.0f * Mathf.Log10(linear);
+        else
+            dB = -144.0f;
+
+        return dB;
+    }
 }
