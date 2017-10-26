@@ -135,7 +135,7 @@ public class Chest : MonoBehaviour
             else if (chestType == ChestType.Iron)
                 StartCoroutine(ReleaseConsumables());
             else if (chestType == ChestType.Dungeon)
-                StartCoroutine(ReleaseItems());
+                StartCoroutine(ReleaseItems(true));
         }
 			
 
@@ -193,7 +193,7 @@ public class Chest : MonoBehaviour
         }
     }
 
-	IEnumerator ReleaseItems()
+	IEnumerator ReleaseItems(bool setParent = false)
 	{
 		yield return new WaitForSeconds(releaseItemDelay);
 
@@ -222,9 +222,12 @@ public class Chest : MonoBehaviour
 		if (obj)
 		{
 			obj.transform.position = transform.position + Vector3.up;
+            
+            if(setParent)
+                obj.transform.SetParent(transform, true);
 
-			//Throw out of chest
-			Rigidbody body = obj.GetComponent<Rigidbody>();
+            //Throw out of chest
+            Rigidbody body = obj.GetComponent<Rigidbody>();
 			if(body)
 				body.AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
 		}
