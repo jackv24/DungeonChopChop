@@ -160,7 +160,6 @@ public class Health : MonoBehaviour
         renderers.Clear();
         foreach (Renderer ren in transform.GetComponentsInChildren<Renderer>())
         {
-            Debug.Log(ren.GetType().ToString());
             //we don't want the trail renderer
             if (ren is TrailRenderer || ren is ParticleSystemRenderer) {}
                 //no

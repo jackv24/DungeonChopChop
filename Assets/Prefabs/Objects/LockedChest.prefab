@@ -380,8 +380,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0897717, y: 1.8519793, z: 1.6977233}
-  m_Center: {x: 0.028722286, y: 0.9303565, z: -0.018861592}
+  m_Size: {x: 3.0897717, y: 0.922295, z: 1.6977233}
+  m_Center: {x: 0.028722286, y: 0.4655146, z: -0.018861592}
 --- !u!65 &65885047569617206
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -596,8 +596,11 @@ MonoBehaviour:
     maxAmount: 1
   minAmountOfObjects: 2
   maxAmountOfObjects: 5
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 16384
   containingItem: {fileID: 0}
   containingObject: {fileID: 0}
   containingConsumables: []
-  releaseItemDelay: 2
+  releaseItemDelay: 1
   releaseItemForce: 50
