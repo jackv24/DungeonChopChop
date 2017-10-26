@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 1e072b2d6d3e45e4c98b04f1723a107c, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 1, g: 1, b: 1, a: 0.7529412}
   scale: 1
   setLastSibling: 1
   showOnTileEnter: 0
@@ -1645,6 +1645,7 @@ MonoBehaviour:
   dashTime: 0.2
   dashSpeed: 35
   dashCooldown: 0.5
+  autoBlock: 0
   rotationSpeed: 5
   enemyMask:
     serializedVersion: 2
@@ -1655,6 +1656,9 @@ MonoBehaviour:
   flashDuration: 0.2
   whiteVal: 0.3
   amountOfFadeBack: 0.02
+  projectile: {fileID: 0}
+  shootPosition: {fileID: 0}
+  thrust: 0
   moveBackOnHit: 5
   blocking: 0
   speedWhenBurned: 8
@@ -1917,6 +1921,10 @@ MonoBehaviour:
   timeBetweenFlash: 0.1
   amountToFlash: 5
   fadeToColorTime: 5
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!114 &114595307850671700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1951,10 +1959,6 @@ MonoBehaviour:
     type: 2}
   chargeParticle: {fileID: 1534452683028486, guid: cfa1e19dbe78cbe40a7fa3665a001933,
     type: 2}
-  magnitude: 0.1
-  shakeAmount: 1
-  duration: 1
-  pauseTime: 0.1
   playerAttack: {fileID: 0}
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}

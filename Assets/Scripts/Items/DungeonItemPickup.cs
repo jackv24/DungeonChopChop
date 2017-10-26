@@ -7,7 +7,7 @@ public enum DungeonItemType
 {
     Goggles,
     Boots,
-    Sword,
+    Gauntlet,
     Armor
 }
 
@@ -42,6 +42,10 @@ public class DungeonItemPickup : MonoBehaviour
             else if (itemType == DungeonItemType.Armor)
             {
                 ItemsManager.Instance.hasArmourPiece = true;
+            }
+            else if (itemType == DungeonItemType.Armor)
+            {
+                ItemsManager.Instance.hasGauntles = true;
             }
             gameObject.SetActive(false);
         }

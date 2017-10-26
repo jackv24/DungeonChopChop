@@ -45,7 +45,9 @@ public class LevelTile : MonoBehaviour
 
 	private bool layoutReplaced = false;
 
-	public enum Biomes
+    private List<AudioSource> disabledSources = new List<AudioSource>();
+
+    public enum Biomes
     {
         Grass,
         Fire,
@@ -279,6 +281,30 @@ public class LevelTile : MonoBehaviour
 			if (reveal)
 				Reveal();
 		}
+
+		//Only enable audio sources in the tile we're inside
+		if(!inside)
+		{
+			AudioSource[] sources = GetComponentsInChildren<AudioSource>();
+            disabledSources.Clear();
+
+            foreach (AudioSource source in sources)
+            {
+				//Only re-enable the sources that were enabled to begin with (some things might be intentionally disabled)
+                if (source.enabled)
+                {
+                    disabledSources.Add(source);
+                    source.enabled = false;
+                }
+            }
+		}
+		else
+		{
+			foreach(AudioSource source in disabledSources)
+			{
+                source.enabled = true;
+            }
+		}
 	}
 
 	public void Reveal()
@@ -307,8 +333,8 @@ public class LevelTile : MonoBehaviour
 			if (oldTile.OnTileExit != null)
 				oldTile.OnTileExit();
 
-			//Disable rendering of old tile
-			oldTile.ShowTile(false, true);
+            //Disable rendering of old tile
+            oldTile.ShowTile(false, true);
 		}
 
 		///Enter new tile
