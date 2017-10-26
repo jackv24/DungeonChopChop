@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 23646983057087776}
   - component: {fileID: 95045311667030820}
   - component: {fileID: 65499931406242144}
+  - component: {fileID: 114651736299239354}
+  - component: {fileID: 114251268568436944}
   m_Layer: 0
   m_Name: AmethystArmor
   m_TagString: Untagged
@@ -111,3 +113,29 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114251268568436944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403463720463776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b005d6bf0bf148d47b99c08d5d4ca8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPickUp: 1
+--- !u!114 &114651736299239354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403463720463776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309151e0638a5064b820311617bca085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconRenderer: {fileID: 0}
+  representingItem: {fileID: 11400000, guid: 863cbb5c433307d4ba7aa527e37a912e, type: 2}
+  pickupDelay: 1

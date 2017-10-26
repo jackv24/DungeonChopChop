@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 23228236490300170}
   - component: {fileID: 95146628108486404}
   - component: {fileID: 65942227223106336}
+  - component: {fileID: 114049666137959098}
+  - component: {fileID: 114265548833115176}
   m_Layer: 0
   m_Name: TunicRed
   m_TagString: Untagged
@@ -111,3 +113,29 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114049666137959098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1280136045052478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309151e0638a5064b820311617bca085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconRenderer: {fileID: 0}
+  representingItem: {fileID: 11400000, guid: b52f25981135a8d4ca8d5c64ea3fb36b, type: 2}
+  pickupDelay: 1
+--- !u!114 &114265548833115176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1280136045052478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b005d6bf0bf148d47b99c08d5d4ca8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPickUp: 1

@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 23111011764811740}
   - component: {fileID: 95099718431277998}
   - component: {fileID: 65904953181493218}
+  - component: {fileID: 114213676981892502}
+  - component: {fileID: 114090105810602016}
   m_Layer: 0
   m_Name: StuddedTunicRed
   m_TagString: Untagged
@@ -111,3 +113,29 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114090105810602016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1806127873222632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b005d6bf0bf148d47b99c08d5d4ca8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPickUp: 1
+--- !u!114 &114213676981892502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1806127873222632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309151e0638a5064b820311617bca085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconRenderer: {fileID: 0}
+  representingItem: {fileID: 11400000, guid: 9b0767f09317edf4d81a3e73e1f1c8e0, type: 2}
+  pickupDelay: 1

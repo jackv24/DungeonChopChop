@@ -23,8 +23,10 @@ GameObject:
   - component: {fileID: 23446593017437526}
   - component: {fileID: 95028598660827608}
   - component: {fileID: 65486846260747296}
+  - component: {fileID: 114179741024660552}
+  - component: {fileID: 114774983369196716}
   m_Layer: 0
-  m_Name: TunicFlower
+  m_Name: TunicPurple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,3 +113,29 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114179741024660552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536109143731538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309151e0638a5064b820311617bca085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconRenderer: {fileID: 0}
+  representingItem: {fileID: 11400000, guid: ff739d6989fbe7a428ee6f9d96753306, type: 2}
+  pickupDelay: 1
+--- !u!114 &114774983369196716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536109143731538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b005d6bf0bf148d47b99c08d5d4ca8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPickUp: 1
