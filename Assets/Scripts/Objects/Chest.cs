@@ -15,7 +15,10 @@ public enum ChestType
 
 public class Chest : MonoBehaviour
 {
-	[HideInInspector]
+    public delegate void NormalEvent();
+    public event NormalEvent OnChestOpen;
+
+    [HideInInspector]
     public bool opened = false;
     public bool requireKeys = false;
 
@@ -30,6 +33,7 @@ public class Chest : MonoBehaviour
     public Helper.ProbabilityGameObject[] possibleObjects;
     public int minAmountOfObjects = 2;
     public int maxAmountOfObjects = 5;
+    public LayerMask playerMask;
 
 
     [HideInInspector]
@@ -55,7 +59,6 @@ public class Chest : MonoBehaviour
         {
             if (randomise)
             {
-                containingItem = Helper.GetRandomItemByProbability(possibleItems);
                 containingObject = Helper.GetRandomGameObjectByProbability(possibleObjects);
             }
         }
@@ -67,7 +70,6 @@ public class Chest : MonoBehaviour
                 for (int i = 0; i < random; i++)
                 {
                     GameObject obj = Helper.GetRandomGameObjectByProbability(possibleConsumables);
-                    Debug.Log(obj.name);
                     containingConsumables.Add(obj);
                 }
             }
@@ -113,6 +115,9 @@ public class Chest : MonoBehaviour
 
 	void Open()
 	{
+        if (OnChestOpen != null)
+            OnChestOpen();
+
         //opens chest and plays animation
 		animator.SetTrigger("Open");
 		opened = true;
@@ -129,6 +134,8 @@ public class Chest : MonoBehaviour
             }
             else if (chestType == ChestType.Iron)
                 StartCoroutine(ReleaseConsumables());
+            else if (chestType == ChestType.Dungeon)
+                StartCoroutine(ReleaseItems());
         }
 			
 
@@ -150,6 +157,23 @@ public class Chest : MonoBehaviour
 
         //throw out of chest
         obj.transform.position = transform.position + Vector3.up;
+
+        if (obj.GetComponent<SwordStats>())
+        {
+            obj.AddComponent<DialogueSpeaker>();
+            obj.AddComponent<ShowSwordStats>();
+
+            obj.GetComponent<DialogueSpeaker>().playerLayer = playerMask;
+            obj.GetComponent<DialogueSpeaker>().dialogueBoxPrefab = Resources.Load<GameObject>("PickupDialogueCanvas 1");
+        }
+        else if (obj.GetComponent<ShieldStats>())
+        {
+            obj.AddComponent<DialogueSpeaker>();
+            obj.AddComponent<ShowShieldStats>();
+
+            obj.GetComponent<DialogueSpeaker>().playerLayer = playerMask;
+            obj.GetComponent<DialogueSpeaker>().dialogueBoxPrefab = Resources.Load<GameObject>("PickupDialogueCanvas 1");
+        }
 
         GetComponent<Rigidbody>().AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
     }
@@ -191,7 +215,7 @@ public class Chest : MonoBehaviour
 
 			if(item.itemPrefab)
 			{
-				obj = ObjectPooler.GetPooledObject(item.itemPrefab);
+				obj = ObjectPooler.GetPooledObject(item.itemPrefab);                     
 			}
 		}
 
@@ -204,5 +228,7 @@ public class Chest : MonoBehaviour
 			if(body)
 				body.AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
 		}
+
+
 	}
 }

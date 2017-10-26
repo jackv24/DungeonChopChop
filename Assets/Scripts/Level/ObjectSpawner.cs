@@ -10,7 +10,12 @@ public class ObjectSpawner : MonoBehaviour
 
 	public bool spawnAfterMerging = false;
 
-	void Start()
+    [Space()]
+    public bool respawnWithMessage = false;
+	public GameObject respawnPrefab;
+    public MonoBehaviour enableBehaviour;
+
+    void Start()
 	{
 		if (transform.childCount <= 0 || Application.isPlaying)
 		{
@@ -40,18 +45,40 @@ public class ObjectSpawner : MonoBehaviour
 
 	public void Replace()
 	{
-		oldPrefab = prefab;
+        ReplaceWith(prefab);
+
+		if (respawnWithMessage && enableBehaviour)
+            enableBehaviour.enabled = false;
+    }
+
+	public void ReplaceMessage()
+	{
+		if(respawnWithMessage)
+		{
+            ReplaceWith(respawnPrefab);
+
+			if(enableBehaviour)
+                enableBehaviour.enabled = true;
+        }
+	}
+
+	void ReplaceWith(GameObject p)
+	{
+		oldPrefab = p;
 
 		//Remove children
 		int childAmount = transform.childCount;
-		for (int i = 0; i < childAmount; i++)
+		for (int i = childAmount - 1; i >= 0; i--)
 		{
-			DestroyImmediate(transform.GetChild(0).gameObject);
+			if(Application.isPlaying)
+				Destroy(transform.GetChild(i).gameObject);
+			else
+				DestroyImmediate(transform.GetChild(i).gameObject);
 		}
 
-		if (prefab)
+		if (p)
 		{
-			GameObject obj = Instantiate(prefab, transform);
+			GameObject obj = Instantiate(p, transform);
 			obj.transform.localPosition = Vector3.zero;
 			obj.transform.localRotation = Quaternion.identity;
 
