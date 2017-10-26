@@ -57,9 +57,16 @@ public class PlayerMove : MonoBehaviour
     private float ogTickDamageInFire;
     private float ogTimeBetweenTickInFire;
 
+    private float targetTimeBetweenTickInfire;
+    private float targetTickDamageInFire;
+
 	// Use this for initialization
 	void Start()
 	{
+        targetTimeBetweenTickInfire = timeBetweenBiomeBurn / timeBetweenTickDivider;
+        targetTickDamageInFire = damageInFireBiome * damageInFireMultiplier;
+
+        //set these values to the original values
         ogTickDamageInFire = damageInFireBiome;
         ogTimeBetweenTickInFire = timeBetweenBiomeBurn;
         
@@ -316,8 +323,8 @@ public class PlayerMove : MonoBehaviour
                     //sets the in lava puddle vars
                     if (hit.collider.tag == "Lava")
                     {
-                        damageInFireBiome *= damageInFireMultiplier;
-                        timeBetweenBiomeBurn /= timeBetweenTickDivider;
+                        damageInFireBiome = targetTickDamageInFire;
+                        timeBetweenBiomeBurn = targetTimeBetweenTickInfire;
                     }
                     else
                     {

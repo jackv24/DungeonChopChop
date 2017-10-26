@@ -12,8 +12,8 @@ public class PlayerAttack : MonoBehaviour
     [Header("Rapid Slash Vars")]
     public float rapidDmgMultiplier = 1;
     public int slashAmount = 5;
-    public float rapidSlashCooldown;
     [Tooltip("The amount added to the rapid slash cooldown (60 times a second)")]
+    public float rapidSlashCooldown;
     public float rapidSlashIncrease = .04f;
     public float multiSpeedMultiplier = .7f;
 
@@ -212,6 +212,8 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        timeToCharge = playerInformation.GetCharmFloat("spinChargeTime");
+
         if (spinCounter < (timeToCharge * 60))
         {
             spinChargeReady = false;
