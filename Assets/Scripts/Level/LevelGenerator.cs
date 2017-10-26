@@ -17,6 +17,7 @@ public class LevelGenerator : MonoBehaviour
     public event NormalEvent OnGenerationFinished;
     public event NormalEvent OnTileEnter;
     public event NormalEvent OnTileClear;
+    public event NormalEvent OnEnemiesSpawned;
 
     public bool IsFinished { get { return isFinished; } }
     private bool isFinished = false;
@@ -702,6 +703,12 @@ public class LevelGenerator : MonoBehaviour
 		if (OnTileClear != null)
 			OnTileClear();
 	}
+
+	public void EnemiesSpawned()
+	{
+		if(OnEnemiesSpawned != null)
+            OnEnemiesSpawned();
+    }
 
 	public void RegenerateWithProfile(LevelGeneratorProfile p, int seed)
 	{
