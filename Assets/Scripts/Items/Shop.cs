@@ -83,10 +83,7 @@ public class Shop : MonoBehaviour
                         }
                         else if (item.itemPrefab.GetComponent<Orb>())
                         {
-                            if (item.itemPrefab.GetComponent<Orb>().type == OrbType.Cure)
-                            {
-                                item.itemPrefab.GetComponent<Orb>().PickUpOrb(playerInfo);
-                            }
+                            item.itemPrefab.GetComponent<Orb>().PickUpOrb(playerInfo);
                         }
                         else if (item.itemPrefab.GetComponent<KeyScript>())
                         {
@@ -260,8 +257,6 @@ public class Shop : MonoBehaviour
 
                     Color effectColor = equalColour;
 
-                    var1String = "";
-
                     if (swordStats.weaponEffect == WeaponEffect.Burn)
                     {
                         var1String = "Burns";
@@ -338,6 +333,9 @@ public class Shop : MonoBehaviour
                     Color newCol = moreColour;
 
                     BaseItem baseItem = item.representingItem;
+
+                    var1String = "";
+                    descriptionText = "";
                    
                     if (baseItem is InventoryItem)
                     {
@@ -347,7 +345,7 @@ public class Shop : MonoBehaviour
                         {
                             foreach (InventoryItem i in player.currentItems)
                             {
-                                if (HasTypeInInventory(player, invItem.armourType))
+                                if (HasTypeInInventory(i.armourType, invItem.armourType))
                                 {
                                     for (int j = 0; j < invItem.items.Length; j++)
                                     {
@@ -375,6 +373,7 @@ public class Shop : MonoBehaviour
                                         );
                                     }
                                 }
+                                break;
                             }
                         }
                         else
@@ -392,26 +391,22 @@ public class Shop : MonoBehaviour
                             }
                         }
                     }
-
-                    var1String = "";
                 }
             }
         }
 
         //Update speaker to display one line
         speaker.lines = new string[] { string.Format(dialogueText, sellingItem.displayName, sellingItem.cost, descriptionText).Trim() };
+
+        descriptionText = "";
     }
 
-    bool HasTypeInInventory(PlayerInformation player, ArmourType type)
+    bool HasTypeInInventory(ArmourType type1, ArmourType type2)
     {
-        foreach (InventoryItem item in player.currentItems)
+        if (type1 == type2)
         {
-            if (item.armourType == type)
-            {
-                return true;
-            }
+            return true;
         }
-
         return false;
     }
 
