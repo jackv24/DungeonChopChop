@@ -15,7 +15,10 @@ public enum ChestType
 
 public class Chest : MonoBehaviour
 {
-	[HideInInspector]
+    public delegate void NormalEvent();
+    public event NormalEvent OnChestOpen;
+
+    [HideInInspector]
     public bool opened = false;
     public bool requireKeys = false;
 
@@ -113,6 +116,9 @@ public class Chest : MonoBehaviour
 
 	void Open()
 	{
+        if (OnChestOpen != null)
+            OnChestOpen();
+
         //opens chest and plays animation
 		animator.SetTrigger("Open");
 		opened = true;
