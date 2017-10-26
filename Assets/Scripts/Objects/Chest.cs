@@ -56,6 +56,7 @@ public class Chest : MonoBehaviour
         {
             if (randomise)
             {
+                containingItem = Helper.GetRandomItemByProbability(possibleItems);
                 containingObject = Helper.GetRandomGameObjectByProbability(possibleObjects);
             }
         }
@@ -164,6 +165,14 @@ public class Chest : MonoBehaviour
         {
             obj.AddComponent<DialogueSpeaker>();
             obj.AddComponent<ShowShieldStats>();
+
+            obj.GetComponent<DialogueSpeaker>().playerLayer = playerMask;
+            obj.GetComponent<DialogueSpeaker>().dialogueBoxPrefab = Resources.Load<GameObject>("PickupDialogueCanvas 1");
+        }
+        else if (obj.GetComponent<ArmourPickup>())
+        {
+            obj.AddComponent<DialogueSpeaker>();
+            obj.AddComponent<ShowArmourStats>();
 
             obj.GetComponent<DialogueSpeaker>().playerLayer = playerMask;
             obj.GetComponent<DialogueSpeaker>().dialogueBoxPrefab = Resources.Load<GameObject>("PickupDialogueCanvas 1");

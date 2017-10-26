@@ -36,10 +36,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4350144929049676}
-  - component: {fileID: 65631837384974850}
   - component: {fileID: 65477393951073422}
   - component: {fileID: 114204552900908050}
-  - component: {fileID: 54234136416032906}
+  - component: {fileID: 114596537836511480}
   m_Layer: 0
   m_Name: snowBoot_mesh
   m_TagString: Untagged
@@ -113,21 +112,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358769919227964}
   m_Mesh: {fileID: 4300000, guid: 0ee4ecb76b1dd494baf3a83ee2afe859, type: 3}
---- !u!54 &54234136416032906
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1590836285822614}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!65 &65477393951073422
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -138,20 +122,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.12587795, y: 0.14293414, z: 0.20385554}
+  m_Size: {x: 0.42, y: 0.55, z: 0.44}
   m_Center: {x: 0.0010569543, y: 0.05332242, z: -0.040617865}
---- !u!65 &65631837384974850
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1590836285822614}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1269823, z: 0.15063486}
-  m_Center: {x: 0, y: 0.05438322, z: -0.025317423}
 --- !u!114 &114204552900908050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,3 +138,15 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: 65e08c15d00443f49a5cf4fe4d79a631, type: 2}
   pickupDelay: 1
+--- !u!114 &114596537836511480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1590836285822614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b005d6bf0bf148d47b99c08d5d4ca8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPickUp: 1

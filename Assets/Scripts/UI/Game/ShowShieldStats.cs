@@ -40,6 +40,7 @@ public class ShowShieldStats : MonoBehaviour {
                 dialogueSpeaker.Close();
                 enabled = false;
                 dialogueSpeaker.enabled = false;
+                Destroy(GetComponent<Collider>());
             }
         }
     }
@@ -56,24 +57,35 @@ public class ShowShieldStats : MonoBehaviour {
 
     void GetStatDifferences(PlayerInformation playerInfo)
     {
-        resistanceMultiplier = thisShieldStats.blockingResistance - playerInfo.GetComponent<PlayerAttack>().shield.blockingResistance;
-        SetTextColor(resistanceMultiplier, ref resistanceColor);
-        speedDamping = thisShieldStats.speedDamping - playerInfo.GetComponent<PlayerAttack>().shield.speedDamping;
-        SetTextColor(speedDamping, ref speedDampingColor);
+        if (playerInfo.playerAttack.shield)
+        {
+            resistanceMultiplier = thisShieldStats.blockingResistance - playerInfo.GetComponent<PlayerAttack>().shield.blockingResistance;
+            SetTextColor(resistanceMultiplier, ref resistanceColor);
+            speedDamping = thisShieldStats.speedDamping - playerInfo.GetComponent<PlayerAttack>().shield.speedDamping;
+            SetTextColor(speedDamping, ref speedDampingColor);
 
-        if (resistanceMultiplier > 0)
-            resistanceText = "+" + resistanceMultiplier;
-        else if (resistanceMultiplier == 0)
-            resistanceText = "-";
-        else
-            resistanceText = "" + resistanceMultiplier;
+            if (resistanceMultiplier > 0)
+                resistanceText = "+" + resistanceMultiplier;
+            else if (resistanceMultiplier == 0)
+                resistanceText = "-";
+            else
+                resistanceText = "" + resistanceMultiplier;
         
-        if (speedDamping > 0)
-            speedDampingText = "+" + speedDamping;
-        else if (speedDamping == 0)
-            speedDampingText = "-";
+            if (speedDamping > 0)
+                speedDampingText = "+" + speedDamping;
+            else if (speedDamping == 0)
+                speedDampingText = "-";
+            else
+                speedDampingText = "" + speedDamping;
+        }
         else
-            speedDampingText = "" + speedDamping;
+        {
+            resistanceText = "+" + thisShieldStats.blockingResistance;
+            resistanceColor = Color.green;
+
+            speedDampingText = "+" + thisShieldStats.speedDamping;
+            speedDampingColor = Color.green;
+        }
     }
 
     void SetDialgeText(PlayerInformation playerInfo, bool b)

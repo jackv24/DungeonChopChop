@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4368655479460168}
   - component: {fileID: 33924643991201040}
   - component: {fileID: 23167886773081542}
-  - component: {fileID: 65131321041858188}
   - component: {fileID: 65823452953432722}
   - component: {fileID: 114196914619724354}
+  - component: {fileID: 114525026973907468}
   m_Layer: 0
   m_Name: royalGuardArmour(PLATE)_mesh
   m_TagString: Untagged
@@ -83,18 +83,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721502516061330}
   m_Mesh: {fileID: 4300000, guid: b1874910abb552c4b9d3a724fd4afae2, type: 3}
---- !u!65 &65131321041858188
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1721502516061330}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.29367873, y: 0.49079925, z: 0.24932429}
-  m_Center: {x: 0.00023370981, y: 0.12609664, z: 0.005163312}
 --- !u!65 &65823452953432722
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -105,8 +93,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.33488986, y: 0.5180535, z: 0.3371578}
-  m_Center: {x: 0.005856678, y: 0.12783012, z: 0.03037364}
+  m_Size: {x: 0.76042336, y: 0.8666748, z: 0.5459098}
+  m_Center: {x: 0.049781144, y: 0.12623289, z: 0.014357351}
 --- !u!114 &114196914619724354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,3 +109,15 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: df42646e44fe8694fb3598f9f157139d, type: 2}
   pickupDelay: 1
+--- !u!114 &114525026973907468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1721502516061330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b005d6bf0bf148d47b99c08d5d4ca8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPickUp: 1
