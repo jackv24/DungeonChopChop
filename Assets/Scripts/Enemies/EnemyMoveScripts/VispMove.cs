@@ -17,6 +17,8 @@ public class VispMove : EnemyMove
     public float waitTillLeep = 1;
     [Tooltip("The speed when leeping")]
     public float leepSpeed = 5;
+    [Tooltip("The time enemy leeps for")]
+    public float leepTime;
     [Space()]
     public float minTimeBetweenLeep = 2;
     public float maxTimeBetweenLeep = 3;
@@ -125,10 +127,10 @@ public class VispMove : EnemyMove
         //stops the agent
         agent.speed = .5f;
 
-        yield return new WaitForSeconds(waitTillLeep);
-
         //set leap target
         leepTarget = GetClosestPlayer().position;
+
+        yield return new WaitForSeconds(waitTillLeep);
 
         //the waiting has finished, now leep
         moveBack = false;
@@ -140,7 +142,7 @@ public class VispMove : EnemyMove
         //speed the agent up
         agent.speed = originalSpeed * leepSpeed;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(leepTime);
 
         //leep is now over, reset the speed
         agent.speed = originalSpeed;
