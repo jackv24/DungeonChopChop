@@ -7,6 +7,7 @@ public class HealingPlatform : MonoBehaviour {
     [Tooltip("Only have Player selected")]
     public LayerMask mask;
     public float healthIncreaseAmount = .1f;
+    public int cureAmountIncrease = 5;
     public float timeBetweenHealthIncrease = 1;
     public float healingRadius = 1;
     public AmountOfParticleTypes[] particles;
@@ -28,8 +29,14 @@ public class HealingPlatform : MonoBehaviour {
                     {
                         if (counter > timeBetweenHealthIncrease * 60)
                         {
-                            pl.GetComponent<Health>().health += healthIncreaseAmount;
-                            pl.GetComponent<Health>().HealthChanged();
+                            Health playerHealth = pl.GetComponent<Health>();
+                            PlayerInformation playerInfo = pl.GetComponent<PlayerInformation>();
+
+                            playerHealth.health += healthIncreaseAmount;
+                            playerHealth.HealthChanged();
+
+                            playerInfo.currentCureAmount += cureAmountIncrease;
+
                             SpawnEffects.EffectOnHit(particles, transform.position);
                             SoundManager.PlaySound(sound, transform.position);
                             counter = 0;
