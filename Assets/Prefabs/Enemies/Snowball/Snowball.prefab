@@ -44,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1055673473369210}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -367.46924, y: 62.051098, z: -143.18059}
+  m_LocalPosition: {x: -78.450615, y: 81.905045, z: 96.07087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,7 +63,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1f0b3721ad4b22044870b0474a41f18d, type: 2}
+  - {fileID: 2100000, guid: f3a22da34a89b2b4d9e700ba7f9488d7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   health: 2
   weight: 0.1
   IsEnemy: 1
+  isProp: 0
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
@@ -209,11 +210,19 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-  hitSounds: []
+  hitSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   hitColor: {r: 0.5120567, g: 0.7258226, b: 0.9044118, a: 0.528}
   timeBetweenFlash: 1
   amountToFlash: 1
   fadeToColorTime: 5
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
 --- !u!114 &114312594886982162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OverallRadiusFollow: 20
   OtherwiseRoam: 1
+  timeBetweenRoam: 3
   runAwayAfterAttackTime: 1
   layerMask:
     serializedVersion: 2
@@ -248,18 +258,25 @@ MonoBehaviour:
   drops:
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
     probability: 0.9
+    maxAmount: 0
   - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
     probability: 0.3
+    maxAmount: 0
   - prefab: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
     probability: 0.2
+    maxAmount: 0
   - prefab: {fileID: 1616226106310662, guid: 0c71fc111242199438e231f8efa50564, type: 2}
     probability: 0.1
+    maxAmount: 0
   - prefab: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
     probability: 0.05
+    maxAmount: 0
   - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
     probability: 0.1
+    maxAmount: 0
   - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
     probability: 0.1
+    maxAmount: 0
   minAmountOfDrops: 0
   maxAmountOfDrops: 3
 --- !u!114 &114606482890160050
@@ -280,6 +297,11 @@ MonoBehaviour:
   attackStrength: 2
   damageOnTouch: 3
   knockbackStrength: 2
+  shootSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   projAmount: 25
   timeTillInterval: 1
   minInterval: 1
@@ -296,14 +318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathType: 0
-  amountToSplit: 4
-  splitEnemy: {fileID: 0}
-  explodeRadius: 10
-  statusType: 0
-  damagePerTick: 0.5
-  timeBetweenTick: 1
-  duration: 5
-  damageOnExplode: 2
   deathParticles:
   - particleType: 1
     particles:
@@ -404,7 +418,24 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-  deathSounds: []
+  deathSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  deathShake:
+    magnitude: 0.1
+    shakeAmount: 0.1
+    duration: 1
+  amountToSplit: 4
+  splitEnemy: {fileID: 0}
+  explodeRadius: 10
+  statusType: 0
+  damagePerTick: 0.5
+  timeBetweenTick: 1
+  duration: 5
+  damageOnExplode: 2
+  knockbackOnExplode: 5
 --- !u!135 &135660657123508444
 SphereCollider:
   m_ObjectHideFlags: 1
