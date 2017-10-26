@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4871862564633652}
   - component: {fileID: 33048825814658754}
   - component: {fileID: 23967619805238574}
-  - component: {fileID: 65369465304271344}
   - component: {fileID: 65587359549499204}
   - component: {fileID: 114413030132396772}
+  - component: {fileID: 114254999493613438}
   m_Layer: 0
   m_Name: ironArmour_mesh
   m_TagString: Untagged
@@ -83,18 +83,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1026669912329516}
   m_Mesh: {fileID: 4300000, guid: 53d9acedd1fc44b4c97b6a5dc290af1e, type: 3}
---- !u!65 &65369465304271344
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1026669912329516}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.28059727, y: 0.48969918, z: 0.24932429}
-  m_Center: {x: -0.004027389, y: 0.15559989, z: 0.0032751597}
 --- !u!65 &65587359549499204
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -105,8 +93,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.33488986, y: 0.5180535, z: 0.3371578}
-  m_Center: {x: 0.005856678, y: 0.12783012, z: 0.03037364}
+  m_Size: {x: 0.76042336, y: 0.8666748, z: 0.5459098}
+  m_Center: {x: 0.049781144, y: 0.12623289, z: 0.014357351}
+--- !u!114 &114254999493613438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1026669912329516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b005d6bf0bf148d47b99c08d5d4ca8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPickUp: 1
 --- !u!114 &114413030132396772
 MonoBehaviour:
   m_ObjectHideFlags: 1

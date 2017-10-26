@@ -15,7 +15,10 @@ public enum ChestType
 
 public class Chest : MonoBehaviour
 {
-	[HideInInspector]
+    public delegate void NormalEvent();
+    public event NormalEvent OnChestOpen;
+
+    [HideInInspector]
     public bool opened = false;
     public bool requireKeys = false;
 
@@ -56,6 +59,7 @@ public class Chest : MonoBehaviour
         {
             if (randomise)
             {
+                containingItem = Helper.GetRandomItemByProbability(possibleItems);
                 containingObject = Helper.GetRandomGameObjectByProbability(possibleObjects);
             }
         }
@@ -112,6 +116,9 @@ public class Chest : MonoBehaviour
 
 	void Open()
 	{
+        if (OnChestOpen != null)
+            OnChestOpen();
+
         //opens chest and plays animation
 		animator.SetTrigger("Open");
 		opened = true;
@@ -129,7 +136,7 @@ public class Chest : MonoBehaviour
             else if (chestType == ChestType.Iron)
                 StartCoroutine(ReleaseConsumables());
             else if (chestType == ChestType.Dungeon)
-                StartCoroutine(ReleaseItems());
+                StartCoroutine(ReleaseItems(true));
         }
 			
 
@@ -168,6 +175,14 @@ public class Chest : MonoBehaviour
             obj.GetComponent<DialogueSpeaker>().playerLayer = playerMask;
             obj.GetComponent<DialogueSpeaker>().dialogueBoxPrefab = Resources.Load<GameObject>("PickupDialogueCanvas 1");
         }
+        else if (obj.GetComponent<ArmourPickup>())
+        {
+            obj.AddComponent<DialogueSpeaker>();
+            obj.AddComponent<ShowArmourStats>();
+
+            obj.GetComponent<DialogueSpeaker>().playerLayer = playerMask;
+            obj.GetComponent<DialogueSpeaker>().dialogueBoxPrefab = Resources.Load<GameObject>("PickupDialogueCanvas 1");
+        }
 
         GetComponent<Rigidbody>().AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
     }
@@ -187,7 +202,7 @@ public class Chest : MonoBehaviour
         }
     }
 
-	IEnumerator ReleaseItems()
+	IEnumerator ReleaseItems(bool setParent = false)
 	{
 		yield return new WaitForSeconds(releaseItemDelay);
 
@@ -216,9 +231,12 @@ public class Chest : MonoBehaviour
 		if (obj)
 		{
 			obj.transform.position = transform.position + Vector3.up;
+            
+            if(setParent)
+                obj.transform.SetParent(transform, true);
 
-			//Throw out of chest
-			Rigidbody body = obj.GetComponent<Rigidbody>();
+            //Throw out of chest
+            Rigidbody body = obj.GetComponent<Rigidbody>();
 			if(body)
 				body.AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
 		}
