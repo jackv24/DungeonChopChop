@@ -88,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833604339336476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.7385907, y: -0.9164978, z: -1.0727258}
+  m_LocalPosition: {x: 9.558102, y: 0.49561596, z: -7.2637396}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4079072136471460}
@@ -223,8 +223,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0897717, y: 1.8519793, z: 1.2921033}
-  m_Center: {x: 0.028722286, y: 0.9303565, z: 0.49277678}
+  m_Size: {x: 3.0897717, y: 0.85423553, z: 1.2921034}
+  m_Center: {x: 0.028722286, y: 0.43148476, z: 0.49277678}
 --- !u!95 &95697300044941388
 Animator:
   serializedVersion: 3
@@ -328,7 +328,7 @@ MonoBehaviour:
     probability: 1
   - item: {fileID: 11400000, guid: 577e29feb67fc0741887a6385a92e00c, type: 2}
     probability: 1
-  possibleObjects:
+  possibleConsumables:
   - prefab: {fileID: 1182942488517538, guid: 11d61615cdf965344b3a9297d4095326, type: 2}
     probability: 1
     maxAmount: 5
@@ -347,12 +347,17 @@ MonoBehaviour:
   - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
     probability: 0.5
     maxAmount: 1
+  possibleObjects: []
   minAmountOfObjects: 2
-  maxAmountOfObjects: 5
+  maxAmountOfObjects: 6
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 16384
   containingItem: {fileID: 0}
-  containingObjects: []
-  releaseItemDelay: 2
-  releaseItemForce: 10
+  containingObject: {fileID: 0}
+  containingConsumables: []
+  releaseItemDelay: 1
+  releaseItemForce: 0
 --- !u!114 &114586833487454138
 MonoBehaviour:
   m_ObjectHideFlags: 1

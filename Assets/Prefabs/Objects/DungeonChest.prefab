@@ -422,8 +422,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0897717, y: 1.8519793, z: 1.5703775}
-  m_Center: {x: 0.028722286, y: 0.9303565, z: -0.105188414}
+  m_Size: {x: 3.0897717, y: 0.89427507, z: 1.5703775}
+  m_Center: {x: 0.028722286, y: 0.4515044, z: -0.105188414}
 --- !u!95 &95918774343011582
 Animator:
   serializedVersion: 3
@@ -536,10 +536,15 @@ MonoBehaviour:
   keyType: 1
   chestType: 2
   possibleItems: []
+  possibleConsumables: []
   possibleObjects: []
   minAmountOfObjects: 2
   maxAmountOfObjects: 5
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 16384
   containingItem: {fileID: 0}
-  containingObjects: []
+  containingObject: {fileID: 0}
+  containingConsumables: []
   releaseItemDelay: 1.5
   releaseItemForce: 10
