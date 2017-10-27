@@ -21,7 +21,7 @@ public class DungeonTile : MonoBehaviour
 			//Make sure this dungeon tile wont be replaced with a special tile
             SpecialTile special = obj.GetComponentInParent<SpecialTile>();
 			if(special)
-                Destroy(special);
+                DestroyImmediate(special);
 
             return obj;
 		}
