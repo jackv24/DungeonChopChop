@@ -227,7 +227,8 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 			{
 				if(!hasPlaced[i])
 				{
-                    //levelGenerator.profile.succeeded = false;
+					//If not every tile was placed then we fail
+                    levelGenerator.profile.succeeded = false;
 
                     Debug.LogWarning("Level Generator failed to place a " + ((SpecialTile.SpecialType)i).ToString() + " special tile for biome " + biome.ToString());
                 }
