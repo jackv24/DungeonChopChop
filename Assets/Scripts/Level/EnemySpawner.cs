@@ -119,8 +119,6 @@ public class EnemySpawner : MonoBehaviour
 		if(waitForSpawnMessage && !receivedMessage)
             return;
 
-        Debug.Log("Spawned");
-
         shouldSpawn = true;
 
 		if (OnEnemiesSpawned != null)
