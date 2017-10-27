@@ -194,7 +194,7 @@ public class EnemySpawner : MonoBehaviour
 		}
 
 		//After delay, actually spawn the enemies
-		if (shouldSpawn)
+		if (shouldSpawn && currentProfile != null)
 		{
 			//Randomise enemy positions if desired
 			if (currentProfile.randomised)

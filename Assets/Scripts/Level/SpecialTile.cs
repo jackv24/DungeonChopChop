@@ -18,6 +18,8 @@ public class SpecialTile : MonoBehaviour
 		public GameObject icePrefab;
 		public GameObject firePrefab;
 		public GameObject desertPrefab;
+        [Space()]
+        public bool keepRotation = false;
     }
 
 	public ReplaceBiome[] replaceTiles = new ReplaceBiome[System.Enum.GetNames(typeof(SpecialType)).Length];
@@ -57,7 +59,14 @@ public class SpecialTile : MonoBehaviour
             {
                 GameObject obj = (GameObject)Instantiate(replaceTile, tile.currentGraphic.transform.parent);
                 obj.transform.localPosition = Vector3.zero;
-                obj.transform.localRotation = Quaternion.identity;
+				obj.transform.localRotation = Quaternion.identity;
+
+                if(replace.keepRotation)
+                {
+                    float angle = obj.transform.eulerAngles.y - replaceTile.transform.eulerAngles.y;
+
+                    obj.transform.RotateAround(tile.tileOrigin.position, Vector3.up, angle);
+                }
 
                 //Remove this tile graphic
                 Destroy(tile.currentGraphic);
