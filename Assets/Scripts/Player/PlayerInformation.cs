@@ -118,6 +118,9 @@ public class PlayerInformation : MonoBehaviour
 
         if (currentCureAmount < 0)
             currentCureAmount = 0;
+
+        if (currentCureAmount > maxCureAmount)
+            currentCureAmount = maxCureAmount;
 			
         MagnetizeItems();
         PullEnemies();
