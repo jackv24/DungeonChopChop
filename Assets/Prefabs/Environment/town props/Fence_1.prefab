@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114423620427946120}
   - component: {fileID: 54352440247465308}
   - component: {fileID: 114594485938598620}
+  - component: {fileID: 114247233488692142}
   m_Layer: 17
   m_Name: Fence_1
   m_TagString: Untagged
@@ -112,6 +113,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.262753, y: 1.3999999, z: 0.25402296}
   m_Center: {x: -0.0055556893, y: 0.6999999, z: -0.0000003799796}
+--- !u!114 &114247233488692142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712264123420886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9730be639f682d4da59408dbd269d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spreadRadius: 1.5
+  burnDelayTime: 1
+  propLayer:
+    serializedVersion: 2
+    m_Bits: 131072
 --- !u!114 &114395678551047208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -395,7 +412,7 @@ MonoBehaviour:
   isSandy: 0
   isDead: 0
   poisonColor: {r: 0, g: 0, b: 0, a: 0}
-  burnColor: {r: 0.30882353, g: 0.19757186, b: 0.05676903, a: 1}
+  burnColor: {r: 0.44117647, g: 0.34005487, b: 0.07461072, a: 1}
   slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
   frozenColor: {r: 0, g: 0, b: 0, a: 0}
   sandyColor: {r: 0, g: 0, b: 0, a: 0}
@@ -408,7 +425,7 @@ MonoBehaviour:
   hitColor: {r: 1, g: 1, b: 1, a: 1}
   timeBetweenFlash: 0.1
   amountToFlash: 5
-  fadeToColorTime: 5
+  fadeTime: 5
   hitShake:
     magnitude: 0.1
     shakeAmount: 0.5

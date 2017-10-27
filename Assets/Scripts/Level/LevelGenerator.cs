@@ -727,8 +727,9 @@ public class LevelGenerator : MonoBehaviour
         isFinished = false;
 
         Clear();
+        ObjectPooler.ReturnAll();
 
-		profile = p;
+        profile = p;
 
 		StartCoroutine(Generate(seed));
 

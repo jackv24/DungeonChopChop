@@ -25,7 +25,7 @@ public class HealingPlatform : MonoBehaviour {
             {
                 if (pl.GetComponent<Health>())
                 {
-                    if (pl.GetComponent<Health>().health < pl.GetComponent<Health>().maxHealth)
+                    if (pl.GetComponent<Health>().health < pl.GetComponent<Health>().maxHealth || pl.GetComponent<PlayerInformation>().currentCureAmount < pl.GetComponent<PlayerInformation>().maxCureAmount)
                     {
                         if (counter > timeBetweenHealthIncrease * 60)
                         {

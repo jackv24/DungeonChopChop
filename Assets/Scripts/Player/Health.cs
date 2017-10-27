@@ -54,7 +54,7 @@ public class Health : MonoBehaviour
     [Header("Other Vals")]
     public float timeBetweenFlash = 0.1f;
     public int amountToFlash = 5;
-    public float fadeToColorTime = 5;
+    public float fadeTime = 5;
 
     public CameraShakeVars hitShake;
 
@@ -66,10 +66,14 @@ public class Health : MonoBehaviour
     private List<Color> originalColors = new List<Color>();
     private Vector3 targetPosition;
 
-    private Coroutine coroutine;
+    private Color fadeToColorColor;
+    private float fadeToColortime;
 
     private bool fadeToColor = false;
-    private bool fadeToWhite = false;
+    private bool unfadeWhite = false;
+    private bool fadeToOG = false;
+
+    private Coroutine coroutine;
 
     void Start()
     {
@@ -91,6 +95,38 @@ public class Health : MonoBehaviour
         if (GetComponent<PlayerInformation>())
         {
             playerInfo = GetComponent<PlayerInformation>();
+        }
+    }
+
+    void Update()
+    {
+        //makes sure health doesn't go below 0        
+        if (health <= 0)
+        {
+            health = 0;
+
+            isDead = true;
+
+            Death();
+        }
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+
+        if (fadeToColor)
+        {
+            ColorToFade();
+        }
+
+        if (unfadeWhite)
+        {
+            OGWhiteFade(fadeTime);
+        }
+
+        if (fadeToOG)
+        {
+            OGFade(fadeTime);
         }
     }
 
@@ -273,10 +309,10 @@ public class Health : MonoBehaviour
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
-            fadeToColor = false;
         }
         
         coroutine = StartCoroutine(DoHitColourFlash());
+
         if (enabled)
             StartCoroutine(DoHitColourFlash());
     }
@@ -299,9 +335,7 @@ public class Health : MonoBehaviour
         {
             SetHitColor();
             yield return new WaitForSeconds(timeBetweenFlash);
-            fadeToColor = true;
-            yield return new WaitForSeconds(timeBetweenFlash);
-            fadeToColor = false;
+            SetOGFade();
         }
     }
 
@@ -344,12 +378,7 @@ public class Health : MonoBehaviour
     {
         SetColor(color);
         yield return new WaitForSeconds(seconds);
-        SetOGFade(fadeToColorTime);
-    }
-
-    public void UnfadeWhite()
-    {
-        fadeToWhite = true;
+        SetOGFade();
     }
 
     public void SetOGColorRends()
@@ -398,31 +427,83 @@ public class Health : MonoBehaviour
         }
     }
 
-    void SetOGWhiteFade(float val)
+    void SetColorToFade(Color col, float fadeTime)
+    {
+        fadeToColorColor = col;
+
+        fadeToColortime = fadeTime;
+
+        fadeToColor = true;
+    }
+
+    void ColorToFade()
     {
         if (renderers != null)
         {
+            int renderersCount = 0;
+
             foreach (Renderer renderer in renderers)
             {
-                renderer.material.SetFloat("_FlashAmount", renderer.material.GetFloat("_FlashAmount") - val);
-                if (renderer.material.GetFloat("_FlashAmount") <= 0)
+                //loop through and fade the renderers colour
+                if (renderer.material.color != fadeToColorColor)
                 {
-                    fadeToWhite = false;
+                    renderer.material.color = Color.Lerp(renderer.material.color, fadeToColorColor, fadeToColortime* Time.deltaTime);
+                }
+                else
+                {
+                    renderersCount++;
+                }
+
+                //check if all the renderers have finished changing colour
+                if (renderersCount == renderers.Count)
+                {
+                    fadeToColor = false;
                 }
             }
         }
     }
 
-    void SetOGFade(float fadeTime)
+    public void SetOGWhiteFade()
     {
-        int rendersCount = 0;
+        unfadeWhite = true;
+    }
 
+    void OGWhiteFade(float val)
+    {
+        if (renderers != null)
+        {
+            //loops through all the renderers and lerps the player to white
+            foreach (Renderer renderer in renderers)
+            {
+                if (renderer.material.GetFloat("_FlashAmount") > 0)
+                {
+                    renderer.material.SetFloat("_FlashAmount", renderer.material.GetFloat("_FlashAmount") - fadeTime / 25);
+                }
+                else
+                {
+                    //just to make sure the value doesn't go into a negative state
+                    renderer.material.SetFloat("_FlashAmount", 0);
+                    unfadeWhite = false;
+                }
+            }
+        }
+    }
+
+    void SetOGFade()
+    {
+        fadeToOG = true;
+    }
+
+    void OGFade(float fadeTime)
+    {
         AddRenderersToList();
 
         if (renderers != null)
         {
             if (originalColors.Count > 0)
             {
+                int rendersCount = 0;
+
                 //loops through each and sets the hit color
                 for (int i = 0; i < renderers.Count; i++)
                 {
@@ -438,7 +519,7 @@ public class Health : MonoBehaviour
 
                     if (rendersCount == renderers.Count)
                     {
-                        fadeToColor = false;
+                        fadeToOG = false;
                     }
                 }
 
@@ -495,34 +576,6 @@ public class Health : MonoBehaviour
                 renderer.enabled = true;
 
             }
-        }
-    }
-
-    void Update()
-    {
-        //makes sure health doesn't go below 0        
-        if (health <= 0)
-        {
-            health = 0;
-
-            isDead = true;
-
-            Death();
-        }
-        if (health > maxHealth)
-        {
-            health = maxHealth;
-        }
-
-        if (fadeToColor)
-        {
-            SetOGFade(fadeToColorTime);
-        }
-
-        if (fadeToWhite)
-        {
-            if (GetComponent<PlayerAttack>())
-                SetOGWhiteFade(GetComponent<PlayerAttack>().amountOfFadeBack);
         }
     }
 
@@ -631,7 +684,7 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenPoison);
         }
 
-        SetOGFade(fadeToColorTime);
+        SetOGFade();
 
         SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.End, transform.position);
     }
@@ -641,7 +694,7 @@ public class Health : MonoBehaviour
     /// </summary>
     /// <param name="duration">Duration in seconds.</param>
     /// <param name="timeBetweenBurn">Time between burn in seconds.</param>
-    public void SetBurned(float damagePerTick, float duration, float timeBetweenBurn)
+    public void SetBurned(float damagePerTick = .2f, float duration = 3, float timeBetweenBurn = 1)
     {
         if (!isBurned)
         {
@@ -671,8 +724,6 @@ public class Health : MonoBehaviour
 
         while (isBurned)
         {
-            SetColor(burnColor);
-
             yield return new WaitForSeconds(timeBetweenBurn / 2);
 
             if (canBeDamagedFromEffect())
@@ -682,7 +733,7 @@ public class Health : MonoBehaviour
                 SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.Tick, transform.position);
             }
 
-            SetOGColor();
+            SetColorToFade(burnColor, fadeTime);
 
             if (gameObject.activeSelf)
                 StartCoroutine(DisablePlayerFor(.2f));
@@ -696,9 +747,13 @@ public class Health : MonoBehaviour
             }
 
             yield return new WaitForSeconds(timeBetweenBurn / 2);
+
+            if (!isProp)
+                SetOGColor();
         }
 
-        SetOGFade(fadeToColorTime);
+        if (!isProp)
+            SetOGFade();
 
         SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.End, transform.position);
     }
@@ -751,7 +806,7 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
         }
 
-        SetOGFade(fadeToColorTime);
+        SetOGFade();
 
         SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.End, transform.position);
     }
@@ -798,7 +853,7 @@ public class Health : MonoBehaviour
 
             isFrozen = false;
 
-            SetOGFade(fadeToColorTime);
+            SetOGFade();
 
             SoundManager.PlayAilmentSound(StatusType.Ice, ailmentSoundType.End, transform.position);
         }
@@ -848,7 +903,7 @@ public class Health : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
 
-            SetOGFade(fadeToColorTime);
+            SetOGFade();
 
             SoundManager.PlayAilmentSound(StatusType.Sandy, ailmentSoundType.End, transform.position);
 
