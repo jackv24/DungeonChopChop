@@ -148,7 +148,7 @@ public class SwordCollision : MonoBehaviour {
             yield return new WaitForSeconds(playerAttack.flashDuration);
 
             //set player normal color
-            playerHealth.UnfadeWhite();
+            playerHealth.SetOGWhiteFade();
 
             particle.SetActive(false);
 

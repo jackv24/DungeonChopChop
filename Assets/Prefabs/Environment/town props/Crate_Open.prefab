@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 54248884274849604}
   - component: {fileID: 114470209786740262}
   - component: {fileID: 114593610399103730}
+  - component: {fileID: 114560307154763806}
   m_Layer: 17
   m_Name: Crate_Open
   m_TagString: Untagged
@@ -366,6 +367,22 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 3
   maxAmountOfDrops: 10
+--- !u!114 &114560307154763806
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556018963609128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9730be639f682d4da59408dbd269d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spreadRadius: 1.5
+  burnDelayTime: 1
+  propLayer:
+    serializedVersion: 2
+    m_Bits: 131072
 --- !u!114 &114593610399103730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -389,7 +406,7 @@ MonoBehaviour:
   isSandy: 0
   isDead: 0
   poisonColor: {r: 0, g: 0, b: 0, a: 0}
-  burnColor: {r: 0.47058827, g: 0.45098042, b: 0.41176474, a: 1}
+  burnColor: {r: 0.44117647, g: 0.34005487, b: 0.07461072, a: 1}
   slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
   frozenColor: {r: 0, g: 0, b: 0, a: 0}
   sandyColor: {r: 0, g: 0, b: 0, a: 0}
@@ -402,7 +419,7 @@ MonoBehaviour:
   hitColor: {r: 1, g: 1, b: 1, a: 1}
   timeBetweenFlash: 0.1
   amountToFlash: 5
-  fadeToColorTime: 5
+  fadeTime: 5
   hitShake:
     magnitude: 0.1
     shakeAmount: 1

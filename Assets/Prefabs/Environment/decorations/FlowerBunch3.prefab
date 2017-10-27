@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 65804899384088650}
   - component: {fileID: 54477853169511968}
   - component: {fileID: 114685644265207652}
+  - component: {fileID: 114326215528278468}
   m_Layer: 17
   m_Name: FlowerBunch3
   m_TagString: Untagged
@@ -126,14 +127,19 @@ MonoBehaviour:
   drops:
   - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
     probability: 1
+    maxAmount: 0
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
     probability: 1
+    maxAmount: 0
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
     probability: 1
+    maxAmount: 0
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
     probability: 1
+    maxAmount: 0
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
     probability: 1
+    maxAmount: 0
   minAmountOfDrops: 0
   maxAmountOfDrops: 1
 --- !u!114 &114022679925779202
@@ -359,6 +365,22 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+--- !u!114 &114326215528278468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1363288837638924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9730be639f682d4da59408dbd269d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spreadRadius: 1.5
+  burnDelayTime: 1
+  propLayer:
+    serializedVersion: 2
+    m_Bits: 131072
 --- !u!114 &114685644265207652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -374,7 +396,7 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  isProp: 0
+  isProp: 1
   isPoisoned: 0
   isBurned: 0
   isSlowlyDying: 0
@@ -382,7 +404,7 @@ MonoBehaviour:
   isSandy: 0
   isDead: 0
   poisonColor: {r: 0, g: 0, b: 0, a: 0}
-  burnColor: {r: 0, g: 0, b: 0, a: 0}
+  burnColor: {r: 0.32988605, g: 0.3455882, b: 0.060986172, a: 1}
   slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
   frozenColor: {r: 0, g: 0, b: 0, a: 0}
   sandyColor: {r: 0, g: 0, b: 0, a: 0}
@@ -393,74 +415,9 @@ MonoBehaviour:
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   hitColor: {r: 0, g: 0, b: 0, a: 0}
-  poisonTickSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  burnTickSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  slowDeathTickSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  poisonedSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  burnSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  sandySound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  slowDeathSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  frozenSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unpoisonedSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unburnSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unsandySound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unslowDeathSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unfrozenSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
   timeBetweenFlash: 0.1
   amountToFlash: 5
-  fadeToColorTime: 5
+  fadeTime: 5
   hitShake:
     magnitude: 0.1
     shakeAmount: 0.1
