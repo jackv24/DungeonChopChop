@@ -73,12 +73,12 @@ public class Shop : MonoBehaviour
                         //check what the item is by getting a specific script on it
                         if (item.itemPrefab.GetComponent<SwordStats>())
                         {
-                            GameObject sword = ObjectPooler.GetPooledObject(item.itemPrefab, true);
+                            GameObject sword = (GameObject)Instantiate(item.itemPrefab, transform.position, Quaternion.Euler(0, 0, 0));
                             playerInfo.playerAttack.AddSword(sword.GetComponent<SwordStats>());
                         }
                         else if (item.itemPrefab.GetComponent<ShieldStats>())
                         {
-                            GameObject shield = ObjectPooler.GetPooledObject(item.itemPrefab, true);
+                            GameObject shield = (GameObject)Instantiate(item.itemPrefab, transform.position, Quaternion.Euler(0, 0, 0));
                             playerInfo.playerAttack.AddShield(shield.GetComponent<ShieldStats>());
                         }
                         else if (item.itemPrefab.GetComponent<Orb>())
