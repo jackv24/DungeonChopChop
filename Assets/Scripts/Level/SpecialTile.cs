@@ -36,6 +36,7 @@ public class SpecialTile : MonoBehaviour
             GameObject replaceTile = null;
             ReplaceBiome replace = replaceTiles[(int)specialType];
 
+			//Get biome prefab to replace with
 			switch(tile.Biome)
 			{
 				case LevelTile.Biomes.Forest:

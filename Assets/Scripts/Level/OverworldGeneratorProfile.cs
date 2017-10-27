@@ -173,12 +173,15 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 
 	void GenerateSpecialTiles(LevelGenerator levelGenerator)
 	{
+		//Generate special tiles for all biomes except grass
         LevelTile.Biomes[] biomes = { LevelTile.Biomes.Forest, LevelTile.Biomes.Ice, LevelTile.Biomes.Desert, LevelTile.Biomes.Fire };
 
         foreach (LevelTile.Biomes biome in biomes)
         {
+			//Keep track of what special tiles were placed
             bool[] hasPlaced = new bool[System.Enum.GetNames(typeof(SpecialTile.SpecialType)).Length];
 
+			//Start of all values as false
             for (int i = 0; i < hasPlaced.Length; i++)
                 hasPlaced[i] = false;
 
@@ -186,32 +189,40 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 
             foreach (LevelTile tile in levelGenerator.generatedTiles)
             {
+				//Only care about tiles with the right biome
 				if(tile.Biome != biome)
                     continue;
 
+				//If this tile can be a special tile, add it to the list
                 SpecialTile special = tile.GetComponent<SpecialTile>();
-
                 if (special)
                     possibleTiles.Add(special);
             }
 
+			//Loop through special tile types
             for (int i = 0; i < hasPlaced.Length; i++)
 			{
+				//List of tiles that have yet to be tried
                 List<SpecialTile> tryTiles = new List<SpecialTile>(possibleTiles);
 
+				//Keep trying until there are no tiles left to try
 				while(tryTiles.Count > 0)
 				{
+					//Try a random tile
                     SpecialTile tile = tryTiles[LevelGenerator.Random.Next(0, tryTiles.Count)];
 
                     hasPlaced[i] = tile.Replace((SpecialTile.SpecialType)i);
 
+					//If this type was placed, no need to try any more
 					if(hasPlaced[i])
                         break;
 
+					//if it wasn't placed, remove this tile from the list and try again
                     tryTiles.Remove(tile);
                 }
             }
 
+			//Make sure that all special tiles were placed correctly for this biome
             for (int i = 0; i < hasPlaced.Length; i++)
 			{
 				if(!hasPlaced[i])
