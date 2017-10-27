@@ -67,6 +67,13 @@ public static class ObjectPooler
 
         public void ReturnAll()
         {
+            //Remove any from pool that have been destroyed
+            for (int i = pooledObjects.Count - 1; i >= 0; i--)
+            {
+                if(!pooledObjects[i])
+                    pooledObjects.RemoveAt(i);
+            }
+
             for (int i = 0; i < pooledObjects.Count; i++)
                 pooledObjects[i].SetActive(false);
         }
