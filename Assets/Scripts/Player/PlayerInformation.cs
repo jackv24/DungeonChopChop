@@ -111,9 +111,9 @@ public class PlayerInformation : MonoBehaviour
         }
 
         //sets the players resistance
-        if (resistance != originalResistance * GetCharmFloat("resistanceMuliplier") * GetItemFloat("resistanceMultiplier"))
+        if (resistance != originalResistance * GetCharmFloat("Resistance") * GetItemFloat("Resistance"))
         {
-            resistance = originalResistance * GetCharmFloat("resistanceMuliplier") * GetItemFloat("resistanceMultiplier");
+            resistance = originalResistance * GetCharmFloat("Resistance") * GetItemFloat("Resistance");
         }
 
         if (currentCureAmount < 0)

@@ -255,6 +255,8 @@ public class Shop : MonoBehaviour
 
                     //If the weapon has an effect, set the effect colour
 
+                    var1String = "";
+
                     Color effectColor = equalColour;
 
                     if (swordStats.weaponEffect == WeaponEffect.Burn)
