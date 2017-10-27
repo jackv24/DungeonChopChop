@@ -17,11 +17,14 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 	public override void Generate(LevelGenerator levelGenerator)
 	{
 		RandomiseBiomes();
-
 		ReplaceBiomes(levelGenerator);
 
 		GenerateDungeons(levelGenerator);
-	}
+
+		//Only bother to continue generating if it hasn't failed already
+		if(levelGenerator.profile.succeeded != false)
+        	GenerateSpecialTiles(levelGenerator);
+    }
 
 	void RandomiseBiomes()
 	{
@@ -167,4 +170,57 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 			Debug.LogWarning("Level Generator did not generate enough dungeons! Amount: " + dungeonCount);
 		}
 	}
+
+	void GenerateSpecialTiles(LevelGenerator levelGenerator)
+	{
+        LevelTile.Biomes[] biomes = { LevelTile.Biomes.Forest, LevelTile.Biomes.Ice, LevelTile.Biomes.Desert, LevelTile.Biomes.Fire };
+
+        foreach (LevelTile.Biomes biome in biomes)
+        {
+            bool[] hasPlaced = new bool[System.Enum.GetNames(typeof(SpecialTile.SpecialType)).Length];
+
+            for (int i = 0; i < hasPlaced.Length; i++)
+                hasPlaced[i] = false;
+
+            List<SpecialTile> possibleTiles = new List<SpecialTile>();
+
+            foreach (LevelTile tile in levelGenerator.generatedTiles)
+            {
+				if(tile.Biome != biome)
+                    continue;
+
+                SpecialTile special = tile.GetComponent<SpecialTile>();
+
+                if (special)
+                    possibleTiles.Add(special);
+            }
+
+            for (int i = 0; i < hasPlaced.Length; i++)
+			{
+                List<SpecialTile> tryTiles = new List<SpecialTile>(possibleTiles);
+
+				while(tryTiles.Count > 0)
+				{
+                    SpecialTile tile = tryTiles[LevelGenerator.Random.Next(0, tryTiles.Count)];
+
+                    hasPlaced[i] = tile.Replace((SpecialTile.SpecialType)i);
+
+					if(hasPlaced[i])
+                        break;
+
+                    tryTiles.Remove(tile);
+                }
+            }
+
+            for (int i = 0; i < hasPlaced.Length; i++)
+			{
+				if(!hasPlaced[i])
+				{
+                    //levelGenerator.profile.succeeded = false;
+
+                    Debug.LogWarning("Level Generator failed to place a " + ((SpecialTile.SpecialType)i).ToString() + " special tile for biome " + biome.ToString());
+                }
+			}
+        }
+    }
 }
