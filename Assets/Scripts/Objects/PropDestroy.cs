@@ -28,7 +28,8 @@ public class PropDestroy : MonoBehaviour
     void Start()
     {
         propHealth = GetComponent<Health>();
-        propHealth.OnHealthChange += UpdateProp;
+        if (propHealth)
+            propHealth.OnHealthChange += UpdateProp;
     }
 
     // Update is called once per frame

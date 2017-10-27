@@ -119,8 +119,6 @@ public class EnemySpawner : MonoBehaviour
 		if(waitForSpawnMessage && !receivedMessage)
             return;
 
-        Debug.Log("Spawned");
-
         shouldSpawn = true;
 
 		if (OnEnemiesSpawned != null)
@@ -194,7 +192,7 @@ public class EnemySpawner : MonoBehaviour
 		}
 
 		//After delay, actually spawn the enemies
-		if (shouldSpawn)
+		if (shouldSpawn && currentProfile != null)
 		{
 			//Randomise enemy positions if desired
 			if (currentProfile.randomised)
