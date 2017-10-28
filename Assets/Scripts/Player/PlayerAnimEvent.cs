@@ -30,4 +30,9 @@ public class PlayerAnimEvent : MonoBehaviour {
     {
         playerAttack.ShootProjectile();
     }
+
+    public void AttackSound()
+    {
+        playerAttack.doAttackSound();
+    }
 }

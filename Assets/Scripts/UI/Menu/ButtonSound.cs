@@ -7,7 +7,8 @@ public class ButtonSound : StateMachineBehaviour {
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         AudioSource audioSource = animator.GetComponent<AudioSource>();
-        audioSource.Play();
+        if (audioSource)
+            audioSource.Play();
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

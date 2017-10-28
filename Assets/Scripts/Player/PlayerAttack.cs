@@ -212,148 +212,152 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        timeToCharge = playerInformation.GetCharmFloat("spinChargeTime");
+        //make sure game is not paused
+        if (Time.timeScale > 0)
+        {
+            timeToCharge = playerInformation.GetCharmFloat("spinChargeTime");
 
-        if (spinCounter < (timeToCharge * 60))
-        {
-            spinChargeReady = false;
-        }
-        else
-        {
-            spinChargeReady = true;
-        }
-
-        if (comboStarted)
-        {
-            animator.SetBool("Attacking", true);
-            //check if combo has ended
-            if (comboCounter > timeInbetween)
+            if (spinCounter < (timeToCharge * 60))
             {
-                ResetCombo();
+                spinChargeReady = false;
             }
-        }
-        else
-        {
-            animator.SetBool("Attacking", false);
-        }
-            
-        //check if can actually attack
-        //do basic attack
-        if (!playerHealth.isDead)
-        {
-            //check if holding down attack
-            if (input.BasicAttack.WasReleased)
+            else
             {
-                //make sure not already spinning
-                if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
+                spinChargeReady = true;
+            }
+
+            if (comboStarted)
+            {
+                animator.SetBool("Attacking", true);
+                //check if combo has ended
+                if (comboCounter > timeInbetween)
                 {
-                    //if the amount of time you're holding down attack is less then the charge time, cancel it
-                    if (spinCounter < (timeToCharge * 60))
+                    ResetCombo();
+                }
+            }
+            else
+            {
+                animator.SetBool("Attacking", false);
+            }
+            
+            //check if can actually attack
+            //do basic attack
+            if (!playerHealth.isDead)
+            {
+                //check if holding down attack
+                if (input.BasicAttack.WasReleased)
+                {
+                    //make sure not already spinning
+                    if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
                     {
-                        animator.SetBool("SpinCharge", false);
-                        spinCounter = 0;
-                    }
+                        //if the amount of time you're holding down attack is less then the charge time, cancel it
+                        if (spinCounter < (timeToCharge * 60))
+                        {
+                            animator.SetBool("SpinCharge", false);
+                            spinCounter = 0;
+                        }
                     //otherwise do spin
                     else
-                    {
-                        spinCounter = 0;
-                        animator.SetBool("SpinCharge", false);
-                        //play sound
-                        SoundManager.PlaySound(spinSounds, transform.position);
-                        //do spin
-                        animator.SetTrigger("Spin");
-                        //set invincibility
-                        playerHealth.InvincibilityForSecs(2);
-                    }
-                }
-            }
-
-
-            if (input.BasicAttack.WasPressed)
-            {
-                if (canTripleAttack)
-                {
-                    CheckCombo();
-                    //if combo is equal to or greater than 3, do rapid slash
-                    if (comboAmount >= slashAmount)
-                    {
-                        doRapidSlash();
-                    }
-                }
-                //basic slash
-                if (comboAmount < slashAmount)
-                {
-                    //checks if player is in idle to do the first attack
-                    if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
-                    {
-                        if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
-                            doSlash();
-                        else
                         {
-                            //check the current frame of animation
-                            int currentFrame = ((int)(animator.GetCurrentAnimatorStateInfo(0).normalizedTime * (17))) % 17;
-                            if (currentFrame > 10)
-                                doSlash();
+                            spinCounter = 0;
+                            animator.SetBool("SpinCharge", false);
+                            //play sound
+                            SoundManager.PlaySound(spinSounds, transform.position);
+                            //do spin
+                            animator.SetTrigger("Spin");
+                            //set invincibility
+                            playerHealth.InvincibilityForSecs(2);
                         }
                     }
+                }
+
+
+                if (input.BasicAttack.WasPressed)
+                {
+                    if (canTripleAttack)
+                    {
+                        CheckCombo();
+                        //if combo is equal to or greater than 3, do rapid slash
+                        if (comboAmount >= slashAmount)
+                        {
+                            doRapidSlash();
+                        }
+                    }
+                    //basic slash
+                    if (comboAmount < slashAmount)
+                    {
+                        //checks if player is in idle to do the first attack
+                        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle"))
+                        {
+                            if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
+                                doSlash();
+                            else
+                            {
+                                //check the current frame of animation
+                                int currentFrame = ((int)(animator.GetCurrentAnimatorStateInfo(0).normalizedTime * (17))) % 17;
+                                if (currentFrame > 10)
+                                    doSlash();
+                            }
+                        }
                     //if the user tries to attack when the user is already attacking, it'll do the second attack once completed
                     else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                    {
-                        doSecondSlash();
+                        {
+                            doSecondSlash();
+                        }
+                        else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
+                        {
+                            doSlash();
+                        }
                     }
-                    else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SecondAttack"))
-                    {
-                        doSlash();
-                    }
-                }
-            } 
-            if (input.DashSlash.WasPressed)
-            {
-                if (!playerInformation.HasCharmBool("cantDash"))
+                } 
+                if (input.DashSlash.WasPressed)
                 {
-                    if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning") && !animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+                    if (!playerInformation.HasCharmBool("cantDash"))
                     {
-                        //dash
-                        doDash();
+                        if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning") && !animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+                        {
+                            //dash
+                            doDash();
+                        }
+                    }
+                } 
+            
+                if (input.Block)
+                {
+                    if (!playerInformation.HasCharmBool("cantBlock"))
+                    {
+                        //block
+                        if (shield)
+                        {
+                            if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
+                                DoBlock();
+                        }
                     }
                 }
-            } 
-            
-            if (input.Block)
-            {
-                if (!playerInformation.HasCharmBool("cantBlock"))
+                if (input.Block.WasReleased)
                 {
                     //block
                     if (shield)
                     {
-                        if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
-                            DoBlock();
+                        StopBlock();
                     }
                 }
             }
-            if (input.Block.WasReleased)
+
+            if (movingForward)
             {
-                //block
-                if (shield)
-                {
-                    StopBlock();
-                }
+                MoveForward(2);
             }
-        }
 
-        if (movingForward)
-        {
-            MoveForward(2);
-        }
+            if (playerHealth.isBurned)
+            {
+                MoveForward(speedWhenBurned);
+            }
 
-        if (playerHealth.isBurned)
-        {
-            MoveForward(speedWhenBurned);
-        }
-
-        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
-        {
-            DisableSword();
+            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Idle") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Spinning") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
+            {
+                DisableSword();
+            }
         }
     }
 
@@ -671,10 +675,14 @@ public class PlayerAttack : MonoBehaviour
         movingBool = false;
     }
 
+    public void doAttackSound()
+    {
+        SoundManager.PlaySound(firstSlashSounds, transform.position);
+    }
+
     void doSlash()
     {
         animator.SetTrigger("Attack");
-        SoundManager.PlaySound(firstSlashSounds, transform.position);
         //do slash things
     }
 
