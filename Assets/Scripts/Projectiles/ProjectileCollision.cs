@@ -6,7 +6,10 @@ public class ProjectileCollision : MonoBehaviour {
 
 	public int damageAmount;
     public float knockbackAmount;
-    public GameObject[] hitParticles;
+
+    [Header("Particles and Sounds")]
+    public AmountOfParticleTypes[] hitParticles;
+    public SoundEffect hitSound;
 
 	[HideInInspector]
 	public float damageMultiplyer;
@@ -73,18 +76,21 @@ public class ProjectileCollision : MonoBehaviour {
             {
                 col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer));
             }
-
-			gameObject.SetActive (false);
 		}
 
+        DoSound();
         DoParticle();
+
         gameObject.SetActive(false);
 	}
 
     void DoParticle()
     {
-        int random = Random.Range(0, hitParticles.Length);
-        GameObject particle = ObjectPooler.GetPooledObject(hitParticles[random]);
-        particle.transform.position = transform.position;
+        SpawnEffects.EffectOnHit(hitParticles, transform.position);
+    }
+
+    void DoSound()
+    {
+        SoundManager.PlaySound(hitSound, transform.position);
     }
 }
