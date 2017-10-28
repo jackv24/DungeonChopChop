@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ForcefieldCol : MonoBehaviour {
 
+    public bool TownForceField = false;
     private Health playerHealth;
 
 	// Use this for initialization
@@ -18,6 +19,14 @@ public class ForcefieldCol : MonoBehaviour {
         {
             playerHealth.TemporaryInvincibility();
             gameObject.SetActive(false);
+        }
+        if (TownForceField)
+        {
+            //get the projectile layer
+            if (col.GetComponent<Collider>().gameObject.layer == 10)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

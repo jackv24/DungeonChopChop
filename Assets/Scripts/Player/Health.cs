@@ -12,6 +12,18 @@ public class CameraShakeVars
     public float duration = 1;
 }
 
+public enum EnemyType
+{
+    None,
+    Slime,
+    AppleShooter,
+    Bisp,
+    Visp,
+    SnapEye,
+    CrystalTurret,
+    PaddyBum,
+}
+
 public class Health : MonoBehaviour
 {
     public float maxHealth;
@@ -26,6 +38,7 @@ public class Health : MonoBehaviour
 
     [Space()]
     public bool IsEnemy;
+    public EnemyType enemyType;
     public bool isProp;
 
     [Space()]
@@ -140,6 +153,10 @@ public class Health : MonoBehaviour
                 TemporaryInvincibility();
             }
         }
+
+        //add to damage statistics
+        if (!IsEnemy && !isProp)
+            Statistics.Instance.totalDamageTaken += healthDeta;
         
         health += healthDeta;
 

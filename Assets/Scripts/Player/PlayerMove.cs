@@ -236,6 +236,9 @@ public class PlayerMove : MonoBehaviour
                 targetMoveVector.z = -inputVector.y * maxMoveSpeed * playerInformation.GetCharmFloat("moveSpeedMultiplier") * playerInformation.GetItemFloat("Speed") * slowdownMultiplier;
             }
 
+            //add to stats
+            Statistics.Instance.distanceTraveled += characterController.velocity.magnitude * Time.deltaTime;
+
             targetMoveVector += WindPush();
 
             if (CameraFollow.Instance)

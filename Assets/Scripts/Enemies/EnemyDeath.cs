@@ -88,6 +88,8 @@ public class EnemyDeath : MonoBehaviour
             StatusExplode();
         }
 
+        Statistics.Instance.GetEnemy(health.enemyType);
+
         CameraShake.ShakeScreen(deathShake.magnitude, deathShake.shakeAmount, deathShake.duration);
 	}
 

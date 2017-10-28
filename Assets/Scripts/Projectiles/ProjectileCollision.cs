@@ -77,6 +77,9 @@ public class ProjectileCollision : MonoBehaviour {
             else
             {
                 col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer));
+
+                if (tag == "SwordProjectile")
+                    Statistics.Instance.totalDamageGiven += damageAmount * damageMultiplyer;
             }
 		}
 

@@ -76,6 +76,8 @@ public class SwordCollision : MonoBehaviour {
                 //else just do the normal damage
                 enemyHealth.AffectHealth(-playerInfo.GetSwordDamage());
 
+                Statistics.Instance.totalDamageGiven += playerInfo.GetSwordDamage();
+
                 SetEffect(enemyHealth);
 
                 playerInfo.KnockbackPlayer(-playerInfo.transform.forward, knockbackOnHit);

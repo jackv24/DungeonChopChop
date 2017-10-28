@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 65647006812450262}
   m_Layer: 10
   m_Name: SwordProjectile
-  m_TagString: Untagged
+  m_TagString: SwordProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -441,7 +441,13 @@ MonoBehaviour:
   damageAmount: 1
   knockbackAmount: 7
   hitParticles:
-  - {fileID: 1165770909341910, guid: 24003c39b0d4a7a4fa42a5b2215c0d93, type: 2}
+  - particleType: 0
+    particles: []
+  hitSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   damageMultiplyer: 0
   thrust: 0
 --- !u!198 &198030976994997830
