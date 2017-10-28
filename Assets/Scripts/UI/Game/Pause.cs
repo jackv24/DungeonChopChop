@@ -37,17 +37,17 @@ public class Pause : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKeyDown(KeyCode.Escape) || InControl.InputManager.ActiveDevice.CommandWasPressed)
-		{
-			if (paused)
-			{
-				UnPauseGame();
-			}
-			else
-			{
-				PauseGame();
-			}
-		}
+        if (Input.GetKeyDown(KeyCode.Escape) || InControl.InputManager.ActiveDevice.CommandWasPressed)
+        {
+            if (paused)
+            {
+                UnPauseGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
 	}
 
     void PauseGame()

@@ -51,6 +51,9 @@ public class GemScript : PickupableItems {
             if (col.tag == "Player1" || col.tag == "Player2")
             {
                 ItemsManager.Instance.Coins += coinAmount * (int)col.GetComponent<PlayerInformation>().GetCharmFloat("coinMultiplier");
+
+                Statistics.Instance.moneyEarned += coinAmount * (int)col.GetComponent<PlayerInformation>().GetCharmFloat("coinMultiplier");
+
                 DoPickUpParticle();
                 gameObject.SetActive(false);
             }
