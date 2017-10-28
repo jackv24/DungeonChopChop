@@ -258,6 +258,7 @@ public class EnemyAttack : MonoBehaviour
                         {
                             //add knockback to the player
                             playerInfo.KnockbackPlayer(-dir, knockbackStrength / 2);
+                            SoundManager.PlaySound(playerInfo.playerAttack.hitBlockSound, transform.position);
                         }
                     }
 

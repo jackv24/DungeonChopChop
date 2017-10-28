@@ -80,6 +80,8 @@ public class PlayerAttack : MonoBehaviour
     public SoundEffect spinSounds;
     public SoundEffect chargeSpinSounds;
     public SoundEffect chargeReadySounds;
+    [Tooltip("Sound when getting hit whilst blocking")]
+    public SoundEffect hitBlockSound;
 
     private int comboAmount;
     private CharacterController characterController;

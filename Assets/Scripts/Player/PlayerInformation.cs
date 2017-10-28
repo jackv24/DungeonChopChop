@@ -90,7 +90,7 @@ public class PlayerInformation : MonoBehaviour
     void Update()
     {
         //sets the damage output
-        damageOutput = GetSwordDamage();
+        damageOutput = SwordDamge();
 
         if (HasCharmBool("hideMap"))
         {
@@ -545,6 +545,11 @@ public class PlayerInformation : MonoBehaviour
                 }
             }
         }
+    }
+
+    float SwordDamge()
+    {
+        return (strength * playerAttack.sword.damageMultiplier * GetCharmFloat("strengthMultiplier"));
     }
 
     public float GetSwordDamage()

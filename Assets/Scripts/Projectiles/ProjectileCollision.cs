@@ -66,6 +66,8 @@ public class ProjectileCollision : MonoBehaviour {
                             {
                                 col.transform.GetComponent<Health>().AffectHealth(-damageAmount * damageMultiplyer / playerInfo.resistance);
                             }
+
+                            SoundManager.PlaySound(playerInfo.playerAttack.hitBlockSound, transform.position);
                         }
                     }
                 }
