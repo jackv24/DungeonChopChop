@@ -14,10 +14,12 @@ public class PropDestroy : MonoBehaviour
     [Header("Particles")]
     [Tooltip("Amount of different particle types eg 'Dust, Smoke, Shrapnel'")]
     public AmountOfParticleTypes[] amountOfParticleTypes;
+    public AmountOfParticleTypes[] indistructableParticles;
 
     [Header("Sounds")]
     public SoundEffect hitSounds;
     public SoundEffect destroySounds;
+    public SoundEffect indistructableSound;
 
     [Space()]
     public CameraShakeVars destroyShake;
@@ -56,9 +58,18 @@ public class PropDestroy : MonoBehaviour
         SpawnEffects.EffectOnHit(amountOfParticleTypes, new Vector3(transform.position.x, GetComponent<Collider>().bounds.max.y + .1f, transform.position.z));
     }
 
-    public void HitSound()
+    void DoIndistructableEffect()
     {
-        SoundManager.PlaySound(hitSounds, transform.position);
+        if (GetComponent<Collider>().GetComponent<BoxCollider>().enabled)
+        {
+            SpawnEffects.EffectOnHit(indistructableParticles, new Vector3(transform.position.x, GetComponent<Collider>().bounds.max.y + .1f, transform.position.z));
+            HitSound(indistructableSound);
+        }
+    }
+
+    public void HitSound(SoundEffect sound)
+    {
+        SoundManager.PlaySound(sound, transform.position);
     }
 
     void DoHitEffectAndSound()
@@ -67,7 +78,7 @@ public class PropDestroy : MonoBehaviour
         if (GetComponent<Collider>().GetComponent<BoxCollider>().enabled)
         {
             DoEffect();
-            HitSound();
+            HitSound(hitSounds);
         }
     }
 
@@ -91,6 +102,8 @@ public class PropDestroy : MonoBehaviour
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
                         }
+                        else
+                            DoIndistructableEffect();
                     }
                     //check if in dashing
                     else if (anim.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
@@ -100,6 +113,8 @@ public class PropDestroy : MonoBehaviour
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
                         }
+                        else 
+                            DoIndistructableEffect();
                     }
                     //check if in Spinning
                     else if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Spinning"))
@@ -109,7 +124,8 @@ public class PropDestroy : MonoBehaviour
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
                         }
-
+                        else 
+                            DoIndistructableEffect();
                     }
                     //check if in Spinning
                     else if (anim.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
@@ -119,6 +135,8 @@ public class PropDestroy : MonoBehaviour
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
                         }
+                        else 
+                            DoIndistructableEffect();
                     }
                 }
             }
