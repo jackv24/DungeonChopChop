@@ -277,7 +277,7 @@ public class Health : MonoBehaviour
     {
         playerInfo.invincible = true;
         HitFlash();
-        yield return new WaitForSeconds(playerInfo.invincibilityTimeAfterHit);
+        yield return new WaitForSeconds(playerInfo.invincibilityTimeAfterHit + playerInfo.GetCharmFloat("invincibleTimeIncrease"));
         playerInfo.invincible = false;
     }
 
