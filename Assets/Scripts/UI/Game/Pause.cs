@@ -17,6 +17,7 @@ public class Pause : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject player1Stats;
     public GameObject player2Stats;
+    public GameObject statistics;
 
     bool paused = false;
 
@@ -68,6 +69,8 @@ public class Pause : MonoBehaviour
 
 		if (OnUnpause != null)
 			OnUnpause();
+
+        statistics.SetActive(false);
     }
 
     public void MainMenu()

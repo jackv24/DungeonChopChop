@@ -7,6 +7,17 @@ public class ShowStatistics : MonoBehaviour {
 
     public Vector2 size;
     public Vector2 pos;
+    public GUIStyle style;
+
+    private RectTransform rect;
+    private int fontSize;
+
+    void Start()
+    {
+        rect = GetComponent<RectTransform>();
+
+        fontSize = style.fontSize;
+    }
 	
 	// Update is called once per frame
 	void OnGUI () {
@@ -14,6 +25,10 @@ public class ShowStatistics : MonoBehaviour {
         if (enabled)
         {
             string text = "";
+
+            Vector2 p = new Vector2(rect.position.x - pos.x, rect.position.y - pos.y);
+
+            style.fontSize = Screen.currentResolution.width / fontSize;
 
             text += "Enemies Killed\n";
             text += "Slimes: " + Statistics.Instance.slimes + "\n";
@@ -29,13 +44,13 @@ public class ShowStatistics : MonoBehaviour {
             text += "Total Damage Taken: " + Statistics.Instance.totalDamageTaken + "\n";
             text += "Total Damage Given: " + Statistics.Instance.totalDamageGiven + "\n";
             text += "\n";
-            text += "Total Distance Traveled: " + System.Math.Round(Statistics.Instance.distanceTraveled, 2) + "km\n";
+            text += "Total Distance Traveled: " + (System.Math.Round(Statistics.Instance.distanceTraveled, 2) / 10) + "m\n";
             text += "Total Cash Earned: " + Statistics.Instance.moneyEarned + "\n";
             text += "\n";
             text += "Current play time: " + System.Math.Round(Statistics.Instance.TotalPlayTime, 2) + "\n";
 
 
-            GUI.Label(new Rect(pos, size), text);
+            GUI.Label(new Rect(p, size), text, style);
         }
 	}
 }

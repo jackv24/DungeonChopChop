@@ -145,40 +145,44 @@ public class Health : MonoBehaviour
 
     public void AffectHealth(float healthDeta)
     {
-        //props don't need to do this
-        if (!isProp)
+        //make sure this script is enabled
+        if (enabled)
         {
-            if (health > 0)
+            //props don't need to do this
+            if (!isProp)
             {
-                TemporaryInvincibility();
+                if (health > 0)
+                {
+                    TemporaryInvincibility();
+                }
             }
-        }
 
-        //add to damage statistics
-        if (!IsEnemy && !isProp)
-            Statistics.Instance.totalDamageTaken += healthDeta;
+            //add to damage statistics
+            if (!IsEnemy && !isProp)
+                Statistics.Instance.totalDamageTaken += healthDeta;
         
-        health += healthDeta;
+            health += healthDeta;
 
-        if (OnHealthChange != null)
-        {
-            OnHealthChange();
-        }
-        if (health > maxHealth)
-        {
-            health = maxHealth;
-        }
-
-        if (health <= 0 && isDead == false)
-        {
-            isDead = true;
-            if (OnDeath != null)
+            if (OnHealthChange != null)
             {
-                OnDeath();
+                OnHealthChange();
             }
-        }
+            if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
 
-        DoHitSoundAndShake();
+            if (health <= 0 && isDead == false)
+            {
+                isDead = true;
+                if (OnDeath != null)
+                {
+                    OnDeath();
+                }
+            }
+
+            DoHitSoundAndShake();
+        }
     }
 
     void DoHitSoundAndShake()
