@@ -30,6 +30,8 @@ public class ShowStatistics : MonoBehaviour {
 
             style.fontSize = Screen.currentResolution.width / fontSize;
 
+            string time = string.Format("{0}:{1:00}", (int)Statistics.Instance.TotalPlayTime / 60, (int)Statistics.Instance.TotalPlayTime % 60);
+
             text += "Enemies Killed\n";
             text += "Slimes: " + Statistics.Instance.slimes + "\n";
             text += "Apple Shooters: " + Statistics.Instance.appleShooters + "\n";
@@ -47,7 +49,7 @@ public class ShowStatistics : MonoBehaviour {
             text += "Total Distance Traveled: " + (System.Math.Round(Statistics.Instance.distanceTraveled, 2) / 10) + "m\n";
             text += "Total Cash Earned: " + Statistics.Instance.moneyEarned + "\n";
             text += "\n";
-            text += "Current play time: " + System.Math.Round(Statistics.Instance.TotalPlayTime, 2) + "\n";
+            text += "Current play time: " + time + "\n";
 
 
             GUI.Label(new Rect(p, size), text, style);

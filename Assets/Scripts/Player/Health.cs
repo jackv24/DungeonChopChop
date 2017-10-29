@@ -159,7 +159,10 @@ public class Health : MonoBehaviour
 
             //add to damage statistics
             if (!IsEnemy && !isProp)
-                Statistics.Instance.totalDamageTaken += healthDeta;
+            {
+                float val = System.Math.Abs(healthDeta);
+                Statistics.Instance.totalDamageTaken += (float)System.Math.Round(val, 2);
+            }
         
             health += healthDeta;
 
