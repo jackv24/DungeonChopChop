@@ -451,6 +451,16 @@ public class Health : MonoBehaviour
         }
     }
 
+    void ResetPlayerColour()
+    {
+        AddRenderersToList();
+
+        foreach (Renderer ren in renderers)
+        {
+            ren.material.color = Color.white;
+        }
+    }
+
     void SetColorToFade(Color col, float fadeTime)
     {
         fadeToColorColor = col;
@@ -710,6 +720,13 @@ public class Health : MonoBehaviour
 
         SetOGFade();
 
+        //a safety in case the player gets stuck the wrong color;
+        if (!IsEnemy && !isProp)
+        {
+            yield return new WaitForSeconds(2);
+            ResetPlayerColour();
+        }
+
         SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.End, transform.position);
     }
 
@@ -779,6 +796,13 @@ public class Health : MonoBehaviour
         if (!isProp)
             SetOGFade();
 
+        //a safety in case the player gets stuck the wrong color;
+        if (!IsEnemy && !isProp)
+        {
+            yield return new WaitForSeconds(2);
+            ResetPlayerColour();
+        }
+
         SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.End, transform.position);
     }
 
@@ -832,6 +856,13 @@ public class Health : MonoBehaviour
 
         SetOGFade();
 
+        //a safety in case the player gets stuck the wrong color;
+        if (!IsEnemy && !isProp)
+        {
+            yield return new WaitForSeconds(2);
+            ResetPlayerColour();
+        }
+
         SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.End, transform.position);
     }
 
@@ -878,6 +909,13 @@ public class Health : MonoBehaviour
             isFrozen = false;
 
             SetOGFade();
+
+            //a safety in case the player gets stuck the wrong color;
+            if (!IsEnemy && !isProp)
+            {
+                yield return new WaitForSeconds(2);
+                ResetPlayerColour();
+            }
 
             SoundManager.PlayAilmentSound(StatusType.Ice, ailmentSoundType.End, transform.position);
         }
@@ -928,6 +966,13 @@ public class Health : MonoBehaviour
             }
 
             SetOGFade();
+
+            //a safety in case the player gets stuck the wrong color;
+            if (!IsEnemy && !isProp)
+            {
+                yield return new WaitForSeconds(2);
+                ResetPlayerColour();
+            }
 
             SoundManager.PlayAilmentSound(StatusType.Sandy, ailmentSoundType.End, transform.position);
 
