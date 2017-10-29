@@ -14,7 +14,9 @@ public enum Moves
 public class MoveTutor : MonoBehaviour {
 
     public Moves move;
+
     private DialogueSpeaker dialogueSpeaker;
+    private string originalSpeach;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +26,17 @@ public class MoveTutor : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () 
     {
+        if (move == Moves.DashAttack)
+        {
+            if (!GameManager.Instance.players[0].playerAttack.canDash)
+            {
+                dialogueSpeaker.lines[0] = "Come back to me once you know how to dash";
+            }
+            else
+                dialogueSpeaker.lines[0] = "Want me to teach you a move my boy?";
+        }
+
+
         if (dialogueSpeaker.CurrentPlayer)
         {
             if (dialogueSpeaker.CurrentPlayer.playerMove.input.Purchase)
@@ -33,7 +46,10 @@ public class MoveTutor : MonoBehaviour {
                     if (move == Moves.Dash)
                         player.playerAttack.canDash = true;
                     else if (move == Moves.DashAttack)
-                        player.playerAttack.canDashAttack = true;
+                    {
+                        if (player.playerAttack.canDash)
+                            player.playerAttack.canDashAttack = true;
+                    }
                     else if (move == Moves.Rapid)
                         player.playerAttack.canTripleAttack = true;
                     else if (move == Moves.Spin)
