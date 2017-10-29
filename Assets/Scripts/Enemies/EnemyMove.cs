@@ -52,6 +52,9 @@ public class EnemyMove : MonoBehaviour
         {
             agent.speed = originalSpeed;
             agent.velocity -= agent.velocity;
+
+            if (agent.isOnNavMesh)
+                agent.ResetPath();
         }
 
         if (animator)
