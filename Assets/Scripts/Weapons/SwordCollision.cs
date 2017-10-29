@@ -69,7 +69,21 @@ public class SwordCollision : MonoBehaviour {
                 Health enemyHealth = col.gameObject.GetComponent<Health>();
 
                 //calculates knockback depending on direction
-                enemyHealth.Knockback(playerInfo, playerAttack.transform.forward);
+                if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
+                {
+                    enemyHealth.Knockback(playerInfo, playerAttack.transform.forward);
+
+                    playerInfo.KnockbackPlayer(-playerInfo.transform.forward, knockbackOnHit);
+                }
+
+                //check if the player has the 2 birds with 1 stone charm
+                if (playerInfo.HasCharmBool("2stones1bird"))
+                {
+                    if (col.gameObject.GetComponent<EnemyMove>())
+                    {
+                        col.gameObject.GetComponent<EnemyMove>().GetClosestEnemyRadius(7).GetComponent<Health>().AffectHealth(-playerInfo.GetSwordDamage());
+                    }
+                }
 
                 DoParticle(col);
 
@@ -79,8 +93,6 @@ public class SwordCollision : MonoBehaviour {
                 Statistics.Instance.totalDamageGiven += playerInfo.GetSwordDamage();
 
                 SetEffect(enemyHealth);
-
-                playerInfo.KnockbackPlayer(-playerInfo.transform.forward, knockbackOnHit);
             }
         } 
         else if (col.gameObject.layer == 17)

@@ -155,8 +155,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slashDestroysIt: 0
   tripleDestroysIt: 0
-  dashDestroysIt: 1
+  dashDestroysIt: 0
   spinDestroysIt: 0
+  destroyedByTalons: 1
   amountOfParticleTypes:
   - particleType: 1
     particles:
@@ -348,6 +349,7 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  indistructableParticles: []
   hitSounds:
     clips:
     - {fileID: 8300000, guid: 6143019375010e54194596d0ead8dd89, type: 3}
@@ -361,6 +363,11 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  indistructableSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   destroyShake:
     magnitude: 0.1
     shakeAmount: 0.1
@@ -396,6 +403,7 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
+  enemyType: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -414,7 +422,7 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
-  hitColor: {r: 0, g: 0, b: 0, a: 0}
+  hitColor: {r: 1, g: 1, b: 1, a: 1}
   timeBetweenFlash: 0.1
   amountToFlash: 5
   fadeTime: 5

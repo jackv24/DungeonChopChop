@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class AppleShooterMove : EnemyMove {
 
+    [Header("Apple Shooter Values")]
     public float rotateSpeed = 5;
+    public int hitsTillShoot = 2;
+
+    private int hits = 0;
 
     public override void OnEnable()
     {
@@ -14,6 +18,8 @@ public class AppleShooterMove : EnemyMove {
     void Start()
     {
         Setup();
+
+        enemyHealth.OnHealthChange += AttackOverride;
     }
 
     public override void FixedUpdate()
@@ -28,4 +34,16 @@ public class AppleShooterMove : EnemyMove {
             LookAtClosestPlayer(rotateSpeed);
         }
 	}
+
+    void AttackOverride()
+    {
+        //count how many hits, if so shoot
+        hits++;
+
+        if (hits > hitsTillShoot)
+        {
+            animator.SetTrigger("Attack");
+            hits = 0;
+        }
+    }
 }
