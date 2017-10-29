@@ -69,7 +69,11 @@ public class SwordCollision : MonoBehaviour {
                 Health enemyHealth = col.gameObject.GetComponent<Health>();
 
                 //calculates knockback depending on direction
-                enemyHealth.Knockback(playerInfo, playerAttack.transform.forward);
+                if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
+                {
+                    enemyHealth.Knockback(playerInfo, playerAttack.transform.forward);
+                    playerInfo.KnockbackPlayer(-playerInfo.transform.forward, knockbackOnHit);
+                }
 
                 DoParticle(col);
 
@@ -79,8 +83,6 @@ public class SwordCollision : MonoBehaviour {
                 Statistics.Instance.totalDamageGiven += playerInfo.GetSwordDamage();
 
                 SetEffect(enemyHealth);
-
-                playerInfo.KnockbackPlayer(-playerInfo.transform.forward, knockbackOnHit);
             }
         } 
         else if (col.gameObject.layer == 17)
