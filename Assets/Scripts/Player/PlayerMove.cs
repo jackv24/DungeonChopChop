@@ -34,6 +34,8 @@ public class PlayerMove : MonoBehaviour
     public float iceAcceleration = 1;
 
 	private bool allowMove = true;
+    [HideInInspector]
+    public bool slipOverride = false;
 
     [Space()]
     public LayerMask layerMask;
@@ -308,13 +310,17 @@ public class PlayerMove : MonoBehaviour
                     }
 
                     //if on ice, slip
-                    if (hit.collider.tag == "Ice")
+                    if (!slipOverride)
                     {
-                        acceleration = iceAcceleration;
-                    }
-                    else
-                    {
-                        acceleration = 10f;
+                        if (hit.collider.tag == "Ice")
+                        {
+                        
+                            acceleration = iceAcceleration;
+                        }
+                        else
+                        {
+                            acceleration = 10f;
+                        }
                     }
                 }
                 else

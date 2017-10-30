@@ -381,6 +381,7 @@ public class DungeonEffects : MonoBehaviour {
             foreach (PlayerInformation player in GameManager.Instance.players)
             {
                 player.playerMove.acceleration = acceleration;
+                player.playerMove.slipOverride = true;
             }
         }
         else
@@ -388,6 +389,7 @@ public class DungeonEffects : MonoBehaviour {
             foreach (PlayerInformation player in GameManager.Instance.players)
             {
                 player.playerMove.acceleration = originalAccel;
+                player.playerMove.slipOverride = false;
             }
         }
     }
