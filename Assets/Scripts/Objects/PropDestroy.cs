@@ -10,6 +10,8 @@ public class PropDestroy : MonoBehaviour
     public bool tripleDestroysIt = true;
     public bool dashDestroysIt = true;
     public bool spinDestroysIt = true;
+    [Space()]
+    public bool destroyedByTalons = false;
 
     [Header("Particles")]
     [Tooltip("Amount of different particle types eg 'Dust, Smoke, Shrapnel'")]
@@ -113,7 +115,7 @@ public class PropDestroy : MonoBehaviour
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
                         }
-                        else 
+                        else
                             DoIndistructableEffect();
                     }
                     //check if in Spinning
@@ -124,7 +126,7 @@ public class PropDestroy : MonoBehaviour
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
                         }
-                        else 
+                        else
                             DoIndistructableEffect();
                     }
                     //check if in Spinning
@@ -135,9 +137,22 @@ public class PropDestroy : MonoBehaviour
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
                         }
-                        else 
+                        else
                             DoIndistructableEffect();
                     }
+                }
+            }
+        }
+
+        //the player layer
+        if (collider.gameObject.layer == 14)
+        {
+            if (destroyedByTalons)
+            {
+                if (ItemsManager.Instance.hasBoots)
+                {
+                    propHealth.AffectHealth(-10);
+                    DoHitEffectAndSound();
                 }
             }
         }
