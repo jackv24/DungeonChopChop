@@ -71,7 +71,7 @@ public class BiomeLighting : MonoBehaviour
 		return null;
 	}
 
-	void UpdateLighting()
+	public void UpdateLighting()
 	{
 		//Get profile for current biome
 		LightProfile profile = GetProfile(LevelGenerator.Instance.currentTile.Biome);
