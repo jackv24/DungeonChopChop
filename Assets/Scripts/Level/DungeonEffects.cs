@@ -9,7 +9,8 @@ public enum DungEffType
     HiddenHealth,
     ExtremePower,
     NoMap,
-    NoSpecialAttacks
+    NoSpecialAttacks,
+    DarkDungeon
 }
 
 [System.Serializable]
@@ -45,8 +46,12 @@ public class DungeonEffects : MonoBehaviour {
 
     [Header("No Special Attacks Values")]
 
+    [Header("Darker Dungeon Values")]
+    public float ambientIntensity = .20f;
+
     private bool effectOn = false;
     private List<bool> specialAtkBools = new List<bool>(0);
+    private float originalDungeonLighting;
 
     private DE currentEffect;
 
@@ -59,7 +64,7 @@ public class DungeonEffects : MonoBehaviour {
     {
         //check if the players are in a dungeon
         if (LevelGenerator.Instance.profile is DungeonGeneratorProfile)
-        {
+        {              
             if (!effectOn)
             {
                 //do the random chance of doing the effect
@@ -109,7 +114,9 @@ public class DungeonEffects : MonoBehaviour {
             else if (effect.effectType == DungEffType.NoMap)
                 DoNoMapEffect();
             else if (effect.effectType == DungEffType.NoSpecialAttacks)
-                OnSpecialAttacks();
+                DoSpecialAttacks();
+            else if (effect.effectType == DungEffType.DarkDungeon)
+                DoDarkDungeon();
 
             if (effectOn)
                 AnnounceEffectOn();
@@ -188,7 +195,7 @@ public class DungeonEffects : MonoBehaviour {
         }
     }
 
-    void OnSpecialAttacks()
+    void DoSpecialAttacks()
     {
         if (effectOn)
         {
@@ -220,6 +227,29 @@ public class DungeonEffects : MonoBehaviour {
                 player.playerAttack.canDashAttack = specialAtkBools[1];
                 player.playerAttack.canSpinAttack = specialAtkBools[2];
                 player.playerAttack.canTripleAttack = specialAtkBools[3];
+            }
+        }
+    }
+
+    void DoDarkDungeon()
+    {
+        BiomeLighting lighting = GameObject.FindObjectOfType<BiomeLighting>();
+
+        if (lighting)
+        {
+            if (effectOn)
+            {
+                originalDungeonLighting = lighting.dungeonProfile.ambientIntensity;
+
+                lighting.dungeonProfile.ambientIntensity = ambientIntensity;
+
+                lighting.UpdateLighting();
+            }
+            else
+            {
+                lighting.dungeonProfile.ambientIntensity = originalDungeonLighting;
+
+                lighting.UpdateLighting();
             }
         }
     }
