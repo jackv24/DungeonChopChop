@@ -46,7 +46,7 @@ public class DungeonEffects : MonoBehaviour {
     [Header("No Special Attacks Values")]
 
     private bool effectOn = false;
-    private List<bool> specialAtkBools;
+    private List<bool> specialAtkBools = new List<bool>(0);
 
     private DE currentEffect;
 
@@ -113,10 +113,14 @@ public class DungeonEffects : MonoBehaviour {
 
             if (effectOn)
                 AnnounceEffectOn();
+            else 
+            {
+                if (!effectsReoccur)
+                    effect.canHappen = false;
+            }
         }
 
-        if (!effectsReoccur)
-            effect.canHappen = false;
+
     }
 
     void RevertEffect()
