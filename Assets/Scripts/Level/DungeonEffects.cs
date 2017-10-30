@@ -12,6 +12,9 @@ public enum DungEffType
     NoSpecialAttacks,
     DarkDungeon,
     DungeonDoofDoof,
+    WorkOut,
+    FineDetails,
+    CleanFloors,
 }
 
 [System.Serializable]
@@ -56,6 +59,15 @@ public class DungeonEffects : MonoBehaviour {
     public int maxLightingAmount;
     public float lightsOnAndOffTime = 1;
 
+    [Header("Work Out Values")]
+    public float workOutSpeedMultiplier;
+
+    [Header("Fine Details Values")]
+    public float cameraFOV = 35;
+
+    [Header("Clean Floors Values")]
+    public float acceleration = 1;
+
     private bool effectOn = false;
     private bool dungeonDoofDoof = false;
 
@@ -63,9 +75,15 @@ public class DungeonEffects : MonoBehaviour {
     private List<GameObject> partyLights = new List<GameObject>(0);
 
     private float originalDungeonLighting;
-
+    private float originalFOV;
+    private float originalAccel;
 
     private DE currentEffect;
+
+    void Start()
+    {
+        originalFOV = Camera.main.fieldOfView;
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -120,18 +138,36 @@ public class DungeonEffects : MonoBehaviour {
         if (effect.canHappen)
         {
             //check what effect it is and do that effect
-            if (effect.effectType == DungEffType.HiddenHealth)
-                DoHiddenHealthEffect();
-            else if (effect.effectType == DungEffType.ExtremePower)
-                DoExtremePowerEffect();
-            else if (effect.effectType == DungEffType.NoMap)
-                DoNoMapEffect();
-            else if (effect.effectType == DungEffType.NoSpecialAttacks)
-                DoSpecialAttacks();
-            else if (effect.effectType == DungEffType.DarkDungeon)
-                DoDarkDungeon();
-            else if (effect.effectType == DungEffType.DungeonDoofDoof)
-                DoDungeonDoof();
+            switch (effect.effectType)
+            {
+                case DungEffType.HiddenHealth:
+                    DoHiddenHealthEffect();
+                    break;
+                case DungEffType.ExtremePower:
+                    DoExtremePowerEffect();
+                    break;
+                case DungEffType.NoMap:
+                    DoNoMapEffect();
+                    break;
+                case DungEffType.NoSpecialAttacks:
+                    DoSpecialAttacks();
+                    break;
+                case DungEffType.DarkDungeon:
+                    DoDarkDungeon();
+                    break;
+                case DungEffType.DungeonDoofDoof:
+                    DoDungeonDoof();
+                    break;
+                case DungEffType.WorkOut:
+                    DoWorkOut();
+                    break;
+                case DungEffType.FineDetails:
+                    DoFineDetails();
+                    break;
+                case DungEffType.CleanFloors:
+                    DoCleanFloors();
+                    break;
+            }
 
             if (effectOn)
                 AnnounceEffectOn();
@@ -141,8 +177,6 @@ public class DungeonEffects : MonoBehaviour {
                     effect.canHappen = false;
             }
         }
-
-
     }
 
     void RevertEffect()
@@ -275,6 +309,52 @@ public class DungeonEffects : MonoBehaviour {
             dungeonDoofDoof = true;
         else
             dungeonDoofDoof = false;
+    }
+
+    void DoWorkOut()
+    {
+        if (effectOn)
+        {
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                player.maxMoveSpeed *= 2;
+            }
+        }
+        else
+        {
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                player.maxMoveSpeed /= 2;
+            }
+        }
+    }
+
+    void DoFineDetails()
+    {
+        if (effectOn)
+            Camera.main.fieldOfView = cameraFOV;
+        else
+            Camera.main.fieldOfView = cameraFOV;
+    }
+
+    void DoCleanFloors()
+    {
+        if (effectOn)
+        {
+            originalAccel = GameManager.Instance.players[0].playerMove.acceleration;
+
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                player.playerMove.acceleration = acceleration;
+            }
+        }
+        else
+        {
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                player.playerMove.acceleration = originalAccel;
+            }
+        }
     }
 
     void SpawnPartyLights()
