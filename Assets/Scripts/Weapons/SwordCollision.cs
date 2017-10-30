@@ -6,7 +6,12 @@ public class SwordCollision : MonoBehaviour {
 
 
     public float knockbackOnHit = 5;
+    public bool opensGoldChests = false;
+
+    [Space()]
     public GameObject trail;
+
+    [Header("Particles")]
     public GameObject[] hitSmokes;
     public GameObject[] hitEffects;
     public GameObject spinReadyParticle;
@@ -99,6 +104,18 @@ public class SwordCollision : MonoBehaviour {
         {
             if (swordStats.weaponEffect == WeaponEffect.Burn)
                 col.gameObject.GetComponent<Health>().SetBurned(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
+        }
+
+        if (opensGoldChests)
+        {
+            if (col.gameObject.GetComponent<Chest>())
+            {
+                if (col.gameObject.GetComponent<Chest>().chestType == ChestType.Gold)
+                {
+                    if (!col.gameObject.GetComponent<Chest>().opened)
+                        col.gameObject.GetComponent<Chest>().Open();
+                }
+            }
         }
     }
 
