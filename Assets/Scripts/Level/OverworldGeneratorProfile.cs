@@ -24,7 +24,10 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 		//Only bother to continue generating if it hasn't failed already
 		if(levelGenerator.profile.succeeded != false)
         	GenerateSpecialTiles(levelGenerator);
-    }
+
+		if (levelGenerator.profile.succeeded != false)
+			SetupPersistentObjects(levelGenerator);
+	}
 
 	void RandomiseBiomes()
 	{
@@ -235,4 +238,25 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 			}
         }
     }
+
+	void SetupPersistentObjects(LevelGenerator levelGenerator)
+	{
+		PersistentObject[] objects = levelGenerator.gameObject.GetComponentsInChildren<PersistentObject>();
+
+		foreach(PersistentObject obj in objects)
+		{
+			if(!obj.onStart)
+			{
+				string id = obj.identifier;
+
+				//Add tile name to identifier, as ther may be more than one of an object
+				LevelTile tile = obj.GetComponentInParent<LevelTile>();
+				if(tile)
+					id += "_" + tile.gameObject.name;
+
+				obj.identifier = id;
+				obj.Setup();
+			}
+		}
+	}
 }

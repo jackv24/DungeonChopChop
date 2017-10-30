@@ -15,39 +15,49 @@ public class DungeonItemPickup : MonoBehaviour
 {
     public DungeonItemType itemType;
 
-    // Use this for initialization
-    void Start()
+    public float pickupStartDelay = 0.1f;
+    private float pickupStartTime;
+
+    private Coroutine pickupRoutine = null;
+
+    void OnEnable()
     {
-		
-    }
-	
-    // Update is called once per frame
-    void Update()
-    {
-		
+        pickupStartTime = Time.time + pickupStartDelay;
     }
 
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "Player1" || col.tag == "Player2")
         {
-            if (itemType == DungeonItemType.Goggles)
-            {
-                ItemsManager.Instance.hasGoggles = true;
-            }
-            else if (itemType == DungeonItemType.Boots)
-            {
-                ItemsManager.Instance.hasBoots = true;
-            }
-            else if (itemType == DungeonItemType.Armor)
-            {
-                ItemsManager.Instance.hasArmourPiece = true;
-            }
-            else if (itemType == DungeonItemType.Armor)
-            {
-                ItemsManager.Instance.hasGauntles = true;
-            }
-            gameObject.SetActive(false);
+            float time = pickupStartTime - Time.time;
+
+            time = Mathf.Max(time, 0);
+
+            if (pickupRoutine == null)
+                pickupRoutine = StartCoroutine(PickupDelayed(time));
         }
+    }
+
+    IEnumerator PickupDelayed(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        if (itemType == DungeonItemType.Goggles)
+        {
+            ItemsManager.Instance.hasGoggles = true;
+        }
+        else if (itemType == DungeonItemType.Boots)
+        {
+            ItemsManager.Instance.hasBoots = true;
+        }
+        else if (itemType == DungeonItemType.Armor)
+        {
+            ItemsManager.Instance.hasArmourPiece = true;
+        }
+        else if (itemType == DungeonItemType.Armor)
+        {
+            ItemsManager.Instance.hasGauntles = true;
+        }
+        gameObject.SetActive(false);
     }
 }
