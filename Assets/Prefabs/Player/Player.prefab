@@ -1699,6 +1699,11 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.2
     maxPitchVariance: 0.2
+  hitBlockSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
 --- !u!114 &114360723681280524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1752,14 +1757,15 @@ MonoBehaviour:
   acceleration: 10
   rotateSpeed: 20
   LockY: 1
-  inMudSpeed: 0.5
-  inLavaSpeed: 0.7
-  damageInFireBiome: 0.1
-  damageInFireMultiplier: 0.01
-  timeBetweenBiomeBurn: 3
+  inMudSpeed: 0.7
+  desertWindSpeed: 0.2
+  inLavaSpeed: 0.4
+  damageInFireBiome: 0.2
+  damageInFireMultiplier: 0.05
+  timeBetweenBiomeBurn: 1.5
   timeBetweenTickDivider: 1.5
   windSpeed: 1.5
-  inSnowSpeed: 0.5
+  inSnowSpeed: 0.4
   iceAcceleration: 1
   layerMask:
     serializedVersion: 2
@@ -1936,6 +1942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d2ed097b2cbab489d2676ac1f06f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TownForceField: 0
 --- !u!114 &114910671819656350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1951,6 +1958,7 @@ MonoBehaviour:
   health: 4
   weight: 0
   IsEnemy: 0
+  enemyType: 0
   isProp: 0
   isPoisoned: 0
   isBurned: 0
