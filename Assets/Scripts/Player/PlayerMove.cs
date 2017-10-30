@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
 	[Header("Environment vals")]
     [Header("Desert")]
     public float inMudSpeed = .7f;
+    public float desertWindSpeed = .5f;
     [Header("Fire")]
     [Tooltip("Little lava spots, the speed damper, set value not multiplier")]
     public float inLavaSpeed = .7f;
@@ -153,10 +154,17 @@ public class PlayerMove : MonoBehaviour
         {
             if (LevelGenerator.Instance.currentTile && LevelGenerator.Instance.currentTile.GetComponent<TileParticles>())
             {
-                if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Desert || LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Ice)
+                if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Ice)
                 {
                     if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>().HasParticles)
                         return LevelGenerator.Instance.currentTile.transform.forward * windSpeed;
+                    else
+                        return Vector3.zero;
+                }
+                else if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Desert)
+                {
+                    if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>().HasParticles)
+                        return LevelGenerator.Instance.currentTile.transform.forward * desertWindSpeed;
                     else
                         return Vector3.zero;
                 }
