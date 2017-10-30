@@ -15,6 +15,7 @@ public enum DungEffType
     WorkOut,
     FineDetails,
     CleanFloors,
+    InstaKill,
 }
 
 [System.Serializable]
@@ -43,7 +44,6 @@ public class DungeonEffects : MonoBehaviour {
 
     [Header("Extreme Power Values")]
     public float strengthMultiplier = 2f;
-    private List<float> originalStrength;
 
     [Header("No Map Values")]
     public GameObject map;
@@ -67,6 +67,9 @@ public class DungeonEffects : MonoBehaviour {
 
     [Header("Clean Floors Values")]
     public float acceleration = 1;
+
+    [Header("Insta Kill Values")]
+    public float instaKillStrength = 1000;
 
     private bool effectOn = false;
     private bool dungeonDoofDoof = false;
@@ -166,6 +169,9 @@ public class DungeonEffects : MonoBehaviour {
                     break;
                 case DungEffType.CleanFloors:
                     DoCleanFloors();
+                    break;
+                case DungEffType.InstaKill:
+                    DoInstaKill();
                     break;
             }
 
@@ -334,15 +340,13 @@ public class DungeonEffects : MonoBehaviour {
         if (effectOn)
             Camera.main.fieldOfView = cameraFOV;
         else
-            Camera.main.fieldOfView = cameraFOV;
+            Camera.main.fieldOfView = originalFOV;
     }
 
     void DoCleanFloors()
     {
         if (effectOn)
         {
-            originalAccel = GameManager.Instance.players[0].playerMove.acceleration;
-
             foreach (PlayerInformation player in GameManager.Instance.players)
             {
                 player.playerMove.acceleration = acceleration;
@@ -353,6 +357,24 @@ public class DungeonEffects : MonoBehaviour {
             foreach (PlayerInformation player in GameManager.Instance.players)
             {
                 player.playerMove.acceleration = originalAccel;
+            }
+        }
+    }
+
+    void DoInstaKill()
+    {
+        if (effectOn)
+        {             
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                player.strength *= instaKillStrength;
+            }
+        }
+        else
+        {
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                player.strength /= instaKillStrength;
             }
         }
     }
