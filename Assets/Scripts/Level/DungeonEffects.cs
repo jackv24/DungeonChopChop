@@ -10,7 +10,8 @@ public enum DungEffType
     ExtremePower,
     NoMap,
     NoSpecialAttacks,
-    DarkDungeon
+    DarkDungeon,
+    DungeonDoofDoof,
 }
 
 [System.Serializable]
@@ -49,15 +50,27 @@ public class DungeonEffects : MonoBehaviour {
     [Header("Darker Dungeon Values")]
     public float ambientIntensity = .20f;
 
+    [Header("Dungeon Doof Doof Values")]
+    public GameObject partyLight;
+    public int minLightingAmount;
+    public int maxLightingAmount;
+    public float lightsOnAndOffTime = 1;
+
     private bool effectOn = false;
+    private bool dungeonDoofDoof = false;
+
     private List<bool> specialAtkBools = new List<bool>(0);
+    private List<GameObject> partyLights = new List<GameObject>(0);
+
     private float originalDungeonLighting;
+
 
     private DE currentEffect;
 
 	// Update is called once per frame
 	void Update () {
         LevelGenerator.Instance.OnGenerationFinished += DungeonEffect;
+        LevelGenerator.Instance.OnTileEnter += SpawnPartyLights;
 	}
 
     void DungeonEffect()
@@ -117,6 +130,8 @@ public class DungeonEffects : MonoBehaviour {
                 DoSpecialAttacks();
             else if (effect.effectType == DungEffType.DarkDungeon)
                 DoDarkDungeon();
+            else if (effect.effectType == DungEffType.DungeonDoofDoof)
+                DoDungeonDoof();
 
             if (effectOn)
                 AnnounceEffectOn();
@@ -250,6 +265,46 @@ public class DungeonEffects : MonoBehaviour {
                 lighting.dungeonProfile.ambientIntensity = originalDungeonLighting;
 
                 lighting.UpdateLighting();
+            }
+        }
+    }
+
+    void DoDungeonDoof()
+    {
+        if (effectOn)
+            dungeonDoofDoof = true;
+        else
+            dungeonDoofDoof = false;
+    }
+
+    void SpawnPartyLights()
+    {
+        if (partyLights.Count > 0)
+        {
+            foreach (GameObject l in partyLights)
+            {
+                l.gameObject.SetActive(false);
+            }
+        }
+
+        partyLights.Clear();
+
+        if (dungeonDoofDoof)
+        {
+            //get the amount of lights to spawn
+            int lightsAmount = Random.Range(minLightingAmount, maxLightingAmount);
+
+            for (int i = 0; i < lightsAmount; i++)
+            {
+                GameObject light = ObjectPooler.GetPooledObject(partyLight);
+
+                Vector3 pos = new Vector3(LevelGenerator.Instance.currentTile.transform.position.x + Random.Range(0, 30), 0, LevelGenerator.Instance.currentTile.transform.position.z + Random.Range(0, 30));
+
+                light.transform.position = pos;
+
+                light.GetComponent<PartyLight>().lightOnAndOffTime = lightsOnAndOffTime;
+
+                partyLights.Add(light);
             }
         }
     }
