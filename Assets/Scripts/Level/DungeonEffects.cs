@@ -8,14 +8,14 @@ public enum DungEffType
     None,
     HiddenHealth,
     ExtremePower,
-    NoMap
+    NoMap,
+    NoSpecialAttacks
 }
 
 [System.Serializable]
 public class DE
 {
     public DungEffType effectType;
-    public int index;
     public bool canHappen;
     [Header("Dungeon Annoucement Text")]
     public string Header;
@@ -24,11 +24,13 @@ public class DE
 
 public class DungeonEffects : MonoBehaviour {
 
+    [Header("Dungeon Effect Values")]
     [Tooltip("The chance of an effect actually happening, 0 - 100")]
     public int chanceOfEffect = 25;
     public float announcementDelayTime;
+    public bool effectsReoccur = false;
 
-    [Header("Dungeon Effects")]
+    [Space()]
     public DE[] effects;
 
     [Header("Hidden Health Values")]
@@ -41,7 +43,11 @@ public class DungeonEffects : MonoBehaviour {
     [Header("No Map Values")]
     public GameObject map;
 
+    [Header("No Special Attacks Values")]
+
     private bool effectOn = false;
+    private List<bool> specialAtkBools;
+
     private DE currentEffect;
 
 	// Update is called once per frame
@@ -81,12 +87,12 @@ public class DungeonEffects : MonoBehaviour {
 
         int random = Random.Range(0, effects.Length);
 
-        foreach (DE effect in effects)
+        for (int i = 0; i < effects.Length; i++)
         {
-            if (effect.index == random)
+            if (i == random)
             {
-                currentEffect = effect;
-                DoEffect(effect);
+                currentEffect = effects[i];
+                DoEffect(effects[i]);
             }
         }
     }
@@ -102,10 +108,15 @@ public class DungeonEffects : MonoBehaviour {
                 DoExtremePowerEffect();
             else if (effect.effectType == DungEffType.NoMap)
                 DoNoMapEffect();
+            else if (effect.effectType == DungEffType.NoSpecialAttacks)
+                OnSpecialAttacks();
 
             if (effectOn)
                 AnnounceEffectOn();
         }
+
+        if (!effectsReoccur)
+            effect.canHappen = false;
     }
 
     void RevertEffect()
@@ -170,6 +181,42 @@ public class DungeonEffects : MonoBehaviour {
         else
         {
             map.SetActive(true);
+        }
+    }
+
+    void OnSpecialAttacks()
+    {
+        if (effectOn)
+        {
+            //get all the current bools of the player, then disable them
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                //both players have the same bools, so we can just add the first players to the list
+                if (player.playerIndex == 0)
+                {
+                    specialAtkBools.Add(player.playerAttack.canDash);
+                    specialAtkBools.Add(player.playerAttack.canDashAttack);
+                    specialAtkBools.Add(player.playerAttack.canSpinAttack);
+                    specialAtkBools.Add(player.playerAttack.canTripleAttack);
+                }
+
+                //set the players attacks to false
+                player.playerAttack.canDash = false;
+                player.playerAttack.canDashAttack = false;
+                player.playerAttack.canSpinAttack = false;
+                player.playerAttack.canTripleAttack = false;
+            }
+        }
+        else
+        {
+            //loop through and reset their attacks
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                player.playerAttack.canDash = specialAtkBools[0];
+                player.playerAttack.canDashAttack = specialAtkBools[1];
+                player.playerAttack.canSpinAttack = specialAtkBools[2];
+                player.playerAttack.canTripleAttack = specialAtkBools[3];
+            }
         }
     }
 }
