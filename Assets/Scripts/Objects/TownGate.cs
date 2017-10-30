@@ -10,7 +10,7 @@ public class TownGate : MonoBehaviour {
     public AmountOfParticleTypes[] particles;
 
     public GameObject[] locks;
-    public Animator door;
+    private Animator door;
 
     private PlayerInformation player;
 
@@ -52,6 +52,7 @@ public class TownGate : MonoBehaviour {
     void OpenDoor()
     {
         bool open = true;
+
         if (door)
         {
             foreach (GameObject l in locks)
@@ -65,6 +66,8 @@ public class TownGate : MonoBehaviour {
 
             if (open)
                 door.SetTrigger("Open");
-        }            
+        }    
+        else 
+            door = GetComponentInChildren<Animator>();
     }
 }
