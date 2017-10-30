@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 65842850160507684}
   - component: {fileID: 114541627630028056}
   - component: {fileID: 54596319347387974}
-  - component: {fileID: 114408628714463602}
   - component: {fileID: 114532975482972284}
   m_Layer: 0
   m_Name: dragonGlassTalons_mesh
@@ -229,22 +228,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114408628714463602
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1921410670754846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sendType: 2
-  sendTime: 0
-  message: ReplaceMessage
-  requireReceiver: 0
-  delayBeforeSend: 1
 --- !u!114 &114532975482972284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,3 +252,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
+  pickupStartDelay: 0.1

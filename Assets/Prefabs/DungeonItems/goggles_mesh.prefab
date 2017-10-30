@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 65426343430290322}
   - component: {fileID: 114638415310654100}
   - component: {fileID: 54634752770105460}
-  - component: {fileID: 114592007939443184}
   - component: {fileID: 114987177459388766}
   m_Layer: 0
   m_Name: goggles_mesh
@@ -230,22 +229,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114592007939443184
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1054866497049358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sendType: 2
-  sendTime: 0
-  message: ReplaceMessage
-  requireReceiver: 0
-  delayBeforeSend: 1
 --- !u!114 &114638415310654100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
+  pickupStartDelay: 0.1
 --- !u!114 &114987177459388766
 MonoBehaviour:
   m_ObjectHideFlags: 1

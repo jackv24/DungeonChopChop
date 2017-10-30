@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 114442063796782686}
   - component: {fileID: 114381539216597288}
   - component: {fileID: 114827384057416520}
+  - component: {fileID: 114591848424274922}
   m_Layer: 0
   m_Name: DungeonChest
   m_TagString: Untagged
@@ -520,6 +521,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beforeMerge: 0
+--- !u!114 &114591848424274922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1521314459292142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendType: 2
+  sendTime: 1
+  message: ReplaceMessage
+  requireReceiver: 0
+  delayBeforeSend: 1
 --- !u!114 &114827384057416520
 MonoBehaviour:
   m_ObjectHideFlags: 1
