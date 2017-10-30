@@ -7,16 +7,23 @@ public class HeartPiece : PickupableItems {
     void OnEnable()
     {
         DidEnable();
+        canPickup = true;
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.layer == 14)
+        if (canPickup)
         {
-            foreach (PlayerInformation player in GameManager.Instance.players)
+            if (col.gameObject.layer == 14)
             {
-                player.GetComponent<Health>().maxHealth += 1;
-                player.GetComponent<Health>().HealthChanged();
+                canPickup = false;
+
+                foreach (PlayerInformation player in GameManager.Instance.players)
+                {
+                    player.GetComponent<Health>().maxHealth += 1;
+                    player.GetComponent<Health>().HealthChanged();
+
+                }
 
                 DoPickUpParticle();
 
