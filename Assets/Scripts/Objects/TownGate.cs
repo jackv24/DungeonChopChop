@@ -10,6 +10,7 @@ public class TownGate : MonoBehaviour {
     public AmountOfParticleTypes[] particles;
 
     public GameObject[] locks;
+    public Animator door;
 
     private PlayerInformation player;
 
@@ -33,6 +34,8 @@ public class TownGate : MonoBehaviour {
                 BreakLock(2);
             if (ItemsManager.Instance.hasGauntles)
                 BreakLock(3);
+
+            OpenDoor();
                 
         }
 	}
@@ -44,5 +47,24 @@ public class TownGate : MonoBehaviour {
             locks[lockNumber].SetActive(false);
             SpawnEffects.EffectOnHit(particles, locks[lockNumber].transform.position); 
         }
+    }
+
+    void OpenDoor()
+    {
+        bool open = true;
+        if (door)
+        {
+            foreach (GameObject l in locks)
+            {
+                if (l.activeSelf)
+                {
+                    open = false;
+                    break;
+                }
+            }
+
+            if (open)
+                door.SetTrigger("Open");
+        }            
     }
 }

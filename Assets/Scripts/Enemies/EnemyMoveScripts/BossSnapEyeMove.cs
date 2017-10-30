@@ -11,13 +11,12 @@ public class BossSnapEyeMove : EnemyMove {
     private bool Attacking = false;
     private Collider[] enemyColliders = new Collider[0];
     private List<GameObject> enemies = new List<GameObject>();
-    private Health enemyHealth;
 
     // Use this for initialization
     void Start () 
     {
         Setup();
-        enemyHealth = GetComponent<Health>();
+
         if (spawnEnemies)
             SpawnEnemies();
     }
