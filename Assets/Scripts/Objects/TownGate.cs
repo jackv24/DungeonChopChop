@@ -23,8 +23,6 @@ public class TownGate : MonoBehaviour {
     {
         float dist = Vector3.Distance(new Vector3(-1, 0, 35), player.transform.position);
 
-        Debug.Log(dist);
-
         if (dist <= distanceTillUnlock)
         {
             if (ItemsManager.Instance.hasGoggles)

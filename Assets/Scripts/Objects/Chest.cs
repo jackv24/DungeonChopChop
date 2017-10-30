@@ -114,7 +114,7 @@ public class Chest : MonoBehaviour
         }
     }
 
-	void Open()
+	public void Open()
 	{
         if (OnChestOpen != null)
             OnChestOpen();
