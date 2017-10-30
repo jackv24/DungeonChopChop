@@ -505,11 +505,15 @@ public class PlayerAttack : MonoBehaviour
         {
             DropShield();
         }
+
         shield = newShield;
         shield.transform.parent = shieldBone.transform;
         shield.transform.localPosition = new Vector3(0, 0, 0);
         shield.transform.localEulerAngles = new Vector3(0, 0, shield.transform.localEulerAngles.z);
         shield.GetComponent<ShieldPickup>().canPickUp = false;
+
+        if (shield.GetComponent<Collider>())
+            shield.GetComponent<Collider>().enabled = false;
     }
 
     public void EnableSword()

@@ -62,10 +62,12 @@ public class ProjectileCollision : MonoBehaviour {
                         {
                             //checks if the user is facing whatever the collision is coming from
                             float dot = Vector3.Dot(col.transform.forward, (transform.position - col.transform.position).normalized);
-                            if (dot < 0.5f)
+
+                            if (dot > .18f && dot < .32f)
                             {
-                                col.transform.GetComponent<Health>().AffectHealth(-damageAmount * damageMultiplyer / playerInfo.resistance);
                             }
+                            else 
+                                col.transform.GetComponent<Health>().AffectHealth(-damageAmount * damageMultiplyer / playerInfo.resistance);
 
                             SoundManager.PlaySound(playerInfo.playerAttack.hitBlockSound, transform.position);
                         }
