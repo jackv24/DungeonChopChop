@@ -16,13 +16,14 @@ public enum DungEffType
     FineDetails,
     CleanFloors,
     InstaKill,
+    BigSwords,
 }
 
 [System.Serializable]
 public class DE
 {
     public DungEffType effectType;
-    public bool canHappen;
+    public bool canHappen = true;
     [Header("Dungeon Annoucement Text")]
     public string Header;
     public string Description;
@@ -35,6 +36,9 @@ public class DungeonEffects : MonoBehaviour {
     public int chanceOfEffect = 25;
     public float announcementDelayTime;
     public bool effectsReoccur = false;
+
+    [Header("For testing purposes, overrides and only choses this effect")]
+    public DungEffType overrider;
 
     [Space()]
     public DE[] effects;
@@ -71,17 +75,22 @@ public class DungeonEffects : MonoBehaviour {
     [Header("Insta Kill Values")]
     public float instaKillStrength = 1000;
 
+    [Header("Big Swords Values")]
+    public float swordScaleMultiplier = 3;
+
     private bool effectOn = false;
     private bool dungeonDoofDoof = false;
 
     private List<bool> specialAtkBools = new List<bool>(0);
     private List<GameObject> partyLights = new List<GameObject>(0);
+    private Dictionary<string, Vector3> weaponScales = new Dictionary<string, Vector3>(0);
 
     private float originalDungeonLighting;
     private float originalFOV;
     private float originalAccel;
 
     private DE currentEffect;
+    private bool doneEffect = false;
 
     void Start()
     {
@@ -98,16 +107,33 @@ public class DungeonEffects : MonoBehaviour {
     {
         //check if the players are in a dungeon
         if (LevelGenerator.Instance.profile is DungeonGeneratorProfile)
-        {              
-            if (!effectOn)
+        {         
+            if (!doneEffect)
             {
-                //do the random chance of doing the effect
-                int random = Random.Range(0, 101);
-
-                if (random <= chanceOfEffect)
+                if (overrider == DungEffType.None)
                 {
-                    ChoseEffect();
+                    if (!effectOn)
+                    {
+                        //do the random chance of doing the effect
+                        int random = Random.Range(0, 101);
+
+                        if (random <= chanceOfEffect)
+                        {
+                            ChoseEffect();
+                        }
+                    }
                 }
+                else
+                {
+                    effectOn = true;
+                    DE newEffect = new DE();
+                    newEffect.effectType = overrider;
+                    currentEffect = newEffect;
+
+                    DoEffect(newEffect);
+                }
+
+                doneEffect = true;
             }
         }
         //check if the players arent in a dungeon and if they were, reset there stats
@@ -116,6 +142,8 @@ public class DungeonEffects : MonoBehaviour {
             if (effectOn)
             {
                 RevertEffect();
+
+                doneEffect = false;
             }
         }
     }
@@ -172,6 +200,9 @@ public class DungeonEffects : MonoBehaviour {
                     break;
                 case DungEffType.InstaKill:
                     DoInstaKill();
+                    break;
+                case DungEffType.BigSwords:
+                    DoBigSwords();
                     break;
             }
 
@@ -375,6 +406,34 @@ public class DungeonEffects : MonoBehaviour {
             foreach (PlayerInformation player in GameManager.Instance.players)
             {
                 player.strength /= instaKillStrength;
+            }
+        }
+    }
+
+    void DoBigSwords()
+    {
+        if (effectOn)
+        {        
+            weaponScales.Clear();
+
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                if (!weaponScales.ContainsKey(player.playerAttack.sword.name + player.playerIndex))
+                {
+                    weaponScales.Add(player.playerAttack.sword.name + player.playerIndex, player.playerAttack.sword.transform.lossyScale);
+
+                    player.playerAttack.sword.transform.localScale *= swordScaleMultiplier;
+                }
+            }
+        }
+        else
+        {
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                if (weaponScales.ContainsKey(player.playerAttack.sword.name + player.playerIndex))
+                {
+                    player.playerAttack.sword.transform.localScale /= swordScaleMultiplier;
+                }
             }
         }
     }
