@@ -25,14 +25,25 @@ public class Drops : MonoBehaviour
         col = GetComponent<Collider>();
     }
 
+    int addPercentage(int number)
+    {
+        if (ItemsManager.Instance.itemDropMultiplier == 0)
+            return number;
+        else
+        {
+
+            return (int)(number * ItemsManager.Instance.itemDropMultiplier) / 100;
+        }
+    }
+
     public void DoDrop()
     {
         //checks if the number of drops is 0
         int randomDropAmount = 0;
         if (maxAmountOfDrops == 1)
-            randomDropAmount = UnityEngine.Random.Range(minAmountOfDrops, maxAmountOfDrops + 1);
+            randomDropAmount = UnityEngine.Random.Range(addPercentage(minAmountOfDrops), addPercentage(maxAmountOfDrops) + 1);
         else
-            randomDropAmount = UnityEngine.Random.Range(minAmountOfDrops, maxAmountOfDrops);
+            randomDropAmount = UnityEngine.Random.Range(addPercentage(minAmountOfDrops), addPercentage(maxAmountOfDrops) + 1);
 
         if (maxAmountOfDrops > 0)
         {

@@ -18,6 +18,9 @@ public class ItemsManager : MonoBehaviour {
     public bool hasArmourPiece = false;
     public bool hasGauntles = false;
 
+    [Header("Global Variables")]
+    public int itemDropMultiplier;
+
     void Awake()
     {
         Instance = this;

@@ -17,6 +17,7 @@ public enum DungEffType
     CleanFloors,
     InstaKill,
     BigSwords,
+    MoreMoney,
 }
 
 [System.Serializable]
@@ -77,6 +78,9 @@ public class DungeonEffects : MonoBehaviour {
 
     [Header("Big Swords Values")]
     public float swordScaleMultiplier = 3;
+
+    [Header("More Money Values")]
+    public int percentageMore = 25;
 
     private bool effectOn = false;
     private bool dungeonDoofDoof = false;
@@ -203,6 +207,9 @@ public class DungeonEffects : MonoBehaviour {
                     break;
                 case DungEffType.BigSwords:
                     DoBigSwords();
+                    break;
+                case DungEffType.MoreMoney:
+                    DoMoreMoney();
                     break;
             }
 
@@ -438,6 +445,14 @@ public class DungeonEffects : MonoBehaviour {
                 }
             }
         }
+    }
+
+    void DoMoreMoney()
+    {
+        if (effectOn)
+            ItemsManager.Instance.itemDropMultiplier += percentageMore;
+        else
+            ItemsManager.Instance.itemDropMultiplier -= percentageMore;
     }
 
     void SpawnPartyLights()
