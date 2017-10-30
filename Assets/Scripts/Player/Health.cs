@@ -114,7 +114,7 @@ public class Health : MonoBehaviour
     void Update()
     {
         //makes sure health doesn't go below 0        
-        if (health <= 0)
+        if (health <= 0.0f)
         {
             health = 0;
 
