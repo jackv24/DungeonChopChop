@@ -70,7 +70,7 @@ public class DungeonEffects : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         LevelGenerator.Instance.OnGenerationFinished += DungeonEffect;
-        LevelGenerator.Instance.OnTileEnter += SpawnPartyLights;
+        //LevelGenerator.Instance.OnTileEnter += SpawnPartyLights;
 	}
 
     void DungeonEffect()
@@ -279,18 +279,18 @@ public class DungeonEffects : MonoBehaviour {
 
     void SpawnPartyLights()
     {
-        if (partyLights.Count > 0)
-        {
-            foreach (GameObject l in partyLights)
-            {
-                l.gameObject.SetActive(false);
-            }
-        }
-
-        partyLights.Clear();
-
         if (dungeonDoofDoof)
         {
+            if (partyLights.Count > 0)
+            {
+                foreach (GameObject l in partyLights)
+                {
+                    l.gameObject.SetActive(false);
+                }
+            }
+
+            partyLights.Clear();
+
             //get the amount of lights to spawn
             int lightsAmount = Random.Range(minLightingAmount, maxLightingAmount);
 
