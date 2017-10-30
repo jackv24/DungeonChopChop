@@ -1,0 +1,222 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public enum DungEffType
+{
+    None,
+    HiddenHealth,
+    ExtremePower,
+    NoMap,
+    NoSpecialAttacks
+}
+
+[System.Serializable]
+public class DE
+{
+    public DungEffType effectType;
+    public bool canHappen;
+    [Header("Dungeon Annoucement Text")]
+    public string Header;
+    public string Description;
+}
+
+public class DungeonEffects : MonoBehaviour {
+
+    [Header("Dungeon Effect Values")]
+    [Tooltip("The chance of an effect actually happening, 0 - 100")]
+    public int chanceOfEffect = 25;
+    public float announcementDelayTime;
+    public bool effectsReoccur = false;
+
+    [Space()]
+    public DE[] effects;
+
+    [Header("Hidden Health Values")]
+    public GameObject[] playersUI;
+
+    [Header("Extreme Power Values")]
+    public float strengthMultiplier = 2f;
+    private List<float> originalStrength;
+
+    [Header("No Map Values")]
+    public GameObject map;
+
+    [Header("No Special Attacks Values")]
+
+    private bool effectOn = false;
+    private List<bool> specialAtkBools;
+
+    private DE currentEffect;
+
+	// Update is called once per frame
+	void Update () {
+        LevelGenerator.Instance.OnGenerationFinished += DungeonEffect;
+	}
+
+    void DungeonEffect()
+    {
+        //check if the players are in a dungeon
+        if (LevelGenerator.Instance.profile is DungeonGeneratorProfile)
+        {
+            if (!effectOn)
+            {
+                //do the random chance of doing the effect
+                int random = Random.Range(0, 101);
+
+                if (random <= chanceOfEffect)
+                {
+                    ChoseEffect();
+                }
+            }
+        }
+        //check if the players arent in a dungeon and if they were, reset there stats
+        else if (LevelGenerator.Instance.profile is OverworldGeneratorProfile)
+        {
+            if (effectOn)
+            {
+                RevertEffect();
+            }
+        }
+    }
+
+    void ChoseEffect()
+    {
+        effectOn = true;
+
+        int random = Random.Range(0, effects.Length);
+
+        for (int i = 0; i < effects.Length; i++)
+        {
+            if (i == random)
+            {
+                currentEffect = effects[i];
+                DoEffect(effects[i]);
+            }
+        }
+    }
+
+    void DoEffect(DE effect)
+    {
+        if (effect.canHappen)
+        {
+            //check what effect it is and do that effect
+            if (effect.effectType == DungEffType.HiddenHealth)
+                DoHiddenHealthEffect();
+            else if (effect.effectType == DungEffType.ExtremePower)
+                DoExtremePowerEffect();
+            else if (effect.effectType == DungEffType.NoMap)
+                DoNoMapEffect();
+            else if (effect.effectType == DungEffType.NoSpecialAttacks)
+                OnSpecialAttacks();
+
+            if (effectOn)
+                AnnounceEffectOn();
+        }
+
+        if (!effectsReoccur)
+            effect.canHappen = false;
+    }
+
+    void RevertEffect()
+    {
+        effectOn = false;
+
+        DoEffect(currentEffect);
+    }
+
+    void AnnounceEffectOn()
+    {
+        Announcement.DoAnnouncement(currentEffect.Header, currentEffect.Description, announcementDelayTime);
+    }
+
+    void AnnounceEffectOff()
+    {
+        //do the text saying the effect is gone
+    }
+
+    void DoHiddenHealthEffect()
+    {
+        if (effectOn)
+        {
+            foreach (GameObject ui in playersUI)
+            {
+                ui.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (GameObject ui in playersUI)
+            {
+                ui.SetActive(true);
+            }
+        }
+    }
+
+    void DoExtremePowerEffect()
+    {
+        if (effectOn)
+        {
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                player.strength *= strengthMultiplier;
+            }
+        }
+        else
+        {
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                player.strength /= strengthMultiplier;
+            }
+        }
+    }
+
+    void DoNoMapEffect()
+    {
+        if (effectOn)
+        {
+            map.SetActive(false);
+        }
+        else
+        {
+            map.SetActive(true);
+        }
+    }
+
+    void OnSpecialAttacks()
+    {
+        if (effectOn)
+        {
+            //get all the current bools of the player, then disable them
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                //both players have the same bools, so we can just add the first players to the list
+                if (player.playerIndex == 0)
+                {
+                    specialAtkBools.Add(player.playerAttack.canDash);
+                    specialAtkBools.Add(player.playerAttack.canDashAttack);
+                    specialAtkBools.Add(player.playerAttack.canSpinAttack);
+                    specialAtkBools.Add(player.playerAttack.canTripleAttack);
+                }
+
+                //set the players attacks to false
+                player.playerAttack.canDash = false;
+                player.playerAttack.canDashAttack = false;
+                player.playerAttack.canSpinAttack = false;
+                player.playerAttack.canTripleAttack = false;
+            }
+        }
+        else
+        {
+            //loop through and reset their attacks
+            foreach (PlayerInformation player in GameManager.Instance.players)
+            {
+                player.playerAttack.canDash = specialAtkBools[0];
+                player.playerAttack.canDashAttack = specialAtkBools[1];
+                player.playerAttack.canSpinAttack = specialAtkBools[2];
+                player.playerAttack.canTripleAttack = specialAtkBools[3];
+            }
+        }
+    }
+}

@@ -52,6 +52,9 @@ public class EnemyMove : MonoBehaviour
         {
             agent.speed = originalSpeed;
             agent.velocity -= agent.velocity;
+
+            if (agent.isOnNavMesh)
+                agent.ResetPath();
         }
 
         if (animator)
@@ -258,7 +261,21 @@ public class EnemyMove : MonoBehaviour
             return transform;
     }
 
-    protected Transform GetClosestEnemy()
+    public Transform GetClosestEnemyRadius(float radius)
+    {
+        Collider[] enemies = Physics.OverlapSphere(transform.position, 500, layerMask);
+        foreach (Collider enemy in enemies)
+        {
+            float dist = Vector3.Distance(transform.position, enemy.transform.position);
+            if (dist < radius)
+            {
+                return enemy.transform;
+            }
+        }
+        return transform;
+    }
+
+    public Transform GetClosestEnemy()
     {
         GameObject closestEnemy = null;
         float maxDistance = float.MaxValue;

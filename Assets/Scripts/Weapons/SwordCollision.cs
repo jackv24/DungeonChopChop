@@ -72,7 +72,17 @@ public class SwordCollision : MonoBehaviour {
                 if (!animator.GetCurrentAnimatorStateInfo(1).IsTag("Attacking"))
                 {
                     enemyHealth.Knockback(playerInfo, playerAttack.transform.forward);
+
                     playerInfo.KnockbackPlayer(-playerInfo.transform.forward, knockbackOnHit);
+                }
+
+                //check if the player has the 2 birds with 1 stone charm
+                if (playerInfo.HasCharmBool("2stones1bird"))
+                {
+                    if (col.gameObject.GetComponent<EnemyMove>())
+                    {
+                        col.gameObject.GetComponent<EnemyMove>().GetClosestEnemyRadius(7).GetComponent<Health>().AffectHealth(-playerInfo.GetSwordDamage());
+                    }
                 }
 
                 DoParticle(col);
