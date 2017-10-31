@@ -7,7 +7,6 @@ public class HealingPlatform : MonoBehaviour {
     [Tooltip("Only have Player selected")]
     public LayerMask mask;
     public float healthIncreaseAmount = .1f;
-    public int cureAmountIncrease = 5;
     public float timeBetweenHealthIncrease = 1;
     public float healingRadius = 1;
     public AmountOfParticleTypes[] particles;
@@ -16,7 +15,6 @@ public class HealingPlatform : MonoBehaviour {
 
     private int counter = 0;
     private float maxHealth = 10;
-    private float maxCure = 100;
 
     private int maxParticleSize;
     private ParticleSystem.MainModule main;

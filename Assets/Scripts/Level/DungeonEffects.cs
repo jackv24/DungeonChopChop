@@ -173,45 +173,30 @@ public class DungeonEffects : MonoBehaviour {
         if (effect.canHappen)
         {
             //check what effect it is and do that effect
-            switch (effect.effectType)
-            {
-                case DungEffType.HiddenHealth:
+            if (effect.effectType == DungEffType.HiddenHealth)
                     DoHiddenHealthEffect();
-                    break;
-                case DungEffType.ExtremePower:
+            if (effect.effectType == DungEffType.ExtremePower)
                     DoExtremePowerEffect();
-                    break;
-                case DungEffType.NoMap:
+            if (effect.effectType == DungEffType.NoMap)
                     DoNoMapEffect();
-                    break;
-                case DungEffType.NoSpecialAttacks:
+            if (effect.effectType == DungEffType.NoSpecialAttacks)
                     DoSpecialAttacks();
-                    break;
-                case DungEffType.DarkDungeon:
+            if (effect.effectType == DungEffType.DarkDungeon)
                     DoDarkDungeon();
-                    break;
-                case DungEffType.DungeonDoofDoof:
+            if (effect.effectType == DungEffType.DungeonDoofDoof)
                     DoDungeonDoof();
-                    break;
-                case DungEffType.WorkOut:
+            if (effect.effectType == DungEffType.WorkOut)
                     DoWorkOut();
-                    break;
-                case DungEffType.FineDetails:
+            if (effect.effectType == DungEffType.FineDetails)
                     DoFineDetails();
-                    break;
-                case DungEffType.CleanFloors:
+            if (effect.effectType == DungEffType.CleanFloors)
                     DoCleanFloors();
-                    break;
-                case DungEffType.InstaKill:
+            if (effect.effectType == DungEffType.InstaKill)
                     DoInstaKill();
-                    break;
-                case DungEffType.BigSwords:
+            if (effect.effectType == DungEffType.BigSwords)
                     DoBigSwords();
-                    break;
-                case DungEffType.MoreMoney:
+            if (effect.effectType == DungEffType.MoreMoney)
                     DoMoreMoney();
-                    break;
-            }
 
             if (effectOn)
                 AnnounceEffectOn();
