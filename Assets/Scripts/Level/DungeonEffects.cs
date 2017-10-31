@@ -175,27 +175,27 @@ public class DungeonEffects : MonoBehaviour {
             //check what effect it is and do that effect
             if (effect.effectType == DungEffType.HiddenHealth)
                     DoHiddenHealthEffect();
-            if (effect.effectType == DungEffType.ExtremePower)
+            else if (effect.effectType == DungEffType.ExtremePower)
                     DoExtremePowerEffect();
-            if (effect.effectType == DungEffType.NoMap)
+            else if (effect.effectType == DungEffType.NoMap)
                     DoNoMapEffect();
-            if (effect.effectType == DungEffType.NoSpecialAttacks)
+            else if (effect.effectType == DungEffType.NoSpecialAttacks)
                     DoSpecialAttacks();
-            if (effect.effectType == DungEffType.DarkDungeon)
+            else if (effect.effectType == DungEffType.DarkDungeon)
                     DoDarkDungeon();
-            if (effect.effectType == DungEffType.DungeonDoofDoof)
+            else if (effect.effectType == DungEffType.DungeonDoofDoof)
                     DoDungeonDoof();
-            if (effect.effectType == DungEffType.WorkOut)
+            else if (effect.effectType == DungEffType.WorkOut)
                     DoWorkOut();
-            if (effect.effectType == DungEffType.FineDetails)
+            else if (effect.effectType == DungEffType.FineDetails)
                     DoFineDetails();
-            if (effect.effectType == DungEffType.CleanFloors)
+            else if (effect.effectType == DungEffType.CleanFloors)
                     DoCleanFloors();
-            if (effect.effectType == DungEffType.InstaKill)
+            else if (effect.effectType == DungEffType.InstaKill)
                     DoInstaKill();
-            if (effect.effectType == DungEffType.BigSwords)
+            else if (effect.effectType == DungEffType.BigSwords)
                     DoBigSwords();
-            if (effect.effectType == DungEffType.MoreMoney)
+            else if (effect.effectType == DungEffType.MoreMoney)
                     DoMoreMoney();
 
             if (effectOn)
