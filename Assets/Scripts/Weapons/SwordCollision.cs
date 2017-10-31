@@ -96,6 +96,9 @@ public class SwordCollision : MonoBehaviour {
 
                 DoParticle(col);
 
+                if (goldenSword)
+                    col.collider.GetComponent<Drops>().DoDrop();
+
                 //else just do the normal damage
                 enemyHealth.AffectHealth(-playerInfo.GetSwordDamage());
 

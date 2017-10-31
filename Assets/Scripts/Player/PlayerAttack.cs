@@ -533,14 +533,14 @@ public class PlayerAttack : MonoBehaviour
         //enables collider and trail
         sword.GetComponent<BoxCollider>().enabled = true;
         if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("DashAttack"))
-            sword.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = true;
+            sword.transform.GetComponentInChildren<TrailRenderer>().enabled = true;
     }
 
     public void DisableSword()
     {
         //disables collider and trail
         sword.GetComponent<BoxCollider>().enabled = false;
-        sword.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = false;
+        sword.transform.GetComponentInChildren<TrailRenderer>().enabled = false;
     }
 
     //-------------------------- Combo stuff
