@@ -17,7 +17,10 @@ public class Pause : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject player1Stats;
     public GameObject player2Stats;
+    public GameObject YesOrNoPanel;
+
     public GameObject statistics;
+
 
     bool paused = false;
 
@@ -71,6 +74,7 @@ public class Pause : MonoBehaviour
 			OnUnpause();
 
         statistics.SetActive(false);
+        YesOrNoPanel.SetActive(false);
     }
 
     public void MainMenu()
@@ -94,5 +98,15 @@ public class Pause : MonoBehaviour
             Destroy(pm.gameObject);
 
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ExitOption()
+    {
+        YesOrNoPanel.SetActive(true);
+    }
+
+    public void ExitNo()
+    {
+        YesOrNoPanel.SetActive(false);
     }
 }
