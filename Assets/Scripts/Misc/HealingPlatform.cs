@@ -44,7 +44,6 @@ public class HealingPlatform : MonoBehaviour {
         if (ItemsManager.Instance.hasGauntles)
         {
             maxHealth = 0;
-            maxCure = 0;
 
             if (fountainParticle)
                 main.maxParticles = (int)Percentage(maxParticleSize, 0);
@@ -52,7 +51,6 @@ public class HealingPlatform : MonoBehaviour {
         else if (ItemsManager.Instance.hasArmourPiece)
         {
             maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 25);
-            maxCure = Percentage(GameManager.Instance.players[0].maxCureAmount, 25);
 
             if (fountainParticle)
                 main.maxParticles = (int)Percentage(maxParticleSize, 25);
@@ -60,7 +58,6 @@ public class HealingPlatform : MonoBehaviour {
         else if (ItemsManager.Instance.hasBoots)
         {
             maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 50);
-            maxCure = Percentage(GameManager.Instance.players[0].maxCureAmount, 50);
 
             if (fountainParticle)
                 main.maxParticles = (int)Percentage(maxParticleSize, 50);
@@ -68,7 +65,6 @@ public class HealingPlatform : MonoBehaviour {
         else if (ItemsManager.Instance.hasGoggles)
         {
             maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 75);
-            maxCure = Percentage(GameManager.Instance.players[0].maxCureAmount, 75);
 
             if (fountainParticle)
                 main.maxParticles = (int)Percentage(maxParticleSize, 75);
@@ -95,8 +91,6 @@ public class HealingPlatform : MonoBehaviour {
                         SpawnEffects.EffectOnHit(particles, transform.position);
                         SoundManager.PlaySound(sound, transform.position);
                     }
-                    if (pl.GetComponent<PlayerInformation>().currentCureAmount < maxCure)
-                        pl.GetComponent<PlayerInformation>().currentCureAmount += cureAmountIncrease;
                 }
             }
         }
