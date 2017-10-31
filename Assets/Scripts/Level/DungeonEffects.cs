@@ -8,7 +8,6 @@ public enum DungEffType
     None,
     HiddenHealth,
     ExtremePower,
-    NoMap,
     NoSpecialAttacks,
     DarkDungeon,
     DungeonDoofDoof,
@@ -49,9 +48,6 @@ public class DungeonEffects : MonoBehaviour {
 
     [Header("Extreme Power Values")]
     public float strengthMultiplier = 2f;
-
-    [Header("No Map Values")]
-    public GameObject map;
 
     [Header("No Special Attacks Values")]
 
@@ -177,8 +173,6 @@ public class DungeonEffects : MonoBehaviour {
                     DoHiddenHealthEffect();
             else if (effect.effectType == DungEffType.ExtremePower)
                     DoExtremePowerEffect();
-            else if (effect.effectType == DungEffType.NoMap)
-                    DoNoMapEffect();
             else if (effect.effectType == DungEffType.NoSpecialAttacks)
                     DoSpecialAttacks();
             else if (effect.effectType == DungEffType.DarkDungeon)
@@ -258,18 +252,6 @@ public class DungeonEffects : MonoBehaviour {
             {
                 player.strength /= strengthMultiplier;
             }
-        }
-    }
-
-    void DoNoMapEffect()
-    {
-        if (effectOn)
-        {
-            map.SetActive(false);
-        }
-        else
-        {
-            map.SetActive(true);
         }
     }
 
