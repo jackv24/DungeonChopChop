@@ -62,6 +62,10 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
+        //do events
+        GameManager.Instance.OnEnemyStrengthChange += ChangeStrength;
+        GameManager.Instance.OnEnemyHealthChange += ChangeHealth;
+
         col = GetComponent<Collider>();
 
         enemyHealth = GetComponent<Health>();
@@ -78,6 +82,16 @@ public class EnemyAttack : MonoBehaviour
 
             SetInactive();
         }
+    }
+
+    void ChangeHealth()
+    {
+        enemyHealth.health *= GameManager.Instance.enemyHealthMultiplier;
+    }
+
+    void ChangeStrength()
+    {
+        attackStrength *= GameManager.Instance.enemyStrengthMultiplier;
     }
 
     void SetActive()

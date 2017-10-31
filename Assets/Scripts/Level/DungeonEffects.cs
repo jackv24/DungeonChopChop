@@ -17,6 +17,11 @@ public enum DungEffType
     InstaKill,
     BigSwords,
     MoreMoney,
+    NoCash,
+    EnemyWorkOut,
+    StrongEnemies,
+    BulkyEnemies,
+    EnragedEnemies
 }
 
 [System.Serializable]
@@ -29,7 +34,8 @@ public class DE
     public string Description;
 }
 
-public class DungeonEffects : MonoBehaviour {
+public class DungeonEffects : MonoBehaviour
+{
 
     [Header("Dungeon Effect Values")]
     [Tooltip("The chance of an effect actually happening, 0 - 100")]
@@ -78,6 +84,15 @@ public class DungeonEffects : MonoBehaviour {
     [Header("More Money Values")]
     public int percentageMore = 25;
 
+    [Header("Enemy Work Out Values")]
+    public float enemyMoveMultiplier = 2;
+
+    [Header("Strong Enemies Values")]
+    public float enemyStrengthMultiplier = 2;
+
+    [Header("Bulky Enemies Values")]
+    public float enemyHealthMultiplier = 2;
+
     private bool effectOn = false;
     private bool dungeonDoofDoof = false;
 
@@ -88,6 +103,7 @@ public class DungeonEffects : MonoBehaviour {
     private float originalDungeonLighting;
     private float originalFOV;
     private float originalAccel;
+    private int originalLootMultiplier;
 
     private DE currentEffect;
     private bool doneEffect = false;
@@ -97,11 +113,12 @@ public class DungeonEffects : MonoBehaviour {
         originalFOV = Camera.main.fieldOfView;
     }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         LevelGenerator.Instance.OnGenerationFinished += DungeonEffect;
-        //LevelGenerator.Instance.OnTileEnter += SpawnPartyLights;
-	}
+        LevelGenerator.Instance.OnTileEnter += SpawnPartyLights;
+    }
 
     void DungeonEffect()
     {
@@ -170,31 +187,41 @@ public class DungeonEffects : MonoBehaviour {
         {
             //check what effect it is and do that effect
             if (effect.effectType == DungEffType.HiddenHealth)
-                    DoHiddenHealthEffect();
+                DoHiddenHealthEffect();
             else if (effect.effectType == DungEffType.ExtremePower)
-                    DoExtremePowerEffect();
+                DoExtremePowerEffect();
             else if (effect.effectType == DungEffType.NoSpecialAttacks)
-                    DoSpecialAttacks();
+                DoSpecialAttacks();
             else if (effect.effectType == DungEffType.DarkDungeon)
-                    DoDarkDungeon();
+                DoDarkDungeon();
             else if (effect.effectType == DungEffType.DungeonDoofDoof)
-                    DoDungeonDoof();
+                DoDungeonDoof();
             else if (effect.effectType == DungEffType.WorkOut)
-                    DoWorkOut();
+                DoWorkOut();
             else if (effect.effectType == DungEffType.FineDetails)
-                    DoFineDetails();
+                DoFineDetails();
             else if (effect.effectType == DungEffType.CleanFloors)
-                    DoCleanFloors();
+                DoCleanFloors();
             else if (effect.effectType == DungEffType.InstaKill)
-                    DoInstaKill();
+                DoInstaKill();
             else if (effect.effectType == DungEffType.BigSwords)
-                    DoBigSwords();
+                DoBigSwords();
             else if (effect.effectType == DungEffType.MoreMoney)
-                    DoMoreMoney();
+                DoMoreMoney();
+            else if (effect.effectType == DungEffType.NoCash)
+                DoNoCash();
+            else if (effect.effectType == DungEffType.EnemyWorkOut)
+                DoEnemyWorkOut();
+            else if (effect.effectType == DungEffType.StrongEnemies)
+                DoStrongEnemies();
+            else if (effect.effectType == DungEffType.BulkyEnemies)
+                DoBulkyEnemies();
+            else if (effect.effectType == DungEffType.EnragedEnemies)
+                DoEnragedEnemies();
 
             if (effectOn)
                 AnnounceEffectOn();
-            else 
+            else
             {
                 if (!effectsReoccur)
                     effect.canHappen = false;
@@ -420,6 +447,48 @@ public class DungeonEffects : MonoBehaviour {
             ItemsManager.Instance.itemDropMultiplier += percentageMore;
         else
             ItemsManager.Instance.itemDropMultiplier -= percentageMore;
+    }
+
+    void DoNoCash()
+    {
+        if (effectOn)
+        {
+            originalLootMultiplier = ItemsManager.Instance.itemDropMultiplier;
+            ItemsManager.Instance.itemDropMultiplier = 0;
+        }
+        else
+            ItemsManager.Instance.itemDropMultiplier = originalLootMultiplier;
+    }
+
+    void DoEnemyWorkOut()
+    {
+        if (effectOn)
+            GameManager.Instance.enemyMoveMultiplier *= enemyMoveMultiplier;
+        else 
+            GameManager.Instance.enemyMoveMultiplier /= enemyMoveMultiplier;
+    }
+
+    void DoStrongEnemies()
+    {
+        if (effectOn)
+            GameManager.Instance.enemyStrengthMultiplier *= enemyStrengthMultiplier;
+        else 
+            GameManager.Instance.enemyStrengthMultiplier /= enemyStrengthMultiplier;
+    }
+
+    void DoBulkyEnemies()
+    {
+        if (effectOn)
+            GameManager.Instance.enemyHealthMultiplier *= enemyHealthMultiplier;
+        else 
+            GameManager.Instance.enemyHealthMultiplier /= enemyHealthMultiplier;
+    }
+
+    void DoEnragedEnemies()
+    {
+        DoEnemyWorkOut();
+        DoStrongEnemies();
+        DoBulkyEnemies();
     }
 
     void SpawnPartyLights()

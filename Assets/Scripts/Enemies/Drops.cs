@@ -28,10 +28,11 @@ public class Drops : MonoBehaviour
     int addPercentage(int number)
     {
         if (ItemsManager.Instance.itemDropMultiplier == 0)
+            return 0;
+        else if (ItemsManager.Instance.itemDropMultiplier == 1)
             return number;
         else
         {
-
             return (int)(number * ItemsManager.Instance.itemDropMultiplier) / 100;
         }
     }

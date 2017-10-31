@@ -32,6 +32,8 @@ public class EnemyMove : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.OnEnemyMoveChange += ChangeStrength;
+            
         Setup();
     }
 
@@ -59,6 +61,11 @@ public class EnemyMove : MonoBehaviour
 
         if (animator)
             animator.enabled = true;
+    }
+
+    void ChangeStrength()
+    {
+        agent.speed *= GameManager.Instance.enemyMoveMultiplier;
     }
 
     void OnDisable()

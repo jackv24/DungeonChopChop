@@ -25334,12 +25334,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ed3734ae51da0468b4aaa987d16833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceOfEffect: 100
+  chanceOfEffect: 50
   announcementDelayTime: 2
   effectsReoccur: 0
   overrider: 0
   effects:
-  - effectType: 1
+  - effectType: 0
     canHappen: 1
     Header: Dungeon Announcement
     Description: Let this be a warning
@@ -25379,10 +25379,22 @@ MonoBehaviour:
     canHappen: 1
     Header: Dungeon Announcement
     Description: The size matters
-  - effectType: 12
+  - effectType: 13
     canHappen: 1
     Header: Dungeon Announcement
-    Description: Dollars flying
+    Description: Speed is with them
+  - effectType: 14
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: They're to strong
+  - effectType: 15
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: I hope you brought a strong sword
+  - effectType: 16
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: It must be a blood moon
   playersUI:
   - {fileID: 1418822532}
   - {fileID: 1742911122}
@@ -25398,6 +25410,9 @@ MonoBehaviour:
   instaKillStrength: 1000
   swordScaleMultiplier: 3
   percentageMore: 100
+  enemyMoveMultiplier: 2
+  enemyStrengthMultiplier: 2
+  enemyHealthMultiplier: 2
 --- !u!4 &2132508184
 Transform:
   m_ObjectHideFlags: 0
