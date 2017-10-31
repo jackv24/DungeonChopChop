@@ -474,6 +474,12 @@ public class PlayerAttack : MonoBehaviour
     {
         if (sword)
         {
+            if (sword.GetComponent<SwordCollision>().goldenSword)
+            {
+                playerInformation.absorbDistance /= sword.GetComponent<SwordCollision>().absorbMultiplier;
+                ItemsManager.Instance.itemDropMultiplier -= sword.GetComponent<SwordCollision>().lootMultiplier;
+            }
+            
             //sets the swords parent to be nothing
             sword.transform.parent = null;
             sword.gameObject.SetActive(false);
@@ -497,6 +503,12 @@ public class PlayerAttack : MonoBehaviour
         sword.transform.localEulerAngles = new Vector3(-117.677f, -48.953f, 25.159f);
         sword.GetComponent<SwordPickup>().canPickUp = false;
         AddSwordPlayerComponenets(sword.GetComponent<SwordCollision>());
+
+        if (sword.GetComponent<SwordCollision>().goldenSword)
+        {
+            playerInformation.absorbDistance *= sword.GetComponent<SwordCollision>().absorbMultiplier;
+            ItemsManager.Instance.itemDropMultiplier += sword.GetComponent<SwordCollision>().lootMultiplier;
+        }
     }
 
     public void AddShield(ShieldStats newShield)

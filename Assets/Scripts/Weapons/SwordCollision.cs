@@ -6,7 +6,11 @@ public class SwordCollision : MonoBehaviour {
 
 
     public float knockbackOnHit = 5;
-    public bool opensGoldChests = false;
+
+    [Header("Golden Sword Stats")]
+    public bool goldenSword = false;
+    public int lootMultiplier = 50;
+    public float absorbMultiplier = 2;
 
     [Space()]
     public GameObject trail;
@@ -104,18 +108,6 @@ public class SwordCollision : MonoBehaviour {
         {
             if (swordStats.weaponEffect == WeaponEffect.Burn)
                 col.gameObject.GetComponent<Health>().SetBurned(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
-        }
-
-        if (opensGoldChests)
-        {
-            if (col.gameObject.GetComponent<Chest>())
-            {
-                if (col.gameObject.GetComponent<Chest>().chestType == ChestType.Gold)
-                {
-                    if (!col.gameObject.GetComponent<Chest>().opened)
-                        col.gameObject.GetComponent<Chest>().Open();
-                }
-            }
         }
     }
 

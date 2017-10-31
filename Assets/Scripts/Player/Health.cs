@@ -673,7 +673,7 @@ public class Health : MonoBehaviour
     /// </summary>
     /// <param name="duration">Duration in seconds.</param>
     /// <param name="timeBetweenPoison">Time between poison in seconds.</param>
-    public void SetPoison(float damagePerTick, float duration, float timeBetweenPoison)
+    public void SetPoison(float damagePerTick = .2f, float duration = 3, float timeBetweenPoison = 1)
     {
         if (playerInfo)
             damagePerTick *= playerInfo.GetCharmFloat("poisonMultiplier");
@@ -870,7 +870,7 @@ public class Health : MonoBehaviour
     /// Sets to ice.
     /// </summary>
     /// <param name="duration">Duration in seconds.</param>
-    public void SetIce(float duration)
+    public void SetIce(float duration = 1)
     {
         isFrozen = true;
 
@@ -924,7 +924,7 @@ public class Health : MonoBehaviour
     /// Sets slow speed.
     /// </summary>
     /// <param name="duration">Duration in seconds.</param>
-    public void SetSandy(float duration, float speedDamping)
+    public void SetSandy(float duration = 1, float speedDamping = .5f)
     {
         isSandy = true;
 
