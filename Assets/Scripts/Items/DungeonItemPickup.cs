@@ -54,7 +54,7 @@ public class DungeonItemPickup : MonoBehaviour
         {
             ItemsManager.Instance.hasArmourPiece = true;
         }
-        else if (itemType == DungeonItemType.Armor)
+        else if (itemType == DungeonItemType.Gauntlet)
         {
             ItemsManager.Instance.hasGauntles = true;
         }
