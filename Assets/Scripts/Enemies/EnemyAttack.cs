@@ -51,8 +51,8 @@ public class EnemyAttack : MonoBehaviour
     private int circleAngle = 0;
     private float angle = 0;
     private float randomInterval = 0;
-    private float originalStrength = 0;
-    private float originalHealth = 0;
+    private float originalStrength;
+    private float originalHealth;
 
     protected EnemyMove enemyMove;
     protected Animator animator;
@@ -64,9 +64,6 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
-        //do events
-        GameManager.Instance.OnEnemyStrengthChange += ChangeStrength;
-        GameManager.Instance.OnEnemyHealthChange += ChangeHealth;
 
         col = GetComponent<Collider>();
 
@@ -87,13 +84,14 @@ public class EnemyAttack : MonoBehaviour
 
         //set original stats
         originalStrength = damageOnTouch;
+
         if (enemyHealth)
             originalHealth = enemyHealth.maxHealth;
     }
 
     void OnEnable()
     {
-        ChangeStrength();
+        //ChangeStrength();
         ChangeHealth();
     }
 
@@ -109,6 +107,7 @@ public class EnemyAttack : MonoBehaviour
     void ChangeStrength()
     {
         damageOnTouch =  originalStrength * GameManager.Instance.enemyStrengthMultiplier;
+        Debug.Log(originalStrength + " " + GameManager.Instance.enemyStrengthMultiplier + " = " + damageOnTouch);
     }
 
     void SetActive()
