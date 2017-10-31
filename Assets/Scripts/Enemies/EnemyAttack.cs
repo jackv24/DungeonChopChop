@@ -23,10 +23,10 @@ public class EnemyAttack : MonoBehaviour
     public GameObject shootPosition;
     [HideInInspector]
     public float thrust;
+    public float projectileDmgMutliplier;
 
     [Space()]
     [Tooltip("This values x projectile damage")]
-    public float attackStrength;
     public float damageOnTouch;
     public float knockbackStrength;
 
@@ -51,6 +51,8 @@ public class EnemyAttack : MonoBehaviour
     private int circleAngle = 0;
     private float angle = 0;
     private float randomInterval = 0;
+    private float originalStrength = 0;
+    private float originalHealth = 0;
 
     protected EnemyMove enemyMove;
     protected Animator animator;
@@ -82,16 +84,31 @@ public class EnemyAttack : MonoBehaviour
 
             SetInactive();
         }
+
+        //set original stats
+        originalStrength = damageOnTouch;
+        if (enemyHealth)
+            originalHealth = enemyHealth.maxHealth;
+    }
+
+    void OnEnable()
+    {
+        ChangeStrength();
+        ChangeHealth();
     }
 
     void ChangeHealth()
     {
-        enemyHealth.health *= GameManager.Instance.enemyHealthMultiplier;
+        if (enemyHealth)
+        {
+            enemyHealth.maxHealth = originalHealth * GameManager.Instance.enemyHealthMultiplier;
+            enemyHealth.health = enemyHealth.maxHealth;
+        }
     }
 
     void ChangeStrength()
     {
-        attackStrength *= GameManager.Instance.enemyStrengthMultiplier;
+        damageOnTouch =  originalStrength * GameManager.Instance.enemyStrengthMultiplier;
     }
 
     void SetActive()
@@ -158,7 +175,7 @@ public class EnemyAttack : MonoBehaviour
         GameObject projectile = ObjectPooler.GetPooledObject(projecticle);
         projectile.transform.position = shootPosition.transform.position;
         projectile.transform.rotation = transform.rotation;
-        projectile.GetComponent<ProjectileCollision>().damageMultiplyer = attackStrength;
+        projectile.GetComponent<ProjectileCollision>().damageMultiplyer = projectileDmgMutliplier;
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
         projectile.GetComponent<ProjectileCollision>().thrust = thrust;
 
@@ -205,7 +222,7 @@ public class EnemyAttack : MonoBehaviour
             if (!shootPosition)
                 projectile.transform.position = transform.position;
             
-            projectile.GetComponent<ProjectileCollision>().damageMultiplyer = attackStrength;
+            projectile.GetComponent<ProjectileCollision>().damageMultiplyer = projectileDmgMutliplier;
             projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
             projectile.GetComponent<ProjectileCollision>().thrust = thrust;
             angle += circleAngle;

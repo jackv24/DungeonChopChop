@@ -253,7 +253,11 @@ public class Health : MonoBehaviour
             isFrozen = false;
             isSandy = false;
         }
+
+        maxHealth *= GameManager.Instance.enemyHealthMultiplier;
+
         health = maxHealth;
+
         isDead = false;
     }
 
