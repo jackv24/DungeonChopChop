@@ -466,8 +466,6 @@ public class DungeonEffects : MonoBehaviour
             GameManager.Instance.enemyMoveMultiplier *= enemyMoveMultiplier;
         else 
             GameManager.Instance.enemyMoveMultiplier /= enemyMoveMultiplier;
-
-        GameManager.Instance.EnemyMoveChange();
     }
 
     void DoStrongEnemies()
@@ -476,8 +474,6 @@ public class DungeonEffects : MonoBehaviour
             GameManager.Instance.enemyStrengthMultiplier *= enemyStrengthMultiplier;
         else 
             GameManager.Instance.enemyStrengthMultiplier /= enemyStrengthMultiplier;
-
-        GameManager.Instance.EnemyStrengthChange();
     }
 
     void DoBulkyEnemies()
@@ -486,14 +482,12 @@ public class DungeonEffects : MonoBehaviour
             GameManager.Instance.enemyHealthMultiplier *= enemyHealthMultiplier;
         else 
             GameManager.Instance.enemyHealthMultiplier /= enemyHealthMultiplier;
-
-        GameManager.Instance.EnemyHealthChange();
     }
 
     void DoEnragedEnemies()
     {
         DoEnemyWorkOut();
-        DoStrongEnemies();
+        //DoStrongEnemies();
         DoBulkyEnemies();
     }
 

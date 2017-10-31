@@ -32,9 +32,10 @@ public class EnemyMove : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.OnEnemyMoveChange += ChangeMoveSpeed;
-            
         Setup();
+
+        if (agent)
+            originalSpeed = agent.speed;
     }
 
     public virtual void OnEnable()
@@ -68,7 +69,7 @@ public class EnemyMove : MonoBehaviour
     void ChangeMoveSpeed()
     {
         if (agent)
-            agent.speed *= GameManager.Instance.enemyMoveMultiplier;
+            agent.speed = originalSpeed * GameManager.Instance.enemyMoveMultiplier;
     }
 
     void OnDisable()

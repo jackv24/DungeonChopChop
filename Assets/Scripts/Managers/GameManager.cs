@@ -23,11 +23,6 @@ public class GameManager : MonoBehaviour
     public float enemyHealthMultiplier;
     public float enemyStrengthMultiplier;
 
-    public delegate void NormalEvent();
-    public event NormalEvent OnEnemyMoveChange;
-    public event NormalEvent OnEnemyHealthChange;
-    public event NormalEvent OnEnemyStrengthChange;
-
     void Awake()
     {
         Instance = this;
@@ -81,21 +76,6 @@ public class GameManager : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(index));
 
         currentSceneIndex = index;
-    }
-
-    public void EnemyMoveChange()
-    {
-        OnEnemyMoveChange();
-    }
-
-    public void EnemyStrengthChange()
-    {
-        OnEnemyStrengthChange();
-    }
-
-    public void EnemyHealthChange()
-    {
-        OnEnemyHealthChange();
     }
 
     public void SetGlobalMultiplier(string key, float value)
