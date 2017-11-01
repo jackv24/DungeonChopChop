@@ -39,7 +39,11 @@ public class LevelTile : MonoBehaviour
 	public Helper.ProbabilityGameObject[] fireTiles;
 	public Helper.ProbabilityGameObject[] iceTiles;
 	public Helper.ProbabilityGameObject[] forestTiles;
-	public Helper.ProbabilityGameObject[] dungeonTiles;
+	[Space()]
+	public Helper.ProbabilityGameObject[] dungeon1Tiles;
+	public Helper.ProbabilityGameObject[] dungeon2Tiles;
+	public Helper.ProbabilityGameObject[] dungeon3Tiles;
+	public Helper.ProbabilityGameObject[] dungeon4Tiles;
 
 	private MapTile mapTile;
 
@@ -54,7 +58,10 @@ public class LevelTile : MonoBehaviour
         Desert,
 		Ice,
 		Forest,
-		Dungeon
+		Dungeon1,
+		Dungeon2,
+		Dungeon3,
+		Dungeon4
     }
 
 	void Start()
@@ -159,6 +166,8 @@ public class LevelTile : MonoBehaviour
         {
             GameObject newGraphic = null;
 
+            Helper.ProbabilityGameObject[] dungeonTiles = null;
+
             //Select prefab to replace based on biome
             switch(biome)
             {
@@ -177,10 +186,22 @@ public class LevelTile : MonoBehaviour
 				case Biomes.Forest:
 					newGraphic = Helper.GetRandomGameObjectByProbability(forestTiles, LevelGenerator.Random);
 					break;
-				case Biomes.Dungeon:
-					newGraphic = Helper.GetRandomGameObjectByProbability(dungeonTiles, LevelGenerator.Random);
-					break;
-			}
+                case Biomes.Dungeon1:
+                    dungeonTiles = dungeon1Tiles;
+                    break;
+                case Biomes.Dungeon2:
+					dungeonTiles = dungeon2Tiles;
+                    break;
+                case Biomes.Dungeon3:
+                    dungeonTiles = dungeon3Tiles;
+                    break;
+				case Biomes.Dungeon4:
+					dungeonTiles = dungeon4Tiles;
+                    break;
+            }
+
+			if(dungeonTiles != null)
+				newGraphic = Helper.GetRandomGameObjectByProbability(dungeonTiles, LevelGenerator.Random);
 
             //If prefab exists then replace with it
             if(newGraphic)

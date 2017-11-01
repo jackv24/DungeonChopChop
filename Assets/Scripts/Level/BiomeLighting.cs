@@ -64,7 +64,10 @@ public class BiomeLighting : MonoBehaviour
 				return iceProfile;
 			case LevelTile.Biomes.Desert:
 				return desertProfile;
-			case LevelTile.Biomes.Dungeon:
+			case LevelTile.Biomes.Dungeon1:
+			case LevelTile.Biomes.Dungeon2:
+			case LevelTile.Biomes.Dungeon3:
+			case LevelTile.Biomes.Dungeon4:
 				return dungeonProfile;
 		}
 

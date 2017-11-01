@@ -112,7 +112,10 @@ public class TileParticles : MonoBehaviour
 				case LevelTile.Biomes.Fire:
 					obj = LevelVars.Instance.fireParticles;
 					break;
-				case LevelTile.Biomes.Dungeon:
+				case LevelTile.Biomes.Dungeon1:
+                case LevelTile.Biomes.Dungeon2:
+                case LevelTile.Biomes.Dungeon3:
+                case LevelTile.Biomes.Dungeon4:
 					obj = LevelVars.Instance.dungeonParticles;
 					break;
 			}

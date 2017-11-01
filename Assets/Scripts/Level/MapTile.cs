@@ -65,7 +65,10 @@ public class MapTile : MonoBehaviour
 				return iceMap;
 			case LevelTile.Biomes.Forest:
 				return forestMap;
-			case LevelTile.Biomes.Dungeon:
+			case LevelTile.Biomes.Dungeon1:
+            case LevelTile.Biomes.Dungeon2:
+            case LevelTile.Biomes.Dungeon3:
+            case LevelTile.Biomes.Dungeon4:
 				return dungeonMap;
 		}
 
