@@ -7,6 +7,11 @@ public class ItemsManager : MonoBehaviour {
 
     public static ItemsManager Instance;
 
+	public delegate void ItemEvent();
+	public event ItemEvent OnKeyChange;
+	public event ItemEvent OnCoinChange;
+	public event ItemEvent OnDungeonKeyChange;
+
 	[Header("Items")]
 	public int Keys;
 	public int DungeonKeys;
@@ -37,4 +42,19 @@ public class ItemsManager : MonoBehaviour {
         hasArmourPiece = false;
         hasGauntles = false;
     }
+
+	public void KeyChange()
+	{
+		OnKeyChange ();
+	}
+
+	public void CoinChange()
+	{
+		OnCoinChange ();
+	}
+
+	public void DungeonKeyChange()
+	{
+		OnDungeonKeyChange ();
+	}
 }

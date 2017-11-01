@@ -2034,6 +2034,7 @@ GameObject:
   - component: {fileID: 181384297}
   - component: {fileID: 181384299}
   - component: {fileID: 181384298}
+  - component: {fileID: 181384300}
   m_Layer: 5
   m_Name: Coin
   m_TagString: Untagged
@@ -2095,6 +2096,23 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 181384296}
+--- !u!95 &181384300
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 181384296}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b8e0964a0eb6054aba580b2fc15dacd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &182055344
 GameObject:
   m_ObjectHideFlags: 0
@@ -4897,6 +4915,7 @@ GameObject:
   - component: {fileID: 377259365}
   - component: {fileID: 377259367}
   - component: {fileID: 377259366}
+  - component: {fileID: 377259368}
   m_Layer: 5
   m_Name: Key
   m_TagString: Untagged
@@ -4958,6 +4977,23 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377259364}
+--- !u!95 &377259368
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 377259364}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b8e0964a0eb6054aba580b2fc15dacd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &378261923
 GameObject:
   m_ObjectHideFlags: 0
@@ -19185,7 +19221,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyText: {fileID: 995731730}
+  key: {fileID: 377259366}
   coinText: {fileID: 127222718}
+  coin: {fileID: 181384298}
 --- !u!1 &1532815823
 GameObject:
   m_ObjectHideFlags: 0
@@ -25334,10 +25372,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ed3734ae51da0468b4aaa987d16833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceOfEffect: 50
+  chanceOfEffect: 100
   announcementDelayTime: 2
   effectsReoccur: 0
-  overrider: 13
+  overrider: 0
   effects:
   - effectType: 0
     canHappen: 1
