@@ -9,6 +9,7 @@ public enum TypesOfDeath
 	CircleExplode,
     StatusExplode,
     DamageExplode,
+    BossDrops
 };
 
 public class EnemyDeath : MonoBehaviour 
@@ -71,27 +72,27 @@ public class EnemyDeath : MonoBehaviour
 
 	void ChoseDeath()
 	{
-		if (deathType == TypesOfDeath.SplitsIntoAnotherEnemy) 
-		{
-			SplitEnemy ();
-		} 
-		else if (deathType == TypesOfDeath.Nothing) 
-		{
-			Die ();
-		}
-        else if (deathType == TypesOfDeath.DamageExplode) 
-        {
+        if (deathType == TypesOfDeath.SplitsIntoAnotherEnemy)
+            SplitEnemy();
+        else if (deathType == TypesOfDeath.Nothing)
+            Die();
+        else if (deathType == TypesOfDeath.DamageExplode)
             DamageExplode();
-        }
-        else if (deathType == TypesOfDeath.StatusExplode) 
-        {
+        else if (deathType == TypesOfDeath.StatusExplode)
             StatusExplode();
-        }
+        else if (deathType == TypesOfDeath.BossDrops)
+            CreateBossDrop();
 
         Statistics.Instance.GetEnemy(health.enemyType);
 
         CameraShake.ShakeScreen(deathShake.magnitude, deathShake.shakeAmount, deathShake.duration);
 	}
+
+    void CreateBossDrop()
+    {
+        GameObject bossDrop = (GameObject)Instantiate(Resources.Load<GameObject>("DropWizzer"), transform.position, Quaternion.Euler(0, 0, 0));
+        bossDrop.transform.parent = null;
+    }
 
 	void SplitEnemy()
 	{

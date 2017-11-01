@@ -17,12 +17,23 @@ public class Drops : MonoBehaviour
     public int minAmountOfDrops;
     public int maxAmountOfDrops;
 
+    [Space()]
+    public bool isWizzer = false;
+
     private Collider col;
+    private Animator animator;
 
     // Use this for initialization
     void Start()
     {
+        animator = GetComponent<Animator>();
         col = GetComponent<Collider>();
+    }
+
+    void FixedUpdate()
+    {
+        if (isWizzer)
+            DoDrop();
     }
 
     int addPercentage(int number)

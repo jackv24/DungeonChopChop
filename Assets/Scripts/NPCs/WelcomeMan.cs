@@ -6,6 +6,8 @@ public class WelcomeMan : MonoBehaviour {
 
     public string welcomeMessage;
     public string messageAfterCollectingLoot;
+    public bool dropCoins = false;
+    public int cashAmount;
 
     private DialogueSpeaker dialogueSpeaker;
     private bool looted = false;
@@ -39,7 +41,10 @@ public class WelcomeMan : MonoBehaviour {
             {
                 if (dialogueSpeaker.CurrentPlayer.playerMove.input.Purchase)
                 {
-                    drop.DoDrop();
+                    if (dropCoins)
+                        drop.DoDrop();
+                    else
+                        ItemsManager.Instance.Coins += cashAmount;
                     looted = true;
                 }
             }
