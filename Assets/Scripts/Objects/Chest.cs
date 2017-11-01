@@ -35,6 +35,11 @@ public class Chest : MonoBehaviour
     public int maxAmountOfObjects = 5;
     public LayerMask playerMask;
 
+    [Header("Item Values")]
+    public GameObject animationBone;
+    public float releaseItemDelay = 1.5f;
+    public float releaseItemForce = 10.0f;
+
 
     [HideInInspector]
 	public BaseItem containingItem;
@@ -43,10 +48,10 @@ public class Chest : MonoBehaviour
     [HideInInspector]
     public List<GameObject> containingConsumables = new List<GameObject>(0);
 
-	private bool randomise = true;
+    [Header("Particles")]
+    public GameObject releaseParticle;
 
-	public float releaseItemDelay = 1.5f;
-	public float releaseItemForce = 10.0f;
+	private bool randomise = true;
 
     private Animator animator;
 
@@ -154,6 +159,12 @@ public class Chest : MonoBehaviour
             events.SendDisabledEvent();
 	}
 
+    void ReleaseParticle(Vector3 pos)
+    {
+        releaseParticle = ObjectPooler.GetPooledObject(releaseParticle);
+        releaseParticle.transform.position = pos;
+    }
+
     IEnumerator ReleaseObjects()
     {
         yield return new WaitForSeconds(releaseItemDelay);
@@ -188,7 +199,14 @@ public class Chest : MonoBehaviour
             obj.GetComponent<DialogueSpeaker>().dialogueBoxPrefab = Resources.Load<GameObject>("PickupDialogueCanvas 1");
         }
 
-        GetComponent<Rigidbody>().AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
+        if (!animationBone)
+            GetComponent<Rigidbody>().AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
+        else
+        {
+            animationBone.transform.Rotate(0, 180, 0);
+            obj.transform.parent = animationBone.transform;
+            animationBone.GetComponent<Animator>().SetTrigger("Animate");
+        }
     }
 
     IEnumerator ReleaseConsumables()
@@ -232,19 +250,28 @@ public class Chest : MonoBehaviour
 			}
 		}
 
-		if (obj)
-		{
-			obj.transform.position = transform.position + Vector3.up;
+        if (obj)
+        {
+            obj.transform.position = transform.position + Vector3.up;
             
-            if(setParent)
+            if (setParent)
                 obj.transform.SetParent(transform, true);
 
-            //Throw out of chest
-            Rigidbody body = obj.GetComponent<Rigidbody>();
-			if(body)
-				body.AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
-		}
+            if (!animationBone)
+            {
+                //Throw out of chest
+                Rigidbody body = obj.GetComponent<Rigidbody>();
+                if (body)
+                    body.AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
+            }
+            else
+            {
+                obj.transform.parent = animationBone.transform;
+                animationBone.GetComponent<Animator>().SetTrigger("Animate");
+            }
+        }
 
+        ReleaseParticle(obj.transform.position);
 
 	}
 }
