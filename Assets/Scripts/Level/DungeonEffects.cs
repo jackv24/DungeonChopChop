@@ -210,14 +210,14 @@ public class DungeonEffects : MonoBehaviour
                 DoMoreMoney();
             else if (effect.effectType == DungEffType.NoCash)
                 DoNoCash();
-            else if (effect.effectType == DungEffType.EnemyWorkOut)
-                DoEnemyWorkOut();
-            else if (effect.effectType == DungEffType.StrongEnemies)
-                DoStrongEnemies();
-            else if (effect.effectType == DungEffType.BulkyEnemies)
-                DoBulkyEnemies();
-            else if (effect.effectType == DungEffType.EnragedEnemies)
-                DoEnragedEnemies();
+//            else if (effect.effectType == DungEffType.EnemyWorkOut)
+//                DoEnemyWorkOut();
+//            else if (effect.effectType == DungEffType.StrongEnemies)
+//                DoStrongEnemies();
+//            else if (effect.effectType == DungEffType.BulkyEnemies)
+//                DoBulkyEnemies();
+//            else if (effect.effectType == DungEffType.EnragedEnemies)
+//                DoEnragedEnemies();
 
             if (effectOn)
                 AnnounceEffectOn();
