@@ -103,10 +103,12 @@ public class Pause : MonoBehaviour
     public void ExitOption()
     {
         YesOrNoPanel.SetActive(true);
+		EventSystem.current.SetSelectedGameObject (YesOrNoPanel.gameObject);
     }
 
     public void ExitNo()
     {
         YesOrNoPanel.SetActive(false);
+		EventSystem.current.SetSelectedGameObject (firstSelected);
     }
 }
