@@ -1861,7 +1861,7 @@ GameObject:
   - component: {fileID: 114521464862667150}
   - component: {fileID: 114776408990217094}
   m_Layer: 0
-  m_Name: Tile1x2Dungeon3
+  m_Name: Tile1x2DungeonDesert3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8508,6 +8508,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1870889608829320, guid: d64b7c52f8e23a04f8b4a98cd6063697, type: 2}
   spawnAfterMerging: 0
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
 --- !u!114 &114065708332148294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8569,6 +8572,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1859646089807230, guid: 8ef2dd6b08393e14d82d2a607a7dda0d, type: 2}
   spawnAfterMerging: 0
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
 --- !u!114 &114201626766702528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8584,6 +8590,7 @@ MonoBehaviour:
   tripleDestroysIt: 1
   dashDestroysIt: 1
   spinDestroysIt: 1
+  destroyedByTalons: 0
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -8783,6 +8790,7 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  indistructableParticles: []
   hitSounds:
     clips:
     - {fileID: 8300000, guid: c934eea60098a6b4aa3b77170fed79d1, type: 3}
@@ -8796,6 +8804,11 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  indistructableSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   destroyShake:
     magnitude: 0.1
     shakeAmount: 0.1
@@ -8826,6 +8839,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1591838102512452, guid: aaa752038d0489c41a5668092aee6109, type: 2}
   spawnAfterMerging: 0
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
 --- !u!114 &114262104354682866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8841,6 +8857,7 @@ MonoBehaviour:
   tripleDestroysIt: 1
   dashDestroysIt: 1
   spinDestroysIt: 1
+  destroyedByTalons: 0
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -9040,6 +9057,7 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  indistructableParticles: []
   hitSounds:
     clips:
     - {fileID: 8300000, guid: 5b1983344967cf14095a25d16fff47c3, type: 3}
@@ -9052,6 +9070,11 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  indistructableSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   destroyShake:
     magnitude: 0.1
     shakeAmount: 0.1
@@ -9069,6 +9092,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1859646089807230, guid: 8ef2dd6b08393e14d82d2a607a7dda0d, type: 2}
   spawnAfterMerging: 0
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
 --- !u!114 &114292604321856244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9126,6 +9152,7 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 5
   maxAmountOfDrops: 10
+  isWizzer: 0
 --- !u!114 &114320016116850916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9153,6 +9180,7 @@ MonoBehaviour:
   health: 1
   weight: 0
   IsEnemy: 0
+  enemyType: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -9174,7 +9202,7 @@ MonoBehaviour:
   hitColor: {r: 1, g: 1, b: 1, a: 1}
   timeBetweenFlash: 0.1
   amountToFlash: 5
-  fadeToColorTime: 5
+  fadeTime: 5
   hitShake:
     magnitude: 0.1
     shakeAmount: 0.1
@@ -9204,6 +9232,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1985418589284452, guid: 7cdbbee580d7d644cbc268ed343d4abb, type: 2}
   spawnAfterMerging: 0
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
 --- !u!114 &114345044948807404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9219,6 +9250,7 @@ MonoBehaviour:
   tripleDestroysIt: 1
   dashDestroysIt: 1
   spinDestroysIt: 1
+  destroyedByTalons: 0
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -9418,6 +9450,7 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  indistructableParticles: []
   hitSounds:
     clips:
     - {fileID: 8300000, guid: c934eea60098a6b4aa3b77170fed79d1, type: 3}
@@ -9431,6 +9464,11 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  indistructableSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   destroyShake:
     magnitude: 0.1
     shakeAmount: 0.1
@@ -9510,6 +9548,7 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 3
   maxAmountOfDrops: 10
+  isWizzer: 0
 --- !u!114 &114364568550761198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9538,6 +9577,7 @@ MonoBehaviour:
   health: 1
   weight: 0
   IsEnemy: 0
+  enemyType: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -9559,7 +9599,7 @@ MonoBehaviour:
   hitColor: {r: 1, g: 1, b: 1, a: 1}
   timeBetweenFlash: 0.1
   amountToFlash: 5
-  fadeToColorTime: 5
+  fadeTime: 5
   hitShake:
     magnitude: 0.1
     shakeAmount: 0.1
@@ -9626,6 +9666,7 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 3
   maxAmountOfDrops: 10
+  isWizzer: 0
 --- !u!114 &114435892924194828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9679,6 +9720,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1985418589284452, guid: 7cdbbee580d7d644cbc268ed343d4abb, type: 2}
   spawnAfterMerging: 0
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
 --- !u!114 &114551483022570172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9707,6 +9751,7 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
+  enemyType: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -9728,7 +9773,7 @@ MonoBehaviour:
   hitColor: {r: 1, g: 1, b: 1, a: 1}
   timeBetweenFlash: 0.1
   amountToFlash: 5
-  fadeToColorTime: 5
+  fadeTime: 5
   hitShake:
     magnitude: 0.1
     shakeAmount: 0.1
@@ -9746,6 +9791,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1859646089807230, guid: 8ef2dd6b08393e14d82d2a607a7dda0d, type: 2}
   spawnAfterMerging: 0
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
 --- !u!114 &114687654709758664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9790,6 +9838,7 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 5
   maxAmountOfDrops: 10
+  isWizzer: 0
 --- !u!114 &114693902701655188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9803,6 +9852,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1859646089807230, guid: 8ef2dd6b08393e14d82d2a607a7dda0d, type: 2}
   spawnAfterMerging: 0
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
 --- !u!114 &114713949777677560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9843,6 +9895,7 @@ MonoBehaviour:
   tripleDestroysIt: 1
   dashDestroysIt: 1
   spinDestroysIt: 1
+  destroyedByTalons: 0
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -10042,6 +10095,7 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  indistructableParticles: []
   hitSounds:
     clips:
     - {fileID: 8300000, guid: 5b1983344967cf14095a25d16fff47c3, type: 3}
@@ -10054,6 +10108,11 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  indistructableSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   destroyShake:
     magnitude: 0.1
     shakeAmount: 0.1
@@ -10127,6 +10186,7 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -10.53653, y: 0, z: -0.18874359}
+  spawnedEnemies: []
 --- !u!114 &114837375832179122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10140,6 +10200,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1556018963609128, guid: 18858509422a1a642820d50b9d7bab16, type: 2}
   spawnAfterMerging: 0
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
 --- !u!114 &114850029902396946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10179,6 +10242,7 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
+  enemyType: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -10200,7 +10264,7 @@ MonoBehaviour:
   hitColor: {r: 1, g: 1, b: 1, a: 1}
   timeBetweenFlash: 0.1
   amountToFlash: 5
-  fadeToColorTime: 5
+  fadeTime: 5
   hitShake:
     magnitude: 0.1
     shakeAmount: 0.1
@@ -10218,6 +10282,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1870889608829320, guid: d64b7c52f8e23a04f8b4a98cd6063697, type: 2}
   spawnAfterMerging: 0
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
 --- !u!114 &114948973666012438
 MonoBehaviour:
   m_ObjectHideFlags: 1
