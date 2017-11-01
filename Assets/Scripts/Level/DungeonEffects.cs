@@ -21,7 +21,8 @@ public enum DungEffType
     EnemyWorkOut,
     StrongEnemies,
     BulkyEnemies,
-    EnragedEnemies
+    EnragedEnemies,
+    NoMap,
 }
 
 [System.Serializable]
@@ -54,6 +55,9 @@ public class DungeonEffects : MonoBehaviour
 
     [Header("Extreme Power Values")]
     public float strengthMultiplier = 2f;
+
+    [Header("No Map Values")]
+    public GameObject map;
 
     [Header("No Special Attacks Values")]
 
@@ -111,11 +115,7 @@ public class DungeonEffects : MonoBehaviour
     void Start()
     {
         originalFOV = Camera.main.fieldOfView;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
         LevelGenerator.Instance.OnGenerationFinished += DungeonEffect;
         LevelGenerator.Instance.OnTileEnter += SpawnPartyLights;
     }
@@ -190,6 +190,8 @@ public class DungeonEffects : MonoBehaviour
                 DoHiddenHealthEffect();
             else if (effect.effectType == DungEffType.ExtremePower)
                 DoExtremePowerEffect();
+            else if (effect.effectType == DungEffType.NoMap)
+                DoNoMap();
             else if (effect.effectType == DungEffType.NoSpecialAttacks)
                 DoSpecialAttacks();
             else if (effect.effectType == DungEffType.DarkDungeon)
@@ -210,14 +212,14 @@ public class DungeonEffects : MonoBehaviour
                 DoMoreMoney();
             else if (effect.effectType == DungEffType.NoCash)
                 DoNoCash();
-//            else if (effect.effectType == DungEffType.EnemyWorkOut)
-//                DoEnemyWorkOut();
-//            else if (effect.effectType == DungEffType.StrongEnemies)
-//                DoStrongEnemies();
-//            else if (effect.effectType == DungEffType.BulkyEnemies)
-//                DoBulkyEnemies();
-//            else if (effect.effectType == DungEffType.EnragedEnemies)
-//                DoEnragedEnemies();
+            else if (effect.effectType == DungEffType.EnemyWorkOut)
+                DoEnemyWorkOut();
+            else if (effect.effectType == DungEffType.StrongEnemies)
+                DoStrongEnemies();
+            else if (effect.effectType == DungEffType.BulkyEnemies)
+                DoBulkyEnemies();
+            else if (effect.effectType == DungEffType.EnragedEnemies)
+                DoEnragedEnemies();
 
             if (effectOn)
                 AnnounceEffectOn();
@@ -364,6 +366,18 @@ public class DungeonEffects : MonoBehaviour
             {
                 player.maxMoveSpeed /= 2;
             }
+        }
+    }
+
+    void DoNoMap()
+    {
+        if (effectOn)
+        {
+            map.SetActive(true);
+        }
+        else
+        {
+            map.SetActive(false);
         }
     }
 
