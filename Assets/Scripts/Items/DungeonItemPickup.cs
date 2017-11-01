@@ -14,6 +14,8 @@ public enum DungeonItemType
 public class DungeonItemPickup : MonoBehaviour
 {
     public DungeonItemType itemType;
+	public GameObject itemPurchasePopup;
+	public InventoryItem item;
 
     public float pickupStartDelay = 0.1f;
     private float pickupStartTime;
@@ -34,11 +36,11 @@ public class DungeonItemPickup : MonoBehaviour
             time = Mathf.Max(time, 0);
 
             if (pickupRoutine == null)
-                pickupRoutine = StartCoroutine(PickupDelayed(time));
+				pickupRoutine = StartCoroutine(PickupDelayed(time, col.GetComponent<PlayerInformation>()));
         }
     }
 
-    IEnumerator PickupDelayed(float time)
+	IEnumerator PickupDelayed(float time, PlayerInformation playerInfo)
     {
         yield return new WaitForSeconds(time);
 
@@ -58,6 +60,16 @@ public class DungeonItemPickup : MonoBehaviour
         {
             ItemsManager.Instance.hasGauntles = true;
         }
+
+		if(itemPurchasePopup)
+		{
+			GameObject obj = ObjectPooler.GetPooledObject(itemPurchasePopup);
+
+			ShopItemPopup popup = obj.GetComponent<ShopItemPopup>();
+			if (popup)
+				popup.Init(item, playerInfo.transform);
+		}
+
         gameObject.SetActive(false);
     }
 }
