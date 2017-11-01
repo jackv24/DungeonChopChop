@@ -50,7 +50,6 @@ public class ItemsManager : MonoBehaviour {
 
 	public void CoinChange()
 	{
-		Debug.Log ("hid");
 		OnCoinChange ();
 	}
 
