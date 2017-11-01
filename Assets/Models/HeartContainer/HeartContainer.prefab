@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 54275453821318248}
   - component: {fileID: 114896193282301612}
   - component: {fileID: 114565737276615618}
+  - component: {fileID: 114980202155846050}
   m_Layer: 0
   m_Name: HeartContainer
   m_TagString: Untagged
@@ -198,3 +199,19 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
+--- !u!114 &114980202155846050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1398586004795440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendType: 2
+  sendTime: 0
+  message: SetSpawnMessage
+  requireReceiver: 1
+  delayBeforeSend: 1
