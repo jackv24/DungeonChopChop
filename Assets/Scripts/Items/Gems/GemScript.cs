@@ -52,6 +52,8 @@ public class GemScript : PickupableItems {
             {
                 ItemsManager.Instance.Coins += coinAmount * (int)col.GetComponent<PlayerInformation>().GetCharmFloat("coinMultiplier");
 
+				ItemsManager.Instance.CoinChange ();
+
                 Statistics.Instance.moneyEarned += coinAmount * (int)col.GetComponent<PlayerInformation>().GetCharmFloat("coinMultiplier");
 
                 DoPickUpParticle();

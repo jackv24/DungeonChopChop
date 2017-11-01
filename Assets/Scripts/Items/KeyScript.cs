@@ -55,10 +55,13 @@ public class KeyScript : PickupableItems
 
 	void Pickup(PlayerInformation playerInfo)
 	{
-		if (type == Type.Normal)
-			ItemsManager.Instance.Keys += 1 * (int)playerInfo.GetCharmFloat("keyMultiplier");
-		else
+		if (type == Type.Normal) {
+			ItemsManager.Instance.Keys += 1 * (int)playerInfo.GetCharmFloat ("keyMultiplier");
+			ItemsManager.Instance.KeyChange ();
+		} else {
 			ItemsManager.Instance.DungeonKeys += 1;
+			ItemsManager.Instance.DungeonKeyChange ();
+		}
 
         DoPickUpParticle();
 		gameObject.SetActive(false);
