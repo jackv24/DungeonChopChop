@@ -171,9 +171,6 @@ public class Chest : MonoBehaviour
 
         GameObject obj = ObjectPooler.GetPooledObject(containingObject);
 
-        //throw out of chest
-        obj.transform.position = transform.position + Vector3.up;
-
         if (obj.GetComponent<SwordStats>())
         {
             obj.AddComponent<DialogueSpeaker>();
@@ -198,6 +195,8 @@ public class Chest : MonoBehaviour
             obj.GetComponent<DialogueSpeaker>().playerLayer = playerMask;
             obj.GetComponent<DialogueSpeaker>().dialogueBoxPrefab = Resources.Load<GameObject>("PickupDialogueCanvas 1");
         }
+
+        obj.transform.position = transform.position;
 
         if (!animationBone)
             GetComponent<Rigidbody>().AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
@@ -257,7 +256,7 @@ public class Chest : MonoBehaviour
             if (setParent)
                 obj.transform.SetParent(transform, true);
 
-            if (!animationBone)
+            if (containingItem is Charm)
             {
                 //Throw out of chest
                 Rigidbody body = obj.GetComponent<Rigidbody>();
@@ -270,7 +269,7 @@ public class Chest : MonoBehaviour
                 animationBone.GetComponent<Animator>().SetTrigger("Animate");
             }
         }
-
+            
         ReleaseParticle(obj.transform.position);
 
 	}
