@@ -97,10 +97,14 @@ public class Chest : MonoBehaviour
                         {
                             Open();
 
-							if(keyType == KeyScript.Type.Normal)
+							if (keyType == KeyScript.Type.Normal) {
 								ItemsManager.Instance.Keys -= 1;
-							else
+								ItemsManager.Instance.KeyChange ();
+							}
+							else {
 								ItemsManager.Instance.DungeonKeys -= 1;
+								ItemsManager.Instance.DungeonKeyChange ();
+							}
 						}
                     }
                     else

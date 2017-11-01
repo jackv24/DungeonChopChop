@@ -87,10 +87,13 @@ public class Shop : MonoBehaviour
                         }
                         else if (item.itemPrefab.GetComponent<KeyScript>())
                         {
-                            if (item.itemPrefab.GetComponent<KeyScript>().type == KeyScript.Type.Normal)
-                                ItemsManager.Instance.Keys++;
-                            else if (item.itemPrefab.GetComponent<KeyScript>().type == KeyScript.Type.Dungeon)
-                                ItemsManager.Instance.DungeonKeys++;
+							if (item.itemPrefab.GetComponent<KeyScript> ().type == KeyScript.Type.Normal) {
+								ItemsManager.Instance.Keys++;
+								ItemsManager.Instance.KeyChange ();
+							} else if (item.itemPrefab.GetComponent<KeyScript> ().type == KeyScript.Type.Dungeon) {
+								ItemsManager.Instance.DungeonKeys++;
+								ItemsManager.Instance.DungeonKeyChange ();
+							}
                         }
                     }
 
