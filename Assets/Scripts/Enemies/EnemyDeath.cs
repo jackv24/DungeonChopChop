@@ -90,8 +90,9 @@ public class EnemyDeath : MonoBehaviour
 
     void CreateBossDrop()
     {
-        GameObject bossDrop = (GameObject)Instantiate(Resources.Load<GameObject>("DropWizzer"), transform.position, Quaternion.Euler(0, 0, 0));
+		GameObject bossDrop = (GameObject)Instantiate(Resources.Load<GameObject>("DropWizzer"), transform.position + Vector3.up, Quaternion.Euler(0, 0, 0));
         bossDrop.transform.parent = null;
+		Die ();
     }
 
 	void SplitEnemy()
