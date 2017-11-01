@@ -5,21 +5,30 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Dungeon", menuName = "Data/Dungeon Generator Profile")]
 public class DungeonGeneratorProfile : LevelGeneratorProfile
 {
-	[Header("Dungeon Items")]
-	public BaseItem forestItem;
-	public BaseItem iceItem;
-	public BaseItem desertItem;
-	public BaseItem fireItem;
+    public LevelTile.Biomes dungeonBiome;
 
-	[HideInInspector] public GameObject keyTileObj;
+    [Space()]
+    public BaseItem dungeonItem;
+
+    [HideInInspector] public GameObject keyTileObj;
     [HideInInspector] public GameObject chestTileObj;
 
 	public override void Generate(LevelGenerator levelGenerator)
 	{
+		if(dungeonBiome != LevelTile.Biomes.Dungeon1
+		&& dungeonBiome != LevelTile.Biomes.Dungeon2
+		&& dungeonBiome != LevelTile.Biomes.Dungeon3
+		&& dungeonBiome != LevelTile.Biomes.Dungeon4)
+		{
+            dungeonBiome = LevelTile.Biomes.Dungeon1;
+
+            Debug.LogWarning("Dungeon Generator Profile does not have a dungeon biome selected, defaulting to dungeon 1");
+        }
+
 		//Replace layout tiles with dungeon tiles
 		foreach(LevelTile tile in levelGenerator.generatedTiles)
 		{
-			tile.Replace(LevelTile.Biomes.Dungeon);
+			tile.Replace(dungeonBiome);
 		}
 
 		//Get the biome that this dungeon was entered from
@@ -118,28 +127,10 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 
 			if (dungeonChest)
 			{
-				BaseItem item = null;
-
-				switch(biome)
-				{
-					case LevelTile.Biomes.Desert:
-						item = desertItem;
-						break;
-					case LevelTile.Biomes.Fire:
-						item = fireItem;
-						break;
-					case LevelTile.Biomes.Forest:
-						item = forestItem;
-						break;
-					case LevelTile.Biomes.Ice:
-						item = iceItem;
-						break;
-				}
-
-				if (item)
-					dungeonChest.SetItem(item);
+				if (dungeonItem)
+					dungeonChest.SetItem(dungeonItem);
 				else
-					Debug.LogWarning("No dungeon item assigned for " + biome.ToString());
+					Debug.LogWarning("No dungeon item assigned!");
 			}
 			else
 				Debug.LogWarning("No dungeon chest found!");

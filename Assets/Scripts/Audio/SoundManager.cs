@@ -108,7 +108,10 @@ public class SoundManager : MonoBehaviour
 				case LevelTile.Biomes.Fire:
 					clip = Instance.fireBiomeMusic;
 					break;
-				case LevelTile.Biomes.Dungeon:
+				case LevelTile.Biomes.Dungeon1:
+                case LevelTile.Biomes.Dungeon2:
+                case LevelTile.Biomes.Dungeon3:
+                case LevelTile.Biomes.Dungeon4:
 					clip = Instance.dungeonBiomeMusic;
 					break;
 			}

@@ -161,7 +161,10 @@ public class LevelDoor : MonoBehaviour
 			case LevelTile.Biomes.Forest:
 				newGraphic = forestDecalPrefab;
 				break;
-			case LevelTile.Biomes.Dungeon:
+			case LevelTile.Biomes.Dungeon1:
+            case LevelTile.Biomes.Dungeon2:
+            case LevelTile.Biomes.Dungeon3:
+            case LevelTile.Biomes.Dungeon4:
 				newGraphic = dungeonDecalPrefab;
 				break;
 		}

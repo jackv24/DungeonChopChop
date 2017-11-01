@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baab5d788b7cede458369a1dde7100ac, type: 3}
+  m_Name: Dungeon1 LevelGen
+  m_EditorClassIdentifier: 
+  startTile: {fileID: 114592546532610968, guid: 93ec246b2073f8b47bcbc46418abbdd6,
+    type: 2}
+  maxTrailLength: 2
+  minTileAmount: 4
+  maxAttempts: 20
+  succeeded: 1
+  tilePool:
+  - tile: {fileID: 114461406873946128, guid: 5609fa12c91315a4fa858428d6746938, type: 2}
+    probability: 1
+  - tile: {fileID: 114790541551944728, guid: 59ffbb8d56cba254f8875ce6f2ec02b2, type: 2}
+    probability: 2
+  - tile: {fileID: 114657946040899270, guid: f502e8836487bb5488f4a1f7d7488ccc, type: 2}
+    probability: 0.5
+  - tile: {fileID: 114229437737001782, guid: a2e1e4733125bce448667bbc52cd985e, type: 2}
+    probability: 0.25
+  chestSpawnProbability: 0.5
+  minChests: 1
+  dungeonBiome: 5
+  dungeonItem: {fileID: 11400000, guid: 71fa22073b1bafa44a64c285d4776956, type: 2}
+  keyTileObj: {fileID: 0}
+  chestTileObj: {fileID: 0}
