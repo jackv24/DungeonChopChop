@@ -63,9 +63,10 @@ public class SpecialTile : MonoBehaviour
 
                 if(replace.keepRotation)
                 {
-                    float angle = obj.transform.eulerAngles.y - replaceTile.transform.eulerAngles.y;
-
-                    obj.transform.RotateAround(tile.tileOrigin.position, Vector3.up, angle);
+                    //Reset rotation +180 to face forward
+                    float angle = obj.transform.eulerAngles.y + 180;
+                    //Rotate around tile origion so at to keep position correcty
+                    obj.transform.RotateAround(tile.tileOrigin.position, Vector3.up, -angle);
                 }
 
                 //Remove this tile graphic
