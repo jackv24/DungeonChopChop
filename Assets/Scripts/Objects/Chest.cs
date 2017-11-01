@@ -206,6 +206,8 @@ public class Chest : MonoBehaviour
             obj.transform.parent = animationBone.transform;
             animationBone.GetComponent<Animator>().SetTrigger("Animate");
         }
+
+        ReleaseParticle(obj.transform.position);
     }
 
     IEnumerator ReleaseConsumables()
