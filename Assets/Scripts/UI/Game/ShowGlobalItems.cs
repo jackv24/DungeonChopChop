@@ -32,16 +32,20 @@ public class ShowGlobalItems : MonoBehaviour {
 	void TriggerKey()
 	{
 		if (key) {
-			if (key.GetComponent<Animator> ())
-				StartCoroutine(BoolWait ("Animate", key.GetComponent<Animator> ()));
+			if (key.GetComponent<Animator> ()) {
+				if (enabled)
+				StartCoroutine (BoolWait ("Animate", key.GetComponent<Animator> ()));
+			}
 		}
 	}
 
 	void TriggerCoin()
 	{
 		if (coin) {
-			if (coin.GetComponent<Animator> ())
-				StartCoroutine(BoolWait ("Animate", coin.GetComponent<Animator> ()));
+			if (coin.GetComponent<Animator> ()) {
+				if (enabled)
+					StartCoroutine (BoolWait ("Animate", coin.GetComponent<Animator> ()));
+			}
 		}
 	}
 }
