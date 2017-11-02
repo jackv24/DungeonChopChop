@@ -26,7 +26,10 @@ public class Pause : MonoBehaviour
     bool paused = false;
 	bool statsDisplayed = false;
 
-	void Awake()
+    public float pauseSlowTime = 0.5f;
+    private Coroutine pauseRoutine;
+
+    void Awake()
 	{
 		Instance = this;
 	}
@@ -62,7 +65,7 @@ public class Pause : MonoBehaviour
 	{
 		statsDisplayed = true;
 
-		Time.timeScale = 0;
+		SlowTime(1, 0);
 
 		if (statsScreen)
 			statsScreen.SetActive (true);
@@ -85,23 +88,50 @@ public class Pause : MonoBehaviour
     {
         paused = true;
         pauseMenu.SetActive(true);
-        Time.timeScale = 0;
 
-		if (firstSelected)
+        SlowTime(1, 0);
+
+        if (firstSelected)
 			EventSystem.current.SetSelectedGameObject(firstSelected);
     }
 
     public void UnPauseGame()
     {
-        Time.timeScale = 1;
         pauseMenu.SetActive(false);
         paused = false;
+
+		SlowTime(0, 1);
 
 		if (OnUnpause != null)
 			OnUnpause();
 
         statistics.SetActive(false);
         YesOrNoPanel.SetActive(false);
+    }
+
+	void SlowTime(float oldScale, float newScale)
+	{
+		if(pauseRoutine != null)
+            StopCoroutine(pauseRoutine);
+
+        StartCoroutine(SlowTimeOverTime(oldScale, newScale));
+    }
+
+	IEnumerator SlowTimeOverTime(float oldScale, float newScale)
+	{
+        float elapsed = 0;
+
+        Time.timeScale = oldScale;
+
+        while(elapsed < pauseSlowTime)
+		{
+            Time.timeScale = Mathf.Lerp(oldScale, newScale, elapsed / pauseSlowTime);
+
+            yield return new WaitForEndOfFrame();
+            elapsed += Time.unscaledDeltaTime;
+        }
+
+		Time.timeScale = newScale;
     }
 
     public void MainMenu()
