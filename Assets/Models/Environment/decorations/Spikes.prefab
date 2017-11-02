@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33279315818590850}
   - component: {fileID: 23887276887973292}
   - component: {fileID: 54153425685195148}
+  - component: {fileID: 114436454966810086}
   m_Layer: 0
   m_Name: SarlacSpike01 (1)
   m_TagString: Untagged
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 33656073860748534}
   - component: {fileID: 23409383987084196}
   - component: {fileID: 54555682472020518}
+  - component: {fileID: 114776150522299536}
   m_Layer: 0
   m_Name: SarlacSpike02
   m_TagString: Untagged
@@ -60,6 +62,7 @@ GameObject:
   - component: {fileID: 114233028927919600}
   - component: {fileID: 54564679289938804}
   - component: {fileID: 65579789488292218}
+  - component: {fileID: 114355356301573218}
   m_Layer: 0
   m_Name: SarlacSpike01
   m_TagString: Untagged
@@ -75,6 +78,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4609890904093216}
+  - component: {fileID: 114172863744504788}
+  - component: {fileID: 114237559287294870}
   m_Layer: 0
   m_Name: Spikes
   m_TagString: Untagged
@@ -311,6 +316,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3328433, y: 0.68130314, z: 0.3614463}
   m_Center: {x: -0.22280182, y: 0.3308091, z: 0.084498465}
+--- !u!114 &114172863744504788
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768195063614920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1768195063614920}
+    - {fileID: 1654265944055886}
+    - {fileID: 1540345852397488}
+    - {fileID: 1000165549673428}
+  _assetGuid: e040e2f13827bce46bc7275a1a926040
 --- !u!114 &114233028927919600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,3 +416,51 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+--- !u!114 &114237559287294870
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768195063614920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: e5236844-d29b-4541-a909-f50bb13e95e1
+--- !u!114 &114355356301573218
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654265944055886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: c2388436-dcf7-4c3e-9556-3e17f221981b
+--- !u!114 &114436454966810086
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000165549673428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: cc55d8ac-e727-4b73-ac9e-a29c89112624
+--- !u!114 &114776150522299536
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1540345852397488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: d5379b9c-6e83-4c02-811a-247536bfb23a

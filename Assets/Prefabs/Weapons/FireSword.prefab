@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4214587819354962}
   - component: {fileID: 96009608023519140}
+  - component: {fileID: 114973331428423880}
   m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
@@ -42,6 +43,8 @@ GameObject:
   - component: {fileID: 54699645867561064}
   - component: {fileID: 114903250795468938}
   - component: {fileID: 114728150043200820}
+  - component: {fileID: 114322499798669964}
+  - component: {fileID: 114569589724027112}
   m_Layer: 16
   m_Name: FireSword
   m_TagString: Untagged
@@ -61,6 +64,7 @@ GameObject:
   - component: {fileID: 199333990737006856}
   - component: {fileID: 114009890487048748}
   - component: {fileID: 114084144053090534}
+  - component: {fileID: 114399842279638548}
   m_Layer: 0
   m_Name: FireSwordParticleLocal
   m_TagString: Untagged
@@ -80,6 +84,7 @@ GameObject:
   - component: {fileID: 199089716416087336}
   - component: {fileID: 114492327255923076}
   - component: {fileID: 114708187323337760}
+  - component: {fileID: 114576280356801906}
   m_Layer: 0
   m_Name: FireSwordParticleWorld
   m_TagString: Untagged
@@ -323,6 +328,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   host: {fileID: 0}
+--- !u!114 &114322499798669964
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1305355838016598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1305355838016598}
+    - {fileID: 1257574264411812}
+    - {fileID: 1857043447926372}
+    - {fileID: 1842492911269300}
+  _assetGuid: 4042ef54f27389d4d9abd96dac1c9f2e
+--- !u!114 &114399842279638548
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842492911269300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 26985fb4-6a1e-480a-858c-bad3598800f4
 --- !u!114 &114492327255923076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,6 +384,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackOnHit: 1
+  goldenSword: 0
+  lootMultiplier: 50
+  absorbMultiplier: 2
   trail: {fileID: 1257574264411812}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -356,14 +396,34 @@ MonoBehaviour:
     type: 2}
   chargeParticle: {fileID: 1534452683028486, guid: cfa1e19dbe78cbe40a7fa3665a001933,
     type: 2}
-  magnitude: 0.1
-  shakeAmount: 1
-  duration: 1
-  pauseTime: 0.1
   playerAttack: {fileID: 0}
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114569589724027112
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1305355838016598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: c62b502b-3def-4105-90bd-c70382e590a5
+--- !u!114 &114576280356801906
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857043447926372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 16f94bd2-5ea9-4898-a1d9-073760ec82d6
 --- !u!114 &114708187323337760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -407,6 +467,18 @@ MonoBehaviour:
   duration: 2
   timeBetweenEffect: 1
   speedDamper: 0
+--- !u!114 &114973331428423880
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1257574264411812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: b3f52030-e496-4029-a1c6-9d2619e7d45f
 --- !u!198 &198848068424429092
 ParticleSystem:
   m_ObjectHideFlags: 1

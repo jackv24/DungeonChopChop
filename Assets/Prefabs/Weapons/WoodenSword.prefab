@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 54979256226053186}
   - component: {fileID: 114084886988353168}
   - component: {fileID: 114887116630941638}
+  - component: {fileID: 114577805627483996}
+  - component: {fileID: 114210584652385864}
   m_Layer: 16
   m_Name: WoodenSword
   m_TagString: Untagged
@@ -42,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4681492767322386}
   - component: {fileID: 96500960569614356}
+  - component: {fileID: 114279206606447142}
   m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
@@ -252,6 +255,30 @@ MonoBehaviour:
   duration: 0
   timeBetweenEffect: 0
   speedDamper: 0
+--- !u!114 &114210584652385864
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1824778148565110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: d09b87c5-a5e6-4227-939f-e2def1c16f0f
+--- !u!114 &114279206606447142
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975186720397440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 1802dcb0-792d-43fe-871f-0c2ac3ade332
 --- !u!114 &114544761157026592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,6 +291,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackOnHit: 1
+  goldenSword: 0
+  lootMultiplier: 50
+  absorbMultiplier: 2
   trail: {fileID: 1975186720397440}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -277,6 +307,24 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114577805627483996
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1824778148565110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1824778148565110}
+    - {fileID: 1975186720397440}
+  _assetGuid: 39f928e1192d8c5458625c3ee0e1755a
 --- !u!114 &114887116630941638
 MonoBehaviour:
   m_ObjectHideFlags: 1

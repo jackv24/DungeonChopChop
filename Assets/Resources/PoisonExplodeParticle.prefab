@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 199811128586444306}
   - component: {fileID: 114027934756262854}
   - component: {fileID: 114672170753671598}
+  - component: {fileID: 114026949957614312}
+  - component: {fileID: 114921847732314020}
   m_Layer: 0
   m_Name: PoisonExplodeParticle
   m_TagString: Untagged
@@ -43,6 +45,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114026949957614312
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1268760136867208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1268760136867208}
+  _assetGuid: 6b6e7b28b7e384546bb08ea12e783904
 --- !u!114 &114027934756262854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,6 +86,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   host: {fileID: 0}
+--- !u!114 &114921847732314020
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1268760136867208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: a73f4493-fb46-4a04-a56b-6c02eba590bc
 --- !u!198 &198648758975755902
 ParticleSystem:
   m_ObjectHideFlags: 1

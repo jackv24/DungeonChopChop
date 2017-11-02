@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4411402284580240}
   - component: {fileID: 33896713531414418}
   - component: {fileID: 23330598151321810}
+  - component: {fileID: 114911674837026998}
   m_Layer: 0
   m_Name: TreeTrunk1
   m_TagString: Untagged
@@ -39,6 +40,8 @@ GameObject:
   - component: {fileID: 33189620635189624}
   - component: {fileID: 23238708455134572}
   - component: {fileID: 65180621929286184}
+  - component: {fileID: 114565981341626874}
+  - component: {fileID: 114765775600869264}
   m_Layer: 0
   m_Name: TreeTrunk2
   m_TagString: Untagged
@@ -163,3 +166,45 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4095575, y: 1.7559605, z: 0.30135447}
   m_Center: {x: -0.09556269, y: 0.87798023, z: -9.577414e-10}
+--- !u!114 &114565981341626874
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1754860752564408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1754860752564408}
+    - {fileID: 1546691009507976}
+  _assetGuid: 57e4cfe5944da38419cc8c5c1b1e44a9
+--- !u!114 &114765775600869264
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1754860752564408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: d81bd0b2-6212-4a64-a12e-f7c771594370
+--- !u!114 &114911674837026998
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546691009507976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 3a6f8a20-4f84-41d4-9fee-46296e64cb61

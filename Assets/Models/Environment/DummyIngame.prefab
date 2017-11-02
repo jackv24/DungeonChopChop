@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 114550048452873588}
   - component: {fileID: 114584615415047418}
   - component: {fileID: 65079201895782586}
+  - component: {fileID: 114792726110940958}
+  - component: {fileID: 114992010972450104}
   m_Layer: 17
   m_Name: DummyIngame
   m_TagString: Untagged
@@ -42,6 +44,7 @@ GameObject:
   - component: {fileID: 4412206879038076}
   - component: {fileID: 33833875227554150}
   - component: {fileID: 23512564137603080}
+  - component: {fileID: 114949839055320936}
   m_Layer: 0
   m_Name: GrassPatch1 (2)
   m_TagString: Untagged
@@ -59,6 +62,7 @@ GameObject:
   - component: {fileID: 4509372159439004}
   - component: {fileID: 33742027028884928}
   - component: {fileID: 23357000773333514}
+  - component: {fileID: 114476075200674358}
   m_Layer: 0
   m_Name: GrassPatch1
   m_TagString: Untagged
@@ -76,6 +80,7 @@ GameObject:
   - component: {fileID: 4904524318568726}
   - component: {fileID: 33475702310666416}
   - component: {fileID: 23981703874147388}
+  - component: {fileID: 114376886403931320}
   m_Layer: 0
   m_Name: GrassPatch1 (1)
   m_TagString: Untagged
@@ -321,6 +326,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8048584, y: 2.0779812, z: 1.49}
   m_Center: {x: 0.059354067, y: 2.4693828, z: -0.00000017878473}
+--- !u!114 &114376886403931320
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199398875244590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 28efa9bc-17d1-409f-8785-fec6ab54565b
+--- !u!114 &114476075200674358
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198732359202874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 89895475-ff6d-4fde-ba21-e41fdb3a2e93
 --- !u!114 &114550048452873588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,6 +365,7 @@ MonoBehaviour:
   tripleDestroysIt: 1
   dashDestroysIt: 1
   spinDestroysIt: 1
+  destroyedByTalons: 0
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -535,6 +565,7 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  indistructableParticles: []
   hitSounds:
     clips:
     - {fileID: 8300000, guid: c934eea60098a6b4aa3b77170fed79d1, type: 3}
@@ -548,6 +579,11 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  indistructableSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   destroyShake:
     magnitude: 0.2
     shakeAmount: 2
@@ -567,6 +603,7 @@ MonoBehaviour:
   health: 10000
   weight: 1
   IsEnemy: 0
+  enemyType: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -588,8 +625,52 @@ MonoBehaviour:
   hitColor: {r: 1, g: 1, b: 1, a: 1}
   timeBetweenFlash: 0.1
   amountToFlash: 5
-  fadeToColorTime: 5
+  fadeTime: 5
   hitShake:
     magnitude: 0.1
     shakeAmount: 1
     duration: 0.1
+--- !u!114 &114792726110940958
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1026204855466206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1026204855466206}
+    - {fileID: 1198732359202874}
+    - {fileID: 1199398875244590}
+    - {fileID: 1114765572159872}
+  _assetGuid: 3716ef85800c0b34c97da3e919eaeef0
+--- !u!114 &114949839055320936
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1114765572159872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: f428ba6e-e3a0-42dd-b9c3-09df81153e2c
+--- !u!114 &114992010972450104
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1026204855466206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 393f08af-dcda-48a7-b7f3-671ef1d21544

@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 54652739636608994}
   - component: {fileID: 114008561556440892}
   - component: {fileID: 114531951200898494}
+  - component: {fileID: 114196666858844168}
+  - component: {fileID: 114577813154928364}
   m_Layer: 16
   m_Name: Sword_Short
   m_TagString: Untagged
@@ -42,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4544816827445710}
   - component: {fileID: 96259277614613858}
+  - component: {fileID: 114883398993600364}
   m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
@@ -252,6 +255,24 @@ MonoBehaviour:
   duration: 0
   timeBetweenEffect: 0
   speedDamper: 0
+--- !u!114 &114196666858844168
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297283827874476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1297283827874476}
+    - {fileID: 1316465629877238}
+  _assetGuid: 73fa45a69eead2c40b55cadc6fef7ab2
 --- !u!114 &114201404886813040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,6 +285,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackOnHit: 1
+  goldenSword: 0
+  lootMultiplier: 50
+  absorbMultiplier: 2
   trail: {fileID: 1316465629877238}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -289,3 +313,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickUp: 1
+--- !u!114 &114577813154928364
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297283827874476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 6d665e82-f9c1-44c4-b5e9-9cc30681595c
+--- !u!114 &114883398993600364
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1316465629877238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 71b31762-1238-4c14-808a-558f90220857

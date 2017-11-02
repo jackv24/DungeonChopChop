@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 199074843563732924}
   - component: {fileID: 114158011884107286}
   - component: {fileID: 114109937471068304}
+  - component: {fileID: 114504497000323388}
+  - component: {fileID: 114656014060833154}
   m_Layer: 0
   m_Name: SandExplodeParticle
   m_TagString: Untagged
@@ -67,6 +69,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114504497000323388
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362924176122272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1362924176122272}
+  _assetGuid: ff3a770c77ea2e244878b45ac791a412
+--- !u!114 &114656014060833154
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362924176122272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 9a93d190-a689-4c5a-80eb-ebd0790244fc
 --- !u!198 &198083940100282624
 ParticleSystem:
   m_ObjectHideFlags: 1

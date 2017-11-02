@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 54671593618433310}
   - component: {fileID: 114274852865864934}
   - component: {fileID: 65947662637524474}
+  - component: {fileID: 114424504724975326}
+  - component: {fileID: 114629639710115324}
   m_Layer: 10
   m_Name: CrystalProjectileDarkGreen
   m_TagString: Untagged
@@ -42,6 +44,7 @@ GameObject:
   - component: {fileID: 199711301362423018}
   - component: {fileID: 114907598811354252}
   - component: {fileID: 114860688683079004}
+  - component: {fileID: 114462947904356030}
   m_Layer: 0
   m_Name: FireTickParticle (1)
   m_TagString: Untagged
@@ -61,6 +64,7 @@ GameObject:
   - component: {fileID: 199171347964342130}
   - component: {fileID: 114096460288473910}
   - component: {fileID: 114939498080925928}
+  - component: {fileID: 114679957754763988}
   m_Layer: 0
   m_Name: FireTickParticle
   m_TagString: Untagged
@@ -78,6 +82,7 @@ GameObject:
   - component: {fileID: 4967537202691252}
   - component: {fileID: 33525477990475764}
   - component: {fileID: 23497415441524218}
+  - component: {fileID: 114961230942807726}
   m_Layer: 0
   m_Name: crystals_mesh:polySurface20
   m_TagString: Untagged
@@ -232,10 +237,73 @@ MonoBehaviour:
   damageAmount: 1
   knockbackAmount: 10
   hitParticles:
-  - {fileID: 1928837666263156, guid: fb52ffb4991f66944aaf1bcbd4f1c890, type: 2}
-  - {fileID: 1004915465583228, guid: 5f5ca5dbacf208f4290da200dad79bb8, type: 2}
+  - particleType: 0
+    particles: []
+  - particleType: 0
+    particles: []
+  hitSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   damageMultiplyer: 0
   thrust: 0
+--- !u!114 &114424504724975326
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1201241841160712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1201241841160712}
+    - {fileID: 1891669496210390}
+    - {fileID: 1832706811596220}
+    - {fileID: 1653738164853876}
+  _assetGuid: aeb08f92bc2184f46a5bd7f1ad1da9a0
+--- !u!114 &114462947904356030
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653738164853876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 3c40ecf6-0eb6-4f02-b380-008904fba2a1
+--- !u!114 &114629639710115324
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1201241841160712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 488ff9b5-ac9c-45ee-9de1-d2b94f4e5029
+--- !u!114 &114679957754763988
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1832706811596220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 0fa12217-b50e-4109-8547-a165b03d2f6e
 --- !u!114 &114835412555968424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,6 +352,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   host: {fileID: 0}
+--- !u!114 &114961230942807726
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1891669496210390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: e365af21-a6e3-4b8b-b2dc-3d42604dbacf
 --- !u!198 &198444544138977298
 ParticleSystem:
   m_ObjectHideFlags: 1

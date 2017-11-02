@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 199851800128202280}
   - component: {fileID: 114487050537844150}
   - component: {fileID: 114326967367968796}
+  - component: {fileID: 114535327825503616}
+  - component: {fileID: 114262511235211132}
   m_Layer: 0
   m_Name: FireTickParticle
   m_TagString: Untagged
@@ -43,6 +45,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114262511235211132
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786516756489872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 44f2041e-80e2-4084-94ae-c6ba7b8495b8
 --- !u!114 &114326967367968796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,6 +81,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114535327825503616
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786516756489872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1786516756489872}
+  _assetGuid: df2b406345013c144a8b9c91f1a7991f
 --- !u!198 &198050423306886478
 ParticleSystem:
   m_ObjectHideFlags: 1

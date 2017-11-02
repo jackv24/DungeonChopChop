@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4417262387410670}
   - component: {fileID: 198641831645233430}
   - component: {fileID: 199608220791145942}
+  - component: {fileID: 114767332271168180}
   m_Layer: 19
   m_Name: ShineParticle
   m_TagString: Untagged
@@ -39,6 +40,7 @@ GameObject:
   - component: {fileID: 33808529583811022}
   - component: {fileID: 23008858721739822}
   - component: {fileID: 95817989581266708}
+  - component: {fileID: 114305286596611578}
   m_Layer: 0
   m_Name: WarpPadPlain
   m_TagString: Untagged
@@ -56,6 +58,8 @@ GameObject:
   - component: {fileID: 4492467123046156}
   - component: {fileID: 33716434690606760}
   - component: {fileID: 23712664464365502}
+  - component: {fileID: 114513255539722784}
+  - component: {fileID: 114965585486914946}
   m_Layer: 0
   m_Name: WarpPadAnimated
   m_TagString: Untagged
@@ -199,6 +203,61 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114305286596611578
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1336448023770796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 14592141-ffbe-47a5-a4ac-deb4f96a43a8
+--- !u!114 &114513255539722784
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1480263117531362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1480263117531362}
+    - {fileID: 1108770951148528}
+    - {fileID: 1336448023770796}
+  _assetGuid: b29466f17bffac447889a06d8f6d6cf3
+--- !u!114 &114767332271168180
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108770951148528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: fe71d4e9-cfbb-4058-b2d5-08a52f89684a
+--- !u!114 &114965585486914946
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1480263117531362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 4703b90a-0c63-4529-9eb6-2f59159483ef
 --- !u!198 &198641831645233430
 ParticleSystem:
   m_ObjectHideFlags: 1

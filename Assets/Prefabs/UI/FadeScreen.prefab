@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224878447491535406}
   - component: {fileID: 222727690384838626}
   - component: {fileID: 114697956397483296}
+  - component: {fileID: 114314814752195544}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -40,6 +41,8 @@ GameObject:
   - component: {fileID: 114311743705440710}
   - component: {fileID: 114568572918690054}
   - component: {fileID: 114041000825138016}
+  - component: {fileID: 114846521970008736}
+  - component: {fileID: 114648483583897082}
   m_Layer: 0
   m_Name: FadeScreen
   m_TagString: Untagged
@@ -82,6 +85,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114314814752195544
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1303078442766118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: b1768f66-a070-4c29-a192-f81d8ed5bda4
 --- !u!114 &114568572918690054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,6 +113,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114648483583897082
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1721052579077690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 6d3cfefc-9207-4edf-86cf-9867e9d49b4d
 --- !u!114 &114697956397483296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,6 +152,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114846521970008736
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1721052579077690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1721052579077690}
+    - {fileID: 1303078442766118}
+  _assetGuid: 206f32573839bba41bec7c03dba86db7
 --- !u!222 &222727690384838626
 CanvasRenderer:
   m_ObjectHideFlags: 1

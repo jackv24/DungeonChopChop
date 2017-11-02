@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4465527110174288}
   - component: {fileID: 33461654334781334}
   - component: {fileID: 23623346059373416}
+  - component: {fileID: 114294641979396280}
   m_Layer: 0
   m_Name: polySurface107
   m_TagString: Untagged
@@ -39,6 +40,7 @@ GameObject:
   - component: {fileID: 33152977914272304}
   - component: {fileID: 23766970643258478}
   - component: {fileID: 95827952814239932}
+  - component: {fileID: 114814244550884782}
   m_Layer: 0
   m_Name: Talons
   m_TagString: Untagged
@@ -58,6 +60,8 @@ GameObject:
   - component: {fileID: 114541627630028056}
   - component: {fileID: 54596319347387974}
   - component: {fileID: 114532975482972284}
+  - component: {fileID: 114579124972622410}
+  - component: {fileID: 114039442623825160}
   m_Layer: 0
   m_Name: dragonGlassTalons_mesh
   m_TagString: Untagged
@@ -228,6 +232,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114039442623825160
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921410670754846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: f1ff1a61-b152-4fe6-b372-cf8890e8685a
+--- !u!114 &114294641979396280
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1068361002599514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 6500f8b6-a97d-476f-a403-8eeecfce9741
 --- !u!114 &114532975482972284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,3 +284,34 @@ MonoBehaviour:
     type: 2}
   item: {fileID: 11400000, guid: 270e989411ad88240812539efe8359bd, type: 2}
   pickupStartDelay: 0.1
+--- !u!114 &114579124972622410
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921410670754846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1921410670754846}
+    - {fileID: 1920100545760892}
+    - {fileID: 1068361002599514}
+  _assetGuid: 40a03682ded8d2f40a6f3f2b4b6f0d8d
+--- !u!114 &114814244550884782
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1920100545760892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 6f9b8f4b-55e9-4394-98c6-274c8e09af29

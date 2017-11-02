@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 54995960640747862}
   - component: {fileID: 114466407839788422}
   - component: {fileID: 114932756082997370}
+  - component: {fileID: 114264008860516040}
+  - component: {fileID: 114241056815140456}
   m_Layer: 16
   m_Name: CursedBroad
   m_TagString: Untagged
@@ -42,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4414422221624206}
   - component: {fileID: 96945578365892346}
+  - component: {fileID: 114982053098309020}
   m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
@@ -245,6 +248,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackOnHit: 1
+  goldenSword: 0
+  lootMultiplier: 50
+  absorbMultiplier: 2
   trail: {fileID: 1589850101528282}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -254,14 +260,40 @@ MonoBehaviour:
     type: 2}
   chargeParticle: {fileID: 1534452683028486, guid: cfa1e19dbe78cbe40a7fa3665a001933,
     type: 2}
-  magnitude: 0.5
-  shakeAmount: 1
-  duration: 1
-  pauseTime: 0.1
   playerAttack: {fileID: 0}
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114241056815140456
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210518989845254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 929f0e9c-7989-4a20-a3ac-4d13a0792c2e
+--- !u!114 &114264008860516040
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210518989845254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1210518989845254}
+    - {fileID: 1589850101528282}
+  _assetGuid: b7f50cb041a4f49449cd1e7e010e6ad1
 --- !u!114 &114466407839788422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -293,3 +325,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickUp: 1
+--- !u!114 &114982053098309020
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1589850101528282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 0db60472-7406-437e-99d7-7dfe72d61512

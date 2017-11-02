@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 54995960640747862}
   - component: {fileID: 114466407839788422}
   - component: {fileID: 114932756082997370}
+  - component: {fileID: 114054713172769546}
+  - component: {fileID: 114843013128475294}
   m_Layer: 16
   m_Name: Bastard
   m_TagString: Untagged
@@ -42,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4414422221624206}
   - component: {fileID: 96945578365892346}
+  - component: {fileID: 114155391683909772}
   m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
@@ -233,6 +236,24 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114054713172769546
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210518989845254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1210518989845254}
+    - {fileID: 1589850101528282}
+  _assetGuid: 9dec0d1d9b292394687679ea31063981
 --- !u!114 &114056772701394222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,7 +266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackOnHit: 1
-  opensGoldChests: 0
+  goldenSword: 0
+  lootMultiplier: 50
+  absorbMultiplier: 2
   trail: {fileID: 1589850101528282}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -259,6 +282,18 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114155391683909772
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1589850101528282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 3d294e06-29dd-4082-babf-d47836c8c468
 --- !u!114 &114466407839788422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -278,6 +313,18 @@ MonoBehaviour:
   duration: 0
   timeBetweenEffect: 0
   speedDamper: 0
+--- !u!114 &114843013128475294
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210518989845254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 7908d07a-aff9-4807-9f02-ccc29404345e
 --- !u!114 &114932756082997370
 MonoBehaviour:
   m_ObjectHideFlags: 1

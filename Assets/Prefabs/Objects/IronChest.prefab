@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33167217429426394}
   - component: {fileID: 23576158872189014}
   - component: {fileID: 65254959204921832}
+  - component: {fileID: 114996123355751038}
   m_Layer: 0
   m_Name: chestLID_mesh
   m_TagString: Untagged
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 33775289362145456}
   - component: {fileID: 23953557656648572}
   - component: {fileID: 95697300044941388}
+  - component: {fileID: 114422464148391034}
   m_Layer: 0
   m_Name: chestIRON_animations
   m_TagString: Untagged
@@ -60,6 +62,8 @@ GameObject:
   - component: {fileID: 54753410085311608}
   - component: {fileID: 114919617862166310}
   - component: {fileID: 114586833487454138}
+  - component: {fileID: 114197213496599782}
+  - component: {fileID: 114199519723644098}
   m_Layer: 0
   m_Name: IronChest
   m_TagString: Untagged
@@ -353,11 +357,56 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
+  animationBone: {fileID: 0}
+  releaseItemDelay: 1
+  releaseItemForce: 0
   containingItem: {fileID: 0}
   containingObject: {fileID: 0}
   containingConsumables: []
-  releaseItemDelay: 1
-  releaseItemForce: 0
+  releaseParticle: {fileID: 0}
+--- !u!114 &114197213496599782
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833604339336476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1833604339336476}
+    - {fileID: 1641163761748336}
+    - {fileID: 1059499708269596}
+  _assetGuid: cc7707f8c70878b42821b7b2bd57caed
+--- !u!114 &114199519723644098
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833604339336476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: ecee1c17-2a11-4dcc-a7d8-b328c4d4742b
+--- !u!114 &114422464148391034
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1641163761748336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 75394efe-b0ef-4227-b1e6-e8743901d8e9
 --- !u!114 &114586833487454138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,3 +436,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beforeMerge: 0
+--- !u!114 &114996123355751038
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1059499708269596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 17d90d11-3eed-40a7-848c-1773eed0ed68

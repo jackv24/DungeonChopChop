@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4328678564742396}
   - component: {fileID: 33636834979392788}
   - component: {fileID: 23084700393178114}
+  - component: {fileID: 114654801959540418}
   m_Layer: 0
   m_Name: pSphere7
   m_TagString: Untagged
@@ -40,6 +41,8 @@ GameObject:
   - component: {fileID: 114612344044078682}
   - component: {fileID: 54579106194228126}
   - component: {fileID: 65263614320984868}
+  - component: {fileID: 114160329786413946}
+  - component: {fileID: 114815591384738094}
   m_Layer: 15
   m_Name: HealthOrb
   m_TagString: Untagged
@@ -57,6 +60,7 @@ GameObject:
   - component: {fileID: 4306438881051164}
   - component: {fileID: 33488964562505830}
   - component: {fileID: 23846646643788106}
+  - component: {fileID: 114906077609738248}
   m_Layer: 0
   m_Name: pSphere6
   m_TagString: Untagged
@@ -74,6 +78,7 @@ GameObject:
   - component: {fileID: 4289462545918098}
   - component: {fileID: 198235061390889756}
   - component: {fileID: 199233004947109258}
+  - component: {fileID: 114280111092091654}
   m_Layer: 19
   m_Name: ShineParticle
   m_TagString: Untagged
@@ -241,6 +246,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.09999163, y: 0.1463589, z: 0.086384475}
   m_Center: {x: 0.0073273145, y: 0.0072492147, z: 0}
+--- !u!114 &114160329786413946
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1335806162793318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1335806162793318}
+    - {fileID: 1436699396652416}
+    - {fileID: 1177643937578546}
+    - {fileID: 1570200884486952}
+  _assetGuid: 3b6edcf3ad2cab34cb98607f943fbad4
+--- !u!114 &114280111092091654
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1570200884486952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 8a6d1c7e-47cb-499f-a550-cb3d018b3ebe
 --- !u!114 &114612344044078682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,6 +377,42 @@ MonoBehaviour:
   type: 0
   healthAmount: 1
   cureAmount: 0
+--- !u!114 &114654801959540418
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1177643937578546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: a16886d3-8132-41cf-b434-c84dc18970d9
+--- !u!114 &114815591384738094
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1335806162793318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 3a065c36-8108-4ab9-a52f-06ae1033e080
+--- !u!114 &114906077609738248
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436699396652416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 6128fc9d-4d28-4535-aa6d-8c79ef4940b6
 --- !u!135 &135730226269964436
 SphereCollider:
   m_ObjectHideFlags: 1

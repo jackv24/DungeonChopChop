@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4667060312474440}
   - component: {fileID: 96670872742390318}
+  - component: {fileID: 114869748038042974}
   m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
@@ -37,6 +38,7 @@ GameObject:
   - component: {fileID: 4142290391551860}
   - component: {fileID: 198680910285713616}
   - component: {fileID: 199895438656692838}
+  - component: {fileID: 114458121996180548}
   m_Layer: 19
   m_Name: ShineParticle
   m_TagString: Untagged
@@ -54,6 +56,7 @@ GameObject:
   - component: {fileID: 4126295612075946}
   - component: {fileID: 198421052068218254}
   - component: {fileID: 199872016930139442}
+  - component: {fileID: 114392219816456992}
   m_Layer: 19
   m_Name: ShineParticle (1)
   m_TagString: Untagged
@@ -76,6 +79,8 @@ GameObject:
   - component: {fileID: 54449228972752618}
   - component: {fileID: 114745397618279148}
   - component: {fileID: 114905512993768300}
+  - component: {fileID: 114424992513455118}
+  - component: {fileID: 114512488886573950}
   m_Layer: 16
   m_Name: GoldenSword
   m_TagString: Untagged
@@ -323,6 +328,62 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114392219816456992
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1233918994771988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 8ee9e358-f97d-405a-be41-6f450f684867
+--- !u!114 &114424992513455118
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834599339022342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1834599339022342}
+    - {fileID: 1050019119963874}
+    - {fileID: 1170831567179100}
+    - {fileID: 1233918994771988}
+  _assetGuid: 0506cd9a5658e7143a679400e98083c9
+--- !u!114 &114458121996180548
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1170831567179100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: a0e9e87e-c82d-4c18-8248-754f2e1b80d0
+--- !u!114 &114512488886573950
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834599339022342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 03bd35a2-0e6f-4ad1-a013-e2e5490eef68
 --- !u!114 &114745397618279148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -342,6 +403,18 @@ MonoBehaviour:
   duration: 0
   timeBetweenEffect: 0
   speedDamper: 0
+--- !u!114 &114869748038042974
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050019119963874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: c7e465e9-1019-4536-bffe-12d2a2b0d342
 --- !u!114 &114905512993768300
 MonoBehaviour:
   m_ObjectHideFlags: 1

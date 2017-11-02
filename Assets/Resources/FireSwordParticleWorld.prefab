@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 199401222856259154}
   - component: {fileID: 114382272738688014}
   - component: {fileID: 114682037157825992}
+  - component: {fileID: 114712369787738352}
+  - component: {fileID: 114045701975650274}
   m_Layer: 0
   m_Name: FireSwordParticleWorld
   m_TagString: Untagged
@@ -43,6 +45,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114045701975650274
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1295521091188854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: ed3d0499-efe7-4ea3-8396-7f752adc5df8
 --- !u!114 &114382272738688014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,6 +81,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   host: {fileID: 0}
+--- !u!114 &114712369787738352
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1295521091188854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1295521091188854}
+  _assetGuid: 3f899d11ca771e840a9ea7b8bdd74572
 --- !u!198 &198221796212626386
 ParticleSystem:
   m_ObjectHideFlags: 1

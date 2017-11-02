@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 198458778445505592}
   - component: {fileID: 199822354237217818}
   - component: {fileID: 114755356261517074}
+  - component: {fileID: 114913846971362578}
+  - component: {fileID: 114502998178734272}
   m_Layer: 0
   m_Name: ShopPurchaseEffect
   m_TagString: Untagged
@@ -42,6 +44,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114502998178734272
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1610516251936186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 60c2909a-724b-441d-9042-bc828937b127
 --- !u!114 &114755356261517074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,6 +68,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0.1
+--- !u!114 &114913846971362578
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1610516251936186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1610516251936186}
+  _assetGuid: 9ab0c76ce263014478e9d182b0bf8d75
 --- !u!198 &198458778445505592
 ParticleSystem:
   m_ObjectHideFlags: 1

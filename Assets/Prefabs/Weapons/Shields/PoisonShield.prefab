@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 114783698480999352}
   - component: {fileID: 114831270217881288}
   - component: {fileID: 65530473000370542}
+  - component: {fileID: 114620980646952530}
+  - component: {fileID: 114918059690845338}
   m_Layer: 0
   m_Name: PoisonShield
   m_TagString: Untagged
@@ -95,6 +97,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114620980646952530
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1264141842905612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1264141842905612}
+  _assetGuid: c6f26be6259348c4f8e99dd6bd9c6631
 --- !u!114 &114783698480999352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,3 +140,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickUp: 1
+--- !u!114 &114918059690845338
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1264141842905612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 5f981cd8-f363-4c7a-8218-efc9c16a5d00

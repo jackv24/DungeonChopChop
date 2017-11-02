@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4038359128596442}
   - component: {fileID: 96912965479986778}
+  - component: {fileID: 114846833680610852}
   m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
@@ -42,6 +43,8 @@ GameObject:
   - component: {fileID: 54322763937443726}
   - component: {fileID: 114951671796802022}
   - component: {fileID: 114228626562664882}
+  - component: {fileID: 114809263975935000}
+  - component: {fileID: 114690566711334206}
   m_Layer: 16
   m_Name: Sword_Rusty
   m_TagString: Untagged
@@ -258,6 +261,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackOnHit: 1
+  goldenSword: 0
+  lootMultiplier: 50
+  absorbMultiplier: 2
   trail: {fileID: 1008992457164108}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -267,14 +273,52 @@ MonoBehaviour:
     type: 2}
   chargeParticle: {fileID: 1534452683028486, guid: cfa1e19dbe78cbe40a7fa3665a001933,
     type: 2}
-  magnitude: 0.1
-  shakeAmount: 1
-  duration: 1
-  pauseTime: 0.1
   playerAttack: {fileID: 0}
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114690566711334206
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433744696121786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 4fee9232-25b7-4418-a4ee-32d804a5e52c
+--- !u!114 &114809263975935000
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433744696121786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1433744696121786}
+    - {fileID: 1008992457164108}
+  _assetGuid: 5b9cf3c116116b042afe4878a1e734da
+--- !u!114 &114846833680610852
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008992457164108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 3754b06c-87a9-4d5b-8e7c-312089d2940e
 --- !u!114 &114951671796802022
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114470209786740262}
   - component: {fileID: 114593610399103730}
   - component: {fileID: 114560307154763806}
+  - component: {fileID: 114648455874678992}
+  - component: {fileID: 114282383953374832}
   m_Layer: 17
   m_Name: Crate_Open
   m_TagString: Untagged
@@ -128,6 +130,7 @@ MonoBehaviour:
   tripleDestroysIt: 1
   dashDestroysIt: 1
   spinDestroysIt: 1
+  destroyedByTalons: 0
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -327,6 +330,7 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  indistructableParticles: []
   hitSounds:
     clips:
     - {fileID: 8300000, guid: c934eea60098a6b4aa3b77170fed79d1, type: 3}
@@ -340,10 +344,27 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  indistructableSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   destroyShake:
     magnitude: 0.2
     shakeAmount: 2
     duration: 0.2
+--- !u!114 &114282383953374832
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556018963609128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 1e9b2079-b6a3-4bda-950b-3c9e1c0a9f7c
 --- !u!114 &114470209786740262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,6 +388,7 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 3
   maxAmountOfDrops: 10
+  isWizzer: 0
 --- !u!114 &114560307154763806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,6 +420,7 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
+  enemyType: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -424,3 +447,20 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 1
     duration: 0.1
+--- !u!114 &114648455874678992
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556018963609128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1556018963609128}
+  _assetGuid: 18858509422a1a642820d50b9d7bab16

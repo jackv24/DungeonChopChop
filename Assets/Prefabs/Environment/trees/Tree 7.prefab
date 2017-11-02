@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4398025124021948}
   - component: {fileID: 33470821233491456}
   - component: {fileID: 23467815194867060}
+  - component: {fileID: 114872475764020970}
   m_Layer: 0
   m_Name: TreeStump1
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4107783405619982}
   - component: {fileID: 33116029292298544}
   - component: {fileID: 23705494317470814}
+  - component: {fileID: 114595624429527070}
   m_Layer: 0
   m_Name: CloudLeaves
   m_TagString: Untagged
@@ -54,6 +56,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4516518705508064}
   - component: {fileID: 65514150439533360}
+  - component: {fileID: 114344545002490356}
+  - component: {fileID: 114710600950634402}
   m_Layer: 0
   m_Name: Tree 7
   m_TagString: Untagged
@@ -192,3 +196,58 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5702133, y: 1.9261096, z: 1.469223}
   m_Center: {x: 0.101680756, y: 0.9703224, z: 0.025367737}
+--- !u!114 &114344545002490356
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1443777137335196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1443777137335196}
+    - {fileID: 1032945225415984}
+    - {fileID: 1170964158492966}
+  _assetGuid: 8cc0747f0c3e06a499aa9343132b5da4
+--- !u!114 &114595624429527070
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1170964158492966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: f0e54cbd-8307-4f2e-8069-4ed57da90f13
+--- !u!114 &114710600950634402
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1443777137335196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 022e539f-baf3-4c71-9921-8d347ed71964
+--- !u!114 &114872475764020970
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032945225415984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 43b6cb8d-6fb3-4635-af44-7b746ed4d8ec

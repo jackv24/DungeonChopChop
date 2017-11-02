@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 54691439348065420}
   - component: {fileID: 114846864924723678}
   - component: {fileID: 114897442478479002}
+  - component: {fileID: 114605717255274596}
+  - component: {fileID: 114202423029972134}
   m_Layer: 16
   m_Name: Sword
   m_TagString: Untagged
@@ -42,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4508209109364336}
   - component: {fileID: 96732126418423316}
+  - component: {fileID: 114877877396610734}
   m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
@@ -233,6 +236,18 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114202423029972134
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1390890990404562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 6e0c4685-319e-47dc-a1fd-8b8c5ca5e68c
 --- !u!114 &114425355029213836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,6 +260,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackOnHit: 1
+  goldenSword: 0
+  lootMultiplier: 50
+  absorbMultiplier: 2
   trail: {fileID: 1998079004921924}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -254,14 +272,28 @@ MonoBehaviour:
     type: 2}
   chargeParticle: {fileID: 1534452683028486, guid: cfa1e19dbe78cbe40a7fa3665a001933,
     type: 2}
-  magnitude: 0.1
-  shakeAmount: 1
-  duration: 1
-  pauseTime: 0.1
   playerAttack: {fileID: 0}
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114605717255274596
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1390890990404562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1390890990404562}
+    - {fileID: 1998079004921924}
+  _assetGuid: dde20187036402a46a13ed3f10fe1922
 --- !u!114 &114846864924723678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -281,6 +313,18 @@ MonoBehaviour:
   duration: 0
   timeBetweenEffect: 0
   speedDamper: 0
+--- !u!114 &114877877396610734
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1998079004921924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 272f6b55-b8a8-4635-9be9-9425b70adcf8
 --- !u!114 &114897442478479002
 MonoBehaviour:
   m_ObjectHideFlags: 1

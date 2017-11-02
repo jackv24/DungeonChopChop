@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4507590492775318}
   - component: {fileID: 198694987351284878}
   - component: {fileID: 199939220831841460}
+  - component: {fileID: 114641638375085518}
   m_Layer: 0
   m_Name: MistParticleSand2x2Dungeon
   m_TagString: Untagged
@@ -37,6 +38,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4585451669150816}
   - component: {fileID: 114535505049568280}
+  - component: {fileID: 114206815001666448}
+  - component: {fileID: 114565752428726634}
   m_Layer: 0
   m_Name: MistAreaParticleDesert
   m_TagString: Untagged
@@ -54,6 +57,7 @@ GameObject:
   - component: {fileID: 4556444211919010}
   - component: {fileID: 198828257860409646}
   - component: {fileID: 199201403563522852}
+  - component: {fileID: 114299427621895350}
   m_Layer: 0
   m_Name: MistParticleDesert2x2Dungeon
   m_TagString: Untagged
@@ -102,6 +106,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114206815001666448
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1765421568924026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1765421568924026}
+    - {fileID: 1855833743941744}
+    - {fileID: 1756160101321592}
+  _assetGuid: d371424b4b20b6e409b24fa0af3c8c1e
+--- !u!114 &114299427621895350
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1855833743941744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 0f3ed1f9-56b5-438f-8bbe-f4b6e41a1b80
 --- !u!114 &114535505049568280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,6 +150,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   referenceSize: {x: 40, y: 7, z: 40}
   multiplier: 1
+--- !u!114 &114565752428726634
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1765421568924026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: c8fe77c4-0624-47c0-a282-fea346b793d6
+--- !u!114 &114641638375085518
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756160101321592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 16bdaaf5-b2a4-4d35-bd6f-643b336f7245
 --- !u!198 &198694987351284878
 ParticleSystem:
   m_ObjectHideFlags: 1

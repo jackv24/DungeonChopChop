@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 114846886546395586}
   - component: {fileID: 114715976146858192}
   - component: {fileID: 65067922419907304}
+  - component: {fileID: 114963423777970262}
+  - component: {fileID: 114082476495955786}
   m_Layer: 0
   m_Name: WoodenShield
   m_TagString: Untagged
@@ -95,6 +97,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114082476495955786
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1370514509553698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 5acd2de1-9afe-4ad9-a669-94eb37e4575c
 --- !u!114 &114715976146858192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,3 +135,20 @@ MonoBehaviour:
   shieldName: 
   blockingResistance: 0.2
   speedDamping: 0.2
+--- !u!114 &114963423777970262
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1370514509553698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1370514509553698}
+  _assetGuid: 9751ea47c054cb943b623f1d16444c6a

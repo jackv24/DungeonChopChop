@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 54979256226053186}
   - component: {fileID: 114084886988353168}
   - component: {fileID: 114887116630941638}
+  - component: {fileID: 114677915887710186}
+  - component: {fileID: 114066310132840244}
   m_Layer: 16
   m_Name: SplinterSword 1
   m_TagString: Untagged
@@ -42,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4681492767322386}
   - component: {fileID: 96500960569614356}
+  - component: {fileID: 114151721726623654}
   m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
@@ -233,6 +236,18 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114066310132840244
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1824778148565110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 0fd97f19-4cea-44e6-973b-4fefbb98d523
 --- !u!114 &114084886988353168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,6 +267,18 @@ MonoBehaviour:
   duration: 0
   timeBetweenEffect: 0
   speedDamper: 0
+--- !u!114 &114151721726623654
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975186720397440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 90c0da4f-45b2-4a6d-82e3-4f658b6c5b93
 --- !u!114 &114544761157026592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,6 +291,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackOnHit: 1
+  goldenSword: 0
+  lootMultiplier: 50
+  absorbMultiplier: 2
   trail: {fileID: 1975186720397440}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -277,6 +307,24 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114677915887710186
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1824778148565110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1824778148565110}
+    - {fileID: 1975186720397440}
+  _assetGuid: 7461569ea559b6d40bbff997ba8f5daa
 --- !u!114 &114887116630941638
 MonoBehaviour:
   m_ObjectHideFlags: 1

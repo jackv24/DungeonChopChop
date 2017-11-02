@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4320952058859686}
   - component: {fileID: 108366198928734684}
   - component: {fileID: 114336945719986434}
+  - component: {fileID: 114366109145436894}
+  - component: {fileID: 114270140383937616}
   m_Layer: 0
   m_Name: PartyLight
   m_TagString: Untagged
@@ -91,6 +93,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114270140383937616
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146148780581510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 5206f5ab-e292-425b-80b3-dd6e79f570df
 --- !u!114 &114336945719986434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,3 +117,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightOnAndOffTime: 0
+--- !u!114 &114366109145436894
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146148780581510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1146148780581510}
+  _assetGuid: 90cadb7eef3aa734cab9c9008ae90c45

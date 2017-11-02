@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 199464185334234418}
   - component: {fileID: 114192026138479878}
   - component: {fileID: 114902593065724004}
+  - component: {fileID: 114274741976363696}
+  - component: {fileID: 114175229495319250}
   m_Layer: 0
   m_Name: FireExplosionParticle
   m_TagString: Untagged
@@ -43,6 +45,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114175229495319250
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1096175457139064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 0b5dc317-38df-4066-b94f-7eba7292f4a6
 --- !u!114 &114192026138479878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55,6 +69,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114274741976363696
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1096175457139064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1096175457139064}
+  _assetGuid: ba354142746d0694e9c3843475efeb17
 --- !u!114 &114902593065724004
 MonoBehaviour:
   m_ObjectHideFlags: 1

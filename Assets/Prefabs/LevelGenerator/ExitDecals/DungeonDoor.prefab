@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33831718384925250}
   - component: {fileID: 23405293200649112}
   - component: {fileID: 95656094135043094}
+  - component: {fileID: 114080786668674402}
   m_Layer: 0
   m_Name: Frame
   m_TagString: Untagged
@@ -41,6 +42,7 @@ GameObject:
   - component: {fileID: 23800805552514686}
   - component: {fileID: 95106103693769538}
   - component: {fileID: 65279599151011408}
+  - component: {fileID: 114426881313889264}
   m_Layer: 0
   m_Name: Door(Clone)
   m_TagString: Untagged
@@ -57,6 +59,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4254008717608178}
   - component: {fileID: 114757964846486172}
+  - component: {fileID: 114590149088147474}
   m_Layer: 0
   m_Name: DoorSpawner
   m_TagString: Untagged
@@ -74,6 +77,7 @@ GameObject:
   - component: {fileID: 4037872170804742}
   - component: {fileID: 33065681840602946}
   - component: {fileID: 23848035448258162}
+  - component: {fileID: 114239312251116762}
   m_Layer: 0
   m_Name: Doorframe
   m_TagString: Untagged
@@ -91,6 +95,8 @@ GameObject:
   - component: {fileID: 4651281010939506}
   - component: {fileID: 65763177960837792}
   - component: {fileID: 65091927817416992}
+  - component: {fileID: 114067570732310620}
+  - component: {fileID: 114871145849408406}
   m_Layer: 0
   m_Name: DungeonDoor
   m_TagString: Untagged
@@ -354,6 +360,75 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114067570732310620
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518362359455040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1518362359455040}
+    - {fileID: 1042420857445478}
+    - {fileID: 1420331413385748}
+    - {fileID: 1309181643836560}
+    - {fileID: 1204161121277284}
+  _assetGuid: e0c3e587a05883c4dbbfcadd7824e2c9
+--- !u!114 &114080786668674402
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1042420857445478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: d09537e3-bf15-485c-bff9-b0eeed78af03
+--- !u!114 &114239312251116762
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1420331413385748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 635099e0-88ad-43c7-a9ca-e1a3fa18fc7a
+--- !u!114 &114426881313889264
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1204161121277284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 78d2451d-15c0-4ed5-847e-370256a3db17
+--- !u!114 &114590149088147474
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309181643836560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: c9f82cd5-aeaf-4cb6-830e-31904ddfe56d
 --- !u!114 &114757964846486172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,3 +442,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1944183833773042, guid: 1a5f8a5f9b4928749b60bc30685ed034, type: 2}
   spawnAfterMerging: 1
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
+--- !u!114 &114871145849408406
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518362359455040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: a218159c-68a0-4a9e-af10-d6f04bed840a

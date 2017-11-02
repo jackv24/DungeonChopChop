@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 54495913224134292}
   - component: {fileID: 114163029321191250}
   - component: {fileID: 114561283839602458}
+  - component: {fileID: 114332369281017616}
+  - component: {fileID: 114080296430548072}
   m_Layer: 16
   m_Name: PoisonSword
   m_TagString: Untagged
@@ -42,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4713288482963146}
   - component: {fileID: 96470932153864350}
+  - component: {fileID: 114401409238200042}
   m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
@@ -61,6 +64,7 @@ GameObject:
   - component: {fileID: 199822766456363344}
   - component: {fileID: 114721176403578348}
   - component: {fileID: 114452523751742870}
+  - component: {fileID: 114892365913450732}
   m_Layer: 0
   m_Name: PoisonSwordParticleWorld
   m_TagString: Untagged
@@ -80,6 +84,7 @@ GameObject:
   - component: {fileID: 199164764681653732}
   - component: {fileID: 114183366505869660}
   - component: {fileID: 114601142524289614}
+  - component: {fileID: 114756812818061084}
   m_Layer: 0
   m_Name: PoisonSwordParticleLocal
   m_TagString: Untagged
@@ -299,6 +304,18 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114080296430548072
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013505199300786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 989fef2b-d42f-4d34-a0b9-5f771a4a4956
 --- !u!114 &114163029321191250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -342,6 +359,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackOnHit: 1
+  goldenSword: 0
+  lootMultiplier: 50
+  absorbMultiplier: 2
   trail: {fileID: 1210312857426638}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -351,14 +371,42 @@ MonoBehaviour:
     type: 2}
   chargeParticle: {fileID: 1534452683028486, guid: cfa1e19dbe78cbe40a7fa3665a001933,
     type: 2}
-  magnitude: 0.1
-  shakeAmount: 1
-  duration: 1
-  pauseTime: 0.1
   playerAttack: {fileID: 0}
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114332369281017616
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013505199300786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1013505199300786}
+    - {fileID: 1210312857426638}
+    - {fileID: 1637324124041902}
+    - {fileID: 1853983087768738}
+  _assetGuid: caccaffdf0090984ab405cb89ed488bb
+--- !u!114 &114401409238200042
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210312857426638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 19aaaffe-96ac-4c67-9e87-d8e102892e22
 --- !u!114 &114452523751742870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -407,6 +455,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114756812818061084
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1853983087768738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 64d547b9-5fdc-4656-af3d-1719556e9b2c
+--- !u!114 &114892365913450732
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637324124041902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: fcf52d38-751e-4fb0-9512-1616821bba42
 --- !u!198 &198141359250222738
 ParticleSystem:
   m_ObjectHideFlags: 1

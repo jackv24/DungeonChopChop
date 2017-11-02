@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4352967848306030}
   - component: {fileID: 33975783616671542}
   - component: {fileID: 23525797984016012}
+  - component: {fileID: 114579895734519416}
   m_Layer: 0
   m_Name: leatherShoe_mesh
   m_TagString: Untagged
@@ -39,6 +40,8 @@ GameObject:
   - component: {fileID: 65806112908781226}
   - component: {fileID: 114467181903900836}
   - component: {fileID: 114036977411558560}
+  - component: {fileID: 114421088900846598}
+  - component: {fileID: 114080664434758910}
   m_Layer: 0
   m_Name: leatherShoe_mesh
   m_TagString: Untagged
@@ -136,6 +139,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickUp: 1
+--- !u!114 &114080664434758910
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1502392273581444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 3d1854c0-e092-4483-85f4-817a155b7043
+--- !u!114 &114421088900846598
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1502392273581444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1502392273581444}
+    - {fileID: 1258017118194720}
+  _assetGuid: fe93919f05e727349a0787a066ae1d01
 --- !u!114 &114467181903900836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,3 +183,15 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: 3574a643960f28b4b83559570d351762, type: 2}
   pickupDelay: 1
+--- !u!114 &114579895734519416
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1258017118194720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 72089ca8-574d-460d-88d9-9bc3ab8b44d9

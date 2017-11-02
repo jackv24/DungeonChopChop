@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4089183430877770}
   - component: {fileID: 95618229636538650}
+  - component: {fileID: 114559476275731040}
   m_Layer: 0
   m_Name: cliffDecal_mesh
   m_TagString: Untagged
@@ -35,6 +36,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4603064213139204}
+  - component: {fileID: 114830582681685082}
+  - component: {fileID: 114351926082554592}
   m_Layer: 0
   m_Name: IceDecal
   m_TagString: Untagged
@@ -53,6 +56,7 @@ GameObject:
   - component: {fileID: 33738652811616162}
   - component: {fileID: 23555228917277870}
   - component: {fileID: 65909873210722774}
+  - component: {fileID: 114533185505521472}
   m_Layer: 0
   m_Name: TerrainFeature16
   m_TagString: Untagged
@@ -169,3 +173,58 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114351926082554592
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755003863973422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 369aab39-8781-4131-a63b-157b1a7d6aa8
+--- !u!114 &114533185505521472
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933237545652390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: a79c7758-7646-4901-b429-7823de129c60
+--- !u!114 &114559476275731040
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716848396201112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 3a3a4f6a-6eae-4f85-bbc2-a1a32e11173f
+--- !u!114 &114830582681685082
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755003863973422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1755003863973422}
+    - {fileID: 1716848396201112}
+    - {fileID: 1933237545652390}
+  _assetGuid: 197d2b2894a512d42b53e1fb64b1fa70

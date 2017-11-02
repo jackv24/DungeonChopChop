@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 198781636348642554}
   - component: {fileID: 199818237903356738}
   - component: {fileID: 114397693208641798}
+  - component: {fileID: 114434856828243982}
+  - component: {fileID: 114432756676124466}
   m_Layer: 0
   m_Name: HealthParticle2
   m_TagString: Untagged
@@ -54,6 +56,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   host: {fileID: 0}
+--- !u!114 &114432756676124466
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462187128974598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 85f73d41-a174-4c64-9d81-7f052d7272db
+--- !u!114 &114434856828243982
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462187128974598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1462187128974598}
+  _assetGuid: bfb8755c26bfc964aa42fe0a77af0edb
 --- !u!198 &198781636348642554
 ParticleSystem:
   m_ObjectHideFlags: 1

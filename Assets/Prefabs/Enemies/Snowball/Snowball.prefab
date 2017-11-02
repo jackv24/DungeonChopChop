@@ -30,6 +30,8 @@ GameObject:
   - component: {fileID: 54378761637986922}
   - component: {fileID: 114312594886982162}
   - component: {fileID: 65564459441188364}
+  - component: {fileID: 114313188371987178}
+  - component: {fileID: 114609879365941676}
   m_Layer: 11
   m_Name: Snowball
   m_TagString: Untagged
@@ -131,6 +133,7 @@ MonoBehaviour:
   health: 2
   weight: 0.1
   IsEnemy: 1
+  enemyType: 0
   isProp: 0
   isPoisoned: 0
   isBurned: 0
@@ -218,7 +221,7 @@ MonoBehaviour:
   hitColor: {r: 0.5120567, g: 0.7258226, b: 0.9044118, a: 0.528}
   timeBetweenFlash: 1
   amountToFlash: 1
-  fadeToColorTime: 5
+  fadeTime: 5
   hitShake:
     magnitude: 0.1
     shakeAmount: 0.1
@@ -238,12 +241,29 @@ MonoBehaviour:
   OtherwiseRoam: 1
   timeBetweenRoam: 3
   runAwayAfterAttackTime: 1
-  layerMask:
+  enemyMask:
     serializedVersion: 2
     m_Bits: 0
   LockY: 1
   usingNav: 1
   healthIncrease: 0.002
+--- !u!114 &114313188371987178
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1055673473369210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1055673473369210}
+  _assetGuid: f881c3ebe7bc26f4ba2cf57bd47b8bf4
 --- !u!114 &114414623418834144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -279,6 +299,7 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 0
   maxAmountOfDrops: 3
+  isWizzer: 0
 --- !u!114 &114606482890160050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,7 +315,7 @@ MonoBehaviour:
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 80
-  attackStrength: 2
+  projectileDmgMutliplier: 0
   damageOnTouch: 3
   knockbackStrength: 2
   shootSounds:
@@ -306,6 +327,18 @@ MonoBehaviour:
   timeTillInterval: 1
   minInterval: 1
   maxInterval: 7
+--- !u!114 &114609879365941676
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1055673473369210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: a63b27ab-c493-4035-b122-349bf9880634
 --- !u!114 &114656762858316434
 MonoBehaviour:
   m_ObjectHideFlags: 1

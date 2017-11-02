@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114435684450968262}
   - component: {fileID: 114675975860023570}
   - component: {fileID: 114925951882340604}
+  - component: {fileID: 114743011183333140}
+  - component: {fileID: 114972073649904568}
   m_Layer: 11
   m_Name: PaddyBone
   m_TagString: Untagged
@@ -45,6 +47,7 @@ GameObject:
   - component: {fileID: 33583403628058382}
   - component: {fileID: 23173500659470900}
   - component: {fileID: 95996643177788658}
+  - component: {fileID: 114419539099035310}
   m_Layer: 0
   m_Name: PaddyBone
   m_TagString: Untagged
@@ -162,6 +165,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114419539099035310
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1863140749492274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 7e9e5bca-deff-4d41-8784-28400e4910c1
 --- !u!114 &114435684450968262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,7 +192,7 @@ MonoBehaviour:
   OtherwiseRoam: 1
   timeBetweenRoam: 3
   runAwayAfterAttackTime: 1
-  layerMask:
+  enemyMask:
     serializedVersion: 2
     m_Bits: 0
   LockY: 1
@@ -381,6 +396,25 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 1
   maxAmountOfDrops: 1
+  isWizzer: 0
+--- !u!114 &114743011183333140
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1560298701560840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1560298701560840}
+    - {fileID: 1863140749492274}
+  _assetGuid: a5b926da6b6ee8a45af3727e4219839b
 --- !u!114 &114916941400412180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -436,6 +470,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
+--- !u!114 &114972073649904568
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1560298701560840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: e826481f-7d5d-4188-a034-112d3fdb9161
 --- !u!114 &114979939115730942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -451,7 +497,7 @@ MonoBehaviour:
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
-  attackStrength: 0.5
+  projectileDmgMutliplier: 0
   damageOnTouch: 0.5
   knockbackStrength: 8
   shootSounds:

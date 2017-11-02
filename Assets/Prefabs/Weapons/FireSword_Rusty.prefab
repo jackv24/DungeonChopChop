@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 54990916083600188}
   - component: {fileID: 114418212522782304}
   - component: {fileID: 114354887427583062}
+  - component: {fileID: 114601334525910484}
+  - component: {fileID: 114555127750532920}
   m_Layer: 16
   m_Name: FireSword_Rusty
   m_TagString: Untagged
@@ -42,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4798278486128654}
   - component: {fileID: 96165452583951892}
+  - component: {fileID: 114685050674522764}
   m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
@@ -61,6 +64,7 @@ GameObject:
   - component: {fileID: 199818411099728700}
   - component: {fileID: 114250846980190522}
   - component: {fileID: 114477724747959684}
+  - component: {fileID: 114380690038181198}
   m_Layer: 0
   m_Name: FireSwordParticleLocal
   m_TagString: Untagged
@@ -80,6 +84,7 @@ GameObject:
   - component: {fileID: 199600404656282898}
   - component: {fileID: 114410413935029020}
   - component: {fileID: 114352231454286664}
+  - component: {fileID: 114307637564632610}
   m_Layer: 0
   m_Name: FireSwordParticleWorld
   m_TagString: Untagged
@@ -312,6 +317,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114307637564632610
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933107481761996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 33be8050-720b-4f62-8f2e-3c67deb87784
 --- !u!114 &114352231454286664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,6 +353,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickUp: 1
+--- !u!114 &114380690038181198
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1463120549238484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 8722a61f-0166-415b-b657-90676c99dfde
 --- !u!114 &114410413935029020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -379,6 +408,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   host: {fileID: 0}
+--- !u!114 &114555127750532920
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1168701599439394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 926cffb4-de66-49f5-8aa7-28bd6a4fad56
+--- !u!114 &114601334525910484
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1168701599439394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1168701599439394}
+    - {fileID: 1272213608091804}
+    - {fileID: 1933107481761996}
+    - {fileID: 1463120549238484}
+  _assetGuid: fc1e54a208775c44c906db5a704839dc
+--- !u!114 &114685050674522764
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272213608091804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: d7ae1977-490e-4390-898e-462da579bc5d
 --- !u!114 &114886073081627912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,6 +464,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackOnHit: 1
+  goldenSword: 0
+  lootMultiplier: 50
+  absorbMultiplier: 2
   trail: {fileID: 1272213608091804}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -400,10 +476,6 @@ MonoBehaviour:
     type: 2}
   chargeParticle: {fileID: 1534452683028486, guid: cfa1e19dbe78cbe40a7fa3665a001933,
     type: 2}
-  magnitude: 0.1
-  shakeAmount: 1
-  duration: 1
-  pauseTime: 0.1
   playerAttack: {fileID: 0}
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}

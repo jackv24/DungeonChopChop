@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 198675112412473550}
   - component: {fileID: 199498906803647066}
   - component: {fileID: 114689005855818514}
+  - component: {fileID: 114718002923324960}
+  - component: {fileID: 114382124178551448}
   m_Layer: 0
   m_Name: GrayEyeEffect
   m_TagString: Untagged
@@ -42,6 +44,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114382124178551448
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1160213654585448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: fe45dceb-6dca-4e90-9baf-2526bc56d7df
 --- !u!114 &114689005855818514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,6 +68,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114718002923324960
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1160213654585448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1160213654585448}
+  _assetGuid: 817408564e6af7a4d8200848729e4b2b
 --- !u!198 &198675112412473550
 ParticleSystem:
   m_ObjectHideFlags: 1

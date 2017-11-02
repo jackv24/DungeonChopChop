@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 114463083815023510}
   - component: {fileID: 114636045688641658}
   - component: {fileID: 65021979975835632}
+  - component: {fileID: 114409924310834048}
+  - component: {fileID: 114837349055481208}
   m_Layer: 0
   m_Name: IceShield
   m_TagString: Untagged
@@ -95,6 +97,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114409924310834048
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067695375697958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1067695375697958}
+  _assetGuid: 6976b33bd0a32d34899e591f5569bab1
 --- !u!114 &114463083815023510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,3 +140,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickUp: 1
+--- !u!114 &114837349055481208
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067695375697958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 168268a2-0716-469e-8a06-2dc4a653d50e

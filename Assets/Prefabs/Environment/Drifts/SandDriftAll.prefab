@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 33823957279254048}
   - component: {fileID: 23214961421094384}
   - component: {fileID: 64450203218767596}
+  - component: {fileID: 114216189393638382}
+  - component: {fileID: 114069274754316744}
   m_Layer: 0
   m_Name: SandDriftAll
   m_TagString: Mud
@@ -39,6 +41,7 @@ GameObject:
   - component: {fileID: 4170751638232872}
   - component: {fileID: 33790093555589504}
   - component: {fileID: 23626745553992102}
+  - component: {fileID: 114348452311954502}
   m_Layer: 0
   m_Name: SandDriftMesh
   m_TagString: Mud
@@ -165,3 +168,45 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: beacdf0db4d10c14c86287f841d1cffa, type: 3}
+--- !u!114 &114069274754316744
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1359244438209856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 15619473-f0f4-433a-951f-4cc5e3b72501
+--- !u!114 &114216189393638382
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1359244438209856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1359244438209856}
+    - {fileID: 1804055852958812}
+  _assetGuid: 6c38a3fa1111b99479f870e67f69b8b7
+--- !u!114 &114348452311954502
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1804055852958812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: a3718e3f-2d88-4a59-8798-0e57ec6c02d3

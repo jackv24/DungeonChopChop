@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 198277834125260930}
   - component: {fileID: 199745876547420828}
   - component: {fileID: 114168745105693508}
+  - component: {fileID: 114069478447781254}
+  - component: {fileID: 114709003483884580}
   m_Layer: 0
   m_Name: HitBlobParticle01
   m_TagString: Untagged
@@ -42,6 +44,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114069478447781254
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458053587771734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1458053587771734}
+  _assetGuid: 1b771909e5a0a9d4684f69c7a6d7e382
 --- !u!114 &114168745105693508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,6 +73,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114709003483884580
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458053587771734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 3bb0f9dd-3d76-46cd-a0e0-f7c99896d9a0
 --- !u!198 &198277834125260930
 ParticleSystem:
   m_ObjectHideFlags: 1

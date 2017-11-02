@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 198164126132378004}
   - component: {fileID: 199944116700282926}
   - component: {fileID: 114227839473200188}
+  - component: {fileID: 114075301429950204}
   m_Layer: 0
   m_Name: SandTickParticle
   m_TagString: Untagged
@@ -44,6 +45,8 @@ GameObject:
   - component: {fileID: 114903360757450450}
   - component: {fileID: 65747249392325048}
   - component: {fileID: 114706389840376148}
+  - component: {fileID: 114727469504830068}
+  - component: {fileID: 114114101149566804}
   m_Layer: 10
   m_Name: SandProjectile
   m_TagString: Untagged
@@ -62,6 +65,7 @@ GameObject:
   - component: {fileID: 198435163145565066}
   - component: {fileID: 199259939788220706}
   - component: {fileID: 114894028903047640}
+  - component: {fileID: 114648406217898888}
   m_Layer: 0
   m_Name: SandTickParticle (1)
   m_TagString: Untagged
@@ -176,6 +180,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.018215336, z: 0.017487574}
   m_Center: {x: 0, y: -0.0000009536743, z: 0}
+--- !u!114 &114075301429950204
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041357793131424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 7baf36b2-6937-441a-8484-9d40ad1f81cf
+--- !u!114 &114114101149566804
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368690437338182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: e82b997e-d326-4241-a13b-d88050493d29
 --- !u!114 &114227839473200188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,10 +230,29 @@ MonoBehaviour:
   damageAmount: 1
   knockbackAmount: 2
   hitParticles:
-  - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
-  - {fileID: 1004915465583228, guid: 2a2d6f42c0139774880df8b9f1374650, type: 2}
+  - particleType: 0
+    particles: []
+  - particleType: 0
+    particles: []
+  hitSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   damageMultiplyer: 0
   thrust: 0
+--- !u!114 &114648406217898888
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1926246132921298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: f1f6742b-0a10-4690-b617-e2e0db42c8d4
 --- !u!114 &114706389840376148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,6 +269,25 @@ MonoBehaviour:
   duration: 5
   timeBetweenDamage: 0
   speedDamper: 0.5
+--- !u!114 &114727469504830068
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368690437338182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1368690437338182}
+    - {fileID: 1041357793131424}
+    - {fileID: 1926246132921298}
+  _assetGuid: a5a1d09709538664aa1ad82a4c31a9de
 --- !u!114 &114894028903047640
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4468467007550136}
   - component: {fileID: 33875154345520458}
   - component: {fileID: 23545588124460926}
+  - component: {fileID: 114872336114885562}
   m_Layer: 0
   m_Name: TreeTrunk1
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4354719127078466}
   - component: {fileID: 33426132780508350}
   - component: {fileID: 23108484852954868}
+  - component: {fileID: 114023370855149866}
   m_Layer: 0
   m_Name: TreeTrunk1
   m_TagString: Untagged
@@ -54,6 +56,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4160554770966626}
   - component: {fileID: 65723608847697664}
+  - component: {fileID: 114604606778809504}
+  - component: {fileID: 114493492389924676}
   m_Layer: 0
   m_Name: dual tree
   m_TagString: Untagged
@@ -71,6 +75,7 @@ GameObject:
   - component: {fileID: 4426233029700680}
   - component: {fileID: 33416427539682088}
   - component: {fileID: 23322405768439294}
+  - component: {fileID: 114576685308000646}
   m_Layer: 0
   m_Name: CloudLeaves
   m_TagString: Untagged
@@ -88,6 +93,7 @@ GameObject:
   - component: {fileID: 4114789075075104}
   - component: {fileID: 33760027213479750}
   - component: {fileID: 23613726158782680}
+  - component: {fileID: 114878264954988800}
   m_Layer: 0
   m_Name: CloudLeaves3
   m_TagString: Untagged
@@ -332,3 +338,84 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.45090353, y: 1.8330922, z: 0.46217453}
   m_Center: {x: 0.35137576, y: 0.755005, z: 0.36208284}
+--- !u!114 &114023370855149866
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1502234396369928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 975b3715-02f3-423b-b31f-e8759bc6f9fc
+--- !u!114 &114493492389924676
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596007685160256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 265305ce-2ae7-4f06-a015-6bfbf752ab72
+--- !u!114 &114576685308000646
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843673431742600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 318cf765-0b7f-4847-b614-1afa0c98bad9
+--- !u!114 &114604606778809504
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596007685160256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1596007685160256}
+    - {fileID: 1140363747006492}
+    - {fileID: 1843673431742600}
+    - {fileID: 1502234396369928}
+    - {fileID: 1903210227555026}
+  _assetGuid: b463f15a61256d1418e21b3c58e4faa4
+--- !u!114 &114872336114885562
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1140363747006492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: c571ac41-3463-43a5-8aab-4d34f74b630f
+--- !u!114 &114878264954988800
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1903210227555026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 4ec331b2-f3bd-4c25-b715-fd79bab1f2ed

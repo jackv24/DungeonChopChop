@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4038359128596442}
   - component: {fileID: 96912965479986778}
+  - component: {fileID: 114052773375794130}
   m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
@@ -42,6 +43,8 @@ GameObject:
   - component: {fileID: 54322763937443726}
   - component: {fileID: 114951671796802022}
   - component: {fileID: 114228626562664882}
+  - component: {fileID: 114790519279094730}
+  - component: {fileID: 114466010935569088}
   m_Layer: 16
   m_Name: Sword_RustyTetanus
   m_TagString: Untagged
@@ -234,6 +237,18 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114052773375794130
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008992457164108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 97a19fd4-f8a3-46f3-b79e-2664847c69cd
 --- !u!114 &114228626562664882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,6 +273,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackOnHit: 1
+  goldenSword: 0
+  lootMultiplier: 50
+  absorbMultiplier: 2
   trail: {fileID: 1008992457164108}
   hitSmokes:
   - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
@@ -267,14 +285,40 @@ MonoBehaviour:
     type: 2}
   chargeParticle: {fileID: 1534452683028486, guid: cfa1e19dbe78cbe40a7fa3665a001933,
     type: 2}
-  magnitude: 0.1
-  shakeAmount: 1
-  duration: 1
-  pauseTime: 0.1
   playerAttack: {fileID: 0}
   playerInfo: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &114466010935569088
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433744696121786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: ebfb309b-6205-4b4d-b735-13f920b88086
+--- !u!114 &114790519279094730
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433744696121786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1433744696121786}
+    - {fileID: 1008992457164108}
+  _assetGuid: 1bd4ff083d48ae3468a21e5947e40175
 --- !u!114 &114951671796802022
 MonoBehaviour:
   m_ObjectHideFlags: 1

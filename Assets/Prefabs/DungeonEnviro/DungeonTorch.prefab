@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4596293323478996}
   - component: {fileID: 108614840476797166}
   - component: {fileID: 114841219887820606}
+  - component: {fileID: 114279600396523680}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -39,6 +40,7 @@ GameObject:
   - component: {fileID: 33055841979625094}
   - component: {fileID: 23956927424376540}
   - component: {fileID: 95791294894866704}
+  - component: {fileID: 114844259649514868}
   m_Layer: 0
   m_Name: DungeonTorch
   m_TagString: Untagged
@@ -54,6 +56,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4230905711040384}
+  - component: {fileID: 114395567400143774}
+  - component: {fileID: 114629992049904484}
   m_Layer: 0
   m_Name: DungeonTorch
   m_TagString: Untagged
@@ -73,6 +77,7 @@ GameObject:
   - component: {fileID: 199911236396386472}
   - component: {fileID: 114656029769951668}
   - component: {fileID: 114806868933631078}
+  - component: {fileID: 114490163972145624}
   m_Layer: 0
   m_Name: FireParticleTorch
   m_TagString: Untagged
@@ -241,6 +246,62 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114279600396523680
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422311008991402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: c0a51eee-7459-4aef-842b-866f2e375f10
+--- !u!114 &114395567400143774
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1606928031848976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1606928031848976}
+    - {fileID: 1538684590613060}
+    - {fileID: 1422311008991402}
+    - {fileID: 1809798625335786}
+  _assetGuid: dcb362c1894bbab41a3379f42d24fc5b
+--- !u!114 &114490163972145624
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1809798625335786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 57d8a1ba-8927-4d7c-8f4e-eb702f20a397
+--- !u!114 &114629992049904484
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1606928031848976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 84fb960f-0b7c-45df-a539-3b5d22ffedfc
 --- !u!114 &114656029769951668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -278,6 +339,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeDelay: 0.05
   variance: 0.1
+--- !u!114 &114844259649514868
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538684590613060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 3427b1f0-55a1-4f24-bcb3-78132dd6e2cb
 --- !u!198 &198603094498376412
 ParticleSystem:
   m_ObjectHideFlags: 1

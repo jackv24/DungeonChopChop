@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 65935878482046444}
   - component: {fileID: 114116099615252924}
   - component: {fileID: 114156419992337648}
+  - component: {fileID: 114132444919852140}
+  - component: {fileID: 114682758165309532}
   m_Layer: 0
   m_Name: classicHeroTunic_mesh
   m_TagString: Untagged
@@ -109,6 +111,23 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: 5893f2067fe12fc4b990373e775c3d1b, type: 2}
   pickupDelay: 1
+--- !u!114 &114132444919852140
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1903226540267162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1903226540267162}
+  _assetGuid: 8c261893d4e8e2d42b17872290070722
 --- !u!114 &114156419992337648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,3 +140,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickUp: 1
+--- !u!114 &114682758165309532
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1903226540267162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: fb3143c2-4b35-4556-9994-d20004cea504

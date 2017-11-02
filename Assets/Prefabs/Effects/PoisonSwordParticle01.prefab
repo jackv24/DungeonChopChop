@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 198439181312862104}
   - component: {fileID: 199864519247796366}
   - component: {fileID: 114579448220615924}
+  - component: {fileID: 114109624295920046}
+  - component: {fileID: 114991043765552302}
   m_Layer: 0
   m_Name: PoisonSwordParticle01
   m_TagString: Untagged
@@ -42,6 +44,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114109624295920046
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522194536203650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1522194536203650}
+  _assetGuid: 0c30e1dd8395dbc468331af178f52ef8
 --- !u!114 &114579448220615924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,6 +73,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114991043765552302
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522194536203650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 1c0a7da8-c328-4651-9e45-3f4c1f53f72a
 --- !u!198 &198439181312862104
 ParticleSystem:
   m_ObjectHideFlags: 1

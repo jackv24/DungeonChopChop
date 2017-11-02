@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 198842516278079262}
   - component: {fileID: 114622801830608816}
   - component: {fileID: 199003371641086804}
+  - component: {fileID: 114641443525020048}
+  - component: {fileID: 114545555639787274}
   m_Layer: 0
   m_Name: HitFXBlobDeath01
   m_TagString: Untagged
@@ -42,6 +44,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114545555639787274
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188716507881696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: bb77beb5-1500-445b-b1f6-916b6e026cc8
 --- !u!114 &114622801830608816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,6 +68,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114641443525020048
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188716507881696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1188716507881696}
+  _assetGuid: 82879d5e59510d94ea2571b34a344ce4
 --- !u!198 &198842516278079262
 ParticleSystem:
   m_ObjectHideFlags: 1

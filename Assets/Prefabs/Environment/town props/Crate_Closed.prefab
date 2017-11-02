@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114292250858684230}
   - component: {fileID: 114588783551213508}
   - component: {fileID: 114057722144758186}
+  - component: {fileID: 114728580302190892}
+  - component: {fileID: 114541609602288120}
   m_Layer: 17
   m_Name: Crate_Closed
   m_TagString: Untagged
@@ -144,6 +146,7 @@ MonoBehaviour:
   tripleDestroysIt: 1
   dashDestroysIt: 1
   spinDestroysIt: 1
+  destroyedByTalons: 0
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -343,6 +346,7 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  indistructableParticles: []
   hitSounds:
     clips:
     - {fileID: 8300000, guid: c934eea60098a6b4aa3b77170fed79d1, type: 3}
@@ -356,10 +360,27 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  indistructableSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   destroyShake:
     magnitude: 0.2
     shakeAmount: 2
     duration: 0.2
+--- !u!114 &114541609602288120
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530101751580586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 5db58c61-16e6-4acb-9188-878e19ccd78c
 --- !u!114 &114562726027623286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -422,6 +443,7 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 3
   maxAmountOfDrops: 10
+  isWizzer: 0
 --- !u!114 &114588783551213508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -437,6 +459,7 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
+  enemyType: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -463,3 +486,20 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 1
     duration: 0.1
+--- !u!114 &114728580302190892
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530101751580586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1530101751580586}
+  _assetGuid: 271041ff1138cac43a50a26379983f1f

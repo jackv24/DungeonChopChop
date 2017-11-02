@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4178062510044760}
   - component: {fileID: 33989468847920062}
   - component: {fileID: 23485784267009228}
+  - component: {fileID: 114827784137338748}
   m_Layer: 0
   m_Name: MushStalkCurved
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4647510754267502}
   - component: {fileID: 33766989672653810}
   - component: {fileID: 23126375933335420}
+  - component: {fileID: 114017285689102500}
   m_Layer: 0
   m_Name: MushCapNormal
   m_TagString: Untagged
@@ -53,6 +55,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4579165607356524}
+  - component: {fileID: 114856267096318950}
+  - component: {fileID: 114029823220770612}
   m_Layer: 0
   m_Name: redlong
   m_TagString: Untagged
@@ -179,3 +183,58 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1155416469214940}
   m_Mesh: {fileID: 4300000, guid: a601a4dd8fad60f4e9dcff98407088f4, type: 3}
+--- !u!114 &114017285689102500
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215587504736292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 957344ac-7ffc-44d8-97cb-8fd9247f41fc
+--- !u!114 &114029823220770612
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1944749997912054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 3adbc8b2-07e5-40c6-858f-aa4eb30ba5fd
+--- !u!114 &114827784137338748
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155416469214940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 6b8b772d-409a-49d5-a242-2745fa727ed2
+--- !u!114 &114856267096318950
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1944749997912054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1944749997912054}
+    - {fileID: 1155416469214940}
+    - {fileID: 1215587504736292}
+  _assetGuid: 32cdeb960bfec2d4d9cc8fcd18a9c5b1

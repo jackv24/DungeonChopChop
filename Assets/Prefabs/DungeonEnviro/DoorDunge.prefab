@@ -19,6 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4861198135345618}
+  - component: {fileID: 114489817244389074}
+  - component: {fileID: 114443328633644986}
   m_Layer: 0
   m_Name: DoorDunge
   m_TagString: Untagged
@@ -36,6 +38,7 @@ GameObject:
   - component: {fileID: 4205214968197154}
   - component: {fileID: 33732770648205164}
   - component: {fileID: 23381703837714104}
+  - component: {fileID: 114212633531106730}
   m_Layer: 0
   m_Name: polySurface6
   m_TagString: Untagged
@@ -109,3 +112,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1890565569128848}
   m_Mesh: {fileID: 4300000, guid: c221a1a3652720f4ca75291315cbc4f2, type: 3}
+--- !u!114 &114212633531106730
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1890565569128848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 96ba216f-2e2f-4770-9b8d-8876f891d9b4
+--- !u!114 &114443328633644986
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1489027806280564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: e9a734d7-c59c-483d-b1e4-f8202f2fe0ea
+--- !u!114 &114489817244389074
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1489027806280564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1489027806280564}
+    - {fileID: 1890565569128848}
+  _assetGuid: 13b764f61bd93aa4689b690560fcc3f3

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33350992003007506}
   - component: {fileID: 23545194428205192}
   - component: {fileID: 95984542356647196}
+  - component: {fileID: 114325354608006258}
   m_Layer: 0
   m_Name: PaddyBum
   m_TagString: Untagged
@@ -45,6 +46,8 @@ GameObject:
   - component: {fileID: 114051769807747158}
   - component: {fileID: 114123716065675064}
   - component: {fileID: 114227595087087722}
+  - component: {fileID: 114548108957501308}
+  - component: {fileID: 114092200545702440}
   m_Layer: 11
   m_Name: PaddyBum
   m_TagString: Untagged
@@ -177,11 +180,23 @@ MonoBehaviour:
   OtherwiseRoam: 1
   timeBetweenRoam: 3
   runAwayAfterAttackTime: 1
-  layerMask:
+  enemyMask:
     serializedVersion: 2
     m_Bits: 0
   LockY: 1
   usingNav: 1
+--- !u!114 &114092200545702440
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1337815962632390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: c2f64800-cd34-49c3-8c3f-8d473f8d6a66
 --- !u!114 &114123716065675064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,6 +232,7 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 1
   maxAmountOfDrops: 1
+  isWizzer: 0
 --- !u!114 &114227595087087722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,6 +245,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+--- !u!114 &114325354608006258
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017047667508116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 34385193-b634-431a-bce5-1714bec370b9
+--- !u!114 &114548108957501308
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1337815962632390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1337815962632390}
+    - {fileID: 1017047667508116}
+  _assetGuid: a2908f8e4671a0e45911625b0181bf32
 --- !u!114 &114568598747523298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,7 +290,7 @@ MonoBehaviour:
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
-  attackStrength: 0.5
+  projectileDmgMutliplier: 0
   damageOnTouch: 0.5
   knockbackStrength: 8
   shootSounds:

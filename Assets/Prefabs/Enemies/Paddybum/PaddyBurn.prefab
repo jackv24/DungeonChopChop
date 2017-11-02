@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114585174051281660}
   - component: {fileID: 114343904985641544}
   - component: {fileID: 114834536258989936}
+  - component: {fileID: 114879681614156980}
+  - component: {fileID: 114916379918210694}
   m_Layer: 11
   m_Name: PaddyBurn
   m_TagString: Untagged
@@ -45,6 +47,7 @@ GameObject:
   - component: {fileID: 33231271326141216}
   - component: {fileID: 23281572169794854}
   - component: {fileID: 95892427203491778}
+  - component: {fileID: 114599850411478996}
   m_Layer: 0
   m_Name: PaddyBurn
   m_TagString: Untagged
@@ -341,7 +344,7 @@ MonoBehaviour:
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
-  attackStrength: 0.5
+  projectileDmgMutliplier: 0
   damageOnTouch: 0.5
   knockbackStrength: 8
   shootSounds:
@@ -434,6 +437,7 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 1
   maxAmountOfDrops: 1
+  isWizzer: 0
 --- !u!114 &114585174051281660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,11 +453,23 @@ MonoBehaviour:
   OtherwiseRoam: 1
   timeBetweenRoam: 3
   runAwayAfterAttackTime: 1
-  layerMask:
+  enemyMask:
     serializedVersion: 2
     m_Bits: 0
   LockY: 1
   usingNav: 1
+--- !u!114 &114599850411478996
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1492343312747318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: ada61576-bdf9-48d3-9a72-61eede34a615
 --- !u!114 &114834536258989936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -466,3 +482,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+--- !u!114 &114879681614156980
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127365570886528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1127365570886528}
+    - {fileID: 1492343312747318}
+  _assetGuid: ae42d0e8df7d13f4ea650a7039f8fb49
+--- !u!114 &114916379918210694
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127365570886528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: e9ad80fb-7924-4a6b-82ff-6837e9baa45e

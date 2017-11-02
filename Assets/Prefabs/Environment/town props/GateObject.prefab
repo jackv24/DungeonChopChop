@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4646877800971798}
   - component: {fileID: 33240303870317630}
   - component: {fileID: 23160629823797720}
+  - component: {fileID: 114644863223053950}
   m_Layer: 0
   m_Name: GateRight
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4647011427490820}
   - component: {fileID: 33623584313684336}
   - component: {fileID: 23165496308257264}
+  - component: {fileID: 114715019529462788}
   m_Layer: 0
   m_Name: GateLeft
   m_TagString: Untagged
@@ -54,6 +56,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4828609523931106}
   - component: {fileID: 95100402183857226}
+  - component: {fileID: 114442001194366426}
+  - component: {fileID: 114020016308967248}
   m_Layer: 0
   m_Name: GateObject
   m_TagString: Untagged
@@ -197,3 +201,58 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114020016308967248
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799835182770920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 0820d867-547f-462f-9d7b-020ceb0a0735
+--- !u!114 &114442001194366426
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799835182770920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1799835182770920}
+    - {fileID: 1760145990000060}
+    - {fileID: 1367452527576306}
+  _assetGuid: 97908f0aa82a8f240a53ac413acb96c4
+--- !u!114 &114644863223053950
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1367452527576306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: fe1c814b-9cdf-45cf-94b1-58680c0e31ee
+--- !u!114 &114715019529462788
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760145990000060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 8ed06bd4-4708-4ed3-9c65-9fc17c021437

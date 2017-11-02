@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 65320977929167246}
   - component: {fileID: 114622143876811786}
   - component: {fileID: 114815005831530642}
+  - component: {fileID: 114704533037144516}
+  - component: {fileID: 114036299351211390}
   m_Layer: 0
   m_Name: BronzeArmour
   m_TagString: Untagged
@@ -113,6 +115,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114036299351211390
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581245802107606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 14d89a5a-e380-4e43-992e-ea4f68534e95
 --- !u!114 &114622143876811786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +141,23 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: b04af5394c5c2a94481f535893c99829, type: 2}
   pickupDelay: 1
+--- !u!114 &114704533037144516
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581245802107606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1581245802107606}
+  _assetGuid: a4189806d82d47c45bc48fb801f99ecf
 --- !u!114 &114815005831530642
 MonoBehaviour:
   m_ObjectHideFlags: 1

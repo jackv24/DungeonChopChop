@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 199300063713973746}
   - component: {fileID: 114611511743949342}
   - component: {fileID: 114417820722459774}
+  - component: {fileID: 114828410871686886}
+  - component: {fileID: 114026484018946754}
   m_Layer: 0
   m_Name: SandExplodeParticle
   m_TagString: Untagged
@@ -43,6 +45,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114026484018946754
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1623778839485062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: b4e2cd18-a79a-4182-af4d-898d69ea581a
 --- !u!114 &114417820722459774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,6 +81,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114828410871686886
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1623778839485062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1623778839485062}
+  _assetGuid: 8dd9a7403eadc5a4cb36168a44dcd526
 --- !u!198 &198300603268582812
 ParticleSystem:
   m_ObjectHideFlags: 1

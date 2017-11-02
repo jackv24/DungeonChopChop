@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 135545708323639552}
   - component: {fileID: 114026339093185874}
   - component: {fileID: 54829485114668748}
+  - component: {fileID: 114897766427349920}
+  - component: {fileID: 114408851810720462}
   m_Layer: 15
   m_Name: Gem1_Low
   m_TagString: Money
@@ -40,6 +42,7 @@ GameObject:
   - component: {fileID: 4690412571444940}
   - component: {fileID: 198456090804284886}
   - component: {fileID: 199889431856363030}
+  - component: {fileID: 114372965666350826}
   m_Layer: 19
   m_Name: ShineParticle
   m_TagString: Untagged
@@ -58,6 +61,7 @@ GameObject:
   - component: {fileID: 33291188184480862}
   - component: {fileID: 23637754723428828}
   - component: {fileID: 114957124691481628}
+  - component: {fileID: 114650295004370844}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -290,6 +294,61 @@ MonoBehaviour:
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
   coinAmount: 5
+--- !u!114 &114372965666350826
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532957351647318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: d83f5081-df5d-4faf-aeff-3ebafa474615
+--- !u!114 &114408851810720462
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1212131945976636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: b2eb41bf-8615-4c36-912e-475117d4b4f6
+--- !u!114 &114650295004370844
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745882603982040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 6cbcf239-9a0b-4386-baf1-0ab1be270179
+--- !u!114 &114897766427349920
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1212131945976636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1212131945976636}
+    - {fileID: 1532957351647318}
+    - {fileID: 1745882603982040}
+  _assetGuid: b5a94e2d3d4a6f24ca2a0527869f0380
 --- !u!114 &114957124691481628
 MonoBehaviour:
   m_ObjectHideFlags: 1

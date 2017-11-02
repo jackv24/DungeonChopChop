@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33479555294024998}
   - component: {fileID: 23543308851013470}
   - component: {fileID: 95118423200934564}
+  - component: {fileID: 114263081920875820}
   m_Layer: 0
   m_Name: birdBlack
   m_TagString: Untagged
@@ -37,6 +38,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4094198582107102}
+  - component: {fileID: 114142063462185140}
+  - component: {fileID: 114350092848084954}
   m_Layer: 0
   m_Name: BirdBlackHop
   m_TagString: Untagged
@@ -127,3 +130,45 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114142063462185140
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581713889247726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1581713889247726}
+    - {fileID: 1402398089081694}
+  _assetGuid: a0c9a346acc1c5541bd832cc61c60af8
+--- !u!114 &114263081920875820
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1402398089081694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 28994fe4-3608-4e57-994a-5735d355374d
+--- !u!114 &114350092848084954
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581713889247726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 56448e51-dd8a-425a-98bb-cab7238d8bb8

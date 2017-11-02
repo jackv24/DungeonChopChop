@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 114544690897862316}
   - component: {fileID: 65201457492427614}
   - component: {fileID: 114257050356409100}
+  - component: {fileID: 114043063439211212}
+  - component: {fileID: 114269422030180160}
   m_Layer: 10
   m_Name: Poison Projectile
   m_TagString: Untagged
@@ -44,6 +46,7 @@ GameObject:
   - component: {fileID: 198737214918187382}
   - component: {fileID: 199684142345316212}
   - component: {fileID: 114891753971765528}
+  - component: {fileID: 114636191842514090}
   m_Layer: 0
   m_Name: IceTickParticle
   m_TagString: Untagged
@@ -62,6 +65,7 @@ GameObject:
   - component: {fileID: 198772843695793182}
   - component: {fileID: 199378936785890322}
   - component: {fileID: 114724902162743344}
+  - component: {fileID: 114717980531584894}
   m_Layer: 0
   m_Name: IceTickParticle (1)
   m_TagString: Untagged
@@ -176,6 +180,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.018215336, z: 0.017487574}
   m_Center: {x: 0, y: -0.0000009536743, z: 0}
+--- !u!114 &114043063439211212
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192050029559186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1192050029559186}
+    - {fileID: 1403371672718674}
+    - {fileID: 1993357487540932}
+  _assetGuid: b8fcbf8ea167dd449a0190253da89df5
 --- !u!114 &114257050356409100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,6 +215,18 @@ MonoBehaviour:
   duration: 2
   timeBetweenDamage: 0.5
   speedDamper: 0
+--- !u!114 &114269422030180160
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192050029559186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: ab996cef-430c-40e2-80a6-27f43fdc795c
 --- !u!114 &114544690897862316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,6 +239,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideTime: 10
+--- !u!114 &114636191842514090
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403371672718674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: a9c85929-08e4-490c-8841-bda356471c81
+--- !u!114 &114717980531584894
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1993357487540932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 95d6dfc9-2e46-438f-9dd0-d5d5660e2ece
 --- !u!114 &114724902162743344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,8 +289,15 @@ MonoBehaviour:
   damageAmount: 1
   knockbackAmount: 2
   hitParticles:
-  - {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb, type: 2}
-  - {fileID: 1004915465583228, guid: 2a2d6f42c0139774880df8b9f1374650, type: 2}
+  - particleType: 0
+    particles: []
+  - particleType: 0
+    particles: []
+  hitSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   damageMultiplyer: 0
   thrust: 0
 --- !u!114 &114891753971765528

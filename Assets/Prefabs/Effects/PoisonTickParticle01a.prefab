@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 198439181312862104}
   - component: {fileID: 199864519247796366}
   - component: {fileID: 114579448220615924}
+  - component: {fileID: 114982909041741364}
+  - component: {fileID: 114850354147438656}
   m_Layer: 0
   m_Name: PoisonTickParticle01a
   m_TagString: Untagged
@@ -54,6 +56,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114850354147438656
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522194536203650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: b9a3b81f-d99f-45c6-abb6-d7c2812d0fad
+--- !u!114 &114982909041741364
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522194536203650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1522194536203650}
+  _assetGuid: 06147af0d1483914f843fe358cd5f18b
 --- !u!198 &198439181312862104
 ParticleSystem:
   m_ObjectHideFlags: 1

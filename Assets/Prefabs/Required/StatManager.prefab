@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4731841864167228}
   - component: {fileID: 114994376690260566}
   - component: {fileID: 114725737480837360}
+  - component: {fileID: 114406487220192416}
+  - component: {fileID: 114769986297237182}
   m_Layer: 0
   m_Name: StatManager
   m_TagString: StatsManager
@@ -41,6 +43,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114406487220192416
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644343298599466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1644343298599466}
+  _assetGuid: 972cb07c0dbcb5f42982670dfe23873f
 --- !u!114 &114725737480837360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -60,11 +79,24 @@ MonoBehaviour:
   paddyBums: 0
   visps: 0
   snapEyes: 0
+  mushBooms: 0
   totalEnemiesKilled: 0
   totalDamageTaken: 0
   totalDamageGiven: 0
   distanceTraveled: 0
   moneyEarned: 0
+--- !u!114 &114769986297237182
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644343298599466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 0eabafb7-0b7e-4bef-a3cd-1237375dfeb7
 --- !u!114 &114994376690260566
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 82981117830419522}
   - component: {fileID: 23770900951870670}
   - component: {fileID: 33651301505070866}
+  - component: {fileID: 114654633527653892}
+  - component: {fileID: 114163998473226218}
   m_Layer: 0
   m_Name: NormalQuicksand
   m_TagString: QuickSand
@@ -163,6 +165,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114163998473226218
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1200079909567316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: e707a2dc-a01f-4d2d-89df-faaed2eddb77
 --- !u!114 &114641604254766132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,6 +226,23 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+--- !u!114 &114654633527653892
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1200079909567316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1200079909567316}
+  _assetGuid: fa042f036f95d644299d2399bacd3c21
 --- !u!135 &135533315111675602
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4125777111876374}
   - component: {fileID: 33804984120308562}
   - component: {fileID: 23852632323971928}
+  - component: {fileID: 114761536518523230}
   m_Layer: 0
   m_Name: pSphere9
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4514684887329618}
   - component: {fileID: 33765119503503916}
   - component: {fileID: 23363664075318710}
+  - component: {fileID: 114855661459930636}
   m_Layer: 0
   m_Name: pSphere8
   m_TagString: Untagged
@@ -57,6 +59,8 @@ GameObject:
   - component: {fileID: 114630368802428754}
   - component: {fileID: 54337127087520458}
   - component: {fileID: 65123185067895154}
+  - component: {fileID: 114777006975637674}
+  - component: {fileID: 114502565463303172}
   m_Layer: 15
   m_Name: CureOrb
   m_TagString: Untagged
@@ -74,6 +78,7 @@ GameObject:
   - component: {fileID: 4033585952593228}
   - component: {fileID: 198802975188400890}
   - component: {fileID: 199216649670258474}
+  - component: {fileID: 114316217769789590}
   m_Layer: 19
   m_Name: ShineParticle
   m_TagString: Untagged
@@ -241,6 +246,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.09999163, y: 0.1463589, z: 0.086384475}
   m_Center: {x: 0.0073273145, y: 0.0072492147, z: 0}
+--- !u!114 &114316217769789590
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933018935173060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 3e7b23fb-0625-4c75-be03-bd1884f13133
+--- !u!114 &114502565463303172
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108359381111716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 77999b2a-90b2-410e-a406-fe466bcf5168
 --- !u!114 &114630368802428754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,6 +369,50 @@ MonoBehaviour:
   type: 1
   healthAmount: 0.5
   cureAmount: 10
+--- !u!114 &114761536518523230
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051081208756748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 59eec6d9-c599-4219-aab3-e336837ccb09
+--- !u!114 &114777006975637674
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108359381111716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1108359381111716}
+    - {fileID: 1933018935173060}
+    - {fileID: 1059839529616768}
+    - {fileID: 1051081208756748}
+  _assetGuid: 36f8ca5ae127cbc4c9eca589f88b9d63
+--- !u!114 &114855661459930636
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1059839529616768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 4bc135cc-6484-4810-9dac-d5abf8235c69
 --- !u!135 &135997418733204728
 SphereCollider:
   m_ObjectHideFlags: 1

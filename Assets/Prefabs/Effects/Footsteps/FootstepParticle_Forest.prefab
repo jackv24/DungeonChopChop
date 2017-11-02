@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 198351693440095158}
   - component: {fileID: 114852076751818762}
   - component: {fileID: 199034499193236316}
+  - component: {fileID: 114989772710988558}
+  - component: {fileID: 114383448504879192}
   m_Layer: 0
   m_Name: FootstepParticle_Forest
   m_TagString: Untagged
@@ -42,6 +44,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114383448504879192
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1240315760738564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 65c07693-52b5-4cf4-9ae7-efc7b1edd5f6
 --- !u!114 &114852076751818762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,6 +68,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114989772710988558
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1240315760738564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1240315760738564}
+  _assetGuid: 937ac72134130b7488457639e8e3022e
 --- !u!198 &198351693440095158
 ParticleSystem:
   m_ObjectHideFlags: 1

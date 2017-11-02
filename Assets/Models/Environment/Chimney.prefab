@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4707932600571784}
   - component: {fileID: 198084091572233662}
   - component: {fileID: 199226242282530242}
+  - component: {fileID: 114360103278992714}
   m_Layer: 0
   m_Name: SmokeParticleChimney
   m_TagString: Untagged
@@ -39,6 +40,8 @@ GameObject:
   - component: {fileID: 33362073322889328}
   - component: {fileID: 23651368170179912}
   - component: {fileID: 95873963100584606}
+  - component: {fileID: 114686036177086894}
+  - component: {fileID: 114268065337884462}
   m_Layer: 0
   m_Name: Chimney
   m_TagString: Untagged
@@ -129,6 +132,48 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114268065337884462
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1987921993326534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 5ebf48e5-78be-435b-961f-d7eae2c0b92e
+--- !u!114 &114360103278992714
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494513133336494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 6dd503c3-7a3c-4b89-8618-d93ad04eb44b
+--- !u!114 &114686036177086894
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1987921993326534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1987921993326534}
+    - {fileID: 1494513133336494}
+  _assetGuid: 256e222e57abe8041a2dfbe490d53aef
 --- !u!198 &198084091572233662
 ParticleSystem:
   m_ObjectHideFlags: 1

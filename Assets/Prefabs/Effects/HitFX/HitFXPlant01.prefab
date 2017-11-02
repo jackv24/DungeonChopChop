@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 198150238140665524}
   - component: {fileID: 114142372624423776}
   - component: {fileID: 199751433973580774}
+  - component: {fileID: 114591871060903450}
+  - component: {fileID: 114080041303896136}
   m_Layer: 0
   m_Name: HitFXPlant01
   m_TagString: Untagged
@@ -42,6 +44,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114080041303896136
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1928837666263156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: a363d7b4-2237-44bc-b67e-faeb121ffb28
 --- !u!114 &114142372624423776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,6 +68,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114591871060903450
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1928837666263156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1928837666263156}
+  _assetGuid: 76f25b5e416e07a49b5016429ba24b59
 --- !u!198 &198150238140665524
 ParticleSystem:
   m_ObjectHideFlags: 1

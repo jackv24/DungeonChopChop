@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114924582621571980}
   - component: {fileID: 114481015778336076}
   - component: {fileID: 114043434963102592}
+  - component: {fileID: 114283573351708430}
+  - component: {fileID: 114441995367598644}
   m_Layer: 17
   m_Name: Bag_Apples
   m_TagString: Untagged
@@ -129,6 +131,35 @@ MonoBehaviour:
   propLayer:
     serializedVersion: 2
     m_Bits: 131072
+--- !u!114 &114283573351708430
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537551300635328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1537551300635328}
+  _assetGuid: 81fd9243b92af6947b7add56ca543ac9
+--- !u!114 &114441995367598644
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537551300635328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 1dbfcf48-3412-4944-b8dc-0babc031444c
 --- !u!114 &114481015778336076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,6 +175,7 @@ MonoBehaviour:
   health: 2
   weight: 1
   IsEnemy: 0
+  enemyType: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -185,6 +217,7 @@ MonoBehaviour:
   tripleDestroysIt: 1
   dashDestroysIt: 1
   spinDestroysIt: 1
+  destroyedByTalons: 0
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -417,6 +450,7 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  indistructableParticles: []
   hitSounds:
     clips:
     - {fileID: 8300000, guid: 287ffe8e664306d488801e02a1ee0d15, type: 3}
@@ -426,6 +460,11 @@ MonoBehaviour:
   destroySounds:
     clips:
     - {fileID: 8300000, guid: 7bb3b7e592725144e9dbb2423f276a11, type: 3}
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  indistructableSound:
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -456,3 +495,4 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 1
   maxAmountOfDrops: 2
+  isWizzer: 0

@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 114638415310654100}
   - component: {fileID: 54634752770105460}
   - component: {fileID: 114987177459388766}
+  - component: {fileID: 114633646436416164}
+  - component: {fileID: 114180691088357696}
   m_Layer: 0
   m_Name: goggles_mesh
   m_TagString: Untagged
@@ -41,6 +43,7 @@ GameObject:
   - component: {fileID: 33238784324108638}
   - component: {fileID: 23541488163486738}
   - component: {fileID: 95925242857665872}
+  - component: {fileID: 114677115388647050}
   m_Layer: 0
   m_Name: Goggles
   m_TagString: Untagged
@@ -58,6 +61,7 @@ GameObject:
   - component: {fileID: 4862763469434396}
   - component: {fileID: 33850537235447062}
   - component: {fileID: 23765498556967142}
+  - component: {fileID: 114831557100217614}
   m_Layer: 0
   m_Name: polySurface94
   m_TagString: Untagged
@@ -229,6 +233,37 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114180691088357696
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054866497049358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: e19bc0f7-9cf4-4fd6-9a08-9e2adffda461
+--- !u!114 &114633646436416164
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054866497049358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1054866497049358}
+    - {fileID: 1330138240876698}
+    - {fileID: 1606568813574240}
+  _assetGuid: e6349c35509a6d241b77cc9a5268fffa
 --- !u!114 &114638415310654100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,6 +280,30 @@ MonoBehaviour:
     type: 2}
   item: {fileID: 11400000, guid: 71fa22073b1bafa44a64c285d4776956, type: 2}
   pickupStartDelay: 0.1
+--- !u!114 &114677115388647050
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1330138240876698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 57fc2cbc-5bdd-43bc-841d-677f8e405cd5
+--- !u!114 &114831557100217614
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1606568813574240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: d3d31aa8-e8a7-411c-a9ca-5c8d8f49bd0d
 --- !u!114 &114987177459388766
 MonoBehaviour:
   m_ObjectHideFlags: 1

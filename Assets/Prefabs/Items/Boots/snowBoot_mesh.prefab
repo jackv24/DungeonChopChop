@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4180779028185906}
   - component: {fileID: 33710778884372454}
   - component: {fileID: 23809026382404188}
+  - component: {fileID: 114816325421641550}
   m_Layer: 0
   m_Name: polySurface61
   m_TagString: Untagged
@@ -39,6 +40,8 @@ GameObject:
   - component: {fileID: 65477393951073422}
   - component: {fileID: 114204552900908050}
   - component: {fileID: 114596537836511480}
+  - component: {fileID: 114478204605323114}
+  - component: {fileID: 114388271731543270}
   m_Layer: 0
   m_Name: snowBoot_mesh
   m_TagString: Untagged
@@ -138,6 +141,36 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: 65e08c15d00443f49a5cf4fe4d79a631, type: 2}
   pickupDelay: 1
+--- !u!114 &114388271731543270
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1590836285822614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: aecc98ff-1c58-413a-8f87-b2f70c21a27c
+--- !u!114 &114478204605323114
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1590836285822614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1590836285822614}
+    - {fileID: 1358769919227964}
+  _assetGuid: c6189a063f9c1dd469dc6e49372ea308
 --- !u!114 &114596537836511480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,3 +183,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickUp: 1
+--- !u!114 &114816325421641550
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358769919227964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 9785cc19-1903-4cd9-b7fc-93bd1e2d02ee

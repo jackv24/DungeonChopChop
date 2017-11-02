@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4595447147849906}
   - component: {fileID: 33348195328150764}
   - component: {fileID: 23253349494630242}
+  - component: {fileID: 114071929472326018}
   m_Layer: 0
   m_Name: dungeonPillarExterior_mesh
   m_TagString: Untagged
@@ -41,6 +42,8 @@ GameObject:
   - component: {fileID: 114294616805664606}
   - component: {fileID: 114318569758507988}
   - component: {fileID: 114068940568224750}
+  - component: {fileID: 114894247527437932}
+  - component: {fileID: 114607278135360278}
   m_Layer: 0
   m_Name: DungeonPillar
   m_TagString: Untagged
@@ -156,6 +159,7 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
+  enemyType: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -175,78 +179,25 @@ MonoBehaviour:
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   hitColor: {r: 1, g: 1, b: 1, a: 1}
-  poisonTickSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  burnTickSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  slowDeathTickSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  poisonedSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  burnSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  sandySound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  slowDeathSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  frozenSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unpoisonedSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unburnSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unsandySound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unslowDeathSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  unfrozenSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
   timeBetweenFlash: 0.1
   amountToFlash: 5
-  fadeToColorTime: 5
+  fadeTime: 5
   hitShake:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+--- !u!114 &114071929472326018
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479619152812990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 63583046-8382-48b7-8678-f427bebdb907
 --- !u!114 &114294616805664606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,6 +213,7 @@ MonoBehaviour:
   tripleDestroysIt: 0
   dashDestroysIt: 1
   spinDestroysIt: 0
+  destroyedByTalons: 0
   amountOfParticleTypes:
   - particleType: 0
     particles:
@@ -527,6 +479,7 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  indistructableParticles: []
   hitSounds:
     clips:
     - {fileID: 8300000, guid: 5b1983344967cf14095a25d16fff47c3, type: 3}
@@ -539,6 +492,11 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
+  indistructableSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   destroyShake:
     magnitude: 0.1
     shakeAmount: 0.1
@@ -557,9 +515,43 @@ MonoBehaviour:
   drops:
   - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
     probability: 0.5
+    maxAmount: 0
   - prefab: {fileID: 1108359381111716, guid: 36f8ca5ae127cbc4c9eca589f88b9d63, type: 2}
     probability: 0.5
+    maxAmount: 0
   - prefab: {fileID: 1335806162793318, guid: 396b06f0682a13e4aa4a5688e9d98910, type: 2}
     probability: 0.5
+    maxAmount: 0
   minAmountOfDrops: 1
   maxAmountOfDrops: 2
+  isWizzer: 0
+--- !u!114 &114607278135360278
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1804156634967742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 6130cd05-6762-45d6-afb8-ddd42138c4bf
+--- !u!114 &114894247527437932
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1804156634967742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1804156634967742}
+    - {fileID: 1479619152812990}
+  _assetGuid: a1b23c1d7a50ca14ba871118bb758ea6

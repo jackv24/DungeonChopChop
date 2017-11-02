@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4136166476815664}
   - component: {fileID: 33995212079368874}
   - component: {fileID: 23788401308073054}
+  - component: {fileID: 114489980410803548}
   m_Layer: 0
   m_Name: diamond
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4999328012650042}
   - component: {fileID: 95810057205233340}
   - component: {fileID: 114176583286639612}
+  - component: {fileID: 114735947685297762}
   m_Layer: 0
   m_Name: iceDiamond_mesh
   m_TagString: Untagged
@@ -53,6 +55,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4111807655349660}
+  - component: {fileID: 114309195046963112}
   m_Layer: 0
   m_Name: geo
   m_TagString: Untagged
@@ -70,6 +73,7 @@ GameObject:
   - component: {fileID: 4761806631891228}
   - component: {fileID: 33230639453290554}
   - component: {fileID: 23970044194155580}
+  - component: {fileID: 114784410256299494}
   m_Layer: 0
   m_Name: RockForCrystal (1)
   m_TagString: Untagged
@@ -87,6 +91,7 @@ GameObject:
   - component: {fileID: 4674860020192054}
   - component: {fileID: 33318130227023850}
   - component: {fileID: 23091129646833298}
+  - component: {fileID: 114855485311285712}
   m_Layer: 0
   m_Name: RockForCrystal (2)
   m_TagString: Untagged
@@ -110,6 +115,8 @@ GameObject:
   - component: {fileID: 114400096719073896}
   - component: {fileID: 82515772023537724}
   - component: {fileID: 114097318940453756}
+  - component: {fileID: 114543928456001304}
+  - component: {fileID: 114279996656712908}
   m_Layer: 11
   m_Name: DarkCrystalTurret 1
   m_TagString: Untagged
@@ -127,6 +134,7 @@ GameObject:
   - component: {fileID: 4482855475867110}
   - component: {fileID: 33974950313255232}
   - component: {fileID: 23751216463466702}
+  - component: {fileID: 114782037467768532}
   m_Layer: 0
   m_Name: RockForCrystal
   m_TagString: Untagged
@@ -676,6 +684,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6594b4a5afb8f8468e0e65192144771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114279996656712908
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709440474477876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: e7d35fc5-28ed-4ee1-944a-9277f91f6d53
+--- !u!114 &114309195046963112
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1230285734523172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 7a64c35f-a3dc-4626-8283-d5bbc9a82760
 --- !u!114 &114368839511350406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -941,6 +973,42 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 3
   maxAmountOfDrops: 6
+  isWizzer: 0
+--- !u!114 &114489980410803548
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1111694506499862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 20ab0b5c-6daa-406d-8504-4f4d74e420eb
+--- !u!114 &114543928456001304
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709440474477876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1709440474477876}
+    - {fileID: 1222810292827516}
+    - {fileID: 1230285734523172}
+    - {fileID: 1111694506499862}
+    - {fileID: 1934302835285454}
+    - {fileID: 1519340867622942}
+    - {fileID: 1610110972912510}
+  _assetGuid: 74aace7ba52d5b7409f52d2cc70b940f
 --- !u!114 &114680652188597286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -957,7 +1025,7 @@ MonoBehaviour:
     type: 2}
   shootPosition: {fileID: 0}
   thrust: 20
-  attackStrength: 1
+  projectileDmgMutliplier: 0
   damageOnTouch: 2
   knockbackStrength: 10
   shootSounds:
@@ -970,3 +1038,51 @@ MonoBehaviour:
   timeTillInterval: 1
   minInterval: 0
   maxInterval: 0
+--- !u!114 &114735947685297762
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1222810292827516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 6ef00fbf-65dd-435c-8e6b-fdeb38e65cb9
+--- !u!114 &114782037467768532
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1934302835285454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 5ef89e94-c5f6-4995-bf1b-2f5d06572597
+--- !u!114 &114784410256299494
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519340867622942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 9feaf8f9-9213-45f6-a753-b733781c61f3
+--- !u!114 &114855485311285712
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1610110972912510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 5ecc13df-8670-4b74-92ca-a1516c98562b
