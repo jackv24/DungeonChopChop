@@ -169,7 +169,7 @@ public class Chest : MonoBehaviour
     {
         yield return new WaitForSeconds(releaseItemDelay);
 
-        GameObject obj = ObjectPooler.GetPooledObject(containingObject);
+		GameObject obj = (GameObject)Instantiate(containingObject, transform.position, Quaternion.Euler(0, 0, 0));
 
         if (obj.GetComponent<SwordStats>())
         {
