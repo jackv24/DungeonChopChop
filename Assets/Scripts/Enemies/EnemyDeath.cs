@@ -109,7 +109,7 @@ public class EnemyDeath : MonoBehaviour
 		}
 	}
 
-    void StatusExplode()
+    public void StatusExplode()
     {
         Collider[] cols = Physics.OverlapSphere(transform.position, explodeRadius);
         List<GameObject> foundObjects = new List<GameObject>();
@@ -145,7 +145,9 @@ public class EnemyDeath : MonoBehaviour
                 }
             }
         }
-        Die();
+
+        if (health.health <= 0)
+            Die();
     }
     void DamageExplode()
     {

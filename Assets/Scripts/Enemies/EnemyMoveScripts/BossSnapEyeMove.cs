@@ -93,7 +93,7 @@ public class BossSnapEyeMove : EnemyMove {
 
     void GetEnemies()
     {
-        enemyColliders = Physics.OverlapSphere(transform.position, 100, layerMask);
+		enemyColliders = Physics.OverlapSphere(transform.position, 100, enemyMask);
     }
         
     void SpawnEnemies()

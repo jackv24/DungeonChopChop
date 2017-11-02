@@ -13,7 +13,7 @@ public class EnemyMove : MonoBehaviour
     [Tooltip("Time between roam change")]
     public float timeBetweenRoam = 3;
     public float runAwayAfterAttackTime = 1;
-    public LayerMask layerMask;
+    public LayerMask enemyMask;
     public bool LockY = true;
 
     protected float originalSpeed;
@@ -274,7 +274,7 @@ public class EnemyMove : MonoBehaviour
 
     public Transform GetClosestEnemyRadius(float radius)
     {
-        Collider[] enemies = Physics.OverlapSphere(transform.position, 500, layerMask);
+		Collider[] enemies = Physics.OverlapSphere(transform.position, 500, enemyMask);
         foreach (Collider enemy in enemies)
         {
             float dist = Vector3.Distance(transform.position, enemy.transform.position);
@@ -291,7 +291,7 @@ public class EnemyMove : MonoBehaviour
         GameObject closestEnemy = null;
         float maxDistance = float.MaxValue;
         //gets all enemies in a specific radius
-        Collider[] enemies = Physics.OverlapSphere(transform.position, 500, layerMask);
+		Collider[] enemies = Physics.OverlapSphere(transform.position, 500, enemyMask);
         foreach (Collider enemy in enemies)
         {
             //loops through each enemy and finds which enemy is closest

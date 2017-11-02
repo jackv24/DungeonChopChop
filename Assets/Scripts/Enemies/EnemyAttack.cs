@@ -57,6 +57,7 @@ public class EnemyAttack : MonoBehaviour
     protected EnemyMove enemyMove;
     protected Animator animator;
     protected Health enemyHealth;
+    protected EnemyDeath enemyDeath;
 
     private Collider col;
 
@@ -64,7 +65,7 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
-
+        enemyDeath = GetComponent<EnemyDeath>();
         col = GetComponent<Collider>();
 
         enemyHealth = GetComponent<Health>();
