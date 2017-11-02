@@ -222,7 +222,7 @@ public class DungeonEffects : MonoBehaviour
                 DoEnragedEnemies();
 
             if (effectOn)
-                AnnounceEffectOn();
+				AnnounceEffectOn(effect);
             else
             {
                 if (!effectsReoccur)
@@ -238,9 +238,9 @@ public class DungeonEffects : MonoBehaviour
         DoEffect(currentEffect);
     }
 
-    void AnnounceEffectOn()
+	void AnnounceEffectOn(DE effect)
     {
-        Announcement.DoAnnouncement(currentEffect.Header, currentEffect.Description, announcementDelayTime);
+        Announcement.DoAnnouncement(effect.Header, effect.Description, announcementDelayTime);
     }
 
     void AnnounceEffectOff()
