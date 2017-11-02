@@ -81,6 +81,11 @@ public class EnemySpawner : MonoBehaviour
 	{
 		if(profiles.Count > 0)
 			currentProfile = profiles[currentProfileIndex];
+
+        if (!LevelGenerator.Instance)
+        {
+            Spawn();
+        }
 	}
 
 	//Only has to happen occasionally
@@ -250,7 +255,8 @@ public class EnemySpawner : MonoBehaviour
 			spawned = true;
 		}
 
-        LevelGenerator.Instance.EnemiesSpawned();
+        if (LevelGenerator.Instance)
+            LevelGenerator.Instance.EnemiesSpawned();
     }
 
 	public void Despawn()

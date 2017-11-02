@@ -779,7 +779,10 @@ public class Health : MonoBehaviour
                 SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.Tick, transform.position);
             }
 
-            SetColorToFade(burnColor, fadeTime);
+            if (isProp)
+                SetColorToFade(burnColor, fadeTime);
+            else
+                SetColor(Color.red);
 
             if (gameObject.activeSelf)
                 StartCoroutine(DisablePlayerFor(.2f));

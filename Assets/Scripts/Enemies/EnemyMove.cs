@@ -194,7 +194,10 @@ public class EnemyMove : MonoBehaviour
                 if (usingNav)
                 {
                     if (agent.isOnNavMesh)
-                        agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
+                    {
+                        if (LevelGenerator.Instance)
+                            agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
+                    }
                 }
                 roamCounter = 0; 
             } 

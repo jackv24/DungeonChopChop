@@ -6,6 +6,11 @@ public class SnowballMove : EnemyMove {
 
     [Tooltip("The health increases overtime by this amount")]
     public float healthIncrease = .01f;
+    public float rotateSpeed = .5f;
+
+    private float rotatation = 0;
+
+    private GameObject snowBallModel;
 
     void OnEnable()
     {
@@ -14,6 +19,9 @@ public class SnowballMove : EnemyMove {
 
 	// Use this for initialization
 	void Start () {
+        
+        snowBallModel = transform.GetChild(0).gameObject;
+
         Setup();
 	}
 
@@ -21,9 +29,16 @@ public class SnowballMove : EnemyMove {
     {
         FollowPlayer();
 
-        transform.localScale = new Vector3(enemyHealth.health, enemyHealth.health, enemyHealth.health) * 1.5f;
+        rotatation = agent.velocity.magnitude * rotateSpeed;
 
-        enemyHealth.health += healthIncrease;
+        transform.Rotate(0, 0, rotatation * Time.fixedDeltaTime);
+
+        if (agent.velocity.magnitude > 3)
+        {
+            enemyHealth.health += healthIncrease;
+        }
+
+        transform.localScale = new Vector3(enemyHealth.health, enemyHealth.health, enemyHealth.health) * 1.5f;
 
         base.FixedUpdate();
     }
