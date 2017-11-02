@@ -40,6 +40,7 @@ public class ShowStatistics : MonoBehaviour {
             text += "Paddy Bums: " + Statistics.Instance.paddyBums + "\n";
             text += "Visps: " + Statistics.Instance.visps + "\n";
             text += "Snapeyes: " + Statistics.Instance.snapEyes + "\n";
+            text += "MushBooms: " + Statistics.Instance.mushBooms + "\n";
             text += "\n";
             text += "Total: " + Statistics.Instance.totalEnemiesKilled + "\n";
             text += "\n";

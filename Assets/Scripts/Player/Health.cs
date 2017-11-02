@@ -22,6 +22,7 @@ public enum EnemyType
     SnapEye,
     CrystalTurret,
     PaddyBum,
+    MushBoom,
 }
 
 public class Health : MonoBehaviour

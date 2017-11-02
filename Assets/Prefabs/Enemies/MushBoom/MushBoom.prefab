@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 195781896373514724}
   - component: {fileID: 114668198051531724}
   - component: {fileID: 114779547807565056}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MushBoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,13 +660,13 @@ MonoBehaviour:
     duration: 0.3
   amountToSplit: 4
   splitEnemy: {fileID: 0}
-  explodeRadius: 10
+  explodeRadius: 3
   statusType: 0
   damagePerTick: 0.5
   timeBetweenTick: 1
   duration: 5
   damageOnExplode: 2
-  knockbackOnExplode: 5
+  knockbackOnExplode: 2
 --- !u!114 &114668198051531724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -748,12 +748,14 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  - particleType: 0
+    particles:
     - particle: {fileID: 1928837666263156, guid: fb52ffb4991f66944aaf1bcbd4f1c890,
         type: 2}
       gradient:
         serializedVersion: 2
-        key0: {r: 0.5588235, g: 0.5588235, b: 0.5588235, a: 1}
-        key1: {r: 0.5588235, g: 0.5588235, b: 0.5588235, a: 1}
+        key0: {r: 0.49264705, g: 0.49264705, b: 0.49264705, a: 1}
+        key1: {r: 0.49264705, g: 0.49264705, b: 0.49264705, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -779,12 +781,14 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+  - particleType: 0
+    particles:
     - particle: {fileID: 1004915465583228, guid: 5f5ca5dbacf208f4290da200dad79bb8,
         type: 2}
       gradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 0.38263637, g: 0.07947666, b: 0.5147059, a: 1}
+        key1: {r: 0.38263637, g: 0.07947666, b: 0.5147059, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
