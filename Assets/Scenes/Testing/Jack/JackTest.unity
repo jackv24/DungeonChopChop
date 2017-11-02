@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.005
   m_LinearFogStart: 0
   m_LinearFogEnd: 39.81
-  m_AmbientSkyColor: {r: 0.2870891, g: 0.8196009, b: 0.86764705, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.47269425, g: 0.38300171, b: 0.5661765, a: 1}
   m_AmbientGroundColor: {r: 0.2794118, g: 0.21298304, b: 0.080125436, a: 1}
   m_AmbientIntensity: 1
@@ -108,11 +108,6 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!225 &154985211 stripped
-CanvasGroup:
-  m_PrefabParentObject: {fileID: 225933965902619008, guid: c3b5750ba4813464aa30b29b06e327e0,
-    type: 2}
-  m_PrefabInternal: {fileID: 1221277514}
 --- !u!114 &159164210 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114766376508980228, guid: dd16383de25388e47a8c2b98e44554d6,
@@ -223,12 +218,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 206f32573839bba41bec7c03dba86db7, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &357821991 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114297144025056382, guid: c3b5750ba4813464aa30b29b06e327e0,
-    type: 2}
-  m_PrefabInternal: {fileID: 1221277514}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &460823527 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1565332442103280, guid: dd16383de25388e47a8c2b98e44554d6,
@@ -273,26 +262,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114290956729175994, guid: 6669aa5fbbd000742a6d49eb9a85808e,
-        type: 2}
-      propertyPath: group
-      value: 
-      objectReference: {fileID: 154985211}
-    - target: {fileID: 114290956729175994, guid: 6669aa5fbbd000742a6d49eb9a85808e,
-        type: 2}
-      propertyPath: titleText
-      value: 
-      objectReference: {fileID: 357821991}
-    - target: {fileID: 114290956729175994, guid: 6669aa5fbbd000742a6d49eb9a85808e,
-        type: 2}
-      propertyPath: descriptionText
-      value: 
-      objectReference: {fileID: 2107148556}
-    - target: {fileID: 114238236851428588, guid: 6669aa5fbbd000742a6d49eb9a85808e,
-        type: 2}
-      propertyPath: sunLight
-      value: 
-      objectReference: {fileID: 936812005}
     - target: {fileID: 114191678609527650, guid: 6669aa5fbbd000742a6d49eb9a85808e,
         type: 2}
       propertyPath: loadingScreen
@@ -303,11 +272,11 @@ Prefab:
       propertyPath: loadingText
       value: 
       objectReference: {fileID: 159164210}
-    - target: {fileID: 114191678609527650, guid: 6669aa5fbbd000742a6d49eb9a85808e,
+    - target: {fileID: 114238236851428588, guid: 6669aa5fbbd000742a6d49eb9a85808e,
         type: 2}
-      propertyPath: startSeed
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: sunLight
+      value: 
+      objectReference: {fileID: 936812005}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6669aa5fbbd000742a6d49eb9a85808e, type: 2}
   m_IsPrefabParent: 0
@@ -378,7 +347,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.9888438, g: 1, b: 0.9191176, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1409,9 +1378,3 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd16383de25388e47a8c2b98e44554d6, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &2107148556 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114256615697227310, guid: c3b5750ba4813464aa30b29b06e327e0,
-    type: 2}
-  m_PrefabInternal: {fileID: 1221277514}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
