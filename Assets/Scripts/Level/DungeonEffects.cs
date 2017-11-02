@@ -328,15 +328,15 @@ public class DungeonEffects : MonoBehaviour
         {
             if (effectOn)
             {
-                originalDungeonLighting = lighting.dungeonProfile.ambientIntensity;
+                originalDungeonLighting = RenderSettings.ambientIntensity;
 
-                lighting.dungeonProfile.ambientIntensity = ambientIntensity;
+                RenderSettings.ambientIntensity = ambientIntensity;
 
                 lighting.UpdateLighting();
             }
             else
             {
-                lighting.dungeonProfile.ambientIntensity = originalDungeonLighting;
+                RenderSettings.ambientIntensity = originalDungeonLighting;
 
                 lighting.UpdateLighting();
             }
