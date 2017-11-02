@@ -174,8 +174,8 @@ public class LevelGenerator : MonoBehaviour
 
 		//Wait for players to be spawned, then call done event
 		yield return new WaitForEndOfFrame();
-		if (OnGenerationFinished != null)
-			OnGenerationFinished();
+        if (OnGenerationFinished != null)
+            OnGenerationFinished();
 
         isFinished = true;
 

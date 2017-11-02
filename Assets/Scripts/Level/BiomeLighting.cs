@@ -6,26 +6,17 @@ public class BiomeLighting : MonoBehaviour
 {
 	public Light sunLight;
 
-	[System.Serializable]
-	public class LightProfile
-	{
-		public Color sunColor = Color.white;
-		public float sunIntensity = 1;
-
-		[Space()]
-		public Material skyboxMaterial;
-		public float ambientIntensity = 1.0f;
-
-		[Space()]
-		public float playerLightIntensity = 0.0f;
-	}
-
-	[Space()] public LightProfile grassProfile;
-	[Space()] public LightProfile forestProfile;
-	[Space()] public LightProfile fireProfile;
-	[Space()] public LightProfile iceProfile;
-	[Space()] public LightProfile desertProfile;
-	[Space()] public LightProfile dungeonProfile;
+	[Space()]
+	public LightProfile grassProfile;
+	public LightProfile forestProfile;
+	public LightProfile fireProfile;
+	public LightProfile iceProfile;
+	public LightProfile desertProfile;
+	[Space()]
+	public LightProfile dungeon1Profile;
+	public LightProfile dungeon2Profile;
+	public LightProfile dungeon3Profile;
+	public LightProfile dungeon4Profile;
 
 	void Start()
 	{
@@ -65,10 +56,13 @@ public class BiomeLighting : MonoBehaviour
 			case LevelTile.Biomes.Desert:
 				return desertProfile;
 			case LevelTile.Biomes.Dungeon1:
+				return dungeon1Profile;
 			case LevelTile.Biomes.Dungeon2:
+                return dungeon2Profile;
 			case LevelTile.Biomes.Dungeon3:
+                return dungeon3Profile;
 			case LevelTile.Biomes.Dungeon4:
-				return dungeonProfile;
+                return dungeon4Profile;
 		}
 
 		return null;
@@ -76,8 +70,14 @@ public class BiomeLighting : MonoBehaviour
 
 	public void UpdateLighting()
 	{
+        UpdateLighting(null);
+    }
+
+	public void UpdateLighting(LightProfile profile)
+	{
 		//Get profile for current biome
-		LightProfile profile = GetProfile(LevelGenerator.Instance.currentTile.Biome);
+		if(profile == null)
+			profile = GetProfile(LevelGenerator.Instance.currentTile.Biome);
 
 		if (profile != null)
 		{
@@ -96,7 +96,8 @@ public class BiomeLighting : MonoBehaviour
 				Debug.LogWarning("No sun found to update!");
 
 			RenderSettings.skybox = profile.skyboxMaterial;
-			RenderSettings.ambientIntensity = profile.ambientIntensity;
+            RenderSettings.ambientLight = profile.ambientColour;
+            RenderSettings.ambientIntensity = profile.ambientIntensity;
 
 			//Set light intensity for each player
 			PlayerInformation[] players = FindObjectsOfType<PlayerInformation>();

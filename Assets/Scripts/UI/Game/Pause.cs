@@ -20,9 +20,11 @@ public class Pause : MonoBehaviour
     public GameObject YesOrNoPanel;
 
     public GameObject statistics;
+	public GameObject statsScreen;
 
 
     bool paused = false;
+	bool statsDisplayed = false;
 
 	void Awake()
 	{
@@ -41,17 +43,42 @@ public class Pause : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-        if (Input.GetKeyDown(KeyCode.Escape) || InControl.InputManager.ActiveDevice.CommandWasPressed)
-        {
-            if (paused)
-            {
-                UnPauseGame();
-            }
-            else
-            {
-                PauseGame();
-            }
-        }
+		if (Input.GetKeyDown (KeyCode.Escape) || InControl.InputManager.ActiveDevice.CommandWasPressed) {
+			if (paused)
+				UnPauseGame ();
+			else
+				PauseGame ();
+		}
+
+		if (Input.GetKeyDown (KeyCode.Tab) || InControl.InputManager.ActiveDevice.Action4) {
+			if (statsDisplayed)
+				UnShowStatsScreen ();
+			else
+				ShowStatsScreen ();
+		}
+	}
+
+	void ShowStatsScreen()
+	{
+		statsDisplayed = true;
+
+		Time.timeScale = 0;
+
+		if (statsScreen)
+			statsScreen.SetActive (true);
+
+		paused = true;
+	}
+
+	void UnShowStatsScreen()
+	{
+		statsScreen.SetActive (false);
+
+		if (statsScreen)
+			statsDisplayed = false;
+
+		if (paused)
+			UnPauseGame ();
 	}
 
     void PauseGame()
