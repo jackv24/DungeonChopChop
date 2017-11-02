@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class ObjectSpawner : MonoBehaviour
 {
 	public GameObject prefab;
