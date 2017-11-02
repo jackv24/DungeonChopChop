@@ -2372,7 +2372,7 @@ GameObject:
   - component: {fileID: 4171354920534154}
   - component: {fileID: 114640671917427770}
   m_Layer: 0
-  m_Name: Barrel (3)
+  m_Name: Tile1x3DungeonDesert1
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -12710,6 +12710,118 @@ MonoBehaviour:
   m_GameObject: {fileID: 1759502512261140}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f73260e5c0ae254fada45ac1528ffcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  host: {fileID: 0}
+--- !u!114 &114018262874575998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1163224251854302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db1056eb4e8a5a4cb0c6b098c25a302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeDelay: 0.05
+  variance: 0.1
+--- !u!114 &114018510490939346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442524969081392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db1056eb4e8a5a4cb0c6b098c25a302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeDelay: 0.05
+  variance: 0.1
+--- !u!114 &114025069089310280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010159600640476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf36586574916943b7baa0649908bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1985418589284452, guid: 7cdbbee580d7d644cbc268ed343d4abb, type: 2}
+  spawnAfterMerging: 0
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
+--- !u!114 &114052849793387886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1787804941356424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1.5
+  health: 1
+  weight: 1
+  IsEnemy: 0
+  enemyType: 0
+  isProp: 1
+  isPoisoned: 0
+  isBurned: 0
+  isSlowlyDying: 0
+  isFrozen: 0
+  isSandy: 0
+  isDead: 0
+  poisonColor: {r: 0, g: 0, b: 0, a: 0}
+  burnColor: {r: 0.47058827, g: 0.45098042, b: 0.41176474, a: 1}
+  slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
+  frozenColor: {r: 0, g: 0, b: 0, a: 0}
+  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  hitParticles: []
+  hitSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  hitColor: {r: 1, g: 1, b: 1, a: 1}
+  timeBetweenFlash: 0.1
+  amountToFlash: 5
+  fadeTime: 5
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 1
+    duration: 0.1
+--- !u!114 &114099002011180240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1994307219090868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf36586574916943b7baa0649908bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1870889608829320, guid: d64b7c52f8e23a04f8b4a98cd6063697, type: 2}
+  spawnAfterMerging: 0
+  respawnWithMessage: 0
+  respawnPrefab: {fileID: 0}
+  enableBehaviour: {fileID: 0}
+--- !u!114 &114114854286776532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1779773410325974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c3a0350c7bdef2419b1c44b9640c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -12951,12 +13063,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf36586574916943b7baa0649908bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1985418589284452, guid: 7cdbbee580d7d644cbc268ed343d4abb, type: 2}
-  spawnAfterMerging: 0
-  respawnWithMessage: 0
-  respawnPrefab: {fileID: 0}
-  enableBehaviour: {fileID: 0}
---- !u!114 &114026939534410614
+  spawned: 0
+  waitForSpawnMessage: 0
+  currentProfileIndex: 0
+  profiles:
+  - randomised: 1
+    spawns:
+    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
+        type: 2}
+      position: {x: -36.136414, y: 0, z: 0.36035156}
+    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
+        type: 2}
+      position: {x: -9.851135, y: 0, z: -5.2771378}
+    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
+        type: 2}
+      position: {x: -28.079407, y: 0, z: 0.70764923}
+    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
+        type: 2}
+      position: {x: -16.933105, y: 0, z: 0.57849884}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: -47.60956, y: 0, z: -6.163948}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: -3.7163086, y: 0, z: 0.9032593}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: -29.603882, y: 0, z: 6.345955}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: 6.732605, y: 0, z: 7.0080795}
+  - randomised: 1
+    spawns:
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: -8.016968, y: 0, z: -6.1668625}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: -12.3880005, y: 0, z: 0.2552719}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: -29.480103, y: 0, z: 1.1643143}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: -20.03833, y: 0, z: -0.22672272}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: -33.50232, y: 0, z: 7.4162827}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: 0.42608643, y: 0, z: 0.9404144}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: -39.959778, y: 0, z: -1.0399323}
+  - randomised: 1
+    spawns:
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: -35.73584, y: 0, z: 0.65221405}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: -46.509766, y: 0, z: 5.2001114}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: -4.6049194, y: 0, z: 3.0239258}
+    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
+        type: 2}
+      position: {x: 7.387024, y: 0, z: 7.355789}
+    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
+        type: 2}
+      position: {x: -27.361572, y: 0, z: 7.208847}
+    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
+        type: 2}
+      position: {x: -27.010864, y: 0, z: -5.954193}
+    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
+        type: 2}
+      position: {x: -13.204651, y: 0, z: 0.59690094}
+    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
+        type: 2}
+      position: {x: -20.197937, y: 0, z: 0.39905548}
+  spawnedEnemies: []
+--- !u!114 &114146505090886694
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -13247,10 +13434,125 @@ MonoBehaviour:
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   destroyShake:
-    magnitude: 0.12
+    magnitude: 0.2
     shakeAmount: 2
     duration: 0.2
---- !u!114 &114099002011180240
+--- !u!114 &114156223428425258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048724828599182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f73260e5c0ae254fada45ac1528ffcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  host: {fileID: 0}
+--- !u!114 &114176145916213820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1039718145776334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f73260e5c0ae254fada45ac1528ffcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  host: {fileID: 0}
+--- !u!114 &114188023418371818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1416713537037574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f73260e5c0ae254fada45ac1528ffcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  host: {fileID: 0}
+--- !u!114 &114192400036416624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1718356856907042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8af6fba017eb594f9bbe87f903e9f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
+    probability: 0.3
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  minAmountOfDrops: 3
+  maxAmountOfDrops: 10
+  isWizzer: 0
+--- !u!114 &114211219053412204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352065178179148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db1056eb4e8a5a4cb0c6b098c25a302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeDelay: 0.05
+  variance: 0.1
+--- !u!114 &114227806125661474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1718356856907042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1.5
+  health: 1
+  weight: 1
+  IsEnemy: 0
+  enemyType: 0
+  isProp: 1
+  isPoisoned: 0
+  isBurned: 0
+  isSlowlyDying: 0
+  isFrozen: 0
+  isSandy: 0
+  isDead: 0
+  poisonColor: {r: 0, g: 0, b: 0, a: 0}
+  burnColor: {r: 0.47058827, g: 0.45098042, b: 0.41176474, a: 1}
+  slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
+  frozenColor: {r: 0, g: 0, b: 0, a: 0}
+  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  hitParticles: []
+  hitSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  hitColor: {r: 1, g: 1, b: 1, a: 1}
+  timeBetweenFlash: 0.1
+  amountToFlash: 5
+  fadeTime: 5
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 1
+    duration: 0.1
+--- !u!114 &114241695253425220
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -13261,12 +13563,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf36586574916943b7baa0649908bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1359244438209856, guid: 6c38a3fa1111b99479f870e67f69b8b7, type: 2}
-  spawnAfterMerging: 0
-  respawnWithMessage: 0
-  respawnPrefab: {fileID: 0}
-  enableBehaviour: {fileID: 0}
---- !u!114 &114120448929516304
+  maxHealth: 1.5
+  health: 1
+  weight: 1
+  IsEnemy: 0
+  enemyType: 0
+  isProp: 1
+  isPoisoned: 0
+  isBurned: 0
+  isSlowlyDying: 0
+  isFrozen: 0
+  isSandy: 0
+  isDead: 0
+  poisonColor: {r: 0, g: 0, b: 0, a: 0}
+  burnColor: {r: 0.47058827, g: 0.45098042, b: 0.41176474, a: 1}
+  slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
+  frozenColor: {r: 0, g: 0, b: 0, a: 0}
+  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  hitParticles: []
+  hitSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  hitColor: {r: 1, g: 1, b: 1, a: 1}
+  timeBetweenFlash: 0.1
+  amountToFlash: 5
+  fadeTime: 5
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 1
+    duration: 0.1
+--- !u!114 &114283102499817436
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -13345,7 +13673,7 @@ MonoBehaviour:
   minAmountOfDrops: 3
   maxAmountOfDrops: 10
   isWizzer: 0
---- !u!114 &114141786552525940
+--- !u!114 &114322515741247978
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -13356,87 +13684,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab8bedca2022eb42ab66d60fd58d259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawned: 0
-  waitForSpawnMessage: 0
-  currentProfileIndex: 0
-  profiles:
-  - randomised: 1
-    spawns:
-    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
-        type: 2}
-      position: {x: -36.136414, y: 0, z: 0.36035156}
-    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
-        type: 2}
-      position: {x: -9.851135, y: 0, z: -5.2771378}
-    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
-        type: 2}
-      position: {x: -28.079437, y: 0, z: -5.5860023}
-    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
-        type: 2}
-      position: {x: -16.933105, y: 0, z: 0.57849884}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: -47.60956, y: 0, z: -6.163948}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: 0.09524536, y: 0, z: 0.9032593}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: -29.603882, y: 0, z: 6.345955}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: 6.732605, y: 0, z: 7.0080795}
-  - randomised: 1
-    spawns:
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: -8.016968, y: 0, z: -6.1668625}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: -12.3880005, y: 0, z: 0.2552719}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: -29.480072, y: 0, z: -5.9087486}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: -20.03833, y: 0, z: -0.22672272}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: -33.50232, y: 0, z: 7.4162827}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: 0.42608643, y: 0, z: 0.9404144}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: -39.959778, y: 0, z: -1.0399323}
-  - randomised: 1
-    spawns:
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: -35.73584, y: 0, z: 0.65221405}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: -46.509766, y: 0, z: 5.2001114}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: -6.641388, y: 0, z: 6.128704}
-    - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
-        type: 2}
-      position: {x: 7.387024, y: 0, z: 7.355789}
-    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
-        type: 2}
-      position: {x: -27.361572, y: 0, z: 7.208847}
-    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
-        type: 2}
-      position: {x: -27.010864, y: 0, z: -5.954193}
-    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
-        type: 2}
-      position: {x: -13.204651, y: 0, z: 0.59690094}
-    - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
-        type: 2}
-      position: {x: -20.197937, y: 0, z: 0.39905548}
-  spawnedEnemies: []
---- !u!114 &114153741786465214
+  drops:
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
+    probability: 0.3
+    maxAmount: 0
+  - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
+    probability: 0.3
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  minAmountOfDrops: 5
+  maxAmountOfDrops: 10
+  isWizzer: 0
+--- !u!114 &114343577973910874
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -13548,7 +13830,7 @@ MonoBehaviour:
   minAmountOfDrops: 5
   maxAmountOfDrops: 10
   isWizzer: 0
---- !u!114 &114192390352276866
+--- !u!114 &114455911921367612
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -14987,8 +15269,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db1056eb4e8a5a4cb0c6b098c25a302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeDelay: 0.05
-  variance: 0.1
+  maxHealth: 2
+  health: 1
+  weight: 1
+  IsEnemy: 0
+  enemyType: 0
+  isProp: 1
+  isPoisoned: 0
+  isBurned: 0
+  isSlowlyDying: 0
+  isFrozen: 0
+  isSandy: 0
+  isDead: 0
+  poisonColor: {r: 0, g: 0, b: 0, a: 0}
+  burnColor: {r: 0.33088237, g: 0.32033956, b: 0.2992539, a: 1}
+  slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
+  frozenColor: {r: 0, g: 0, b: 0, a: 0}
+  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  hitParticles: []
+  hitSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  hitColor: {r: 1, g: 1, b: 1, a: 1}
+  timeBetweenFlash: 0.1
+  amountToFlash: 5
+  fadeTime: 5
+  hitShake:
+    magnitude: 0.1
+    shakeAmount: 1
+    duration: 0.1
 --- !u!114 &114948829586623458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15016,12 +15327,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf36586574916943b7baa0649908bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1985418589284452, guid: 7cdbbee580d7d644cbc268ed343d4abb, type: 2}
-  spawnAfterMerging: 0
-  respawnWithMessage: 0
-  respawnPrefab: {fileID: 0}
-  enableBehaviour: {fileID: 0}
---- !u!114 &114960746490914196
+  drops:
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
+    probability: 0.3
+    maxAmount: 0
+  - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
+    probability: 0.3
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  minAmountOfDrops: 5
+  maxAmountOfDrops: 10
+  isWizzer: 0
+--- !u!114 &114959427166375808
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
