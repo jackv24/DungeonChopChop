@@ -696,7 +696,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821673531499670}
   m_LocalRotation: {x: -0, y: 0.9981258, z: -0, w: 0.061196353}
-  m_LocalPosition: {x: -1.5863209, y: 2.308097, z: -5.1055207}
+  m_LocalPosition: {x: 0.35, y: 0, z: 21.53}
   m_LocalScale: {x: 2.4999998, y: 2.5, z: 2.4999998}
   m_Children:
   - {fileID: 4159525681630120}
@@ -862,7 +862,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 3.14
-  MaxDistance: 13.16
+  MaxDistance: 17.09353
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -952,6 +952,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   welcomeMessage: Come over here bud, want some starting gear?
   messageAfterCollectingLoot: Good luck on your adventure kiddo
+  dropCoins: 0
+  cashAmount: 0
 --- !u!114 &114504630506208774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -964,7 +966,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - Want me to tell ye what there charms do?
+  - 'You want to help? Thank you! Take these Gemeralds
+
+    Grab supplies and find the Darkwood Dungeon.'
   playerLayer:
     serializedVersion: 2
     m_Bits: 16384
@@ -1001,6 +1005,7 @@ MonoBehaviour:
     maxAmount: 3
   minAmountOfDrops: 5
   maxAmountOfDrops: 10
+  isWizzer: 0
 --- !u!136 &136231240061636994
 CapsuleCollider:
   m_ObjectHideFlags: 1
