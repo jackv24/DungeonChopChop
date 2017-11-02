@@ -47,14 +47,10 @@ public class SlimeMove : EnemyMove {
     protected int counter = 0;
     protected float timeBetweenMove = 0;
 
-    void Start()
-    {
-        Setup();
-        timeBetweenMove = 0;
-    }
-
     void OnEnable()
     {
+        timeBetweenMove = 0;
+
         base.OnEnable();
     }
         

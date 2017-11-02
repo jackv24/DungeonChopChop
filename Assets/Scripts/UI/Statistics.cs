@@ -16,6 +16,7 @@ public class Statistics : MonoBehaviour {
     public int paddyBums;
     public int visps;
     public int snapEyes;
+    public int mushBooms;
     [Space()]
     public int totalEnemiesKilled;
 
@@ -42,7 +43,7 @@ public class Statistics : MonoBehaviour {
 
         TotalPlayTime = Time.time - timeRemover;
 
-        totalEnemiesKilled = slimes + appleShooters + bisps + crystalTurrets + paddyBums + visps + snapEyes;
+        totalEnemiesKilled = slimes + appleShooters + bisps + crystalTurrets + paddyBums + visps + snapEyes + mushBooms;
 
 	}
 
@@ -62,5 +63,7 @@ public class Statistics : MonoBehaviour {
             crystalTurrets++;
         else if (enemyType == EnemyType.SnapEye)
             snapEyes++;
+        else if (enemyType == EnemyType.MushBoom)
+            mushBooms++;
     }
 }
