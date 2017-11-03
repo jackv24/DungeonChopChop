@@ -141,14 +141,17 @@ public class EnemyMove : MonoBehaviour
             {
                 if (InDistance(OverallRadiusFollow))
                 {
-                    if (agent.isOnNavMesh)
+                    if (agent)
                     {
-                        if (!GetClosestPlayer().GetComponent<Health>().isDead)
-                            agent.SetDestination(GetClosestPlayer().position);
-                        else
+                        if (agent.isOnNavMesh)
                         {
-                            if (OtherwiseRoam)
-                                Roam();
+                            if (!GetClosestPlayer().GetComponent<Health>().isDead)
+                                agent.SetDestination(GetClosestPlayer().position);
+                            else
+                            {
+                                if (OtherwiseRoam)
+                                    Roam();
+                            }
                         }
                     }
                 }

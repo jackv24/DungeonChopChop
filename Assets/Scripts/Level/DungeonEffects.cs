@@ -116,8 +116,11 @@ public class DungeonEffects : MonoBehaviour
     {
         originalFOV = Camera.main.fieldOfView;
 
-        LevelGenerator.Instance.OnGenerationFinished += DungeonEffect;
-        LevelGenerator.Instance.OnTileEnter += SpawnPartyLights;
+        if (LevelGenerator.Instance)
+        {
+            LevelGenerator.Instance.OnGenerationFinished += DungeonEffect;
+            LevelGenerator.Instance.OnTileEnter += SpawnPartyLights;
+        }
     }
 
     void DungeonEffect()
