@@ -61,16 +61,26 @@ public class DebugTools : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftControl))
             {
-                List<LevelTile> generatedTiles = LevelGenerator.Instance.generatedTiles;
-
                 if (Input.GetKeyDown(KeyCode.U))
                 {
+                    List<LevelTile> generatedTiles = LevelGenerator.Instance.generatedTiles;
+
                     Debug.Log("Revealing tiles " + generatedTiles.Count);
 
                     foreach (LevelTile tile in generatedTiles)
                     {
                         if (tile != LevelGenerator.Instance.currentTile)
                             tile.ShowTile(false, true);
+                    }
+                }
+
+                if(Input.GetKeyDown(KeyCode.G))
+                {
+                    ShopSpawner[] spawners = FindObjectsOfType<ShopSpawner>();
+
+                    foreach(ShopSpawner spawner in spawners)
+                    {
+                        spawner.Generate();
                     }
                 }
             }
@@ -241,6 +251,7 @@ public class DebugTools : MonoBehaviour
                 text += "\n<b>Hotkeys</b>\n";
                 text += "Debug Menu: CTRL+D\n";
                 text += "Reveal Map: CTRL+U\n";
+                text += "Regen Shops: CTRL+G\n";
 
                 if (LevelGenerator.Instance.profile is OverworldGeneratorProfile)
                 {
