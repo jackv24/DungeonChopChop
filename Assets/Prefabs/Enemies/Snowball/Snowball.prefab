@@ -61,8 +61,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1055673473369210}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.141193, y: -2.9, z: 3.9781125}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -13.141193, y: 0.05, z: 11.66}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4373911113054322}
   m_Father: {fileID: 0}
@@ -145,8 +145,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1193396, y: 1.8477862, z: 1.0926874}
-  m_Center: {x: -0.008363783, y: 0.9186629, z: 0.015157819}
+  m_Size: {x: 0.93468857, y: 1.8477862, z: 0.9336064}
+  m_Center: {x: 0.03220558, y: 0.9186629, z: 0.04052174}
 --- !u!114 &114080010429854888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,9 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
+  maxHealth: 5
   health: 2
-  weight: 0.1
+  weight: 2
   IsEnemy: 1
   enemyType: 0
   isProp: 0
@@ -275,7 +275,8 @@ MonoBehaviour:
     m_Bits: 0
   LockY: 1
   usingNav: 1
-  healthIncrease: 0.002
+  healthIncrease: 0.0005
+  minSpeedToIncrease: 2.5
 --- !u!114 &114313188371987178
 MonoBehaviour:
   m_ObjectHideFlags: 1
