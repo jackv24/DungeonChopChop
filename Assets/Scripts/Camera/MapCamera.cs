@@ -10,14 +10,18 @@ public class MapCamera : MonoBehaviour
 	public Canvas canvas;
 	private CanvasScaler canvasScaler;
 
-	public RectTransform mapRect;
-    public RawImage rawImage;
-	
-    private RenderTexture renderTexture;
+    public CanvasGroup group;
+    public float fadeTime = 0.25f;
+    private Coroutine fadeRoutine;
 
-    [Space()]
-    public Animator animator;
-    private bool fullMap = false;
+    public RectTransform mapRect;
+    public RawImage rawImage;
+
+	[HideInInspector]
+    public RectTransform followRect;
+
+    private RenderTexture renderTexture;
+    public Vector2 textureSize = new Vector2(600, 600);
 
     [Header("Icons")]
 	public float iconScale = 1.0f;
@@ -62,7 +66,7 @@ public class MapCamera : MonoBehaviour
 
 		if(mapRect && cam && rawImage)
 		{
-            renderTexture = new RenderTexture((int)mapRect.sizeDelta.x, (int)mapRect.sizeDelta.y, 0, RenderTextureFormat.ARGB32);
+            renderTexture = new RenderTexture((int)textureSize.x, (int)textureSize.y, 0, RenderTextureFormat.ARGB32);
 
             cam.targetTexture = renderTexture;
             rawImage.texture = renderTexture;
@@ -78,26 +82,44 @@ public class MapCamera : MonoBehaviour
         };
     }
 
+	public void Hide()
+	{
+		if(fadeRoutine != null)
+            StopCoroutine(fadeRoutine);
+
+        fadeRoutine = StartCoroutine(FadeAlpha(1, 0));
+    }
+
+	public void Show()
+	{
+		if (fadeRoutine != null)
+            StopCoroutine(fadeRoutine);
+
+        fadeRoutine = StartCoroutine(FadeAlpha(0, 1));
+	}
+
+	IEnumerator FadeAlpha(float before, float after)
+	{
+        float elapsed = 0;
+
+        group.alpha = before;
+
+        while(elapsed < fadeTime)
+		{
+            group.alpha = Mathf.Lerp(before, after, elapsed / fadeTime);
+
+            yield return new WaitForEndOfFrame();
+            elapsed += Time.unscaledDeltaTime;
+        }
+
+		group.alpha = after;
+    }
+
 	void OnDestroy()
 	{
 		if (Instance == this)
 			Instance = null;
 	}
-
-	void Update()
-	{
-        if (animator)
-        {
-            InControl.InputDevice device = InControl.InputManager.ActiveDevice;
-
-            if (device.Action4.WasPressed || Input.GetKeyDown(KeyCode.M))
-            {
-                fullMap = !fullMap;
-
-                animator.SetBool("FullMap", fullMap);
-            }
-        }
-    }
 
 	void LateUpdate()
 	{
@@ -144,6 +166,12 @@ public class MapCamera : MonoBehaviour
                 }
 			}
 		}
+
+		if (followRect)
+        {
+            mapRect.position = followRect.position;
+            mapRect.sizeDelta = new Vector2(followRect.rect.size.x * followRect.parent.localScale.x, followRect.rect.size.y * followRect.parent.localScale.y);
+        }
 	}
 
 	public void ClearIcons()

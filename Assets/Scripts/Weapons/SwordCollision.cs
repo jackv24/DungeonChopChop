@@ -90,7 +90,7 @@ public class SwordCollision : MonoBehaviour {
                 {
                     if (col.gameObject.GetComponent<EnemyMove>())
                     {
-                        col.gameObject.GetComponent<EnemyMove>().GetClosestEnemyRadius(100).GetComponent<Health>().AffectHealth(-playerInfo.GetSwordDamage());
+                        col.gameObject.GetComponent<EnemyMove>().GetClosestEnemy().GetComponent<Health>().AffectHealth(-playerInfo.GetSwordDamage());
                     }
                 }
 

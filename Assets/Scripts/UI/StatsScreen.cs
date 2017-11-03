@@ -18,7 +18,7 @@ public class StatsScreen : MonoBehaviour
 		public RawImage bootImage;
 		public RawImage swordImage;
 
-		public Camera RenderImage(RawImage image, InventoryItem item)
+        public Camera RenderImage(RawImage image, InventoryItem item)
 		{
 			if(!item.itemPrefab)
                 return null;
@@ -108,6 +108,12 @@ public class StatsScreen : MonoBehaviour
     public StatsUI player1Stats;
     public StatsUI player2Stats;
 
+    [Space()]
+    public RectTransform mapRect;
+
+    private Vector2 initialMapPos;
+    private Vector2 initialMapSize;
+
     private List<Camera> cameraList = new List<Camera>();
 
     void OnEnable()
@@ -138,6 +144,16 @@ public class StatsScreen : MonoBehaviour
                 cameraList.AddRange(player2Stats.RenderAll());
             }
         }
+
+        if (MapCamera.Instance)
+        {
+            MapCamera.Instance.Hide();
+
+            initialMapPos = MapCamera.Instance.mapRect.position;
+            initialMapSize = MapCamera.Instance.mapRect.sizeDelta;
+
+            MapCamera.Instance.followRect = mapRect;
+        }
     }
 
 	void OnDisable()
@@ -149,5 +165,15 @@ public class StatsScreen : MonoBehaviour
         }
 
         cameraList.Clear();
+
+        if (MapCamera.Instance)
+        {
+            MapCamera.Instance.followRect = null;
+
+            MapCamera.Instance.mapRect.position = initialMapPos;
+            MapCamera.Instance.mapRect.sizeDelta = initialMapSize;
+
+            MapCamera.Instance.Show();
+        }
     }
 }
