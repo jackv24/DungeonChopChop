@@ -53,7 +53,7 @@ public class Pause : MonoBehaviour
 				PauseGame ();
 		}
 
-		if (Input.GetKeyDown (KeyCode.Tab) || InControl.InputManager.ActiveDevice.Action4) {
+		if (Input.GetKeyDown (KeyCode.Tab) || InControl.InputManager.ActiveDevice.Action4.WasPressed) {
 			if (statsDisplayed)
 				UnShowStatsScreen ();
 			else
@@ -95,12 +95,13 @@ public class Pause : MonoBehaviour
 			EventSystem.current.SetSelectedGameObject(firstSelected);
     }
 
-    public void UnPauseGame()
+    public void UnPauseGame(bool slowDown = true)
     {
         pauseMenu.SetActive(false);
         paused = false;
 
-		SlowTime(0, 1);
+        if(slowDown)
+		    SlowTime(0, 1);
 
 		if (OnUnpause != null)
 			OnUnpause();
@@ -141,7 +142,9 @@ public class Pause : MonoBehaviour
 		if (LevelGenerator.Instance)
 			LevelGenerator.Instance.Clear();
 
-		UnPauseGame();
+		UnPauseGame(false);
+
+        Time.timeScale = 1;
 
         GameManager gm = GameObject.FindObjectOfType<GameManager>();
         InputManager im = GameObject.FindObjectOfType<InputManager>();
