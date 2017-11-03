@@ -30,18 +30,18 @@ public class StatusOnTouch : MonoBehaviour {
 		
 	}
 
-    void OnCollisionEnter(Collision col)
+    void Collide(Collider col)
     {
-        if (col.collider.GetComponent<Health>())
+        if (col.GetComponent<Collider>().GetComponent<Health>())
         {
-            if (!col.collider.GetComponent<Health>().HasStatusCondition())
+            if (!col.GetComponent<Collider>().GetComponent<Health>().HasStatusCondition())
             {
-                if (col.collider.GetComponent<PlayerAttack>())
+                if (col.GetComponent<Collider>().GetComponent<PlayerAttack>())
                 {
-                    if (!col.collider.GetComponent<PlayerAttack>().blocking)
+                    if (!col.GetComponent<Collider>().GetComponent<PlayerAttack>().blocking)
                     {
                         if (statusType == StatusType.burn)
-                            col.collider.GetComponent<Health>().SetBurned(damagePerTick, duration, timeBetweenDamage);
+                            col.GetComponent<Collider>().GetComponent<Health>().SetBurned(damagePerTick, duration, timeBetweenDamage);
                         else if (statusType == StatusType.poison)
                             col.gameObject.GetComponent<Health>().SetPoison(damagePerTick, duration, timeBetweenDamage);
                         else if (statusType == StatusType.slowlyDying)
@@ -52,12 +52,22 @@ public class StatusOnTouch : MonoBehaviour {
                             col.gameObject.GetComponent<Health>().SetSandy(duration, speedDamper);
                     }
                 }
-                else if (col.collider.GetComponent<PropDestroy>())
+                else if (col.GetComponent<Collider>().GetComponent<PropDestroy>())
                 {
                     if (statusType == StatusType.burn)
-                        col.collider.GetComponent<Health>().SetBurned(damagePerTick, duration, timeBetweenDamage);
+                        col.GetComponent<Collider>().GetComponent<Health>().SetBurned(damagePerTick, duration, timeBetweenDamage);
                 }
             }
         }
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        Collide(col.collider);
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        Collide(col);
     }
 }

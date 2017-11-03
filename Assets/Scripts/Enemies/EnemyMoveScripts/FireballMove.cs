@@ -9,8 +9,13 @@ public class FireballMove : EnemyMove {
 
 	// Use this for initialization
 	void Start () {
-		
+        Setup();
 	}
+
+    void OnEnable()
+    {
+        base.OnEnable();
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
