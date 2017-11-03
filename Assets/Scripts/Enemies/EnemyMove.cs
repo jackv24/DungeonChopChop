@@ -194,7 +194,10 @@ public class EnemyMove : MonoBehaviour
                 if (usingNav)
                 {
                     if (agent.isOnNavMesh)
-                        agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
+                    {
+                        if (LevelGenerator.Instance)
+                            agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
+                    }
                 }
                 roamCounter = 0; 
             } 
@@ -277,10 +280,13 @@ public class EnemyMove : MonoBehaviour
 		Collider[] enemies = Physics.OverlapSphere(transform.position, 500, enemyMask);
         foreach (Collider enemy in enemies)
         {
-            float dist = Vector3.Distance(transform.position, enemy.transform.position);
-            if (dist < radius)
+            if (enemy != GetComponent<Collider>())
             {
-                return enemy.transform;
+                float dist = Vector3.Distance(transform.position, enemy.transform.position);
+                if (dist < radius)
+                {
+                    return enemy.transform;
+                }
             }
         }
         return transform;

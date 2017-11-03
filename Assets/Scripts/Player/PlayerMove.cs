@@ -154,21 +154,24 @@ public class PlayerMove : MonoBehaviour
     {
         if (!ItemsManager.Instance.hasBoots)
         {
-            if (LevelGenerator.Instance.currentTile && LevelGenerator.Instance.currentTile.GetComponent<TileParticles>())
+            if (LevelGenerator.Instance)
             {
-                if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Ice)
+                if (LevelGenerator.Instance.currentTile && LevelGenerator.Instance.currentTile.GetComponent<TileParticles>())
                 {
-                    if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>().HasParticles)
-                        return LevelGenerator.Instance.currentTile.transform.forward * windSpeed;
-                    else
-                        return Vector3.zero;
-                }
-                else if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Desert)
-                {
-                    if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>().HasParticles)
-                        return LevelGenerator.Instance.currentTile.transform.forward * desertWindSpeed;
-                    else
-                        return Vector3.zero;
+                    if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Ice)
+                    {
+                        if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>().HasParticles)
+                            return LevelGenerator.Instance.currentTile.transform.forward * windSpeed;
+                        else
+                            return Vector3.zero;
+                    }
+                    else if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Desert)
+                    {
+                        if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>().HasParticles)
+                            return LevelGenerator.Instance.currentTile.transform.forward * desertWindSpeed;
+                        else
+                            return Vector3.zero;
+                    }
                 }
             }
         }
@@ -180,15 +183,18 @@ public class PlayerMove : MonoBehaviour
     {
         if (!ItemsManager.Instance.hasArmourPiece)
         {
-            if (LevelGenerator.Instance.currentTile)
+            if (LevelGenerator.Instance)
             {
-                if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Fire)
+                if (LevelGenerator.Instance.currentTile)
                 {
-                    fireBiomeTickCounter++;
-                    if (fireBiomeTickCounter > (timeBetweenBiomeBurn * 60))
+                    if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Fire)
                     {
-                        playerHealth.AffectHealth(-damageInFireBiome);
-                        fireBiomeTickCounter = 0;
+                        fireBiomeTickCounter++;
+                        if (fireBiomeTickCounter > (timeBetweenBiomeBurn * 60))
+                        {
+                            playerHealth.AffectHealth(-damageInFireBiome);
+                            fireBiomeTickCounter = 0;
+                        }
                     }
                 }
             }

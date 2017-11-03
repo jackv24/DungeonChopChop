@@ -41,5 +41,9 @@ public class DeathEditor : Editor {
             enemyDeath.damageOnExplode = EditorGUILayout.FloatField("Damage on Explode", enemyDeath.damageOnExplode);
             enemyDeath.knockbackOnExplode = EditorGUILayout.FloatField("Knockback Explode Amount", enemyDeath.knockbackOnExplode);
         }
+        else if (enemyDeath.deathType == TypesOfDeath.BossDrops)
+        {
+            enemyDeath.shrinktime = EditorGUILayout.FloatField("Shrink time", enemyDeath.shrinktime);
+        }
 	}
 }
