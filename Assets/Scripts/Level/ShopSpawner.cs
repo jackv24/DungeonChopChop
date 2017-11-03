@@ -33,11 +33,6 @@ public class ShopSpawner : MonoBehaviour
 
 	private List<BaseItem> spawnedItems = new List<BaseItem>();
 
-	void Start()
-	{
-		Generate();
-	}
-
 	public void Generate()
 	{
 		DeleteChildren();
