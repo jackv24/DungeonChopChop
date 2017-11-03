@@ -177,6 +177,7 @@ public class DungeonEffects : MonoBehaviour
             {
                 currentEffect = effects[i];
                 DoEffect(effects[i]);
+                break;
             }
         }
     }

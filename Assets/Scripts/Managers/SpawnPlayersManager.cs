@@ -60,7 +60,7 @@ public class SpawnPlayersManager : MonoBehaviour
 	void SpawnPlayer(CameraFollow cameraFollow, GameObject obj)
 	{
         GameObject player = (GameObject)Instantiate (obj, transform.position, Quaternion.Euler (0, 0, 0));
-        GameManager.Instance.players.Add(player.GetComponent<PlayerInformation>());
+        GameManager.Instance.players.Add(player.GetComponentInChildren<PlayerInformation>());
 		player.GetComponent<PlayerInformation> ().playerIndex = counter;
 		counter++;
 	}

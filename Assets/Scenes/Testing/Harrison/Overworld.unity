@@ -1033,6 +1033,11 @@ CanvasGroup:
   m_PrefabParentObject: {fileID: 225933965902619008, guid: c3b5750ba4813464aa30b29b06e327e0,
     type: 2}
   m_PrefabInternal: {fileID: 574041280}
+--- !u!1 &747357035 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1963111820167222, guid: 08b4ac717670d0844b419982db87688f,
+    type: 2}
+  m_PrefabInternal: {fileID: 981055573}
 --- !u!1001 &981055573
 Prefab:
   m_ObjectHideFlags: 0
@@ -1088,6 +1093,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08b4ac717670d0844b419982db87688f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1078527776 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1638028266911088, guid: c3b5750ba4813464aa30b29b06e327e0,
+    type: 2}
+  m_PrefabInternal: {fileID: 574041280}
 --- !u!1 &1176379489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1284,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114676173041292912, guid: d27f381d153d1434a951088d55b3f3a9,
+        type: 2}
+      propertyPath: managers.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4400348695629362, guid: d27f381d153d1434a951088d55b3f3a9, type: 2}
       propertyPath: m_LocalPosition.x
       value: -4.69146
@@ -1306,6 +1321,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114676173041292912, guid: d27f381d153d1434a951088d55b3f3a9,
+        type: 2}
+      propertyPath: managers.Array.data[6]
+      value: 
+      objectReference: {fileID: 1306446260549724, guid: dde3961227d76904f89514551566a8f0,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d27f381d153d1434a951088d55b3f3a9, type: 2}
   m_IsPrefabParent: 0
@@ -1397,11 +1418,63 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6aca7befc3f784a4286400418b661969, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1418822532 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1638028266911088, guid: c3b5750ba4813464aa30b29b06e327e0,
-    type: 2}
-  m_PrefabInternal: {fileID: 574041280}
+--- !u!1001 &1396956520
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4487300017543954, guid: dde3961227d76904f89514551566a8f0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.4014325
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487300017543954, guid: dde3961227d76904f89514551566a8f0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 13.70918
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487300017543954, guid: dde3961227d76904f89514551566a8f0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7.6363187
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487300017543954, guid: dde3961227d76904f89514551566a8f0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487300017543954, guid: dde3961227d76904f89514551566a8f0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487300017543954, guid: dde3961227d76904f89514551566a8f0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487300017543954, guid: dde3961227d76904f89514551566a8f0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487300017543954, guid: dde3961227d76904f89514551566a8f0, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114836516315497470, guid: dde3961227d76904f89514551566a8f0,
+        type: 2}
+      propertyPath: playersUI.Array.data[0]
+      value: 
+      objectReference: {fileID: 1078527776}
+    - target: {fileID: 114836516315497470, guid: dde3961227d76904f89514551566a8f0,
+        type: 2}
+      propertyPath: playersUI.Array.data[1]
+      value: 
+      objectReference: {fileID: 1912112553}
+    - target: {fileID: 114836516315497470, guid: dde3961227d76904f89514551566a8f0,
+        type: 2}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 747357035}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: dde3961227d76904f89514551566a8f0, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1606279684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,11 +1545,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1742911122 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1592612838336676, guid: c3b5750ba4813464aa30b29b06e327e0,
-    type: 2}
-  m_PrefabInternal: {fileID: 574041280}
 --- !u!1 &1864361553
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,123 +1788,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2132508182
+--- !u!1 &1912112553 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2132508184}
-  - component: {fileID: 2132508183}
-  m_Layer: 0
-  m_Name: DungeonEffect
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2132508183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2132508182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48ed3734ae51da0468b4aaa987d16833, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chanceOfEffect: 100
-  announcementDelayTime: 2
-  effectsReoccur: 0
-  overrider: 0
-  effects:
-  - effectType: 1
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: Let this be a warning
-  - effectType: 2
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: Strength is with you
-  - effectType: 4
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: Forgetting Something?
-  - effectType: 5
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: Doof doof
-  - effectType: 6
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: Doof Doof
-  - effectType: 7
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: You won't miss a thing
-  - effectType: 8
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: Watch your step
-  - effectType: 9
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: The strength is insane
-  - effectType: 10
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: The size matters
-  - effectType: 11
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: Dollars for days
-  - effectType: 13
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: Speed is with them
-  - effectType: 14
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: They're to strong
-  - effectType: 15
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: I hope you brought a strong sword
-  - effectType: 16
-    canHappen: 1
-    Header: Dungeon Announcement
-    Description: It must be a blood moon
-  playersUI:
-  - {fileID: 1418822532}
-  - {fileID: 1742911122}
-  strengthMultiplier: 2
-  map: {fileID: 0}
-  ambientIntensity: 0.2
-  partyLight: {fileID: 1146148780581510, guid: 90cadb7eef3aa734cab9c9008ae90c45, type: 2}
-  minLightingAmount: 20
-  maxLightingAmount: 30
-  lightsOnAndOffTime: 1
-  workOutSpeedMultiplier: 0
-  cameraFOV: 50
-  acceleration: 1
-  instaKillStrength: 1000
-  swordScaleMultiplier: 3
-  percentageMore: 100
-  enemyMoveMultiplier: 2
-  enemyStrengthMultiplier: 2
-  enemyHealthMultiplier: 2
---- !u!4 &2132508184
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2132508182}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4014325, y: 13.70918, z: 7.6363187}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_PrefabParentObject: {fileID: 1592612838336676, guid: c3b5750ba4813464aa30b29b06e327e0,
+    type: 2}
+  m_PrefabInternal: {fileID: 574041280}
