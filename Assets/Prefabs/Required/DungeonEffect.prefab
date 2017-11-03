@@ -1,0 +1,164 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1306446260549724}
+  m_IsPrefabParent: 1
+--- !u!1 &1306446260549724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4487300017543954}
+  - component: {fileID: 114836516315497470}
+  - component: {fileID: 114407921698795076}
+  - component: {fileID: 114643414236474992}
+  m_Layer: 0
+  m_Name: DungeonEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4487300017543954
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1306446260549724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.4014325, y: 13.70918, z: 7.6363187}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114407921698795076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1306446260549724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1306446260549724}
+  _assetGuid: dde3961227d76904f89514551566a8f0
+--- !u!114 &114643414236474992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1306446260549724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: ce2cba72-0b9b-4cf6-83d9-98db39b0f202
+--- !u!114 &114836516315497470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1306446260549724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ed3734ae51da0468b4aaa987d16833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceOfEffect: 10
+  announcementDelayTime: 2
+  effectsReoccur: 0
+  overrider: 0
+  effects:
+  - effectType: 1
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: Let this be a warning
+  - effectType: 2
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: Strength is with you
+  - effectType: 4
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: Forgetting Something?
+  - effectType: 5
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: Doof doof
+  - effectType: 6
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: Doof Doof
+  - effectType: 7
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: You won't miss a thing
+  - effectType: 8
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: Watch your step
+  - effectType: 9
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: The strength is insane
+  - effectType: 10
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: The size matters
+  - effectType: 11
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: Dollars for days
+  - effectType: 13
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: Speed is with them
+  - effectType: 14
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: They're to strong
+  - effectType: 15
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: I hope you brought a strong sword
+  - effectType: 16
+    canHappen: 1
+    Header: Dungeon Announcement
+    Description: It must be a blood moon
+  playersUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  strengthMultiplier: 2
+  map: {fileID: 0}
+  ambientIntensity: 0.2
+  partyLight: {fileID: 1146148780581510, guid: 90cadb7eef3aa734cab9c9008ae90c45, type: 2}
+  minLightingAmount: 20
+  maxLightingAmount: 30
+  lightsOnAndOffTime: 1
+  workOutSpeedMultiplier: 0
+  cameraFOV: 50
+  acceleration: 1
+  instaKillStrength: 1000
+  swordScaleMultiplier: 3
+  percentageMore: 100
+  enemyMoveMultiplier: 2
+  enemyStrengthMultiplier: 2
+  enemyHealthMultiplier: 2
