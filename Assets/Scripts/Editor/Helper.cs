@@ -52,4 +52,38 @@ public class Helper
 			}
 		}
 	}
+
+	[MenuItem("Jack's Helper Functions/Unparent Object Spawners")]
+	private static void UnparentObjectSpawners()
+	{
+		GameObject[] parents = Selection.gameObjects;
+
+        if (parents.Length <= 0)
+            Debug.LogWarning("Nothing selected! Please select a parent gameobject to update it's children object spawners.");
+        else
+        {
+            if (EditorUtility.DisplayDialog("Unparent and delete object spawners?", "All child spawners selected will have their prefab children unparented and spawners deleted. This is EXTREMELY descructive, please make sure this is intended.", "DO IT!", "Cancel"))
+            {
+                foreach (GameObject parent in parents)
+                {
+                    ObjectSpawner[] spawners = parent.GetComponentsInChildren<ObjectSpawner>();
+
+                    foreach (ObjectSpawner spawner in spawners)
+                    {
+                        if (spawner.transform.childCount > 0)
+                        {
+                            GameObject obj = spawner.transform.GetChild(0).gameObject;
+                            obj.transform.SetParent(spawner.transform.parent, true);
+
+                            obj.name = obj.name.Replace("(Clone)", "");
+
+                            GameObject.DestroyImmediate(spawner.gameObject);
+                        }
+                    }
+
+                    Debug.Log("Unparented and deleted " + spawners.Length + " object spawners on " + parent.name);
+                }
+            }
+        }
+	}
 }
