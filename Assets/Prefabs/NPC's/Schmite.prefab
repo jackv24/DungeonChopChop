@@ -327,6 +327,10 @@ GameObject:
   - component: {fileID: 95834553992041102}
   - component: {fileID: 114612683704897420}
   - component: {fileID: 114714460585197230}
+  - component: {fileID: 136037874941381146}
+  - component: {fileID: 65655421148808606}
+  - component: {fileID: 114856968829601264}
+  - component: {fileID: 82714203539361748}
   m_Layer: 0
   m_Name: Schmite
   m_TagString: Untagged
@@ -630,7 +634,7 @@ Transform:
   m_GameObject: {fileID: 1830834102610034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.325, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 4035082065953112}
   - {fileID: 4047655532829208}
@@ -763,6 +767,98 @@ Transform:
   m_Father: {fileID: 4075156726809370}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65655421148808606
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830834102610034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1.5, z: 3}
+  m_Center: {x: -0.12, y: 0.56, z: 1.14}
+--- !u!82 &82714203539361748
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830834102610034}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 36fb37087bffeb44e80c1215b5e73cda, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 3.14
+  MaxDistance: 13.16
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95834553992041102
 Animator:
   serializedVersion: 3
@@ -962,7 +1058,7 @@ MonoBehaviour:
   _guid: a2639c33-64d8-4e54-a4a4-1108626c6c33
 --- !u!114 &114612683704897420
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830834102610034}
@@ -1027,7 +1123,7 @@ MonoBehaviour:
   _guid: 137921c9-0962-4ced-bac2-9b63a5630807
 --- !u!114 &114714460585197230
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830834102610034}
@@ -1073,6 +1169,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: e97e5b59-0e29-47c8-810c-02bca03cb12e
+--- !u!114 &114856968829601264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830834102610034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - I forge my weapons from from the strongest materials
+  - 'I learnt how to make weapons from the revered
+
+    <size=32>~ Tin Le ~</size>'
+  - Don't expect to get far without some well crafted steel
+  - 'Say goodbye to those pesky projectiles, get a shield '
+  - Some shields are heavyer and harder to handle
+  - We've sold a great variety of weapons over the years
+  - With the right sheild and the right blade, nothing can stand in your way
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  textBoxHeight: 2
+  textBoxDepth: 2
+  dialogueBoxPrefab: {fileID: 1983791718684604, guid: 02a22f90cc96eba468275f9733fa7a29,
+    type: 2}
 --- !u!114 &114937473760726442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1121,6 +1245,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 9b4b345b-fcf4-46e4-aef3-f4460c5764ab
+--- !u!136 &136037874941381146
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830834102610034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.44349772
+  m_Height: 1.6782007
+  m_Direction: 1
+  m_Center: {x: 0.000000047683688, y: 0.8384223, z: -0.000007629395}
 --- !u!137 &137541475998636648
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
