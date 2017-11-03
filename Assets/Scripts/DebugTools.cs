@@ -26,7 +26,7 @@ public class DebugTools : MonoBehaviour
 	private void Update()
     {
         frameCount++;
-        dt += Time.deltaTime;
+        dt += Time.unscaledDeltaTime;
 		if(dt > 1.0f/fpsUpdateRate)
 		{
             fps = frameCount / dt;
