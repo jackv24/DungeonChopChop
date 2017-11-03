@@ -321,7 +321,6 @@ public class Health : MonoBehaviour
     {
         if (GetComponent<UnityEngine.AI.NavMeshAgent>())
         {
-            Debug.Log("did");
             GetComponent<EnemyMove>().usingNav = false;
             GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
             yield return new WaitForSeconds(seconds);

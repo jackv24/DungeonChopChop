@@ -22,7 +22,7 @@ public class SnapEyeMove : EnemyMove
     }
 
 	// Update is called once per frame
-	void Update () 
+	void Update ()
     {
         if (InDistance(radius))
         {
@@ -38,5 +38,5 @@ public class SnapEyeMove : EnemyMove
             else
                 RunAwayFromPlayer(false);
         }
-	}
+    }
 }

@@ -39,6 +39,8 @@ public class EnemyDeath : MonoBehaviour
     public float damageOnExplode = 2;
     [HideInInspector]
     public float knockbackOnExplode = 5;
+    [HideInInspector]
+    public float shrinktime = .0005f;
 
 	private Health health;
 	private bool dead = false;
@@ -81,17 +83,21 @@ public class EnemyDeath : MonoBehaviour
         else if (deathType == TypesOfDeath.StatusExplode)
             StatusExplode();
         else if (deathType == TypesOfDeath.BossDrops)
-            CreateBossDrop();
+            StartCoroutine(CreateBossDrop());
 
         Statistics.Instance.GetEnemy(health.enemyType);
 
         CameraShake.ShakeScreen(deathShake.magnitude, deathShake.shakeAmount, deathShake.duration);
 	}
 
-    void CreateBossDrop()
+    IEnumerator CreateBossDrop()
     {
-		GameObject bossDrop = (GameObject)Instantiate(Resources.Load<GameObject>("DropWizzer"), transform.position + Vector3.up, Quaternion.Euler(0, 0, 0));
-        bossDrop.transform.parent = null;
+        while (transform.localScale.x > 0)
+        {
+            transform.localScale -= new Vector3(.005f, .005f, .005f);
+            enemyDrop.DoDrop();
+            yield return new WaitForEndOfFrame();
+        }
 		Die ();
     }
 
