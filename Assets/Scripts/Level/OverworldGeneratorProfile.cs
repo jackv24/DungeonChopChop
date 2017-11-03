@@ -27,6 +27,9 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 
 		if (levelGenerator.profile.succeeded != false)
 			SetupPersistentObjects(levelGenerator);
+
+		if (levelGenerator.profile.succeeded != false)
+            SetupShopTiers(levelGenerator);
 	}
 
 	void RandomiseBiomes()
@@ -259,4 +262,59 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 			}
 		}
 	}
+
+	void SetupShopTiers(LevelGenerator levelGenerator)
+	{
+		//Set town shops tier
+        ShopSpawner[] townShops = levelGenerator.generatedTiles[0].GetComponentsInChildren<ShopSpawner>();
+
+        int tier = 0;
+
+		//Item tier in town increases with each dungeon
+		if(ItemsManager.Instance.hasGauntles)
+            tier = 4;
+		else if(ItemsManager.Instance.hasArmourPiece)
+            tier = 3;
+		else if(ItemsManager.Instance.hasBoots)
+            tier = 2;
+		else if(ItemsManager.Instance.hasGoggles)
+            tier = 1;
+
+		foreach(ShopSpawner spawner in townShops)
+		{
+            foreach(ShopSpawner.ShopStall stall in spawner.shopStalls)
+			{
+                stall.itemTier = tier;
+            }
+
+            spawner.Generate();
+        }
+
+        //Set biome shop tiers
+        SetBiomeShopTiers(levelGenerator, LevelTile.Biomes.Forest, 1);
+		SetBiomeShopTiers(levelGenerator, LevelTile.Biomes.Desert, 2);
+		SetBiomeShopTiers(levelGenerator, LevelTile.Biomes.Ice, 3);
+		SetBiomeShopTiers(levelGenerator, LevelTile.Biomes.Fire, 4);
+    }
+
+	void SetBiomeShopTiers(LevelGenerator levelGenerator, LevelTile.Biomes biome, int tier)
+	{
+		foreach(LevelTile tile in levelGenerator.generatedTiles)
+		{
+			if(tile.Biome == biome)
+            {
+                ShopSpawner[] spawners = tile.GetComponentsInChildren<ShopSpawner>();
+
+				foreach (ShopSpawner spawner in spawners)
+                {
+                    foreach (ShopSpawner.ShopStall stall in spawner.shopStalls)
+                    {
+                        stall.itemTier = tier;
+                    }
+
+                    spawner.Generate();
+                }
+            }
+        }
+    }
 }
