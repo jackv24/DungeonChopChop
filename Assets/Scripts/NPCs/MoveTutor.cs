@@ -14,9 +14,11 @@ public enum Moves
 public class MoveTutor : MonoBehaviour {
 
     public Moves move;
+    public string afterSpeach;
 
     private DialogueSpeaker dialogueSpeaker;
     private string originalSpeach;
+    private bool taught = false;
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +36,8 @@ public class MoveTutor : MonoBehaviour {
             }
             else
                 dialogueSpeaker.lines[0] = "Want me to teach you a move my boy?";
+
+            dialogueSpeaker.UpdateLines();
         }
 
 
@@ -54,7 +58,16 @@ public class MoveTutor : MonoBehaviour {
                         player.playerAttack.canTripleAttack = true;
                     else if (move == Moves.Spin)
                         player.playerAttack.canSpinAttack = true;
+
+                    taught = true;
                 }
+            }
+
+            if (taught)
+            {
+                dialogueSpeaker.lines[0] = afterSpeach;
+
+                dialogueSpeaker.UpdateLines();
             }
         }
 	}

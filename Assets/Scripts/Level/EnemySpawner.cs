@@ -244,7 +244,8 @@ public class EnemySpawner : MonoBehaviour
 							undefeatedEnemies.Add(spawn);
 
 						enemy.transform.position = transform.TransformPoint(spawn.position);
-                        enemy.transform.rotation = Quaternion.Euler(spawn.rotation);
+                        enemy.transform.rotation = spawn.enemyPrefab.transform.rotation;
+                        enemy.transform.Rotate(spawn.rotation);
 
 						NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
 
