@@ -23,6 +23,9 @@ public class ItemsManager : MonoBehaviour {
     public bool hasArmourPiece = false;
     public bool hasGauntles = false;
 
+    [HideInInspector]
+    public Dictionary<string, bool> dungeonItems = new Dictionary<string, bool>(0);
+
     [Header("Global Variables")]
     public int itemDropMultiplier;
 

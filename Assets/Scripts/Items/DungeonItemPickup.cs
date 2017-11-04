@@ -29,6 +29,7 @@ public class DungeonItemPickup : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+        //picks up the dungeon item
         if (col.tag == "Player1" || col.tag == "Player2")
         {
             float time = pickupStartTime - Time.time;
@@ -44,23 +45,17 @@ public class DungeonItemPickup : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
+        //choses what dungeon item it is
         if (itemType == DungeonItemType.Goggles)
-        {
             ItemsManager.Instance.hasGoggles = true;
-        }
         else if (itemType == DungeonItemType.Boots)
-        {
             ItemsManager.Instance.hasBoots = true;
-        }
         else if (itemType == DungeonItemType.Armor)
-        {
             ItemsManager.Instance.hasArmourPiece = true;
-        }
         else if (itemType == DungeonItemType.Gauntlet)
-        {
             ItemsManager.Instance.hasGauntles = true;
-        }
 
+        //does the pop up icon
 		if(itemPurchasePopup)
 		{
 			GameObject obj = ObjectPooler.GetPooledObject(itemPurchasePopup);
@@ -69,6 +64,8 @@ public class DungeonItemPickup : MonoBehaviour
 			if (popup)
 				popup.Init(item, playerInfo.transform);
 		}
+
+        ItemsManager.Instance.dungeonItems.Add(itemType.ToString(), false);
 
         gameObject.SetActive(false);
     }

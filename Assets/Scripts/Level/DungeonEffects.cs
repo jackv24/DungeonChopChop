@@ -539,5 +539,15 @@ public class DungeonEffects : MonoBehaviour
                 partyLights.Add(light);
             }
         }
+        else
+        {
+            if (partyLights.Count > 0)
+            {
+                foreach (GameObject l in partyLights)
+                {
+                    l.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 }
