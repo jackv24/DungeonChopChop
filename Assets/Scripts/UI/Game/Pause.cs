@@ -18,6 +18,7 @@ public class Pause : MonoBehaviour
     public GameObject player1Stats;
     public GameObject player2Stats;
     public GameObject YesOrNoPanel;
+    public GameObject No;
 
     public GameObject statistics;
 	public GameObject statsScreen;
@@ -165,7 +166,7 @@ public class Pause : MonoBehaviour
     public void ExitOption()
     {
         YesOrNoPanel.SetActive(true);
-		EventSystem.current.SetSelectedGameObject (YesOrNoPanel.gameObject);
+        EventSystem.current.SetSelectedGameObject (No.gameObject);
     }
 
     public void ExitNo()
