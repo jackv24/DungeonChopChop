@@ -139,7 +139,9 @@ public class Pause : MonoBehaviour
     {
         ObjectPooler.PurgePools();
 
-		if (LevelGenerator.Instance)
+        PersistentObject.Reset();
+
+        if (LevelGenerator.Instance)
 			LevelGenerator.Instance.Clear();
 
 		UnPauseGame(false);

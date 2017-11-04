@@ -122,10 +122,22 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 		LevelGenerator.NormalEvent tempEvent = null;
 		tempEvent = delegate
 		{
-			//Find and place item in chests
-			Chest dungeonChest = levelGenerator.GetComponentInChildren<Chest>();
+			//Find all chests
+			Chest[] chests = levelGenerator.GetComponentsInChildren<Chest>();
 
-			if (dungeonChest)
+			//Narrow down to just the dungeon chest
+			Chest dungeonChest = null;
+			foreach(Chest chest in chests)
+			{
+				if(chest.chestType == ChestType.Dungeon)
+				{
+                    dungeonChest = chest;
+                    break;
+                }
+			}
+
+			//If dungeon chest was found, set it's item
+            if (dungeonChest)
 			{
 				if (dungeonItem)
 					dungeonChest.SetItem(dungeonItem);

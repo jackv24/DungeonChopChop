@@ -24,7 +24,11 @@ public class DoorOpenOnEnemyDefeat : MonoBehaviour
 			spawner.OnEnemiesSpawned += Close;
 
 			subscribed = true;
-		}
+
+			//If enemies are not spawned on start, then start with door open
+			if(spawner.waitForSpawnMessage)
+                Open();
+        }
 		else
 			Open();
 	}
