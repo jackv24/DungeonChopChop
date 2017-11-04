@@ -24,23 +24,27 @@ public class EnemySpawner : MonoBehaviour
 		{
 			public GameObject enemyPrefab;
 			public Vector3 position;
+            public Vector3 rotation;
 
 			public Spawn()
 			{
 				enemyPrefab = null;
 				position = Vector3.zero;
+                rotation = Vector3.zero;
 			}
 
-			public Spawn(GameObject prefab, Vector3 pos)
+            public Spawn(GameObject prefab, Vector3 pos, Vector3 rot)
 			{
 				enemyPrefab = prefab;
 				position = pos;
+                rotation = rot;
 			}
 
 			public Spawn(Spawn other)
 			{
 				enemyPrefab = other.enemyPrefab;
 				position = other.position;
+                rotation = other.rotation;
 			}
 		}
 
@@ -218,7 +222,7 @@ public class EnemySpawner : MonoBehaviour
 					toSpawn.Remove(spawn);
 
 					//Create and add a new spawn with the new random enemy at the same point
-					Profile.Spawn newSpawn = new Profile.Spawn(spawn.enemyPrefab, positions[i]);
+                    Profile.Spawn newSpawn = new Profile.Spawn(spawn.enemyPrefab, positions[i], spawn.rotation);
 					newSpawns.Add(newSpawn);
 				}
 
@@ -240,6 +244,7 @@ public class EnemySpawner : MonoBehaviour
 							undefeatedEnemies.Add(spawn);
 
 						enemy.transform.position = transform.TransformPoint(spawn.position);
+                        enemy.transform.rotation = Quaternion.Euler(spawn.rotation);
 
 						NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
 

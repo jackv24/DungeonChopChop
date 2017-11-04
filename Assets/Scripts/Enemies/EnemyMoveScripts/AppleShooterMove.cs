@@ -7,6 +7,8 @@ public class AppleShooterMove : EnemyMove {
     [Header("Apple Shooter Values")]
     public float rotateSpeed = 5;
     public int hitsTillShoot = 2;
+    public bool lockRotation = false;
+    public bool constantShooting = false;
 
     private int hits = 0;
 
@@ -29,9 +31,18 @@ public class AppleShooterMove : EnemyMove {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Attacking"))
+        
+        if (constantShooting)
         {
-            LookAtClosestPlayer(rotateSpeed);
+            animator.SetTrigger("Attack");
+        }
+
+        if (!lockRotation)
+        {
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Attacking"))
+            {
+                LookAtClosestPlayer(rotateSpeed);
+            }
         }
 	}
 
