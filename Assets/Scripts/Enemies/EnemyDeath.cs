@@ -45,16 +45,20 @@ public class EnemyDeath : MonoBehaviour
 	private Health health;
 	private bool dead = false;
     private Drops enemyDrop;
+    private Vector3 originalScale;
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
+        originalScale = transform.localScale;
+
         enemyDrop = GetComponent<Drops>();
 		health = GetComponent<Health> ();
 	}
 
     void OnEnable()
     {
+        transform.localScale = originalScale;
         dead = false;
     }
 	

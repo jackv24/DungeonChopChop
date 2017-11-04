@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 95209867060262004}
   - component: {fileID: 114120703501883338}
   - component: {fileID: 114989349044348354}
+  - component: {fileID: 65130021778002172}
+  - component: {fileID: 65544239543184210}
   m_Layer: 0
   m_Name: DungeonChains
   m_TagString: Untagged
@@ -83,6 +85,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1696261128008362}
   m_Mesh: {fileID: 4300000, guid: fd9b3ba69503f2745b7bad57e0e12644, type: 3}
+--- !u!65 &65130021778002172
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1696261128008362}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6612251, y: 2.7057705, z: 0.94750047}
+  m_Center: {x: -1.2937243e-10, y: 0.0000000025934248, z: -0.21298346}
+--- !u!65 &65544239543184210
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1696261128008362}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6612251, y: 2.7057705, z: 0.94750047}
+  m_Center: {x: -1.2937243e-10, y: 0.0000000025934248, z: -0.21298346}
 --- !u!95 &95209867060262004
 Animator:
   serializedVersion: 3
@@ -102,7 +128,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114120703501883338
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1696261128008362}
@@ -119,7 +145,7 @@ MonoBehaviour:
   _assetGuid: 77a9fe8fe56e1c34998037565536e76c
 --- !u!114 &114989349044348354
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1696261128008362}
