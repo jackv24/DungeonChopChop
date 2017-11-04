@@ -80,6 +80,8 @@ public class ShowArmourStats : MonoBehaviour {
 
         string descriptionText = "";
 
+        descriptionText += thisArmourStats.displayName + "\n";
+
         if (playerInfo.currentItems.Count > 0)
         {
             foreach (InventoryItem i in playerInfo.currentItems)

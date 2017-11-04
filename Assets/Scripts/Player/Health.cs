@@ -783,7 +783,7 @@ public class Health : MonoBehaviour
             if (isProp)
                 SetColorToFade(burnColor, fadeTime);
             else
-                SetColor(Color.red);
+                SetColor(burnColor);
 
             if (gameObject.activeSelf)
                 StartCoroutine(DisablePlayerFor(.2f));

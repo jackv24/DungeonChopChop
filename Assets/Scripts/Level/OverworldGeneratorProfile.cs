@@ -272,13 +272,13 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 
 		//Item tier in town increases with each dungeon
 		if(ItemsManager.Instance.hasGauntles)
-            tier = 4;
-		else if(ItemsManager.Instance.hasArmourPiece)
-            tier = 3;
-		else if(ItemsManager.Instance.hasBoots)
-            tier = 2;
-		else if(ItemsManager.Instance.hasGoggles)
-            tier = 1;
+            tier++;
+		if(ItemsManager.Instance.hasArmourPiece)
+            tier++;
+		if(ItemsManager.Instance.hasBoots)
+            tier++;
+		if(ItemsManager.Instance.hasGoggles)
+            tier++;
 
 		foreach(ShopSpawner spawner in townShops)
 		{

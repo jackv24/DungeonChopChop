@@ -348,12 +348,16 @@ public class Shop : MonoBehaviour
                        
                         if (player.currentItems.Count > 0)
                         {
+                            bool doesntHaveItem = true;
+
                             foreach (InventoryItem i in player.currentItems)
                             {
                                 if (HasTypeInInventory(i.armourType, invItem.armourType))
                                 {
                                     for (int j = 0; j < invItem.items.Length; j++)
                                     {
+                                        doesntHaveItem = false;
+
                                         PositiveOrNegativeString(ref var1String, ref newCol, i.items[j].floatValue, invItem.items[j].floatValue);
 
                                         descriptionText += string.Format(
@@ -363,22 +367,22 @@ public class Shop : MonoBehaviour
                                             i.items[j].itemKey
                                         );
                                     }
-                                }
-                                else
-                                {
-                                    for (int j = 0; j < invItem.items.Length; j++)
-                                    {
-                                        PositiveOrNegativeString(ref var1String, ref newCol, 0, invItem.items[j].floatValue);
+                                } 
+                            }
 
-                                        descriptionText += string.Format(
-                                            "{2}: <color=#{0}>{1}</color>\n",
-                                            ColorUtility.ToHtmlStringRGB(newCol),
-                                            var1String,
-                                            invItem.items[j].itemKey
-                                        );
-                                    }
+                            if (doesntHaveItem)
+                            {
+                                for (int j = 0; j < invItem.items.Length; j++)
+                                {
+                                    PositiveOrNegativeString(ref var1String, ref newCol, 0, invItem.items[j].floatValue);
+
+                                    descriptionText += string.Format(
+                                        "{2}: <color=#{0}>{1}</color>\n",
+                                        ColorUtility.ToHtmlStringRGB(newCol),
+                                        var1String,
+                                        invItem.items[j].itemKey
+                                    );
                                 }
-                                break;
                             }
                         }
                         else
@@ -409,9 +413,8 @@ public class Shop : MonoBehaviour
     bool HasTypeInInventory(ArmourType type1, ArmourType type2)
     {
         if (type1 == type2)
-        {
             return true;
-        }
+        
         return false;
     }
 

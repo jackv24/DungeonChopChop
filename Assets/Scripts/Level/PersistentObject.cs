@@ -13,6 +13,12 @@ public class PersistentObject : MonoBehaviour
 
     private static Dictionary<string, bool> dictionary = new Dictionary<string, bool>();
 
+    public static void Reset()
+    {
+        if(dictionary != null)
+            dictionary.Clear();
+    }
+
 	void Start()
 	{
         if (onStart)

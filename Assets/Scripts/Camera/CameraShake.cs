@@ -37,6 +37,8 @@ public class CameraShake : MonoBehaviour
 		float elapsedTime = 0;
 		float elapsedStep = 0;
 
+		InControl.InputManager.ActiveDevice.Vibrate(magnitude);
+
 		Vector2 offset = Random.insideUnitCircle.normalized * magnitude;
 
 		while(elapsedTime < duration)
@@ -44,8 +46,8 @@ public class CameraShake : MonoBehaviour
 			transform.Translate(Vector3.Lerp(offset, Vector3.zero, elapsedTime / duration), Space.Self);
 
 			yield return new WaitForEndOfFrame();
-			elapsedTime += Time.deltaTime;
-			elapsedStep += Time.deltaTime;
+			elapsedTime += Time.unscaledDeltaTime;
+			elapsedStep += Time.unscaledDeltaTime;
 
 			if(elapsedStep >= shakeStep)
 			{
@@ -54,5 +56,7 @@ public class CameraShake : MonoBehaviour
 				offset = Random.insideUnitCircle.normalized * magnitude;
 			}
 		}
-	}
+
+		InControl.InputManager.ActiveDevice.Vibrate(0);
+    }
 }
