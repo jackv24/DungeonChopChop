@@ -70,6 +70,8 @@ public class MenuButtons : MonoBehaviour
     {
         ObjectPooler.PurgePools();
 
+        PersistentObject.Reset();
+
         GameManager gm = GameObject.FindObjectOfType<GameManager>();
 
         if (gm)
