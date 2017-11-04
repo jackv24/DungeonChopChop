@@ -258,6 +258,16 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
+    protected Transform GetClosestPlayerRadius(float radius)
+    {
+        float distance = Vector3.Distance(transform.position, GetClosestPlayer().transform.position);
+
+        if (distance <= radius)
+            return GetClosestPlayer().transform;
+
+        return null;
+    }
+
     protected Transform GetClosestPlayer()
     {
         float previousPlayerDistance = float.MaxValue;
