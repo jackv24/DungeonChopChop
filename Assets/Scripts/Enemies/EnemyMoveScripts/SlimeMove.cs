@@ -57,14 +57,14 @@ public class SlimeMove : EnemyMove {
     {
         timeBetweenMove = 0;
 
+        agent.enabled = true;
+
         StartCoroutine(immune());
         base.OnEnable();
     }
         
     public override void FixedUpdate()
     {
-        Debug.Log(transform.name + " " +  agent.isOnNavMesh);
-
         if (doesSplit)
         {
             splitCounter++;

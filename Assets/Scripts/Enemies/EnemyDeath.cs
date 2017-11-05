@@ -114,7 +114,9 @@ public class EnemyDeath : MonoBehaviour
 				//create the split enemies and set them to this position
                 GameObject enemy = ObjectPooler.GetPooledObject(splitEnemy);
 
-                enemy.transform.position = transform.position;
+                //enemy.transform.position = transform.position;
+
+                enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().Warp(new Vector3(transform.position.x, 0, transform.position.z));
 
 				Die ();
 			}

@@ -62,10 +62,7 @@ public class TileParticles : MonoBehaviour
             {
                 ParticleEmmissionScaler scaler = obj.GetComponent<ParticleEmmissionScaler>();
 
-                if (scaler)
-                {
-                    scaler.multiplier = .3f;
-                }
+                scaler.gameObject.SetActive(false);
             }
 		}
 	}
