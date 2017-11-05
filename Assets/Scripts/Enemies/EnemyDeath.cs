@@ -112,8 +112,10 @@ public class EnemyDeath : MonoBehaviour
 			for (int i = 0; i < amountToSplit; i++) 
 			{
 				//create the split enemies and set them to this position
-				GameObject enemy = ObjectPooler.GetPooledObject (splitEnemy);
-				enemy.transform.position = transform.position;
+                GameObject enemy = ObjectPooler.GetPooledObject(splitEnemy);
+
+                enemy.transform.position = transform.position;
+
 				Die ();
 			}
 		}
