@@ -5916,6 +5916,7 @@ GameObject:
   - component: {fileID: 114876263488905136}
   - component: {fileID: 114695912690832674}
   - component: {fileID: 114942983933988376}
+  - component: {fileID: 114145168030568530}
   m_Layer: 0
   m_Name: Tile2x2Grass
   m_TagString: Untagged
@@ -22744,6 +22745,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 22cef790-1025-44c7-a92f-24cbf2cf2e05
+--- !u!114 &114145168030568530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1897015692428800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289472bc570df684cb891bc94f7c1920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  challengeType: 1
+  chance: 100
+  randomChallenge: 0
+  completedColor: {r: 0.15679064, g: 0.85294116, b: 0.36323527, a: 1}
+  failedColor: {r: 0.83823526, g: 0.1910683, b: 0.1910683, a: 1}
+  completedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  failedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  killEnemyText: Kill all enemies in 10 seconds
+  timeToKillAll: 10
+  TakeNoDamageText: Kill all without taking damage
 --- !u!114 &114145389192890000
 MonoBehaviour:
   m_ObjectHideFlags: 11

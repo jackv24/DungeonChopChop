@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 114999851005086380}
   - component: {fileID: 114947291871263426}
   - component: {fileID: 114120597866214054}
+  - component: {fileID: 114026550102622864}
   m_Layer: 0
   m_Name: Tile2x3Grass9
   m_TagString: Untagged
@@ -63496,6 +63497,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: f7013006-d4ed-41bd-a2d0-675e5db0ca43
+--- !u!114 &114026550102622864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1004456249050014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289472bc570df684cb891bc94f7c1920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  challengeType: 1
+  chance: 100
+  randomChallenge: 0
+  completedColor: {r: 0.15679064, g: 0.85294116, b: 0.36323527, a: 1}
+  failedColor: {r: 0.83823526, g: 0.1910683, b: 0.1910683, a: 1}
+  completedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  failedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  killEnemyText: Kill all enemies in 10 seconds
+  timeToKillAll: 10
+  TakeNoDamageText: Kill all without taking damage
 --- !u!114 &114027792450585892
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -92918,55 +92948,71 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
         type: 2}
       position: {x: -3.73174, y: 0, z: 2.295288}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: -30.998665, y: 0, z: -5.103958}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: -18.202383, y: 0, z: 17.990158}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
         type: 2}
       position: {x: -36.208427, y: 0, z: 18.082779}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
         type: 2}
       position: {x: -20.614792, y: 0, z: 6.6220093}
+      rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
         type: 2}
       position: {x: -9.921322, y: 0, z: 11.478821}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
         type: 2}
       position: {x: -36.50986, y: 0, z: 12.357956}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
         type: 2}
       position: {x: -26.940369, y: 0, z: 8.34668}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: -15.75074, y: 0, z: 0.48336792}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: -11.538609, y: 0, z: 18.717926}
+      rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: -30.449505, y: 0, z: 24.851562}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1422353720355136, guid: 73510129c165c2847b020a33fb3fa9a7,
         type: 2}
       position: {x: -17.950262, y: 0, z: 1.0188904}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: 4.385638, y: 0, z: 8.360992}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1422353720355136, guid: 73510129c165c2847b020a33fb3fa9a7,
         type: 2}
       position: {x: -29.1371, y: 0, z: 8.055511}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1422353720355136, guid: 73510129c165c2847b020a33fb3fa9a7,
         type: 2}
       position: {x: -13.611481, y: 0, z: 13.820801}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: -44.577915, y: 0, z: 12.676178}
+      rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
 --- !u!212 &212006092812845632
 SpriteRenderer:

@@ -13,22 +13,38 @@ public enum ChallengeType
 public class TileQuest : MonoBehaviour {
 
     public ChallengeType challengeType;
-    public string challengeText;
     [Tooltip("Chance of this challenge happening")]
     public float chance = 100;
     public bool randomChallenge = false;
+
+    [Header("Colours")]
+    public Color completedColor;
+    public Color failedColor;
+
+    [Header("Sounds")]
+    public SoundEffect completedSound;
+    public SoundEffect failedSound;
 
     private LevelTile levelTile;
     private EnemySpawner enemySpawner;
     private Text cT;
 
     [Header("Kill Enemies Values")]
+    public string killEnemyText;
     public float timeToKillAll;
     private int counter = 0;
 
+    [Header("Take No Damage Values")]
+    public string TakeNoDamageText;
+    private bool tookDamage = false;
 
     private bool completed = false;
     private bool questActive = true;
+    private bool questStarted = false;
+
+    private bool failed = false;
+
+    private Color originalColor;
 
 	// Use this for initialization
 	void Start () 
@@ -36,7 +52,15 @@ public class TileQuest : MonoBehaviour {
         GameObject t = GameObject.FindGameObjectWithTag("ChallengeText");
         if (t)
             cT = t.GetComponent<Text>();
+        
+        if (cT)
+        {
+            cT.enabled = false;
+            originalColor = cT.color;
+        }
 
+        foreach (PlayerInformation player in GameManager.Instance.players)
+            player.GetComponent<Health>().OnHealthChange += TookDamage;
 
         levelTile = GetComponentInParent<LevelTile>();
 
@@ -48,8 +72,7 @@ public class TileQuest : MonoBehaviour {
 
         enemySpawner = GetComponent<EnemySpawner>();
 
-        if (enemySpawner)
-            enemySpawner.OnEnemiesDefeated += EnemiesKilled;
+        enemySpawner.OnEnemiesDefeated += EnemiesKilled;
 	}
 	
 	// Update is called once per frame
@@ -57,15 +80,23 @@ public class TileQuest : MonoBehaviour {
 
         if (questActive)
         {
-            if (challengeType == ChallengeType.KillEnemiesInTime)
+            if (questStarted)
             {
-                //counts up to the time to kill all
-                counter++;
-
-                //ran out of time
-                if (counter > timeToKillAll * 60)
+                if (challengeType == ChallengeType.KillEnemiesInTime)
                 {
-                    completed = false;
+                    //counts up to the time to kill all
+                    counter++;
+
+                    //ran out of time
+                    if (!failed)
+                    {
+                        if (counter > timeToKillAll * 60)
+                        {
+                            completed = false;
+                            failed = true;
+                            FailedQuest();
+                        }
+                    }
                 }
             }
         }
@@ -73,8 +104,17 @@ public class TileQuest : MonoBehaviour {
 
     void SetText()
     {
+        cT.gameObject.SetActive(false);
+        cT.gameObject.SetActive(true);
+
+        cT.color = originalColor;
+
         cT.enabled = true;
-        cT.text = challengeText;
+
+        if (challengeType == ChallengeType.KillEnemiesInTime)
+            cT.text = killEnemyText;
+        else if (challengeType == ChallengeType.TakeNoDamage)
+            cT.text = TakeNoDamageText;
     }
 
     void ChallengeDisabled()
@@ -105,11 +145,24 @@ public class TileQuest : MonoBehaviour {
                 if (randomChallenge)
                     RandomChallenge();
 
-                //gets the challenge
-                if (challengeType == ChallengeType.TakeNoDamage)
-                    StartCoroutine(TakeNoDamage());
-
                 SetText();
+
+                questStarted = true;
+            }
+        }
+    }
+
+    void TookDamage()
+    {
+        if (questActive)
+        {
+            if (questStarted)
+            {
+                if (challengeType == ChallengeType.TakeNoDamage)
+                {
+                    tookDamage = true;
+                    FailedQuest();
+                }
             }
         }
     }
@@ -120,25 +173,36 @@ public class TileQuest : MonoBehaviour {
         {
             //all the enemies were killed in time, therefore challenge completed
             if (counter < timeToKillAll * 60)
-                completed = true;
+                CompletedQuest();
 
-            if (completed)
+        }
+        else if (challengeType == ChallengeType.TakeNoDamage)
+        {
+            //the player did not take any damage
+            if (!tookDamage)
                 CompletedQuest();
         }
-    }
-
-    IEnumerator KillEnemiesInTime()
-    {
-        yield return new WaitForSeconds(1);
-    }
-
-    IEnumerator TakeNoDamage()
-    {
-        yield return new WaitForSeconds(1);
     }
 
     void CompletedQuest()
     {
         Debug.Log("QUEST COMPLETED");
+
+        //set the colour to the correct color
+        cT.color = completedColor;
+
+        //play sound
+        SoundManager.PlaySound(completedSound, transform.position);
+    }
+
+    void FailedQuest()
+    {
+        Debug.Log("QUEST FAILED");
+
+        //set the colour to the correct color
+        cT.color = failedColor;
+
+        //play sound
+        SoundManager.PlaySound(failedSound, transform.position);
     }
 }

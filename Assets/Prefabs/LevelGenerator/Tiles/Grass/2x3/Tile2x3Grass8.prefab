@@ -9158,6 +9158,7 @@ GameObject:
   - component: {fileID: 114668727290593590}
   - component: {fileID: 114013538061438688}
   - component: {fileID: 114214681910770464}
+  - component: {fileID: 114847146277383060}
   m_Layer: 0
   m_Name: Tile2x3Grass8
   m_TagString: Untagged
@@ -68790,58 +68791,75 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: 4.233572, y: 0, z: 8.804123}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: -30.101093, y: 0, z: -4.6607056}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
         type: 2}
       position: {x: -9.600296, y: 0, z: 16.505829}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: -34.346924, y: 0, z: 16.455566}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
         type: 2}
       position: {x: -31.915306, y: 0, z: 5.197418}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
         type: 2}
       position: {x: -12.599007, y: 0, z: 6.156769}
+      rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: -19.851309, y: 0, z: 17.358574}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1422353720355136, guid: 73510129c165c2847b020a33fb3fa9a7,
         type: 2}
       position: {x: -35.4205, y: 0, z: 4.850689}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: -30.227343, y: 0, z: 16.122284}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1657133287944514, guid: c5968159c6c4b6740907af9a9fb974fe,
         type: 2}
       position: {x: -20.45972, y: 0, z: 5.3611984}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1422353720355136, guid: 73510129c165c2847b020a33fb3fa9a7,
         type: 2}
       position: {x: -5.654356, y: 0, z: 16.40834}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1422353720355136, guid: 73510129c165c2847b020a33fb3fa9a7,
         type: 2}
       position: {x: -7.384284, y: 0, z: 6.2860107}
+      rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
         type: 2}
       position: {x: -30.69183, y: 0, z: -4.339035}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
         type: 2}
       position: {x: -35.30754, y: 0, z: 6.8331757}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1422353720355136, guid: 73510129c165c2847b020a33fb3fa9a7,
         type: 2}
       position: {x: -6.8783646, y: 0, z: 5.2408676}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1898849496093584, guid: d43a45911f054c641826303bee04779b,
         type: 2}
       position: {x: -3.6250744, y: 0, z: 16.180695}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1422353720355136, guid: 73510129c165c2847b020a33fb3fa9a7,
         type: 2}
       position: {x: -35.196445, y: 0, z: 17.455826}
+      rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
 --- !u!114 &114669524486157104
 MonoBehaviour:
@@ -73357,6 +73375,35 @@ MonoBehaviour:
   respawnWithMessage: 0
   respawnPrefab: {fileID: 0}
   enableBehaviour: {fileID: 0}
+--- !u!114 &114847146277383060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581895422994178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289472bc570df684cb891bc94f7c1920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  challengeType: 1
+  chance: 100
+  randomChallenge: 0
+  completedColor: {r: 0.15679064, g: 0.85294116, b: 0.36323527, a: 1}
+  failedColor: {r: 0.83823526, g: 0.1910683, b: 0.1910683, a: 1}
+  completedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  failedSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  killEnemyText: Kill all enemies in 10 seconds
+  timeToKillAll: 10
+  TakeNoDamageText: Kill all without taking damage
 --- !u!114 &114848962834472362
 MonoBehaviour:
   m_ObjectHideFlags: 1
