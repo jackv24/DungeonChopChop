@@ -39,17 +39,20 @@ public class WelcomeMan : MonoBehaviour {
 
             if (dialogueSpeaker.CurrentPlayer)
             {
-                if (dialogueSpeaker.CurrentPlayer.playerMove.input.Purchase)
+                if (!looted)
                 {
-                    if (dropCoins)
-                        drop.DoDrop();
-                    else
+                    if (dialogueSpeaker.CurrentPlayer.playerMove.input.Purchase)
                     {
-                        ItemsManager.Instance.Coins += cashAmount;
-                        ItemsManager.Instance.CoinChange();
-                    }
+                        if (dropCoins)
+                            drop.DoDrop();
+                        else
+                        {
+                            ItemsManager.Instance.Coins += cashAmount;
+                            ItemsManager.Instance.CoinChange();
+                        }
 
-                    looted = true;
+                        looted = true;
+                    }
                 }
             }
         }
