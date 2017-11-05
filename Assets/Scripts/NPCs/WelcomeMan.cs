@@ -44,7 +44,11 @@ public class WelcomeMan : MonoBehaviour {
                     if (dropCoins)
                         drop.DoDrop();
                     else
+                    {
                         ItemsManager.Instance.Coins += cashAmount;
+                        ItemsManager.Instance.CoinChange();
+                    }
+
                     looted = true;
                 }
             }

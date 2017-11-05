@@ -37,6 +37,7 @@ public class Health : MonoBehaviour
 
     public event HealthEvent OnDeath;
     public event HealthEvent OnHealthChange;
+
     public event HealthEvent OnHealthNegative;
     public event HealthEvent OnHealthPositive;
 
@@ -162,9 +163,15 @@ public class Health : MonoBehaviour
             }
 
             if (healthDeta > 0.0f)
-                OnHealthPositive();
+            {
+                if (OnHealthPositive != null)
+                    OnHealthPositive();
+            }
             else
-                OnHealthNegative();
+            {
+                if (OnHealthNegative != null)
+                    OnHealthNegative();
+            }
 
             //add to damage statistics
             if (!IsEnemy && !isProp)
