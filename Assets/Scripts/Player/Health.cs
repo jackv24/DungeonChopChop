@@ -710,8 +710,6 @@ public class Health : MonoBehaviour
                 SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.Tick, transform.position);
             }
 
-            SetOGColor();
-
             StartCoroutine(DisablePlayerFor(.1f));
 
             if (animator)
@@ -769,6 +767,9 @@ public class Health : MonoBehaviour
     {
         float finishTime = Time.time + duration;
 
+        if (!isProp)
+            SetColor(burnColor);
+
         while (isBurned)
         {
             yield return new WaitForSeconds(timeBetweenBurn / 2);
@@ -782,13 +783,11 @@ public class Health : MonoBehaviour
 
             if (isProp)
                 SetColorToFade(burnColor, fadeTime);
-            else
-                SetColor(burnColor);
 
             if (gameObject.activeSelf)
                 StartCoroutine(DisablePlayerFor(.2f));
 
-            if (animator)
+            if (!IsEnemy && !isProp)
                 animator.SetTrigger("Flinch");
 
             if (Time.time >= finishTime)
@@ -797,9 +796,7 @@ public class Health : MonoBehaviour
             }
 
             yield return new WaitForSeconds(timeBetweenBurn / 2);
-
-            if (!isProp)
-                SetOGColor();
+           
         }
 
         if (!isProp)
@@ -848,8 +845,6 @@ public class Health : MonoBehaviour
 
                 SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.Tick, transform.position);
             }
-
-            SetOGColor();
 
             StartCoroutine(DisablePlayerFor(.2f));
 
