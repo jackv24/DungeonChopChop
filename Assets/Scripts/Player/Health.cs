@@ -37,6 +37,8 @@ public class Health : MonoBehaviour
 
     public event HealthEvent OnDeath;
     public event HealthEvent OnHealthChange;
+    public event HealthEvent OnHealthNegative;
+    public event HealthEvent OnHealthPositive;
 
     [Space()]
     public bool IsEnemy;
@@ -158,6 +160,11 @@ public class Health : MonoBehaviour
                     TemporaryInvincibility();
                 }
             }
+
+            if (healthDeta > 0.0f)
+                OnHealthPositive();
+            else
+                OnHealthNegative();
 
             //add to damage statistics
             if (!IsEnemy && !isProp)
@@ -732,6 +739,13 @@ public class Health : MonoBehaviour
         }
 
         SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.End, transform.position);
+
+        //a safety in case the player gets stuck the wrong color;
+        if (!IsEnemy && !isProp)
+        {
+            yield return new WaitForSeconds(2);
+            ResetPlayerColour();
+        }
     }
 
     /// <summary>

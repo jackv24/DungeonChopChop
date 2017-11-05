@@ -75,7 +75,7 @@ public class EnemySpawner : MonoBehaviour
 	private Profile currentProfile;
 
 	public List<GameObject> spawnedEnemies = new List<GameObject>();
-	private List<Profile.Spawn> undefeatedEnemies = new List<Profile.Spawn>();
+	public List<Profile.Spawn> undefeatedEnemies = new List<Profile.Spawn>();
 
 	private bool shouldSpawn = false;
 
