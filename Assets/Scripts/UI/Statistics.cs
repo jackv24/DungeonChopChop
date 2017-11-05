@@ -21,6 +21,9 @@ public class Statistics : MonoBehaviour {
     [Space()]
     public int totalEnemiesKilled;
 
+    [HideInInspector]
+    public List<EnemyType> enemiesKilled = new List<EnemyType>(0);
+
     [Header("Health Stats")]
     public float totalDamageTaken;
     public float totalDamageGiven;

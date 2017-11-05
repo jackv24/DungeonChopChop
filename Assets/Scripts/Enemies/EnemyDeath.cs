@@ -91,6 +91,8 @@ public class EnemyDeath : MonoBehaviour
 
         Statistics.Instance.GetEnemy(health.enemyType);
 
+        Statistics.Instance.enemiesKilled.Add(health.enemyType);
+
         CameraShake.ShakeScreen(deathShake.magnitude, deathShake.shakeAmount, deathShake.duration);
 	}
 
