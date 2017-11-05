@@ -60,7 +60,7 @@ public class TileQuest : MonoBehaviour {
         }
 
         foreach (PlayerInformation player in GameManager.Instance.players)
-            player.GetComponent<Health>().OnHealthChange += TookDamage;
+            player.GetComponent<Health>().OnHealthNegative += TookDamage;
 
         levelTile = GetComponentInParent<LevelTile>();
 

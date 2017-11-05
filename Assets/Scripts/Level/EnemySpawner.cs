@@ -75,7 +75,7 @@ public class EnemySpawner : MonoBehaviour
 	private Profile currentProfile;
 
 	public List<GameObject> spawnedEnemies = new List<GameObject>();
-	private List<Profile.Spawn> undefeatedEnemies = new List<Profile.Spawn>();
+	public List<Profile.Spawn> undefeatedEnemies = new List<Profile.Spawn>();
 
 	private bool shouldSpawn = false;
 
@@ -244,7 +244,7 @@ public class EnemySpawner : MonoBehaviour
 							undefeatedEnemies.Add(spawn);
 
 						enemy.transform.position = transform.TransformPoint(spawn.position);
-                        enemy.transform.rotation = spawn.enemyPrefab.transform.rotation;
+                        enemy.transform.rotation = transform.rotation;
                         enemy.transform.Rotate(spawn.rotation);
 
 						NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();

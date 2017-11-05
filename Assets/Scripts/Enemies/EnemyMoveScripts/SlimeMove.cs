@@ -21,6 +21,7 @@ public class SlimeMove : EnemyMove {
     [Tooltip("If there are this amount of enemies around, it will not split")]
     public int maxAmountOfSlimes;
     public GameObject slime;
+    public float immuneTime = 0;
 
     [Space()]
     public float damageToEnemies = 1; 
@@ -47,10 +48,18 @@ public class SlimeMove : EnemyMove {
     protected int counter = 0;
     protected float timeBetweenMove = 0;
 
+    void Awake()
+    {
+        Setup();
+    }
+
     void OnEnable()
     {
         timeBetweenMove = 0;
 
+        agent.enabled = true;
+
+        StartCoroutine(immune());
         base.OnEnable();
     }
         
@@ -76,6 +85,14 @@ public class SlimeMove : EnemyMove {
             timeBetweenMove = Random.Range(timeBetweenStopMin, timeBetweenStopMax);
             counter = 0;
         }
+    }
+
+    IEnumerator immune()
+    {
+        //immune time, so enemies can't be killed instantly such as boss slimes
+        enemyHealth.enabled = false;
+        yield return new WaitForSeconds(immuneTime);
+        enemyHealth.enabled = true;
     }
 	
 	// Update is called once per frame

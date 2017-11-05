@@ -33,6 +33,8 @@ public class MoveTutor : MonoBehaviour {
             if (!GameManager.Instance.players[0].playerAttack.canDash)
             {
                 dialogueSpeaker.lines[0] = "Come back to me once you know how to dash";
+                dialogueSpeaker.UpdateLines();
+                return;
             }
             else
                 dialogueSpeaker.lines[0] = "Want me to teach you a move my boy?";

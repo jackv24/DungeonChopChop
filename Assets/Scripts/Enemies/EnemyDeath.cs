@@ -112,10 +112,21 @@ public class EnemyDeath : MonoBehaviour
 			for (int i = 0; i < amountToSplit; i++) 
 			{
 				//create the split enemies and set them to this position
-				GameObject enemy = ObjectPooler.GetPooledObject (splitEnemy);
-				enemy.transform.position = transform.position;
-				Die ();
+                GameObject enemy = ObjectPooler.GetPooledObject(splitEnemy);
+
+                enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().Warp(new Vector3(transform.position.x, 0, transform.position.z));
+
+                if (LevelGenerator.Instance)
+                {
+                    if (LevelGenerator.Instance.currentTile)
+                    {
+                        if (LevelGenerator.Instance.currentTile.GetComponentInChildren<EnemySpawner>())
+                            LevelGenerator.Instance.currentTile.GetComponentInChildren<EnemySpawner>().spawnedEnemies.Add(enemy);     
+                    }
+                }
 			}
+
+            Die ();
 		}
 	}
 

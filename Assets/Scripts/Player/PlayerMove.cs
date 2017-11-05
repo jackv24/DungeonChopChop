@@ -16,7 +16,6 @@ public class PlayerMove : MonoBehaviour
 	[Header("Environment vals")]
     [Header("Desert")]
     public float inMudSpeed = .7f;
-    public float desertWindSpeed = .5f;
     [Header("Fire")]
     [Tooltip("Little lava spots, the speed damper, set value not multiplier")]
     public float inLavaSpeed = .7f;
@@ -29,7 +28,6 @@ public class PlayerMove : MonoBehaviour
     [Tooltip("The divider of the above value, when in lava puddle")]
     public float timeBetweenTickDivider = 1.5f;
     [Header("Ice")]
-    public float windSpeed = 2;
     public float inSnowSpeed = .7f;
     public float iceAcceleration = 1;
 
@@ -150,35 +148,6 @@ public class PlayerMove : MonoBehaviour
 		}
 	}
 
-    Vector3 WindPush()
-    {
-        if (!ItemsManager.Instance.hasBoots)
-        {
-            if (LevelGenerator.Instance)
-            {
-                if (LevelGenerator.Instance.currentTile && LevelGenerator.Instance.currentTile.GetComponent<TileParticles>())
-                {
-                    if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Ice)
-                    {
-                        if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>().HasParticles)
-                            return LevelGenerator.Instance.currentTile.transform.forward * windSpeed;
-                        else
-                            return Vector3.zero;
-                    }
-                    else if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Desert)
-                    {
-                        if (LevelGenerator.Instance.currentTile.GetComponent<TileParticles>().HasParticles)
-                            return LevelGenerator.Instance.currentTile.transform.forward * desertWindSpeed;
-                        else
-                            return Vector3.zero;
-                    }
-                }
-            }
-        }
-
-        return Vector3.zero;
-    }
-
     void FixedUpdate()
     {
         if (!ItemsManager.Instance.hasArmourPiece)
@@ -254,8 +223,6 @@ public class PlayerMove : MonoBehaviour
 
             //add to stats
             Statistics.Instance.distanceTraveled += characterController.velocity.magnitude * Time.deltaTime;
-
-            targetMoveVector += WindPush();
 
             if (CameraFollow.Instance)
                 targetMoveVector = CameraFollow.Instance.ValidateMovePos(transform.position, targetMoveVector);

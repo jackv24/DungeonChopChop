@@ -388,6 +388,7 @@ public class PlayerInformation : MonoBehaviour
             {
                 roomAmount = 0;
                 health.health += GetCharmFloat("regenAmount");
+                health.HealthChanged();
             }
         }
     }

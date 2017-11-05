@@ -317,7 +317,8 @@ public class EnemyMove : MonoBehaviour
             float dist = Vector3.Distance(transform.position, enemy.transform.position);
             if (dist < maxDistance)
             {
-                if (enemy != GetComponent<Collider>())
+                //check if the closest enemy is not this enemy or the player
+                if (enemy != GetComponent<Collider>() && enemy.gameObject.layer != 14)
                 {
                     if (enemy.gameObject.layer == 11)
                     {
