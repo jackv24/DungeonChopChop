@@ -16,7 +16,6 @@ public class ShowCutscene : MonoBehaviour {
     private AudioSource audioSource;
 
     private Coroutine movieCoroutine;
-    private Coroutine fadeCoroutine;
 
 	// Use this for initialization
 	void Start () 
@@ -35,7 +34,6 @@ public class ShowCutscene : MonoBehaviour {
 
     void DoCutscene()
     {
-        int count = 0;
         string key = "";
         //loop through all the dungeon items
         foreach (KeyValuePair<string, bool> item in ItemsManager.Instance.dungeonItems)
@@ -97,7 +95,6 @@ public class ShowCutscene : MonoBehaviour {
 
     IEnumerator playVideo(VideoClip videoToPlay)
     {
-        fadeCoroutine = null;
 
         yield return new WaitForSeconds(waitToPlayTime);
 

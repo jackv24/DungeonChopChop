@@ -15,7 +15,6 @@ public class SnowballMove : EnemyMove {
     private Vector3 prevPos;
     private float currentSpeed;
     private Vector3 originalScale;
-    private float currentScale = 0;
 
     void OnEnable()
     {
@@ -55,8 +54,6 @@ public class SnowballMove : EnemyMove {
 
     public override void FixedUpdate()
     {
-        currentScale = transform.localScale.x;
-
         FollowPlayer();
 
         if (currentSpeed > minSpeedToIncrease)

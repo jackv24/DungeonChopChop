@@ -20,16 +20,6 @@ public class Drops : MonoBehaviour
     [Space()]
     public bool isWizzer = false;
 
-    private Collider col;
-    private Animator animator;
-
-    // Use this for initialization
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-        col = GetComponent<Collider>();
-    }
-
     void FixedUpdate()
     {
         if (isWizzer)
