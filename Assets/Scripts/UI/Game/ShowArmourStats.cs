@@ -131,6 +131,8 @@ public class ShowArmourStats : MonoBehaviour {
             }
         }
 
+        dialogueSpeaker.UpdateLines();
+
         dialogueSpeaker.lines[0] = descriptionText;
     }
 }

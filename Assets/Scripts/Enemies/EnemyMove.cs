@@ -30,6 +30,8 @@ public class EnemyMove : MonoBehaviour
     public bool usingNav = true;
     private int roamCounter = 0;
 
+    private Vector3 destination;
+
     void Start()
     {
         Setup();
@@ -87,6 +89,19 @@ public class EnemyMove : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, .14f, transform.position.z);
             }
         }
+
+        //gets the agents current destination
+        if (agent)
+        {
+            if (agent.destination != null && destination != agent.destination)
+            {
+                destination = agent.destination;
+            }
+        }
+
+        //if the agent reaches the destination, get another desti
+        if (destination == agent.transform.position)
+            GoToRandomPosition();
     }
 
     public virtual void FixedUpdate()
@@ -194,14 +209,9 @@ public class EnemyMove : MonoBehaviour
             { 
                 timeBetweenRoam = Random.Range(3 / 2, 3 * 1.5f);
                 //roams to a random position on the current tile
-                if (usingNav)
-                {
-                    if (agent.isOnNavMesh)
-                    {
-                        if (LevelGenerator.Instance)
-                            agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
-                    }
-                }
+
+                GoToRandomPosition();
+
                 roamCounter = 0; 
             } 
         }
@@ -209,6 +219,18 @@ public class EnemyMove : MonoBehaviour
         {
             if (agent.isOnNavMesh)
                 agent.ResetPath();
+        }
+    }
+
+    void GoToRandomPosition()
+    {
+        if (usingNav)
+        {
+            if (agent.isOnNavMesh)
+            {
+                if (LevelGenerator.Instance)
+                    agent.SetDestination(LevelGenerator.Instance.currentTile.GetPosInTile(1, 1)); 
+            }
         }
     }
 
@@ -318,7 +340,7 @@ public class EnemyMove : MonoBehaviour
             if (dist < maxDistance)
             {
                 //check if the closest enemy is not this enemy or the player
-                if (enemy != GetComponent<Collider>() && enemy.gameObject.layer != 14)
+                if (enemy != GetComponent<Collider>())
                 {
                     if (enemy.gameObject.layer == 11)
                     {
@@ -334,7 +356,7 @@ public class EnemyMove : MonoBehaviour
         else if (enemies.Length > 2)
             return enemies[2].transform;
         else
-            return GetClosestPlayer();
+            return transform;
     }
 
     protected void LookAtClosestPlayer(float rotateSpeed)

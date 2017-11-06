@@ -31,6 +31,7 @@ public class WelcomeMan : MonoBehaviour {
                 ItemsManager.Instance.hasGauntles)
             {
                 dialogueSpeaker.lines[0] = messageAfterCollectingLoot;
+                looted = true;
             }
             else
             {
