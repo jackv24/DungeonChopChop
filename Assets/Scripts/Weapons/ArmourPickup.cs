@@ -22,7 +22,7 @@ public class ArmourPickup : MonoBehaviour
 
         if (itemPickup)
         {
-            itemPickup.representingItem.Pickup(playerInfo);
+            playerInfo.PickupItem((InventoryItem)itemPickup.representingItem);
         }
     }
 }

@@ -35,6 +35,7 @@ public class ShowArmourStats : MonoBehaviour {
                 dialogueSpeaker.Close();
                 enabled = false;
                 dialogueSpeaker.enabled = false;
+                gameObject.SetActive(false);
             }
         }
     }
@@ -131,8 +132,8 @@ public class ShowArmourStats : MonoBehaviour {
             }
         }
 
-        dialogueSpeaker.UpdateLines();
-
         dialogueSpeaker.lines[0] = descriptionText;
+
+        dialogueSpeaker.UpdateLines();
     }
 }

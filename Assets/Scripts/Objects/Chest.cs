@@ -193,6 +193,8 @@ public class Chest : MonoBehaviour
         }
         else if (obj.GetComponent<ArmourPickup>())
         {
+            Debug.Log("armor");
+
             obj.AddComponent<DialogueSpeaker>();
             obj.AddComponent<ShowArmourStats>();
 
