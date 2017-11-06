@@ -199,10 +199,27 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 				if(tile.Biome != biome)
                     continue;
 
-				//If this tile can be a special tile, add it to the list
+                //If this tile can be a special tile, add it to the list
                 SpecialTile special = tile.GetComponent<SpecialTile>();
                 if (special)
-                    possibleTiles.Add(special);
+                {
+					bool possible = true;
+
+					//Check surrounding tiles
+					foreach(Transform door in tile.doors)
+					{
+                        LevelDoor d = door.GetComponent<LevelDoor>();
+						if(d)
+						{
+							//Don't let this special tile be at the edge of another biome
+							if(d.targetTile && d.targetTile.Biome != tile.Biome)
+                                possible = false;
+                        }
+                    }
+
+					if(possible)
+                    	possibleTiles.Add(special);
+                }
             }
 
 			//Loop through special tile types
