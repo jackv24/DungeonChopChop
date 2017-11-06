@@ -17,7 +17,7 @@ public class TotalEnemiesKilled : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(SpawnEnemyIcons());
+        
 	}
 	
 	// Update is called once per frame
@@ -25,22 +25,19 @@ public class TotalEnemiesKilled : MonoBehaviour {
 		
 	}
 
-    IEnumerator SpawnEnemyIcons()
+    public IEnumerator SpawnEnemyIcons()
     {
         foreach (EnemyType enemy in Statistics.Instance.enemiesKilled)
         {
-            if (enemy == EnemyType.AppleShooter)
-            {
-                GameObject sprite = new GameObject();
-                sprite.AddComponent<Image>();
+            GameObject sprite = new GameObject();
+            sprite.AddComponent<Image>();
 
-                if (GetIcon(enemy) != null)
-                    sprite.GetComponent<Image>().sprite = GetIcon(enemy);
+            if (GetIcon(enemy) != null)
+                sprite.GetComponent<Image>().sprite = GetIcon(enemy);
 
-                sprite.transform.parent = transform;
+            sprite.transform.parent = transform;
 
-                yield return new WaitForSeconds(timeBetweenIconSpawn);
-            }
+            yield return new WaitForSeconds(timeBetweenIconSpawn);
         }
     }
 

@@ -24,6 +24,7 @@ public enum EnemyType
     PaddyBum,
     MushBoom,
     Snowballs,
+    Fireball
 }
 
 public class Health : MonoBehaviour

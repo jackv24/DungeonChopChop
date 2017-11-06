@@ -50,5 +50,9 @@ public class DeathScreen : MonoBehaviour {
 
         WheelOfFortune wheel = GameObject.FindObjectOfType<WheelOfFortune>();
         wheel.SpinWheel();
+
+        TotalEnemiesKilled enemyIconSpawner = GameObject.FindObjectOfType<TotalEnemiesKilled>();
+
+        StartCoroutine(enemyIconSpawner.SpawnEnemyIcons());
     }
 }

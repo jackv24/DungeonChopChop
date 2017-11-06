@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class ShowDungeonIconsUI : MonoBehaviour {
 
-	public Sprite[] dungeonIcons;
-
 	private Image[] children;
 
 	// Use this for initialization
@@ -18,13 +16,13 @@ public class ShowDungeonIconsUI : MonoBehaviour {
 	void FixedUpdate () {
 		
 		//sets the correct image if the current dungeon has been completed
-		if (ItemsManager.Instance.hasGoggles)
-			children [0].sprite = dungeonIcons [0];
-		if (ItemsManager.Instance.hasBoots)
-			children [1].sprite = dungeonIcons [1];
-		if (ItemsManager.Instance.hasArmourPiece)
-			children [2].sprite = dungeonIcons [2];
-		if (ItemsManager.Instance.hasGauntles)
-			children [3].sprite = dungeonIcons [3];
+        if (ItemsManager.Instance.hasGoggles)
+            children[0].enabled = true;
+        if (ItemsManager.Instance.hasBoots)
+            children[1].enabled = true;
+        if (ItemsManager.Instance.hasArmourPiece)
+            children[2].enabled = true;
+        if (ItemsManager.Instance.hasGauntles)
+            children[3].enabled = true;
 	}
 }

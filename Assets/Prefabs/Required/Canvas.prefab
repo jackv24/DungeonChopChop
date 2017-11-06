@@ -971,7 +971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1190881761630608
 GameObject:
   m_ObjectHideFlags: 1
@@ -3548,6 +3548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224699980745894106}
   - component: {fileID: 114891322537966304}
+  - component: {fileID: 114308941738251808}
   m_Layer: 5
   m_Name: DungeonItems
   m_TagString: Untagged
@@ -7966,9 +7967,9 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: -50, y: 0}
+  m_Spacing: {x: -70, y: -75}
   m_Constraint: 1
-  m_ConstraintCount: 35
+  m_ConstraintCount: 15
 --- !u!114 &114186947133033192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9213,6 +9214,17 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &114308941738251808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1701999944251524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15f7128a3b998a43a5a21d6b44580de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114309048396583046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16330,8 +16342,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyIcons:
   - enemyType: 1
-    enemyIcon: {fileID: 0}
-  - enemyType: 1
     enemyIcon: {fileID: 21300000, guid: 77be73603b921574a83f40dc92f78ad5, type: 3}
   - enemyType: 2
     enemyIcon: {fileID: 21300000, guid: 154cb5223dab200458c3a82d640222fc, type: 3}
@@ -16349,6 +16359,8 @@ MonoBehaviour:
     enemyIcon: {fileID: 21300000, guid: 5adc3803d6e464e45a4daa2ef5d33311, type: 3}
   - enemyType: 9
     enemyIcon: {fileID: 21300000, guid: d2a8ef91eb967d848a62ce7597ea7852, type: 3}
+  - enemyType: 10
+    enemyIcon: {fileID: 21300000, guid: f3099b5844bc84f4584bdaeeab04ff44, type: 3}
   timeBetweenIconSpawn: 0.1
 --- !u!114 &114920522921054186
 MonoBehaviour:
@@ -18616,7 +18628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -829, y: 0}
+  m_AnchoredPosition: {x: -902, y: 61}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224074968959019622
@@ -20614,7 +20626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: -395}
+  m_AnchoredPosition: {x: 500, y: -290}
   m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224426327843414486
@@ -21487,7 +21499,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 445}
+  m_SizeDelta: {x: 1000, y: 340}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224619751634020836
 RectTransform:
@@ -22519,7 +22531,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 619, y: 15}
+  m_AnchoredPosition: {x: 588, y: 15}
   m_SizeDelta: {x: 749.6, y: 355.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224790201106173290
