@@ -12,7 +12,7 @@ public class ProjectileCollision : MonoBehaviour {
     public SoundEffect hitSound;
 
 	[HideInInspector]
-	public float damageMultiplyer;
+	public float damageMultiplyer = 1;
     [HideInInspector]
     public float thrust;
 

@@ -641,10 +641,12 @@ public class PlayerAttack : MonoBehaviour
         //stop block things
         SoundManager.PlaySound(stopBlockSounds, transform.position);
         playerInformation.ResetMoveSpeed();
+
         if (animator)
         {
             animator.SetBool("Blocking", false);
         }
+
         blocking = false;
     }
 

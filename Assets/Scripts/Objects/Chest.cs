@@ -40,6 +40,9 @@ public class Chest : MonoBehaviour
     public float releaseItemDelay = 1.5f;
     public float releaseItemForce = 10.0f;
 
+    [Header("Audio")]
+    public SoundEffect openSound;
+
 
     [HideInInspector]
 	public BaseItem containingItem;
@@ -147,7 +150,8 @@ public class Chest : MonoBehaviour
             else if (chestType == ChestType.Dungeon)
                 StartCoroutine(ReleaseItems(true));
         }
-			
+
+        SoundManager.PlaySound(openSound, transform.position);	
 
 		//Remove icon from map once opened
 		MapTracker icon = GetComponent<MapTracker>();
