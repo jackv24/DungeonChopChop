@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour
 
         //make sure we are in the game scene
         SceneManager.sceneLoaded += SceneChange; 
+
+        StartingItem startingItem = GameObject.FindObjectOfType<StartingItem>();
+
+        if (startingItem)
+            startingItem.AddStartingItems();
     }
 
     public void Reset()

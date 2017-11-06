@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114444563507713712}
   - component: {fileID: 114690830379536424}
   - component: {fileID: 114768219054495528}
+  - component: {fileID: 114466454014761952}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -53,6 +54,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac0f3ba4d774b64f96963fd2a0f39c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114466454014761952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1384920532058918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 557262d8c72c41245a91941203aedae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTime: 2
+  prize:
+    randomizeAll: 0
+    sword: {fileID: 0}
+    randomSword: 0
+    shield: {fileID: 0}
+    randomShield: 0
+    item: {fileID: 0}
+    randomItem: 0
+    charm: {fileID: 0}
+    randomCharm: 0
+    coins: 0
+    keys: 0
+    dungeonKeys: 0
+  itemsAdded: 0
 --- !u!114 &114690830379536424
 MonoBehaviour:
   m_ObjectHideFlags: 11

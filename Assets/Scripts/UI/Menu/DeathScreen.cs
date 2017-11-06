@@ -47,5 +47,8 @@ public class DeathScreen : MonoBehaviour {
     {
         yield return new WaitForSeconds(2);
         deathScreen.SetActive(true);
+
+        WheelOfFortune wheel = GameObject.FindObjectOfType<WheelOfFortune>();
+        wheel.SpinWheel();
     }
 }

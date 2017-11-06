@@ -100,8 +100,11 @@ public class EnemyMove : MonoBehaviour
         }
 
         //if the agent reaches the destination, get another desti
-        if (destination == agent.transform.position)
-            GoToRandomPosition();
+        if (destination != null && agent)
+        {
+            if (destination == agent.transform.position)
+                GoToRandomPosition();
+        }
     }
 
     public virtual void FixedUpdate()
