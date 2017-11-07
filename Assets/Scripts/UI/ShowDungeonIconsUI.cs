@@ -17,12 +17,12 @@ public class ShowDungeonIconsUI : MonoBehaviour {
 		
 		//sets the correct image if the current dungeon has been completed
         if (ItemsManager.Instance.hasGoggles)
-            children[0].enabled = true;
+            children[0].gameObject.SetActive(true);
         if (ItemsManager.Instance.hasBoots)
-            children[1].enabled = true;
+            children[1].gameObject.SetActive(true);
         if (ItemsManager.Instance.hasArmourPiece)
-            children[2].enabled = true;
+            children[2].gameObject.SetActive(true);
         if (ItemsManager.Instance.hasGauntles)
-            children[3].enabled = true;
+            children[3].gameObject.SetActive(true);
 	}
 }
