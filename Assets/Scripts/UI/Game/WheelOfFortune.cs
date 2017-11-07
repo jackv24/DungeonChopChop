@@ -147,7 +147,7 @@ public class WheelOfFortune : MonoBehaviour
 
     void Randomize()
     {
-        int randomOption = Random.Range(0, 5);
+        int randomOption = Random.Range(0, 4);
 
         if (randomOption == 0)
             prizes[itemNumber].sword = RandomSword();
@@ -157,8 +157,6 @@ public class WheelOfFortune : MonoBehaviour
             prizes[itemNumber].item = RandomItem();
         else if (randomOption == 3)
             prizes[itemNumber].charm = RandomCharm();
-        else if (randomOption == 4)
-            RandomVar(itemNumber);
     }
 
     SwordStats RandomSword()

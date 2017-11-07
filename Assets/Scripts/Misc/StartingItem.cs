@@ -21,7 +21,7 @@ public class StartingItem : MonoBehaviour {
     IEnumerator AddItems()
     {
         yield return new WaitForSeconds(waitTime);
-        Debug.Log("add items");
+
         //find which items are occupied, then add them to the player(s)
         if (prize.sword)
             AddSword();

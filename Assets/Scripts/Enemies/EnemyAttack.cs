@@ -310,11 +310,11 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnCollisionStay(Collision col)
     {
         CheckCollisions(col.collider);
     }
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
         CheckCollisions(col);
     }
