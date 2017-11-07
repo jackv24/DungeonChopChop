@@ -200,12 +200,8 @@ public class PlayerInformation : MonoBehaviour
             {
                 if (currentItems[i].armourType == item.armourType)
                 {
-                    //creates a new item and adds it to the list
-                    InventoryItem oldItem = currentItems[currentItems.Count - 1];
-                    //removes the older item
-                    currentItems.Remove(oldItem);
-
-                    //get tje current item charm that has the same enum
+                  
+                    //get the current item charm that has the same enum
                     for (int j = 0; j < currentItemCharms.Count; j++)
                     {
                         if (currentItemCharms.ContainsKey(item.armourType))
@@ -217,9 +213,15 @@ public class PlayerInformation : MonoBehaviour
                     currentItemCharms.Remove(item.armourType);
                     currentItemCharms.Add(item.armourType, item.charm);
 
+                    //creates a new item and adds it to the list
+                    InventoryItem oldItem = currentItems[i];
+
                     if (oldItem.charm)
                         oldItem.charm.Drop(this);
                     oldItem.Drop(this);
+
+                    //removes the older item
+                    currentItems.Remove(oldItem);
 
                     break;
                 }
