@@ -35,7 +35,8 @@ public class SlimeMove : EnemyMove {
     [Space()]
     public float timeBetweenStopMin = 2;
     public float timeBetweenStopMax = 4;
-    public float stopTime = 1;
+    public float minStopTime = 1;
+    public float maxStopTime = 3;
 
     [Space()]
     public bool friendly = false;
@@ -59,7 +60,10 @@ public class SlimeMove : EnemyMove {
 
         agent.enabled = true;
 
+        canMove = true;
+
         StartCoroutine(immune());
+
         base.OnEnable();
     }
         
@@ -147,7 +151,8 @@ public class SlimeMove : EnemyMove {
     IEnumerator WaitToMove()
     {
         canMove = false;
-        yield return new WaitForSeconds(stopTime);
+        float random = Random.Range(minStopTime, maxStopTime);
+        yield return new WaitForSeconds(random);
         canMove = true;
     }
 
