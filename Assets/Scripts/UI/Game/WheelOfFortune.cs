@@ -107,19 +107,19 @@ public class WheelOfFortune : MonoBehaviour
         {
             //get the correct prize and set the text
             if (startingItem.prize.sword)
-                playAgainText.text = "Play again and you'll start with a <color=grey>'" + startingItem.prize.sword.swordName + "'</color>";
+                playAgainText.text = "TAKE THIS ITEM TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.sword.swordName + "'</color>";
             else if (startingItem.prize.shield)
-                playAgainText.text = "Play again and you'll start with a <color=grey>'" + startingItem.prize.shield.shieldName + "'</color>";
+                playAgainText.text = "TAKE THIS ITEM TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.shield.shieldName + "'</color>";
             else if (startingItem.prize.item)
-                playAgainText.text = "Play again and you'll start with a <color=grey>'" + startingItem.prize.item.displayName + "'</color>";
+                playAgainText.text = "TAKE THIS ITEM TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.item.displayName + "'</color>";
             else if (startingItem.prize.charm)
-                playAgainText.text = "Play again and you'll start with a <color=grey>'" + startingItem.prize.charm.displayName + "'</color> charm";
+                playAgainText.text = "TAKE THIS ITEM TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.charm.displayName + "'</color> charm";
             else if (startingItem.prize.coins > 0)
-                playAgainText.text = "Play again and you'll start with an extra <color=grey>'" + startingItem.prize.coins + "'</color> coins";
+                playAgainText.text = "TAKE THIS ITEM TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.coins + "'</color> coins";
             else if (startingItem.prize.keys > 0)
-                playAgainText.text = "Play again and you'll start with an extra <color=grey>'" + startingItem.prize.keys + "'</color> key";
+                playAgainText.text = "TAKE THIS ITEM TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.keys + "'</color> key";
             else if (startingItem.prize.dungeonKeys > 0)
-                playAgainText.text = "Play again and you'll start with an extra <color=grey>'" + startingItem.prize.dungeonKeys + "'</color> Dungeon key";
+                playAgainText.text = "TAKE THIS ITEM TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.dungeonKeys + "'</color> Dungeon key";
 
             playAgainText.gameObject.SetActive(true);
         }
