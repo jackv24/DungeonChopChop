@@ -59,9 +59,9 @@ public class ShowShieldStats : MonoBehaviour {
     {
         if (playerInfo.playerAttack.shield)
         {
-            resistanceMultiplier = thisShieldStats.blockingResistance - playerInfo.GetComponent<PlayerAttack>().shield.blockingResistance;
+            resistanceMultiplier = thisShieldStats.blockingResistance - playerInfo.GetComponent<PlayerAttack>().shield.blockingResistance * 10;
             SetTextColor(resistanceMultiplier, ref resistanceColor);
-            speedDamping = thisShieldStats.speedDamping - playerInfo.GetComponent<PlayerAttack>().shield.speedDamping;
+            speedDamping = thisShieldStats.speedDamping - playerInfo.GetComponent<PlayerAttack>().shield.speedDamping * 10;
             SetTextColor(speedDamping, ref speedDampingColor);
 
             if (resistanceMultiplier > 0)
