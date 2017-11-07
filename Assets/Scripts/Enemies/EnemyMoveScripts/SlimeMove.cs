@@ -82,12 +82,15 @@ public class SlimeMove : EnemyMove {
             }
         }
 
-        counter++;
-        if (counter > (timeBetweenMove * 60))
+        if (canMove)
         {
-            StartCoroutine(WaitToMove());
-            timeBetweenMove = Random.Range(timeBetweenStopMin, timeBetweenStopMax);
-            counter = 0;
+            counter++;
+            if (counter > (timeBetweenMove * 60))
+            {
+                StartCoroutine(WaitToMove());
+                timeBetweenMove = Random.Range(timeBetweenStopMin, timeBetweenStopMax);
+                counter = 0;
+            }
         }
     }
 
