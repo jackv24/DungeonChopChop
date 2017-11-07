@@ -2,6 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class EnemyKind
+{
+    public EnemyType enemyType;
+    public EnemyBiomeType enemyBiome;
+}
+
+[System.Serializable]
+public enum EnemyBiomeType
+{
+    All,
+    Grass,
+    Forest,
+    Desert,
+    Ice,
+    Fire,
+    Dungeon
+}
+
+[System.Serializable]
+public enum EnemyType
+{
+    None,
+    Slime,
+    AppleShooter,
+    Bisp,
+    Visp,
+    SnapEye,
+    CrystalTurret,
+    PaddyBum,
+    MushBoom,
+    Snowballs,
+    Fireball
+}
+
 public class Statistics : MonoBehaviour {
 
     public static Statistics Instance;
@@ -22,7 +57,7 @@ public class Statistics : MonoBehaviour {
     [Space()]
     public int totalEnemiesKilled;
 
-    public List<EnemyType> enemiesKilled = new List<EnemyType>(0);
+    public List<EnemyKind> enemiesKilled = new List<EnemyKind>(0);
 
     [Header("Health Stats")]
     public float totalDamageTaken;

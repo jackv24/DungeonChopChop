@@ -89,9 +89,9 @@ public class EnemyDeath : MonoBehaviour
         else if (deathType == TypesOfDeath.BossDrops)
             StartCoroutine(CreateBossDrop());
 
-        Statistics.Instance.GetEnemy(health.enemyType);
+        Statistics.Instance.GetEnemy(health.enemyKind.enemyType);
 
-        Statistics.Instance.enemiesKilled.Add(health.enemyType);
+        Statistics.Instance.enemiesKilled.Add(health.enemyKind);
 
         CameraShake.ShakeScreen(deathShake.magnitude, deathShake.shakeAmount, deathShake.duration);
 	}

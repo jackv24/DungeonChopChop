@@ -12,21 +12,6 @@ public class CameraShakeVars
     public float duration = 1;
 }
 
-public enum EnemyType
-{
-    None,
-    Slime,
-    AppleShooter,
-    Bisp,
-    Visp,
-    SnapEye,
-    CrystalTurret,
-    PaddyBum,
-    MushBoom,
-    Snowballs,
-    Fireball
-}
-
 public class Health : MonoBehaviour
 {
     public float maxHealth;
@@ -44,7 +29,7 @@ public class Health : MonoBehaviour
 
     [Space()]
     public bool IsEnemy;
-    public EnemyType enemyType;
+    public EnemyKind enemyKind;
     public bool isProp;
 
     [Space()]

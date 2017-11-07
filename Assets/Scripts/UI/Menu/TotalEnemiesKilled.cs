@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class EnemyIcon
 {
-    public EnemyType enemyType;
+    public EnemyKind enemyKind;
     public Sprite enemyIcon;
 }
 
@@ -27,7 +27,7 @@ public class TotalEnemiesKilled : MonoBehaviour {
 
     public IEnumerator SpawnEnemyIcons()
     {
-        foreach (EnemyType enemy in Statistics.Instance.enemiesKilled)
+        foreach (EnemyKind enemy in Statistics.Instance.enemiesKilled)
         {
             GameObject sprite = new GameObject();
             sprite.AddComponent<Image>();
@@ -41,12 +41,12 @@ public class TotalEnemiesKilled : MonoBehaviour {
         }
     }
 
-    Sprite GetIcon(EnemyType type)
+    Sprite GetIcon(EnemyKind type)
     {
         //loop through the icons and get the correct one depending on type
         foreach (EnemyIcon enemyIcon in enemyIcons)
         {
-            if (enemyIcon.enemyType == type)
+            if (enemyIcon.enemyKind.enemyType == type.enemyType && enemyIcon.enemyKind.enemyBiome == type.enemyBiome)
                 return enemyIcon.enemyIcon;
         }
 
