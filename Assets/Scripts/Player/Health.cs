@@ -920,6 +920,8 @@ public class Health : MonoBehaviour
 
             yield return new WaitForSeconds(duration);
 
+            isFrozen = false;
+
             UnFreeze();
 
             SetOGFade();
@@ -940,7 +942,10 @@ public class Health : MonoBehaviour
         //enable move script
         if (animator)
             animator.enabled = true;
-        if (GetComponent<EnemyMove>())
+
+        if (GetComponent<PlayerInformation>())
+            GetComponent<PlayerMove>().enabled = true;
+        else if (GetComponent<EnemyMove>())
             GetComponent<EnemyMove>().enabled = true;
 
         isFrozen = false;
