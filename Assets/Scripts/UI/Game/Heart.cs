@@ -10,7 +10,7 @@ public class Heart : MonoBehaviour {
 
 	private Health playerHealth;
 	private Image image;
-	private Image[] childImages;
+	public Image[] childImages;
 
 	private bool containerActive = true;
 
@@ -18,7 +18,9 @@ public class Heart : MonoBehaviour {
 	void Start () {
 		heartNumber = transform.GetSiblingIndex () + 1;
 		image = transform.GetChild(1).GetComponent<Image> ();
+
 		StartCoroutine (wait ());
+
 		childImages = transform.GetComponentsInChildren<Image> ();
 	}
 
