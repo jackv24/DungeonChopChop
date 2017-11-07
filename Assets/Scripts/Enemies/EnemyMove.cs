@@ -89,22 +89,6 @@ public class EnemyMove : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, .14f, transform.position.z);
             }
         }
-
-        //gets the agents current destination
-        if (agent)
-        {
-            if (agent.destination != null && destination != agent.destination)
-            {
-                destination = agent.destination;
-            }
-        }
-
-        //if the agent reaches the destination, get another desti
-        if (destination != null && agent)
-        {
-            if (destination == agent.transform.position)
-                GoToRandomPosition();
-        }
     }
 
     public virtual void FixedUpdate()
