@@ -197,12 +197,12 @@ public class Shop : MonoBehaviour
         else if (possibleVal < currentVal)
         {
             col = lessColour;
-            str = "-" + difference;
+            str = "-" + difference * 10;
         }
         else if (possibleVal > currentVal)
         {
             col = moreColour;
-            str = "+" + difference;
+            str = "+" + difference * 10;
         }
     }
 

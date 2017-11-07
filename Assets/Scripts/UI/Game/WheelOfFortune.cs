@@ -50,12 +50,20 @@ public class WheelOfFortune : MonoBehaviour
 
     void Start()
     {
-        spinning = false;
-        anglePerItem = 360/prizes.Count;        
+                
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            SpinWheel();
     }
 
     public void SpinWheel()
     {
+        spinning = false;
+        anglePerItem = 360/prizes.Count;
+
         randomTime = Random.Range (1, 4);
         itemNumber = Random.Range (0, prizes.Count);
         float maxAngle = 360 * randomTime + (itemNumber * anglePerItem);

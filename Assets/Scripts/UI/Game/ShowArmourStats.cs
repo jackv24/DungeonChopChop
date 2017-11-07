@@ -54,7 +54,7 @@ public class ShowArmourStats : MonoBehaviour {
 
     void PositiveOrNegativeString(ref string str, ref Color col, float currentVal, float possibleVal)
     {
-        float difference = Mathf.Abs(possibleVal - currentVal);
+        float difference = Mathf.Abs(possibleVal - currentVal) * 10;
 
         difference = (float)System.Math.Round(difference, 2);
 

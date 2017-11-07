@@ -190,7 +190,6 @@ public class EnemySpawner : MonoBehaviour
 						if (effect)
 						{
 							effect.transform.position = transform.TransformPoint(spawn.position);
-							effect.transform.rotation = effectPrefab.transform.rotation;
 						}
 					}
 				}

@@ -271,6 +271,8 @@ public class Health : MonoBehaviour
             isSandy = false;
         }
 
+        UnFreeze();
+
         maxHealth *= GameManager.Instance.enemyHealthMultiplier;
 
         health = maxHealth;
@@ -739,19 +741,12 @@ public class Health : MonoBehaviour
 
         SetOGFade();
 
-        //a safety in case the player gets stuck the wrong color;
-        if (!IsEnemy && !isProp)
-        {
-            yield return new WaitForSeconds(2);
-            ResetPlayerColour();
-        }
-
         SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.End, transform.position);
 
         //a safety in case the player gets stuck the wrong color;
         if (!IsEnemy && !isProp)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(5);
             ResetPlayerColour();
         }
     }
@@ -824,14 +819,14 @@ public class Health : MonoBehaviour
         if (!isProp)
             SetOGFade();
 
+        SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.End, transform.position);
+
         //a safety in case the player gets stuck the wrong color;
         if (!IsEnemy && !isProp)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(5);
             ResetPlayerColour();
         }
-
-        SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.End, transform.position);
     }
 
     /// <summary>
@@ -882,14 +877,14 @@ public class Health : MonoBehaviour
 
         SetOGFade();
 
+        SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.End, transform.position);
+
         //a safety in case the player gets stuck the wrong color;
         if (!IsEnemy && !isProp)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(5);
             ResetPlayerColour();
         }
-
-        SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.End, transform.position);
     }
 
     /// <summary>
@@ -925,26 +920,30 @@ public class Health : MonoBehaviour
 
             yield return new WaitForSeconds(duration);
 
-            //enable move script
-            animator.enabled = true;
-            if (GetComponent<PlayerMove>())
-                GetComponent<PlayerMove>().enabled = true;
-            else if (GetComponent<EnemyMove>())
-                GetComponent<EnemyMove>().enabled = true;
-
-            isFrozen = false;
+            UnFreeze();
 
             SetOGFade();
+
+            SoundManager.PlayAilmentSound(StatusType.Ice, ailmentSoundType.End, transform.position);
 
             //a safety in case the player gets stuck the wrong color;
             if (!IsEnemy && !isProp)
             {
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(5);
                 ResetPlayerColour();
             }
-
-            SoundManager.PlayAilmentSound(StatusType.Ice, ailmentSoundType.End, transform.position);
         }
+    }
+
+    void UnFreeze()
+    {
+        //enable move script
+        if (animator)
+            animator.enabled = true;
+        if (GetComponent<EnemyMove>())
+            GetComponent<EnemyMove>().enabled = true;
+
+        isFrozen = false;
     }
 
     /// Sets slow speed.
