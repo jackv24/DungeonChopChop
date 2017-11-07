@@ -546,7 +546,9 @@ MonoBehaviour:
   health: 4
   weight: 2
   IsEnemy: 1
-  enemyType: 6
+  enemyKind:
+    enemyType: 6
+    enemyBiome: 4
   isProp: 0
   isPoisoned: 0
   isBurned: 0
@@ -962,6 +964,7 @@ MonoBehaviour:
   duration: 5
   damageOnExplode: 2
   knockbackOnExplode: 5
+  shrinktime: 0.0005
 --- !u!114 &114464434552433862
 MonoBehaviour:
   m_ObjectHideFlags: 1
