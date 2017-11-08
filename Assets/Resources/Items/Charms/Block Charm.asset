@@ -11,15 +11,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f143d12257910c478a59dfbda8cf2eb, type: 3}
   m_Name: Block Charm
   m_EditorClassIdentifier: 
-  displayName: 'speedy sheildin '
+  displayName: 'Sprint and Shield '
   itemInfo: Move faster while blocking
   itemIcon: {fileID: 21300000, guid: 3977ae38905d6f44cbe4c278c23f3654, type: 3}
   cost: 100
   charmFloats:
   - floatKey: blockSpeedMultiplier
-    floatValue: 2
+    floatValue: 1.2
     global: 0
   charmBools: []
   layerMask:
     serializedVersion: 2
     m_Bits: 0
+  pickUpSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
