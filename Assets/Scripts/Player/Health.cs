@@ -859,6 +859,8 @@ public class Health : MonoBehaviour
         
         isSlowlyDying = true;
 
+        CreateAilmentIcon("InfectedCanvas");
+
         StartCoroutine(doSlowDeath(damagePerTick, duration, timeBetweenDeathTick));
 
         SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.Start, transform.position);
@@ -892,6 +894,8 @@ public class Health : MonoBehaviour
             }
             yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
         }
+
+        ailmentIcon.SetActive(false);
 
         SetOGFade();
 
