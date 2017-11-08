@@ -64,14 +64,17 @@ public class Pause : MonoBehaviour
 
 	void ShowStatsScreen()
 	{
-		statsDisplayed = true;
+        if (!DeathScreen.deathScreenShown)
+        {
+            statsDisplayed = true;
 
-		SlowTime(1, 0);
+            SlowTime(1, 0);
 
-		if (statsScreen)
-			statsScreen.SetActive (true);
+            if (statsScreen)
+                statsScreen.SetActive(true);
 
-		paused = true;
+            paused = true;
+        }
 	}
 
 	void UnShowStatsScreen()
@@ -93,7 +96,10 @@ public class Pause : MonoBehaviour
         SlowTime(1, 0);
 
         if (firstSelected)
-			EventSystem.current.SetSelectedGameObject(firstSelected);
+        {
+            EventSystem.current.SetSelectedGameObject(firstSelected);
+            EventSystem.current.firstSelectedGameObject = firstSelected;
+        }
     }
 
     public void UnPauseGame(bool slowDown = true)
@@ -166,12 +172,16 @@ public class Pause : MonoBehaviour
     public void ExitOption()
     {
         YesOrNoPanel.SetActive(true);
-        EventSystem.current.SetSelectedGameObject (No.gameObject);
+        {
+            EventSystem.current.SetSelectedGameObject(No.gameObject);
+            EventSystem.current.firstSelectedGameObject = No.gameObject;
+        }
     }
 
     public void ExitNo()
     {
         YesOrNoPanel.SetActive(false);
 		EventSystem.current.SetSelectedGameObject (firstSelected);
+        EventSystem.current.firstSelectedGameObject = firstSelected;
     }
 }
