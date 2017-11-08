@@ -83,6 +83,26 @@ public class SoundManager : MonoBehaviour
                 audioMixer.SetFloat("MusicVolume", Helper.LinearToDecibel(PlayerPrefs.GetFloat("MusicVolume")));
             }
 		}
+
+		if(LevelGenerator.Instance)
+		{
+            LevelGenerator.Instance.OnGenerationStart += delegate { Mute(true); };
+            Mute(true);
+            LevelGenerator.Instance.OnGenerationFinished += delegate { Mute(false); };
+        }
+		else
+            Debug.LogError("No levelgenerator instance for soundmanager to subscribe to!");
+    }
+
+	public void Mute(bool value)
+	{
+        if (audioMixer)
+        {
+            if (value)
+                audioMixer.SetFloat("MasterVolume", Helper.LinearToDecibel(0));
+			else
+				audioMixer.SetFloat("MasterVolume", Helper.LinearToDecibel(PlayerPrefs.GetFloat("MasterVolume", 1.0f)));
+        }
     }
 
 	public static void FadeMusicByBiome(LevelTile.Biomes biome)

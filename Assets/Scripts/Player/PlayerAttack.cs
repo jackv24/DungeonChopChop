@@ -751,6 +751,8 @@ public class PlayerAttack : MonoBehaviour
                 }
                 canDash = false;
 
+                cancelDash = false;
+
                 StartCoroutine(dash());
                 StartCoroutine(dashCooldownTimer());
             }
