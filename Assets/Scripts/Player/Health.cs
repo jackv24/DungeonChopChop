@@ -77,6 +77,8 @@ public class Health : MonoBehaviour
     private bool unfadeWhite = false;
     private bool fadeToOG = false;
 
+    private GameObject ailmentIcon;
+
     private Coroutine coroutine;
 
     void Start()
@@ -265,6 +267,12 @@ public class Health : MonoBehaviour
         isDead = false;
     }
 
+    void OnDisable()
+    {
+        if (ailmentIcon)
+            ailmentIcon.SetActive(false);
+    }
+
     public void TemporaryInvincibility()
     {
         if (playerInfo)
@@ -389,8 +397,6 @@ public class Health : MonoBehaviour
     {
         AddRenderersToList();
 
-        AddColorsToList();
-
         if (renderers != null)
         {
             //loops through each and sets the hit color
@@ -459,7 +465,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    void ResetPlayerColour()
+    void ResetColour()
     {
         AddRenderersToList();
 
@@ -651,14 +657,23 @@ public class Health : MonoBehaviour
 
     void DoParticle(string particleName, float duration)
     {
-        GameObject particle = Instantiate(Resources.Load<GameObject>(particleName), transform.position, Quaternion.Euler(0, 0, 0));
-        particle.GetComponent<ParticleFollowHost>().host = transform;
-        ParticleSystem ps = particle.GetComponent<ParticleSystem>();
-        ps.Stop();
-        ParticleSystem.MainModule main = ps.main;
-        main.duration = duration * main.simulationSpeed;
-        ps.Play();
-        Destroy(particle, duration + 2);
+        for (int i = 0; i < 2; i++)
+        {
+            GameObject particle = Instantiate(Resources.Load<GameObject>(particleName), transform.position, Quaternion.Euler(0, 0, 0));
+            particle.GetComponent<ParticleFollowHost>().host = transform;
+
+            ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+            ps.Stop();
+
+            ParticleSystem.MainModule main = ps.main;
+            main.duration = duration * main.simulationSpeed;
+
+            if (i == 1)
+                main.simulationSpace = ParticleSystemSimulationSpace.Local;
+
+            ps.Play();
+            Destroy(particle, duration + 2);
+        }
     }
 
     bool canBeDamagedFromEffect()
@@ -676,6 +691,16 @@ public class Health : MonoBehaviour
         return true;
     }
 
+    void CreateAilmentIcon(string canvasName)
+    {
+        //creates the icon above the player/enemy to show its ailmented
+        ailmentIcon = ObjectPooler.GetPooledObject(Resources.Load<GameObject>(canvasName));
+
+        ailmentIcon.transform.position = new Vector3(transform.position.x, GetComponent<Collider>().bounds.max.y, transform.position.z);
+
+        ailmentIcon.GetComponent<AilmentIcon>().host = gameObject;
+    }
+
     /// <summary>
     /// Sets the poison.
     /// </summary>
@@ -685,6 +710,8 @@ public class Health : MonoBehaviour
     {
         if (playerInfo)
             damagePerTick *= playerInfo.GetCharmFloat("poisonMultiplier");
+
+        CreateAilmentIcon("PoisonCanvas");
         
         isPoisoned = true;
 
@@ -724,6 +751,8 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenPoison);
         }
 
+        ailmentIcon.SetActive(false);
+
         SetOGFade();
 
         SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.End, transform.position);
@@ -732,7 +761,7 @@ public class Health : MonoBehaviour
         if (!IsEnemy && !isProp)
         {
             yield return new WaitForSeconds(5);
-            ResetPlayerColour();
+            ResetColour();
         }
     }
 
@@ -753,6 +782,8 @@ public class Health : MonoBehaviour
                     damagePerTick = 0;
                 }
             }
+
+            CreateAilmentIcon("FireCanvas");
 
             isBurned = true;
 
@@ -804,13 +835,15 @@ public class Health : MonoBehaviour
         if (!isProp)
             SetOGFade();
 
+        ailmentIcon.SetActive(false);
+
         SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.End, transform.position);
 
         //a safety in case the player gets stuck the wrong color;
         if (!IsEnemy && !isProp)
         {
             yield return new WaitForSeconds(5);
-            ResetPlayerColour();
+            ResetColour();
         }
     }
 
@@ -868,7 +901,7 @@ public class Health : MonoBehaviour
         if (!IsEnemy && !isProp)
         {
             yield return new WaitForSeconds(5);
-            ResetPlayerColour();
+            ResetColour();
         }
     }
 
@@ -881,6 +914,8 @@ public class Health : MonoBehaviour
         isFrozen = true;
 
         DoParticle("IceTickParticle", duration);
+
+        CreateAilmentIcon("IceCanvas");
 
         StartCoroutine(doIce(duration));
     }
@@ -909,6 +944,8 @@ public class Health : MonoBehaviour
 
             UnFreeze();
 
+            ailmentIcon.SetActive(false);
+
             SetOGFade();
 
             SoundManager.PlayAilmentSound(StatusType.Ice, ailmentSoundType.End, transform.position);
@@ -917,7 +954,7 @@ public class Health : MonoBehaviour
             if (!IsEnemy && !isProp)
             {
                 yield return new WaitForSeconds(5);
-                ResetPlayerColour();
+                ResetColour();
             }
         }
     }
@@ -944,6 +981,8 @@ public class Health : MonoBehaviour
         isSandy = true;
 
         DoParticle("SandTickParticle", duration);
+
+        CreateAilmentIcon("SlowCanvas");
 
         StartCoroutine(doSandy(duration, speedDamping));
     }
@@ -986,8 +1025,10 @@ public class Health : MonoBehaviour
             if (!IsEnemy && !isProp)
             {
                 yield return new WaitForSeconds(2);
-                ResetPlayerColour();
+                ResetColour();
             }
+
+            ailmentIcon.SetActive(false);
 
             SoundManager.PlayAilmentSound(StatusType.Sandy, ailmentSoundType.End, transform.position);
 
