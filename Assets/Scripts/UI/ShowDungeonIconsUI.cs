@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class ShowDungeonIconsUI : MonoBehaviour {
 
-	private Image[] children;
+    private RawImage[] children;
 
 	// Use this for initialization
 	void Start () {
-		children = GetComponentsInChildren<Image> ();
+		children = GetComponentsInChildren<RawImage> ();
+
+        foreach (RawImage child in children)
+            child.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame

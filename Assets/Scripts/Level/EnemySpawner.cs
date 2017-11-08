@@ -242,7 +242,7 @@ public class EnemySpawner : MonoBehaviour
 						if (newEnemies)
 							undefeatedEnemies.Add(spawn);
 
-						enemy.transform.position = transform.TransformPoint(spawn.position);
+                        enemy.transform.position = transform.TransformPoint(new Vector3(spawn.position.x, 0, spawn.position.z));
                         enemy.transform.rotation = transform.rotation;
                         enemy.transform.Rotate(spawn.rotation);
 
