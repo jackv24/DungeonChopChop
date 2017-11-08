@@ -117,7 +117,7 @@ BoxCollider:
   m_Center: {x: -0.054244995, y: 0.60537505, z: 0.2167604}
 --- !u!114 &114334442801035282
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298106489440056}
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298106489440056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9730be639f682d4da59408dbd269d44, type: 3}
   m_Name: 
@@ -163,7 +163,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -171,11 +173,11 @@ MonoBehaviour:
   isFrozen: 0
   isSandy: 0
   isDead: 0
-  poisonColor: {r: 0, g: 0, b: 0, a: 0}
-  burnColor: {r: 0.32988605, g: 0.3455882, b: 0.060986172, a: 1}
-  slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
-  frozenColor: {r: 0, g: 0, b: 0, a: 0}
-  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  poisonColor: {r: 0.7296146, g: 0.4007353, b: 0.8014706, a: 0.447}
+  burnColor: {r: 0.3111741, g: 0.31617647, b: 0.22550821, a: 1}
+  slowlyDyingColor: {r: 0.3671064, g: 0.5147059, b: 0.4047697, a: 0.528}
+  frozenColor: {r: 0.6185121, g: 0.90004176, b: 0.9558824, a: 0.497}
+  sandyColor: {r: 0.9821501, g: 1, b: 0.6764706, a: 0.447}
   hitParticles: []
   hitSounds:
     clips: []
@@ -192,7 +194,7 @@ MonoBehaviour:
     duration: 1
 --- !u!114 &114622999231863052
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298106489440056}
