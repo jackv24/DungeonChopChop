@@ -61,6 +61,8 @@ public class EnemyAttack : MonoBehaviour
 
     private Collider col;
 
+    private List<Collider> colliding = new List<Collider>();
+
     LevelTile parentTile = null;
 
     void Start()
@@ -166,6 +168,11 @@ public class EnemyAttack : MonoBehaviour
         else
         {
             ChoseAttackType();
+        }
+
+        for (int i = 0; i < colliding.Count; i++)
+        {
+            CheckCollisions(colliding[i]);
         }
     }
 
@@ -310,13 +317,27 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    void OnCollisionStay(Collision col)
+    void OnCollisionEnter(Collision col)
     {
-        CheckCollisions(col.collider);
-    }
-    void OnTriggerStay(Collider col)
-    {
-        CheckCollisions(col);
+        if(!colliding.Contains(col.collider))
+            colliding.Add(col.collider);
     }
 
+    void OnTriggerEnter(Collider col)
+    {
+        if (!colliding.Contains(col))
+            colliding.Add(col);
+    }
+
+    void OnCollisionExit(Collision col)
+    {
+        if (colliding.Contains(col.collider))
+            colliding.Remove(col.collider);
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (colliding.Contains(col))
+            colliding.Remove(col);
+    }
 }
