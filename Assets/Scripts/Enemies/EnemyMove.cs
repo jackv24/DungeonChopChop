@@ -73,11 +73,13 @@ public class EnemyMove : MonoBehaviour
 
     IEnumerator stall()
     {
-        //fixes issue with enemies spazzing around the screen on spawn
-        rb.isKinematic = true;
-        yield return new WaitForSeconds(1);
-        rb.isKinematic = false;
-
+        if (rb)
+        {
+            //fixes issue with enemies spazzing around the screen on spawn
+            rb.isKinematic = true;
+            yield return new WaitForSeconds(1);
+            rb.isKinematic = false;
+        }
     }
 
     void ChangeMoveSpeed()
