@@ -24,6 +24,7 @@ public class EnemyMove : MonoBehaviour
     protected Animator animator;
     protected EnemyAttack enemyAttack;
     protected Health enemyHealth;
+    protected Rigidbody rb;
 
     protected bool runAway = false;
     protected bool canMove = true;
@@ -66,6 +67,17 @@ public class EnemyMove : MonoBehaviour
             animator.enabled = true;
 
         ChangeMoveSpeed();
+
+        StartCoroutine(stall());
+    }
+
+    IEnumerator stall()
+    {
+        //fixes issue with enemies spazzing around the screen on spawn
+        rb.isKinematic = true;
+        yield return new WaitForSeconds(1);
+        rb.isKinematic = false;
+
     }
 
     void ChangeMoveSpeed()
@@ -109,6 +121,7 @@ public class EnemyMove : MonoBehaviour
 
     protected void Setup()
     {
+        rb = GetComponent<Rigidbody>();
         enemyHealth = GetComponent<Health>();
         enemyAttack = GetComponent<EnemyAttack>();
         animator = GetComponentInChildren<Animator>();
