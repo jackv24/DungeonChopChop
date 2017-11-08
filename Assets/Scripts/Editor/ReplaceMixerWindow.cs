@@ -27,32 +27,43 @@ public class ReplaceMixerWindow : EditorWindow
 
 		EditorGUILayout.Space();
 
-		if (GUILayout.Button("Replace") && EditorUtility.DisplayDialog("Confirm", "Are you SURE you want to do this? Please make sure to apply all prefabs aferwards!", "I'm sure", "No, I'm scared"))
+		if (GUILayout.Button("Replace Selected") && EditorUtility.DisplayDialog("Confirm", "Are you SURE you want to do this? Please make sure to apply all prefabs aferwards!", "I'm sure", "No, I'm scared"))
 		{
-			Replace();
+			Replace(true);
 		}
+
+		if(GUILayout.Button("Replace ALL (in project)") && EditorUtility.DisplayDialog("Confirm", "Are you SURE you want to do this? It will change a lot of files!", "I'm sure", "No, I'm scared"))
+		{
+            Replace(false);
+        }
 	}
 
-	void Replace()
+	void Replace(bool selected)
 	{
-		GameObject[] parents = Selection.gameObjects;
-
 		List<AudioSource> sources = new List<AudioSource>();
 
-		foreach(GameObject parent in parents)
-		{
-			AudioSource[] srcs = parent.GetComponentsInChildren<AudioSource>();
+        if (selected)
+        {
+			GameObject[] parents = Selection.gameObjects;
 
-			foreach(AudioSource source in srcs)
-			{
-				if (source.outputAudioMixerGroup == currentMixer)
-					sources.Add(source);
-			}
-		}
+            foreach (GameObject parent in parents)
+            {
+                AudioSource[] srcs = parent.GetComponentsInChildren<AudioSource>();
 
-		foreach(AudioSource source in sources)
+                sources.AddRange(srcs);
+            }
+        }
+		else
 		{
-            source.outputAudioMixerGroup = replaceMixer;
+            AudioSource[] srcs = Resources.FindObjectsOfTypeAll<AudioSource>();
+
+            sources.AddRange(srcs);
+        }
+
+        foreach(AudioSource source in sources)
+		{
+            if (source.outputAudioMixerGroup == currentMixer)
+            	source.outputAudioMixerGroup = replaceMixer;
         }
 	}
 }
