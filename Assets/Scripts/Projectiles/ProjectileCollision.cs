@@ -54,7 +54,7 @@ public class ProjectileCollision : MonoBehaviour {
                     }
                     else
                     {
-                        if (!col.transform.GetComponent<PlayerAttack>().blocking)
+                        if (!col.transform.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(1).IsTag("Blocking"))
                         {
                             col.transform.GetComponent<Health>().AffectHealth((-damageAmount * damageMultiplyer / playerInfo.resistance));
                         } 
