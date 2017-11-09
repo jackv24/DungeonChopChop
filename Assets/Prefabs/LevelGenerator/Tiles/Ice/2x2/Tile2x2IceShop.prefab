@@ -1652,6 +1652,7 @@ GameObject:
   - component: {fileID: 114572969990975388}
   - component: {fileID: 114216094013562754}
   - component: {fileID: 114178056934813186}
+  - component: {fileID: 114665579029935598}
   m_Layer: 0
   m_Name: Tile2x2IceShop
   m_TagString: Untagged
@@ -10515,7 +10516,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -10556,6 +10559,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -10950,6 +10954,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -11331,6 +11336,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -11610,6 +11616,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -12797,6 +12804,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -13035,6 +13043,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -13509,6 +13518,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -13974,6 +13984,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -14248,7 +14259,9 @@ MonoBehaviour:
   health: 2
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -14450,6 +14463,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -14874,6 +14888,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -15113,7 +15128,9 @@ MonoBehaviour:
   health: 2
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -15353,7 +15370,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -15616,7 +15635,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -15733,6 +15754,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -15993,6 +16015,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: cedd6dc0-b82f-437b-947f-3f6dfb898c71
+--- !u!114 &114665579029935598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1612257649552334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb6b29c2e8d230409547ba19cf98a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text:
+    title: Shop
+    description: Buy stuff plz
 --- !u!114 &114670770424458204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16008,7 +16044,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -16050,7 +16088,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -16092,7 +16132,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -16233,6 +16275,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -16636,6 +16679,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -16874,7 +16918,9 @@ MonoBehaviour:
   health: 2
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -16963,6 +17009,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -17459,7 +17506,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -18248,7 +18297,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
