@@ -2249,7 +2249,6 @@ GameObject:
   - component: {fileID: 4646526072644442}
   - component: {fileID: 114299744617931608}
   - component: {fileID: 114695644440049546}
-  - component: {fileID: 114728445530862548}
   - component: {fileID: 114847156919496994}
   - component: {fileID: 114213192597501862}
   - component: {fileID: 114517556856983720}
@@ -5929,6 +5928,7 @@ GameObject:
   - component: {fileID: 23529125788323242}
   - component: {fileID: 65358062006376866}
   - component: {fileID: 114206644505097354}
+  - component: {fileID: 114392271050706530}
   m_Layer: 12
   m_Name: Terrain01 (1)
   m_TagString: Untagged
@@ -29866,6 +29866,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 6c69fc86-fe23-451c-ac1e-0775b7e0d278
+--- !u!114 &114392271050706530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1836531554618786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e12b6b668ad0b499ef88df05383d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: fca75e101c1967141a6a42a8107a9384, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  scale: 1
+  setLastSibling: 0
+  showOnTileEnter: 1
+  registerOnce: 1
 --- !u!114 &114392298017767348
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -31826,20 +31843,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: a5eb348f-9c2d-4859-a487-92e416415962
---- !u!114 &114728445530862548
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1314715572596284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f540a4525f2d4c74583f06e619f32852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replaceTile: {fileID: 1478362487944136, guid: 3c63cb467001c5e49b53010948dc9f62,
-    type: 2}
-  resetRotation: 1
 --- !u!114 &114733319068123788
 MonoBehaviour:
   m_ObjectHideFlags: 11
