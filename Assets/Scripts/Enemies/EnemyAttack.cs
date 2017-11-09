@@ -371,10 +371,7 @@ public class EnemyAttack : MonoBehaviour
         c.col = col.collider;
 
         if (health)
-        {
-            if (colliding.Contains(c))
-                colliding.Remove(c);
-        }
+            colliding.Clear();
     }
 
     void OnTriggerExit(Collider col)
@@ -387,9 +384,6 @@ public class EnemyAttack : MonoBehaviour
         c.col = col;
 
         if (health)
-        {
-            if (colliding.Contains(c))
-                colliding.Remove(c);
-        }
+            colliding.Clear();
     }
 }
