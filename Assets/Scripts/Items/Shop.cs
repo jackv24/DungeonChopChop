@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
+    public delegate void ShopEvent();
+    public event ShopEvent OnItemPurchased;
+
 	public Transform itemSpawn;
 
 	public BaseItem sellingItem;
@@ -53,6 +56,9 @@ public class Shop : MonoBehaviour
 			if(ItemsManager.Instance.Coins >= sellingItem.cost)
 			{
 				ItemsManager.Instance.Coins -= sellingItem.cost;
+
+                if (OnItemPurchased != null)
+                    OnItemPurchased();
 
                 PlaySound();
 
@@ -140,6 +146,8 @@ public class Shop : MonoBehaviour
 	public void SpawnItem(BaseItem item)
 	{
 		sellingItem = item;
+
+        itemSpawn.gameObject.DestroyChildren(true);
 
 		if (item is InventoryItem)
 		{
