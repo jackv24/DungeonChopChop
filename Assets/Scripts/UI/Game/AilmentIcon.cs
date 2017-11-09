@@ -13,9 +13,12 @@ public class AilmentIcon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (host.activeSelf)
-            transform.position = new Vector3(host.transform.position.x, transform.position.y, host.transform.position.z);
-        else
-            gameObject.SetActive(false);
+        if (host)
+        {
+            if (host.activeSelf)
+                transform.position = new Vector3(host.transform.position.x, transform.position.y, host.transform.position.z);
+            else
+                gameObject.SetActive(false);
+        }
 	}
 }

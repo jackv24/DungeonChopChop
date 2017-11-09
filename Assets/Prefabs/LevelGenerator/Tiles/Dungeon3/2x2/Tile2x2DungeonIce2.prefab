@@ -20347,6 +20347,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -20858,6 +20859,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -21234,7 +21236,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -21287,6 +21291,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -21663,7 +21668,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -21779,7 +21786,7 @@ MonoBehaviour:
   _guid: c0a51eee-7459-4aef-842b-866f2e375f10
 --- !u!114 &114110867859400684
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1289621626432770}
@@ -22089,6 +22096,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -22339,6 +22347,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -22819,6 +22828,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -23418,7 +23428,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -23830,7 +23842,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -24266,6 +24280,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -24529,7 +24544,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -24800,6 +24817,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -25286,6 +25304,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -25716,7 +25735,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -26557,7 +26578,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -26874,6 +26897,7 @@ MonoBehaviour:
   currentProfileIndex: 0
   profiles: []
   spawnedEnemies: []
+  undefeatedEnemies: []
 --- !u!114 &114551589539356368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27472,7 +27496,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -27601,6 +27627,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -27995,6 +28022,7 @@ MonoBehaviour:
       position: {x: -13.278381, y: 0, z: 15.158573}
       rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
+  undefeatedEnemies: []
 --- !u!114 &114617135204832612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28178,7 +28206,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -28491,6 +28521,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -28920,6 +28951,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -29737,6 +29769,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -30043,6 +30076,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -30339,7 +30373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae416ab9026aa8d46ab99af043185ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyReplaceTile: {fileID: 1292269836195934, guid: d859ee3c628f8b74bb7b20a5c0a6e0f2,
+  keyReplaceTile: {fileID: 1292269836195934, guid: f3e243c090d96df40b12b37f4be54cfe,
     type: 2}
   chestReplaceTile: {fileID: 1205456036086828, guid: a91bf86861e691a41b137eb138a49f3b,
     type: 2}
@@ -30487,7 +30521,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -30743,7 +30779,7 @@ MonoBehaviour:
   _guid: 9ecff361-6dda-48e0-9f13-28a0abbd0998
 --- !u!114 &114821348220385386
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1289621626432770}
@@ -31044,7 +31080,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -31110,7 +31148,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -31169,7 +31209,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -31266,6 +31308,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -31807,7 +31850,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -32360,7 +32405,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -32480,7 +32527,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -32663,6 +32712,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:

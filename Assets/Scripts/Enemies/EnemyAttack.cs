@@ -13,6 +13,12 @@ public enum TypesOfAttack
 
 public class EnemyAttack : MonoBehaviour
 {
+    struct Colliding
+    {
+        public Collider col;
+        public Health health;
+    }
+
 
     public TypesOfAttack attackingType;
 
@@ -61,7 +67,7 @@ public class EnemyAttack : MonoBehaviour
 
     private Collider col;
 
-    private List<Health> colliding = new List<Health>();
+    private List<Colliding> colliding = new List<Colliding>();
 
     LevelTile parentTile = null;
 
@@ -270,31 +276,31 @@ public class EnemyAttack : MonoBehaviour
         } 
     }
 
-    void CheckCollisions(Health health)
+    void CheckCollisions(Colliding c)
     {
-        if (col.gameObject.GetComponent<PlayerInformation>())
+        if (c.col.gameObject.GetComponent<PlayerInformation>())
         {
-            PlayerInformation playerInfo = col.gameObject.GetComponent<PlayerInformation>();
+            PlayerInformation playerInfo = c.col.gameObject.GetComponent<PlayerInformation>();
             //checks to see if the player is invincible or not
-            if (!col.gameObject.GetComponent<PlayerInformation>().invincible)
+            if (!c.col.gameObject.GetComponent<PlayerInformation>().invincible)
             {
                 //gets the direction
-                Vector3 dir = transform.position - col.transform.position;
+                Vector3 dir = transform.position - c.col.transform.position;
                 //add knockback to the player
                 playerInfo.KnockbackPlayer(-dir, knockbackStrength);
-                if (!col.transform.GetComponent<PlayerAttack>().blocking)
+                if (!c.col.transform.GetComponent<PlayerAttack>().blocking)
                 {
-                    health.Damaged();
-                    health.AffectHealth(-damageOnTouch / playerInfo.resistance);
+                    c.health.Damaged();
+                    c.health.AffectHealth(-damageOnTouch / playerInfo.resistance);
                 }
                 else
                 {
                     //checks if the user is facing whatever the collision is coming from
-                    float dot = Vector3.Dot(col.transform.forward, (transform.position - col.transform.position).normalized);
+                    float dot = Vector3.Dot(c.col.transform.forward, (transform.position - c.col.transform.position).normalized);
                     if (dot < 0.5f)
                     {
-                        health.Damaged();
-                        health.AffectHealth(-damageOnTouch / playerInfo.resistance);
+                        c.health.Damaged();
+                        c.health.AffectHealth(-damageOnTouch / playerInfo.resistance);
 
                         //add knockback to the player
                         playerInfo.KnockbackPlayer(-dir, knockbackStrength);
@@ -317,8 +323,8 @@ public class EnemyAttack : MonoBehaviour
             //if slowly dying, set whatever touches it to slowly dying
             if (enemyHealth.isSlowlyDying)
             {
-                if (!health.isSlowlyDying)
-                    health.SetSlowDeath();
+                if (!c.health.isSlowlyDying)
+                    c.health.SetSlowDeath();
             }
         }
     }
@@ -327,10 +333,15 @@ public class EnemyAttack : MonoBehaviour
     {
         Health health = col.transform.GetComponent<Health>();
 
+        Colliding c;
+
+        c.health = health;
+        c.col = col.collider;
+
         if (health)
         {
-            if (!colliding.Contains(health))
-                colliding.Add(health);
+            if (!colliding.Contains(c))
+                colliding.Add(c);
         }
     }
 
@@ -338,10 +349,15 @@ public class EnemyAttack : MonoBehaviour
     {
         Health health = col.transform.GetComponent<Health>();
 
+        Colliding c;
+
+        c.health = health;
+        c.col = col;
+
         if (health)
         {
-            if (!colliding.Contains(health))
-                colliding.Add(health);
+            if (!colliding.Contains(c))
+                colliding.Add(c);
         }
     }
 
@@ -349,10 +365,15 @@ public class EnemyAttack : MonoBehaviour
     {
         Health health = col.transform.GetComponent<Health>();
 
+        Colliding c;
+
+        c.health = health;
+        c.col = col.collider;
+
         if (health)
         {
-            if (colliding.Contains(health))
-                colliding.Remove(health);
+            if (colliding.Contains(c))
+                colliding.Remove(c);
         }
     }
 
@@ -360,10 +381,15 @@ public class EnemyAttack : MonoBehaviour
     {
         Health health = col.transform.GetComponent<Health>();
 
+        Colliding c;
+
+        c.health = health;
+        c.col = col;
+
         if (health)
         {
-            if (colliding.Contains(health))
-                colliding.Remove(health);
+            if (colliding.Contains(c))
+                colliding.Remove(c);
         }
     }
 }

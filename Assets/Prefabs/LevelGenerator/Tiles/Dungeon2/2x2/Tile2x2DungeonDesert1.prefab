@@ -9905,7 +9905,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -9946,6 +9948,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -10411,6 +10414,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -10700,6 +10704,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -11106,7 +11111,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -11301,7 +11308,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -11903,7 +11912,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -12022,7 +12033,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -12307,6 +12320,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -12586,83 +12600,109 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -7.723114, y: 0, z: 2.5336838}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -4.145294, y: 0, z: 14.669662}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -18.370697, y: 0, z: 5.7874756}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -5.53479, y: 0, z: 20.387283}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -22.7164, y: 0, z: 0.34139633}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: 5.347107, y: 0, z: 12.212509}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -13.484711, y: 0, z: 27.258842}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -0.85162354, y: 0, z: 0.078510284}
+      rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -1.5461731, y: 0, z: 9.080269}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -3.6954346, y: 0, z: 14.323654}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -18.83316, y: 0, z: 18.173233}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -11.142273, y: 0, z: 4.4717445}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -25.418274, y: 0, z: -5.805359}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -10.429535, y: 0, z: 26.465698}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: 5.9291687, y: 0, z: -6.23398}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -26.388458, y: 0, z: 11.469864}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1337815962632390, guid: a2908f8e4671a0e45911625b0181bf32,
         type: 2}
       position: {x: -11.007385, y: 0, z: -0.269104}
+      rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -6.3089294, y: 0, z: 3.623825}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -19.44217, y: 0, z: -0.36557388}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -7.724823, y: 0, z: 25.351639}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -26.103424, y: 0, z: 6.968567}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -18.790741, y: 0, z: 19.033867}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -7.0415955, y: 0, z: -6.196575}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -2.296051, y: 0, z: 15.262772}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -3.9293823, y: 0, z: 11.579201}
+      rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
+  undefeatedEnemies: []
 --- !u!114 &114565448372627956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12839,6 +12879,11 @@ MonoBehaviour:
   animationBone: {fileID: 0}
   releaseItemDelay: 1
   releaseItemForce: 0
+  openSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   containingItem: {fileID: 0}
   containingObject: {fileID: 0}
   containingConsumables: []
@@ -13425,7 +13470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae416ab9026aa8d46ab99af043185ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyReplaceTile: {fileID: 1292269836195934, guid: d859ee3c628f8b74bb7b20a5c0a6e0f2,
+  keyReplaceTile: {fileID: 1292269836195934, guid: 5b3631d0166118348a6c72c7425b3c63,
     type: 2}
   chestReplaceTile: {fileID: 1205456036086828, guid: a91bf86861e691a41b137eb138a49f3b,
     type: 2}
@@ -13968,7 +14013,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
