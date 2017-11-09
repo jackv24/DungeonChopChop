@@ -159,9 +159,9 @@ public class PropDestroy : MonoBehaviour
 
             else if (dashDestroysIt)
             {
-                if (collider.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(1).IsTag("Dash"))
+                if (collider.gameObject.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(1).IsTag("Dash"))
                 {
-                    propHealth.AffectHealth(-collider.GetComponent<PlayerInformation>().GetSwordDamage());
+                    propHealth.AffectHealth(-10);
                     DoHitEffectAndSound();
                 }
             }
