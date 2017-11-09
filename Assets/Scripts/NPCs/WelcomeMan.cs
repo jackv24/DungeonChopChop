@@ -9,6 +9,10 @@ public class WelcomeMan : MonoBehaviour {
     public bool dropCoins = false;
     public int cashAmount;
 
+    [Header("Sounds and Effects")]
+    public SoundEffect collectSound;
+    public AmountOfParticleTypes[] collectParticle;
+
     private DialogueSpeaker dialogueSpeaker;
     private bool looted = false;
     private Drops drop;
@@ -50,6 +54,9 @@ public class WelcomeMan : MonoBehaviour {
                         {
                             ItemsManager.Instance.Coins += cashAmount;
                             ItemsManager.Instance.CoinChange();
+
+                            SoundManager.PlaySound(collectSound, transform.position);
+                            SpawnEffects.EffectOnHit(collectParticle, transform.position);
                         }
 
                         looted = true;

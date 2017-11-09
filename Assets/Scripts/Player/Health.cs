@@ -693,12 +693,15 @@ public class Health : MonoBehaviour
 
     void CreateAilmentIcon(string canvasName)
     {
-        //creates the icon above the player/enemy to show its ailmented
-        ailmentIcon = ObjectPooler.GetPooledObject(Resources.Load<GameObject>(canvasName));
+        if (!isProp)
+        {
+            //creates the icon above the player/enemy to show its ailmented
+            ailmentIcon = ObjectPooler.GetPooledObject(Resources.Load<GameObject>(canvasName));
 
-        ailmentIcon.transform.position = new Vector3(transform.position.x, GetComponent<Collider>().bounds.max.y, transform.position.z);
+            ailmentIcon.transform.position = new Vector3(transform.position.x, GetComponent<Collider>().bounds.max.y, transform.position.z);
 
-        ailmentIcon.GetComponent<AilmentIcon>().host = gameObject;
+            ailmentIcon.GetComponent<AilmentIcon>().host = gameObject;
+        }
     }
 
     /// <summary>

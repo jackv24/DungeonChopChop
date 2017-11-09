@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33593224554455382}
   - component: {fileID: 23597470389521406}
   - component: {fileID: 95951318664915894}
+  - component: {fileID: 114451932585074674}
   m_Layer: 0
   m_Name: Wooden_TableLeg
   m_TagString: Untagged
@@ -41,6 +42,8 @@ GameObject:
   - component: {fileID: 114025323175664782}
   - component: {fileID: 114080055462869908}
   - component: {fileID: 65949395042063618}
+  - component: {fileID: 114018752596169370}
+  - component: {fileID: 114358596994873508}
   m_Layer: 0
   m_Name: ShopStallYellow
   m_TagString: Untagged
@@ -58,6 +61,7 @@ GameObject:
   - component: {fileID: 4950445443520248}
   - component: {fileID: 33683817019618782}
   - component: {fileID: 23542212821691120}
+  - component: {fileID: 114414621611300798}
   m_Layer: 0
   m_Name: WoodenPole (2)
   m_TagString: Untagged
@@ -76,6 +80,7 @@ GameObject:
   - component: {fileID: 33146926261989354}
   - component: {fileID: 23129019629440564}
   - component: {fileID: 95302054535684642}
+  - component: {fileID: 114725179510716924}
   m_Layer: 0
   m_Name: Wooden_StallTable (1)
   m_TagString: Untagged
@@ -91,6 +96,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4690651752416950}
+  - component: {fileID: 114668352278964714}
   m_Layer: 0
   m_Name: ItemSpawn
   m_TagString: Untagged
@@ -109,6 +115,7 @@ GameObject:
   - component: {fileID: 33531152595486728}
   - component: {fileID: 23411851991948952}
   - component: {fileID: 95375187417378560}
+  - component: {fileID: 114246010185604712}
   m_Layer: 0
   m_Name: Wooden_TableLeg (1)
   m_TagString: Untagged
@@ -127,6 +134,7 @@ GameObject:
   - component: {fileID: 33596788179872200}
   - component: {fileID: 23118112265028850}
   - component: {fileID: 95609913663893042}
+  - component: {fileID: 114873193395833376}
   m_Layer: 0
   m_Name: MarketStallRoof_Red
   m_TagString: Untagged
@@ -144,6 +152,7 @@ GameObject:
   - component: {fileID: 4999032127498188}
   - component: {fileID: 33660856665767542}
   - component: {fileID: 23379454745175018}
+  - component: {fileID: 114672262820831286}
   m_Layer: 0
   m_Name: WoodenPole (4)
   m_TagString: Untagged
@@ -161,6 +170,7 @@ GameObject:
   - component: {fileID: 4650128758295080}
   - component: {fileID: 33737956759628406}
   - component: {fileID: 23627354411740102}
+  - component: {fileID: 114040822053619726}
   m_Layer: 0
   m_Name: WoodenPole (3)
   m_TagString: Untagged
@@ -658,6 +668,31 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114018752596169370
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1200341896979828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1200341896979828}
+    - {fileID: 1542502638044032}
+    - {fileID: 1108999325907446}
+    - {fileID: 1945953665903604}
+    - {fileID: 1777273864605824}
+    - {fileID: 1311165679872392}
+    - {fileID: 1296095514586112}
+    - {fileID: 1761559307559952}
+    - {fileID: 1389140552445732}
+  _assetGuid: f5394352e632c35408e73ee7cc53c1c7
 --- !u!114 &114025323175664782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -682,6 +717,18 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+--- !u!114 &114040822053619726
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1945953665903604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 1fd5f8e0-f9ba-4232-9674-56381e55a7a5
 --- !u!114 &114080055462869908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -713,3 +760,99 @@ MonoBehaviour:
   swordRangeName: Range
   shieldResistanceName: Strength
   shieldSpeedDampingName: Weight
+--- !u!114 &114246010185604712
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542502638044032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 8a516386-d9a3-4316-a5be-7a923d772e1b
+--- !u!114 &114358596994873508
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1200341896979828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: daf7640e-1e7a-4b93-99dd-0113d95e4a76
+--- !u!114 &114414621611300798
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1296095514586112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: dd1112dc-e1de-44a4-9767-9c59b73da637
+--- !u!114 &114451932585074674
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108999325907446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 20afb4ec-13eb-4249-bc82-36508e5bb20d
+--- !u!114 &114668352278964714
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1389140552445732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: ef67e07d-aa0e-41c2-8b56-2b0be2e808c9
+--- !u!114 &114672262820831286
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1777273864605824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 4e9dbef5-a17c-463b-8770-586ddd67a40f
+--- !u!114 &114725179510716924
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1311165679872392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: e89f6f15-6687-46a5-b92b-e35dbc5e36e2
+--- !u!114 &114873193395833376
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1761559307559952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: e7e2868a-b2aa-4b5d-8cf6-543a26b2eb7b
