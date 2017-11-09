@@ -12,6 +12,12 @@ public enum ChallengeType
 
 public class TileQuest : MonoBehaviour {
 
+    public delegate void TileEvent();
+
+    public event TileEvent OnQuestStarted;
+    public event TileEvent OnQuestComplete;
+    public event TileEvent OnQuestFailed;
+
     public ChallengeType challengeType;
     [Tooltip("Chance of this challenge happening")]
     public float chance = 100;
@@ -147,6 +153,9 @@ public class TileQuest : MonoBehaviour {
 
                 SetText();
 
+                if (OnQuestStarted != null)
+                    OnQuestStarted();
+
                 questStarted = true;
             }
         }
@@ -193,6 +202,9 @@ public class TileQuest : MonoBehaviour {
 
         //play sound
         SoundManager.PlaySound(completedSound, transform.position);
+
+        if (OnQuestComplete != null)
+            OnQuestComplete();
     }
 
     void FailedQuest()
@@ -204,5 +216,8 @@ public class TileQuest : MonoBehaviour {
 
         //play sound
         SoundManager.PlaySound(failedSound, transform.position);
+
+        if (OnQuestFailed != null)
+            OnQuestFailed();
     }
 }
