@@ -33,7 +33,9 @@ public class MapItem : BaseItem
 	{
 		if(LevelGenerator.Instance)
 		{
-			foreach(LevelTile tile in LevelGenerator.Instance.generatedTiles)
+            playerInfo.RegisterMapItem(this);
+
+            foreach(LevelTile tile in LevelGenerator.Instance.generatedTiles)
 			{
 				bool shouldReveal = false;
 				bool hasDungeonPin = false;

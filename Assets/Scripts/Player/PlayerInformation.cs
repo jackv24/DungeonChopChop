@@ -82,6 +82,8 @@ public class PlayerInformation : MonoBehaviour
             LevelGenerator.Instance.OnTileEnter += SpeedBuff;
             LevelGenerator.Instance.OnTileEnter += Forcefield;
             LevelGenerator.Instance.OnTileEnter += Paralysed;
+
+            LevelGenerator.Instance.OnGenerationFinished += RefreshMapItems;
         }
 
         PickupCharm(null);
@@ -581,4 +583,17 @@ public class PlayerInformation : MonoBehaviour
         }
     }
 
+    private List<MapItem> mapItems = new List<MapItem>();
+
+    public void RegisterMapItem(MapItem mapItem)
+    {
+        if(!mapItems.Contains(mapItem))
+            mapItems.Add(mapItem);
+    }
+
+    void RefreshMapItems()
+    {
+        foreach(MapItem item in mapItems)
+            item.Pickup(this);
+    }
 }
