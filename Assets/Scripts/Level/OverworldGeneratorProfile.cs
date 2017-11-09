@@ -236,8 +236,10 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 
                     hasPlaced[i] = tile.Replace((SpecialTile.SpecialType)i);
 
-					//If this type was placed, no need to try any more
-					if(hasPlaced[i])
+                    possibleTiles.Remove(tile);
+
+                    //If this type was placed, no need to try any more
+                    if(hasPlaced[i])
                         break;
 
 					//if it wasn't placed, remove this tile from the list and try again
