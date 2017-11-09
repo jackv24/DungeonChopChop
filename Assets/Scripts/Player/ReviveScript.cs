@@ -19,7 +19,7 @@ public class ReviveScript : MonoBehaviour
 
 	void Update ()
     {
-        if (spawnedDialogue)
+        if (dialogueSpeaker && dialogueSpeaker.IsOpen)
         {
             foreach (PlayerInformation player in GameManager.Instance.players)
             {

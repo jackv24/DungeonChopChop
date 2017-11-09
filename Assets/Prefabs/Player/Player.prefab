@@ -1660,10 +1660,12 @@ MonoBehaviour:
   rapidSlashCooldown: 0
   rapidSlashIncrease: 0.3
   multiSpeedMultiplier: 0.2
+  rapidJuicePerFrame: 1
   dashAtkDmgMultiplier: 2.5
   dashTime: 0.2
   dashSpeed: 35
   dashCooldown: 0.5
+  juicePerDash: 5
   autoBlock: 0
   rotationSpeed: 5
   enemyMask:
@@ -1675,6 +1677,7 @@ MonoBehaviour:
   flashDuration: 0.2
   whiteVal: 0.3
   amountOfFadeBack: 0.02
+  juicePerSpin: 10
   projectile: {fileID: 1046051531220336, guid: b38c0a4e23604034b95166e442e934bc, type: 2}
   shootPosition: {fileID: 1060991477999286}
   thrust: 20
@@ -2063,13 +2066,11 @@ MonoBehaviour:
   rotateSpeed: 20
   LockY: 1
   inMudSpeed: 0.7
-  desertWindSpeed: 0.2
   inLavaSpeed: 0.4
   damageInFireBiome: 0.2
   damageInFireMultiplier: 0.05
   timeBetweenBiomeBurn: 1.5
   timeBetweenTickDivider: 1.5
-  windSpeed: 1.5
   inSnowSpeed: 0.4
   iceAcceleration: 1
   slipOverride: 0
@@ -2282,7 +2283,7 @@ MonoBehaviour:
   _guid: 2f0f9f80-2f6e-4855-b4fc-ba93c642adcb
 --- !u!114 &114886540158930470
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515761076265150}
@@ -2358,7 +2359,7 @@ MonoBehaviour:
   currentCharms: []
   itemAmount: 5
   currentItems: []
-  currentCureAmount: 0
+  currentCureAmount: 100
   maxCureAmount: 100
   cureAmountUsedPerTick: 5
   cureOrbParticles:
@@ -2448,7 +2449,7 @@ MonoBehaviour:
   TownForceField: 0
 --- !u!114 &114904223674952548
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515761076265150}
@@ -2485,7 +2486,9 @@ MonoBehaviour:
   health: 4
   weight: 0
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 0
   isPoisoned: 0
   isBurned: 0

@@ -16,12 +16,14 @@ public class PlayerAttack : MonoBehaviour
     public float rapidSlashCooldown;
     public float rapidSlashIncrease = .04f;
     public float multiSpeedMultiplier = .7f;
+    public float rapidJuicePerFrame = .1f;
 
     [Header("Dash Vars")]
     public float dashAtkDmgMultiplier = 2;
     public float dashTime = 1.0f;
     public float dashSpeed = 5.0f;
     public float dashCooldown = 0.5f;
+    public float juicePerDash;
 
     [Header("Block Vars")]
     public bool autoBlock = false;
@@ -37,6 +39,7 @@ public class PlayerAttack : MonoBehaviour
     public float whiteVal;
     [Tooltip("The amount it fades back from the flash amount per milisecond")]
     public float amountOfFadeBack = .01f;
+    public float juicePerSpin;
 
     [Header("Projectile Vars")]
     public GameObject projectile;
@@ -190,14 +193,17 @@ public class PlayerAttack : MonoBehaviour
                         {
                             if (heldDownCounter > 30)
                             {
-                                animator.SetBool("SpinCharge", true);
-                                //make sure in spin charge state
-                                if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+                                if (playerInformation.currentCureAmount >= juicePerSpin)
                                 {
-                                    //do spin charge stuff
-                                    SoundManager.PlaySound(chargeSpinSounds, transform.position);
-                                    sword.GetComponent<SwordCollision>().DoChargeParticle();
-                                    heldDownCounter = 0;
+                                    animator.SetBool("SpinCharge", true);
+                                    //make sure in spin charge state
+                                    if (animator.GetCurrentAnimatorStateInfo(1).IsTag("SpinCharge"))
+                                    {
+                                        //do spin charge stuff
+                                        SoundManager.PlaySound(chargeSpinSounds, transform.position);
+                                        sword.GetComponent<SwordCollision>().DoChargeParticle();
+                                        heldDownCounter = 0;
+                                    }
                                 }
                             }
                         }
@@ -269,6 +275,8 @@ public class PlayerAttack : MonoBehaviour
                             animator.SetTrigger("Spin");
                             //set invincibility
                             playerHealth.InvincibilityForSecs(2);
+
+                            playerInformation.currentCureAmount -= juicePerDash;
                         }
                     }
                 }
@@ -722,39 +730,55 @@ public class PlayerAttack : MonoBehaviour
 
     void doRapidSlash()
     {
-        //do rapid slash things
-        SoundManager.PlaySound(rapidSounds, transform.position);
-        animator.SetBool("TripleAttack", true);
-        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
+        if (playerInformation.currentCureAmount >= rapidJuicePerFrame)
         {
-            playerInformation.SetMoveSpeed(playerInformation.GetOriginalMoveSpeed() * multiSpeedMultiplier);
+            //do rapid slash things
+            SoundManager.PlaySound(rapidSounds, transform.position);
+            animator.SetBool("TripleAttack", true);
+            if (animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
+            {
+                playerInformation.SetMoveSpeed(playerInformation.GetOriginalMoveSpeed() * multiSpeedMultiplier);
+            }
+
+            playerInformation.currentCureAmount -= rapidJuicePerFrame;
+        }
+        else
+        {
+            ResetCombo();
+            ResetSpin();
         }
     }
 
     void doDash()
     {
-        //make sure the player is not frozen
-        if (!playerHealth.isFrozen)
+        if (playerInformation.currentCureAmount >= juicePerDash)
         {
-            if (canDash)
+            //make sure the player is not frozen
+            if (!playerHealth.isFrozen)
             {
-                if (canDashAttack)
+                if (canDash)
                 {
-                    SoundManager.PlaySound(dashAttackSounds, transform.position);
-                    animator.SetTrigger("DashAttack");
-                    playerHealth.InvincibilityForSecs(dashTime + 1);
-                }
-                else
-                {
-                    SoundManager.PlaySound(dashSounds, transform.position);
-                    animator.SetTrigger("Dash");
-                }
-                canDash = false;
+                    if (canDashAttack)
+                    {
+                        SoundManager.PlaySound(dashAttackSounds, transform.position);
+                        animator.SetTrigger("DashAttack");
+                        playerHealth.InvincibilityForSecs(dashTime + 1);
+                    }
+                    else
+                    {
+                        SoundManager.PlaySound(dashSounds, transform.position);
+                        animator.SetTrigger("Dash");
+                    }
 
-                cancelDash = false;
+                    playerInformation.currentCureAmount -= juicePerDash;
 
-                StartCoroutine(dash());
-                StartCoroutine(dashCooldownTimer());
+                    canDash = false;
+
+                    cancelDash = false;
+
+                    StartCoroutine(dash());
+                    StartCoroutine(dashCooldownTimer());
+                }
             }
         }
     }

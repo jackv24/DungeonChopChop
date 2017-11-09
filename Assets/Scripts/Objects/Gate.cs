@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Gate : MonoBehaviour {
 
-    public bool open = false;
     public bool requiresKey = true;
 
     [Space()]
@@ -13,9 +12,11 @@ public class Gate : MonoBehaviour {
     private TileQuest tileQuest;
     private Animator animator;
 
+    private bool open = false;
+
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
 
         tileQuest = GetComponentInParent<TileQuest>();
 
@@ -24,7 +25,7 @@ public class Gate : MonoBehaviour {
     }
 
 
-    void OnCollisionEnter(Collider col)
+    void OnCollisionEnter(Collision col)
     {
         if (!open)
         {
@@ -38,6 +39,8 @@ public class Gate : MonoBehaviour {
                         if (ItemsManager.Instance.Keys > 0)
                         {
                             ItemsManager.Instance.Keys--;
+                            ItemsManager.Instance.KeyChange();
+
                             OpenGate();
                         }
                     }

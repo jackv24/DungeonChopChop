@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ShopSpawner : MonoBehaviour
 {
+    public delegate void ShopEvent();
+    public event ShopEvent OnItemPurchased;
+
 	[Header("Prefabs")]
 	public GameObject shopPrefab;
 	public GameObject[] decoratorPrefabs;
@@ -33,6 +36,8 @@ public class ShopSpawner : MonoBehaviour
 
 	private List<BaseItem> spawnedItems = new List<BaseItem>();
 
+    private List<Shop> spawnedShops = new List<Shop>();
+
 	public void Generate()
 	{
 		DeleteChildren();
@@ -56,8 +61,11 @@ public class ShopSpawner : MonoBehaviour
 					{
 						Shop shop = shopObj.GetComponent<Shop>();
 
-						if (shop)
-							shop.SpawnItem(item);
+                        if (shop)
+                        {
+                            shop.SpawnItem(item);
+                            spawnedShops.Add(shop);
+                        }
 					}
 				}
 
@@ -68,6 +76,14 @@ public class ShopSpawner : MonoBehaviour
 					decoratorObj.transform.localPosition = shopObj.transform.localPosition + OffsetDirection * decoratorSpacing;
 				}
 			}
+
+            if (Application.isPlaying)
+            {
+                foreach (Shop shop in spawnedShops)
+                {
+                    shop.OnItemPurchased += ItemPurchased;
+                }
+            }
 		}
 		else
 			Debug.LogError("Shop spawner has no shop prefab!");
@@ -75,6 +91,14 @@ public class ShopSpawner : MonoBehaviour
 
 	public void DeleteChildren()
 	{
+        if (Application.isPlaying)
+        {
+            foreach (Shop shop in spawnedShops)
+            {
+                shop.OnItemPurchased -= ItemPurchased;
+            }
+        }
+
 		for (int i = transform.childCount - 1; i >= 0; i--)
 		{
 			DestroyImmediate(transform.GetChild(i).gameObject, false);
@@ -88,4 +112,10 @@ public class ShopSpawner : MonoBehaviour
 
 		return decoratorPrefabs[Random.Range(0, decoratorPrefabs.Length)];
 	}
+
+    void ItemPurchased()
+    {
+        if (OnItemPurchased != null)
+            OnItemPurchased();
+    }
 }
