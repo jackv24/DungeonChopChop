@@ -14,6 +14,7 @@ public class TotalEnemiesKilled : MonoBehaviour {
 
     public EnemyIcon[] enemyIcons;
     public float timeBetweenIconSpawn = .1f;
+    public Text totalEnemiesText;
 
 	// Use this for initialization
 	void Start () {
@@ -21,12 +22,20 @@ public class TotalEnemiesKilled : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void FixedUpdate () 
+    {
+        if (transform.GetChild(transform.childCount - 1).GetComponent<RectTransform>().position.y < 120)
+        {
+            transform.GetComponent<RectTransform>().position = Vector3.Lerp(transform.GetComponent<RectTransform>().position, new Vector3(
+                transform.GetComponent<RectTransform>().position.x, 
+                transform.GetComponent<RectTransform>().position.y + 50, 
+                transform.GetComponent<RectTransform>().position.z), 2 * Time.fixedDeltaTime);
+        }
 	}
 
     public IEnumerator SpawnEnemyIcons()
     {
+        int enemyAmount = 0;
         foreach (EnemyKind enemy in Statistics.Instance.enemiesKilled)
         {
             GameObject sprite = new GameObject();
@@ -36,6 +45,10 @@ public class TotalEnemiesKilled : MonoBehaviour {
                 sprite.GetComponent<Image>().sprite = GetIcon(enemy);
 
             sprite.transform.parent = transform;
+
+            totalEnemiesText.text = "Total Enemies Killed: " + enemyAmount;
+
+            enemyAmount++;
 
             yield return new WaitForSeconds(timeBetweenIconSpawn);
         }
