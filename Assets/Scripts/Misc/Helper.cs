@@ -164,11 +164,14 @@ public static class Helper
         }
     }
 
-	public static void DestroyChildren(this GameObject gameObject)
+    public static void DestroyChildren(this GameObject gameObject, bool immediate = false)
 	{
 		for (int i = gameObject.transform.childCount - 1; i >= 0 ; i--)
 		{
-            GameObject.Destroy(gameObject.transform.GetChild(i).gameObject);
+            if(immediate)
+                GameObject.DestroyImmediate(gameObject.transform.GetChild(i).gameObject);
+            else
+                GameObject.Destroy(gameObject.transform.GetChild(i).gameObject);
         }
 	}
 

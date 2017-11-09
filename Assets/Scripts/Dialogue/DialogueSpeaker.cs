@@ -24,11 +24,13 @@ public class DialogueSpeaker : MonoBehaviour
 
     public PlayerInformation CurrentPlayer { get { return currentBox ? playerInfo : null; } }
 
-	private DialogueBox currentBox;
+    private DialogueBox currentBox;
 	private PlayerInformation playerInfo;
 
 	private List<GameObject> objs = new List<GameObject>();
 	private bool allowEntering = false;
+
+    public bool IsOpen { get { return currentBox != null; } }
 
 	void Start()
 	{
