@@ -26,7 +26,10 @@ public class SpecialTile : MonoBehaviour
 
     private LevelTile tile;
 
-	void Awake()
+    [HideInInspector] public bool replaced = false;
+    [HideInInspector] public SpecialType replacedType;
+
+    void Awake()
 	{
         tile = GetComponent<LevelTile>();
     }
@@ -73,6 +76,9 @@ public class SpecialTile : MonoBehaviour
                 Destroy(tile.currentGraphic);
 
                 tile.currentGraphic = obj;
+
+                replaced = true;
+                replacedType = specialType;
 
                 return true;
             }

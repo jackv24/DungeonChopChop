@@ -20,4 +20,9 @@ public class EnemyAnimEvent : MonoBehaviour {
     {
         enemyAttack.Shootforward();
     }
+
+    public void ShootCircle()
+    {
+        enemyAttack.ShootCircle();
+    }
 }
