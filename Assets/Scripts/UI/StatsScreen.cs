@@ -41,15 +41,9 @@ public class StatsScreen : MonoBehaviour
             obj.transform.localPosition = item.popupOffset.position;
             obj.transform.localEulerAngles = item.popupOffset.rotation;
 
-            float offset = cam.orthographicSize * 2 + lastYPos;
-            cameraObj.transform.position += Vector3.up * offset;
-            lastYPos = offset;
-
-            Vector3 s = obj.transform.localScale;
-            s.x *= item.popupOffset.scale.x;
-            s.y *= item.popupOffset.scale.y;
-            s.z *= item.popupOffset.scale.z;
-            obj.transform.localScale = s;
+            // float offset = cam.orthographicSize * 2 + lastYPos;
+            // cameraObj.transform.position += Vector3.up * offset;
+            // lastYPos = offset;
 
             obj.SetLayerWithChildren(LayerMask.NameToLayer("UI_Pickup"));
 
@@ -64,6 +58,8 @@ public class StatsScreen : MonoBehaviour
                 || components[i] is ParticleSystemRenderer))
                     DestroyImmediate(components[i], false);
             }
+
+            obj.AddComponent<ScaleToFitOrthoCamera>();
 
             return cam;
         }
