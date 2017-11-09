@@ -21,13 +21,17 @@ public class MushBoomMove : EnemyMove
 	{
         if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Attacking"))
         {
-            agent.isStopped = false;
+            if (agent.isOnNavMesh)
+                agent.isStopped = false;
             Roam();
         }
         else
         {
             if (agent)
-                agent.isStopped = true;
+            {
+                if (agent.isOnNavMesh)
+                    agent.isStopped = true;
+            }
         }
 	}
 }
