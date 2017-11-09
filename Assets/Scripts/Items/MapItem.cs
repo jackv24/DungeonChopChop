@@ -17,10 +17,13 @@ public class MapItem : BaseItem
 
 	[Space()]
 	public bool revealChests = false;
-	public bool revealShops = false;
-	public bool revealHearts = false;
 
 	[Space()]
+	public bool revealShops = false;
+	public bool revealHearts = false;
+    public bool revealTrainers = false;
+
+    [Space()]
 	public bool revealDungeonForest = false;
 	public bool revealDungeonDesert = false;
 	public bool revealDungeonIce = false;
@@ -30,7 +33,9 @@ public class MapItem : BaseItem
 	{
 		if(LevelGenerator.Instance)
 		{
-			foreach(LevelTile tile in LevelGenerator.Instance.generatedTiles)
+            playerInfo.RegisterMapItem(this);
+
+            foreach(LevelTile tile in LevelGenerator.Instance.generatedTiles)
 			{
 				bool shouldReveal = false;
 				bool hasDungeonPin = false;
@@ -90,6 +95,21 @@ public class MapItem : BaseItem
 						if(tracker)
                             tracker.Register();
                     }
+                }
+
+				if(revealShops || revealHearts || revealTrainers)
+				{
+                    SpecialTile special = tile.GetComponentInChildren<SpecialTile>();
+					
+					if(special && special.replaced)
+					{
+						if(revealHearts && special.replacedType == SpecialTile.SpecialType.Heart)
+                            tile.Reveal();
+						else if (revealShops && special.replacedType == SpecialTile.SpecialType.Shop)
+                            tile.Reveal();
+						else if (revealTrainers && special.replacedType == SpecialTile.SpecialType.Teacher)
+                            tile.Reveal();
+					}
                 }
 			}
 		}

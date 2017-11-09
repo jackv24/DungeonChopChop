@@ -493,6 +493,7 @@ GameObject:
   - component: {fileID: 23032704689701658}
   - component: {fileID: 65296564611877892}
   - component: {fileID: 114255175483128038}
+  - component: {fileID: 114538713494333216}
   m_Layer: 12
   m_Name: Terrain01 (1)
   m_TagString: QuickSand
@@ -1809,7 +1810,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1247184927850616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43991518, y: -7.2929935, z: 16.73861}
+  m_LocalPosition: {x: -200, y: 0, z: -300}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4027723749735484}
@@ -4523,6 +4524,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -5122,7 +5124,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -5187,6 +5191,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -5514,6 +5519,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -6005,7 +6011,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -6073,6 +6081,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -6568,6 +6577,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -6907,6 +6917,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -7259,7 +7270,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -7286,6 +7299,23 @@ MonoBehaviour:
     magnitude: 0.3
     shakeAmount: 2
     duration: 0.3
+--- !u!114 &114538713494333216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1303037456249942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e12b6b668ad0b499ef88df05383d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 60f8ce080e1794747bf1f40c4bc2335f, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  scale: 1
+  setLastSibling: 0
+  showOnTileEnter: 1
+  registerOnce: 1
 --- !u!114 &114540818196881366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7325,7 +7355,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -7391,7 +7423,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -7517,7 +7551,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -7683,7 +7719,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -7773,7 +7811,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -7814,6 +7854,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -8177,6 +8218,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:

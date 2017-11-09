@@ -180,8 +180,14 @@ public class EnemyAttack : MonoBehaviour
     {
         //create the projecticle
         GameObject projectile = ObjectPooler.GetPooledObject(projecticle);
-        projectile.transform.position = shootPosition.transform.position;
+
+        if (!shootPosition)
+            projectile.transform.position = transform.position;
+        else
+            projectile.transform.position = shootPosition.transform.position;
+        
         projectile.transform.rotation = transform.rotation;
+
         projectile.GetComponent<ProjectileCollision>().damageMultiplyer = projectileDmgMutliplier;
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
         projectile.GetComponent<ProjectileCollision>().thrust = thrust;
@@ -228,6 +234,8 @@ public class EnemyAttack : MonoBehaviour
 
             if (!shootPosition)
                 projectile.transform.position = transform.position;
+            else
+                projectile.transform.position = shootPosition.transform.position;
             
             projectile.GetComponent<ProjectileCollision>().damageMultiplyer = projectileDmgMutliplier;
             projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
@@ -257,6 +265,7 @@ public class EnemyAttack : MonoBehaviour
         if (shootIntervalCounter > (randomInterval * 60))
         {
             randomInterval = Random.Range(minInterval, maxInterval);
+            animator.SetTrigger("Attack");
             shootIntervalCounter = 0;
         } 
     }
