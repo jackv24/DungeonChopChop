@@ -27,8 +27,8 @@ public class PlayerInformation : MonoBehaviour
     public List<InventoryItem> currentItems = new List<InventoryItem>();
 
     [Header("Cure Orb Vals")]
-    public int currentCureAmount = 0;
-    public int maxCureAmount = 100;
+    public float currentCureAmount = 0;
+    public float maxCureAmount = 100;
     public int cureAmountUsedPerTick = 5;
     public AmountOfParticleTypes[] cureOrbParticles;
 

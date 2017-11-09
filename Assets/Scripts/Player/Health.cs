@@ -735,12 +735,9 @@ public class Health : MonoBehaviour
 
             yield return new WaitForSeconds(timeBetweenPoison / 2);
 
-            if (canBeDamagedFromEffect())
-            {
-                AffectHealth(-damagePerTick);
+            AffectHealth(-damagePerTick);
 
-                SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.Tick, transform.position);
-            }
+            SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.Tick, transform.position);
 
             StartCoroutine(DisablePlayerFor(.1f));
 
@@ -810,12 +807,9 @@ public class Health : MonoBehaviour
         {
             yield return new WaitForSeconds(timeBetweenBurn / 2);
 
-            if (canBeDamagedFromEffect())
-            {
-                AffectHealth(-damagePerTick);
+            AffectHealth(-damagePerTick);
 
-                SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.Tick, transform.position);
-            }
+            SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.Tick, transform.position);
 
             if (isProp)
                 SetColorToFade(burnColor, fadeTime);
@@ -879,12 +873,9 @@ public class Health : MonoBehaviour
 
             yield return new WaitForSeconds(timeBetweenSlowDeath / 2);
 
-            if (canBeDamagedFromEffect())
-            {
-                AffectHealth(-damagePerTick);
+            AffectHealth(-damagePerTick);
 
-                SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.Tick, transform.position);
-            }
+            SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.Tick, transform.position);
 
             StartCoroutine(DisablePlayerFor(.2f));
 
