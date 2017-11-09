@@ -9,6 +9,7 @@ public class PropDestroy : MonoBehaviour
     public bool slashDestroysIt = true;
     public bool tripleDestroysIt = true;
     public bool dashDestroysIt = true;
+    public bool dashAttackDestroysIt = true;
     public bool spinDestroysIt = true;
     [Space()]
     public bool destroyedByTalons = false;
@@ -152,6 +153,15 @@ public class PropDestroy : MonoBehaviour
                 if (ItemsManager.Instance.hasBoots)
                 {
                     propHealth.AffectHealth(-10);
+                    DoHitEffectAndSound();
+                }
+            }
+
+            else if (dashDestroysIt)
+            {
+                if (collider.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(1).IsTag("Dash"))
+                {
+                    propHealth.AffectHealth(-collider.GetComponent<PlayerInformation>().GetSwordDamage());
                     DoHitEffectAndSound();
                 }
             }
