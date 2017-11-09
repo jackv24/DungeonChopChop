@@ -64,44 +64,51 @@ public class BiomeText : MonoBehaviour
 		if(LevelGenerator.Instance.currentTile == LevelGenerator.Instance.generatedTiles[0])
             return;
 
-        LevelTile.Biomes biome = LevelGenerator.Instance.currentTile.Biome;
-
-		if(biome == lastBiome)
-            return;
-		else
-            lastBiome = biome;
-
         TextPair textPair = null;
 
-		switch(biome)
-		{
-			case LevelTile.Biomes.Grass:
-                textPair = grassText;
-                break;
-			case LevelTile.Biomes.Forest:
-                textPair = forestText;
-                break;
-			case LevelTile.Biomes.Desert:
-                textPair = desertText;
-                break;
-			case LevelTile.Biomes.Fire:
-                textPair = fireText;
-                break;
-			case LevelTile.Biomes.Dungeon1:
-                textPair = dungeon1Text;
-                break;
-			case LevelTile.Biomes.Dungeon2:
-                textPair = dungeon2Text;
-                break;
-			case LevelTile.Biomes.Dungeon3:
-                textPair = dungeon3Text;
-                break;
-			case LevelTile.Biomes.Dungeon4:
-                textPair = dungeon4Text;
-                break;
+        TileText tileText = LevelGenerator.Instance.currentTile.GetComponentInChildren<TileText>();
+        if(tileText)
+            textPair = tileText.text;
+
+        if (textPair == null)
+        {
+            LevelTile.Biomes biome = LevelGenerator.Instance.currentTile.Biome;
+
+            if (biome == lastBiome)
+                return;
+            else
+                lastBiome = biome;
+
+            switch (biome)
+            {
+                case LevelTile.Biomes.Grass:
+                    textPair = grassText;
+                    break;
+                case LevelTile.Biomes.Forest:
+                    textPair = forestText;
+                    break;
+                case LevelTile.Biomes.Desert:
+                    textPair = desertText;
+                    break;
+                case LevelTile.Biomes.Fire:
+                    textPair = fireText;
+                    break;
+                case LevelTile.Biomes.Dungeon1:
+                    textPair = dungeon1Text;
+                    break;
+                case LevelTile.Biomes.Dungeon2:
+                    textPair = dungeon2Text;
+                    break;
+                case LevelTile.Biomes.Dungeon3:
+                    textPair = dungeon3Text;
+                    break;
+                case LevelTile.Biomes.Dungeon4:
+                    textPair = dungeon4Text;
+                    break;
+            }
         }
 
-		if(textPair != null)
+        if(textPair != null)
 		{
 			if(titleText)
                 titleText.text = textPair.title;

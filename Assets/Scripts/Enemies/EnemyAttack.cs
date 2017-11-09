@@ -61,7 +61,7 @@ public class EnemyAttack : MonoBehaviour
 
     private Collider col;
 
-    private List<Collider> colliding = new List<Collider>();
+    private List<Health> colliding = new List<Health>();
 
     LevelTile parentTile = null;
 
@@ -270,83 +270,100 @@ public class EnemyAttack : MonoBehaviour
         } 
     }
 
-    void CheckCollisions(Collider col)
+    void CheckCollisions(Health health)
     {
-        if (col.transform.GetComponent<Health>())
+        if (col.gameObject.GetComponent<PlayerInformation>())
         {
-            if (col.gameObject.GetComponent<PlayerInformation>())
+            PlayerInformation playerInfo = col.gameObject.GetComponent<PlayerInformation>();
+            //checks to see if the player is invincible or not
+            if (!col.gameObject.GetComponent<PlayerInformation>().invincible)
             {
-                PlayerInformation playerInfo = col.gameObject.GetComponent<PlayerInformation>();
-                //checks to see if the player is invincible or not
-                if (!col.gameObject.GetComponent<PlayerInformation>().invincible)
+                //gets the direction
+                Vector3 dir = transform.position - col.transform.position;
+                //add knockback to the player
+                playerInfo.KnockbackPlayer(-dir, knockbackStrength);
+                if (!col.transform.GetComponent<PlayerAttack>().blocking)
                 {
-                    //gets the direction
-                    Vector3 dir = transform.position - col.transform.position;
-                    //add knockback to the player
-                    playerInfo.KnockbackPlayer(-dir, knockbackStrength);
-                    if (!col.transform.GetComponent<PlayerAttack>().blocking)
+                    health.Damaged();
+                    health.AffectHealth(-damageOnTouch / playerInfo.resistance);
+                }
+                else
+                {
+                    //checks if the user is facing whatever the collision is coming from
+                    float dot = Vector3.Dot(col.transform.forward, (transform.position - col.transform.position).normalized);
+                    if (dot < 0.5f)
                     {
-                        col.transform.GetComponent<Health>().Damaged();
-                        col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch / playerInfo.resistance);
+                        health.Damaged();
+                        health.AffectHealth(-damageOnTouch / playerInfo.resistance);
+
+                        //add knockback to the player
+                        playerInfo.KnockbackPlayer(-dir, knockbackStrength);
                     }
                     else
                     {
-                        //checks if the user is facing whatever the collision is coming from
-                        float dot = Vector3.Dot(col.transform.forward, (transform.position - col.transform.position).normalized);
-                        if (dot < 0.5f)
-                        {
-                            col.transform.GetComponent<Health>().Damaged();
-                            col.transform.GetComponent<Health>().AffectHealth(-damageOnTouch / playerInfo.resistance);
-
-                            //add knockback to the player
-                            playerInfo.KnockbackPlayer(-dir, knockbackStrength);
-                        }
-                        else
-                        {
-                            //add knockback to the player
-                            playerInfo.KnockbackPlayer(-dir, knockbackStrength / 2);
-                            SoundManager.PlaySound(playerInfo.playerAttack.hitBlockSound, transform.position);
-                        }
+                        //add knockback to the player
+                        playerInfo.KnockbackPlayer(-dir, knockbackStrength / 2);
+                        SoundManager.PlaySound(playerInfo.playerAttack.hitBlockSound, transform.position);
                     }
-
-                    if (enemyMove)
-                        enemyMove.runAwayForSeconds();
                 }
+
+                if (enemyMove)
+                    enemyMove.runAwayForSeconds();
             }
+        }
 
-            if (enemyHealth)
+        if (enemyHealth)
+        {
+            //if slowly dying, set whatever touches it to slowly dying
+            if (enemyHealth.isSlowlyDying)
             {
-                //if slowly dying, set whatever touches it to slowly dying
-                if (enemyHealth.isSlowlyDying)
-                {
-                    if (!col.gameObject.GetComponent<Health>().isSlowlyDying)
-                        col.gameObject.GetComponent<Health>().SetSlowDeath();
-                }
+                if (!health.isSlowlyDying)
+                    health.SetSlowDeath();
             }
         }
     }
 
     void OnCollisionEnter(Collision col)
     {
-        if(!colliding.Contains(col.collider))
-            colliding.Add(col.collider);
+        Health health = col.transform.GetComponent<Health>();
+
+        if (health)
+        {
+            if (!colliding.Contains(health))
+                colliding.Add(health);
+        }
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if (!colliding.Contains(col))
-            colliding.Add(col);
+        Health health = col.transform.GetComponent<Health>();
+
+        if (health)
+        {
+            if (!colliding.Contains(health))
+                colliding.Add(health);
+        }
     }
 
     void OnCollisionExit(Collision col)
     {
-        if (colliding.Contains(col.collider))
-            colliding.Remove(col.collider);
+        Health health = col.transform.GetComponent<Health>();
+
+        if (health)
+        {
+            if (colliding.Contains(health))
+                colliding.Remove(health);
+        }
     }
 
     void OnTriggerExit(Collider col)
     {
-        if (colliding.Contains(col))
-            colliding.Remove(col);
+        Health health = col.transform.GetComponent<Health>();
+
+        if (health)
+        {
+            if (colliding.Contains(health))
+                colliding.Remove(health);
+        }
     }
 }

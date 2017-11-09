@@ -2252,6 +2252,7 @@ GameObject:
   - component: {fileID: 114728445530862548}
   - component: {fileID: 114847156919496994}
   - component: {fileID: 114213192597501862}
+  - component: {fileID: 114517556856983720}
   m_Layer: 0
   m_Name: Tile2x2ForestShop01
   m_TagString: Untagged
@@ -26576,7 +26577,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -27028,6 +27031,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -27593,6 +27597,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -28149,6 +28154,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -28652,7 +28658,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -28995,6 +29003,7 @@ MonoBehaviour:
   currentProfileIndex: 0
   profiles: []
   spawnedEnemies: []
+  undefeatedEnemies: []
 --- !u!114 &114300446236954878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -29521,6 +29530,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -30279,7 +30289,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -30573,6 +30585,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 7003be1f-321f-4efd-bf7d-384f80685cfe
+--- !u!114 &114517556856983720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314715572596284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb6b29c2e8d230409547ba19cf98a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text:
+    title: Shop
+    description: Buy stuff plz
 --- !u!114 &114518746870853134
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -31274,7 +31300,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -32422,6 +32450,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -33631,6 +33660,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -33929,6 +33959,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -34288,7 +34319,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -34509,6 +34542,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
