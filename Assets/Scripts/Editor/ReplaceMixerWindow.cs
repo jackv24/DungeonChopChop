@@ -63,7 +63,10 @@ public class ReplaceMixerWindow : EditorWindow
         foreach(AudioSource source in sources)
 		{
             if (source.outputAudioMixerGroup == currentMixer)
-            	source.outputAudioMixerGroup = replaceMixer;
+            {
+                source.outputAudioMixerGroup = replaceMixer;
+                EditorUtility.SetDirty(source);
+            }
         }
 	}
 }

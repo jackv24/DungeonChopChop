@@ -643,7 +643,8 @@ AudioSource:
   m_GameObject: {fileID: 1084467253667584}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243157008863679678, guid: 3b94cab2749135b43b3ba9ee3addc841,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -783,7 +784,9 @@ MonoBehaviour:
   health: 1
   weight: 2
   IsEnemy: 1
-  enemyType: 1
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 0
   isPoisoned: 0
   isBurned: 0
@@ -1070,7 +1073,8 @@ MonoBehaviour:
   leepSpeed: 2
   timeBetweenStopMin: 2
   timeBetweenStopMax: 4
-  stopTime: 1
+  minStopTime: 1
+  maxStopTime: 3
   friendly: 0
 --- !u!114 &114669737979578270
 MonoBehaviour:
