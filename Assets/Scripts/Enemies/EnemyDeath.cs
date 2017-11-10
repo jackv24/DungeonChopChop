@@ -222,7 +222,11 @@ public class EnemyDeath : MonoBehaviour
 
         if (enemyDrop)
             enemyDrop.DoDrop();
+
             
-        gameObject.SetActive(false);
+        if (gameObject.transform.parent != null)
+            gameObject.transform.parent.gameObject.SetActive(false);
+        else
+            gameObject.SetActive(false);
 	}
 }

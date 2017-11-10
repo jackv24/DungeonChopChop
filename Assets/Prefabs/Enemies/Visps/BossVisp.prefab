@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 4073249126386818}
   - component: {fileID: 114849214794523690}
   - component: {fileID: 114813978033448378}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BossVisp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,6 +842,8 @@ MonoBehaviour:
   damageOnExplode: 2
   knockbackOnExplode: 5
   shrinktime: 0.0005
+  isBoss: 1
+  enemies: []
 --- !u!114 &114564872548030914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -889,8 +891,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
-  health: 2
+  maxHealth: 15
+  health: 15
   weight: 2
   IsEnemy: 1
   enemyKind:
@@ -1030,6 +1032,10 @@ MonoBehaviour:
   rotateSpeed: 5
   minTimeBetweenShot: 0.1
   maxTimeBetweenShot: 1
+  visp: {fileID: 1479499657155190, guid: 3abbc21eed45466449554d67a2647416, type: 2}
+  minTimeBetweenSpawn: 5
+  maxTimeBetweenSpawn: 8
+  amountPerSpawn: 1
 --- !u!114 &114987689106698202
 MonoBehaviour:
   m_ObjectHideFlags: 1
