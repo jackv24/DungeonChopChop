@@ -10575,8 +10575,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.0102177, y: 5.2346406, z: 1.5911541}
-  m_Center: {x: 4.857608, y: 2.5696852, z: -0.99288845}
+  m_Size: {x: 1.8742485, y: 5.2346406, z: 7.429861}
+  m_Center: {x: 1.0365372, y: 2.5696852, z: -4.647416}
 --- !u!65 &65097943626243880
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -10647,8 +10647,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8742485, y: 5.2346406, z: 7.429861}
-  m_Center: {x: 1.0365372, y: 2.5696852, z: -4.647416}
+  m_Size: {x: 7.0102177, y: 5.2346406, z: 1.5911541}
+  m_Center: {x: 4.857608, y: 2.5696852, z: -0.99288845}
 --- !u!65 &65191866290615026
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -10671,8 +10671,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.0102177, y: 5.2346406, z: 1.5911541}
-  m_Center: {x: 4.857608, y: 2.5696852, z: -0.99288845}
+  m_Size: {x: 1.8742485, y: 5.2346406, z: 7.429861}
+  m_Center: {x: 1.0365372, y: 2.5696852, z: -4.647416}
 --- !u!65 &65233377433347412
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -10683,8 +10683,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8742485, y: 5.2346406, z: 7.429861}
-  m_Center: {x: 1.0365372, y: 2.5696852, z: -4.647416}
+  m_Size: {x: 7.0102177, y: 5.2346406, z: 1.5911541}
+  m_Center: {x: 4.857608, y: 2.5696852, z: -0.99288845}
 --- !u!65 &65243807665469138
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -10779,8 +10779,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8742485, y: 5.2346406, z: 7.429861}
-  m_Center: {x: 1.0365372, y: 2.5696852, z: -4.647416}
+  m_Size: {x: 7.0102177, y: 5.2346406, z: 1.5911541}
+  m_Center: {x: 4.857608, y: 2.5696852, z: -0.99288845}
 --- !u!65 &65354685455351592
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -10803,8 +10803,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.0102177, y: 5.2346406, z: 1.5911541}
-  m_Center: {x: 4.857608, y: 2.5696852, z: -0.99288845}
+  m_Size: {x: 1.8742485, y: 5.2346406, z: 7.429861}
+  m_Center: {x: 1.0365372, y: 2.5696852, z: -4.647416}
 --- !u!65 &65397512829348054
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -10815,8 +10815,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8742485, y: 5.2346406, z: 7.429861}
-  m_Center: {x: 1.0365372, y: 2.5696852, z: -4.647416}
+  m_Size: {x: 7.0102177, y: 5.2346406, z: 1.5911541}
+  m_Center: {x: 4.857608, y: 2.5696852, z: -0.99288845}
 --- !u!65 &65403052465663894
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -11043,8 +11043,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.0102177, y: 5.2346406, z: 1.5911541}
-  m_Center: {x: 4.857608, y: 2.5696852, z: -0.99288845}
+  m_Size: {x: 1.8742485, y: 5.2346406, z: 7.429861}
+  m_Center: {x: 1.0365372, y: 2.5696852, z: -4.647416}
 --- !u!65 &65958304862738300
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -14196,6 +14196,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -14482,7 +14483,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -14703,7 +14706,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -15403,6 +15408,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -15689,7 +15695,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -15760,6 +15768,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -16000,6 +16009,7 @@ MonoBehaviour:
   currentProfileIndex: 0
   profiles: []
   spawnedEnemies: []
+  undefeatedEnemies: []
 --- !u!114 &114296986911910000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16347,6 +16357,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -16785,7 +16796,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -17314,77 +17327,101 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -34.792976, y: 0, z: 1.390667}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -9.851133, y: 0, z: -7.0535088}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -28.500624, y: 0, z: -6.9090004}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -16.178812, y: 0, z: 0.57849884}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -43.06494, y: 0, z: -0.6600838}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -6.0308094, y: 0, z: 6.967556}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -29.603882, y: 0, z: 6.345955}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: 3.28187, y: 0, z: -1.6911087}
+      rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -8.016968, y: 0, z: -6.1668625}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -10.26021, y: 0, z: 0.2552719}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -29.924566, y: 0, z: 1.1643143}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -17.012987, y: 0, z: -0.22672272}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -33.50232, y: 0, z: 7.4162827}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: 2.0496807, y: 0, z: 0.9404144}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -43.274315, y: 0, z: -1.0399323}
+      rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -35.73584, y: 0, z: 0.65221405}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: -43.37879, y: 0, z: -0.56806946}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: 0.35949326, y: 0, z: -2.3323326}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1531040360531562, guid: 0652694bee0555d499abdaa5fcfda93f,
         type: 2}
       position: {x: 4.4478493, y: 0, z: 2.956482}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -29.8047, y: 0, z: 7.208847}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -27.010864, y: 0, z: -5.954193}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -13.204649, y: 0, z: -0.6172409}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1663011482531826, guid: 65e2c5dbe10fbd34485c10ac8262b451,
         type: 2}
       position: {x: -25.908949, y: 0, z: 0.39905548}
+      rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
+  undefeatedEnemies: []
 --- !u!114 &114451199077300064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17423,6 +17460,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -17739,6 +17777,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -18639,7 +18678,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -18703,7 +18744,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -18858,6 +18901,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -19469,6 +19513,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -19761,6 +19806,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -20022,7 +20068,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -20580,7 +20628,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -21059,7 +21109,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -21133,7 +21185,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -21874,6 +21928,7 @@ MonoBehaviour:
   slashDestroysIt: 1
   tripleDestroysIt: 1
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 1
   destroyedByTalons: 0
   amountOfParticleTypes:
