@@ -230,7 +230,8 @@ public class DebugTools : MonoBehaviour
 
             string text = "<b>Debug Menu:</b>\n";
 
-            text += "Start Seed: " + LevelGenerator.Instance.startSeed + "\n\n";
+            text += "Start Seed: " + LevelGenerator.Instance.startSeed + "\n";
+            text += "Current Seed: " + LevelGenerator.Instance.LastSeed + "\n\n";
             text += "Current Tile: " + (LevelGenerator.Instance.currentTile ? LevelGenerator.Instance.currentTile.gameObject.name : "NULL") + "\n";
             if (LevelGenerator.Instance.currentTile)
                 text += "Current Tile Graphic: " + (LevelGenerator.Instance.currentTile.currentGraphic ? LevelGenerator.Instance.currentTile.currentGraphic.gameObject.name : "NULL") + "\n";
