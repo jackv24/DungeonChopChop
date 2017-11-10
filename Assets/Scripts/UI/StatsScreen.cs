@@ -12,6 +12,7 @@ public class StatsScreen : MonoBehaviour
         public PlayerInformation player;
         [HideInInspector]
         public GameObject cameraPrefab;
+
 		private static float lastYPos = 0;
 
         public RawImage armourImage;
@@ -99,6 +100,7 @@ public class StatsScreen : MonoBehaviour
     }
 
     public GameObject cameraPrefab;
+    public Text playtimeText;
 
     [Space()]
     public StatsUI player1Stats;
@@ -111,6 +113,13 @@ public class StatsScreen : MonoBehaviour
     private Vector2 initialMapSize;
 
     private List<Camera> cameraList = new List<Camera>();
+
+    void FixedUpdate()
+    {
+        string time = string.Format("{0}:{1:00}", (int)Statistics.Instance.TotalPlayTime / 60, (int)Statistics.Instance.TotalPlayTime % 60);
+
+        playtimeText.text = "" + time;
+    }
 
     void OnEnable()
 	{
