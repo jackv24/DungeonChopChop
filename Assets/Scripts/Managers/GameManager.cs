@@ -77,7 +77,11 @@ public class GameManager : MonoBehaviour
 
         //stuff inbetween scenes
 
-        yield return SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
+        AsyncOperation async = SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
+        
+        while(!async.isDone)
+            yield return null;
+
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(index));
 
         currentSceneIndex = index;

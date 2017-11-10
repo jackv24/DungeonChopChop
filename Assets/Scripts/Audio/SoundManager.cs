@@ -87,8 +87,6 @@ public class SoundManager : MonoBehaviour
 
 	public void Mute(bool value)
 	{
-        Debug.Log("mute " + value);
-
         if (audioMixer)
         {
             if (value)

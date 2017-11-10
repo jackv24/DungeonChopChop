@@ -23,6 +23,7 @@ public class LoadingAnimation : MonoBehaviour
 	{
 		if(player && player.clip)
 		{
+            player.time = 0;
             player.Play();
             minWaitTime = (float)player.clip.length;
         }
