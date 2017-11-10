@@ -292,7 +292,7 @@ public class EnemyMove : MonoBehaviour
         return null;
     }
 
-    protected Transform GetClosestPlayer()
+    public Transform GetClosestPlayer()
     {
         float previousPlayerDistance = float.MaxValue;
         foreach (PlayerInformation player in players)
@@ -361,7 +361,7 @@ public class EnemyMove : MonoBehaviour
             return transform;
     }
 
-    protected void LookAtClosestPlayer(float rotateSpeed)
+    public void LookAtClosestPlayer(float rotateSpeed)
     {
         Vector3 rot = Quaternion.LookRotation(GetClosestPlayer().position - transform.position).eulerAngles;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(rot), rotateSpeed * Time.deltaTime);
