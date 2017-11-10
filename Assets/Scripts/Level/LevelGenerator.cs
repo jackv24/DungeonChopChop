@@ -39,16 +39,16 @@ public class LevelGenerator : MonoBehaviour
 	[Header("In-game")]
 	public bool showLoadingScreenInEditor = true;
 	public bool ShowLoadingScreen { get { return showLoadingScreenInEditor || !Application.isEditor; } }
-	public GameObject loadingScreen;
-	public ReplaceText loadingText;
-	public float fadeOutTime = 0.5f;
 
 	[HideInInspector]
 	public List<LevelTile> generatedTiles = new List<LevelTile>();
 	[HideInInspector]
 	public LevelTile currentTile;
 
-	void Awake()
+    private int tileUpdatePause;
+    private int tilesUpdated = 0;
+
+    void Awake()
 	{
 		Instance = this;
 	}
@@ -59,7 +59,9 @@ public class LevelGenerator : MonoBehaviour
 		if (startSeed == 0)
 			startSeed = System.DateTime.Now.Millisecond;
 
-		StartCoroutine(Generate(startSeed));
+        tileUpdatePause = LoadingScreen.TileUpdatePause;
+
+        StartCoroutine(Generate(startSeed));
     }
 
 	void OnDestroy()
@@ -77,8 +79,7 @@ public class LevelGenerator : MonoBehaviour
 		if (OnGenerationStart != null)
 			OnGenerationStart();
 
-		if (ShowLoadingScreen && loadingScreen)
-			loadingScreen.SetActive(true);
+        LoadingScreen.Show("Generating Level", false);
 
         int iterations = 0;
 
@@ -135,7 +136,7 @@ public class LevelGenerator : MonoBehaviour
 			//Spawn a tile for every door
             foreach (Transform door in startTile.doors)
             {
-                GenerateTile(door, profile.maxTrailLength);
+                yield return GenerateTile(door, profile.maxTrailLength);
             }
 
 			//If there are too few tiles, roll again
@@ -179,35 +180,15 @@ public class LevelGenerator : MonoBehaviour
 
         isFinished = true;
 
-        if (ShowLoadingScreen && loadingText)
-			loadingText.SetFallback();
 		yield return new WaitForEndOfFrame();
-
-		if (loadingScreen)
-		{
-			CanvasRenderer[] rends = loadingScreen.GetComponentsInChildren<CanvasRenderer>();
-
-			float elapsedTime = 0;
-
-			while (elapsedTime < fadeOutTime)
-			{
-				foreach (CanvasRenderer rend in rends)
-				{
-					rend.SetAlpha(1 - (elapsedTime / fadeOutTime));
-				}
-
-				yield return new WaitForEndOfFrame();
-				elapsedTime += Time.deltaTime;
-			}
-
-			loadingScreen.SetActive(false);
-		}
 
 		if (iterations >= profile.maxAttempts)
 		{
 			Debug.LogWarning("Level Generator exceeded maximum number of attempts. Check to make sure the max trail length allows for generation of the minimum tile amount, and that all generation conditions are met.");
 		}
-	}
+
+        LoadingScreen.Hide();
+    }
 
     public void Clear()
     {
@@ -221,8 +202,20 @@ public class LevelGenerator : MonoBehaviour
 		generatedTiles.Clear();
     }
 
-	private void GenerateTile(Transform connectingDoor, int trailLength)
+	private IEnumerator GenerateTile(Transform connectingDoor, int trailLength)
 	{
+		if(tileUpdatePause > 0)
+		{
+            tilesUpdated++;
+
+			if(tilesUpdated >= tileUpdatePause)
+			{
+                tilesUpdated = 0;
+
+                yield return new WaitForEndOfFrame();
+            }
+        }
+
 		LevelTile nextTile = null;
 		int connectedDoorIndex = -1;
 
@@ -355,7 +348,7 @@ public class LevelGenerator : MonoBehaviour
 					if (door == nextTile.doors[connectedDoorIndex])
 						continue;
 
-					GenerateTile(door, trailLength);
+					yield return GenerateTile(door, trailLength);
 				}
 			}
 		}

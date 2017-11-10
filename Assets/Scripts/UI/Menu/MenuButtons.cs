@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MenuButtons : MonoBehaviour
 {
 	public int SceneIndex = 1;
-	public float sceneLoadDelay = 0.5f;
+	public float sceneLoadDelay = 0.25f;
 
 	private bool clicked = false;
 
@@ -63,7 +63,9 @@ public class MenuButtons : MonoBehaviour
 		else
 			yield return new WaitForSeconds(sceneLoadDelay);
 
-        SceneManager.LoadScene("Overworld");
+        yield return new WaitForSeconds(LoadingScreen.Show("Loading", true));
+
+        AsyncOperation async = SceneManager.LoadSceneAsync("Overworld");
 	}
 
     public void Replay()
