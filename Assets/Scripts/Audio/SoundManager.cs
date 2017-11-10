@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
-	private static SoundManager Instance;
+	public static SoundManager Instance;
 
 	private List<AudioSource> sourcePool = new List<AudioSource>();
 
@@ -83,19 +83,12 @@ public class SoundManager : MonoBehaviour
                 audioMixer.SetFloat("MusicVolume", Helper.LinearToDecibel(PlayerPrefs.GetFloat("MusicVolume")));
             }
 		}
-
-		if(LevelGenerator.Instance)
-		{
-            LevelGenerator.Instance.OnGenerationStart += delegate { Mute(true); };
-            Mute(true);
-            LevelGenerator.Instance.OnGenerationFinished += delegate { Mute(false); };
-        }
-		else
-            Debug.LogError("No levelgenerator instance for soundmanager to subscribe to!");
     }
 
 	public void Mute(bool value)
 	{
+        Debug.Log("mute " + value);
+
         if (audioMixer)
         {
             if (value)

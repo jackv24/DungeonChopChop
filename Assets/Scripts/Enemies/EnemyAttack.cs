@@ -253,6 +253,31 @@ public class EnemyAttack : MonoBehaviour
         SoundManager.PlaySound(shootSounds, transform.position);
     }
 
+    public void SplitEnemy(GameObject prefab, int amount, bool addToGenerator)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            //create the split enemies and set them to this position
+            GameObject enemy = ObjectPooler.GetPooledObject(prefab);
+
+            enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+
+            enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().Warp(new Vector3(transform.position.x, 0, transform.position.z));
+
+            if (addToGenerator)
+            {
+                if (LevelGenerator.Instance)
+                {
+                    if (LevelGenerator.Instance.currentTile)
+                    {
+                        if (LevelGenerator.Instance.currentTile.GetComponentInChildren<EnemySpawner>())
+                            LevelGenerator.Instance.currentTile.GetComponentInChildren<EnemySpawner>().spawnedEnemies.Add(enemy);     
+                    }
+                }
+            }
+        }
+    }
+
     void ShootCircleIntervals()
     {
         shootIntervalCounter++;
@@ -341,7 +366,10 @@ public class EnemyAttack : MonoBehaviour
         if (health)
         {
             if (!colliding.Contains(c))
+            {
                 colliding.Add(c);
+                CheckCollisions(c);
+            }
         }
     }
 
@@ -357,7 +385,10 @@ public class EnemyAttack : MonoBehaviour
         if (health)
         {
             if (!colliding.Contains(c))
+            {
                 colliding.Add(c);
+                CheckCollisions(c);
+            }
         }
     }
 
