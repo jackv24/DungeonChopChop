@@ -263,7 +263,7 @@ public class EnemyMove : MonoBehaviour
         return false;
     }
 
-    protected void RunAwayFromPlayer(bool lookAtPlayer)
+    public void RunAwayFromPlayer(bool lookAtPlayer)
     {
         if (agent)
         {
