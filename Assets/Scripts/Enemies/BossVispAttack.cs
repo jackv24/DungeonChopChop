@@ -15,15 +15,24 @@ public class BossVispAttack : EnemyAttack {
     public float minTimeBetweenShot = .1f;
     public float maxTimeBetweenShot = 1;
 
+    [Header("Spawn Visp Values")]
+    public GameObject visp;
+    public float minTimeBetweenSpawn = 5;
+    public float maxTimeBetweenSpawn = 8;
+    public int amountPerSpawn = 1;
+
     private float timeBetweenShot = 0;
     private float timeBetweenStrike = 0;
+    private float timeBetweenSpawn = 0;
 
     private int shootCounter = 0;
     private int strikeCounter = 0;
+    private int spawnCounter = 0;
 
     private bool striking = false;
 
     private Animator childAnimator;
+    private List<GameObject> spawnedVisps = new List<GameObject>(0);
 
 	// Use this for initialization
 	void Awake () 
@@ -31,6 +40,7 @@ public class BossVispAttack : EnemyAttack {
         childAnimator = transform.GetChild(0).GetComponent<Animator>();
 
         timeBetweenStrike = Random.Range(minTimeBetweenStrike, maxTimeBetweenStrike);
+        timeBetweenSpawn = Random.Range(minTimeBetweenSpawn, maxTimeBetweenSpawn);
 	}
 	
 	// Update is called once per frame
@@ -57,7 +67,7 @@ public class BossVispAttack : EnemyAttack {
         {
             strikeCounter++;
 
-            enemyMove.RunAwayFromPlayer(true);
+            enemyMove.RunAwayFromPlayer(true, 10);
 
             if (strikeCounter > timeBetweenStrike * 60)
             {
@@ -67,6 +77,17 @@ public class BossVispAttack : EnemyAttack {
 
                 timeBetweenStrike = Random.Range(minTimeBetweenStrike, maxTimeBetweenStrike);
             }
+        }
+
+        spawnCounter++;
+
+        if (spawnCounter > timeBetweenSpawn * 60)
+        {
+            spawnCounter = 0;
+
+            SplitEnemy(visp, amountPerSpawn, true);
+
+            timeBetweenSpawn = Random.Range(minTimeBetweenSpawn, maxTimeBetweenSpawn);
         }
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Striking"))
