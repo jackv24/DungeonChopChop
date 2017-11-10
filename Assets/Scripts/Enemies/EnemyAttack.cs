@@ -363,27 +363,11 @@ public class EnemyAttack : MonoBehaviour
 
     void OnCollisionExit(Collision col)
     {
-        Health health = col.transform.GetComponent<Health>();
-
-        Colliding c;
-
-        c.health = health;
-        c.col = col.collider;
-
-        if (health)
-            colliding.Clear();
+        colliding.Clear();
     }
 
     void OnTriggerExit(Collider col)
     {
-        Health health = col.transform.GetComponent<Health>();
-
-        Colliding c;
-
-        c.health = health;
-        c.col = col;
-
-        if (health)
-            colliding.Clear();
+        colliding.Clear();
     }
 }
