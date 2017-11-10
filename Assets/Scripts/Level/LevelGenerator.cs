@@ -203,7 +203,7 @@ public class LevelGenerator : MonoBehaviour
 			//After level layout is generated, generate level type-specific content
 			profile.Generate(this);
 
-			if(profile.succeeded && profile is OverworldGeneratorProfile)
+			if(profile.succeeded && profile is OverworldGeneratorProfile && !useKnownSeeds)
                 SaveManager.RegisterSucceededSeed(seed);
 
             startTile.SetCurrent(null);
