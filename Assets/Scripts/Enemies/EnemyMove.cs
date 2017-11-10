@@ -263,12 +263,12 @@ public class EnemyMove : MonoBehaviour
         return false;
     }
 
-    public void RunAwayFromPlayer(bool lookAtPlayer)
+    public void RunAwayFromPlayer(bool lookAtPlayer, float distance = 3)
     {
         if (agent)
         {
 
-            Vector3 newPosition = -transform.forward * 3;
+            Vector3 newPosition = -transform.forward * distance;
 
             //rotates away from the player
             if (lookAtPlayer)
