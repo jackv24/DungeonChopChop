@@ -89,7 +89,12 @@ public class LevelGenerator : MonoBehaviour
 
 	public IEnumerator Generate(int seed)
     {
-		lastSeed = seed;
+		yield return new WaitForEndOfFrame();
+
+		if(SoundManager.Instance)
+            SoundManager.Instance.Mute(true);
+
+        lastSeed = seed;
 		Debug.Log("Starting generation with seed: " + seed);
 
 		Random = new System.Random(seed);
@@ -239,6 +244,9 @@ public class LevelGenerator : MonoBehaviour
 		}
 
         LoadingScreen.Hide();
+
+		if (SoundManager.Instance)
+            SoundManager.Instance.Mute(false);
     }
 
     public void Clear()
