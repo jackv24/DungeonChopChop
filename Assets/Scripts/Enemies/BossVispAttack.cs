@@ -50,14 +50,14 @@ public class BossVispAttack : EnemyAttack {
             }
 
             //look at the player
-            enemyMove.LookAtClosestPlayer(rotateSpeed);
+            transform.parent.LookAt(enemyMove.GetClosestPlayer().transform, Vector3.up);
         }
 
         if (!striking)
         {
             strikeCounter++;
 
-            transform.parent.position = Vector3.Lerp(transform.parent.position, new Vector3(enemyMove.GetClosestPlayer().transform.position.x, 0, transform.position.z), 1.1f * Time.fixedDeltaTime);
+            enemyMove.RunAwayFromPlayer(true);
 
             if (strikeCounter > timeBetweenStrike * 60)
             {
