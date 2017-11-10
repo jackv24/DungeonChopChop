@@ -35,12 +35,16 @@ public class LevelGenerator : MonoBehaviour
     [Space()]
     [Tooltip("Seed for the level generator. Leave at 0 for random seed.")]
     public int startSeed = 0;
+    private int lastSeed;
+	public int LastSeed { get { return lastSeed; } }
 
-	[Header("In-game")]
+    [Header("In-game")]
 	public bool showLoadingScreenInEditor = true;
 	public bool ShowLoadingScreen { get { return showLoadingScreenInEditor || !Application.isEditor; } }
+    public bool useKnownSeeds = false;
+    public bool loopRegeneration = false;
 
-	[HideInInspector]
+    [HideInInspector]
 	public List<LevelTile> generatedTiles = new List<LevelTile>();
 	[HideInInspector]
 	public LevelTile currentTile;
@@ -55,9 +59,22 @@ public class LevelGenerator : MonoBehaviour
 
 	private void Start()
 	{
-		//If seed is zero, set seed with "arbitrary" value
-		if (startSeed == 0)
-			startSeed = System.DateTime.Now.Millisecond;
+        //If seed is zero, set seed with "arbitrary" value
+        if (Application.isEditor && !useKnownSeeds)
+        {
+            if (startSeed == 0)
+                startSeed = System.DateTime.Now.Millisecond;
+        }
+		else
+		{
+            startSeed = SaveManager.GetSeed();
+
+			if (startSeed == 0)
+                startSeed = System.DateTime.Now.Millisecond;
+        }
+
+		if(!Application.isEditor)
+            loopRegeneration = false;
 
         tileUpdatePause = LoadingScreen.TileUpdatePause;
 
@@ -72,11 +89,27 @@ public class LevelGenerator : MonoBehaviour
 
 	public IEnumerator Generate(int seed)
     {
+		lastSeed = seed;
 		Debug.Log("Starting generation with seed: " + seed);
 
 		Random = new System.Random(seed);
 
-		if (OnGenerationStart != null)
+        if (profile is OverworldGeneratorProfile)
+        {
+            if (!SaveManager.CheckSeed(seed))
+            {
+                while (true)
+                {
+                    seed = Random.Next(0, 1000);
+                    lastSeed = seed;
+
+                    if (SaveManager.CheckSeed(seed))
+                        break;
+                }
+            }
+        }
+
+        if (OnGenerationStart != null)
 			OnGenerationStart();
 
         LoadingScreen.Show("Generating Level", false);
@@ -86,21 +119,36 @@ public class LevelGenerator : MonoBehaviour
 		profile.succeeded = false;
         isFinished = false;
 
-        while (iterations < profile.maxAttempts && !profile.succeeded)
+        while (loopRegeneration || (iterations < profile.maxAttempts && !profile.succeeded))
         {
-			//Assume succeeded until set otherwise
-			profile.succeeded = true;
-
 			Clear();
 			yield return new WaitForEndOfFrame();
 
 			//If first seed did not work, try another
 			if (iterations > 0)
 			{
-				seed = Random.Next(0, 1000);
+				if(profile is OverworldGeneratorProfile && !profile.succeeded)
+                	SaveManager.RegisterFailedSeed(seed);
 
-				Debug.LogWarning("Generation did not succeed, trying seed: " + seed);
+                while (true)
+                {
+                    seed = Random.Next(0, 1000);
+					lastSeed = seed;
+
+                    if (profile is OverworldGeneratorProfile)
+                    {
+                        if (SaveManager.CheckSeed(seed))
+                            break;
+                    }
+					else
+                        break;
+                }
+
+                Debug.LogWarning("Generation did not succeed, trying seed: " + seed);
 			}
+
+            //Assume succeeded until set otherwise
+            profile.succeeded = true;
 
 			Random = new System.Random(seed);
 
@@ -155,7 +203,10 @@ public class LevelGenerator : MonoBehaviour
 			//After level layout is generated, generate level type-specific content
 			profile.Generate(this);
 
-			startTile.SetCurrent(null);
+			if(profile.succeeded && profile is OverworldGeneratorProfile && !useKnownSeeds)
+                SaveManager.RegisterSucceededSeed(seed);
+
+            startTile.SetCurrent(null);
 		}
 
 		yield return new WaitForEndOfFrame();

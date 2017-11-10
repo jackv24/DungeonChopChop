@@ -44,7 +44,7 @@ public class HealingPlatform : MonoBehaviour {
             maxHealth = 0;
 
             if (fountainParticle)
-                main.maxParticles = (int)Percentage(maxParticleSize, 0);
+                main.maxParticles = (int)Percentage(maxParticleSize, 5);
         }
         else if (ItemsManager.Instance.hasArmourPiece)
         {
