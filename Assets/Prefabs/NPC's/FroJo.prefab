@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 114885849348537116}
   - component: {fileID: 65411279887770582}
   - component: {fileID: 114764973591556386}
+  - component: {fileID: 114975400390328874}
+  - component: {fileID: 65852426518213780}
   m_Layer: 0
   m_Name: FroJo
   m_TagString: Untagged
@@ -832,6 +834,18 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1210254007342654}
   m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.13, y: 1.5, z: 5.53}
+  m_Center: {x: -0.12, y: 0.56, z: 0.18}
+--- !u!65 &65852426518213780
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210254007342654}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1233,6 +1247,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 4c747b81-5568-45d3-a750-5e660bdd829f
+--- !u!114 &114975400390328874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210254007342654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - 'Baaaaaaaa
+
+'
+  - 'Need Health? Need Energy?
+
+
+'
+  - "We sell orbs, and keys. The manager \ncalls them consumables "
+  - "The fountain will revive you \nbut less and less as you progress"
+  - 'nice threads cuz
+
+'
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  textBoxHeight: 2
+  textBoxDepth: 2
+  dialogueBoxPrefab: {fileID: 1983791718684604, guid: 02a22f90cc96eba468275f9733fa7a29,
+    type: 2}
 --- !u!137 &137224779807341416
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
