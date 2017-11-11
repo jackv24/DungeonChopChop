@@ -27,6 +27,60 @@ public class PropDestroy : MonoBehaviour
     [Space()]
     public CameraShakeVars destroyShake;
 
+    [System.Serializable]
+    public class ReactAnimation
+    {
+        public bool animate = false;
+        public AnimationCurve curve;
+        public float duration;
+
+        private Quaternion oldRotation;
+
+        private Coroutine routine;
+
+        public void Play(MonoBehaviour owner, GameObject other)
+        {
+            if(!animate)
+                return;
+
+            if (routine != null)
+            {
+                owner.StopCoroutine(routine);
+                owner.transform.rotation = oldRotation;
+            }
+
+            oldRotation = owner.transform.rotation;
+
+            routine = owner.StartCoroutine(PlayRoutine(owner.gameObject, other));
+        }
+
+        IEnumerator PlayRoutine(GameObject owner, GameObject other)
+        {
+            Vector3 offset = owner.transform.position - other.transform.position;
+            offset.y = 0;
+            offset.Normalize();
+
+            Vector3 right = Vector3.Cross(offset, Vector3.up);
+
+            Quaternion initialRotation = owner.transform.rotation;
+
+            float elapsed = 0;
+
+            while(elapsed < duration)
+            {
+                owner.transform.rotation = initialRotation;
+
+                float angle = curve.Evaluate(elapsed / duration);
+                owner.transform.Rotate(right, angle);
+
+                yield return new WaitForEndOfFrame();
+                elapsed += Time.deltaTime;
+            }
+        }
+    }
+    [Header("Animation")]
+    public ReactAnimation hitAnim;
+
     private Health propHealth;
 
     // Use this for initialization
@@ -90,6 +144,8 @@ public class PropDestroy : MonoBehaviour
         //if its the sword colliding
         if (collider.gameObject.layer == 16)
         {
+            hitAnim.Play(this, collider.gameObject);
+
             Animator anim = collider.gameObject.GetComponentInParent<Animator>();
             PlayerInformation playerInfo = collider.gameObject.GetComponentInParent<PlayerInformation>();
 
