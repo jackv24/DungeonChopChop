@@ -100,6 +100,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4073249126386818}
+  - component: {fileID: 114242680571748104}
   - component: {fileID: 114849214794523690}
   - component: {fileID: 114813978033448378}
   m_Layer: 11
@@ -594,6 +595,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd0d314a50f19d4e8a0f53bdd4c5733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114242680571748104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1322179379819108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfbf39d937b880c41a87f53125c4fcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114279257223496372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -842,8 +854,6 @@ MonoBehaviour:
   damageOnExplode: 2
   knockbackOnExplode: 5
   shrinktime: 0.0005
-  isBoss: 1
-  enemies: []
 --- !u!114 &114564872548030914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -891,8 +901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 15
-  health: 15
+  maxHealth: 30
+  health: 30
   weight: 2
   IsEnemy: 1
   enemyKind:
