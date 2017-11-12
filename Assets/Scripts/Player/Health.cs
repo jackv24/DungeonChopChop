@@ -134,6 +134,16 @@ public class Health : MonoBehaviour
         {
             OGFade(fadeTime);
         }
+
+        //check if the object has an ailment icon but is not ailmented
+        if (!HasStatusCondition())
+        {
+            if (ailmentIcon)
+            {
+                if (ailmentIcon.activeSelf)
+                    ailmentIcon.SetActive(false);
+            }
+        }
     }
 
     public void AffectHealth(float healthDeta)
@@ -651,7 +661,12 @@ public class Health : MonoBehaviour
         if (!IsEnemy && !isProp)
         {
             if (animator)
+            {
                 animator.SetBool("Die", true);
+
+                playerInfo.playerMove.enabled = false;
+                playerInfo.characterController.enabled = false;
+            }
         }
     }
 
@@ -704,6 +719,26 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void RemoveAilment()
+    {
+        isBurned = false;
+        isFrozen = false;
+        isSandy = false;
+        isSlowlyDying = false;
+        isPoisoned = false;
+    }
+
+    bool CanBeAilmented(StatusType type)
+    {
+        if (GetComponent<ImmuneTo>())
+        {
+            if (GetComponent<ImmuneTo>().type == type)
+                return false;
+        }
+
+        return true;
+    }
+
     /// <summary>
     /// Sets the poison.
     /// </summary>
@@ -711,18 +746,21 @@ public class Health : MonoBehaviour
     /// <param name="timeBetweenPoison">Time between poison in seconds.</param>
     public void SetPoison(float damagePerTick = .2f, float duration = 3, float timeBetweenPoison = 1)
     {
-        if (playerInfo)
-            damagePerTick *= playerInfo.GetCharmFloat("poisonMultiplier");
+        if (CanBeAilmented(StatusType.poison))
+        {
+            if (playerInfo)
+                damagePerTick *= playerInfo.GetCharmFloat("poisonMultiplier");
 
-        CreateAilmentIcon("PoisonCanvas");
+            CreateAilmentIcon("PoisonCanvas");
         
-        isPoisoned = true;
+            isPoisoned = true;
 
-        DoParticle("PoisonTickParticle", duration);
+            DoParticle("PoisonTickParticle", duration);
 
-        StartCoroutine(doPoison(damagePerTick, duration, timeBetweenPoison));
+            StartCoroutine(doPoison(damagePerTick, duration, timeBetweenPoison));
 
-        SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.Start, transform.position);
+            SoundManager.PlayAilmentSound(StatusType.poison, ailmentSoundType.Start, transform.position);
+        }
     }
 
     IEnumerator doPoison(float damagePerTick, float duration, float timeBetweenPoison)
@@ -772,27 +810,30 @@ public class Health : MonoBehaviour
     /// <param name="timeBetweenBurn">Time between burn in seconds.</param>
     public void SetBurned(float damagePerTick = .2f, float duration = 3, float timeBetweenBurn = 1)
     {
-        if (!isBurned)
+        if (CanBeAilmented(StatusType.burn))
         {
-            if (playerInfo)
+            if (!isBurned)
             {
-                damagePerTick = damagePerTick * playerInfo.GetCharmFloat("burnMultiplier");
-                if (ItemsManager.Instance.hasArmourPiece)
+                if (playerInfo)
                 {
-                    damagePerTick = 0;
+                    damagePerTick = damagePerTick * playerInfo.GetCharmFloat("burnMultiplier");
+                    if (ItemsManager.Instance.hasArmourPiece)
+                    {
+                        damagePerTick = 0;
+                    }
                 }
+
+                CreateAilmentIcon("FireCanvas");
+
+                isBurned = true;
+
+                DoParticle("FireTickParticle", duration);
+
+                if (enabled)
+                    StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
+
+                SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.Start, transform.position);
             }
-
-            CreateAilmentIcon("FireCanvas");
-
-            isBurned = true;
-
-            DoParticle("FireTickParticle", duration);
-
-            if (enabled)
-                StartCoroutine(doBurn(damagePerTick, duration, timeBetweenBurn));
-
-            SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.Start, transform.position);
         }
     }
 
@@ -851,16 +892,19 @@ public class Health : MonoBehaviour
     /// <param name="timeBetweenDeathTick">Time between death tick in seconds.</param>
     public void SetSlowDeath(float damagePerTick = .2f, float duration = 1, float timeBetweenDeathTick = 1)
     {
-        if (playerInfo)
-            damagePerTick *= playerInfo.GetCharmFloat("deathTickMultiplier");
+        if (CanBeAilmented(StatusType.slowlyDying))
+        {
+            if (playerInfo)
+                damagePerTick *= playerInfo.GetCharmFloat("deathTickMultiplier");
         
-        isSlowlyDying = true;
+            isSlowlyDying = true;
 
-        CreateAilmentIcon("InfectedCanvas");
+            CreateAilmentIcon("InfectedCanvas");
 
-        StartCoroutine(doSlowDeath(damagePerTick, duration, timeBetweenDeathTick));
+            StartCoroutine(doSlowDeath(damagePerTick, duration, timeBetweenDeathTick));
 
-        SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.Start, transform.position);
+            SoundManager.PlayAilmentSound(StatusType.slowlyDying, ailmentSoundType.Start, transform.position);
+        }
     }
 
     IEnumerator doSlowDeath(float damagePerTick, float duration, float timeBetweenSlowDeath)
@@ -909,13 +953,16 @@ public class Health : MonoBehaviour
     /// <param name="duration">Duration in seconds.</param>
     public void SetIce(float duration = 1)
     {
-        isFrozen = true;
+        if (CanBeAilmented(StatusType.Ice))
+        {
+            isFrozen = true;
 
-        DoParticle("IceTickParticle", duration);
+            DoParticle("IceTickParticle", duration);
 
-        CreateAilmentIcon("IceCanvas");
+            CreateAilmentIcon("IceCanvas");
 
-        StartCoroutine(doIce(duration));
+            StartCoroutine(doIce(duration));
+        }
     }
 
     IEnumerator doIce(float duration)
@@ -976,13 +1023,16 @@ public class Health : MonoBehaviour
     /// <param name="duration">Duration in seconds.</param>
     public void SetSandy(float duration = 1, float speedDamping = .5f)
     {
-        isSandy = true;
+        if (CanBeAilmented(StatusType.Sandy))
+        {
+            isSandy = true;
 
-        DoParticle("SandTickParticle", duration);
+            DoParticle("SandTickParticle", duration);
 
-        CreateAilmentIcon("SlowCanvas");
+            CreateAilmentIcon("SlowCanvas");
 
-        StartCoroutine(doSandy(duration, speedDamping));
+            StartCoroutine(doSandy(duration, speedDamping));
+        }
     }
 
     IEnumerator doSandy(float duration, float speedDamping)

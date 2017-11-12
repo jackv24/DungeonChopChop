@@ -59,24 +59,24 @@ public class ShowShieldStats : MonoBehaviour {
     {
         if (playerInfo.playerAttack.shield)
         {
-            resistanceMultiplier = thisShieldStats.blockingResistance - playerInfo.GetComponent<PlayerAttack>().shield.blockingResistance * 10;
+            resistanceMultiplier = thisShieldStats.blockingResistance - playerInfo.GetComponent<PlayerAttack>().shield.blockingResistance;
             SetTextColor(resistanceMultiplier, ref resistanceColor);
-            speedDamping = thisShieldStats.speedDamping - playerInfo.GetComponent<PlayerAttack>().shield.speedDamping * 10;
+            speedDamping = thisShieldStats.speedDamping - playerInfo.GetComponent<PlayerAttack>().shield.speedDamping;
             SetTextColor(speedDamping, ref speedDampingColor);
 
             if (resistanceMultiplier > 0)
-                resistanceText = "+" + resistanceMultiplier;
+                resistanceText = "+" + resistanceMultiplier * 10;
             else if (resistanceMultiplier == 0)
                 resistanceText = "-";
             else
-                resistanceText = "" + resistanceMultiplier;
+                resistanceText = "" + resistanceMultiplier * 10;
         
             if (speedDamping > 0)
-                speedDampingText = "+" + speedDamping;
+                speedDampingText = "+" + speedDamping * 10;
             else if (speedDamping == 0)
                 speedDampingText = "-";
             else
-                speedDampingText = "" + speedDamping;
+                speedDampingText = "" + speedDamping * 10;
         }
         else
         {

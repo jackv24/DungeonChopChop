@@ -10,12 +10,32 @@ public class Appraisel : MonoBehaviour {
     private bool appraising = false;
     private string originalSpeach;
 
+    private Coroutine appraiseCoroutine;
+
 	// Use this for initialization
 	void Start () 
     {
         dialogueSpeaker = GetComponent<DialogueSpeaker>();
         originalSpeach = dialogueSpeaker.lines[0];
+
+        dialogueSpeaker.OnGetPlayer += StopCoroutine;
 	}
+
+    void StopCoroutine(PlayerInformation player, bool b)
+    {
+        if (appraiseCoroutine != null)
+        {
+            StopCoroutine(appraiseCoroutine);
+            appraiseCoroutine = null;
+        }
+
+        appraising = false;
+
+        dialogueSpeaker.lines[0] = originalSpeach;
+
+        dialogueSpeaker.UpdateLines();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -26,7 +46,13 @@ public class Appraisel : MonoBehaviour {
             {
                 if (dialogueSpeaker.CurrentPlayer.playerMove.input.Purchase)
                 {
-                    StartCoroutine(AppraiseCharms());
+                    if (appraiseCoroutine != null)
+                    {
+                        StopCoroutine(appraiseCoroutine);
+                        appraiseCoroutine = null;
+                    }
+
+                    appraiseCoroutine = StartCoroutine(AppraiseCharms());
                 }
             }
         }

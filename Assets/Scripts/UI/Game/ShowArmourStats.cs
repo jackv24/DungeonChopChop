@@ -29,6 +29,8 @@ public class ShowArmourStats : MonoBehaviour {
     {
         if (dialogueSpeaker.CurrentPlayer != null)
         {
+            SetDialgeText(dialogueSpeaker.CurrentPlayer, true);
+
             if (dialogueSpeaker.CurrentPlayer.playerMove.input.Purchase.WasPressed)
             {
                 armourPickup.Pickup(dialogueSpeaker.CurrentPlayer);

@@ -53,7 +53,8 @@ public class PlayerInformation : MonoBehaviour
     public PlayerMove playerMove;
     [HideInInspector]
     public Animator animator;
-    private CharacterController characterController;
+    [HideInInspector]
+    public CharacterController characterController;
     [HideInInspector]
     public PlayerAttack playerAttack;
     private GameObject mapHUD;
@@ -82,6 +83,7 @@ public class PlayerInformation : MonoBehaviour
             LevelGenerator.Instance.OnTileEnter += SpeedBuff;
             LevelGenerator.Instance.OnTileEnter += Forcefield;
             LevelGenerator.Instance.OnTileEnter += Paralysed;
+            LevelGenerator.Instance.OnTileEnter += RemoveAilment;
 
             LevelGenerator.Instance.OnGenerationFinished += RefreshMapItems;
         }
@@ -145,6 +147,11 @@ public class PlayerInformation : MonoBehaviour
         return 0;
     }
 
+    void RemoveAilment()
+    {
+        health.RemoveAilment();
+    }
+
     public void Revive(PlayerInformation deadPlayer, PlayerInformation alivePlayer)
     {
         //half the amount of alive players health
@@ -163,6 +170,9 @@ public class PlayerInformation : MonoBehaviour
         deadPlayer.animator.SetBool("Die", false);
         //make sure player is no longer dead
         deadPlayer.health.isDead = false;
+
+        playerMove.enabled = false;
+        characterController.enabled = false;
     }
 
     public void PickupCharm(Charm charm)
