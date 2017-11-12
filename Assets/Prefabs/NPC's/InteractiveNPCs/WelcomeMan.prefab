@@ -1016,14 +1016,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96e281d15bf5d224b8c5361f2369ba50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  welcomeMessage: 'Welcome strange one! Have you come to save us from this great evil?
-    You will need to defeat each dungeon starting with Deepwood. Here''s something
-    to help you on your Journey. Goodluck! '
-  messageAfterCollectingLoot: Just keep exploring the grass lands until you find Deepwood.
+  messageAfterCollectingLoot: Keep exploring the grass lands until you find Darkpine.
   dropCoins: 0
   cashAmount: 125
   collectSound:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: a40ea7530cd81314f8a66ad90c7de370, type: 3}
+    - {fileID: 8300000, guid: b063a688065264246a7082232225b4ff, type: 3}
+    - {fileID: 8300000, guid: 68e106881b395af429aad7e5f7367b2e, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -1054,7 +1054,7 @@ MonoBehaviour:
   _guid: 2429c7e6-47d0-46c6-a856-cbf16e9462b4
 --- !u!114 &114186092792791292
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821673531499670}
@@ -1208,9 +1208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - 'You want to help? Thank you! Take these Gemeralds
-
-    Grab supplies and find the Darkwood Dungeon.'
+  - "Were you sent to save us.\r\nDefeat each of the four Guardians. \r\nFind the
+    first one in Darkpine Dungeon.\r\nTake this gold. "
   playerLayer:
     serializedVersion: 2
     m_Bits: 16384
@@ -1280,7 +1279,7 @@ MonoBehaviour:
   _guid: b715d863-7b30-4513-8e90-8b0e2c71ede5
 --- !u!114 &114817580712494194
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821673531499670}
