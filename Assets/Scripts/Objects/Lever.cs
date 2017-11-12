@@ -8,6 +8,10 @@ public class Lever : MonoBehaviour {
 
     public event LeverEvent OnLeverActivated;
 
+    [Header("Audio and Particles")]
+    public SoundEffect soundOnHit;
+    public AmountOfParticleTypes[] particleOnHit;
+
     public bool activated
     {
         get { return m_activated; }
@@ -29,6 +33,10 @@ public class Lever : MonoBehaviour {
             if (!m_activated)
             {
                 animator.SetTrigger("Trigger");
+
+                SoundManager.PlaySound(soundOnHit, transform.position);
+                SpawnEffects.EffectOnHit(particleOnHit, transform.position);
+
 
                 if (OnLeverActivated != null)
                     OnLeverActivated();

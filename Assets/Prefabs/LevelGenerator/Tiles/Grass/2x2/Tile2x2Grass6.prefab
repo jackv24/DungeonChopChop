@@ -2817,7 +2817,6 @@ GameObject:
   - component: {fileID: 114065186908684910}
   - component: {fileID: 114016413245729426}
   - component: {fileID: 114865670770092646}
-  - component: {fileID: 114883124617424624}
   m_Layer: 0
   m_Name: Tile2x2Grass6
   m_TagString: Untagged
@@ -35007,6 +35006,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -35161,6 +35161,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114001056527245422
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -35955,6 +35964,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -36171,6 +36181,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114018510207066394
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -36416,7 +36435,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -36497,6 +36518,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -36713,6 +36735,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114030513115217770
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -36796,7 +36827,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -36889,6 +36922,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -37105,6 +37139,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114045773869959822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37120,7 +37163,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -37162,7 +37207,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -37303,6 +37350,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -37457,6 +37505,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114056122679638052
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -37547,6 +37604,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -37763,6 +37821,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114066126023588218
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -37826,7 +37893,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -38123,6 +38192,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -38277,6 +38347,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114097498173357108
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -38303,6 +38382,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -38457,6 +38537,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114099972604061568
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -38617,6 +38706,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -38833,6 +38923,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114116798120922776
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -38887,6 +38986,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -39041,6 +39141,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114120947517016098
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -39556,7 +39665,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -39674,7 +39785,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -39845,6 +39958,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -39999,6 +40113,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114190678508802920
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -40038,7 +40161,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -40132,7 +40257,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -40464,6 +40591,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -40618,6 +40746,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114209171068298164
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -40794,6 +40931,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -40948,6 +41086,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114224610721305486
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -41208,6 +41355,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -41424,6 +41572,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114248127087561796
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -41587,7 +41744,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -41725,7 +41884,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -41796,6 +41957,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -42012,6 +42174,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114267117239182352
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -42163,7 +42334,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -42829,7 +43002,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -42958,6 +43133,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -43174,6 +43350,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114339606450239684
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -43301,7 +43486,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -44065,7 +44252,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -44106,6 +44295,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -44322,6 +44512,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114403208630687754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -44670,6 +44869,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -44824,6 +45024,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114419806112172558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -45160,6 +45369,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -45376,6 +45586,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114447635508442356
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -45450,6 +45669,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -45666,6 +45886,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114455354469711034
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -45933,7 +46162,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -46043,7 +46274,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -46097,7 +46330,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -46239,7 +46474,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -46338,6 +46575,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -46492,6 +46730,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114507211867288622
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -46518,6 +46765,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -46734,6 +46982,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114511845140798032
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -46981,7 +47238,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -47023,7 +47282,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -47259,7 +47520,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -47337,7 +47600,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -47390,6 +47655,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -47544,6 +47810,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114552818398426874
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -47664,6 +47939,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -47880,6 +48156,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114567174054049988
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -48092,6 +48377,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -48308,6 +48594,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114585833064747606
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -48346,6 +48641,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -48500,6 +48796,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114589301424168582
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -48868,7 +49173,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -48951,6 +49258,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -49167,6 +49475,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114615450574752066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -49289,6 +49606,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -49443,6 +49761,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114627579157419942
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -49486,7 +49813,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -49632,7 +49961,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -49920,7 +50251,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -50014,7 +50347,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -50092,7 +50427,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -50133,6 +50470,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -50349,6 +50687,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114672327528208582
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -50504,7 +50851,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -50696,7 +51045,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -50899,6 +51250,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -51115,6 +51467,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114706219409275348
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -51141,6 +51502,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -51295,6 +51657,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114709087103230704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51309,6 +51680,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -51463,6 +51835,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114709200128477420
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -51614,7 +51995,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -51667,6 +52050,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -51821,6 +52205,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114718131665415542
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -51908,7 +52301,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -52085,6 +52480,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -52239,6 +52635,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114736012623143282
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -52373,6 +52778,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -52589,6 +52995,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114753888622340430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52604,7 +53019,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -52956,7 +53373,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -53021,6 +53440,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -53175,6 +53595,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114786733696809954
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -53454,7 +53883,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -53508,7 +53939,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -53561,6 +53994,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -53777,6 +54211,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114804313924524764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53855,6 +54298,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -54071,6 +54515,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114809123194812780
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -54180,7 +54633,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -54337,6 +54792,7 @@ MonoBehaviour:
       position: {x: -16.65431, y: 0, z: 13.938675}
       rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
+  undefeatedEnemies: []
 --- !u!114 &114819379495691210
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -54630,7 +55086,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -54794,7 +55252,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -54860,7 +55320,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -54913,6 +55375,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -55129,6 +55592,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114859353262157134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55172,7 +55644,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -55449,35 +55923,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 130ef3af-3543-4763-92e9-841f93757f30
---- !u!114 &114883124617424624
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1267332723767642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 289472bc570df684cb891bc94f7c1920, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  challengeType: 1
-  chance: 100
-  randomChallenge: 0
-  completedColor: {r: 0.15679064, g: 0.85294116, b: 0.36323527, a: 1}
-  failedColor: {r: 0.83823526, g: 0.1910683, b: 0.1910683, a: 1}
-  completedSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  failedSound:
-    clips: []
-    volume: 1
-    minPitchVariance: -0.1
-    maxPitchVariance: 0.1
-  killEnemyText: Kill all enemies in 10 seconds
-  timeToKillAll: 10
-  TakeNoDamageText: Kill all without taking damage
 --- !u!114 &114884433369526142
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -55706,6 +56151,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -55860,6 +56306,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114912355592415688
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -55914,6 +56369,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -56068,6 +56524,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114916863915008674
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -56095,7 +56560,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -56205,7 +56672,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -56246,6 +56715,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -56400,6 +56870,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114925189510726722
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -56561,7 +57040,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -56602,6 +57083,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -56756,6 +57238,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114944443016420072
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -56798,6 +57289,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -56952,6 +57444,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114945028721586348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -57206,6 +57707,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -57360,6 +57862,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114963736767537262
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -57698,6 +58209,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 0
   dashDestroysIt: 1
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -57914,6 +58426,15 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.1
     duration: 1
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114998915895735936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -57945,7 +58466,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0

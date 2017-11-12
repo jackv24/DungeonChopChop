@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4612328166973798}
   - component: {fileID: 114386099496205034}
   - component: {fileID: 114313976018057270}
+  - component: {fileID: 114974058371129646}
   m_Layer: 0
   m_Name: IronGate
   m_TagString: Untagged
@@ -265,7 +266,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114055892671626736
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1826879063601306}
@@ -277,7 +278,7 @@ MonoBehaviour:
   _guid: ca93376a-1a99-47b6-9d9c-c469f86d8a33
 --- !u!114 &114298864519099224
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1518235588056368}
@@ -289,7 +290,7 @@ MonoBehaviour:
   _guid: 5fa00975-106d-4923-a5ce-8ec6feca9acc
 --- !u!114 &114313976018057270
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099714667079860}
@@ -301,7 +302,7 @@ MonoBehaviour:
   _guid: 9646c8bd-99b3-4278-80b8-e3d8adbd9b78
 --- !u!114 &114386099496205034
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099714667079860}
@@ -321,7 +322,7 @@ MonoBehaviour:
   _assetGuid: 13d7cb6a3f9ac6a4f82e8d267cd8d479
 --- !u!114 &114681612638135200
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1946251761139118}
@@ -349,9 +350,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiresKey: 0
   requiresChallenge: 1
+  lever: {fileID: 0}
 --- !u!114 &114922069229982510
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1946251761139118}
@@ -361,9 +363,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 2376986716
+--- !u!114 &114974058371129646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099714667079860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114975645255071628
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1946251761139118}
