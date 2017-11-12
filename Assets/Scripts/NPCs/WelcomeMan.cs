@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WelcomeMan : MonoBehaviour {
 
-    public string welcomeMessage;
     public string messageAfterCollectingLoot;
     public bool dropCoins = false;
     public int cashAmount;
@@ -36,10 +35,6 @@ public class WelcomeMan : MonoBehaviour {
             {
                 dialogueSpeaker.lines[0] = messageAfterCollectingLoot;
                 looted = true;
-            }
-            else
-            {
-                dialogueSpeaker.lines[0] = welcomeMessage;
             }
 
             if (dialogueSpeaker.CurrentPlayer)

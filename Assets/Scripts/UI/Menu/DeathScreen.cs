@@ -27,17 +27,14 @@ public class DeathScreen : MonoBehaviour {
         
         foreach (PlayerInformation player in GameManager.Instance.players)
         {
-            if (player.animator)
+            if (player.playerMove.playerHealth.health <= 0)
             {
-                if (player.animator.GetCurrentAnimatorStateInfo(0).IsTag("Dead"))
-                {
-                    allPlayersDead = true;
-                }
-                else
-                {
-                    allPlayersDead = false;
-                    break;
-                }
+                allPlayersDead = true;
+            }
+            else
+            {
+                allPlayersDead = false;
+                break;
             }
         }
 

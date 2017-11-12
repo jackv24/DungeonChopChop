@@ -9,6 +9,9 @@ public class Gate : MonoBehaviour {
     [Space()]
     public bool requiresChallenge = false;
 
+    [Space()] 
+    public Lever lever;
+
     private TileQuest tileQuest;
     private Animator animator;
 
@@ -22,6 +25,9 @@ public class Gate : MonoBehaviour {
 
         if (requiresChallenge)
             tileQuest.OnQuestComplete += OpenGate;
+
+        if (lever)
+            lever.OnLeverActivated += OpenGate;
     }
 
 
