@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 114166945156765646}
   - component: {fileID: 114359503310893004}
   - component: {fileID: 114631356354544508}
+  - component: {fileID: 114274955385191408}
   m_Layer: 15
   m_Name: DungeonKey
   m_TagString: Untagged
@@ -77,7 +78,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773314530630038}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 4, y: -0.010046616, z: 3.405637}
+  m_LocalPosition: {x: -22.471653, y: 12.824, z: 36.234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4983801503680672}
@@ -179,7 +180,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0.09276256, z: 0.0047652125}
 --- !u!114 &114005090514903060
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497631936992698}
@@ -205,9 +206,21 @@ MonoBehaviour:
   message: SetSpawnMessage
   requireReceiver: 1
   delayBeforeSend: 1
+--- !u!114 &114274955385191408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773314530630038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba875fb75cc4204ab29d60d515fd8f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beforeMerge: 1
 --- !u!114 &114302409941714318
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1387354050454916}
@@ -219,7 +232,7 @@ MonoBehaviour:
   _guid: 126f4b81-a302-4bb0-a9d0-5a66f764a6db
 --- !u!114 &114359503310893004
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773314530630038}
@@ -353,7 +366,7 @@ MonoBehaviour:
   keyItem: {fileID: 11400000, guid: 2e59e85d6d6408a4dbfbce1b6006c3fc, type: 2}
 --- !u!114 &114631356354544508
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773314530630038}
@@ -434,7 +447,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1116819484
+  randomSeed: -1877203964
   InitialModule:
     serializedVersion: 3
     enabled: 1

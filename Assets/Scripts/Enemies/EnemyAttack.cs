@@ -102,6 +102,8 @@ public class EnemyAttack : MonoBehaviour
     {
         //ChangeStrength();
         ChangeHealth();
+
+        colliding.Clear();
     }
 
     void ChangeHealth()
