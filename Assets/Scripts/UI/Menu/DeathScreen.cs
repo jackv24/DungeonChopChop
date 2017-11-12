@@ -16,6 +16,11 @@ public class DeathScreen : MonoBehaviour {
 	void Start () {
 		
 	}
+
+    void OnEnable()
+    {
+        deathScreenShown = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {

@@ -85,7 +85,7 @@ public class BossVispAttack : EnemyAttack {
         {
             spawnCounter = 0;
 
-            SplitEnemy(visp, amountPerSpawn, true);
+            SplitEnemy(visp, amountPerSpawn, false);
 
             timeBetweenSpawn = Random.Range(minTimeBetweenSpawn, maxTimeBetweenSpawn);
         }

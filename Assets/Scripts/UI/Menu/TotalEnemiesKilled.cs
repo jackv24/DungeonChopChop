@@ -24,12 +24,15 @@ public class TotalEnemiesKilled : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () 
     {
-        if (transform.GetChild(transform.childCount - 1).GetComponent<RectTransform>().position.y < 120)
+        if (transform.childCount > 0)
         {
-            transform.GetComponent<RectTransform>().position = Vector3.Lerp(transform.GetComponent<RectTransform>().position, new Vector3(
-                transform.GetComponent<RectTransform>().position.x, 
-                transform.GetComponent<RectTransform>().position.y + 50, 
-                transform.GetComponent<RectTransform>().position.z), 2 * Time.fixedDeltaTime);
+            if (transform.GetChild(transform.childCount - 1).GetComponent<RectTransform>().position.y < 120)
+            {
+                transform.GetComponent<RectTransform>().position = Vector3.Lerp(transform.GetComponent<RectTransform>().position, new Vector3(
+                        transform.GetComponent<RectTransform>().position.x, 
+                        transform.GetComponent<RectTransform>().position.y + 50, 
+                        transform.GetComponent<RectTransform>().position.z), 2 * Time.fixedDeltaTime);
+            }
         }
 	}
 

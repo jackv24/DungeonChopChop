@@ -1039,8 +1039,6 @@ public class Health : MonoBehaviour
     {
         if (canBeDamagedFromEffect())
         {
-            float finishTime = Time.time + duration;
-
             float ogEnemySpeed = 0;
 
             //checks if player or enemy and sets the speeds
@@ -1055,17 +1053,13 @@ public class Health : MonoBehaviour
                 }
             }
 
+            SetColor(sandyColor);
+
             SoundManager.PlayAilmentSound(StatusType.Sandy, ailmentSoundType.Start, transform.position);
 
-            while (isSandy)
-            {
-                SetColor(sandyColor);
-                if (Time.time >= finishTime)
-                {
-                    isSandy = false;
-                }
-                yield return new WaitForEndOfFrame();
-            }
+            yield return new WaitForSeconds(duration);
+
+            isSandy = false;
 
             SetOGFade();
 

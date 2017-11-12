@@ -13,6 +13,9 @@ public class HealingPlatform : MonoBehaviour {
     public SoundEffect sound;
     public ParticleSystem fountainParticle;
 
+    [Space()]
+    public bool isTownFountain = false;
+
     private int counter = 0;
     private float maxHealth = 10;
 
@@ -38,34 +41,38 @@ public class HealingPlatform : MonoBehaviour {
         {
             main = fountainParticle.main;
         }
-        //set the max health the player can heal to
-        if (ItemsManager.Instance.hasGauntles)
-        {
-            maxHealth = 0;
 
-            if (fountainParticle)
-                main.maxParticles = (int)Percentage(maxParticleSize, 5);
-        }
-        else if (ItemsManager.Instance.hasArmourPiece)
+        if (isTownFountain)
         {
-            maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 25);
+            //set the max health the player can heal to
+            if (ItemsManager.Instance.hasGauntles)
+            {
+                maxHealth = 0;
 
-            if (fountainParticle)
-                main.maxParticles = (int)Percentage(maxParticleSize, 25);
-        }
-        else if (ItemsManager.Instance.hasBoots)
-        {
-            maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 50);
+                if (fountainParticle)
+                    main.maxParticles = (int)Percentage(maxParticleSize, 5);
+            }
+            else if (ItemsManager.Instance.hasArmourPiece)
+            {
+                maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 25);
 
-            if (fountainParticle)
-                main.maxParticles = (int)Percentage(maxParticleSize, 50);
-        }
-        else if (ItemsManager.Instance.hasGoggles)
-        {
-            maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 75);
+                if (fountainParticle)
+                    main.maxParticles = (int)Percentage(maxParticleSize, 25);
+            }
+            else if (ItemsManager.Instance.hasBoots)
+            {
+                maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 50);
 
-            if (fountainParticle)
-                main.maxParticles = (int)Percentage(maxParticleSize, 75);
+                if (fountainParticle)
+                    main.maxParticles = (int)Percentage(maxParticleSize, 50);
+            }
+            else if (ItemsManager.Instance.hasGoggles)
+            {
+                maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 75);
+
+                if (fountainParticle)
+                    main.maxParticles = (int)Percentage(maxParticleSize, 75);
+            }
         }
     }
 
