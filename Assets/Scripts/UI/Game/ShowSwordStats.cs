@@ -60,9 +60,9 @@ public class ShowSwordStats : MonoBehaviour {
 
     void GetStatDifferences(PlayerInformation playerInfo)
     {
-        damageMultiplier = thisSwordStats.damageMultiplier - playerInfo.GetComponent<PlayerAttack>().sword.damageMultiplier * 10;
+        damageMultiplier = thisSwordStats.damageMultiplier - playerInfo.GetComponent<PlayerAttack>().sword.damageMultiplier;
         SetTextColor(damageMultiplier, ref damageColor);
-        range = thisSwordStats.range - playerInfo.GetComponent<PlayerAttack>().sword.range * 10;
+        range = thisSwordStats.range - playerInfo.GetComponent<PlayerAttack>().sword.range;
         SetTextColor(range, ref rangeColor);
 
         if (damageMultiplier > 0)
@@ -73,11 +73,11 @@ public class ShowSwordStats : MonoBehaviour {
             damageMultiplierText = "" + damageMultiplier;
         
         if (range > 0)
-            rangeText = "+" + range;
+            rangeText = "+" + range * 10;
         else if (range == 0)
             rangeText = "-";
         else
-            rangeText = "" + range;
+            rangeText = "" + range * 10;
 
         if (weaponEffect != WeaponEffect.Nothing)
         {

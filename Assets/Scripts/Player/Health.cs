@@ -134,6 +134,16 @@ public class Health : MonoBehaviour
         {
             OGFade(fadeTime);
         }
+
+        //check if the object has an ailment icon but is not ailmented
+        if (!HasStatusCondition())
+        {
+            if (ailmentIcon)
+            {
+                if (ailmentIcon.activeSelf)
+                    ailmentIcon.SetActive(false);
+            }
+        }
     }
 
     public void AffectHealth(float healthDeta)
