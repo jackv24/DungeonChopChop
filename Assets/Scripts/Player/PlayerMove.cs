@@ -194,6 +194,17 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+        //if the player falls through the floor
+        if (transform.position.y < -20)
+        {
+            PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
+
+            LevelGenerator.Instance.generatedTiles[0].SetCurrent(LevelGenerator.Instance.currentTile);
+
+            foreach (PlayerInformation playerInfo in playerInfos)
+                playerInfo.transform.position = LevelGenerator.Instance.generatedTiles[0].tileOrigin.position;
+        }
+
 		doAnimations();
 
 		if (!allowMove)
