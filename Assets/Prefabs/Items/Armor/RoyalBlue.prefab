@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114341692266523468}
   - component: {fileID: 114987690984768982}
   - component: {fileID: 114070697068716232}
+  - component: {fileID: 114873414969508150}
+  - component: {fileID: 114821144633179710}
   m_Layer: 0
   m_Name: RoyalBlue
   m_TagString: Untagged
@@ -153,6 +155,37 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: f0bc056e524c0d54a9d31c5844f15de1, type: 2}
   pickupDelay: 1
+--- !u!114 &114821144633179710
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1204103603310578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a8c7939f0fa5248b7dd4c82ba0130d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114873414969508150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1204103603310578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - Default text
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  textBoxHeight: 3
+  textBoxDepth: 0
+  dialogueBoxPrefab: {fileID: 1983791718684604, guid: fb7b19701c648824c9cb3d7398d3ac6c,
+    type: 2}
 --- !u!114 &114987690984768982
 MonoBehaviour:
   m_ObjectHideFlags: 11
