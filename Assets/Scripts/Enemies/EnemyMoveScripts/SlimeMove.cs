@@ -96,10 +96,13 @@ public class SlimeMove : EnemyMove {
 
     IEnumerator immune()
     {
-        //immune time, so enemies can't be killed instantly such as boss slimes
-        enemyHealth.enabled = false;
-        yield return new WaitForSeconds(immuneTime);
-        enemyHealth.enabled = true;
+        if (tag == "BossSlime")
+        {
+            //immune time, so enemies can't be killed instantly such as boss slimes
+            enemyHealth.enabled = false;
+            yield return new WaitForSeconds(immuneTime);
+            enemyHealth.enabled = true;
+        }
     }
 	
 	// Update is called once per frame

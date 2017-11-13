@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 114586833487454138}
   - component: {fileID: 114197213496599782}
   - component: {fileID: 114199519723644098}
+  - component: {fileID: 114284714926211666}
   m_Layer: 0
   m_Name: IronChest
   m_TagString: Untagged
@@ -360,13 +361,18 @@ MonoBehaviour:
   animationBone: {fileID: 0}
   releaseItemDelay: 1
   releaseItemForce: 0
+  openSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   containingItem: {fileID: 0}
   containingObject: {fileID: 0}
   containingConsumables: []
   releaseParticle: {fileID: 0}
 --- !u!114 &114197213496599782
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833604339336476}
@@ -385,7 +391,7 @@ MonoBehaviour:
   _assetGuid: cc7707f8c70878b42821b7b2bd57caed
 --- !u!114 &114199519723644098
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833604339336476}
@@ -395,9 +401,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: ecee1c17-2a11-4dcc-a7d8-b328c4d4742b
+--- !u!114 &114284714926211666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833604339336476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114422464148391034
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1641163761748336}
@@ -438,7 +455,7 @@ MonoBehaviour:
   beforeMerge: 0
 --- !u!114 &114996123355751038
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059499708269596}

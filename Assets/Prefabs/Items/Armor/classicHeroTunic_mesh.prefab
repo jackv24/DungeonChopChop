@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 114156419992337648}
   - component: {fileID: 114132444919852140}
   - component: {fileID: 114682758165309532}
+  - component: {fileID: 114770364903670772}
+  - component: {fileID: 114108194845194842}
   m_Layer: 0
   m_Name: classicHeroTunic_mesh
   m_TagString: Untagged
@@ -97,6 +99,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.76042336, y: 0.8666748, z: 0.5459098}
   m_Center: {x: 0.049781144, y: 0.12623289, z: 0.014357351}
+--- !u!114 &114108194845194842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1903226540267162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a8c7939f0fa5248b7dd4c82ba0130d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114116099615252924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,3 +165,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: fb3143c2-4b35-4556-9994-d20004cea504
+--- !u!114 &114770364903670772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1903226540267162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - Default text
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  textBoxHeight: 3
+  textBoxDepth: 0
+  dialogueBoxPrefab: {fileID: 1983791718684604, guid: fb7b19701c648824c9cb3d7398d3ac6c,
+    type: 2}

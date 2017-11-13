@@ -166,7 +166,6 @@ GameObject:
   - component: {fileID: 114435332101367326}
   - component: {fileID: 114729835946016698}
   - component: {fileID: 114131244247287734}
-  - component: {fileID: 114499695291306262}
   m_Layer: 17
   m_Name: Crate_Open (2)
   m_TagString: Untagged
@@ -287,7 +286,6 @@ GameObject:
   - component: {fileID: 114388000894965928}
   - component: {fileID: 114773503047188044}
   - component: {fileID: 114139834743776190}
-  - component: {fileID: 114017444381553718}
   m_Layer: 17
   m_Name: Barrel (1)
   m_TagString: Untagged
@@ -426,7 +424,6 @@ GameObject:
   - component: {fileID: 114597074119980566}
   - component: {fileID: 114567097522681206}
   - component: {fileID: 114156199546423888}
-  - component: {fileID: 114912507930532184}
   m_Layer: 17
   m_Name: Barrel (2)
   m_TagString: Untagged
@@ -628,7 +625,6 @@ GameObject:
   - component: {fileID: 114583323192325658}
   - component: {fileID: 114715691941004360}
   - component: {fileID: 114234010358834066}
-  - component: {fileID: 114078706890471546}
   m_Layer: 17
   m_Name: Crate_Closed_2 (1)
   m_TagString: Untagged
@@ -1006,7 +1002,6 @@ GameObject:
   - component: {fileID: 114004008187726728}
   - component: {fileID: 114136885090473246}
   - component: {fileID: 114247129640296854}
-  - component: {fileID: 114674080482352380}
   m_Layer: 17
   m_Name: Crate_Open
   m_TagString: Untagged
@@ -1072,7 +1067,6 @@ GameObject:
   - component: {fileID: 114307935104914552}
   - component: {fileID: 114439894215127702}
   - component: {fileID: 114946533107607960}
-  - component: {fileID: 114541525210534530}
   m_Layer: 17
   m_Name: Crate_Closed_2
   m_TagString: Untagged
@@ -1838,7 +1832,6 @@ GameObject:
   - component: {fileID: 114839485395631806}
   - component: {fileID: 114579718074665108}
   - component: {fileID: 114005062209842148}
-  - component: {fileID: 114344242740971548}
   m_Layer: 17
   m_Name: Barrel
   m_TagString: Untagged
@@ -3074,7 +3067,6 @@ GameObject:
   - component: {fileID: 114966676825570260}
   - component: {fileID: 114489367340541918}
   - component: {fileID: 114821952372050760}
-  - component: {fileID: 114422569905095988}
   m_Layer: 17
   m_Name: Crate_Closed
   m_TagString: Untagged
@@ -3257,7 +3249,6 @@ GameObject:
   - component: {fileID: 114819438743858102}
   - component: {fileID: 114829780888061748}
   - component: {fileID: 114361999706443946}
-  - component: {fileID: 114644052980393326}
   m_Layer: 17
   m_Name: Crate_Closed_2 (2)
   m_TagString: Untagged
@@ -3341,7 +3332,6 @@ GameObject:
   - component: {fileID: 114223298250760672}
   - component: {fileID: 114992192770564022}
   - component: {fileID: 114757202570704606}
-  - component: {fileID: 114803985460518666}
   m_Layer: 17
   m_Name: Crate_Open (1)
   m_TagString: Untagged
@@ -4693,7 +4683,6 @@ GameObject:
   - component: {fileID: 114668289138445738}
   - component: {fileID: 114505709033611954}
   - component: {fileID: 114496128565805264}
-  - component: {fileID: 114434391850723276}
   m_Layer: 17
   m_Name: Crate_Closed (1)
   m_TagString: Untagged
@@ -4929,7 +4918,6 @@ GameObject:
   - component: {fileID: 114895804181159802}
   - component: {fileID: 114422330658700752}
   - component: {fileID: 114723621867797512}
-  - component: {fileID: 114021788116744014}
   m_Layer: 17
   m_Name: Crate_Open (3)
   m_TagString: Untagged
@@ -5012,7 +5000,6 @@ GameObject:
   - component: {fileID: 114635963243436274}
   - component: {fileID: 114827963110441682}
   - component: {fileID: 114043947350190468}
-  - component: {fileID: 114359115215453174}
   m_Layer: 17
   m_Name: Crate_Closed_2 (3)
   m_TagString: Untagged
@@ -18886,38 +18873,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114008896254612652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18971,17 +18934,6 @@ MonoBehaviour:
     _collection:
     - {fileID: 1071256110088790}
   _assetGuid: 33f79d7f57cc70348aee35526413dd1b
---- !u!114 &114017444381553718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1042473058886876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114018334266365798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19037,17 +18989,6 @@ MonoBehaviour:
     - {fileID: 1460508790530414}
     - {fileID: 1537475087248498}
   _assetGuid: dcb362c1894bbab41a3379f42d24fc5b
---- !u!114 &114021788116744014
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1964458737600094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114023306066480436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19626,38 +19567,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114047208595816988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19889,17 +19806,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 2a5a0ffe-3f82-4246-83f7-369a1c3837b2
---- !u!114 &114078706890471546
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1091577313082962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114079161638063910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20877,38 +20783,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114154178327044898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21149,38 +21031,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114154230395432684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21794,38 +21652,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114198825819263106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22170,38 +22004,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114211522592560268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22602,38 +22412,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114222366824704800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -23217,38 +23003,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114262170167692212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -23924,17 +23686,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: c0a51eee-7459-4aef-842b-866f2e375f10
---- !u!114 &114344242740971548
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1352223158350070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114349509474518434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -23984,17 +23735,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114359115215453174
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1981641433550808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114359572068949558
@@ -24638,17 +24378,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 1e9b2079-b6a3-4bda-950b-3c9e1c0a9f7c
---- !u!114 &114422569905095988
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1588083222011648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114422707445805618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -24771,17 +24500,6 @@ MonoBehaviour:
   minAmountOfDrops: 3
   maxAmountOfDrops: 10
   isWizzer: 0
---- !u!114 &114434391850723276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1921068589016000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114434577603594636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -25245,38 +24963,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114449284704921644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -25669,17 +25363,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 9173261b-a509-4fbd-bf19-e5febb078d57
---- !u!114 &114499695291306262
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1033481123776496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114501206059274954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26002,38 +25685,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114510109874164866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26250,17 +25909,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114541525210534530
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1194467588507572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114542065946187014
@@ -27245,17 +26893,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
---- !u!114 &114644052980393326
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1652359533027430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114645511771812534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27511,17 +27148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: ee831604-ce53-47b9-935a-fcd88a2c3a87
---- !u!114 &114674080482352380
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1185505556138608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114674559824870012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27927,38 +27553,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114703605599574356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28372,38 +27974,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114722280677801586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -29291,17 +28869,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114803985460518666
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1671268764923030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114807031717250350
@@ -30230,17 +29797,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 3427b1f0-55a1-4f24-bcb3-78132dd6e2cb
---- !u!114 &114912507930532184
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1067645771379054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114913010637531826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -30839,38 +30395,14 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 1
+    animate: 0
     curve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.1
-        value: 5
-        inSlope: 0.40963292
-        outSlope: 0.40963292
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: -3
-        inSlope: -9.002686
-        outSlope: -9.002686
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
-    duration: 0.25
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114944435955144734
 MonoBehaviour:
   m_ObjectHideFlags: 1

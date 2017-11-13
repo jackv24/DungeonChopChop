@@ -191,16 +191,6 @@ public class Chest : MonoBehaviour
             obj.GetComponent<DialogueSpeaker>().playerLayer = playerMask;
             obj.GetComponent<DialogueSpeaker>().dialogueBoxPrefab = Resources.Load<GameObject>("PickupDialogueCanvas 1");
         }
-        else if (obj.GetComponent<ArmourPickup>())
-        {
-            Debug.Log("armor");
-
-            obj.AddComponent<DialogueSpeaker>();
-            obj.AddComponent<ShowArmourStats>();
-
-            obj.GetComponent<DialogueSpeaker>().playerLayer = playerMask;
-            obj.GetComponent<DialogueSpeaker>().dialogueBoxPrefab = Resources.Load<GameObject>("PickupDialogueCanvas 1");
-        }
 
         obj.transform.position = transform.position;
 

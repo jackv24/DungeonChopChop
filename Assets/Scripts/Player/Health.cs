@@ -967,40 +967,37 @@ public class Health : MonoBehaviour
 
     IEnumerator doIce(float duration)
     {
-        if (canBeDamagedFromEffect())
+        //sets the color
+        SetColor(frozenColor);
+        //disables animator
+        animator.enabled = false;
+
+        //do sound
+        SoundManager.PlayAilmentSound(StatusType.Ice, ailmentSoundType.Start, transform.position);
+
+        //disable move script
+        if (GetComponent<PlayerMove>())
+            GetComponent<PlayerMove>().enabled = false;
+        else if (GetComponent<EnemyMove>())
+            GetComponent<EnemyMove>().enabled = false;
+
+        yield return new WaitForSeconds(duration);
+
+        isFrozen = false;
+
+        UnFreeze();
+
+        ailmentIcon.SetActive(false);
+
+        SetOGFade();
+
+        SoundManager.PlayAilmentSound(StatusType.Ice, ailmentSoundType.End, transform.position);
+
+        //a safety in case the player gets stuck the wrong color;
+        if (!IsEnemy && !isProp)
         {
-            //sets the color
-            SetColor(frozenColor);
-            //disables animator
-            animator.enabled = false;
-
-            //do sound
-            SoundManager.PlayAilmentSound(StatusType.Ice, ailmentSoundType.Start, transform.position);
-
-            //disable move script
-            if (GetComponent<PlayerMove>())
-                GetComponent<PlayerMove>().enabled = false;
-            else if (GetComponent<EnemyMove>())
-                GetComponent<EnemyMove>().enabled = false;
-
-            yield return new WaitForSeconds(duration);
-
-            isFrozen = false;
-
-            UnFreeze();
-
-            ailmentIcon.SetActive(false);
-
-            SetOGFade();
-
-            SoundManager.PlayAilmentSound(StatusType.Ice, ailmentSoundType.End, transform.position);
-
-            //a safety in case the player gets stuck the wrong color;
-            if (!IsEnemy && !isProp)
-            {
-                yield return new WaitForSeconds(5);
-                ResetColour();
-            }
+            yield return new WaitForSeconds(5);
+            ResetColour();
         }
     }
 

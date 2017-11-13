@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 114254999493613438}
   - component: {fileID: 114040558424623278}
   - component: {fileID: 114320778201861708}
+  - component: {fileID: 114782000264371378}
+  - component: {fileID: 114251612042704242}
   m_Layer: 0
   m_Name: ironArmour_mesh
   m_TagString: Untagged
@@ -114,6 +116,17 @@ MonoBehaviour:
     _collection:
     - {fileID: 1026669912329516}
   _assetGuid: 573baeaa2c87f704f9b8aa36c790840d
+--- !u!114 &114251612042704242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1026669912329516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a8c7939f0fa5248b7dd4c82ba0130d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114254999493613438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,3 +165,23 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: c945d47cb23374743a78865dfc60c52d, type: 2}
   pickupDelay: 1
+--- !u!114 &114782000264371378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1026669912329516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - Default text
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  textBoxHeight: 3
+  textBoxDepth: 0
+  dialogueBoxPrefab: {fileID: 1983791718684604, guid: fb7b19701c648824c9cb3d7398d3ac6c,
+    type: 2}

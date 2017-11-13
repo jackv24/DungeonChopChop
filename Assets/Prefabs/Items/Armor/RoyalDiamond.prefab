@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114174917436731016}
   - component: {fileID: 114338282577159134}
   - component: {fileID: 114268947305310732}
+  - component: {fileID: 114180313412917652}
+  - component: {fileID: 114387623864521850}
   m_Layer: 0
   m_Name: RoyalDiamond
   m_TagString: Untagged
@@ -127,6 +129,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickUp: 1
+--- !u!114 &114180313412917652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1138061549049550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - Default text
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  textBoxHeight: 3
+  textBoxDepth: 0
+  dialogueBoxPrefab: {fileID: 1983791718684604, guid: fb7b19701c648824c9cb3d7398d3ac6c,
+    type: 2}
 --- !u!114 &114235978351434706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,3 +192,14 @@ MonoBehaviour:
     _collection:
     - {fileID: 1138061549049550}
   _assetGuid: e79e8c6a4f2788e46aa0ebb6fa362e5f
+--- !u!114 &114387623864521850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1138061549049550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a8c7939f0fa5248b7dd4c82ba0130d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

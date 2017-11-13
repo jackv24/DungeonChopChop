@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114774983369196716}
   - component: {fileID: 114157087547233680}
   - component: {fileID: 114868618571550200}
+  - component: {fileID: 114911690661193882}
+  - component: {fileID: 114246357130866672}
   m_Layer: 0
   m_Name: TunicPurple
   m_TagString: Untagged
@@ -146,6 +148,17 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: ff739d6989fbe7a428ee6f9d96753306, type: 2}
   pickupDelay: 1
+--- !u!114 &114246357130866672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536109143731538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a8c7939f0fa5248b7dd4c82ba0130d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114774983369196716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,3 +183,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: fc2f2a0a-a784-422c-8776-62097693f262
+--- !u!114 &114911690661193882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536109143731538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - Default text
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  textBoxHeight: 3
+  textBoxDepth: 0
+  dialogueBoxPrefab: {fileID: 1983791718684604, guid: fb7b19701c648824c9cb3d7398d3ac6c,
+    type: 2}

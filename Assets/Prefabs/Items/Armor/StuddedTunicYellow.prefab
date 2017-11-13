@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 114886991926498908}
   - component: {fileID: 114900961048368986}
   - component: {fileID: 114862775516208494}
+  - component: {fileID: 114094160881785526}
+  - component: {fileID: 114645649987033138}
   m_Layer: 0
   m_Name: StuddedTunicYellow
   m_TagString: Untagged
@@ -97,6 +99,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33488986, y: 0.5180535, z: 0.3371578}
   m_Center: {x: 0.005856678, y: 0.12783012, z: 0.03037364}
+--- !u!114 &114094160881785526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1143238511910532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - Default text
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  textBoxHeight: 3
+  textBoxDepth: 0
+  dialogueBoxPrefab: {fileID: 1983791718684604, guid: fb7b19701c648824c9cb3d7398d3ac6c,
+    type: 2}
 --- !u!114 &114588295910834238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,6 +133,17 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: d067e42dde028a24fb9601577e1e5947, type: 2}
   pickupDelay: 1
+--- !u!114 &114645649987033138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1143238511910532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a8c7939f0fa5248b7dd4c82ba0130d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114862775516208494
 MonoBehaviour:
   m_ObjectHideFlags: 11

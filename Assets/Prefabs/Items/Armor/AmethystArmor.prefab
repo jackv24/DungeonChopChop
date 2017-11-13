@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114251268568436944}
   - component: {fileID: 114224560635271186}
   - component: {fileID: 114456094887446054}
+  - component: {fileID: 114793355101270150}
+  - component: {fileID: 114583257950201790}
   m_Layer: 0
   m_Name: AmethystArmor
   m_TagString: Untagged
@@ -156,6 +158,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 9981fbfa-7647-45c4-ae60-c5e67b99a4e8
+--- !u!114 &114583257950201790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403463720463776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a8c7939f0fa5248b7dd4c82ba0130d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114651736299239354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,3 +183,23 @@ MonoBehaviour:
   iconRenderer: {fileID: 0}
   representingItem: {fileID: 11400000, guid: 863cbb5c433307d4ba7aa527e37a912e, type: 2}
   pickupDelay: 1
+--- !u!114 &114793355101270150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403463720463776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1790096034fc6446a0a247bd22eb2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - Default text
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  textBoxHeight: 3
+  textBoxDepth: 0
+  dialogueBoxPrefab: {fileID: 1983791718684604, guid: fb7b19701c648824c9cb3d7398d3ac6c,
+    type: 2}
