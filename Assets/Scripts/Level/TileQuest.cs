@@ -187,13 +187,16 @@ public class TileQuest : MonoBehaviour {
 
     void CheckLeversTriggered()
     {
-        leverCounter++;
-        if (leverCounter >= levers.Length)
+        if (questActive)
         {
-            if (CompletedInTime())
-                CompletedQuest();
-            else
-                FailedQuest();
+            leverCounter++;
+            if (leverCounter >= levers.Length)
+            {
+                if (CompletedInTime())
+                    CompletedQuest();
+                else
+                    FailedQuest();
+            }
         }
     }
 
