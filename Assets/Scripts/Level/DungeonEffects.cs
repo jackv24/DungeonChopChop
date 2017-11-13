@@ -258,14 +258,16 @@ public class DungeonEffects : MonoBehaviour
         {
             foreach (GameObject ui in playersUI)
             {
-                ui.SetActive(false);
+                if (ui)
+                    ui.SetActive(false);
             }
         }
         else
         {
             foreach (GameObject ui in playersUI)
             {
-                ui.SetActive(true);
+                if (ui)
+                    ui.SetActive(true);
             }
         }
     }
