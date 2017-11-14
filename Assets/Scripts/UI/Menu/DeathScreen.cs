@@ -7,6 +7,7 @@ public class DeathScreen : MonoBehaviour {
 
     public GameObject deathScreen;
     public GameObject replayButton;
+    public float waitTillDeathScreen = 3;
 
     private bool allPlayersDead = false;
 
@@ -50,7 +51,7 @@ public class DeathScreen : MonoBehaviour {
 
     IEnumerator deathScreenWait()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(waitTillDeathScreen);
 
         EventSystem.current.SetSelectedGameObject(replayButton);
 

@@ -770,6 +770,8 @@ public class PlayerAttack : MonoBehaviour
                         animator.SetTrigger("Dash");
                     }
 
+                    playerHealth.RemoveAilment();
+
                     playerInformation.currentCureAmount -= juicePerDash;
 
                     canDash = false;
