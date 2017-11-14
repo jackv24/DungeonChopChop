@@ -383,6 +383,10 @@ GameObject:
   - component: {fileID: 114205942819945416}
   - component: {fileID: 114508191594409158}
   - component: {fileID: 114439684420582772}
+  - component: {fileID: 114284772863116352}
+  - component: {fileID: 114666964501304910}
+  - component: {fileID: 114123894390660020}
+  - component: {fileID: 114420639819026514}
   m_Layer: 17
   m_Name: Crate_Closed
   m_TagString: Untagged
@@ -409,6 +413,10 @@ GameObject:
   - component: {fileID: 114569427300235758}
   - component: {fileID: 114662723201796106}
   - component: {fileID: 114638974420812718}
+  - component: {fileID: 114530525110879474}
+  - component: {fileID: 114138928747359796}
+  - component: {fileID: 114639760268295520}
+  - component: {fileID: 114144650546528172}
   m_Layer: 17
   m_Name: Crate_Closed (2)
   m_TagString: Untagged
@@ -3507,6 +3515,10 @@ GameObject:
   - component: {fileID: 114969156086770150}
   - component: {fileID: 114994191683109728}
   - component: {fileID: 114274813684142716}
+  - component: {fileID: 114898682309403716}
+  - component: {fileID: 114043159605736774}
+  - component: {fileID: 114706931424545846}
+  - component: {fileID: 114316788307174728}
   m_Layer: 17
   m_Name: Crate_Closed (1)
   m_TagString: Untagged
@@ -14506,6 +14518,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 41507747-4b86-45f7-a2d2-94cb9979e34e
+--- !u!114 &114043159605736774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1891914681474934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114048313814513494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15502,6 +15525,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 57d8a1ba-8927-4d7c-8f4e-eb702f20a397
+--- !u!114 &114123894390660020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118635122071396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114124303952166268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15754,14 +15788,38 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 0
+    animate: 1
     curve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.1
+        value: 5
+        inSlope: 0.40963292
+        outSlope: 0.40963292
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: -3
+        inSlope: -9.002686
+        outSlope: -9.002686
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
-    duration: 0
+      m_RotationOrder: 0
+    duration: 0.25
 --- !u!114 &114130643463834758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15786,6 +15844,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 84fb960f-0b7c-45df-a539-3b5d22ffedfc
+--- !u!114 &114138928747359796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129014779060968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114140088429338096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15810,6 +15879,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 0c1e09ad-4159-4644-919f-e6c90b1885c1
+--- !u!114 &114144650546528172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129014779060968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114145325949807756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16979,6 +17059,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeDelay: 0.05
   variance: 0.1
+--- !u!114 &114284772863116352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118635122071396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114285998215182426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17286,14 +17377,38 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 0
+    animate: 1
     curve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.1
+        value: 5
+        inSlope: 0.40963292
+        outSlope: 0.40963292
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: -3
+        inSlope: -9.002686
+        outSlope: -9.002686
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
-    duration: 0
+      m_RotationOrder: 0
+    duration: 0.25
 --- !u!114 &114294017458021030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17573,6 +17688,17 @@ MonoBehaviour:
     type: 2}
   chestReplaceTile: {fileID: 1205456036086828, guid: a91bf86861e691a41b137eb138a49f3b,
     type: 2}
+--- !u!114 &114316788307174728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1891914681474934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114317711670134746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18928,6 +19054,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 57d8a1ba-8927-4d7c-8f4e-eb702f20a397
+--- !u!114 &114420639819026514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118635122071396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114424329748197716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20433,6 +20570,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   host: {fileID: 0}
+--- !u!114 &114530525110879474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129014779060968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114532184945913620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21201,6 +21349,17 @@ MonoBehaviour:
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114639760268295520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129014779060968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114640559255861576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21406,6 +21565,17 @@ MonoBehaviour:
     _collection:
     - {fileID: 1253215896195120}
   _assetGuid: ccdc62ca17579e743afc00589e634514
+--- !u!114 &114666964501304910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118635122071396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114668216737854980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21878,14 +22048,38 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 0
+    animate: 1
     curve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.1
+        value: 5
+        inSlope: 0.40963292
+        outSlope: 0.40963292
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: -3
+        inSlope: -9.002686
+        outSlope: -9.002686
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
-    duration: 0
+      m_RotationOrder: 0
+    duration: 0.25
 --- !u!114 &114679157793787492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22014,6 +22208,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 84fb960f-0b7c-45df-a539-3b5d22ffedfc
+--- !u!114 &114706931424545846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1891914681474934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114707130013714570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -23944,6 +24149,17 @@ MonoBehaviour:
   minAmountOfDrops: 3
   maxAmountOfDrops: 10
   isWizzer: 0
+--- !u!114 &114898682309403716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1891914681474934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114900771158057696
 MonoBehaviour:
   m_ObjectHideFlags: 1
