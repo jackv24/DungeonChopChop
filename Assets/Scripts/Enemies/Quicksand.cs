@@ -95,7 +95,7 @@ public class Quicksand : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player1" || col.gameObject.tag == "Player2")
         {
-            col.transform.position = Vector3.Lerp(col.transform.position, transform.position, toCenterSpeed * Time.deltaTime);
+            col.transform.position = Vector3.Lerp(col.transform.position, transform.position, toCenterSpeed / transform.localScale.x * Time.deltaTime);
 
             if (SarlacsPopUp)
             {

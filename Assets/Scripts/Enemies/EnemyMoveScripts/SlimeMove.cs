@@ -249,7 +249,8 @@ public class SlimeMove : EnemyMove {
     {
         if (friendly)
         {
-            if (col.GetComponent<Collider>().tag != "Player")
+            //make sure not player
+            if (col.gameObject.layer != 14)
             {
                 if (col.gameObject.GetComponent<Health>())
                 {

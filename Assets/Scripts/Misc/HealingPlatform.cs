@@ -7,9 +7,14 @@ public class HealingPlatform : MonoBehaviour {
     [Tooltip("Only have Player selected")]
     public LayerMask mask;
     public float healthIncreaseAmount = .1f;
-    public float timeBetweenHealthIncrease = 1;
+    public float timeBetweenIncrease = 1;
+    public float nrgIncreaseAmount = 5;
+    [Space()]
     public float healingRadius = 1;
-    public AmountOfParticleTypes[] particles;
+
+    [Header("Audio and Sound")]
+    public AmountOfParticleTypes[] healthParticles;
+    public AmountOfParticleTypes[] nrgParticles;
     public SoundEffect sound;
     public ParticleSystem fountainParticle;
 
@@ -18,6 +23,7 @@ public class HealingPlatform : MonoBehaviour {
 
     private int counter = 0;
     private float maxHealth = 10;
+    private float maxNRG = 100;
 
     private int maxParticleSize;
     private ParticleSystem.MainModule main;
@@ -27,7 +33,7 @@ public class HealingPlatform : MonoBehaviour {
         if (fountainParticle)
             maxParticleSize = fountainParticle.main.maxParticles;
 
-        InvokeRepeating("Heal", 0, timeBetweenHealthIncrease);
+        InvokeRepeating("Heal", 0, timeBetweenIncrease);
     }
 
     float Percentage(float number, int percent)
@@ -48,6 +54,7 @@ public class HealingPlatform : MonoBehaviour {
             if (ItemsManager.Instance.hasGauntles)
             {
                 maxHealth = 0;
+                maxNRG = 0;
 
                 if (fountainParticle)
                     main.maxParticles = (int)Percentage(maxParticleSize, 5);
@@ -55,6 +62,7 @@ public class HealingPlatform : MonoBehaviour {
             else if (ItemsManager.Instance.hasArmourPiece)
             {
                 maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 25);
+                maxNRG = 25;
 
                 if (fountainParticle)
                     main.maxParticles = (int)Percentage(maxParticleSize, 25);
@@ -62,6 +70,7 @@ public class HealingPlatform : MonoBehaviour {
             else if (ItemsManager.Instance.hasBoots)
             {
                 maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 50);
+                maxNRG = 50;
 
                 if (fountainParticle)
                     main.maxParticles = (int)Percentage(maxParticleSize, 50);
@@ -69,6 +78,7 @@ public class HealingPlatform : MonoBehaviour {
             else if (ItemsManager.Instance.hasGoggles)
             {
                 maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 75);
+                maxNRG = 75;
 
                 if (fountainParticle)
                     main.maxParticles = (int)Percentage(maxParticleSize, 75);
@@ -93,7 +103,17 @@ public class HealingPlatform : MonoBehaviour {
                         playerHealth.health += healthIncreaseAmount;
                         playerHealth.HealthChanged();
 
-                        SpawnEffects.EffectOnHit(particles, transform.position);
+                        SpawnEffects.EffectOnHit(healthParticles, transform.position);
+                        SoundManager.PlaySound(sound, transform.position);
+                    }
+
+                    if (pl.GetComponent<PlayerInformation>().currentCureAmount < maxNRG)
+                    {
+                        PlayerInformation playerInfo = pl.GetComponent<PlayerInformation>();
+
+                        playerInfo.currentCureAmount += nrgIncreaseAmount;
+
+                        SpawnEffects.EffectOnHit(nrgParticles, transform.position);
                         SoundManager.PlaySound(sound, transform.position);
                     }
                 }
