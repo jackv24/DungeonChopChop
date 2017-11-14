@@ -43,10 +43,13 @@ public class FloorSpikes : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (startSpiking)
+        if (animator.gameObject.activeSelf)
         {
-            if (spikeType == SpikeType.Constantly)
-                animator.SetBool("Trigger", true);
+            if (startSpiking)
+            {
+                if (spikeType == SpikeType.Constantly)
+                    animator.SetBool("Trigger", true);
+            }
         }
     }
 
