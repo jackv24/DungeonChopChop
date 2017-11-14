@@ -75,7 +75,9 @@ public class MapCamera : MonoBehaviour
             initialOrthographicSize = cam.orthographicSize;
         }
 
-        LevelGenerator.Instance.OnEnemiesSpawned += delegate
+        if (LevelGenerator.Instance)
+            LevelGenerator.Instance.OnEnemiesSpawned += delegate
+                
         {
             ClearEnemyIcons();
             RegisterEnemyIcons();

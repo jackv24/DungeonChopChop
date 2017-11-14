@@ -12,15 +12,27 @@ public enum SpikeType
 public class FloorSpikes : MonoBehaviour {
 
     public SpikeType spikeType;
+    public float delayTime = 0;
+    public float animationSpeed = 1;
 
     private Animator animator;
+    private bool startSpiking = false;
 
 
 	// Use this for initialization
 	void Start () 
     {
         animator = GetComponentInChildren<Animator>();
+        StartCoroutine(spikeDelay());
+
+        animator.speed = animationSpeed;
 	}
+
+    IEnumerator spikeDelay()
+    {
+        yield return new WaitForSeconds(delayTime);
+        startSpiking = true;
+    }
 
     IEnumerator boolCooldown()
     {
@@ -31,8 +43,11 @@ public class FloorSpikes : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (spikeType == SpikeType.Constantly)
-            animator.SetBool("Trigger", true);
+        if (startSpiking)
+        {
+            if (spikeType == SpikeType.Constantly)
+                animator.SetBool("Trigger", true);
+        }
     }
 
     void OnTriggerEnter(Collider col)
