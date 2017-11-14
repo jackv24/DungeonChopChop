@@ -38,7 +38,7 @@ public class TotalEnemiesKilled : MonoBehaviour {
 
     public IEnumerator SpawnEnemyIcons()
     {
-        int enemyAmount = 0;
+        int enemyAmount = 1;
         foreach (EnemyKind enemy in Statistics.Instance.enemiesKilled)
         {
             GameObject sprite = new GameObject();

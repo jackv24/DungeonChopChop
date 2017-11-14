@@ -388,6 +388,8 @@ public class EnemyAttack : MonoBehaviour
                     c.health.SetSlowDeath();
             }
         }
+
+        colliding.Clear();
     }
 
     void OnCollisionEnter(Collision col)
