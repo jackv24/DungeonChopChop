@@ -130,14 +130,17 @@ public class TileQuest : MonoBehaviour {
 
     void SetText()
     {
-        cT.gameObject.SetActive(false);
-        cT.gameObject.SetActive(true);
+        if (cT)
+        {
+            cT.gameObject.SetActive(false);
+            cT.gameObject.SetActive(true);
 
-        cT.color = originalColor;
+            cT.color = originalColor;
 
-        cT.enabled = true;
+            cT.enabled = true;
 
-        cT.text = tileQuestText;
+            cT.text = tileQuestText;
+        }
     }
 
     void ChallengeDisabled()
