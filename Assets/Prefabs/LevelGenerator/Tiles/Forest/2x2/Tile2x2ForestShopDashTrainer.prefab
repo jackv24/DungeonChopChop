@@ -6654,6 +6654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4026435810039958}
   - component: {fileID: 114877795148916140}
+  - component: {fileID: 114881104964505274}
   m_Layer: 0
   m_Name: BirdRedBob
   m_TagString: Untagged
@@ -8463,6 +8464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4536909016045856}
   - component: {fileID: 114666798655954358}
+  - component: {fileID: 114523505808438024}
   m_Layer: 0
   m_Name: BirdBlueBob
   m_TagString: Untagged
@@ -44497,6 +44499,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 42c4025b-d70e-40b7-b3aa-07919d27cfcb
+--- !u!114 &114523505808438024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1795754948026418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114524488323417416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -49631,6 +49644,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: c7c72451-6d5a-4592-a3b5-075ebaf29003
+--- !u!114 &114881104964505274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620310108834374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114884073866613720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51431,42 +51455,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   healthIncreaseAmount: 0.5
-  timeBetweenHealthIncrease: 0.5
+  timeBetweenIncrease: 1
+  nrgIncreaseAmount: 5
   healingRadius: 1
-  particles:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1462187128974598, guid: 85f20a1bed8ed354e8db0c7af008127b,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+  healthParticles: []
+  nrgParticles: []
   sound:
     clips: []
     volume: 1
