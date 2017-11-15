@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114948910933899354}
   - component: {fileID: 114644441275677070}
   - component: {fileID: 114937143008241844}
+  - component: {fileID: 114105236688701656}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -269,6 +270,111 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114105236688701656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1191823932686470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8416b48bc8f317d41839d5c52f5e2118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 1775064472190682, guid: 7fd817d9382693140a873a0cf0623118,
+    type: 2}
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+    - serializedVersion: 2
+      time: 0.25
+      value: 0.5
+      inSlope: 0.6666666
+      outSlope: 0.6666666
+      tangentMode: 34
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: -0.6666667
+      outSlope: -0.6666667
+      tangentMode: 34
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  sizeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 0.1
+      value: 0.9
+      inSlope: 0.79621416
+      outSlope: 0.79621416
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.5
+      value: 1
+      inSlope: -0.04234761
+      outSlope: -0.04234761
+      tangentMode: 34
+    - serializedVersion: 2
+      time: 0.7987793
+      value: 0.9
+      inSlope: -0.7259196
+      outSlope: -0.7259196
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0.75
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  animationGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0.31617647, b: 0.31617647, a: 0}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 1}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 1}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 19661
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 6554
+    atime2: 32768
+    atime3: 65535
+    atime4: 65535
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 4
+  animationLength: 0.5
+  minSpeed: -2
+  maxSpeed: 2
 --- !u!114 &114112040465330080
 MonoBehaviour:
   m_ObjectHideFlags: 1

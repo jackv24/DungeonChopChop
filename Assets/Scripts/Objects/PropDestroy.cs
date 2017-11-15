@@ -82,6 +82,12 @@ public class PropDestroy : MonoBehaviour
     public ReactAnimation hitAnim;
 
     private Health propHealth;
+    private Collider col;
+
+    void Awake()
+    {
+        col = GetComponent<Collider>();
+    }
 
     // Use this for initialization
     void Start()
@@ -160,6 +166,7 @@ public class PropDestroy : MonoBehaviour
                         {
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
+                            DamageText.Show(-playerInfo.GetSwordDamage(), col.bounds.center);
                         }
                         else
                             DoIndistructableEffect();
@@ -171,6 +178,7 @@ public class PropDestroy : MonoBehaviour
                         {
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
+                            DamageText.Show(-playerInfo.GetSwordDamage(), col.bounds.center);
                         }
                         else
                             DoIndistructableEffect();
@@ -182,6 +190,7 @@ public class PropDestroy : MonoBehaviour
                         {
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
+                            DamageText.Show(-playerInfo.GetSwordDamage(), col.bounds.center);
                         }
                         else
                             DoIndistructableEffect();
@@ -193,6 +202,7 @@ public class PropDestroy : MonoBehaviour
                         {
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
+                            DamageText.Show(-playerInfo.GetSwordDamage(), col.bounds.center);
                         }
                         else
                             DoIndistructableEffect();
