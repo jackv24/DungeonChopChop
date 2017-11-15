@@ -81,6 +81,7 @@ public class DeathScreen : MonoBehaviour {
         {
             { "playerCount", GameManager.Instance.playerCount },
             { "currentTile", LevelGenerator.Instance.currentTile.currentGraphic.name },
+            { "playTime", Statistics.Instance.TotalPlayTime },
             { "coins", ItemsManager.Instance.Coins },
             { "dungeonItem1", ItemsManager.Instance.hasGoggles },
             { "dungeonItem2", ItemsManager.Instance.hasBoots },
