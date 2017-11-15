@@ -11,6 +11,8 @@ public class FadeScreen : MonoBehaviour
 	public float fadeOutTime = 0.1f;
 	public float pauseTime = 0.1f;
 
+    public bool faded = false;
+
 	private Image image;
 
 	private Coroutine lastRoutine;
@@ -44,6 +46,8 @@ public class FadeScreen : MonoBehaviour
 
 	IEnumerator Fade()
 	{
+        faded = true;
+
 		image.gameObject.SetActive(true);
 
 		Color color = image.color;
@@ -63,6 +67,8 @@ public class FadeScreen : MonoBehaviour
 		//make sure it is completely opaque
 		color.a = 1.0f;
 		image.color = color;
+
+        faded = false;
 
 		//Wait for some time
 		yield return new WaitForSeconds(pauseTime);
