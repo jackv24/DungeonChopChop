@@ -56,6 +56,11 @@ public class DeathScreen : MonoBehaviour {
     {
         yield return new WaitForSeconds(waitTillDeathScreen);
 
+        FadeScreen.Instance.FadeInOut();
+
+        while (FadeScreen.Instance.faded)
+            yield return new WaitForEndOfFrame();
+
         EventSystem.current.SetSelectedGameObject(replayButton);
 
         EventSystem.current.firstSelectedGameObject = replayButton;

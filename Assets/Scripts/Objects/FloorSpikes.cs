@@ -6,7 +6,8 @@ using UnityEngine;
 public enum SpikeType
 {
     Constantly,
-    OnContact
+    OnContact,
+    UsesLever
 }
 
 public class FloorSpikes : MonoBehaviour {
@@ -14,6 +15,8 @@ public class FloorSpikes : MonoBehaviour {
     public SpikeType spikeType;
     public float delayTime = 0;
     public float animationSpeed = 1;
+
+    public Lever lever;
 
     private Animator animator;
     private bool startSpiking = false;
@@ -26,6 +29,12 @@ public class FloorSpikes : MonoBehaviour {
         StartCoroutine(spikeDelay());
 
         animator.speed = animationSpeed;
+
+        if (lever)
+        {
+            lever.OnLeverActivated += Deactivated;
+            animator.SetBool("Trigger", true);
+        }
 	}
 
     IEnumerator spikeDelay()
@@ -38,6 +47,11 @@ public class FloorSpikes : MonoBehaviour {
     {
         animator.SetBool("Trigger", true);
         yield return new WaitForEndOfFrame();
+        animator.SetBool("Trigger", false);
+    }
+
+    void Deactivated()
+    {
         animator.SetBool("Trigger", false);
     }
 
@@ -55,7 +69,10 @@ public class FloorSpikes : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.layer == 14)
-            StartCoroutine(boolCooldown());
+        if (spikeType == SpikeType.OnContact)
+        {
+            if (col.gameObject.layer == 14)
+                StartCoroutine(boolCooldown());
+        }
     }
 }
