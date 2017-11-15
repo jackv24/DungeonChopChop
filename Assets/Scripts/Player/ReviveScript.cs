@@ -19,17 +19,19 @@ public class ReviveScript : MonoBehaviour
 
 	void Update ()
     {
-        if (dialogueSpeaker && dialogueSpeaker.IsOpen)
+        if (spawnedDialogue)
         {
             foreach (PlayerInformation player in GameManager.Instance.players)
             {
-                if (player != thisPlayer)
+                if (player.playerIndex != thisPlayer.playerIndex)
                 {
                     if (player.playerMove.input.Purchase.WasPressed)
                     {
                         player.Revive(thisPlayer, player);
+
                         Destroy(obj);
                         spawnedDialogue = false;
+
                         break;
                     }
                 }
@@ -46,6 +48,9 @@ public class ReviveScript : MonoBehaviour
                 if (GameManager.Instance.players.Count > 1)
                 {
                     obj = Instantiate(Resources.Load<GameObject>("ReviveObject"), transform.position, Quaternion.Euler(0, 0, 0));
+
+                    dialogueSpeaker = obj.GetComponent<DialogueSpeaker>();
+
                     spawnedDialogue = true;      
                 }
             }
