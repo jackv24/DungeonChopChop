@@ -90,8 +90,11 @@ public class DialogueSpeaker : MonoBehaviour
 			//if collider's layer is in the player layermask
 			if (playerLayer == (playerLayer | (1 << collider.gameObject.layer)))
 			{
-				if(!objs.Contains(collider.gameObject))
-					objs.Add(collider.gameObject);
+                if (!collider.GetComponent<Health>().isDead)
+                {
+                    if (!objs.Contains(collider.gameObject))
+                        objs.Add(collider.gameObject);
+                }
 			}
 		}
 	}
@@ -107,27 +110,27 @@ public class DialogueSpeaker : MonoBehaviour
 	}
 
 	void Open(GameObject player)
-	{
+    {
         playerInfo = player.GetComponent<PlayerInformation>();
 
-		if(OnOpen != null)
+        if (OnOpen != null)
             OnOpen(playerInfo);
 
         //Position pooled dialogue box
         GameObject obj = ObjectPooler.GetPooledObject(dialogueBoxPrefab);
-		obj.transform.position = transform.position + new Vector3(0, textBoxHeight, textBoxDepth);
+        obj.transform.position = transform.position + new Vector3(0, textBoxHeight, textBoxDepth);
 
-		currentBox = obj.GetComponent<DialogueBox>();
+        currentBox = obj.GetComponent<DialogueBox>();
 
-		//Set random line
-		if (currentBox)
-		{
+        //Set random line
+        if (currentBox)
+        {
             UpdateLines();
 
-			if (OnGetPlayer != null)
+            if (OnGetPlayer != null)
                 OnGetPlayer(playerInfo, true);
-		}
-	}
+        }
+    }
 
     public void UpdateLines()
     {

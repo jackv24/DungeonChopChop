@@ -171,8 +171,8 @@ public class PlayerInformation : MonoBehaviour
         //make sure player is no longer dead
         deadPlayer.health.isDead = false;
 
-        playerMove.enabled = false;
-        characterController.enabled = false;
+        deadPlayer.playerMove.enabled = true;
+        deadPlayer.characterController.enabled = true;
     }
 
     public void PickupCharm(Charm charm)
