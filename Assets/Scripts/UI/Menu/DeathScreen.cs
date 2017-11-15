@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Analytics;
 
 public class DeathScreen : MonoBehaviour {
 
@@ -45,6 +46,8 @@ public class DeathScreen : MonoBehaviour {
             {
                 StartCoroutine(deathScreenWait());
                 deathScreenShown = true;
+
+                ReportAnalytics();
             }
         }
 	}
@@ -52,6 +55,11 @@ public class DeathScreen : MonoBehaviour {
     IEnumerator deathScreenWait()
     {
         yield return new WaitForSeconds(waitTillDeathScreen);
+
+        FadeScreen.Instance.FadeInOut();
+
+        while (FadeScreen.Instance.faded)
+            yield return new WaitForEndOfFrame();
 
         EventSystem.current.SetSelectedGameObject(replayButton);
 
@@ -65,5 +73,20 @@ public class DeathScreen : MonoBehaviour {
         TotalEnemiesKilled enemyIconSpawner = GameObject.FindObjectOfType<TotalEnemiesKilled>();
 
         StartCoroutine(enemyIconSpawner.SpawnEnemyIcons());
+    }
+
+    void ReportAnalytics()
+    {
+        Analytics.CustomEvent("GameOver", new Dictionary<string, object>
+        {
+            { "playerCount", GameManager.Instance.playerCount },
+            { "currentTile", LevelGenerator.Instance.currentTile.currentGraphic.name },
+            { "playTime", Statistics.Instance.TotalPlayTime },
+            { "coins", ItemsManager.Instance.Coins },
+            { "dungeonItem1", ItemsManager.Instance.hasGoggles },
+            { "dungeonItem2", ItemsManager.Instance.hasBoots },
+            { "dungeonItem3", ItemsManager.Instance.hasArmourPiece },
+            { "dungeonItem4", ItemsManager.Instance.hasGauntles }
+        });
     }
 }
