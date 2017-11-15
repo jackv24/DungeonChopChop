@@ -81,6 +81,13 @@ public class Health : MonoBehaviour
 
     private Coroutine coroutine;
 
+    private Collider col;
+
+    void Awake()
+    {
+        col = GetComponent<Collider>();
+    }
+
     void Start()
     {
         AddRenderersToList();
@@ -177,7 +184,9 @@ public class Health : MonoBehaviour
                 float val = System.Math.Abs(healthDeta);
                 Statistics.Instance.totalDamageTaken += (float)System.Math.Round(val, 2);
             }
-        
+            else if(col && IsEnemy)
+                DamageText.Show(healthDeta, col.bounds.center);
+
             health += healthDeta;
 
             if (OnHealthChange != null)
