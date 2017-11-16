@@ -185,7 +185,7 @@ public class Health : MonoBehaviour
                 Statistics.Instance.totalDamageTaken += (float)System.Math.Round(val, 2);
             }
             else if(col && IsEnemy)
-                DamageText.Show(healthDeta, col.bounds.center);
+                DamageText.Show(healthDeta * 10, col.bounds.center);
 
             health += healthDeta;
 

@@ -168,7 +168,7 @@ public class PropDestroy : MonoBehaviour
                         {
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
-                            DamageText.Show(-playerInfo.GetSwordDamage(), col.bounds.center);
+                            DamageText.Show(-playerInfo.GetSwordDamage() * 10, col.bounds.center);
                         }
                         else
                             DoIndistructableEffect();
@@ -180,7 +180,7 @@ public class PropDestroy : MonoBehaviour
                         {
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
-                            DamageText.Show(-playerInfo.GetSwordDamage(), col.bounds.center);
+                            DamageText.Show(-playerInfo.GetSwordDamage() * 10, col.bounds.center);
                         }
                         else
                             DoIndistructableEffect();
@@ -192,7 +192,7 @@ public class PropDestroy : MonoBehaviour
                         {
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
-                            DamageText.Show(-playerInfo.GetSwordDamage(), col.bounds.center);
+                            DamageText.Show(-playerInfo.GetSwordDamage() * 10, col.bounds.center);
                         }
                         else
                             DoIndistructableEffect();
@@ -204,7 +204,7 @@ public class PropDestroy : MonoBehaviour
                         {
                             propHealth.AffectHealth(-playerInfo.GetSwordDamage());
                             DoHitEffectAndSound();
-                            DamageText.Show(-playerInfo.GetSwordDamage(), col.bounds.center);
+                            DamageText.Show(-playerInfo.GetSwordDamage() * 10, col.bounds.center);
                         }
                         else
                             DoIndistructableEffect();
