@@ -7,7 +7,7 @@ public enum SpikeType
 {
     Constantly,
     OnContact,
-    UsesLever
+    UsesLever,
 }
 
 public class FloorSpikes : MonoBehaviour {
@@ -15,6 +15,7 @@ public class FloorSpikes : MonoBehaviour {
     public SpikeType spikeType;
     public float delayTime = 0;
     public float animationSpeed = 1;
+    public bool startUp;
 
     public Lever lever;
 
@@ -31,10 +32,10 @@ public class FloorSpikes : MonoBehaviour {
         animator.speed = animationSpeed;
 
         if (lever)
-        {
             lever.OnLeverActivated += Deactivated;
+
+        if (startUp)
             animator.SetBool("Trigger", true);
-        }
 	}
 
     IEnumerator spikeDelay()

@@ -16,7 +16,8 @@ public class DialogueBox : MonoBehaviour
 	{
 		anim = GetComponent<Animator>();
 
-        prompt.SetActive(true);
+        if (prompt)
+            prompt.SetActive(true);
 
 		textElement = GetComponentInChildren<Text>();
 	}
