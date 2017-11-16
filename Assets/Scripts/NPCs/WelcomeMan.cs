@@ -62,6 +62,9 @@ public class WelcomeMan : MonoBehaviour {
         else
         {
             dialogueSpeaker.lines[0] = messageAfterCollectingLoot;
+
+            if (dialogueSpeaker.currentBox)
+                dialogueSpeaker.currentBox.prompt.SetActive(false);
         }
 
         dialogueSpeaker.UpdateLines();
