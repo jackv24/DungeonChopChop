@@ -34,14 +34,21 @@ public class MoveTutor : MonoBehaviour {
             {
                 dialogueSpeaker.lines[0] = "Come back to me once you know how to dash";
                 dialogueSpeaker.UpdateLines();
+
+                if (dialogueSpeaker.currentBox)
+                    dialogueSpeaker.currentBox.prompt.SetActive(false);
+
                 return;
             }
             else
+            {
                 dialogueSpeaker.lines[0] = "Want me to teach you a move my boy?";
+                if (dialogueSpeaker.currentBox)
+                    dialogueSpeaker.currentBox.prompt.SetActive(true);
+            }
 
             dialogueSpeaker.UpdateLines();
         }
-
 
         if (dialogueSpeaker.CurrentPlayer)
         {
@@ -68,6 +75,9 @@ public class MoveTutor : MonoBehaviour {
             if (taught)
             {
                 dialogueSpeaker.lines[0] = afterSpeach;
+
+                if (dialogueSpeaker.currentBox)
+                    dialogueSpeaker.currentBox.prompt.SetActive(false);
 
                 dialogueSpeaker.UpdateLines();
             }

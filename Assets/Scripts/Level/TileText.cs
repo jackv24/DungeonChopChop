@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class TileText : MonoBehaviour
 {
-    public BiomeText.TextPair text;
+    public Sprite[] text;
 }

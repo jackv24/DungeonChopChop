@@ -9,7 +9,9 @@ public class InputManager : MonoBehaviour
 
 	public List<PlayerInputs> playerInput;
 
-	void Awake()
+    private bool paused = true;
+
+    void Awake()
 	{
         DontDestroyOnLoad(this);
 
@@ -17,8 +19,33 @@ public class InputManager : MonoBehaviour
 		Instance = this;
 	}
 
+	void Update()
+	{
+        //If there is a levelgenerator present, we must be in-game
+        if (LevelGenerator.Instance)
+        {
+            if (Pause.Instance.paused != paused)
+            {
+                paused = Pause.Instance.paused;
+
+                if (paused)
+                {
+                    Cursor.visible = true;
+                }
+                else
+                {
+                    Cursor.visible = false;
+                }
+            }
+        }
+        else
+        {
+            Cursor.visible = true;
+        }
+    }
+
 	public static PlayerInputs GetPlayerInput(int index)
 	{
-        return Instance.playerInput[index];
+        	return Instance.playerInput[index];
 	}
 }
