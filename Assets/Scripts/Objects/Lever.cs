@@ -7,6 +7,7 @@ public class Lever : MonoBehaviour {
     public delegate void LeverEvent();
 
     public event LeverEvent OnLeverActivated;
+    public event LeverEvent OnLeverDisabled;
 
     [Header("Audio and Particles")]
     public SoundEffect soundOnHit;
@@ -32,17 +33,25 @@ public class Lever : MonoBehaviour {
         {
             if (!m_activated)
             {
-                animator.SetTrigger("Trigger");
-
-                SoundManager.PlaySound(soundOnHit, transform.position);
-                SpawnEffects.EffectOnHit(particleOnHit, transform.position);
-
+                animator.SetBool("Trigger", true);
 
                 if (OnLeverActivated != null)
                     OnLeverActivated();
 
                 m_activated = true;
             }
+            else
+            {
+                animator.SetBool("Trigger", false);
+
+                if (OnLeverDisabled != null)
+                    OnLeverDisabled();
+
+                m_activated = false;
+            }
+
+            SoundManager.PlaySound(soundOnHit, transform.position);
+            SpawnEffects.EffectOnHit(particleOnHit, transform.position);
         }
     }
 }

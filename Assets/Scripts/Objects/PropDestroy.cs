@@ -108,7 +108,9 @@ public class PropDestroy : MonoBehaviour
             //do sound
             SoundManager.PlaySound(destroySounds, transform.position);
             //do drop
-            GetComponent<Drops>().DoDrop();
+
+            if (GetComponent<Drops>())
+                GetComponent<Drops>().DoDrop();
 
             CameraShake.ShakeScreen(destroyShake.magnitude, destroyShake.shakeAmount, destroyShake.duration);
 

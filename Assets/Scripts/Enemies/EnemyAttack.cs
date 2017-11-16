@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum TypesOfAttack
 {
@@ -71,6 +72,7 @@ public class EnemyAttack : MonoBehaviour
     protected Animator animator;
     protected Health enemyHealth;
     protected EnemyDeath enemyDeath;
+    protected NavMeshAgent agent;
 
     private Collider col;
 
@@ -86,6 +88,8 @@ public class EnemyAttack : MonoBehaviour
         enemyHealth = GetComponent<Health>();
         animator = GetComponentInChildren<Animator>();
         enemyMove = GetComponent<EnemyMove>();
+
+        agent = GetComponent<NavMeshAgent>();
 
         //If this enemy was spawned as a child of a tile, only enable when tile is entered
         parentTile = GetComponentInParent<LevelTile>();
