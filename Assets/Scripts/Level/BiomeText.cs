@@ -10,45 +10,19 @@ public class BiomeText : MonoBehaviour
     public float fadeInTime = 0.5f;
     public float fadeHoldTime = 1.0f;
     public float fadeOutTime = 0.25f;
-    public Text titleText;
-    public Text descriptionText;
 
-    [System.Serializable]
-	public class TextPair
-	{
-        public string title;
-        public string description;
+    [Space()]
+    public Sprite[] grassText;
+    public Sprite[] forestText;
+    public Sprite[] desertText;
+    public Sprite[] iceText;
+    public Sprite[] fireText;
 
-		public TextPair()
-		{
-            title = "Empty Title";
-            description = "";
-        }
-
-		public TextPair(string title)
-		{
-            this.title = title;
-            description = "";
-        }
-
-		public TextPair(string title, string description)
-		{
-            this.title = title;
-            this.description = description;
-        }
-    }
-
-	[Space()]
-    public TextPair grassText = new TextPair("Grasslands", "Very grassy");
-    public TextPair forestText = new TextPair("Forest", "Quite dank");
-    public TextPair desertText = new TextPair("Desert", "Much sand");
-	public TextPair fireText = new TextPair("Lava Land", "Ouch very burn");
-
-	[Space()]
-	public TextPair dungeon1Text = new TextPair("Dungeon 1");
-	public TextPair dungeon2Text = new TextPair("Dungeon 2");
-	public TextPair dungeon3Text = new TextPair("Dungeon 3");
-	public TextPair dungeon4Text = new TextPair("Dungeon 4");
+    [Space()]
+	public Sprite[] dungeon1Text;
+	public Sprite[] dungeon2Text;
+	public Sprite[] dungeon3Text;
+	public Sprite[] dungeon4Text;
 
     private LevelTile.Biomes lastBiome = LevelTile.Biomes.Dungeon1;
 
@@ -64,7 +38,7 @@ public class BiomeText : MonoBehaviour
 		if(LevelGenerator.Instance.currentTile == LevelGenerator.Instance.generatedTiles[0])
             return;
 
-        TextPair textPair = null;
+        Sprite[] textPair = null;
 
         TileText tileText = LevelGenerator.Instance.currentTile.GetComponentInChildren<TileText>();
         if(tileText)
@@ -90,6 +64,9 @@ public class BiomeText : MonoBehaviour
                 case LevelTile.Biomes.Desert:
                     textPair = desertText;
                     break;
+                case LevelTile.Biomes.Ice:
+                    textPair = iceText;
+                    break;
                 case LevelTile.Biomes.Fire:
                     textPair = fireText;
                     break;
@@ -110,11 +87,21 @@ public class BiomeText : MonoBehaviour
 
         if(textPair != null)
 		{
-			if(titleText)
-                titleText.text = textPair.title;
+			if(group)
+            {
+                group.gameObject.DestroyChildren();
 
-			if(descriptionText)
-                descriptionText.text = textPair.description;
+                foreach(Sprite sprite in textPair)
+                {
+                    GameObject obj = new GameObject("Image");
+                    obj.transform.SetParent(group.transform);
+
+                    Image img = obj.AddComponent<Image>();
+                    img.sprite = sprite;
+                    img.SetNativeSize();
+                    img.transform.localScale = Vector3.one;
+                }
+            }
 
 			if(fadeGroupRoutine != null)
                 StopCoroutine(fadeGroupRoutine);

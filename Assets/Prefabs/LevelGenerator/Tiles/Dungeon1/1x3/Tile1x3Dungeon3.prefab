@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 114030090173709150}
   - component: {fileID: 114197282299235128}
   - component: {fileID: 114705488201313784}
+  - component: {fileID: 114812790197223912}
   m_Layer: 17
   m_Name: Barrel (1)
   m_TagString: Untagged
@@ -760,6 +761,7 @@ GameObject:
   - component: {fileID: 114645085786973872}
   - component: {fileID: 114704255215382214}
   - component: {fileID: 114023073461081926}
+  - component: {fileID: 114890862687499180}
   m_Layer: 17
   m_Name: Barrel (2)
   m_TagString: Untagged
@@ -1113,6 +1115,7 @@ GameObject:
   - component: {fileID: 114161156585246212}
   - component: {fileID: 114709220266620668}
   - component: {fileID: 114257442788905792}
+  - component: {fileID: 114596581299554610}
   m_Layer: 17
   m_Name: Barrel (4)
   m_TagString: Untagged
@@ -1318,18 +1321,6 @@ GameObject:
   - component: {fileID: 23730246389366728}
   - component: {fileID: 65627509233755696}
   - component: {fileID: 114810349731307694}
-  - component: {fileID: 114533961124327320}
-  - component: {fileID: 114102020182857790}
-  - component: {fileID: 114154081907280144}
-  - component: {fileID: 114403070969512364}
-  - component: {fileID: 114495330858933498}
-  - component: {fileID: 114962955576786814}
-  - component: {fileID: 114300516543505256}
-  - component: {fileID: 114950845987234822}
-  - component: {fileID: 114625581508502646}
-  - component: {fileID: 114275576754020144}
-  - component: {fileID: 114716947334698578}
-  - component: {fileID: 114308803097002862}
   m_Layer: 0
   m_Name: DungeonWall (3)
   m_TagString: Untagged
@@ -1438,18 +1429,6 @@ GameObject:
   - component: {fileID: 23721517961631106}
   - component: {fileID: 65009945321129112}
   - component: {fileID: 114768716187617096}
-  - component: {fileID: 114547785104616898}
-  - component: {fileID: 114184017746852198}
-  - component: {fileID: 114368694021090294}
-  - component: {fileID: 114843495327246396}
-  - component: {fileID: 114725653099920150}
-  - component: {fileID: 114302423873268058}
-  - component: {fileID: 114480708010772212}
-  - component: {fileID: 114782441073730564}
-  - component: {fileID: 114231123213216386}
-  - component: {fileID: 114870997363155576}
-  - component: {fileID: 114895431832860826}
-  - component: {fileID: 114416191779778346}
   m_Layer: 0
   m_Name: DungeonWall (1)
   m_TagString: Untagged
@@ -2042,18 +2021,6 @@ GameObject:
   - component: {fileID: 23419377794350360}
   - component: {fileID: 65450490972605354}
   - component: {fileID: 114552248861337164}
-  - component: {fileID: 114385056814716218}
-  - component: {fileID: 114123593632472334}
-  - component: {fileID: 114833816777428360}
-  - component: {fileID: 114136378005840914}
-  - component: {fileID: 114674489943292944}
-  - component: {fileID: 114241843471911106}
-  - component: {fileID: 114964700146136772}
-  - component: {fileID: 114264696623167156}
-  - component: {fileID: 114511716276209028}
-  - component: {fileID: 114882973660166458}
-  - component: {fileID: 114767013606345752}
-  - component: {fileID: 114242325205118576}
   m_Layer: 0
   m_Name: DungeonWall (4)
   m_TagString: Untagged
@@ -2126,6 +2093,7 @@ GameObject:
   - component: {fileID: 114754124049683632}
   - component: {fileID: 114186911532056198}
   - component: {fileID: 114216241022873748}
+  - component: {fileID: 114517199439925588}
   m_Layer: 17
   m_Name: Barrel
   m_TagString: Untagged
@@ -2201,18 +2169,6 @@ GameObject:
   - component: {fileID: 23038345107153634}
   - component: {fileID: 65509048741057456}
   - component: {fileID: 114686861226368346}
-  - component: {fileID: 114233883333655472}
-  - component: {fileID: 114892822912823604}
-  - component: {fileID: 114351934748080982}
-  - component: {fileID: 114368225562263586}
-  - component: {fileID: 114584456062690114}
-  - component: {fileID: 114741725788157546}
-  - component: {fileID: 114608247347331982}
-  - component: {fileID: 114167585619638374}
-  - component: {fileID: 114222572099662508}
-  - component: {fileID: 114344255651667632}
-  - component: {fileID: 114320454060431192}
-  - component: {fileID: 114433598748861928}
   m_Layer: 0
   m_Name: DungeonWall
   m_TagString: Untagged
@@ -8931,14 +8887,44 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 0
+    animate: 1
     curve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.1
+        value: 10
+        inSlope: 0.40963292
+        outSlope: 0.40963292
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: -5
+        inSlope: -9.002686
+        outSlope: -9.002686
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.75
+        value: 3
+        inSlope: 18.584728
+        outSlope: 18.584728
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
-    duration: 0
+      m_RotationOrder: 0
+    duration: 0.5
 --- !u!114 &114055688513340084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9110,17 +9096,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 30c5a232-d7a8-4a29-a7fa-57c589efc461
---- !u!114 &114102020182857790
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654822875834718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114114304720928348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9150,17 +9125,6 @@ MonoBehaviour:
     _collection:
     - {fileID: 1477958528438652}
   _assetGuid: 33f79d7f57cc70348aee35526413dd1b
---- !u!114 &114123593632472334
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935755324783690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114125079877854900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9445,17 +9409,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: f5aa9197-873b-4fd5-8eea-30b4922cc59d
---- !u!114 &114136378005840914
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935755324783690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114141837180999770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9503,53 +9456,6 @@ MonoBehaviour:
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114154081907280144
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654822875834718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114155422620313708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9884,17 +9790,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     duration: 0
---- !u!114 &114167585619638374
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988240418835138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114168345962723650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10031,17 +9926,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114184017746852198
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687823290769604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114186911532056198
@@ -10448,14 +10332,44 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 0
+    animate: 1
     curve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.1
+        value: 10
+        inSlope: 0.40963292
+        outSlope: 0.40963292
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: -5
+        inSlope: -9.002686
+        outSlope: -9.002686
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.75
+        value: 3
+        inSlope: 18.584728
+        outSlope: 18.584728
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
-    duration: 0
+      m_RotationOrder: 0
+    duration: 0.5
 --- !u!114 &114215238674138422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10491,53 +10405,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 6307583e-2dca-40f6-82e1-7a0a8224ed0f
---- !u!114 &114222572099662508
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988240418835138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114224128160129812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10554,53 +10421,6 @@ MonoBehaviour:
   propLayer:
     serializedVersion: 2
     m_Bits: 131072
---- !u!114 &114231123213216386
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687823290769604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114231584583136740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10630,53 +10450,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 695238cf-3449-4506-a0e3-51e33db25075
---- !u!114 &114233883333655472
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988240418835138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114238340245158236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10701,28 +10474,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 4be4f7cf-4d0c-466f-9f5f-fbd05472a924
---- !u!114 &114241843471911106
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935755324783690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114242325205118576
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935755324783690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114243657531504934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10850,17 +10601,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 42f51a65-757c-456f-b84d-3c0a20cc2407
---- !u!114 &114264696623167156
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935755324783690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114272726049871010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10873,17 +10613,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 1efe700e-2995-429f-9054-e4cc30fc7851
---- !u!114 &114275576754020144
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654822875834718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114279270350407062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11004,53 +10733,6 @@ MonoBehaviour:
     _collection:
     - {fileID: 1108978579266448}
   _assetGuid: 33f79d7f57cc70348aee35526413dd1b
---- !u!114 &114300516543505256
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654822875834718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114301353055762542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11063,28 +10745,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 8d78dd34-0282-46d2-8807-e6f23f95f254
---- !u!114 &114302423873268058
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687823290769604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114308803097002862
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654822875834718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114309838524068068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11324,14 +10984,44 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 0
+    animate: 1
     curve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.1
+        value: 10
+        inSlope: 0.40963292
+        outSlope: 0.40963292
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: -5
+        inSlope: -9.002686
+        outSlope: -9.002686
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.75
+        value: 3
+        inSlope: 18.584728
+        outSlope: 18.584728
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
-    duration: 0
+      m_RotationOrder: 0
+    duration: 0.5
 --- !u!114 &114318085506890022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11343,53 +11033,6 @@ MonoBehaviour:
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114320454060431192
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988240418835138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114327740477910600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11461,17 +11104,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
---- !u!114 &114344255651667632
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988240418835138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114345081356810834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11507,53 +11139,6 @@ MonoBehaviour:
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114351934748080982
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988240418835138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114355785214418746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11914,64 +11499,6 @@ MonoBehaviour:
   propLayer:
     serializedVersion: 2
     m_Bits: 131072
---- !u!114 &114368225562263586
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988240418835138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114368694021090294
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687823290769604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114368804868049612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12012,53 +11539,6 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &114385056814716218
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935755324783690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114388950990306034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12111,17 +11591,6 @@ MonoBehaviour:
     _collection:
     - {fileID: 1687823290769604}
   _assetGuid: ccdc62ca17579e743afc00589e634514
---- !u!114 &114403070969512364
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654822875834718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114406485191483564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12146,17 +11615,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: c9c04fc5-0345-47c4-9aad-41484ebc7385
---- !u!114 &114416191779778346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687823290769604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114426691781663354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12197,17 +11655,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: d26a4392-5c06-4c16-826c-7abc571882c1
---- !u!114 &114433598748861928
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988240418835138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114437260604477594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12374,53 +11821,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   host: {fileID: 0}
---- !u!114 &114480708010772212
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687823290769604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114485013164754374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12489,53 +11889,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
---- !u!114 &114495330858933498
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654822875834718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114502596834003680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12584,53 +11937,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 4b560f77-98fa-463b-9098-fcc261af248e
---- !u!114 &114511716276209028
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935755324783690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114513737370854306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12675,6 +11981,17 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 1
     duration: 0.1
+--- !u!114 &114517199439925588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949653020120132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114528038832483276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12699,53 +12016,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 05d34a08-06a1-485c-a42f-199b4676473d
---- !u!114 &114533961124327320
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654822875834718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114533964594107580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12832,53 +12102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 69ba48fd-538e-433d-92e0-e78c2a78599c
---- !u!114 &114547785104616898
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687823290769604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114552248861337164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12990,53 +12213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: a02ec699-fc0a-4833-876d-d15569385fe3
---- !u!114 &114584456062690114
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988240418835138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114584589063982380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13146,6 +12322,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 251ade6c-7e70-407e-a4e6-360ef9d02e68
+--- !u!114 &114596581299554610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535720563695044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114596767046593550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13204,100 +12391,6 @@ MonoBehaviour:
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114608247347331982
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988240418835138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
---- !u!114 &114625581508502646
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654822875834718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114630210871763836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13565,14 +12658,44 @@ MonoBehaviour:
     shakeAmount: 2
     duration: 0.2
   hitAnim:
-    animate: 0
+    animate: 1
     curve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.1
+        value: 10
+        inSlope: 0.40963292
+        outSlope: 0.40963292
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: -5
+        inSlope: -9.002686
+        outSlope: -9.002686
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.75
+        value: 3
+        inSlope: 18.584728
+        outSlope: 18.584728
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
-    duration: 0
+      m_RotationOrder: 0
+    duration: 0.5
 --- !u!114 &114639569224057198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13710,53 +12833,6 @@ MonoBehaviour:
   propLayer:
     serializedVersion: 2
     m_Bits: 131072
---- !u!114 &114674489943292944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935755324783690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114681052736361394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13870,53 +12946,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 41507747-4b86-45f7-a2d2-94cb9979e34e
---- !u!114 &114716947334698578
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654822875834718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114719248528942736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13977,53 +13006,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 97e7f09e-da00-4572-af58-9c879afe0a7d
---- !u!114 &114725653099920150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687823290769604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114727338212523408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14092,17 +13074,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: ac3069de-fd63-4cac-9d66-a069bb35c4bc
---- !u!114 &114741725788157546
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988240418835138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114754124049683632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14156,53 +13127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: f0653d54-aedf-4021-99f5-a8a28cbe7bcd
---- !u!114 &114767013606345752
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935755324783690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114768716187617096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14247,17 +13171,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114782441073730564
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687823290769604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114785544338818826
@@ -14392,6 +13305,17 @@ MonoBehaviour:
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114812790197223912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052008577978710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114815422569933530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14492,53 +13416,6 @@ MonoBehaviour:
   respawnWithMessage: 0
   respawnPrefab: {fileID: 0}
   enableBehaviour: {fileID: 0}
---- !u!114 &114833816777428360
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935755324783690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114835103363245048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14621,17 +13498,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 346e5bc3-5391-4145-809c-e914c30cef58
---- !u!114 &114843495327246396
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687823290769604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114850499714337328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14940,17 +13806,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     duration: 0
---- !u!114 &114870997363155576
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687823290769604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114873572771947122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15101,17 +13956,6 @@ MonoBehaviour:
     - {fileID: 1933505300267536}
     - {fileID: 1779080960395438}
   _assetGuid: af86e9ae5dd17564fa888b0a4f6d9ace
---- !u!114 &114882973660166458
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935755324783690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114890287370931532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15360,64 +14204,17 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     duration: 0
---- !u!114 &114892822912823604
+--- !u!114 &114890862687499180
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1988240418835138}
+  m_GameObject: {fileID: 1303657003949280}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114895431832860826
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687823290769604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114895865446993250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15547,17 +14344,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeDelay: 0.05
   variance: 0.1
---- !u!114 &114950845987234822
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654822875834718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114958769997315176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15571,64 +14357,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeDelay: 0.05
   variance: 0.1
---- !u!114 &114962955576786814
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654822875834718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114964700146136772
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935755324783690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114966046537899360
 MonoBehaviour:
   m_ObjectHideFlags: 1
