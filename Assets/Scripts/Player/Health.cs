@@ -184,8 +184,12 @@ public class Health : MonoBehaviour
                 float val = System.Math.Abs(healthDeta);
                 Statistics.Instance.totalDamageTaken += (float)System.Math.Round(val, 2);
             }
-            else if(col && IsEnemy)
-                DamageText.Show(healthDeta, col.bounds.center);
+
+            if (col)
+            {
+                float damage = (float)System.Math.Round((double)healthDeta, 1);
+                DamageText.Show(damage, col.bounds.center + Vector3.up);
+            }
 
             health += healthDeta;
 
