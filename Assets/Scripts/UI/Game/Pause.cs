@@ -24,7 +24,7 @@ public class Pause : MonoBehaviour
 	public GameObject statsScreen;
 
 
-    bool paused = false;
+    public bool paused = false;
 	bool statsDisplayed = false;
 
     public float pauseSlowTime = 0.5f;
