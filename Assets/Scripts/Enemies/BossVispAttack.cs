@@ -10,16 +10,13 @@ public class BossVispAttack : EnemyAttack {
     public float minTimeBetweenStrike = 2;
     public float maxTimeBetweenStrike = 4;
 
-    [Header("Shooting Values")]
-    public float rotateSpeed = 5;
-    public float minTimeBetweenShot = .1f;
-    public float maxTimeBetweenShot = 1;
-
     [Header("Spawn Visp Values")]
     public GameObject visp;
     public float minTimeBetweenSpawn = 5;
     public float maxTimeBetweenSpawn = 8;
     public int amountPerSpawn = 1;
+    public float rotationSpeed = 2;
+    public int maxSpawnedVisps = 10;
 
     private float timeBetweenShot = 0;
     private float timeBetweenStrike = 0;
@@ -32,7 +29,7 @@ public class BossVispAttack : EnemyAttack {
     private bool striking = false;
 
     private Animator childAnimator;
-    private List<GameObject> spawnedVisps = new List<GameObject>(0);
+    private VispAttack[] spawnedVisps = new VispAttack[0];
 
 	// Use this for initialization
 	void Awake () 
@@ -42,30 +39,30 @@ public class BossVispAttack : EnemyAttack {
         timeBetweenStrike = Random.Range(minTimeBetweenStrike, maxTimeBetweenStrike);
         timeBetweenSpawn = Random.Range(minTimeBetweenSpawn, maxTimeBetweenSpawn);
 	}
+
+    void FixedUpdate()
+    {
+        spawnCounter++;
+
+        if (!striking)
+            strikeCounter++;
+    }
 	
 	// Update is called once per frame
-	void FixedUpdate () 
+	void Update () 
     {
         if (!striking)
         {
-            //wait until its ready to shoot
-            shootCounter++;
-            if (shootCounter > timeBetweenShot * 60)
-            {
-                shootCounter = 0;
+            Vector3 direction = enemyMove.GetClosestPlayer().position - transform.parent.position;
 
-                childAnimator.SetTrigger("Shoot");
+            direction = new Vector3(direction.x, 0, direction.z);
 
-                timeBetweenShot = Random.Range(minTimeBetweenShot, maxTimeBetweenShot);
-            }
+            Vector3 rot = Vector3.RotateTowards(transform.parent.forward, direction, rotationSpeed * Time.deltaTime, 0.0f);
 
             //look at the player
-            transform.parent.LookAt(enemyMove.GetClosestPlayer().transform, Vector3.up);
-        }
+            transform.parent.rotation = Quaternion.LookRotation(rot);
 
-        if (!striking)
-        {
-            strikeCounter++;
+            //transform.parent.LookAt(enemyMove.GetClosestPlayer().transform, Vector3.up);
 
             enemyMove.RunAwayFromPlayer(true, 10);
 
@@ -85,7 +82,11 @@ public class BossVispAttack : EnemyAttack {
         {
             spawnCounter = 0;
 
-            SplitEnemy(visp, amountPerSpawn, false);
+            if (spawnedVisps.Length < maxSpawnedVisps)
+            {
+                SplitEnemy(visp, amountPerSpawn, false);
+                spawnedVisps = FindObjectsOfType<VispAttack>();
+            }
 
             timeBetweenSpawn = Random.Range(minTimeBetweenSpawn, maxTimeBetweenSpawn);
         }

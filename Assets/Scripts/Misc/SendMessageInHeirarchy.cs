@@ -33,8 +33,6 @@ public class SendMessageInHeirarchy : MonoBehaviour
 
     void OnDisable()
 	{
-        Debug.Log("DISABLED " + gameObject.name);
-
         if(sendTime == SendTime.OnDisable)
             Send();
     }
