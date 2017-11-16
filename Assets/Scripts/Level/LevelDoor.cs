@@ -23,7 +23,7 @@ public class LevelDoor : MonoBehaviour
 
 	public LevelTile parentTile;
 
-	private bool entered = false;
+	private bool canEnter = false;
 
 	private MeshRenderer rend;
 
@@ -47,18 +47,19 @@ public class LevelDoor : MonoBehaviour
 		targetTile = target.GetComponentInParent<LevelTile>();
 
 		parentTile = GetComponentInParent<LevelTile>();
-	}
+
+        parentTile.OnTileEnter += delegate { canEnter = true; };
+		parentTile.OnTileExit += delegate { canEnter = false; };
+
+    }
 
     void OnTriggerEnter(Collider col)
     {
 		//If player walked into this door
 		if(col.gameObject.layer == 14 && col.GetType() == typeof(CharacterController))
         {
-			if (!entered)
+			if (canEnter)
 			{
-				//if this door was entered on the current tile, enable target tile
-				targetDoor.entered = true;
-
 				//Walk out into next tile
 				StartCoroutine(WalkOut(col.gameObject));
 
@@ -91,11 +92,6 @@ public class LevelDoor : MonoBehaviour
 
 				//Transition to new tile
 				targetTile.SetCurrent(parentTile);
-			}
-			else
-			{
-				//If this door was entered on the target tile, disable previous tile
-				entered = false;
 			}
         }
     }
