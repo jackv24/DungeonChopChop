@@ -61,7 +61,7 @@ public class SpawnPlayersManager : MonoBehaviour
 	{
         GameObject player = (GameObject)Instantiate (obj, transform.position, Quaternion.Euler (0, 0, 0));
         GameManager.Instance.players.Add(player.GetComponentInChildren<PlayerInformation>());
-		player.GetComponent<PlayerInformation> ().playerIndex = counter;
+        player.GetComponentInChildren<PlayerInformation> ().playerIndex = counter;
 		counter++;
 	}
 

@@ -27,9 +27,19 @@ public class NecklaceCharm : PickupableItems {
             //checks if the player collides with the item
             if (col.tag == "Player1" || col.tag == "Player2")
             {
+                canPickup = false;
+
+                CharmImage[] charmImages = FindObjectsOfType<CharmImage>();
+
                 foreach (PlayerInformation player in GameManager.Instance.players)
                 {
                     player.charmAmount++;
+
+                    foreach (CharmImage charm in charmImages)
+                    {
+                        if (charm.id == player.playerIndex)
+                            charm.UpdateCharms(player);
+                    }
                 }
 
                 DoPickUpParticle();

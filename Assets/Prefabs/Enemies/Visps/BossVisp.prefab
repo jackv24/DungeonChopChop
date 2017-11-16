@@ -901,8 +901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
-  health: 30
+  maxHealth: 15
+  health: 15
   weight: 2
   IsEnemy: 1
   enemyKind:
@@ -1037,15 +1037,17 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
   minTimeBetweenStrike: 3
   maxTimeBetweenStrike: 8
-  rotateSpeed: 5
-  minTimeBetweenShot: 0.1
-  maxTimeBetweenShot: 1
   visp: {fileID: 1479499657155190, guid: 3abbc21eed45466449554d67a2647416, type: 2}
   minTimeBetweenSpawn: 5
   maxTimeBetweenSpawn: 8
   amountPerSpawn: 1
+  rotationSpeed: 1
+  maxSpawnedVisps: 10
 --- !u!114 &114987689106698202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1058,29 +1060,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drops:
-  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
-    probability: 0.9
-    maxAmount: 0
-  - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
-    probability: 0.3
-    maxAmount: 0
-  - prefab: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
-    probability: 0.2
-    maxAmount: 0
-  - prefab: {fileID: 1616226106310662, guid: 0c71fc111242199438e231f8efa50564, type: 2}
-    probability: 0.1
-    maxAmount: 0
-  - prefab: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
-    probability: 0.05
-    maxAmount: 0
-  - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
-    probability: 0.1
-    maxAmount: 0
-  - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
-    probability: 0.1
-    maxAmount: 0
-  minAmountOfDrops: 0
-  maxAmountOfDrops: 2
+  - prefab: {fileID: 1242666068591334, guid: ab895d66d54449f4e92bbe5f5ed824f1, type: 2}
+    probability: 1
+    maxAmount: 1
+  minAmountOfDrops: 1
+  maxAmountOfDrops: 1
   isWizzer: 0
 --- !u!137 &137235741001236360
 SkinnedMeshRenderer:
