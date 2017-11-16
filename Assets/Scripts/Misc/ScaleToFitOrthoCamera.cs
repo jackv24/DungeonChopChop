@@ -12,7 +12,7 @@ public class ScaleToFitOrthoCamera : MonoBehaviour
 		{
             Bounds bounds = GetBounds();
 
-            Vector3 offset = bounds.center - transform.position;
+            Vector3 offset = bounds.center - cam.transform.position;
             offset.z = 0;
 
             transform.position += offset;
