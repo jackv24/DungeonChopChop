@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DialogueBox : MonoBehaviour
 {
 	public AnimationClip closeAnim;
+    public GameObject prompt;
 
 	private Animator anim;
 
@@ -14,6 +15,8 @@ public class DialogueBox : MonoBehaviour
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
+
+        prompt.SetActive(true);
 
 		textElement = GetComponentInChildren<Text>();
 	}

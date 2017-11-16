@@ -42,6 +42,9 @@ public class Appraisel : MonoBehaviour {
         
         if (!appraising)
         {
+            if (dialogueSpeaker.currentBox)
+                dialogueSpeaker.currentBox.prompt.SetActive(true);
+
             if (dialogueSpeaker.CurrentPlayer)
             {
                 if (dialogueSpeaker.CurrentPlayer.playerMove.input.Purchase)
@@ -55,6 +58,11 @@ public class Appraisel : MonoBehaviour {
                     appraiseCoroutine = StartCoroutine(AppraiseCharms());
                 }
             }
+        }
+        else
+        {
+            if (dialogueSpeaker.currentBox)
+                dialogueSpeaker.currentBox.prompt.SetActive(false);
         }
     }
 

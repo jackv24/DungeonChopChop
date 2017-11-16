@@ -24,7 +24,8 @@ public class DialogueSpeaker : MonoBehaviour
 
     public PlayerInformation CurrentPlayer { get { return currentBox ? playerInfo : null; } }
 
-    private DialogueBox currentBox;
+    [HideInInspector]
+    public DialogueBox currentBox;
 	private PlayerInformation playerInfo;
 
 	private List<GameObject> objs = new List<GameObject>();
