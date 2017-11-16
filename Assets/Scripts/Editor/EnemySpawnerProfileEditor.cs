@@ -24,7 +24,11 @@ public class EnemySpawnerProfileEditor : Editor
 		{
             EditorGUILayout.PropertyField(serializedObject.FindProperty("waitForSpawnMessage"));
 
-            EditorGUILayout.Space();
+			EditorGUILayout.Space();
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("sendDefeatedMessage"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("defeatedMessage"));
+
+			EditorGUILayout.Space();
             EditorGUILayout.LabelField(string.Format("Current Profile: {0}/{1}", spawner.profiles.Count > 0 ? currentIndex + 1 : 0, spawner.profiles.Count));
 
 			EditorGUILayout.BeginHorizontal();

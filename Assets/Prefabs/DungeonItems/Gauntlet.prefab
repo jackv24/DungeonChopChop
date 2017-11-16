@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114050400197744136}
   - component: {fileID: 114319289162161480}
   - component: {fileID: 114489021025602200}
+  - component: {fileID: 114155198357831462}
   m_Layer: 0
   m_Name: Gauntlet
   m_TagString: Untagged
@@ -238,6 +239,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 0e44df32-fdb3-4b46-92cc-83b2e87e99cf
+--- !u!114 &114155198357831462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514503387039582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendType: 3
+  sendTime: 0
+  message: SetSpawnMessage
+  requireReceiver: 1
+  delayBeforeSend: 1
 --- !u!114 &114293390178170900
 MonoBehaviour:
   m_ObjectHideFlags: 1

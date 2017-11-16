@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class ShowCutscene : MonoBehaviour {
 
     public VideoClip[] lockBreakCutscenes;
     public float fadeTime = .01f;
     public float waitToPlayTime = 2;
+
+	public AudioMixerGroup mixer;
 
     private RawImage image;
     private VideoPlayer videoPlayer;
@@ -111,6 +114,7 @@ public class ShowCutscene : MonoBehaviour {
         //Disable Play on Awake for both Video and Audio
         videoPlayer.playOnAwake = false;
         audioSource.playOnAwake = false;
+		audioSource.outputAudioMixerGroup = mixer;
         audioSource.Pause();
 
         //We want to play from video clip not from url
