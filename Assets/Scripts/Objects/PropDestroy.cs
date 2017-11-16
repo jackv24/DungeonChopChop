@@ -208,7 +208,7 @@ public class PropDestroy : MonoBehaviour
                 }
 
                 if (tag == "Dummy")
-                    DamageText.Show(-playerInfo.GetSwordDamage() * 10, col.bounds.center);
+                    DamageText.Show(-playerInfo.GetSwordDamage(), col.bounds.center + Vector3.up);
             }
         }
 
