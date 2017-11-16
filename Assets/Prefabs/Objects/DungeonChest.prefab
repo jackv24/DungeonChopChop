@@ -92,12 +92,13 @@ GameObject:
   - component: {fileID: 4027978923618848}
   - component: {fileID: 65339412404745444}
   - component: {fileID: 54193828573973534}
-  - component: {fileID: 114442063796782686}
   - component: {fileID: 114381539216597288}
   - component: {fileID: 114827384057416520}
   - component: {fileID: 114591848424274922}
   - component: {fileID: 114612316415130902}
   - component: {fileID: 114796263357386652}
+  - component: {fileID: 114246458818493370}
+  - component: {fileID: 114531469162903068}
   m_Layer: 0
   m_Name: DungeonChest
   m_TagString: Untagged
@@ -164,8 +165,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1521314459292142}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 4, y: 0.49639153, z: 5.42}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4047968415254516}
@@ -173,7 +174,7 @@ Transform:
   - {fileID: 4302318402323428}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4047968415254516
 Transform:
   m_ObjectHideFlags: 1
@@ -584,6 +585,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 3e41ed3a-3369-436b-95f0-9baec53a6fd9
+--- !u!114 &114246458818493370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1521314459292142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114381539216597288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -625,7 +637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 609d6930-b4b6-4307-b5ce-f9be6b5dad16
---- !u!114 &114442063796782686
+--- !u!114 &114531469162903068
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -633,10 +645,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1521314459292142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba875fb75cc4204ab29d60d515fd8f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7769befae38989749b451b91e4dcba63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beforeMerge: 0
+  identifier: DungeonChest
+  onStart: 0
+  useChild: 0
 --- !u!114 &114591848424274922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -726,6 +740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   opened: 0
   requireKeys: 1
+  randomise: 0
   keyType: 1
   chestType: 2
   possibleItems: []
@@ -736,11 +751,16 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
-  animationBone: {fileID: 1757250047233202}
-  releaseItemDelay: 1.5
-  releaseItemForce: 10
   containingItem: {fileID: 0}
   containingObject: {fileID: 0}
   containingConsumables: []
+  animationBone: {fileID: 1757250047233202}
+  releaseItemDelay: 1.5
+  releaseItemForce: 10
+  openSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   releaseParticle: {fileID: 1537656737404336, guid: eda2ce5f4218d414398f796a1f39f59e,
     type: 2}

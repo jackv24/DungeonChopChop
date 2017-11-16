@@ -7,9 +7,6 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 {
     public LevelTile.Biomes dungeonBiome;
 
-    [Space()]
-    public BaseItem dungeonItem;
-
     [HideInInspector] public GameObject keyTileObj;
     [HideInInspector] public GameObject chestTileObj;
 
@@ -117,39 +114,6 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 
 			succeeded = false;
 		}
-
-		//Self-removing event
-		LevelGenerator.NormalEvent tempEvent = null;
-		tempEvent = delegate
-		{
-			//Find all chests
-			Chest[] chests = levelGenerator.GetComponentsInChildren<Chest>();
-
-			//Narrow down to just the dungeon chest
-			Chest dungeonChest = null;
-			foreach(Chest chest in chests)
-			{
-				if(chest.chestType == ChestType.Dungeon)
-				{
-                    dungeonChest = chest;
-                    break;
-                }
-			}
-
-			//If dungeon chest was found, set it's item
-            if (dungeonChest)
-			{
-				if (dungeonItem)
-					dungeonChest.SetItem(dungeonItem);
-				else
-					Debug.LogWarning("No dungeon item assigned!");
-			}
-			else
-				Debug.LogWarning("No dungeon chest found!");
-
-			levelGenerator.OnAfterSpawnChests -= tempEvent;
-		};
-		levelGenerator.OnAfterSpawnChests += tempEvent;
 
 		//Append biome to all persistent object identifiers, since each dungeon should be considered different
 		foreach(LevelTile tile in levelGenerator.generatedTiles)

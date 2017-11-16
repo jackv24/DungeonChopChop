@@ -22,6 +22,8 @@ public class Chest : MonoBehaviour
     public bool opened = false;
     public bool requireKeys = false;
 
+	public bool randomise = true;
+
 	public KeyScript.Type keyType = KeyScript.Type.Normal;
     public ChestType chestType;
 
@@ -35,7 +37,13 @@ public class Chest : MonoBehaviour
     public int maxAmountOfObjects = 5;
     public LayerMask playerMask;
 
-    [Header("Item Values")]
+	public BaseItem containingItem;
+	[HideInInspector]
+	public GameObject containingObject;
+	[HideInInspector]
+	public List<GameObject> containingConsumables = new List<GameObject>(0);
+
+	[Header("Item Values")]
     public GameObject animationBone;
     public float releaseItemDelay = 1.5f;
     public float releaseItemForce = 10.0f;
@@ -43,18 +51,8 @@ public class Chest : MonoBehaviour
     [Header("Audio")]
     public SoundEffect openSound;
 
-
-    [HideInInspector]
-	public BaseItem containingItem;
-    [HideInInspector]
-    public GameObject containingObject;
-    [HideInInspector]
-    public List<GameObject> containingConsumables = new List<GameObject>(0);
-
     [Header("Particles")]
     public GameObject releaseParticle;
-
-	private bool randomise = true;
 
     private Animator animator;
 
