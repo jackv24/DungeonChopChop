@@ -53,7 +53,7 @@ public class PersistentObject : MonoBehaviour
         return value;
     }
 
-	void SetPersistentBool(bool value)
+	public void SetPersistentBool(bool value)
 	{
 		if(dictionary.ContainsKey(identifier))
             Debug.LogWarning("Persistent Bool Dictionary already contains key \"" + identifier + "\"");

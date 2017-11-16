@@ -268,5 +268,9 @@ public class Chest : MonoBehaviour
         }
             
         ReleaseParticle(obj.transform.position);
+
+		PersistentObject persist = GetComponent<PersistentObject>();
+		if (persist)
+			persist.SetPersistentBool(false);
 	}
 }

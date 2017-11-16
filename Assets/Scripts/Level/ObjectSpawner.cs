@@ -9,12 +9,12 @@ public class ObjectSpawner : MonoBehaviour
 
 	public bool spawnAfterMerging = false;
 
-    [Space()]
+	[Space()]
     public bool respawnWithMessage = false;
 	public GameObject respawnPrefab;
     public MonoBehaviour enableBehaviour;
 
-    void Start()
+	void Start()
 	{
 		if (transform.childCount <= 0 || Application.isPlaying)
 		{
@@ -29,17 +29,6 @@ public class ObjectSpawner : MonoBehaviour
 	{
 		if (spawnAfterMerging && Application.isPlaying && LevelGenerator.Instance)
 			LevelGenerator.Instance.OnGenerationFinished -= Replace;
-	}
-
-	void Update()
-	{
-		if (!Application.isPlaying)
-		{
-			if (prefab != oldPrefab)
-			{
-				Replace();
-			}
-		}
 	}
 
 	public void Replace()
