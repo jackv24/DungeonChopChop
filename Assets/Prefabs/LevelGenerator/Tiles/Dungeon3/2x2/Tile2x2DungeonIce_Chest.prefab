@@ -541,6 +541,7 @@ GameObject:
   - component: {fileID: 114595081717770536}
   - component: {fileID: 114537121388739380}
   - component: {fileID: 114000617786834684}
+  - component: {fileID: 114546692935819224}
   m_Layer: 0
   m_Name: Tile2x2DungeonIce_Chest
   m_TagString: Untagged
@@ -1248,17 +1249,16 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4569670881071314}
+  - component: {fileID: 114392323254419250}
+  - component: {fileID: 114268150080163610}
   - component: {fileID: 65652371998557188}
   - component: {fileID: 54655569523841734}
   - component: {fileID: 114033175034904560}
   - component: {fileID: 114082013530779830}
-  - component: {fileID: 114905538142992798}
   - component: {fileID: 114132586200714084}
   - component: {fileID: 114266354504249700}
   - component: {fileID: 114604053191843012}
   - component: {fileID: 114544757619019644}
-  - component: {fileID: 114392323254419250}
-  - component: {fileID: 114268150080163610}
   m_Layer: 0
   m_Name: DungeonChest
   m_TagString: Untagged
@@ -2763,7 +2763,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205456036086828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -460, y: 0.29999998, z: -57.8}
+  m_LocalPosition: {x: -500, y: 0.29999998, z: -57.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4292720153471846}
@@ -8971,6 +8971,49 @@ MonoBehaviour:
   identifier: DungeonChest_Ice
   onStart: 1
   useChild: 0
+--- !u!114 &114546692935819224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205456036086828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab8bedca2022eb42ab66d60fd58d259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawned: 0
+  waitForSpawnMessage: 1
+  sendDefeatedMessage: 1
+  defeatedMessage: ReplaceMessage
+  currentProfileIndex: 0
+  profiles:
+  - randomised: 1
+    spawns:
+    - enemyPrefab: {fileID: 1055673473369210, guid: 57b2be60ec064f046baa4bf5adb70d02,
+        type: 2}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 0}
+      position: {x: -20, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 0}
+      position: {x: -20, y: 0, z: 10}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 0}
+      position: {x: -20, y: 0, z: 20}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 0}
+      position: {x: -10, y: 0, z: 20}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 0}
+      position: {x: 0, y: 0, z: 20}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 0}
+      position: {x: 0, y: 0, z: 10}
+      rotation: {x: 0, y: 0, z: 0}
+  spawnedEnemies: []
+  undefeatedEnemies: []
 --- !u!114 &114555464077620424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9678,22 +9721,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeDelay: 0.05
   variance: 0.1
---- !u!114 &114905538142992798
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1642008260200978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sendType: 2
-  sendTime: 1
-  message: ReplaceMessage
-  requireReceiver: 0
-  delayBeforeSend: 1
 --- !u!114 &114913239909546968
 MonoBehaviour:
   m_ObjectHideFlags: 1

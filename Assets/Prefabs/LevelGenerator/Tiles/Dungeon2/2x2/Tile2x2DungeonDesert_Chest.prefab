@@ -489,6 +489,7 @@ GameObject:
   - component: {fileID: 114595081717770536}
   - component: {fileID: 114913526134860694}
   - component: {fileID: 114734610332643300}
+  - component: {fileID: 114986460536232084}
   m_Layer: 0
   m_Name: Tile2x2DungeonDesert_Chest
   m_TagString: Untagged
@@ -856,17 +857,16 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4954661161338318}
+  - component: {fileID: 114200742786001992}
+  - component: {fileID: 114862055757511938}
   - component: {fileID: 65190874749706718}
   - component: {fileID: 54436137649979436}
   - component: {fileID: 114584379224498664}
   - component: {fileID: 114762324986907494}
-  - component: {fileID: 114138990221953412}
   - component: {fileID: 114327932176040446}
   - component: {fileID: 114902863498123876}
   - component: {fileID: 114824545766896874}
   - component: {fileID: 114736380143850100}
-  - component: {fileID: 114200742786001992}
-  - component: {fileID: 114862055757511938}
   m_Layer: 0
   m_Name: DungeonChest
   m_TagString: Untagged
@@ -7852,22 +7852,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 8d8baeb9-f7b2-497f-8260-8b590f5a7fc0
---- !u!114 &114138990221953412
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1428466981029412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sendType: 2
-  sendTime: 1
-  message: ReplaceMessage
-  requireReceiver: 0
-  delayBeforeSend: 1
 --- !u!114 &114142769464798090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9875,6 +9859,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   host: {fileID: 0}
+--- !u!114 &114986460536232084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205456036086828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab8bedca2022eb42ab66d60fd58d259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawned: 0
+  waitForSpawnMessage: 1
+  sendDefeatedMessage: 1
+  defeatedMessage: ReplaceMessage
+  currentProfileIndex: 0
+  profiles:
+  - randomised: 1
+    spawns:
+    - enemyPrefab: {fileID: 1874609853619012, guid: f40c92c334a7cba418bee0cdefd1ae3e,
+        type: 2}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 0}
+      position: {x: -20, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 0}
+      position: {x: -20, y: 0, z: 10}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 0}
+      position: {x: -20, y: 0, z: 20}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 0}
+      position: {x: -10, y: 0, z: 20}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 0}
+      position: {x: 0, y: 0, z: 20}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 0}
+      position: {x: 0, y: 0, z: 10}
+      rotation: {x: 0, y: 0, z: 0}
+  spawnedEnemies: []
+  undefeatedEnemies: []
 --- !u!114 &114991253041401252
 MonoBehaviour:
   m_ObjectHideFlags: 1

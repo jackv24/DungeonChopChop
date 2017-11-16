@@ -216,7 +216,8 @@ public class Chest : MonoBehaviour
 
             Vector3 direction = new Vector3(Random.insideUnitSphere.x, 1, Random.insideUnitSphere.z);
             GetComponent<Rigidbody>().AddForce(direction * releaseItemForce, ForceMode.Impulse);
-        }
+
+		}
     }
 
 	IEnumerator ReleaseItems(bool setParent = false)
@@ -267,6 +268,5 @@ public class Chest : MonoBehaviour
         }
             
         ReleaseParticle(obj.transform.position);
-
 	}
 }

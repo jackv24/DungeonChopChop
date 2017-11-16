@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114987177459388766}
   - component: {fileID: 114633646436416164}
   - component: {fileID: 114180691088357696}
+  - component: {fileID: 114825604824112152}
   m_Layer: 0
   m_Name: goggles_mesh
   m_TagString: Untagged
@@ -292,6 +293,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 57fc2cbc-5bdd-43bc-841d-677f8e405cd5
+--- !u!114 &114825604824112152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054866497049358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendType: 3
+  sendTime: 0
+  message: SetSpawnMessage
+  requireReceiver: 1
+  delayBeforeSend: 1
 --- !u!114 &114831557100217614
 MonoBehaviour:
   m_ObjectHideFlags: 11

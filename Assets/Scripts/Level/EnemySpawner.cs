@@ -14,6 +14,9 @@ public class EnemySpawner : MonoBehaviour
     public bool waitForSpawnMessage = false;
     private bool receivedMessage = false;
 
+	public bool sendDefeatedMessage = false;
+	public string defeatedMessage = "";
+
     [System.Serializable]
 	public class Profile
 	{
@@ -112,6 +115,9 @@ public class EnemySpawner : MonoBehaviour
 
 				if (LevelGenerator.Instance)
 					LevelGenerator.Instance.ClearTile();
+
+				if (sendDefeatedMessage)
+					BroadcastMessage(defeatedMessage);
 
 				spawned = false;
 			}

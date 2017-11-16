@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SendMessageInHeirarchy : MonoBehaviour
 {
-	public enum SendType { Parents, Children, Tile }
+	public enum SendType { Parents, Children, Tile, CurrentTile }
     public SendType sendType;
 
 	public enum SendTime { OnDisable, ChestOpen }
@@ -56,6 +56,12 @@ public class SendMessageInHeirarchy : MonoBehaviour
                         tile.gameObject.BroadcastMessage(message, requireReceiver ? SendMessageOptions.RequireReceiver : SendMessageOptions.DontRequireReceiver);
                     }
                     break;
+				case SendType.CurrentTile:
+					if (LevelGenerator.Instance && LevelGenerator.Instance.currentTile)
+					{
+						LevelGenerator.Instance.currentTile.gameObject.BroadcastMessage(message, requireReceiver ? SendMessageOptions.RequireReceiver : SendMessageOptions.DontRequireReceiver);
+					}
+					break;
             }
         }
     }
