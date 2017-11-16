@@ -95,8 +95,6 @@ public class ShopItemPopup : MonoBehaviour
                 || components[i] is ParticleSystemRenderer))
                     DestroyImmediate(components[i], false);
             }
-
-            itemGraphic.AddComponent<ScaleToFitOrthoCamera>();
         }
 
         followTransform = player;
