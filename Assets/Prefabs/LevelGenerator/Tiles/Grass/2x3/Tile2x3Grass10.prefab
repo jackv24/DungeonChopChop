@@ -38503,7 +38503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiresKey: 0
-  requiresChallenge: 1
+  requiresChallenge: 0
   lever: {fileID: 0}
 --- !u!114 &114021040337036250
 MonoBehaviour:
@@ -53239,7 +53239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiresKey: 0
-  requiresChallenge: 1
+  requiresChallenge: 0
   lever: {fileID: 0}
 --- !u!114 &114582281910121698
 MonoBehaviour:
@@ -53414,6 +53414,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawned: 0
   waitForSpawnMessage: 0
+  sendDefeatedMessage: 0
+  defeatedMessage: 
   currentProfileIndex: 0
   profiles:
   - randomised: 1
@@ -60155,6 +60157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   opened: 0
   requireKeys: 0
+  randomise: 1
   keyType: 0
   chestType: 0
   possibleItems:
@@ -60253,6 +60256,9 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
+  containingItem: {fileID: 0}
+  containingObject: {fileID: 0}
+  containingConsumables: []
   animationBone: {fileID: 0}
   releaseItemDelay: 1
   releaseItemForce: 0
@@ -60261,9 +60267,6 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
-  containingItem: {fileID: 0}
-  containingObject: {fileID: 0}
-  containingConsumables: []
   releaseParticle: {fileID: 0}
 --- !u!114 &114842607544450544
 MonoBehaviour:
