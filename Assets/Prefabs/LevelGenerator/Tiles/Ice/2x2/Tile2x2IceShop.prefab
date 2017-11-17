@@ -5105,6 +5105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4792632877731976}
   - component: {fileID: 114070207435458344}
+  - component: {fileID: 114410569704471622}
   m_Layer: 0
   m_Name: Neck_JNT
   m_TagString: Untagged
@@ -17311,7 +17312,7 @@ MonoBehaviour:
   _guid: 903f6e8d-9dfa-46c6-8444-6bb1cdeb1648
 --- !u!114 &114144406736910606
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1612257649552334}
@@ -17759,6 +17760,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114185819879198324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18946,7 +18948,7 @@ MonoBehaviour:
     m_Bits: 131072
 --- !u!114 &114247197704611236
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1612257649552334}
@@ -21076,6 +21078,21 @@ MonoBehaviour:
     magnitude: 0.1
     shakeAmount: 0.4
     duration: 0.2
+--- !u!114 &114410569704471622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1980088287637692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9787beffdb3a8414d8fb8ea6ec1d65b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 8
+  rotateSpeed: 3
+  angle: 135
+  rotationOffset: {x: 0, y: 0, z: -90}
 --- !u!114 &114415971097156022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21373,6 +21390,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 02a22f90cc96eba468275f9733fa7a29,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114467824616317100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22259,6 +22277,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114546083598988368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -25981,6 +26000,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114811981494934904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27112,6 +27132,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114898034467048806
 MonoBehaviour:
   m_ObjectHideFlags: 1

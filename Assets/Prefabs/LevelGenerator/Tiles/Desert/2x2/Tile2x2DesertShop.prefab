@@ -1646,6 +1646,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4760822873459750}
   - component: {fileID: 114953396787598636}
+  - component: {fileID: 114969796392635326}
   m_Layer: 0
   m_Name: Neck_JNT
   m_TagString: Untagged
@@ -6369,7 +6370,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1363018584073744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -101, y: 1.5, z: -230}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4175324764133082}
@@ -18526,6 +18527,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 02a22f90cc96eba468275f9733fa7a29,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114086455520889214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19948,7 +19950,7 @@ MonoBehaviour:
   _guid: d94f76d4-a2dc-4207-bb8d-3f9f359861b5
 --- !u!114 &114242183230221658
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1363018584073744}
@@ -21468,6 +21470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawned: 0
   waitForSpawnMessage: 0
+  sendDefeatedMessage: 0
+  defeatedMessage: 
   currentProfileIndex: 0
   profiles: []
   spawnedEnemies: []
@@ -22068,7 +22072,7 @@ MonoBehaviour:
   _guid: e70652ee-0762-4c64-bbf4-460fa69a8c74
 --- !u!114 &114372476328959466
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1363018584073744}
@@ -22552,6 +22556,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114424709389565024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -23584,6 +23589,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114579211486672204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -24670,6 +24676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   opened: 0
   requireKeys: 1
+  randomise: 1
   keyType: 0
   chestType: 1
   possibleItems:
@@ -24816,6 +24823,9 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
+  containingItem: {fileID: 0}
+  containingObject: {fileID: 0}
+  containingConsumables: []
   animationBone: {fileID: 0}
   releaseItemDelay: 1
   releaseItemForce: 50
@@ -24824,9 +24834,6 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
-  containingItem: {fileID: 0}
-  containingObject: {fileID: 0}
-  containingConsumables: []
   releaseParticle: {fileID: 0}
 --- !u!114 &114662510481905976
 MonoBehaviour:
@@ -26998,6 +27005,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114863899246662748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27947,6 +27955,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 63b42288-500d-49fa-9244-d1cc1e0a2c33
+--- !u!114 &114969796392635326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1325805640389004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9787beffdb3a8414d8fb8ea6ec1d65b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 8
+  rotateSpeed: 3
+  angle: 135
+  rotationOffset: {x: 0, y: 0, z: -90}
 --- !u!114 &114978893475413644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27983,6 +28006,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114980196631373054
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -18,7 +18,7 @@ public class ControllerRumble : MonoBehaviour
 
 	public static void RumbleController(PlayerInputs input, float magnitude, float length)
 	{
-		if(Instance)
+		if(Instance && input.device != null)
 		{
 			if (Instance.routines.ContainsKey(input) && Instance.routines[input] != null)
 			{

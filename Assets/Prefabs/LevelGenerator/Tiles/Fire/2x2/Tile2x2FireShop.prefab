@@ -4963,6 +4963,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4203783147029708}
   - component: {fileID: 114033929137363184}
+  - component: {fileID: 114628009047937878}
   m_Layer: 0
   m_Name: Neck_JNT
   m_TagString: Untagged
@@ -7111,7 +7112,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1857560012761752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -200, y: 0, z: -230}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4885215922868116}
@@ -21346,6 +21347,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114128815594598624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -23755,6 +23757,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114257614201704196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -24648,6 +24651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   opened: 0
   requireKeys: 1
+  randomise: 1
   keyType: 0
   chestType: 1
   possibleItems:
@@ -24794,6 +24798,9 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
+  containingItem: {fileID: 0}
+  containingObject: {fileID: 0}
+  containingConsumables: []
   animationBone: {fileID: 0}
   releaseItemDelay: 1
   releaseItemForce: 50
@@ -24802,9 +24809,6 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
-  containingItem: {fileID: 0}
-  containingObject: {fileID: 0}
-  containingConsumables: []
   releaseParticle: {fileID: 0}
 --- !u!114 &114317014762810598
 MonoBehaviour:
@@ -24889,6 +24893,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 02a22f90cc96eba468275f9733fa7a29,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114321143410418978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27687,7 +27692,7 @@ MonoBehaviour:
   variance: 0.1
 --- !u!114 &114419367565061080
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1857560012761752}
@@ -28769,6 +28774,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114515120369110344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31272,6 +31278,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: ff12d9df-b448-4744-ad3c-7bae42b8bbd7
+--- !u!114 &114628009047937878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1777673967980744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9787beffdb3a8414d8fb8ea6ec1d65b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 8
+  rotateSpeed: 3
+  angle: 135
+  rotationOffset: {x: 0, y: 0, z: -90}
 --- !u!114 &114628665949264678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31367,7 +31388,7 @@ MonoBehaviour:
   isWizzer: 0
 --- !u!114 &114638095276223124
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1857560012761752}
@@ -33086,6 +33107,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 02a22f90cc96eba468275f9733fa7a29,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114784440123237098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -33357,6 +33379,7 @@ MonoBehaviour:
   textBoxDepth: 1
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 81e0ec32274b65f48ad8703817122046,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114788339597117486
 MonoBehaviour:
   m_ObjectHideFlags: 1

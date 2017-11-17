@@ -30,7 +30,8 @@ public class BiomeText : MonoBehaviour
 
     void Start()
 	{
-        LevelGenerator.Instance.OnTileEnter += Show;
+		if(LevelGenerator.Instance)
+			LevelGenerator.Instance.OnTileEnter += Show;
     }
 
 	public void Show()
