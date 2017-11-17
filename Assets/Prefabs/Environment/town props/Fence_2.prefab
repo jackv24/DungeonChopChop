@@ -142,7 +142,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -150,11 +152,11 @@ MonoBehaviour:
   isFrozen: 0
   isSandy: 0
   isDead: 0
-  poisonColor: {r: 0, g: 0, b: 0, a: 0}
-  burnColor: {r: 0.44117647, g: 0.34005487, b: 0.07461072, a: 1}
-  slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
-  frozenColor: {r: 0, g: 0, b: 0, a: 0}
-  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  poisonColor: {r: 0.592568, g: 0.37662196, b: 0.5955882, a: 0.616}
+  burnColor: {r: 0.7647059, g: 0.40484428, b: 0.40484428, a: 0.609}
+  slowlyDyingColor: {r: 0.46674955, g: 0.71323526, b: 0.4786488, a: 0.584}
+  frozenColor: {r: 0.42906576, g: 0.9411765, b: 0.94117635, a: 0.578}
+  sandyColor: {r: 0.9137111, g: 0.9191176, b: 0.527141, a: 0.566}
   hitParticles: []
   hitSounds:
     clips: []
@@ -216,6 +218,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 1
   dashDestroysIt: 0
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -440,6 +443,15 @@ MonoBehaviour:
     magnitude: 0.2
     shakeAmount: 0.7
     duration: 0.2
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114976293325220858
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -199,10 +199,11 @@ public class PlayerMove : MonoBehaviour
         {
             PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
 
-            LevelGenerator.Instance.generatedTiles[0].SetCurrent(LevelGenerator.Instance.currentTile);
+			if(LevelGenerator.Instance)
+				LevelGenerator.Instance.generatedTiles[0].SetCurrent(LevelGenerator.Instance.currentTile);
 
             foreach (PlayerInformation playerInfo in playerInfos)
-                playerInfo.transform.position = LevelGenerator.Instance.generatedTiles[0].tileOrigin.position;
+                playerInfo.transform.position = LevelGenerator.Instance ? LevelGenerator.Instance.generatedTiles[0].tileOrigin.position : Vector3.up;
         }
 
 		doAnimations();

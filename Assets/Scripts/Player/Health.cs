@@ -284,7 +284,8 @@ public class Health : MonoBehaviour
 
         UnFreeze();
 
-        maxHealth *= GameManager.Instance.enemyHealthMultiplier;
+		if(GameManager.Instance && IsEnemy)
+			maxHealth *= GameManager.Instance.enemyHealthMultiplier;
 
         health = maxHealth;
 
