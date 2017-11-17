@@ -17,6 +17,7 @@ public class BiomeLighting : MonoBehaviour
 	public LightProfile dungeon2Profile;
 	public LightProfile dungeon3Profile;
 	public LightProfile dungeon4Profile;
+	public LightProfile bossDungeonProfile;
 
 	void Start()
 	{
@@ -62,7 +63,9 @@ public class BiomeLighting : MonoBehaviour
 			case LevelTile.Biomes.Dungeon3:
                 return dungeon3Profile;
 			case LevelTile.Biomes.Dungeon4:
-                return dungeon4Profile;
+				return dungeon4Profile;
+			case LevelTile.Biomes.BossDungeon:
+				return bossDungeonProfile;
 		}
 
 		return null;

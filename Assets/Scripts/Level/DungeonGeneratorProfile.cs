@@ -10,12 +10,16 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
     [HideInInspector] public GameObject keyTileObj;
     [HideInInspector] public GameObject chestTileObj;
 
+	[HideInInspector]
+	public GameObject bossTile;
+
 	public override void Generate(LevelGenerator levelGenerator)
 	{
 		if(dungeonBiome != LevelTile.Biomes.Dungeon1
 		&& dungeonBiome != LevelTile.Biomes.Dungeon2
 		&& dungeonBiome != LevelTile.Biomes.Dungeon3
-		&& dungeonBiome != LevelTile.Biomes.Dungeon4)
+		&& dungeonBiome != LevelTile.Biomes.Dungeon4
+		&& dungeonBiome != LevelTile.Biomes.BossDungeon)
 		{
             dungeonBiome = LevelTile.Biomes.Dungeon1;
 
@@ -31,88 +35,95 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 		//Get the biome that this dungeon was entered from
 		LevelTile.Biomes biome = LevelVars.Instance.lastOverworldBiome;
 
-		///Spawn dungeon key and chest
-		//Keep list of potential places to spawn
-		List<DungeonKeyTile> potentialTiles = new List<DungeonKeyTile>();
-
-		//Get tiles that can be replaced from level generator
-		foreach(LevelTile tile in levelGenerator.generatedTiles)
+		if (dungeonBiome != LevelTile.Biomes.BossDungeon)
 		{
-			if (tile.currentGraphic)
+			///Spawn dungeon key and chest
+			//Keep list of potential places to spawn
+			List<DungeonKeyTile> potentialTiles = new List<DungeonKeyTile>();
+
+			//Get tiles that can be replaced from level generator
+			foreach (LevelTile tile in levelGenerator.generatedTiles)
 			{
-				DungeonKeyTile key = tile.currentGraphic.GetComponent<DungeonKeyTile>();
-
-				if (key)
-					potentialTiles.Add(key);
-			}
-		}
-
-		if (potentialTiles.Count >= 2)
-		{
-			DungeonKeyTile keyTile = null;
-			DungeonKeyTile chestTile = null;
-
-			float furthestDistance = 0;
-
-			//Key tile should be furthest from the entrance
-			foreach (DungeonKeyTile tile in potentialTiles)
-			{
-				float distance = Vector3.Distance(tile.transform.position, levelGenerator.generatedTiles[0].transform.position);
-
-				if (distance > furthestDistance)
+				if (tile.currentGraphic)
 				{
-					furthestDistance = distance;
+					DungeonKeyTile key = tile.currentGraphic.GetComponent<DungeonKeyTile>();
 
-					keyTile = tile;
+					if (key)
+						potentialTiles.Add(key);
 				}
 			}
 
-			if (keyTile)
+			if (potentialTiles.Count >= 2)
 			{
-				//Key tile should not be considered for chest tile
-				potentialTiles.Remove(keyTile);
+				DungeonKeyTile keyTile = null;
+				DungeonKeyTile chestTile = null;
 
-				furthestDistance = 0;
-				//Chest tile should be furthest away from key tile
+				float furthestDistance = 0;
+
+				//Key tile should be furthest from the entrance
 				foreach (DungeonKeyTile tile in potentialTiles)
 				{
-					float distance = Vector3.Distance(tile.transform.position, keyTile.transform.position);
+					float distance = Vector3.Distance(tile.transform.position, levelGenerator.generatedTiles[0].transform.position);
 
 					if (distance > furthestDistance)
 					{
 						furthestDistance = distance;
 
-						chestTile = tile;
+						keyTile = tile;
 					}
 				}
-			}
 
-			//Make sure there is a key/chest pair
-			if (!keyTile)
-			{
-				Debug.LogWarning("Did not spawn a dungeon <b>key</b> tile!");
+				if (keyTile)
+				{
+					//Key tile should not be considered for chest tile
+					potentialTiles.Remove(keyTile);
 
-				succeeded = false;
-			}
-            else
-            {
-                keyTileObj = keyTile.Replace(DungeonKeyTile.Type.Key);
-            }
+					furthestDistance = 0;
+					//Chest tile should be furthest away from key tile
+					foreach (DungeonKeyTile tile in potentialTiles)
+					{
+						float distance = Vector3.Distance(tile.transform.position, keyTile.transform.position);
 
-            if (!chestTile)
-			{
-				Debug.LogWarning("Did not spawn a dungeon <b>chest</b> tile!");
+						if (distance > furthestDistance)
+						{
+							furthestDistance = distance;
 
-				succeeded = false;
+							chestTile = tile;
+						}
+					}
+				}
+
+				//Make sure there is a key/chest pair
+				if (!keyTile)
+				{
+					Debug.LogWarning("Did not spawn a dungeon <b>key</b> tile!");
+
+					succeeded = false;
+				}
+				else
+				{
+					keyTileObj = keyTile.Replace(DungeonKeyTile.Type.Key);
+				}
+
+				if (!chestTile)
+				{
+					Debug.LogWarning("Did not spawn a dungeon <b>chest</b> tile!");
+
+					succeeded = false;
+				}
+				else
+					chestTileObj = chestTile.Replace(DungeonKeyTile.Type.Chest);
 			}
 			else
-				chestTileObj = chestTile.Replace(DungeonKeyTile.Type.Chest);
-		}
-		else
-		{
-			Debug.LogWarning("Did not spawn a dungeon key/chest pair - no potential tiles!");
+			{
+				Debug.LogWarning("Did not spawn a dungeon key/chest pair - no potential tiles!");
 
-			succeeded = false;
+				succeeded = false;
+			}
+		}
+		else if(bossTile)
+		{
+			Debug.LogError("<b>Boss tile generation NOT IMPLEMENTED</b>");
 		}
 
 		//Append biome to all persistent object identifiers, since each dungeon should be considered different

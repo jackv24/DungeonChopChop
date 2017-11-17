@@ -23,8 +23,9 @@ public class BiomeText : MonoBehaviour
 	public Sprite[] dungeon2Text;
 	public Sprite[] dungeon3Text;
 	public Sprite[] dungeon4Text;
+	public Sprite[] bossDungeonText;
 
-    private LevelTile.Biomes lastBiome = LevelTile.Biomes.Dungeon1;
+	private LevelTile.Biomes lastBiome = LevelTile.Biomes.Dungeon1;
 
     private Coroutine fadeGroupRoutine = null;
 
@@ -83,7 +84,10 @@ public class BiomeText : MonoBehaviour
                 case LevelTile.Biomes.Dungeon4:
                     textPair = dungeon4Text;
                     break;
-            }
+				case LevelTile.Biomes.BossDungeon:
+					textPair = bossDungeonText;
+					break;
+			}
         }
 
         if(textPair != null)

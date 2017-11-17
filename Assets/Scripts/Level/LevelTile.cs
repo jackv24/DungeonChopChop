@@ -61,7 +61,8 @@ public class LevelTile : MonoBehaviour
 		Dungeon1,
 		Dungeon2,
 		Dungeon3,
-		Dungeon4
+		Dungeon4,
+		BossDungeon
     }
 
 	void Start()
@@ -198,6 +199,9 @@ public class LevelTile : MonoBehaviour
 				case Biomes.Dungeon4:
 					dungeonTiles = dungeon4Tiles;
                     break;
+				case Biomes.BossDungeon:
+					dungeonTiles = Helper.CombineProbabilityGameObjects(dungeon1Tiles, dungeon2Tiles, dungeon3Tiles, dungeon4Tiles);
+					break;
             }
 
 			if(dungeonTiles != null)
