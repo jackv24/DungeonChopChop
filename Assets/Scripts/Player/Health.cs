@@ -238,6 +238,7 @@ public class Health : MonoBehaviour
                 DoHitParticle();
                 DoHitSound();
                 CameraShake.ShakeScreen(hitShake.magnitude, hitShake.shakeAmount, hitShake.duration);
+				ControllerRumble.RumbleController(playerInfo.playerMove.input, hitShake.magnitude, hitShake.duration);
             }
         }
 
@@ -285,8 +286,8 @@ public class Health : MonoBehaviour
 
         UnFreeze();
 
-        if (GameManager.Instance)
-            maxHealth *= GameManager.Instance.enemyHealthMultiplier;
+		if(GameManager.Instance && IsEnemy)
+			maxHealth *= GameManager.Instance.enemyHealthMultiplier;
 
         health = maxHealth;
 

@@ -2649,9 +2649,7 @@ GameObject:
   - component: {fileID: 4843440207860334}
   - component: {fileID: 33634863176142066}
   - component: {fileID: 23580459203076684}
-  - component: {fileID: 114632912872082534}
   - component: {fileID: 114446961184096412}
-  - component: {fileID: 114569975727776914}
   m_Layer: 0
   m_Name: IronGateFrame_mesh
   m_TagString: Untagged
@@ -8581,10 +8579,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4133914062493080}
-  - component: {fileID: 114607477684949864}
   - component: {fileID: 114333418811367494}
   - component: {fileID: 114403686602770102}
-  - component: {fileID: 114291006795521764}
   m_Layer: 0
   m_Name: IronGate
   m_TagString: Untagged
@@ -15506,7 +15502,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1818541909692622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.471569, y: 214.45532, z: 25.48402}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4003186316058592}
@@ -33674,6 +33670,9 @@ MonoBehaviour:
     - {fileID: 1395110384320904}
     - {fileID: 1267790253827012}
     - {fileID: 1308979389229750}
+    - {fileID: 1293881483262930}
+    - {fileID: 1328343160236212}
+    - {fileID: 1830985488429826}
   _assetGuid: e5c2dfa1183bd924a97dfcde649dcb0b
 --- !u!114 &114114576048371418
 MonoBehaviour:
@@ -36813,17 +36812,6 @@ MonoBehaviour:
     _collection:
     - {fileID: 1007829560300678}
   _assetGuid: c9d2eab89bed97e429ac2c221fc69baf
---- !u!114 &114291006795521764
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1927694869921640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114291647735240012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37800,7 +37788,7 @@ MonoBehaviour:
   m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 9646c8bd-99b3-4278-80b8-e3d8adbd9b78
+  _guid: c1362eb4-e797-464b-a398-ff3a991c9bca
 --- !u!114 &114335748812586474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39882,7 +39870,7 @@ MonoBehaviour:
   m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 2376986716
+  _guid: 914056d2-a3dd-4108-a722-6600887d3b6f
 --- !u!114 &114447426938416542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -43178,17 +43166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 78a267c8-6129-4210-ae2d-7c2a862457ee
---- !u!114 &114569975727776914
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1293881483262930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114570199093038580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -43705,26 +43682,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 47f5d076-c11b-4fef-b4c0-44f22cd30d25
---- !u!114 &114607477684949864
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1927694869921640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isConnected: 1
-  _guid: e7afbd40-8364-41ad-9fbb-dc4e3f7d2836
-  _referenceCollection:
-    _collection:
-    - {fileID: 1927694869921640}
-    - {fileID: 1293881483262930}
-    - {fileID: 1328343160236212}
-    - {fileID: 1830985488429826}
-  _assetGuid: 13d7cb6a3f9ac6a4f82e8d267cd8d479
 --- !u!114 &114608177040188328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -44280,23 +44237,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     duration: 0
---- !u!114 &114632912872082534
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1293881483262930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isConnected: 1
-  _guid: b35597ea-f5e3-479d-a4ef-400b4eb6488a
-  _referenceCollection:
-    _collection:
-    - {fileID: 1293881483262930}
-  _assetGuid: 73f699be7d0e28b43878d323135d1403
 --- !u!114 &114633739824334158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -44344,7 +44284,7 @@ MonoBehaviour:
   m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 5fa00975-106d-4923-a5ce-8ec6feca9acc
+  _guid: f873c2ab-696f-4aa9-b2ce-7d0b55a27302
 --- !u!114 &114641421535867036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -46702,6 +46642,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawned: 0
   waitForSpawnMessage: 0
+  sendDefeatedMessage: 0
+  defeatedMessage: 
   currentProfileIndex: 0
   profiles:
   - randomised: 1
@@ -48607,7 +48549,7 @@ MonoBehaviour:
   m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: ca93376a-1a99-47b6-9d9c-c469f86d8a33
+  _guid: 0aff6aad-d824-4c55-88ed-dacbef72bb38
 --- !u!114 &114893787008950732
 MonoBehaviour:
   m_ObjectHideFlags: 1

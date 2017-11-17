@@ -41,8 +41,18 @@ public class DamageText : MonoBehaviour
             obj.transform.position = position;
 
             Text text = obj.GetComponentInChildren<Text>();
-			if(text)
-                text.text = damageAmount.ToString();
+			if (text)
+			{
+				string s = damageAmount.ToString();
+
+				if (s.Contains("."))
+				{
+					int index = s.IndexOf('.');
+					s = s.Remove(index - 1, 1);
+				}
+
+				text.text = s;
+			}
 
             float speed = Random.Range(minSpeed, maxSpeed);
             Vector3 offset = Vector3.zero;

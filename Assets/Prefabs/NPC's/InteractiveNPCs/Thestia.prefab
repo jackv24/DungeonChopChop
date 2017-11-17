@@ -157,6 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4379474179545506}
   - component: {fileID: 114219639393073964}
+  - component: {fileID: 114867258274776682}
   m_Layer: 0
   m_Name: Neck_JNT
   m_TagString: Untagged
@@ -433,6 +434,7 @@ MonoBehaviour:
   textBoxDepth: 2
   dialogueBoxPrefab: {fileID: 1983791718684604, guid: 2cdeb00ddb3594f4096ebfc20688b955,
     type: 2}
+  currentBox: {fileID: 0}
 --- !u!114 &114219639393073964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -529,6 +531,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopSpawner: {fileID: 0}
+--- !u!114 &114867258274776682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1990235136407644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9787beffdb3a8414d8fb8ea6ec1d65b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 8
+  rotateSpeed: 3
+  angle: 360
+  rotationOffset: {x: 0, y: 180, z: -90}
 --- !u!114 &114876116261783260
 MonoBehaviour:
   m_ObjectHideFlags: 1
