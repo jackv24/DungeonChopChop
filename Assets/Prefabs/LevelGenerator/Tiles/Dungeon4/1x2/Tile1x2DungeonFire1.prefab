@@ -1709,6 +1709,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4986284039587984}
+  - component: {fileID: 114197313203447406}
   - component: {fileID: 33505159057954740}
   - component: {fileID: 23851882112258866}
   - component: {fileID: 65409589565816346}
@@ -1719,8 +1720,8 @@ GameObject:
   - component: {fileID: 114224157920401334}
   - component: {fileID: 114646440489508280}
   - component: {fileID: 114281383731888634}
-  - component: {fileID: 114197313203447406}
   - component: {fileID: 114885314905365068}
+  - component: {fileID: 114381761942848698}
   m_Layer: 17
   m_Name: Barrel
   m_TagString: Untagged
@@ -9651,6 +9652,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 3ee2280d-8e2e-4917-b57c-968f220241bc
+--- !u!114 &114381761942848698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1920793126780436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114383548292665044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10732,6 +10744,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawned: 0
   waitForSpawnMessage: 0
+  sendDefeatedMessage: 0
+  defeatedMessage: 
   currentProfileIndex: 0
   profiles:
   - randomised: 1
