@@ -21,7 +21,6 @@ public class EnemyAttack : MonoBehaviour
         public Health health;
     }
 
-
     public TypesOfAttack attackingType;
 
     [Header("Projectile Vars")]
@@ -31,6 +30,7 @@ public class EnemyAttack : MonoBehaviour
     public GameObject shootPosition;
     [HideInInspector]
     public float thrust;
+    [HideInInspector]
     public float projectileDmgMutliplier;
 
     [Space()]
