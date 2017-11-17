@@ -10,6 +10,7 @@ public enum TypesOfAttack
     BasicShootRandIntervals,
     ShootCircleIntervals,
     ShootCircleRandIntervals,
+    BigBossAttack
 };
 
 public class EnemyAttack : MonoBehaviour
@@ -73,6 +74,8 @@ public class EnemyAttack : MonoBehaviour
     protected Health enemyHealth;
     protected EnemyDeath enemyDeath;
     protected NavMeshAgent agent;
+
+    protected bool usesChildRotation = false;
 
     private Collider col;
 
@@ -208,12 +211,17 @@ public class EnemyAttack : MonoBehaviour
         //create the projecticle
         GameObject projectile = ObjectPooler.GetPooledObject(projecticle);
 
+        Physics.IgnoreCollision(col, projectile.GetComponent<Collider>(), true);
+
         if (!shootPosition)
             projectile.transform.position = transform.position;
         else
             projectile.transform.position = shootPosition.transform.position;
 
-        projectile.transform.rotation = transform.rotation;
+        if (!usesChildRotation)
+            projectile.transform.rotation = transform.rotation;
+        else
+            projectile.transform.rotation = transform.GetChild(0).transform.rotation;
 
         projectile.GetComponent<ProjectileCollision>().damageMultiplyer = projectileDmgMutliplier;
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
@@ -312,6 +320,66 @@ public class EnemyAttack : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    float GetGreaterNumber(float num1, float num2)
+    {
+        if (num1 > num2)
+            return num1;
+        else
+            return num2;
+    }
+
+    float GetLessNumber(float num1, float num2)
+    {
+        if (num1 < num2)
+            return num1;
+        else
+            return num2;
+    }
+
+    protected void ShootBetweenTwoAngles(float angle1, float angle2, int projAmount, bool usesRotation)
+    {
+        float transformAngle = 0;
+
+        if (usesRotation)
+        {
+            if (usesChildRotation)
+                transformAngle += transform.GetChild(0).transform.eulerAngles.y;
+            else 
+                transformAngle += transform.eulerAngles.y;
+        }
+
+        //get the total angle
+        float totalAngle = GetGreaterNumber(angle1, angle2) - GetLessNumber(angle1, angle2);
+
+        //get distance between each of the projectile
+        float distanceBetweenEachProj = totalAngle / projAmount;
+
+        float angle = GetLessNumber(angle1, angle2);
+
+        for (int i = 0; i < projAmount; i++)
+        {
+            //create the projecticle
+            GameObject projectile = ObjectPooler.GetPooledObject(projecticle);
+
+            Physics.IgnoreCollision(col, projectile.GetComponent<Collider>(), true);
+
+            projectile.transform.rotation = transform.rotation;
+
+            projectile.transform.Rotate(0, angle, 0);
+
+            if (!shootPosition)
+                projectile.transform.position = transform.position;
+            else
+                projectile.transform.position = shootPosition.transform.position;
+
+            projectile.GetComponent<ProjectileCollision>().damageMultiplyer = projectileDmgMutliplier;
+            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
+            projectile.GetComponent<ProjectileCollision>().thrust = thrust;
+
+            angle += distanceBetweenEachProj;
         }
     }
 
