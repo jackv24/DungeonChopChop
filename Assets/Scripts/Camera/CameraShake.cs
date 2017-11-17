@@ -37,8 +37,6 @@ public class CameraShake : MonoBehaviour
 		float elapsedTime = 0;
 		float elapsedStep = 0;
 
-		InControl.InputManager.ActiveDevice.Vibrate(magnitude);
-
 		Vector2 offset = Random.insideUnitCircle.normalized * magnitude;
 
 		while(elapsedTime < duration)
@@ -56,7 +54,5 @@ public class CameraShake : MonoBehaviour
 				offset = Random.insideUnitCircle.normalized * magnitude;
 			}
 		}
-
-		InControl.InputManager.ActiveDevice.Vibrate(0);
     }
 }

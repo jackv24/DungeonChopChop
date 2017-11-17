@@ -236,6 +236,7 @@ public class Health : MonoBehaviour
                 DoHitParticle();
                 DoHitSound();
                 CameraShake.ShakeScreen(hitShake.magnitude, hitShake.shakeAmount, hitShake.duration);
+				ControllerRumble.RumbleController(playerInfo.playerMove.input, hitShake.magnitude, hitShake.duration);
             }
         }
 

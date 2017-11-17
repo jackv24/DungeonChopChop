@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordCollision : MonoBehaviour {
-
-
-    public float knockbackOnHit = 5;
+public class SwordCollision : MonoBehaviour
+{
+	public float knockbackOnHit = 5;
 
     [Header("Golden Sword Stats")]
     public bool goldenSword = false;
@@ -99,15 +98,21 @@ public class SwordCollision : MonoBehaviour {
                 //else just do the normal damage
                 enemyHealth.AffectHealth(-playerInfo.GetSwordDamage());
 
-                Statistics.Instance.totalDamageGiven += playerInfo.GetSwordDamage();
+				ControllerRumble.RumbleController(playerInfo.playerMove.input, enemyHealth.hitShake.magnitude, enemyHealth.hitShake.duration);
+
+				Statistics.Instance.totalDamageGiven += playerInfo.GetSwordDamage();
 
                 SetEffect(enemyHealth);
             }
         } 
         else if (col.gameObject.layer == 17)
         {
-            if (swordStats.weaponEffect == WeaponEffect.Burn)
-                col.gameObject.GetComponent<Health>().SetBurned(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
+			Health health = col.gameObject.GetComponent<Health>();
+
+			ControllerRumble.RumbleController(playerInfo.playerMove.input, health.hitShake.magnitude, health.hitShake.duration);
+
+			if (swordStats.weaponEffect == WeaponEffect.Burn)
+				health.SetBurned(swordStats.damagePerTick, swordStats.duration, swordStats.timeBetweenEffect);
         }
     }
 
