@@ -23,8 +23,6 @@ public class AttackEditor : Editor {
 
         if (enemyAttack.attackingType != TypesOfAttack.Nothing)
         {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("projectileDmgMutliplier"), new GUIContent("Projectile Damage Multplier: "));
-
             if (enemyAttack.attackingType == TypesOfAttack.BasicShootIntervals)
             {
                 //enemyAttack.timeTillInterval = EditorGUILayout.FloatField("Time till Interval in Secs: ", enemyAttack.timeTillInterval); 
