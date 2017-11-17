@@ -62,6 +62,8 @@ public class Health : MonoBehaviour
 
     public CameraShakeVars hitShake;
 
+    [HideInInspector]
+
     private PlayerInformation playerInfo;
     private Animator animator;
     private Rigidbody rb;
@@ -185,7 +187,7 @@ public class Health : MonoBehaviour
                 Statistics.Instance.totalDamageTaken += (float)System.Math.Round(val, 2);
             }
 
-            if (col)
+            if (col && !isProp)
             {
                 float damage = (float)System.Math.Round((double)healthDeta, 1);
                 DamageText.Show(damage, col.bounds.center + Vector3.up);
@@ -283,7 +285,8 @@ public class Health : MonoBehaviour
 
         UnFreeze();
 
-        maxHealth *= GameManager.Instance.enemyHealthMultiplier;
+        if (GameManager.Instance)
+            maxHealth *= GameManager.Instance.enemyHealthMultiplier;
 
         health = maxHealth;
 

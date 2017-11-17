@@ -29,7 +29,9 @@ public class BossVispAttack : EnemyAttack {
     private bool striking = false;
 
     private Animator childAnimator;
-    private VispAttack[] spawnedVisps = new VispAttack[0];
+
+    [HideInInspector]
+    public VispAttack[] spawnedVisps = new VispAttack[0];
 
 	// Use this for initialization
 	void Awake () 
@@ -42,6 +44,8 @@ public class BossVispAttack : EnemyAttack {
 
     void FixedUpdate()
     {
+        enemyMove.FollowPlayer();
+
         spawnCounter++;
 
         if (!striking)

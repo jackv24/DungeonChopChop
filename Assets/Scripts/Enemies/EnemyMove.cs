@@ -149,7 +149,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    protected void FollowPlayer()
+    public void FollowPlayer()
     {
         //follows the closest player using nav mesh
         if (canMove)
