@@ -145,6 +145,18 @@ public static class Helper
 		return possibleGameObject.item;
 	}
 
+	public static ProbabilityGameObject[] CombineProbabilityGameObjects(params ProbabilityGameObject[][] others)
+	{
+		List<ProbabilityGameObject> list = new List<ProbabilityGameObject>();
+
+		for(int i = 0; i < others.GetLength(0); i++)
+		{
+			list.AddRange(others[i]);
+		}
+
+		return list.ToArray();
+	}
+
 	public static float NextFloat(this System.Random random, float min, float max)
 	{
 		double range = (double)max - (double)min;
