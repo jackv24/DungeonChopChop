@@ -892,7 +892,6 @@ GameObject:
   - component: {fileID: 4445538227141330}
   - component: {fileID: 114398154478245158}
   - component: {fileID: 114342476278011400}
-  - component: {fileID: 114090804382262336}
   - component: {fileID: 114623818899012768}
   - component: {fileID: 114293292843006770}
   m_Layer: 0
@@ -6112,20 +6111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 88131e81-7c7b-4a24-8d3f-91523ad475cb
---- !u!114 &114090804382262336
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1506115850067708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfb6b29c2e8d230409547ba19cf98a1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text:
-    title: Dash Trainer
-    description: Learn the dash abilitiy
 --- !u!114 &114093825260325642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6492,7 +6477,7 @@ MonoBehaviour:
   _guid: 0caf8c74-6bfb-43ea-aae0-41a9578565d4
 --- !u!114 &114293292843006770
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1506115850067708}
@@ -6888,6 +6873,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawned: 0
   waitForSpawnMessage: 1
+  sendDefeatedMessage: 0
+  defeatedMessage: 
   currentProfileIndex: 0
   profiles:
   - randomised: 1
@@ -8411,7 +8398,7 @@ MonoBehaviour:
   _guid: 7087a354-68c4-4860-b3b3-4b6714717712
 --- !u!114 &114623818899012768
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1506115850067708}
