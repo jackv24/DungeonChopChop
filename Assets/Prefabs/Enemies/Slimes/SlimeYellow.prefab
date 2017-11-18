@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 82681933004068524}
   - component: {fileID: 114481465602779450}
   - component: {fileID: 114965299124546700}
+  - component: {fileID: 114209745236711058}
   m_Layer: 11
   m_Name: SlimeYellow
   m_TagString: Slime
@@ -835,6 +836,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 41c27b15-1417-4bac-90fa-35d1023371c3
+--- !u!114 &114209745236711058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1305525527743298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e835c48d15c08240ad72fe07736a33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusType: 4
+  damagePerTick: 0
+  duration: 8
+  timeBetweenDamage: 0
+  speedDamper: 0
 --- !u!114 &114212502447372398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1078,7 +1095,7 @@ MonoBehaviour:
   amountToFlash: 1
   fadeTime: 5
   hitShake:
-    magnitude: 0.2
+    magnitude: 0.1
     shakeAmount: 2
     duration: 0.3
 --- !u!114 &114457969867397510
