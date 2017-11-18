@@ -854,6 +854,9 @@ MonoBehaviour:
   timeTillInterval: 1
   minInterval: 1
   maxInterval: 7
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
 --- !u!114 &114229235094115466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -869,7 +872,9 @@ MonoBehaviour:
   health: 4
   weight: 2
   IsEnemy: 1
-  enemyType: 1
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 0
   isPoisoned: 0
   isBurned: 0
@@ -926,9 +931,9 @@ MonoBehaviour:
   amountToFlash: 1
   fadeTime: 5
   hitShake:
-    magnitude: 0.1
-    shakeAmount: 0.1
-    duration: 1
+    magnitude: 0.2
+    shakeAmount: 2
+    duration: 0.3
 --- !u!114 &114261361740475206
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -1257,6 +1262,7 @@ MonoBehaviour:
   splitAmount: 2
   maxAmountOfSlimes: 0
   slime: {fileID: 1898849496093584, guid: 85e27a5af6b30c54e8a374acffc3054f, type: 2}
+  immuneTime: 0
   damageToEnemies: 1
   followProximity: 0
   radiusAttack: 5
@@ -1264,7 +1270,8 @@ MonoBehaviour:
   leepSpeed: 2
   timeBetweenStopMin: 2
   timeBetweenStopMax: 4
-  stopTime: 1
+  minStopTime: 1
+  maxStopTime: 3
   friendly: 0
 --- !u!137 &137087767002729230
 SkinnedMeshRenderer:
