@@ -534,7 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isConnected: 1
-  _guid: 9964d939-4ee9-4a11-b51b-4663c34f997a
+  _guid: 02024bd2-c69f-4f6c-be6b-7f8629ecff60
   _referenceCollection:
     _collection:
     - {fileID: 1524341765280120}
@@ -571,7 +571,8 @@ MonoBehaviour:
   damageOnTouch: 0
   knockbackStrength: 0
   shootSounds:
-    clips: []
+    clips:
+    - {fileID: 0}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -579,6 +580,9 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 2
   maxInterval: 4
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
 --- !u!114 &114226385523852484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -634,7 +638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isConnected: 1
-  _guid: b9a646e2-d68d-4093-856a-c3dce0017997
+  _guid: b3e54a4b-a5e8-45ad-9276-fac6cdb3e428
   _referenceCollection:
     _collection:
     - {fileID: 1172247691366644}
@@ -658,7 +662,7 @@ MonoBehaviour:
     - {fileID: 1172247691366644}
     - {fileID: 1337518630571206}
     - {fileID: 1524341765280120}
-  _assetGuid: 9e2c3e5998933d044895ca1f231a5344
+  _assetGuid: bfe5d69c69e40de4e90e0d1dcffdc67d
 --- !u!114 &114553108637851434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -729,7 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isConnected: 1
-  _guid: 77e95853-6cee-4984-a1b7-b7f59c5333b0
+  _guid: d4b32f06-437b-4287-9586-aab8d1f50c20
   _referenceCollection:
     _collection:
     - {fileID: 1337518630571206}
@@ -745,7 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: d3360afe-5487-4a74-9be5-5295101cb7a4
+  _guid: 88877b71-2080-41c7-ba1b-93bd62801b25
 --- !u!114 &114938026203631112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -758,6 +762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
+  lever: {fileID: 0}
 --- !u!114 &114978909786387560
 MonoBehaviour:
   m_ObjectHideFlags: 1

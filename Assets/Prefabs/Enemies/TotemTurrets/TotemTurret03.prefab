@@ -657,7 +657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isConnected: 1
-  _guid: 07d37b50-7ea6-4075-9b7e-925d57118221
+  _guid: 5216a6a0-ec9a-4219-b4a6-69f0749fcb18
   _referenceCollection:
     _collection:
     - {fileID: 1454399369012080}
@@ -727,7 +727,7 @@ MonoBehaviour:
     - {fileID: 1454399369012080}
     - {fileID: 1832887094023006}
     - {fileID: 1111466278997278}
-  _assetGuid: f75c9c3ef2921a44cbe97515b637c0a9
+  _assetGuid: 3a5c5d8a22d86ac4db9d8c4efdad9c0d
 --- !u!114 &114159953247722538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isConnected: 1
-  _guid: b51f5844-f4ac-4878-a807-8de70a181455
+  _guid: bce8616b-e908-4b77-b827-6b3676672b0e
   _referenceCollection:
     _collection:
     - {fileID: 1832887094023006}
@@ -814,7 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: e6d7c6d5-0e3e-4277-8a46-4a1f40c805ed
+  _guid: 0474a515-7605-4964-a582-72eff84973f1
 --- !u!114 &114513609462512516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -835,7 +835,8 @@ MonoBehaviour:
   damageOnTouch: 0
   knockbackStrength: 0
   shootSounds:
-    clips: []
+    clips:
+    - {fileID: 0}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -843,6 +844,9 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 2
   maxInterval: 4
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
 --- !u!114 &114522810935003124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -875,7 +879,8 @@ MonoBehaviour:
   damageOnTouch: 0
   knockbackStrength: 0
   shootSounds:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 97bc1195fc4a2b941bd6d7544beb0bed, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -883,6 +888,9 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 2
   maxInterval: 4
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
 --- !u!114 &114633419096783062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -926,6 +934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
+  lever: {fileID: 0}
 --- !u!114 &114698100216131744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -938,7 +947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isConnected: 1
-  _guid: 92241b29-c6e7-4d37-bcd5-9a21fdf227ec
+  _guid: 0f18d652-3433-4cef-9343-642920644fdb
   _referenceCollection:
     _collection:
     - {fileID: 1111466278997278}
@@ -1021,6 +1030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
+  lever: {fileID: 0}
 --- !u!114 &114940318622774756
 MonoBehaviour:
   m_ObjectHideFlags: 1

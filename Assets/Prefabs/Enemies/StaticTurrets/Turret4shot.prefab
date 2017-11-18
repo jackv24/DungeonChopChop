@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
+  lever: {fileID: 0}
 --- !u!114 &114346096005423548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,7 +303,8 @@ MonoBehaviour:
   damageOnTouch: 0
   knockbackStrength: 0
   shootSounds:
-    clips: []
+    clips:
+    - {fileID: 0}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -310,6 +312,9 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 2
   maxInterval: 4
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
 --- !u!114 &114592627553471404
 MonoBehaviour:
   m_ObjectHideFlags: 1

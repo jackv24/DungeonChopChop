@@ -160,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   health: 2
-  weight: 2
+  weight: 0.8
   IsEnemy: 1
   enemyKind:
     enemyType: 9
@@ -175,8 +175,8 @@ MonoBehaviour:
   poisonColor: {r: 0.64705884, g: 0.43771628, b: 0.6412839, a: 0.616}
   burnColor: {r: 0.6102941, g: 0.31860942, b: 0.31860942, a: 0.609}
   slowlyDyingColor: {r: 0.4414226, g: 0.66176474, b: 0.4233348, a: 0.622}
-  frozenColor: {r: 0.25865054, g: 0.6600049, b: 0.7647059, a: 1}
-  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  frozenColor: {r: 0.50605536, g: 0.8512111, b: 0.88235295, a: 0.616}
+  sandyColor: {r: 0.9270992, g: 0.9338235, b: 0.4463127, a: 0.609}
   hitParticles:
   - particleType: 0
     particles:
@@ -245,7 +245,8 @@ MonoBehaviour:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   hitSounds:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 56b5ace361c349b44b334abe414cba3a, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -360,6 +361,9 @@ MonoBehaviour:
   timeTillInterval: 1
   minInterval: 1
   maxInterval: 7
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
 --- !u!114 &114609879365941676
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -485,7 +489,8 @@ MonoBehaviour:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   deathSounds:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 40723564a7f443b449a0cfe5fef5349d, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1

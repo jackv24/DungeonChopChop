@@ -296,15 +296,15 @@ MonoBehaviour:
     - serializedVersion: 2
       time: 0.25
       value: 0.5
-      inSlope: 1
-      outSlope: 1
+      inSlope: 1.1469859
+      outSlope: 1.1469859
       tangentMode: 34
     - serializedVersion: 2
-      time: 1
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
+      time: 1.00354
+      value: 0.7215195
+      inSlope: 0.0419781
+      outSlope: 0.0419781
+      tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
@@ -318,35 +318,23 @@ MonoBehaviour:
       outSlope: 0
       tangentMode: 136
     - serializedVersion: 2
-      time: 0.1
-      value: 0.9
+      time: 0.09647522
+      value: 0.7745117
       inSlope: 0.79621416
       outSlope: 0.79621416
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.5
-      value: 1
-      inSlope: -0.04234761
-      outSlope: -0.04234761
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 0.7987793
-      value: 0.9
-      inSlope: -0.7259196
-      outSlope: -0.7259196
+      time: 0.98358154
+      value: 1.044899
+      inSlope: 0.031599566
+      outSlope: 0.031599566
       tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0.75
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   animationGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0.31617647, b: 0.31617647, a: 0}
+    key0: {r: 1, g: 1, b: 1, a: 0}
     key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 1}
     key3: {r: 0, g: 0, b: 0, a: 0}
@@ -374,8 +362,8 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 4
   animationLength: 0.5
-  minSpeed: -2
-  maxSpeed: 2
+  minSpeed: 1
+  maxSpeed: 1
 --- !u!114 &114112040465330080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -524,58 +512,67 @@ MonoBehaviour:
     maxPitchVariance: 0.1
   slowDeathTickSound:
     clips:
-    - {fileID: 8300000, guid: cf1db5606184b4d4281d45b9fedc0c0b, type: 3}
-    - {fileID: 8300000, guid: 65048b3f6f3e648418b4fa7a44894000, type: 3}
+    - {fileID: 8300000, guid: 3aef25fe25ba21d4eab368234ee41786, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   poisonedSound:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 0877cfd5636bcff409a3738d5153c28b, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   burnSound:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 97bbe5ccae0f01840872a712887cafaf, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   sandySound:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 7554f04289ed8b642931b3c92a32b703, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   slowDeathSound:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 0877cfd5636bcff409a3738d5153c28b, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   frozenSound:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: f3c363d8e24992743bb1dc52b2f425dc, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   unpoisonedSound:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: ba2cc8db1333480488436816e4bc66b4, type: 3}
+    volume: 0.7
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   unburnSound:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: ba2cc8db1333480488436816e4bc66b4, type: 3}
+    volume: 0.7
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   unsandySound:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: ba2cc8db1333480488436816e4bc66b4, type: 3}
+    volume: 0.7
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   unslowDeathSound:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: ba2cc8db1333480488436816e4bc66b4, type: 3}
+    volume: 0.7
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   unfrozenSound:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: ba2cc8db1333480488436816e4bc66b4, type: 3}
+    volume: 0.7
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
