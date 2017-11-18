@@ -15,6 +15,7 @@ public class BigBossAttack : EnemyAttack {
 
     public event BossEvent OnSpreadAttack;
     public event BossEvent OnSweepAttack;
+    public event BossEvent OnBeamAttack;
     public event BossEvent OnKnockout;
     public event BossEvent OnKnockoutRecover;
 
@@ -53,19 +54,21 @@ public class BigBossAttack : EnemyAttack {
     // Update is called once per frame
     void FixedUpdate () 
     {
-        //only count up when the boss is in the idle state
+            //only count up when the boss is in the idle state
         if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle"))
         {
             counter++;
 
             if (counter > timeBetweenAttacks * 60)
             {
-                int random = Random.Range(0, 2);
+                int random = Random.Range(0, 3);
 
                 if (random == 0)
                     Sweep();
                 else if (random == 1)
                     Spread();
+                else if (random == 2)
+                    Beam();
 
                 counter = 0;
             }
@@ -77,6 +80,19 @@ public class BigBossAttack : EnemyAttack {
         yield return new WaitForSeconds(.2f);
 
         enemyHealth.OnHealthNegative += CheckHitCount;
+    }
+
+    float Percentage(float number, int percent)
+    {
+        return ((float)number * percent) / 100;
+    }
+
+    void Beam()
+    {
+        if (OnBeamAttack != null)
+            OnBeamAttack();
+
+        StartCoroutine(boolWait("Beam"));
     }
 
     void Sweep()
@@ -117,6 +133,11 @@ public class BigBossAttack : EnemyAttack {
                 knockedOut = true;
             }
         }
+
+        if (enemyHealth.health <= Percentage(enemyHealth.maxHealth, 50))
+            stage = 1;
+        else if (enemyHealth.health <= Percentage(enemyHealth.maxHealth, 25))
+            stage = 2;
     }
 
     public void RecoveredFromKnockout()

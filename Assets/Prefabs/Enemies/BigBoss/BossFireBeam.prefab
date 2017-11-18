@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 198812659919381752}
   - component: {fileID: 199663528327102910}
   - component: {fileID: 114634218233825438}
+  - component: {fileID: 114150050764997154}
   m_Layer: 0
   m_Name: FireParticleFlamerBoss (1)
   m_TagString: Untagged
@@ -40,6 +41,10 @@ GameObject:
   - component: {fileID: 33967245196266060}
   - component: {fileID: 65115785807411188}
   - component: {fileID: 23430067918421482}
+  - component: {fileID: 114406163697423934}
+  - component: {fileID: 114989170584880198}
+  - component: {fileID: 114475528722747038}
+  - component: {fileID: 114757392006788050}
   m_Layer: 0
   m_Name: BossFireBeam
   m_TagString: Untagged
@@ -58,6 +63,7 @@ GameObject:
   - component: {fileID: 198950362697309876}
   - component: {fileID: 199847517387001518}
   - component: {fileID: 114910055448486740}
+  - component: {fileID: 114029079590519446}
   m_Layer: 0
   m_Name: FireParticleFlamerBoss (2)
   m_TagString: Untagged
@@ -71,15 +77,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1510799126686612}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.21, y: 11.64, z: 43.31}
+  m_LocalRotation: {x: 0.06434688, y: -0.06067491, z: 0.005127517, w: 0.99606824}
+  m_LocalPosition: {x: -1.5900023, y: -2.9799929, z: 19.34002}
   m_LocalScale: {x: 3.034327, y: 1, z: 39.886646}
   m_Children:
   - {fileID: 4663299723968778}
   - {fileID: 4494838898815842}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.4010005, y: -6.9630003, z: 0.13900001}
 --- !u!4 &4494838898815842
 Transform:
   m_ObjectHideFlags: 1
@@ -152,11 +158,84 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1510799126686612}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114029079590519446
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1748476587907968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 3a07ad4f-0c49-4d6c-a5d4-6f63649febc1
+--- !u!114 &114150050764997154
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1046994051224136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 00287c63-e97f-4f74-b9a9-2b0b264f7118
+--- !u!114 &114406163697423934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1510799126686612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f297d4c0fe33c54db93b22cef6727cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackingType: 0
+  projecticle: {fileID: 0}
+  shootPosition: {fileID: 0}
+  thrust: 0
+  projectileDmgMutliplier: 0
+  damageOnTouch: 1
+  knockbackStrength: 1
+  shootSounds:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  projAmount: 0
+  timeTillInterval: 0
+  minInterval: 0
+  maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+--- !u!114 &114475528722747038
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1510799126686612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1510799126686612}
+    - {fileID: 1046994051224136}
+    - {fileID: 1748476587907968}
+  _assetGuid: bd2accc59bb116347bd4f7c943f570b3
 --- !u!114 &114634218233825438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,6 +248,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114757392006788050
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1510799126686612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: b8a461a8-5f08-4340-ae66-0523ff781fa3
 --- !u!114 &114910055448486740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,6 +272,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114989170584880198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1510799126686612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e835c48d15c08240ad72fe07736a33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusType: 1
+  damagePerTick: 0.5
+  duration: 1
+  timeBetweenDamage: 0.5
+  speedDamper: 0
 --- !u!198 &198812659919381752
 ParticleSystem:
   m_ObjectHideFlags: 1

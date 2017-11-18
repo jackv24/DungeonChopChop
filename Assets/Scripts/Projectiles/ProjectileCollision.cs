@@ -6,6 +6,7 @@ public class ProjectileCollision : MonoBehaviour {
 
 	public int damageAmount;
     public float knockbackAmount;
+    public float disableAfterSeconds = 10;
 
     [Header("Particles and Sounds")]
     public AmountOfParticleTypes[] hitParticles;
@@ -27,6 +28,17 @@ public class ProjectileCollision : MonoBehaviour {
     {
         //make the projectile move
         rb.AddForce(transform.forward * thrust, ForceMode.Force); 
+    }
+
+    void OnEnable()
+    {
+        StartCoroutine(disableAfterTime());
+    }
+
+    IEnumerator disableAfterTime()
+    {
+        yield return new WaitForSeconds(disableAfterSeconds);
+        gameObject.SetActive(false);
     }
 
 	void OnCollisionEnter(Collision col)
