@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 114268480857741600}
   - component: {fileID: 114844713918921446}
   - component: {fileID: 114850938135133498}
+  - component: {fileID: 114338177880513016}
   m_Layer: 0
   m_Name: Tile2x2ForestHeartPiece
   m_TagString: Untagged
@@ -32553,6 +32554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawned: 0
   waitForSpawnMessage: 1
+  sendDefeatedMessage: 0
+  defeatedMessage: 
   currentProfileIndex: 0
   profiles:
   - randomised: 1
@@ -32811,6 +32814,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 83faa8dd-f9c7-4bef-ac7d-b7296bc53f4f
+--- !u!114 &114338177880513016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052531288029484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c09375bb07a67ef46b133dafe8d81afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicClip: {fileID: 8300000, guid: 9225f831764419a4c8189fe8ea37f372, type: 3}
 --- !u!114 &114340359008268610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -38701,7 +38716,7 @@ MonoBehaviour:
   _guid: d93ef5ae-4e17-414c-a766-2172b755826f
 --- !u!114 &114844713918921446
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1052531288029484}
@@ -39156,7 +39171,7 @@ MonoBehaviour:
   _guid: 4318b0ae-f6c0-4355-9f76-62f1e024a39d
 --- !u!114 &114850938135133498
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1052531288029484}

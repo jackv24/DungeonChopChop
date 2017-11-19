@@ -635,6 +635,7 @@ GameObject:
   - component: {fileID: 114312771706163556}
   - component: {fileID: 114999282924750678}
   - component: {fileID: 114640574467716402}
+  - component: {fileID: 114388728873818220}
   m_Layer: 0
   m_Name: Tile2x2FireHeartPiece
   m_TagString: Untagged
@@ -8277,6 +8278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawned: 0
   waitForSpawnMessage: 1
+  sendDefeatedMessage: 0
+  defeatedMessage: 
   currentProfileIndex: 0
   profiles:
   - randomised: 1
@@ -8856,6 +8859,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: deb14fb6-398e-4f5a-aee1-4f2fc7589292
+--- !u!114 &114388728873818220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247184927850616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c09375bb07a67ef46b133dafe8d81afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicClip: {fileID: 8300000, guid: 9225f831764419a4c8189fe8ea37f372, type: 3}
 --- !u!114 &114401678515616918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10116,7 +10131,7 @@ MonoBehaviour:
   _guid: c4c24cc2-d58e-47c1-8dd4-f09981d92f7a
 --- !u!114 &114640574467716402
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1247184927850616}
@@ -11491,7 +11506,7 @@ MonoBehaviour:
   _guid: 0c1812df-4945-407f-b56d-ed25b78243ae
 --- !u!114 &114999282924750678
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1247184927850616}

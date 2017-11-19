@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 4028177445124964}
   - component: {fileID: 114783531550831212}
   - component: {fileID: 114889798386746874}
+  - component: {fileID: 82760696376156100}
   m_Layer: 0
   m_Name: MiniFountain
   m_TagString: Untagged
@@ -266,6 +267,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.44, y: 3.9808328, z: 1.44}
   m_Center: {x: -0.0042976746, y: 1.9904164, z: -3.9225892e-15}
+--- !u!82 &82760696376156100
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511497079276724}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f4af171f691c97446ac8b60c7e520f07, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.7
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 3.14
+  MaxDistance: 8.363336
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95031358144435192
 Animator:
   serializedVersion: 3
@@ -379,7 +460,7 @@ MonoBehaviour:
   isTownFountain: 0
 --- !u!114 &114238052618823582
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1583025902374782}
@@ -391,7 +472,7 @@ MonoBehaviour:
   _guid: 98b7b3fb-99b6-4630-82d3-0d88cec6b949
 --- !u!114 &114263651392097046
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1996568866272570}
@@ -415,7 +496,7 @@ MonoBehaviour:
   firstCheckDelay: 0
 --- !u!114 &114627758245773274
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1006821105238220}
@@ -438,7 +519,7 @@ MonoBehaviour:
   firstCheckDelay: 0
 --- !u!114 &114783531550831212
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1511497079276724}
@@ -459,7 +540,7 @@ MonoBehaviour:
   _assetGuid: e23d5304ef0a53441bc3cfe99da0bbe9
 --- !u!114 &114846849960439806
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1006821105238220}
@@ -476,7 +557,7 @@ MonoBehaviour:
   _assetGuid: c5f5ec627b98fc44cbf89ce8db695aea
 --- !u!114 &114865015695249726
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1006821105238220}
@@ -488,7 +569,7 @@ MonoBehaviour:
   _guid: e8d0b000-a183-498f-92a3-5e5386f84170
 --- !u!114 &114889798386746874
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1511497079276724}
@@ -500,7 +581,7 @@ MonoBehaviour:
   _guid: 7d520f38-1071-498e-bde5-672f5902b1ad
 --- !u!114 &114901789100529604
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1284342833121384}

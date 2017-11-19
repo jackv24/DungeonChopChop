@@ -2192,6 +2192,7 @@ GameObject:
   - component: {fileID: 114991072384900128}
   - component: {fileID: 114910853089868354}
   - component: {fileID: 114098492308897930}
+  - component: {fileID: 114892044273910018}
   m_Layer: 0
   m_Name: Tile2x2DesertHeartPiece
   m_TagString: Untagged
@@ -12585,7 +12586,7 @@ MonoBehaviour:
   _guid: 146e4e2d-7439-4d65-8919-afbf52fea0d6
 --- !u!114 &114098492308897930
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1784130268740108}
@@ -16498,6 +16499,18 @@ MonoBehaviour:
   respawnWithMessage: 0
   respawnPrefab: {fileID: 0}
   enableBehaviour: {fileID: 0}
+--- !u!114 &114892044273910018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784130268740108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c09375bb07a67ef46b133dafe8d81afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicClip: {fileID: 8300000, guid: 9225f831764419a4c8189fe8ea37f372, type: 3}
 --- !u!114 &114897093749095046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16878,7 +16891,7 @@ MonoBehaviour:
   _guid: b4f7b516-aebe-4c8b-bc15-65a1afd47782
 --- !u!114 &114910853089868354
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1784130268740108}
@@ -17590,6 +17603,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawned: 0
   waitForSpawnMessage: 1
+  sendDefeatedMessage: 0
+  defeatedMessage: 
   currentProfileIndex: 0
   profiles:
   - randomised: 1
