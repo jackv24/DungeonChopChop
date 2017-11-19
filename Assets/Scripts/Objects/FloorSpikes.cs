@@ -23,13 +23,24 @@ public class FloorSpikes : MonoBehaviour {
 
     public Lever lever;
 
+    private LevelTile tile;
     private Animator animator;
     private bool startSpiking = false;
+
+    private bool active = false;
 
 
 	// Use this for initialization
 	void Start () 
     {
+        tile = GetComponentInParent<LevelTile>();
+
+        if (tile)
+        {
+            tile.OnTileEnter += SetState;
+            tile.OnTileExit += SetState;
+        }
+
         animator = GetComponentInChildren<Animator>();
         StartCoroutine(spikeDelay());
 
@@ -41,6 +52,14 @@ public class FloorSpikes : MonoBehaviour {
         if (startUp)
             animator.SetBool("Trigger", true);
 	}
+
+    void SetState()
+    {
+        if (active)
+            active = false;
+        else
+            active = true;
+    }
 
     IEnumerator spikeDelay()
     {
@@ -62,12 +81,15 @@ public class FloorSpikes : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (animator.gameObject.activeSelf)
+        if (active)
         {
-            if (startSpiking)
+            if (animator.gameObject.activeSelf)
             {
-                if (spikeType == SpikeType.Constantly)
-                    animator.SetBool("Trigger", true);
+                if (startSpiking)
+                {
+                    if (spikeType == SpikeType.Constantly)
+                        animator.SetBool("Trigger", true);
+                }
             }
         }
     }

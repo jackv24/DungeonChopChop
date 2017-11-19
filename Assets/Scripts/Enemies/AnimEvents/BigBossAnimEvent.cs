@@ -25,4 +25,9 @@ public class BigBossAnimEvent : MonoBehaviour {
     {
         bigBoss.RecoveredFromKnockout();
     }
+
+    public void BeamDisable()
+    {
+        bigBoss.BeamDisable();
+    }
 }
