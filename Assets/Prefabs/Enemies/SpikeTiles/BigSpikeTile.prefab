@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114978581491727498}
   - component: {fileID: 65188120224153020}
   - component: {fileID: 114057523928657836}
+  - component: {fileID: 114475143972878638}
   m_Layer: 20
   m_Name: OneBigSpike (1)
   m_TagString: Untagged
@@ -315,6 +316,12 @@ MonoBehaviour:
   delayTime: 0.5
   animationSpeed: 1
   startUp: 0
+  particleOnUp: []
+  soundOnUp:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   lever: {fileID: 0}
 --- !u!114 &114302908694967714
 MonoBehaviour:
@@ -340,6 +347,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 21db9354-a5d2-4fd7-8db2-0b5190337a5e
+--- !u!114 &114475143972878638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1141261611037664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc4bd49b43cf2e44b94574cbb196c2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114528486002000488
 MonoBehaviour:
   m_ObjectHideFlags: 1

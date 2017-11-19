@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114834857294377236}
   - component: {fileID: 65804342695506466}
   - component: {fileID: 114052529396596766}
+  - component: {fileID: 114413587693741246}
   m_Layer: 20
   m_Name: Spike (1)
   m_TagString: Untagged
@@ -283,6 +284,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 42fe6e1c-727e-4f8b-be26-5ff6583eedf1
+--- !u!114 &114413587693741246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1102585445911858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc4bd49b43cf2e44b94574cbb196c2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114598873390485332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -317,6 +329,12 @@ MonoBehaviour:
   delayTime: 0
   animationSpeed: 1
   startUp: 0
+  particleOnUp: []
+  soundOnUp:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   lever: {fileID: 0}
 --- !u!114 &114834857294377236
 MonoBehaviour:

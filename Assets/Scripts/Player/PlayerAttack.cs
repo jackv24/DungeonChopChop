@@ -132,6 +132,7 @@ public class PlayerAttack : MonoBehaviour
                 }
                 else
                 {
+                    input.AssignDevice(InControl.InputManager.Devices[0]);
                     input.SetupBindings();
                 }
             }

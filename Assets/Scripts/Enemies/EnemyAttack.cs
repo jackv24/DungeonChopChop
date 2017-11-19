@@ -31,6 +31,7 @@ public class EnemyAttack : MonoBehaviour
     public GameObject shootPosition;
     [HideInInspector]
     public float thrust;
+    [HideInInspector]
     public float projectileDmgMutliplier;
 
     [Space()]

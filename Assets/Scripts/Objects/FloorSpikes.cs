@@ -17,6 +17,10 @@ public class FloorSpikes : MonoBehaviour {
     public float animationSpeed = 1;
     public bool startUp;
 
+    [Header("Audio and Particles")]
+    public AmountOfParticleTypes[] particleOnUp;
+    public SoundEffect soundOnUp;
+
     public Lever lever;
 
     private Animator animator;
