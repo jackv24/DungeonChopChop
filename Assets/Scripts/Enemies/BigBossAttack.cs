@@ -29,14 +29,23 @@ public class BigBossAttack : EnemyAttack {
 
     [Header("Spread Attack Values")]
     public int amountOfProjectiles = 10;
+    public int stage2BurstAmount = 3;
+    public int stage3BurstAmount = 6;
 
     [Header("Knocked Out Values")]
     public int amountTillKnockout;
+
+    [Header("Beam Values")]
+    public GameObject beam;
+    public float stage1BeamSpeedMulti = 1;
+    public float stage2BeamSpeedMulti = 2;
+    public float stage3BeamSpeedMulti = 3;
 
     public int stage = 0;
 
     private int hitCounter = 0;
     private bool knockedOut = false;
+    private ParticleSystem beamParticleSystem;
 
     private int counter = 0;
 
@@ -44,6 +53,8 @@ public class BigBossAttack : EnemyAttack {
 
     void Awake()
     {
+        beamParticleSystem = beam.GetComponentInChildren<ParticleSystem>();
+
         burstFire = false;
 
         usesChildRotation = true;
@@ -87,12 +98,45 @@ public class BigBossAttack : EnemyAttack {
         return ((float)number * percent) / 100;
     }
 
+    public void BeamDisable()
+    {
+        beamParticleSystem.Stop();
+    }
+
     void Beam()
     {
+        //beamParticleSystem.Play();
+
         if (OnBeamAttack != null)
             OnBeamAttack();
 
         StartCoroutine(boolWait("Beam"));
+
+        StartCoroutine(SetBeamDuration());
+    }
+
+    IEnumerator SetBeamDuration()
+    {
+        beamParticleSystem.Stop();
+
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Beam"))
+            yield return new WaitForEndOfFrame();
+
+        if (stage == 0)
+            animator.speed = stage1BeamSpeedMulti;
+        else if (stage == 1)
+            animator.speed = stage2BeamSpeedMulti;
+        else if (stage == 2)
+            animator.speed = stage3BeamSpeedMulti;
+
+        ParticleSystem.MainModule main = beamParticleSystem.main;
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Beam"))
+        {
+            main.duration = 3f * animator.GetCurrentAnimatorStateInfo(0).speedMultiplier;
+        }
+
+        beamParticleSystem.Play();
     }
 
     void Sweep()
@@ -134,10 +178,11 @@ public class BigBossAttack : EnemyAttack {
             }
         }
 
-        if (enemyHealth.health <= Percentage(enemyHealth.maxHealth, 50))
-            stage = 1;
-        else if (enemyHealth.health <= Percentage(enemyHealth.maxHealth, 25))
+        if (enemyHealth.health <= Percentage(enemyHealth.maxHealth, 25))
             stage = 2;
+        else if (enemyHealth.health <= Percentage(enemyHealth.maxHealth, 50))
+            stage = 1;
+        
     }
 
     public void RecoveredFromKnockout()
@@ -180,7 +225,9 @@ public class BigBossAttack : EnemyAttack {
         if (stage == 0)
             ShootBetweenTwoAngles(-45, 45, amountOfProjectiles, false);
         else if (stage == 1)
-            StartCoroutine(BurstFire(true, BossAttackType.Spread, burstAmount));
+            StartCoroutine(BurstFire(true, BossAttackType.Spread, stage2BurstAmount));
+        else if (stage == 2)
+            StartCoroutine(BurstFire(true, BossAttackType.Spread, stage3BurstAmount));
     }
 
     public void SweepAttack()

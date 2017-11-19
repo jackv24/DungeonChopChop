@@ -237,7 +237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1865645408941724
 GameObject:
   m_ObjectHideFlags: 1
@@ -770,8 +770,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  health: 5
+  maxHealth: 10
+  health: 10
   weight: 1
   IsEnemy: 1
   enemyKind:
@@ -1030,8 +1030,13 @@ MonoBehaviour:
   stage2AmountPerShot: 2
   stage3AmountPerShot: 3
   amountOfProjectiles: 10
+  stage2BurstAmount: 3
+  stage3BurstAmount: 6
   amountTillKnockout: 3
-  debugMode: 1
+  beam: {fileID: 1861762220727228}
+  stage1BeamSpeedMulti: 1
+  stage2BeamSpeedMulti: 2
+  stage3BeamSpeedMulti: 3
   stage: 0
 --- !u!114 &114549397602857206
 MonoBehaviour:
@@ -1340,7 +1345,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 1.6
   simulationSpeed: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -11126,7 +11131,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 1.6
   simulationSpeed: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
