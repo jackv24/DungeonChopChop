@@ -299,12 +299,12 @@ MonoBehaviour:
     m_Bits: 16384
   healthIncreaseAmount: 0.1
   timeBetweenIncrease: 0.5
-  nrgIncreaseAmount: 5
+  nrgIncreaseAmount: 0.5
   healingRadius: 1
   healthParticles:
   - particleType: 0
     particles:
-    - particle: {fileID: 1462187128974598, guid: bfb8755c26bfc964aa42fe0a77af0edb,
+    - particle: {fileID: 1462187128974598, guid: adf870ed6bdcb6d41a57ec313173c7db,
         type: 2}
       gradient:
         serializedVersion: 2
@@ -335,17 +335,51 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 3
         m_NumAlphaKeys: 4
-  nrgParticles: []
+  nrgParticles:
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1462187128974598, guid: a5d34993217e8994cb4896cbeff23efb,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.60294116, g: 0.95070994, b: 1, a: 0}
+        key1: {r: 0.618404, g: 0.97794116, b: 0.97794116, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 7132
+        atime2: 33539
+        atime3: 65535
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 4
   sound:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: a4848d065fd091745abde10faf13578c, type: 3}
+    volume: 0.3
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   fountainParticle: {fileID: 0}
   isTownFountain: 0
 --- !u!114 &114145731082272660
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595353688308704}
@@ -357,7 +391,7 @@ MonoBehaviour:
   _guid: fef5346a-b991-4f8a-86cb-a7a165134b03
 --- !u!114 &114235224428809992
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1884548749107364}
@@ -369,7 +403,7 @@ MonoBehaviour:
   _guid: b73eb46e-a792-454b-bda9-277a54bc62b6
 --- !u!114 &114255510906243342
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651534522891490}
@@ -398,7 +432,7 @@ MonoBehaviour:
   firstCheckDelay: 0
 --- !u!114 &114346925295049216
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1347845154006770}
@@ -422,7 +456,7 @@ MonoBehaviour:
   firstCheckDelay: 0
 --- !u!114 &114693438914074518
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595353688308704}
@@ -443,7 +477,7 @@ MonoBehaviour:
   _assetGuid: a8ec770f56b347945ac0e818fdcdb0e1
 --- !u!114 &114706860311555534
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1158315078523518}
@@ -455,7 +489,7 @@ MonoBehaviour:
   _guid: f17da1d9-1c6e-4701-a3a9-84daaa2f027b
 --- !u!114 &114948635645916112
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651534522891490}
@@ -466,7 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &114990523986435936
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651534522891490}

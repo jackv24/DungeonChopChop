@@ -14181,13 +14181,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   healthIncreaseAmount: 0.1
-  timeBetweenIncrease: 1
-  nrgIncreaseAmount: 5
+  timeBetweenIncrease: 0.5
+  nrgIncreaseAmount: 0.5
   healingRadius: 1
   healthParticles:
   - particleType: 0
     particles:
-    - particle: {fileID: 1462187128974598, guid: bfb8755c26bfc964aa42fe0a77af0edb,
+    - particle: {fileID: 1462187128974598, guid: adf870ed6bdcb6d41a57ec313173c7db,
         type: 2}
       gradient:
         serializedVersion: 2
@@ -14218,10 +14218,44 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 3
         m_NumAlphaKeys: 4
-  nrgParticles: []
+  nrgParticles:
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1462187128974598, guid: a5d34993217e8994cb4896cbeff23efb,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.60294116, g: 0.95070994, b: 1, a: 0}
+        key1: {r: 0.618404, g: 0.97794116, b: 0.97794116, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 7132
+        atime2: 33539
+        atime3: 65535
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 4
   sound:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: a4848d065fd091745abde10faf13578c, type: 3}
+    volume: 0.3
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   fountainParticle: {fileID: 0}
