@@ -4391,6 +4391,20 @@ GameObject:
   m_Component:
   - component: {fileID: 4861720708300740}
   - component: {fileID: 114355247054147546}
+  - component: {fileID: 114973831824800050}
+  - component: {fileID: 114838515488510596}
+  - component: {fileID: 114786976032985728}
+  - component: {fileID: 114465981775465050}
+  - component: {fileID: 114390238598992674}
+  - component: {fileID: 114323852466803602}
+  - component: {fileID: 114840552869235854}
+  - component: {fileID: 114871477347893008}
+  - component: {fileID: 114650414650263680}
+  - component: {fileID: 114221669225223974}
+  - component: {fileID: 114921751353928180}
+  - component: {fileID: 114689080414849732}
+  - component: {fileID: 114019587048871632}
+  - component: {fileID: 114299784583464056}
   - component: {fileID: 33686671075733176}
   - component: {fileID: 23257332546003844}
   - component: {fileID: 65302748501129986}
@@ -4401,8 +4415,8 @@ GameObject:
   - component: {fileID: 114398130098972722}
   - component: {fileID: 114943221258068984}
   - component: {fileID: 114118289126386940}
-  - component: {fileID: 114973831824800050}
-  - component: {fileID: 114838515488510596}
+  - component: {fileID: 114288119198547988}
+  - component: {fileID: 114136472592289082}
   m_Layer: 17
   m_Name: Barrel (2)
   m_TagString: Untagged
@@ -15775,6 +15789,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: e69c41fe-fd8e-4984-abbd-16eb22bddc26
+--- !u!114 &114019587048871632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114021336195452486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15862,8 +15887,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -15968,6 +15994,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114026934745897132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17463,8 +17490,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -17728,8 +17756,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -18798,8 +18827,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -18842,6 +18872,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1667628977763726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114136472592289082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
@@ -19399,8 +19440,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -19528,6 +19570,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114165939532320100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19606,6 +19649,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114167981026789664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19792,6 +19836,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114174280793388782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20248,6 +20293,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114198641163974954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20789,6 +20835,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114221669225223974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114222261317841236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21138,8 +21195,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -21234,6 +21292,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114234832294231778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22024,6 +22083,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114254751092853858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22986,8 +23046,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -23199,6 +23260,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114288119198547988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114289621150563336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -23291,8 +23363,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -23454,6 +23527,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027466505020454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114299784583464056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
@@ -23769,6 +23853,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114314345868759376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -24022,6 +24107,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1146917019767012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114323852466803602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
@@ -24820,8 +24916,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -26536,6 +26633,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 78113223-9c9d-4fb2-94c8-de1ea4fc771b
+--- !u!114 &114390238598992674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114392977066429892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27197,8 +27305,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -27291,6 +27400,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114412427312689790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28760,6 +28870,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114465981775465050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114467672867601166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -30181,8 +30302,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -30572,8 +30694,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -30736,6 +30859,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114530632106024588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31149,8 +31273,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -31457,6 +31582,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114550855394492596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31606,8 +31732,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -32541,6 +32668,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114590451447706868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -33427,8 +33555,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -33678,6 +33807,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114617853110097334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -34955,6 +35085,17 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+--- !u!114 &114650414650263680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114651006280741414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -36243,11 +36384,23 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
+--- !u!114 &114689080414849732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114689328237498618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -36569,8 +36722,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -36605,6 +36759,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114698477802417894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -36965,8 +37120,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -37185,6 +37341,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114715595080118528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37401,6 +37558,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114725307788321090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37571,6 +37729,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114727437629029080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37776,6 +37935,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114742937460725584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39120,8 +39280,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -39445,6 +39606,17 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+--- !u!114 &114786976032985728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114787131136726598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39763,8 +39935,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -39843,8 +40016,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -41145,6 +41319,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 21db9354-a5d2-4fd7-8db2-0b5190337a5e
+--- !u!114 &114840552869235854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114841450303512800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41361,6 +41546,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114847000354844582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41461,6 +41647,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114850984039021404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41819,6 +42006,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114854990490449494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42146,8 +42334,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -42215,6 +42404,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1330297859689146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114871477347893008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
@@ -42942,8 +43142,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -43538,6 +43739,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114917968578257596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -43581,6 +43783,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114918965504265706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -43863,6 +44066,17 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+--- !u!114 &114921751353928180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879278640580932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114922653583738556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -44354,6 +44568,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114938624364641570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -44404,8 +44619,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -44919,6 +45135,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114953293469896360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -45284,8 +45501,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
@@ -45812,6 +46030,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114986011988449140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -45914,6 +46133,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114988528215884986
 MonoBehaviour:
   m_ObjectHideFlags: 1

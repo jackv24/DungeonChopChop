@@ -260,6 +260,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114133458617792930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,8 +321,9 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 0.815
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
