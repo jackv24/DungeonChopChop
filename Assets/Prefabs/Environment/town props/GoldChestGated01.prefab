@@ -1561,7 +1561,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114028971819032104
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1860485272309338}
@@ -1601,6 +1601,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 1
   dashDestroysIt: 0
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -1825,6 +1826,15 @@ MonoBehaviour:
     magnitude: 0.2
     shakeAmount: 0.7
     duration: 0.2
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114120471360391282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1852,14 +1862,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf36586574916943b7baa0649908bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1084911383118006, guid: 1c0fca478e50f5a479edda2c894f14b8, type: 2}
+  prefab: {fileID: 1285416715813554, guid: 844b566ba5991964a9a3a580c27c536c, type: 2}
   spawnAfterMerging: 1
   respawnWithMessage: 0
   respawnPrefab: {fileID: 0}
   enableBehaviour: {fileID: 0}
 --- !u!114 &114160184898064306
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1754222545497884}
@@ -1884,7 +1894,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -1955,7 +1967,7 @@ MonoBehaviour:
   beforeMerge: 0
 --- !u!114 &114248784471265138
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1111318477917888}
@@ -2029,7 +2041,7 @@ MonoBehaviour:
   isWizzer: 0
 --- !u!114 &114302058446226968
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1724776183632100}
@@ -2041,7 +2053,7 @@ MonoBehaviour:
   _guid: 649fb436-1445-4523-9bff-21694a46909a
 --- !u!114 &114302098673584042
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1921283289113306}
@@ -2066,7 +2078,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -2107,6 +2121,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 1
   dashDestroysIt: 0
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -2331,6 +2346,15 @@ MonoBehaviour:
     magnitude: 0.2
     shakeAmount: 0.7
     duration: 0.2
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114329042675150586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2350,7 +2374,7 @@ MonoBehaviour:
   registerOnce: 0
 --- !u!114 &114332669112647806
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1953639306475260}
@@ -2378,7 +2402,7 @@ MonoBehaviour:
     m_Bits: 131072
 --- !u!114 &114345488496238476
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1303719896061416}
@@ -2390,7 +2414,7 @@ MonoBehaviour:
   _guid: a9e99c0c-8cb3-4c09-9ef5-b98450d25ab9
 --- !u!114 &114375490923061156
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1435587658001018}
@@ -2432,7 +2456,7 @@ MonoBehaviour:
   isWizzer: 0
 --- !u!114 &114385405643110314
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840916137983470}
@@ -2533,7 +2557,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -2574,6 +2600,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 1
   dashDestroysIt: 0
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -2798,9 +2825,18 @@ MonoBehaviour:
     magnitude: 0.2
     shakeAmount: 0.7
     duration: 0.2
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114437409801007190
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1229321690884688}
@@ -2812,7 +2848,7 @@ MonoBehaviour:
   _guid: c3b4d07d-b7f0-490e-bcb4-7598daa85957
 --- !u!114 &114439861136330618
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1899726193703552}
@@ -2824,7 +2860,7 @@ MonoBehaviour:
   _guid: 3640b5c8-6e5c-4cd5-accf-c4a7c84b7cce
 --- !u!114 &114466253777871970
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939374936686538}
@@ -2836,7 +2872,7 @@ MonoBehaviour:
   _guid: fe51f768-9955-4930-8447-e0c2b6716715
 --- !u!114 &114472276773540230
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1464767866189366}
@@ -2894,7 +2930,7 @@ MonoBehaviour:
   isWizzer: 0
 --- !u!114 &114551691127575082
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1545773679087956}
@@ -2968,7 +3004,7 @@ MonoBehaviour:
   enableBehaviour: {fileID: 0}
 --- !u!114 &114608424738772842
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1606884154623438}
@@ -2980,7 +3016,7 @@ MonoBehaviour:
   _guid: af7adc46-a35b-4b7a-9021-ed90fb8d3979
 --- !u!114 &114613250909757742
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1807579939447946}
@@ -2992,7 +3028,7 @@ MonoBehaviour:
   _guid: bea7bde7-a0b5-4466-884d-031df7916e31
 --- !u!114 &114669350438206174
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939374936686538}
@@ -3044,6 +3080,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 1
   dashDestroysIt: 0
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -3268,6 +3305,15 @@ MonoBehaviour:
     magnitude: 0.2
     shakeAmount: 0.7
     duration: 0.2
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114699054529944120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3311,6 +3357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   opened: 0
   requireKeys: 1
+  randomise: 1
   keyType: 0
   chestType: 1
   possibleItems:
@@ -3457,16 +3504,21 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
-  animationBone: {fileID: 0}
-  releaseItemDelay: 1
-  releaseItemForce: 50
   containingItem: {fileID: 0}
   containingObject: {fileID: 0}
   containingConsumables: []
+  animationBone: {fileID: 0}
+  releaseItemDelay: 1
+  releaseItemForce: 50
+  openSound:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
   releaseParticle: {fileID: 0}
 --- !u!114 &114739301365498668
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831761386932652}
@@ -3507,7 +3559,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -3548,6 +3602,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 1
   dashDestroysIt: 0
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -3772,6 +3827,15 @@ MonoBehaviour:
     magnitude: 0.2
     shakeAmount: 0.7
     duration: 0.2
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114749223171155528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3819,7 +3883,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -3893,7 +3959,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -3922,7 +3990,7 @@ MonoBehaviour:
     duration: 0.1
 --- !u!114 &114846303851729560
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1990018500981178}
@@ -3934,7 +4002,7 @@ MonoBehaviour:
   _guid: f055acbe-a896-4890-ba95-08a47567d17e
 --- !u!114 &114858202055130158
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1657593106467190}
@@ -3959,7 +4027,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -4004,7 +4074,7 @@ MonoBehaviour:
   enableBehaviour: {fileID: 0}
 --- !u!114 &114903959270129950
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1979196639849780}
@@ -4029,7 +4099,9 @@ MonoBehaviour:
   health: 1
   weight: 1
   IsEnemy: 0
-  enemyType: 0
+  enemyKind:
+    enemyType: 0
+    enemyBiome: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0
@@ -4058,7 +4130,7 @@ MonoBehaviour:
     duration: 0.1
 --- !u!114 &114929253812545480
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1070466019912470}
@@ -4086,7 +4158,7 @@ MonoBehaviour:
   enableBehaviour: {fileID: 0}
 --- !u!114 &114950198424245404
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1022027856168188}
@@ -4110,6 +4182,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 1
   dashDestroysIt: 0
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -4334,6 +4407,15 @@ MonoBehaviour:
     magnitude: 0.2
     shakeAmount: 0.7
     duration: 0.2
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114983372110309526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4348,6 +4430,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 1
   dashDestroysIt: 0
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -4572,6 +4655,15 @@ MonoBehaviour:
     magnitude: 0.2
     shakeAmount: 0.7
     duration: 0.2
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114993990912818696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4586,6 +4678,7 @@ MonoBehaviour:
   slashDestroysIt: 0
   tripleDestroysIt: 1
   dashDestroysIt: 0
+  dashAttackDestroysIt: 1
   spinDestroysIt: 0
   destroyedByTalons: 0
   amountOfParticleTypes:
@@ -4810,9 +4903,18 @@ MonoBehaviour:
     magnitude: 0.2
     shakeAmount: 0.7
     duration: 0.2
+  hitAnim:
+    animate: 0
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    duration: 0
 --- !u!114 &114999506003658178
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1188283644633580}
@@ -4824,7 +4926,7 @@ MonoBehaviour:
   _guid: 49c1c1d2-a5b6-4103-ab1a-42e0cee7a7dd
 --- !u!114 &114999836529530756
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1133357580624906}
