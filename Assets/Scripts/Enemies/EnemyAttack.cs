@@ -77,7 +77,8 @@ public class EnemyAttack : MonoBehaviour
     protected EnemyDeath enemyDeath;
     protected NavMeshAgent agent;
 
-    protected bool usesChildRotation = false;
+    [HideInInspector]
+    public bool usesChildRotation = false;
 
     private Collider col;
 
@@ -210,6 +211,7 @@ public class EnemyAttack : MonoBehaviour
 
     void Shoot()
     {
+        Debug.Log("shoot");
         //create the projecticle
         GameObject projectile = ObjectPooler.GetPooledObject(projecticle);
 
@@ -221,7 +223,7 @@ public class EnemyAttack : MonoBehaviour
             projectile.transform.position = shootPosition.transform.position;
 
         if (!usesChildRotation)
-            projectile.transform.rotation = transform.rotation;
+            projectile.transform.localRotation = transform.localRotation;
         else
             projectile.transform.rotation = transform.GetChild(0).transform.rotation;
 
@@ -456,7 +458,6 @@ public class EnemyAttack : MonoBehaviour
         {
             if (damagesOtherEnemies)
             {
-                Debug.Log(c.col.gameObject.name);
                 c.health.AffectHealth(-damageOnTouch);
             }
         }
