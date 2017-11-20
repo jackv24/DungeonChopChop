@@ -211,7 +211,6 @@ public class EnemyAttack : MonoBehaviour
 
     void Shoot()
     {
-        Debug.Log("shoot");
         //create the projecticle
         GameObject projectile = ObjectPooler.GetPooledObject(projecticle);
 
