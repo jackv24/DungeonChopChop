@@ -83,6 +83,10 @@ public class HealingPlatform : MonoBehaviour {
                 if (fountainParticle)
                     main.maxParticles = (int)Percentage(maxParticleSize, 75);
             }
+            else
+            {
+                maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 100);
+            }
         }
     }
 
