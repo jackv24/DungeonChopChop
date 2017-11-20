@@ -49,6 +49,9 @@ public class SoundManager : MonoBehaviour
     public SoundEffect unslowDeathSound;
     public SoundEffect unfrozenSound;
 
+    [Space()]
+    public SoundEffect spikeSound;
+
 	private void Awake()
 	{
 		Instance = this;

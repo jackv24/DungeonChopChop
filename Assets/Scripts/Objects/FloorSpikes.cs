@@ -26,6 +26,7 @@ public class FloorSpikes : MonoBehaviour {
     private LevelTile tile;
     private Animator animator;
     private bool startSpiking = false;
+    private EnemyAttack enemyAttack;
 
     private bool active = false;
 
@@ -33,6 +34,11 @@ public class FloorSpikes : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+        enemyAttack = GetComponentInChildren<EnemyAttack>();
+
+        if (enemyAttack)
+            enemyAttack.damagesOtherEnemies = true;
+
         tile = GetComponentInParent<LevelTile>();
 
         if (tile)

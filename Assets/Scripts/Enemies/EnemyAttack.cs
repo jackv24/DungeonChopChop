@@ -23,7 +23,7 @@ public class EnemyAttack : MonoBehaviour
 
 
     public TypesOfAttack attackingType;
-    public bool damagesOtherEnemies = false;
+    public bool damagesOtherEnemies = true;
 
     [Header("Projectile Vars")]
     [HideInInspector]
@@ -456,6 +456,7 @@ public class EnemyAttack : MonoBehaviour
         {
             if (damagesOtherEnemies)
             {
+                Debug.Log(c.col.gameObject.name);
                 c.health.AffectHealth(-damageOnTouch);
             }
         }
@@ -541,5 +542,14 @@ public class EnemyAttack : MonoBehaviour
             if (!colliding.Contains(c))
                 colliding.Remove(c);
         }
+    }
+
+    public void SpikeSound()
+    {
+        SoundManager.PlaySound(SoundManager.Instance.spikeSound, transform.position);
+
+        FloorSpikes floorSpike = GetComponentInParent<FloorSpikes>();
+
+        SpawnEffects.EffectOnHit(floorSpike.particleOnUp, transform.position);
     }
 }
