@@ -1596,6 +1596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4149548435351782}
   - component: {fileID: 114266018149056618}
+  - component: {fileID: 114206139112985216}
   - component: {fileID: 33275772079488398}
   - component: {fileID: 23552242796404644}
   - component: {fileID: 65575188969416722}
@@ -1606,7 +1607,8 @@ GameObject:
   - component: {fileID: 114218765987270302}
   - component: {fileID: 114279967631310220}
   - component: {fileID: 114498007489276412}
-  - component: {fileID: 114206139112985216}
+  - component: {fileID: 114519727782890526}
+  - component: {fileID: 114900011178780500}
   m_Layer: 17
   m_Name: Barrel (2)
   m_TagString: Untagged
@@ -1912,6 +1914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4360839706119622}
   - component: {fileID: 114260528693366834}
+  - component: {fileID: 114446936311766808}
   - component: {fileID: 33226555143178172}
   - component: {fileID: 23403705182547066}
   - component: {fileID: 65712529714144298}
@@ -1922,7 +1925,8 @@ GameObject:
   - component: {fileID: 114871289154089038}
   - component: {fileID: 114685009337940806}
   - component: {fileID: 114649869882720216}
-  - component: {fileID: 114446936311766808}
+  - component: {fileID: 114551913811537692}
+  - component: {fileID: 114292837132054004}
   m_Layer: 17
   m_Name: Barrel
   m_TagString: Untagged
@@ -11302,8 +11306,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -12133,8 +12136,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -12606,6 +12608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -13028,8 +13031,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -13121,8 +13123,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -13139,6 +13140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -15838,8 +15840,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -16371,6 +16372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -17011,12 +17013,22 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
   lever: {fileID: 0}
+--- !u!114 &114292837132054004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1489141101070802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114296336169966054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17402,6 +17414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -18340,6 +18353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -18908,8 +18922,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -19646,6 +19659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -20029,6 +20043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -20182,8 +20197,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -20679,6 +20693,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114519727782890526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1412663773977662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114521207999091838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20703,6 +20728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -21342,6 +21368,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 3c1aa28c-da61-4b1f-a699-309ec83fa9d8
+--- !u!114 &114551913811537692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1489141101070802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114552471768975126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22996,6 +23033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -23510,8 +23548,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -23784,8 +23821,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -24263,6 +24299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -24699,6 +24736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -24741,6 +24779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -25609,8 +25648,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -25686,6 +25724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -25818,6 +25857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -26237,8 +26277,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -27217,6 +27256,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: eb0f14a5-e850-41ae-a95b-f5f52d2b05e7
+--- !u!114 &114900011178780500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1412663773977662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114900543449147472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28783,8 +28833,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -29005,8 +29054,7 @@ MonoBehaviour:
   startUp: 0
   particleOnUp: []
   soundOnUp:
-    clips:
-    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    clips: []
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1

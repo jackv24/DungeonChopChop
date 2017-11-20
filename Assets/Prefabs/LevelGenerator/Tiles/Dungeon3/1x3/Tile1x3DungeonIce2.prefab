@@ -2323,6 +2323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4820016565512816}
   - component: {fileID: 114443630345246614}
+  - component: {fileID: 114233592470553522}
   - component: {fileID: 33598786978439030}
   - component: {fileID: 23125310294076750}
   - component: {fileID: 65696985233360078}
@@ -2333,7 +2334,8 @@ GameObject:
   - component: {fileID: 114825338246584276}
   - component: {fileID: 114069514831761232}
   - component: {fileID: 114940550516219936}
-  - component: {fileID: 114233592470553522}
+  - component: {fileID: 114708780738747538}
+  - component: {fileID: 114562983011113706}
   m_Layer: 17
   m_Name: Barrel (1)
   m_TagString: Untagged
@@ -4128,6 +4130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4978941938296274}
   - component: {fileID: 114764162084375326}
+  - component: {fileID: 114667883735362600}
   - component: {fileID: 33020108644840990}
   - component: {fileID: 23670341320839794}
   - component: {fileID: 65099210569120522}
@@ -4138,7 +4141,8 @@ GameObject:
   - component: {fileID: 114574017316481496}
   - component: {fileID: 114120161936117700}
   - component: {fileID: 114157065670954462}
-  - component: {fileID: 114667883735362600}
+  - component: {fileID: 114395276999768706}
+  - component: {fileID: 114353333052880126}
   m_Layer: 17
   m_Name: Barrel (2)
   m_TagString: Untagged
@@ -4478,6 +4482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4042827838809998}
   - component: {fileID: 114336946922677592}
+  - component: {fileID: 114805340782587908}
   - component: {fileID: 33431428564562280}
   - component: {fileID: 23176657082186206}
   - component: {fileID: 65385116882538996}
@@ -4488,7 +4493,8 @@ GameObject:
   - component: {fileID: 114246103672779318}
   - component: {fileID: 114371250258648584}
   - component: {fileID: 114472417866141794}
-  - component: {fileID: 114805340782587908}
+  - component: {fileID: 114759756618606066}
+  - component: {fileID: 114192946711012570}
   m_Layer: 17
   m_Name: Barrel
   m_TagString: Untagged
@@ -21585,6 +21591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -30018,6 +30025,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114192946711012570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1674920316019740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114193060504820232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37609,6 +37627,17 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+--- !u!114 &114353333052880126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609609283569530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114354535797571360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39307,6 +39336,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1441715619277452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114395276999768706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609609283569530}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
@@ -44210,6 +44250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -46747,6 +46788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -48169,6 +48211,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114562983011113706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1340376578014324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114563699534334714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -48526,6 +48579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -54411,6 +54465,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114708780738747538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1340376578014324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114709058170488450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56505,6 +56570,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 0c4e286f-5646-4ebb-9346-b36509f28383
+--- !u!114 &114759756618606066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1674920316019740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114759822564369756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56923,6 +56999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -59697,6 +59774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -61254,6 +61332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -63048,6 +63127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0

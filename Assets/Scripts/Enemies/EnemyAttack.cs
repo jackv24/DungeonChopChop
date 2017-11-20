@@ -23,6 +23,7 @@ public class EnemyAttack : MonoBehaviour
 
 
     public TypesOfAttack attackingType;
+    public bool damagesOtherEnemies = false;
 
     [Header("Projectile Vars")]
     [HideInInspector]
@@ -449,6 +450,13 @@ public class EnemyAttack : MonoBehaviour
 
                 if (enemyMove)
                     enemyMove.runAwayForSeconds();
+            }
+        }
+        else
+        {
+            if (damagesOtherEnemies)
+            {
+                c.health.AffectHealth(-damageOnTouch);
             }
         }
 
