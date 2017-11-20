@@ -209,6 +209,26 @@ public class EnemyAttack : MonoBehaviour
             Shoot();
     }
 
+    public void DoShoot()
+    {
+        //create the projecticle
+        GameObject projectile = ObjectPooler.GetPooledObject(projecticle);
+
+        if (!shootPosition)
+            projectile.transform.position = transform.position;
+        else
+            projectile.transform.position = shootPosition.transform.position;
+
+        projectile.transform.rotation = transform.rotation;
+
+        projectile.GetComponent<ProjectileCollision>().damageMultiplyer = projectileDmgMutliplier;
+        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
+        projectile.GetComponent<ProjectileCollision>().thrust = thrust;
+
+        //do sound
+        SoundManager.PlaySound(shootSounds, transform.position);
+    }
+
     void Shoot()
     {
         //create the projecticle
@@ -222,7 +242,7 @@ public class EnemyAttack : MonoBehaviour
             projectile.transform.position = shootPosition.transform.position;
 
         if (!usesChildRotation)
-            projectile.transform.localRotation = transform.localRotation;
+            projectile.transform.rotation = transform.rotation;
         else
             projectile.transform.rotation = transform.GetChild(0).transform.rotation;
 
