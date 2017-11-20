@@ -39,10 +39,8 @@ GameObject:
   - component: {fileID: 33427912762751460}
   - component: {fileID: 23270660257435506}
   - component: {fileID: 114808389651935700}
-  - component: {fileID: 114834409346921164}
   - component: {fileID: 95508962509141290}
   - component: {fileID: 114040900731080792}
-  - component: {fileID: 114592627553471404}
   m_Layer: 0
   m_Name: StaticTurret4Shot
   m_TagString: Untagged
@@ -295,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 4
+  damagesOtherEnemies: 1
   projecticle: {fileID: 1609605766088664, guid: f670f148bebcccb4889e46f8d15c57b6,
     type: 2}
   shootPosition: {fileID: 1598859818064668}
@@ -314,17 +313,6 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
---- !u!114 &114592627553471404
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1426075136002864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114736193069357058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -342,6 +330,8 @@ MonoBehaviour:
     _collection:
     - {fileID: 1525730202917180}
     - {fileID: 1426075136002864}
+    - {fileID: 1375658979300070}
+    - {fileID: 1598859818064668}
   _assetGuid: 9154413a96e4cac45a11526ff81ef800
 --- !u!114 &114808389651935700
 MonoBehaviour:
@@ -354,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 831dd4e8-6034-49a2-a582-d1466ab3ebc4
+  _guid: 5afe2853-b4a6-4f50-ad9d-f00232c8c23c
 --- !u!114 &114822258784466532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,25 +357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 3a8b3eca-5a2e-4079-a5fb-6fcbcb201dd6
---- !u!114 &114834409346921164
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1426075136002864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isConnected: 1
-  _guid: 87447732-aa73-4c26-9feb-7abc361bca3e
-  _referenceCollection:
-    _collection:
-    - {fileID: 1426075136002864}
-    - {fileID: 1375658979300070}
-    - {fileID: 1598859818064668}
-  _assetGuid: 27a007cecd1e2524abbd62ae4d2310b8
 --- !u!114 &114896236232392150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -397,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: dd1ba1f3-3e17-4203-b5a1-f2b71252a4ad
+  _guid: f1a5ca9f-dff4-48ed-a6a1-c7645280091a
 --- !u!114 &114914412084325466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -409,4 +380,4 @@ MonoBehaviour:
   m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 577a3548-95dd-40b9-b4a1-2944d9ce7328
+  _guid: c95f65bc-569a-4e5d-8646-4286060192e7
