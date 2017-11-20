@@ -54,4 +54,14 @@ public class Lever : MonoBehaviour {
             SpawnEffects.EffectOnHit(particleOnHit, transform.position);
         }
     }
+
+    public void Deactivate()
+    {
+        animator.SetBool("Trigger", false);
+
+        if (OnLeverDisabled != null)
+            OnLeverDisabled();
+
+        m_activated = false;
+    }
 }

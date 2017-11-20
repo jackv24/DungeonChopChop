@@ -12,23 +12,30 @@ public enum SpikeType
 
 public class FloorSpikes : MonoBehaviour {
 
+    public delegate void SpikeEvent();
+
+    public event SpikeEvent OnSpikeUp;
+    public event SpikeEvent OnSpikeDown;
+
     public SpikeType spikeType;
     public float delayTime = 0;
     public float animationSpeed = 1;
     public bool startUp;
 
+    public Lever[] levers;
+
     [Header("Audio and Particles")]
     public AmountOfParticleTypes[] particleOnUp;
     public SoundEffect soundOnUp;
 
-    public Lever lever;
-
     private LevelTile tile;
-    private Animator animator;
+    [HideInInspector]
+    public Animator animator;
     private bool startSpiking = false;
     private EnemyAttack enemyAttack;
 
     private bool active = false;
+    private int leverCounter = 0;
 
 
 	// Use this for initialization
@@ -52,8 +59,11 @@ public class FloorSpikes : MonoBehaviour {
 
         animator.speed = animationSpeed;
 
-        if (lever)
-            lever.OnLeverActivated += Deactivated;
+        if (levers.Length > 0)
+        {
+            foreach(Lever lever in levers)
+                lever.OnLeverActivated += Deactivated;
+        }
 
         if (startUp)
             animator.SetBool("Trigger", true);
@@ -76,13 +86,44 @@ public class FloorSpikes : MonoBehaviour {
     IEnumerator boolCooldown()
     {
         animator.SetBool("Trigger", true);
+        OnSpikeUp();
         yield return new WaitForEndOfFrame();
         animator.SetBool("Trigger", false);
+        OnSpikeDown();
+    }
+
+    public void SpikeUp()
+    {
+        if (OnSpikeUp != null)
+            OnSpikeUp();
+    }
+
+    public void SpikeDown()
+    {
+        if (OnSpikeDown != null)
+            OnSpikeDown();
+    }
+
+    public void Deactivate()
+    {
+        animator.SetBool("Trigger", false);
+    }
+
+    public void Activate()
+    {
+        animator.SetBool("Trigger", true);
     }
 
     void Deactivated()
     {
-        animator.SetBool("Trigger", false);
+        leverCounter++;
+
+        if (leverCounter >= levers.Length)
+        {
+            animator.SetBool("Trigger", false);
+            SpikeDown();
+            leverCounter = 0;
+        }
     }
 
     void FixedUpdate()

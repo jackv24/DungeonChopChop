@@ -249,7 +249,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114005403100162766
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1379723316772260}
@@ -269,7 +269,7 @@ MonoBehaviour:
   _assetGuid: d6e71062c89e59041add62c141d71510
 --- !u!114 &114266937501811404
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1463545186711102}
@@ -281,7 +281,7 @@ MonoBehaviour:
   _guid: 812ecd3c-70ee-4472-a546-2f8406a8fb9e
 --- !u!114 &114385114240705096
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1694076661478278}
@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -321,6 +322,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114656027954159932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,10 +345,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1bf5e903cfed1469282c2438e582e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikeType: 0
+  spikeType: 2
   delayTime: 0.5
   animationSpeed: 1
-  startUp: 0
+  startUp: 1
+  levers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   particleOnUp: []
   soundOnUp:
     clips:
@@ -354,10 +361,10 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
-  lever: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &114809715420710648
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1379723316772260}
@@ -369,7 +376,7 @@ MonoBehaviour:
   _guid: 3694feb9-501a-4d3f-821e-eb17ed665443
 --- !u!114 &114929475133755142
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405901010848328}
