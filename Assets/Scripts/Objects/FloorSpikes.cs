@@ -86,10 +86,12 @@ public class FloorSpikes : MonoBehaviour {
     IEnumerator boolCooldown()
     {
         animator.SetBool("Trigger", true);
-        OnSpikeUp();
+        if (OnSpikeUp != null)
+            OnSpikeUp();
         yield return new WaitForEndOfFrame();
         animator.SetBool("Trigger", false);
-        OnSpikeDown();
+        if (OnSpikeDown != null)
+            OnSpikeDown();
     }
 
     public void SpikeUp()
