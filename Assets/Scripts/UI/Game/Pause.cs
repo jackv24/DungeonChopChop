@@ -12,17 +12,25 @@ public class Pause : MonoBehaviour
 	public delegate void NormalEvent();
 	public event NormalEvent OnUnpause;
 
-	public GameObject firstSelected;
-
+    [Header("Panels")]
     public GameObject pauseMenu;
     public GameObject player1Stats;
     public GameObject player2Stats;
-    public GameObject YesOrNoPanel;
-    public GameObject No;
-
+    public GameObject MainMenuOptions;
     public GameObject statistics;
-	public GameObject statsScreen;
+    public GameObject statsScreen;
+    public GameObject warpToTownOptions;
+    public GameObject optionsPanel;
 
+    [Header("Selected GameObjects")]
+    public GameObject firstSelected;
+    public GameObject MainMenuOptionsFirstSelected;
+    public GameObject warpToTownFirstSelected;
+
+    [Header("Buttons")]
+    public GameObject warpToTownButton;
+
+    [Space()]
 
     public bool paused = false;
 	bool statsDisplayed = false;
@@ -61,6 +69,26 @@ public class Pause : MonoBehaviour
 				ShowStatsScreen ();
 		}
 	}
+
+    void FixedUpdate()
+    {
+        if (LevelGenerator.Instance)
+        {
+            if (LevelGenerator.Instance.currentTile)
+            {
+                if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon1 ||
+                LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon2 ||
+                LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon3 ||
+                LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon4 ||
+                LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.BossDungeon)
+                {
+                    warpToTownButton.SetActive(true);
+                }
+                else
+                    warpToTownButton.SetActive(false);
+            }
+        }
+    }
 
 	void ShowStatsScreen()
 	{
@@ -113,8 +141,15 @@ public class Pause : MonoBehaviour
 		if (OnUnpause != null)
 			OnUnpause();
 
+        HidePanels();
+    }
+
+    void HidePanels()
+    {
         statistics.SetActive(false);
-        YesOrNoPanel.SetActive(false);
+        MainMenuOptions.SetActive(false);
+        warpToTownOptions.SetActive(false);
+        optionsPanel.SetActive(false);
     }
 
 	void SlowTime(float oldScale, float newScale)
@@ -169,18 +204,42 @@ public class Pause : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void OpenWarpToTownOption()
+    {
+        warpToTownOptions.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(warpToTownFirstSelected.gameObject);
+        EventSystem.current.firstSelectedGameObject = warpToTownFirstSelected.gameObject;
+    }
+
+    public void WarpToTown()
+    {
+        ItemsManager.Instance.Coins = 0;
+
+        LevelGeneratorProfile profile = LevelVars.Instance.levelData.overworldProfile;
+        int seed = LevelVars.Instance.levelData.overworldSeed;
+
+        if (LevelGenerator.Instance && profile)
+        {
+            LevelGenerator.Instance.RegenerateWithProfile(profile, seed);
+        }
+
+        UnPauseGame();
+    }
+
     public void ExitOption()
     {
-        YesOrNoPanel.SetActive(true);
-        {
-            EventSystem.current.SetSelectedGameObject(No.gameObject);
-            EventSystem.current.firstSelectedGameObject = No.gameObject;
-        }
+        MainMenuOptions.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(MainMenuOptionsFirstSelected.gameObject);
+        EventSystem.current.firstSelectedGameObject = MainMenuOptionsFirstSelected.gameObject;
     }
 
     public void ExitNo()
     {
-        YesOrNoPanel.SetActive(false);
+        MainMenuOptions.SetActive(false);
+        warpToTownOptions.SetActive(false);
+
 		EventSystem.current.SetSelectedGameObject (firstSelected);
         EventSystem.current.firstSelectedGameObject = firstSelected;
     }
