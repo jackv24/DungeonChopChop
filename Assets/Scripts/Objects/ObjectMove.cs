@@ -6,10 +6,12 @@ public class ObjectMove : MonoBehaviour {
 
     public Lever lever;
     public float moveTime = 2;
+    public bool canComeBackUp = false;
     public AmountOfParticleTypes[] moveParticle;
 
     private Vector3 originalPosition;
     private bool moveDown = false;
+    private bool moveUp = false;
 
 	// Use this for initialization
 	void Start () 
@@ -19,7 +21,8 @@ public class ObjectMove : MonoBehaviour {
         if (lever)
         {
             lever.OnLeverActivated += MoveDown;
-            lever.OnLeverDisabled += MoveUp;
+            if (canComeBackUp)
+                lever.OnLeverDisabled += MoveUp;
         }
 	}
 
@@ -32,7 +35,7 @@ public class ObjectMove : MonoBehaviour {
                 transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, -5, transform.position.z), moveTime * Time.deltaTime);
             }
         }
-        else
+        else if (moveUp)
         {
             if (transform.position != originalPosition)
                 transform.position = Vector3.Lerp(transform.position, originalPosition, moveTime * Time.deltaTime);
@@ -43,11 +46,13 @@ public class ObjectMove : MonoBehaviour {
     {
         SpawnEffects.EffectOnHit(moveParticle, transform.position);
         moveDown = true;
+        moveUp = false;
     }
 
     void MoveUp()
     {
         SpawnEffects.EffectOnHit(moveParticle, transform.position);
+        moveUp = true;
         moveDown = false;
     }
 }
