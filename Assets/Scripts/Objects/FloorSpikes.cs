@@ -36,6 +36,7 @@ public class FloorSpikes : MonoBehaviour {
 
     private bool active = false;
     private int leverCounter = 0;
+    private bool spiking = false;
 
 
 	// Use this for initialization
@@ -72,9 +73,15 @@ public class FloorSpikes : MonoBehaviour {
     void SetState()
     {
         if (active)
+        {
             active = false;
+            animator.gameObject.SetActive(false);
+        }
         else
+        {
             active = true;
+            animator.gameObject.SetActive(true);
+        }
     }
 
     IEnumerator spikeDelay()
@@ -137,7 +144,10 @@ public class FloorSpikes : MonoBehaviour {
                 if (startSpiking)
                 {
                     if (spikeType == SpikeType.Constantly)
+                    {
                         animator.SetBool("Trigger", true);
+                        spiking = true;
+                    }
                 }
             }
         }

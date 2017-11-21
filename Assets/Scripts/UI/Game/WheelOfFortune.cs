@@ -48,17 +48,6 @@ public class WheelOfFortune : MonoBehaviour
     private int randomTime;
     private int itemNumber;
 
-    void Start()
-    {
-                
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            SpinWheel();
-    }
-
     public void SpinWheel()
     {
         spinning = false;

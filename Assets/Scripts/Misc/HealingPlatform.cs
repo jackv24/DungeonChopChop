@@ -88,6 +88,10 @@ public class HealingPlatform : MonoBehaviour {
                 maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 100);
             }
         }
+        else
+        {
+            maxHealth = Percentage(GameManager.Instance.players[0].playerMove.playerHealth.maxHealth, 100);
+        }
     }
 
     void Heal()
