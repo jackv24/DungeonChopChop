@@ -73,9 +73,15 @@ public class FloorSpikes : MonoBehaviour {
     void SetState()
     {
         if (active)
+        {
             active = false;
+            animator.gameObject.SetActive(false);
+        }
         else
+        {
             active = true;
+            animator.gameObject.SetActive(true);
+        }
     }
 
     IEnumerator spikeDelay()
@@ -139,21 +145,10 @@ public class FloorSpikes : MonoBehaviour {
                 {
                     if (spikeType == SpikeType.Constantly)
                     {
-                        if (!spiking)
-                        {
-                            animator.SetBool("Trigger", true);
-                            spiking = true;
-                        }
+                        animator.SetBool("Trigger", true);
+                        spiking = true;
                     }
                 }
-            }
-        }
-        else
-        {
-            if (!spiking)
-            {
-                animator.SetBool("Trigger", false);
-                spiking = true;
             }
         }
     }
