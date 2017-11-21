@@ -36,6 +36,7 @@ public class FloorSpikes : MonoBehaviour {
 
     private bool active = false;
     private int leverCounter = 0;
+    private bool spiking = false;
 
 
 	// Use this for initialization
@@ -137,13 +138,23 @@ public class FloorSpikes : MonoBehaviour {
                 if (startSpiking)
                 {
                     if (spikeType == SpikeType.Constantly)
-                        animator.SetBool("Trigger", true);
+                    {
+                        if (!spiking)
+                        {
+                            animator.SetBool("Trigger", true);
+                            spiking = true;
+                        }
+                    }
                 }
             }
         }
         else
         {
-            animator.SetBool("Trigger", false);
+            if (!spiking)
+            {
+                animator.SetBool("Trigger", false);
+                spiking = true;
+            }
         }
     }
 
