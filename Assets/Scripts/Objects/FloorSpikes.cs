@@ -141,6 +141,10 @@ public class FloorSpikes : MonoBehaviour {
                 }
             }
         }
+        else
+        {
+            animator.SetBool("Trigger", false);
+        }
     }
 
     void OnTriggerEnter(Collider col)
