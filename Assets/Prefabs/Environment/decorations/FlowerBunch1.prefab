@@ -43,8 +43,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1775990958442084}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -181.2777, y: 0.49993214, z: -4.8926377}
-  m_LocalScale: {x: 1.4447854, y: 0.22174919, z: 1.4447854}
+  m_LocalPosition: {x: -181.2777, y: 0.468, z: -4.8926377}
+  m_LocalScale: {x: 1.4447854, y: 0.4576996, z: 1.4447854}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -113,8 +113,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.33317685, y: 1.5000001, z: 0.30663568}
-  m_Center: {x: 0.0018007042, y: 0.5357497, z: 0.06674798}
+  m_Size: {x: 0.9959714, y: 1.5000001, z: 0.93851995}
+  m_Center: {x: -0.07022198, y: 0.53574973, z: 0.09721233}
 --- !u!114 &114553305759433364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -322,8 +322,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drops:
+  - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
+    probability: 0.5
+    maxAmount: 0
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
     probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1108359381111716, guid: 36f8ca5ae127cbc4c9eca589f88b9d63, type: 2}
+    probability: 0.2
+    maxAmount: 0
+  - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
+    probability: 0.1
     maxAmount: 0
   - prefab: {fileID: 0}
     probability: 1
