@@ -85,7 +85,7 @@ Transform:
   - {fileID: 4912160117211884}
   m_Father: {fileID: 4155690015400614}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.017069148, y: -0.0000062105, z: 0.033941437}
+  m_LocalEulerAnglesHint: {x: -0.026944134, y: -0.0009276806, z: -0.053552117}
 --- !u!4 &4155690015400614
 Transform:
   m_ObjectHideFlags: 1
@@ -260,6 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   opened: 0
   requireKeys: 0
+  randomise: 1
   keyType: 0
   chestType: 0
   possibleItems:
@@ -358,6 +359,9 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
+  containingItem: {fileID: 0}
+  containingObject: {fileID: 0}
+  containingConsumables: []
   animationBone: {fileID: 0}
   releaseItemDelay: 1
   releaseItemForce: 0
@@ -366,9 +370,6 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
-  containingItem: {fileID: 0}
-  containingObject: {fileID: 0}
-  containingConsumables: []
   releaseParticle: {fileID: 0}
 --- !u!114 &114197213496599782
 MonoBehaviour:
