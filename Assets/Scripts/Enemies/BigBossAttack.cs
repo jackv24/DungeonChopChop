@@ -91,6 +91,8 @@ public class BigBossAttack : EnemyAttack {
         yield return new WaitForSeconds(.2f);
 
         enemyHealth.OnHealthNegative += CheckHitCount;
+
+        BossHealthBar.Instance.SetBoss(enemyHealth);
     }
 
     float Percentage(float number, int percent)

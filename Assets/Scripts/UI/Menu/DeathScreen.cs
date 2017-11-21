@@ -52,6 +52,11 @@ public class DeathScreen : MonoBehaviour {
         }
 	}
 
+    public void DoDeathScreen()
+    {
+        StartCoroutine(deathScreenWait());
+    }
+
     IEnumerator deathScreenWait()
     {
         yield return new WaitForSeconds(waitTillDeathScreen);

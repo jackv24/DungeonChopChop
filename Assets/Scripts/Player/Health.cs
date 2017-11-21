@@ -30,6 +30,8 @@ public class Health : MonoBehaviour
     [Space()]
     public bool IsEnemy;
     public EnemyKind enemyKind;
+    public bool isBoss = false;
+    [Space()]
     public bool isProp;
 
     [Space()]

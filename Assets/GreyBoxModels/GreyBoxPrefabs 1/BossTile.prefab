@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 114550670965448794}
   - component: {fileID: 65446286844796086}
   - component: {fileID: 114960999289747722}
+  - component: {fileID: 114993175635354148}
   m_Layer: 0
   m_Name: BossFace
   m_TagString: Untagged
@@ -23545,13 +23546,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  health: 10
+  maxHealth: 50
+  health: 50
   weight: 1
   IsEnemy: 1
   enemyKind:
     enemyType: 0
     enemyBiome: 0
+  isBoss: 0
   isProp: 0
   isPoisoned: 0
   isBurned: 0
@@ -23570,7 +23572,7 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
-  hitColor: {r: 0, g: 0, b: 0, a: 0}
+  hitColor: {r: 0.5588235, g: 0.11505191, b: 0.11505191, a: 0}
   timeBetweenFlash: 0.1
   amountToFlash: 5
   fadeTime: 5
@@ -27462,6 +27464,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: d752dd96-a5d7-4186-9f19-399609d59a29
+--- !u!114 &114993175635354148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1079884138813318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03cc96184bb3604c878837e9015ff35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTillDeathScreen: 3
 --- !u!114 &114993606405115422
 MonoBehaviour:
   m_ObjectHideFlags: 1
