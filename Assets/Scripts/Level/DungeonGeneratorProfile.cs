@@ -11,9 +11,6 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
     [HideInInspector] public GameObject chestTileObj;
 
 	[HideInInspector]
-	public GameObject bossTile;
-
-	[HideInInspector]
 	public GameObject keyTilePrefab;
 	[HideInInspector]
 	public GameObject chestTilePrefab;
@@ -126,9 +123,16 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 				succeeded = false;
 			}
 		}
-		else if(bossTile)
+		else //If this is a boss dungeon
 		{
-			Debug.LogError("<b>Boss tile generation NOT IMPLEMENTED</b>");
+			//Self-unsubscribing event
+			LevelGenerator.NormalEvent tempEvent = null;
+			tempEvent = delegate
+			{
+				GenerateBossDungeon(levelGenerator);
+				levelGenerator.OnGenerationFinished -= tempEvent;
+			};
+			levelGenerator.OnGenerationFinished += tempEvent;
 		}
 
 		//Append biome to all persistent object identifiers, since each dungeon should be considered different
@@ -145,5 +149,49 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
                 }
             }
         }
+	}
+
+	void GenerateBossDungeon(LevelGenerator levelGenerator)
+	{
+		LevelTile furthestTile = null;
+		float furthestDistance = 0;
+
+		//Find furthest tile from boss
+		foreach (LevelTile tile in levelGenerator.generatedTiles)
+		{
+			float distance = Vector3.Distance(levelGenerator.generatedTiles[0].tileOrigin.position, tile.tileOrigin.position);
+
+			if (distance > furthestDistance)
+			{
+				furthestDistance = distance;
+				furthestTile = tile;
+			}
+		}
+
+		//Remove enemy spawner from this tile, since it is the start tile
+		EnemySpawner spawner = furthestTile.GetComponentInChildren<EnemySpawner>();
+		if (spawner)
+			DestroyImmediate(spawner);
+
+		//Randomly choose a door to walk in from
+		Transform doorTransform = furthestTile.doors[UnityEngine.Random.Range(0, furthestTile.doors.Count)];
+
+		LevelDoor door = doorTransform.GetComponent<LevelDoor>();
+
+		if (door)
+		{
+			//Walk in from this doors connected door
+			LevelDoor walkIntoDoor = door.targetDoor;
+
+			if (walkIntoDoor)
+			{
+				PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
+
+				walkIntoDoor.targetTile.SetCurrent(LevelGenerator.Instance.currentTile);
+
+				foreach (PlayerInformation playerInfo in playerInfos)
+					playerInfo.transform.position = walkIntoDoor.transform.position + (-walkIntoDoor.transform.forward) * walkIntoDoor.exitDistance;
+			}
+		}
 	}
 }
