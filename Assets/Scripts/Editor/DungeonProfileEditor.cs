@@ -15,7 +15,7 @@ public class DungeonProfileEditor : Editor
 
 		if(biome.enumValueIndex == (int)LevelTile.Biomes.BossDungeon)
 		{
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("bossTile"));
+			EditorGUILayout.HelpBox("Please make sure that the Start Tile is the Boss tile!", MessageType.Info);
 		}
 		else if(biome.enumValueIndex == (int)LevelTile.Biomes.Dungeon1 ||
 				biome.enumValueIndex == (int)LevelTile.Biomes.Dungeon2 ||
