@@ -40,6 +40,8 @@ GameObject:
   - component: {fileID: 95728303692746450}
   - component: {fileID: 114966519586769706}
   - component: {fileID: 114379764471612110}
+  - component: {fileID: 114610110443733092}
+  - component: {fileID: 114190906976886814}
   m_Layer: 0
   m_Name: GateObject
   m_TagString: Untagged
@@ -201,9 +203,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114190906976886814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1647711201344362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114218587185368698
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1732410724026898}
@@ -215,7 +228,7 @@ MonoBehaviour:
   _guid: 1aa39113-3cb3-48e7-b195-5c406608ce64
 --- !u!114 &114379764471612110
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1647711201344362}
@@ -225,9 +238,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 84869e82-0ff4-4b78-bfa7-91ace41adda4
+--- !u!114 &114610110443733092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1647711201344362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2959d1e2d5e9f7640b5da6946bfda1a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceTillUnlock: 10
+  particles: []
+  locks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114966519586769706
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1647711201344362}
@@ -246,7 +277,7 @@ MonoBehaviour:
   _assetGuid: 7e12101a56c9fbe4c8ef87cacf7c2463
 --- !u!114 &114973319847345478
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1620664437700260}
