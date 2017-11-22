@@ -60,15 +60,20 @@ public class FloorSpikes : MonoBehaviour {
 
         animator.speed = animationSpeed;
 
+        if (startUp)
+            animator.SetBool("Trigger", true);
+	}
+
+    void SetupLevers()
+    {
+        levers = tile.GetComponentsInChildren<Lever>();
+
         if (levers.Length > 0)
         {
             foreach(Lever lever in levers)
                 lever.OnLeverActivated += Deactivated;
         }
-
-        if (startUp)
-            animator.SetBool("Trigger", true);
-	}
+    }
 
     void SetState()
     {
@@ -82,6 +87,8 @@ public class FloorSpikes : MonoBehaviour {
             active = true;
             animator.gameObject.SetActive(true);
         }
+
+        SetupLevers();
     }
 
     IEnumerator spikeDelay()
