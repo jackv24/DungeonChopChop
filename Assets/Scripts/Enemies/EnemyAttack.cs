@@ -214,6 +214,8 @@ public class EnemyAttack : MonoBehaviour
         //create the projecticle
         GameObject projectile = ObjectPooler.GetPooledObject(projecticle);
 
+        Physics.IgnoreCollision(col, projectile.GetComponent<Collider>(), true);
+
         if (!shootPosition)
             projectile.transform.position = transform.position;
         else
