@@ -19,20 +19,32 @@ public class ReviveScript : MonoBehaviour
 
 	void Update ()
     {
-        if (spawnedDialogue)
+        float distance = 0;
+
+        foreach (PlayerInformation player in GameManager.Instance.players)
         {
-            foreach (PlayerInformation player in GameManager.Instance.players)
+            if (player != thisPlayer)
             {
-                if (player.playerIndex != thisPlayer.playerIndex)
+                distance = Vector3.Distance(player.transform.position, thisPlayer.transform.position);
+            }
+        }
+
+        if (distance < 10)
+        {
+            if (spawnedDialogue)
+            {
+                foreach (PlayerInformation player in GameManager.Instance.players)
                 {
-                    if (player.playerMove.input.Purchase.WasPressed)
+                    if (player.playerIndex != thisPlayer.playerIndex)
                     {
-                        player.Revive(thisPlayer, player);
+                        if (player.playerMove.input.Purchase.WasPressed)
+                        {
+                            player.Revive(thisPlayer, player);
 
-                        Destroy(obj);
-                        spawnedDialogue = false;
-
-                        break;
+                            Destroy(obj);
+                            spawnedDialogue = false;
+                            break;
+                        }
                     }
                 }
             }
