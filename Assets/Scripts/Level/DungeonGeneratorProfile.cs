@@ -13,6 +13,11 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 	[HideInInspector]
 	public GameObject bossTile;
 
+	[HideInInspector]
+	public GameObject keyTilePrefab;
+	[HideInInspector]
+	public GameObject chestTilePrefab;
+
 	public override void Generate(LevelGenerator levelGenerator)
 	{
 		if(dungeonBiome != LevelTile.Biomes.Dungeon1
@@ -102,7 +107,7 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 				}
 				else
 				{
-					keyTileObj = keyTile.Replace(DungeonKeyTile.Type.Key);
+					keyTileObj = keyTile.Replace(keyTilePrefab);
 				}
 
 				if (!chestTile)
@@ -112,7 +117,7 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 					succeeded = false;
 				}
 				else
-					chestTileObj = chestTile.Replace(DungeonKeyTile.Type.Chest);
+					chestTileObj = chestTile.Replace(chestTilePrefab);
 			}
 			else
 			{

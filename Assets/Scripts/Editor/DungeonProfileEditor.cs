@@ -17,6 +17,18 @@ public class DungeonProfileEditor : Editor
 		{
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("bossTile"));
 		}
+		else if(biome.enumValueIndex == (int)LevelTile.Biomes.Dungeon1 ||
+				biome.enumValueIndex == (int)LevelTile.Biomes.Dungeon2 ||
+				biome.enumValueIndex == (int)LevelTile.Biomes.Dungeon3 ||
+				biome.enumValueIndex == (int)LevelTile.Biomes.Dungeon4)
+		{
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("keyTilePrefab"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("chestTilePrefab"));
+		}
+		else
+		{
+			EditorGUILayout.HelpBox("Biome selected is not a dungeon biome! Please change to a dungeon biome, or it will be automatically changed to Dungeon1 at runtime", MessageType.Error);
+		}
 
 		serializedObject.ApplyModifiedProperties();
 	}
