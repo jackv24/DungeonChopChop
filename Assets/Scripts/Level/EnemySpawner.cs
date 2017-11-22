@@ -182,33 +182,6 @@ public class EnemySpawner : MonoBehaviour
 			toSpawn.AddRange(undefeatedEnemies);
 		}
 
-		if (LevelVars.Instance)
-		{
-			if (LevelVars.Instance.enemySpawnEffect)
-			{
-				//Get particle effect from pool
-				GameObject effectPrefab = LevelVars.Instance.enemySpawnEffect;
-
-				foreach(Profile.Spawn spawn in toSpawn)
-				{
-					//Spawn an effect where enemies will spawn
-					if (spawn.enemyPrefab)
-					{
-						GameObject effect = ObjectPooler.GetPooledObject(effectPrefab);
-
-						if (effect)
-						{
-							effect.transform.position = transform.TransformPoint(spawn.position);
-						}
-					}
-				}
-			}
-
-			//Wait for set time
-			yield return new WaitForSeconds(LevelVars.Instance.enemySpawnDelay);
-		}
-
-		//After delay, actually spawn the enemies
 		if (shouldSpawn && currentProfile != null)
 		{
 			//Randomise enemy positions if desired
@@ -238,6 +211,34 @@ public class EnemySpawner : MonoBehaviour
 				toSpawn = newSpawns;
 			}
 
+			//Spawn effects and wait for delay
+			if (LevelVars.Instance)
+			{
+				if (LevelVars.Instance.enemySpawnEffect)
+				{
+					//Get particle effect from pool
+					GameObject effectPrefab = LevelVars.Instance.enemySpawnEffect;
+
+					foreach (Profile.Spawn spawn in toSpawn)
+					{
+						//Spawn an effect where enemies will spawn
+						if (spawn.enemyPrefab)
+						{
+							GameObject effect = ObjectPooler.GetPooledObject(effectPrefab);
+
+							if (effect)
+							{
+								effect.transform.position = transform.TransformPoint(spawn.position);
+							}
+						}
+					}
+				}
+
+				//Wait for set time
+				yield return new WaitForSeconds(LevelVars.Instance.enemySpawnDelay);
+			}
+
+			//After delay, actually spawn the enemies
 			foreach (Profile.Spawn spawn in toSpawn)
 			{
 				if (spawn.enemyPrefab)

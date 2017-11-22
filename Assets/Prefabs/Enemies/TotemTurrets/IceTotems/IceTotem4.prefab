@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 4404321739636614}
   - component: {fileID: 114136509365683472}
   - component: {fileID: 114664239128962954}
+  - component: {fileID: 114861854349748402}
   m_Layer: 0
   m_Name: IceTotem4
   m_TagString: Untagged
@@ -776,6 +777,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114473610512519422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -848,6 +850,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: d38a02d8-db96-415d-ad53-dab8609e886b
+--- !u!114 &114861854349748402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1908256352931322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa619222b8cdc649bfcee3ebd5eb32e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XRotation: 0
+  YRotation: 50
+  ZRotation: 0
+  rotateInWorldSpace: 0
 --- !u!114 &114873467455254452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -880,6 +897,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114909648868756002
 MonoBehaviour:
   m_ObjectHideFlags: 1
