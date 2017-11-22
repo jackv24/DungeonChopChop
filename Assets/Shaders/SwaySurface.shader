@@ -7,6 +7,7 @@
 		_SwaySpeed("Sway Speed", Float) = 1.0
 		_SwayMagnitude ("Sway Magnitude", Float) = 1.0
 		_HeightOffset("Height Sway Offset", Float) = 1.0
+		_WorldLocalHeight("Use World or Local Height", Range(0,1)) = 0.0
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
@@ -31,6 +32,7 @@
 		float _SwaySpeed;
 		float _SwayMagnitude;
 		float _HeightOffset;
+		float _WorldLocalHeight;
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
 		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -44,7 +46,9 @@
 			//Get vertex world coordinates
 			float4 worldV = mul(unity_ObjectToWorld, v.vertex);
 
-			float height = sqrt(worldV.y * worldV.y);
+			float y = lerp(worldV.y, v.vertex.y, _WorldLocalHeight);
+
+			float height = sqrt(y * y);
 			float offset = (sin(_Time.y * _SwaySpeed + ((worldV.x + worldV.z) / 2)))
 				+ (sin(_Time.y * _SwaySpeed + ((worldV.x + worldV.z) / 2)/4)
 					+ height * _HeightOffset);

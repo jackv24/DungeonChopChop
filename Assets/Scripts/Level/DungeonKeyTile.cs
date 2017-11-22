@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class DungeonKeyTile : MonoBehaviour
 {
-	public enum Type
-	{
-		Key,
-		Chest
-	}
-
-	public GameObject keyReplaceTile;
-	public GameObject chestReplaceTile;
-
 	private LevelTile tile;
 
     private void Awake()
@@ -20,14 +11,12 @@ public class DungeonKeyTile : MonoBehaviour
         tile = GetComponentInParent<LevelTile>();
     }
 
-	public GameObject Replace(Type replaceType)
+	public GameObject Replace(GameObject tilePrefab)
 	{
-		GameObject replaceTile = replaceType == Type.Key ? keyReplaceTile : chestReplaceTile;
-
-		if(replaceTile)
+		if(tilePrefab)
 		{
 			//Spawn new tile in this one's place
-			GameObject obj = (GameObject)Instantiate(replaceTile, transform.parent);
+			GameObject obj = (GameObject)Instantiate(tilePrefab, transform.parent);
 			obj.transform.localPosition = Vector3.zero;
 			obj.transform.localRotation = Quaternion.identity;
 
