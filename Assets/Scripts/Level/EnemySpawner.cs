@@ -124,15 +124,18 @@ public class EnemySpawner : MonoBehaviour
 		}
 	}
 
-	public void Spawn()
-	{
-		//Don't spawn if tile already cleared
-		if (cleared)
-			return;
+    public void Spawn(bool overrideChecks = false)
+    {
+        if (!overrideChecks)
+        {
+            //Don't spawn if tile already cleared
+            if (cleared)
+                return;
 
-		//Don't spawn if we should wait for a message and have not received it
-		if(waitForSpawnMessage && !receivedMessage)
-            return;
+            //Don't spawn if we should wait for a message and have not received it
+            if (waitForSpawnMessage && !receivedMessage)
+                return;
+        }
 
         shouldSpawn = true;
 
@@ -179,33 +182,6 @@ public class EnemySpawner : MonoBehaviour
 			toSpawn.AddRange(undefeatedEnemies);
 		}
 
-		if (LevelVars.Instance)
-		{
-			if (LevelVars.Instance.enemySpawnEffect)
-			{
-				//Get particle effect from pool
-				GameObject effectPrefab = LevelVars.Instance.enemySpawnEffect;
-
-				foreach(Profile.Spawn spawn in toSpawn)
-				{
-					//Spawn an effect where enemies will spawn
-					if (spawn.enemyPrefab)
-					{
-						GameObject effect = ObjectPooler.GetPooledObject(effectPrefab);
-
-						if (effect)
-						{
-							effect.transform.position = transform.TransformPoint(spawn.position);
-						}
-					}
-				}
-			}
-
-			//Wait for set time
-			yield return new WaitForSeconds(LevelVars.Instance.enemySpawnDelay);
-		}
-
-		//After delay, actually spawn the enemies
 		if (shouldSpawn && currentProfile != null)
 		{
 			//Randomise enemy positions if desired
@@ -235,6 +211,34 @@ public class EnemySpawner : MonoBehaviour
 				toSpawn = newSpawns;
 			}
 
+			//Spawn effects and wait for delay
+			if (LevelVars.Instance)
+			{
+				if (LevelVars.Instance.enemySpawnEffect)
+				{
+					//Get particle effect from pool
+					GameObject effectPrefab = LevelVars.Instance.enemySpawnEffect;
+
+					foreach (Profile.Spawn spawn in toSpawn)
+					{
+						//Spawn an effect where enemies will spawn
+						if (spawn.enemyPrefab)
+						{
+							GameObject effect = ObjectPooler.GetPooledObject(effectPrefab);
+
+							if (effect)
+							{
+								effect.transform.position = transform.TransformPoint(spawn.position);
+							}
+						}
+					}
+				}
+
+				//Wait for set time
+				yield return new WaitForSeconds(LevelVars.Instance.enemySpawnDelay);
+			}
+
+			//After delay, actually spawn the enemies
 			foreach (Profile.Spawn spawn in toSpawn)
 			{
 				if (spawn.enemyPrefab)
