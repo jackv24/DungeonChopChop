@@ -124,15 +124,18 @@ public class EnemySpawner : MonoBehaviour
 		}
 	}
 
-	public void Spawn()
-	{
-		//Don't spawn if tile already cleared
-		if (cleared)
-			return;
+    public void Spawn(bool overrideChecks = false)
+    {
+        if (!overrideChecks)
+        {
+            //Don't spawn if tile already cleared
+            if (cleared)
+                return;
 
-		//Don't spawn if we should wait for a message and have not received it
-		if(waitForSpawnMessage && !receivedMessage)
-            return;
+            //Don't spawn if we should wait for a message and have not received it
+            if (waitForSpawnMessage && !receivedMessage)
+                return;
+        }
 
         shouldSpawn = true;
 
