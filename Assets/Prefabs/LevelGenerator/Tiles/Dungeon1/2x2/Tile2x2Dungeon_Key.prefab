@@ -4119,6 +4119,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1665767746738570
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224901508700208952}
+  - component: {fileID: 222398990811658988}
+  - component: {fileID: 114940377773842808}
+  - component: {fileID: 114003494650968692}
+  - component: {fileID: 114990876284670798}
+  m_Layer: 5
+  m_Name: HelpText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1667065083640932
 GameObject:
   m_ObjectHideFlags: 1
@@ -21540,6 +21559,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114003494650968692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1665767746738570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 37c637da-5964-4958-8598-985069a73a6e
 --- !u!114 &114004656474903534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28243,7 +28274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19215688, g: 0.19215688, b: 0.19215688, a: 1}
+  m_Color: {r: 0.52156866, g: 0.49411768, b: 0.5019608, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -29484,6 +29515,7 @@ MonoBehaviour:
     - {fileID: 1286852826068572}
     - {fileID: 1316886434731090}
     - {fileID: 1945419000067174}
+    - {fileID: 1665767746738570}
   _assetGuid: dd16383de25388e47a8c2b98e44554d6
 --- !u!114 &114484719830843562
 MonoBehaviour:
@@ -36826,6 +36858,39 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+--- !u!114 &114940377773842808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1665767746738570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.72794116, g: 0.72794116, b: 0.72794116, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 210b82e56eeb4cc42b8e398af8ff048a, type: 3}
+    m_FontSize: 36
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 6
+    m_MaxSize: 128
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 0.7
+  m_Text: Here's a tip!
 --- !u!114 &114942282120974262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37497,6 +37562,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 4e183986-08cc-41b4-9d8a-e1307923fcef
+--- !u!114 &114990876284670798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1665767746738570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0a881eee65eae408ded72f22fac374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strings:
+  - Try heading for <i>Darkpine</i> first!
+  - There is a <i>trainer</i> in every biome
+  - Remember to upgrade your gear before venturing too far!
+  - You can challenge the <i>boss dungeon</i> after conquering the 4 other dungeons!
+  - Feeling lost? Purchase a map in town!
 --- !u!114 &114991335025328792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67816,6 +67898,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1286852826068572}
+--- !u!222 &222398990811658988
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1665767746738570}
 --- !u!222 &222704131510361494
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -67855,6 +67943,7 @@ RectTransform:
   - {fileID: 224335871629159160}
   - {fileID: 224835862441592934}
   - {fileID: 224550816259318924}
+  - {fileID: 224901508700208952}
   m_Father: {fileID: 4072169983898630}
   m_RootOrder: 55
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67912,10 +68001,28 @@ RectTransform:
   m_Father: {fileID: 224179114305734242}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!224 &224901508700208952
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1665767746738570}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224179114305734242}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 120}
+  m_SizeDelta: {x: 900, y: 152.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225976636210229640
 CanvasGroup:
