@@ -23,7 +23,6 @@ public class BossSpikeReset : MonoBehaviour {
 
     void ResetSpikes()
     {
-        Debug.Log("did");
         StartCoroutine(Reset());
     }
 

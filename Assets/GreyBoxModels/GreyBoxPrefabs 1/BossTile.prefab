@@ -410,7 +410,6 @@ GameObject:
   - component: {fileID: 65446286844796086}
   - component: {fileID: 114960999289747722}
   - component: {fileID: 114993175635354148}
-  - component: {fileID: 114378764540588890}
   m_Layer: 0
   m_Name: BossFace
   m_TagString: Untagged
@@ -2061,7 +2060,6 @@ GameObject:
   - component: {fileID: 95146375898032246}
   - component: {fileID: 114127852605867904}
   - component: {fileID: 114295237161260512}
-  - component: {fileID: 114000411137641762}
   m_Layer: 0
   m_Name: BossChest_MESH
   m_TagString: Untagged
@@ -4313,6 +4311,7 @@ GameObject:
   - component: {fileID: 114864541967187124}
   - component: {fileID: 114665768302431108}
   - component: {fileID: 114784549187537538}
+  - component: {fileID: 114084261819824180}
   m_Layer: 0
   m_Name: BossTile
   m_TagString: Untagged
@@ -7496,7 +7495,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1349603558663408}
   m_LocalRotation: {x: -0, y: 0.030141333, z: -0, w: 0.9995457}
-  m_LocalPosition: {x: 0.51, y: -11.43, z: 4.97}
+  m_LocalPosition: {x: 0.51, y: -23.58, z: 4.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4502317928060752}
@@ -20387,17 +20386,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114000411137641762
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1349603558663408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000641473318574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21041,6 +21029,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 57d8a1ba-8927-4d7c-8f4e-eb702f20a397
+--- !u!114 &114084261819824180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1747641356219178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114088614030525858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21153,6 +21152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2c0837f4304a34cba3bd06d113425e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minTimeBetweenSpawn: 5
+  maxTimeBetweenSpawn: 10
 --- !u!114 &114108738050370070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22851,7 +22852,7 @@ MonoBehaviour:
   _components:
   - {fileID: 95146375898032246}
   - {fileID: 114127852605867904}
-  - {fileID: 114000411137641762}
+  - {fileID: 0}
 --- !u!114 &114297265677855892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -23737,17 +23738,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: c6fdfb5f-7d96-4183-bb2e-5caa695225b8
---- !u!114 &114378764540588890
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1079884138813318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114382049286061350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -25088,7 +25078,6 @@ MonoBehaviour:
   enemyKind:
     enemyType: 0
     enemyBiome: 0
-  isBoss: 0
   isProp: 0
   isPoisoned: 0
   isBurned: 0
@@ -27510,6 +27499,32 @@ MonoBehaviour:
         type: 2}
       position: {x: 2.8316345, y: 0, z: 15.748608}
       rotation: {x: 0, y: 0, z: 0}
+  - randomised: 1
+    spawns:
+    - enemyPrefab: {fileID: 1738883904528832, guid: 9a83c258b0ee25b48a06735249487e66,
+        type: 2}
+      position: {x: 0, y: 0, z: 6.7670445}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1738883904528832, guid: 9a83c258b0ee25b48a06735249487e66,
+        type: 2}
+      position: {x: -42.240906, y: 0, z: 3.9576874}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1935585922168146, guid: cfee856ecb6585f4cb15246fbb7b939f,
+        type: 2}
+      position: {x: -0.28709412, y: 0, z: 22.758282}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1935585922168146, guid: cfee856ecb6585f4cb15246fbb7b939f,
+        type: 2}
+      position: {x: -42.240906, y: 0, z: 23.421509}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1935585922168146, guid: cfee856ecb6585f4cb15246fbb7b939f,
+        type: 2}
+      position: {x: 4.7875977, y: 0, z: 13.851173}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1935585922168146, guid: cfee856ecb6585f4cb15246fbb7b939f,
+        type: 2}
+      position: {x: -44.945007, y: 0, z: 14.738174}
+      rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
   undefeatedEnemies: []
 --- !u!114 &114816772674075566
@@ -28919,6 +28934,7 @@ MonoBehaviour:
   rotateSpeed: 1.1
   angle: 135
   rotationOffset: {x: 0, y: 0, z: 0}
+  lookAtPlayer: 1
 --- !u!114 &114961293439264862
 MonoBehaviour:
   m_ObjectHideFlags: 1
