@@ -32,16 +32,8 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
-        if (SceneManager.GetActiveScene().name == "Game")
-        {
-            StartCoroutine(SetupGame(startSceneIndex));
-        }
-
         if (LevelGenerator.Instance)
             LevelGenerator.Instance.OnTileEnter += CheckTileType;
-
-        //make sure we are in the game scene
-        SceneManager.sceneLoaded += SceneChange; 
 
         StartingItem startingItem = GameObject.FindObjectOfType<StartingItem>();
 
@@ -97,7 +89,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ChangeSceneSequence(int index)
     {
-        yield return SceneManager.UnloadSceneAsync(currentSceneIndex);
+		if(currentSceneIndex >= 0)
+			yield return SceneManager.UnloadSceneAsync(currentSceneIndex);
 
         //stuff inbetween scenes
 
