@@ -156,6 +156,11 @@ public class EnemySpawner : MonoBehaviour
         }
 	}
 
+    public void SetRandomProfile()
+    {
+        currentProfile = profiles[Random.Range(0, profiles.Count)];
+    }
+
 	IEnumerator SpawnWithEffect()
 	{
 		bool newEnemies = false;
@@ -168,7 +173,7 @@ public class EnemySpawner : MonoBehaviour
 			//Select random profile
 			if (profiles.Count > 0)
 			{
-				currentProfile = profiles[Random.Range(0, profiles.Count)];
+                SetRandomProfile();
 
 				toSpawn.AddRange(currentProfile.spawns);
 			}

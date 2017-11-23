@@ -55,6 +55,8 @@ public class BossEnemySpawner : MonoBehaviour {
 	// Update is called once per frame
     void SpawnEnemies () 
     {
+        enemySpawner.SetRandomProfile();
+
         enemySpawner.Spawn(true);
 	}
 }
