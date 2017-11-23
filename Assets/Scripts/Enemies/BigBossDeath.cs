@@ -21,7 +21,7 @@ public class BigBossDeath : MonoBehaviour {
 	
     void DoDeath()
     {
-
+        StartCoroutine(Death());
     }
 
     IEnumerator Death()

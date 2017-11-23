@@ -38,6 +38,8 @@ public class FloorSpikes : MonoBehaviour {
     private int leverCounter = 0;
     private bool spiking = false;
 
+    private bool firstEnter = true;
+
 
 	// Use this for initialization
 	void Start () 
@@ -51,17 +53,16 @@ public class FloorSpikes : MonoBehaviour {
 
         if (tile)
         {
-            tile.OnTileEnter += SetState;
-            tile.OnTileExit += SetState;
+            tile.OnTileEnter += SetActive;
+            tile.OnTileExit += SetDeactive;
         }
 
         animator = GetComponentInChildren<Animator>();
         StartCoroutine(spikeDelay());
 
-        animator.speed = animationSpeed;
+        SetupLevers();
 
-        if (startUp)
-            animator.SetBool("Trigger", true);
+        animator.speed = animationSpeed;
 	}
 
     void SetupLevers()
@@ -75,20 +76,19 @@ public class FloorSpikes : MonoBehaviour {
         }
     }
 
-    void SetState()
+    void SetActive()
     {
-        if (active)
-        {
-            active = false;
-            animator.gameObject.SetActive(false);
-        }
-        else
-        {
-            active = true;
-            animator.gameObject.SetActive(true);
-        }
+        active = true;
+        animator.gameObject.SetActive(true);
 
-        SetupLevers();
+        if (startUp)
+            animator.SetBool("Trigger", true);
+    }
+
+    void SetDeactive()
+    {
+        active = false;
+        animator.gameObject.SetActive(false);
     }
 
     IEnumerator spikeDelay()

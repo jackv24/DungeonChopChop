@@ -12,6 +12,8 @@ public class LookAtPlayer : MonoBehaviour
 	public float angle = 135.0f;
 
 	public Vector3 rotationOffset = new Vector3(0, 0, -90);
+    [Space()]
+    public bool lookAtPlayer = true;
 
 	private Quaternion currentRotation;
 	private Quaternion targetRotation;
@@ -38,48 +40,51 @@ public class LookAtPlayer : MonoBehaviour
 
 	void LateUpdate()
 	{
-		if (targets.Length > 0)
-		{
-			float closestDistance = float.MaxValue;
-			Transform closest = null;
+        if (lookAtPlayer)
+        {
+            if (targets.Length > 0)
+            {
+                float closestDistance = float.MaxValue;
+                Transform closest = null;
 
-			foreach (Transform target in targets)
-			{
-				float distance = Vector3.Distance(transform.position, target.position);
+                foreach (Transform target in targets)
+                {
+                    float distance = Vector3.Distance(transform.position, target.position);
 
-				if (distance < closestDistance)
-				{
-					Vector3 playerDirection = target.position - transform.position;
-					playerDirection.y = 0;
+                    if (distance < closestDistance)
+                    {
+                        Vector3 playerDirection = target.position - transform.position;
+                        playerDirection.y = 0;
 
-					if (Mathf.Abs(Vector3.Angle(initialForward, playerDirection)) <= angle / 2)
-					{
-						closestDistance = distance;
-						closest = target;
-					}
-				}
-			}
+                        if (Mathf.Abs(Vector3.Angle(initialForward, playerDirection)) <= angle / 2)
+                        {
+                            closestDistance = distance;
+                            closest = target;
+                        }
+                    }
+                }
 
-			if (closest && closestDistance < range)
-			{
-				Vector3 playerPos = closest.position;
-				Vector3 npcPos = transform.position;
+                if (closest && closestDistance < range)
+                {
+                    Vector3 playerPos = closest.position;
+                    Vector3 npcPos = transform.position;
 
-				Vector3 delta = playerPos - npcPos;
-				delta.y = 0;
+                    Vector3 delta = playerPos - npcPos;
+                    delta.y = 0;
 
-				targetRotation = Quaternion.LookRotation(delta);
-				targetRotation.eulerAngles += rotationOffset;
-			}
-			else
-				targetRotation = initialRotation;
-		}
-		else
-			targetRotation = initialRotation;
+                    targetRotation = Quaternion.LookRotation(delta);
+                    targetRotation.eulerAngles += rotationOffset;
+                }
+                else
+                    targetRotation = initialRotation;
+            }
+            else
+                targetRotation = initialRotation;
 
-		currentRotation = Quaternion.Slerp(currentRotation, targetRotation, rotateSpeed * Time.deltaTime);
+            currentRotation = Quaternion.Slerp(currentRotation, targetRotation, rotateSpeed * Time.deltaTime);
 
-		transform.rotation = currentRotation;
+            transform.rotation = currentRotation;
+        }
 	}
 
 #if UNITY_EDITOR
