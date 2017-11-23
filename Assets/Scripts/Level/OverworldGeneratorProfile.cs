@@ -30,6 +30,11 @@ public class OverworldGeneratorProfile : LevelGeneratorProfile
 
 		if (levelGenerator.profile.succeeded != false)
             SetupShopTiers(levelGenerator);
+
+		//Boss dungeon seed
+		DungeonEntrance entrance = levelGenerator.generatedTiles[0].GetComponentInChildren<DungeonEntrance>();
+		if (entrance)
+			entrance.seed = LevelGenerator.Random.Next(0, 1000);
 	}
 
 	void RandomiseBiomes()
