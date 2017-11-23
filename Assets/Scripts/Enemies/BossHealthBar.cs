@@ -50,4 +50,9 @@ public class BossHealthBar : MonoBehaviour {
 
         bossHealth.OnDeath += OnDeath;
     }
+
+    public void Disable()
+    {
+        bossBar.gameObject.SetActive(false);
+    }
 }

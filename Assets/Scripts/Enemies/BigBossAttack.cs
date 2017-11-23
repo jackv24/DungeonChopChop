@@ -45,9 +45,16 @@ public class BigBossAttack : EnemyAttack {
 
     private int hitCounter = 0;
     private bool knockedOut = false;
+
     private ParticleSystem beamParticleSystem;
+    private LookAtPlayer lookAtPlayer;
 
     private int counter = 0;
+    private bool active = false;
+    private LevelTile tile;
+
+    private bool subscribed = false;
+    private bool alive = true;
 
     //[Header("Beam Attack Values")]
 
@@ -59,15 +66,55 @@ public class BigBossAttack : EnemyAttack {
 
         usesChildRotation = true;
 
-        StartCoroutine(wait());
+        tile = GetComponentInParent<LevelTile>();
+
+        lookAtPlayer = GetComponent<LookAtPlayer>();
+
+        tile.OnTileEnter += ActivateBoss;
+        tile.OnTileExit += DisableHealthBar;
+    }
+
+    void ActivateBoss()
+    {
+        active = true;
+
+        animator.SetTrigger("Activate");
+
+        BossHealthBar.Instance.SetBoss(enemyHealth);
+
+        if (!subscribed)
+        {
+            if (enemyHealth)
+            {
+                enemyHealth.OnHealthNegative += CheckHitCount;
+                enemyHealth.OnDeath += DoDeath;
+                subscribed = true;
+            }
+        }
+
+        //tile.GetComponent<EnemySpawner>().Spawn(true);
+    }
+
+    void DoDeath()
+    {
+        alive = false;
+
+        lookAtPlayer.lookAtPlayer = false;
+
+        animator.SetTrigger("Death");
+    }
+
+    void DisableHealthBar()
+    {
+        BossHealthBar.Instance.Disable();
     }
 
     // Update is called once per frame
     void FixedUpdate () 
     {
-            //only count up when the boss is in the idle state
-        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle"))
+        if (active && alive && animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle"))
         {
+            //only count up when the boss is in the idle state
             counter++;
 
             if (counter > timeBetweenAttacks * 60)
@@ -84,15 +131,6 @@ public class BigBossAttack : EnemyAttack {
                 counter = 0;
             }
         }
-    }
-
-    IEnumerator wait()
-    {
-        yield return new WaitForSeconds(.2f);
-
-        enemyHealth.OnHealthNegative += CheckHitCount;
-
-        BossHealthBar.Instance.SetBoss(enemyHealth);
     }
 
     float Percentage(float number, int percent)
@@ -161,6 +199,8 @@ public class BigBossAttack : EnemyAttack {
     {
         if (OnKnockout != null)
             OnKnockout();
+
+        lookAtPlayer.lookAtPlayer = false;
         
         animator.SetBool("KnockedOut", true);
     }
@@ -191,6 +231,8 @@ public class BigBossAttack : EnemyAttack {
     {
         if (OnKnockoutRecover != null)
             OnKnockoutRecover();
+
+        lookAtPlayer.lookAtPlayer = true;
         
         animator.SetBool("KnockedOut", false);
         knockedOut = false;

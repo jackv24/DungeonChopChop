@@ -30,7 +30,6 @@ public class Health : MonoBehaviour
     [Space()]
     public bool IsEnemy;
     public EnemyKind enemyKind;
-    public bool isBoss = false;
     [Space()]
     public bool isProp;
 
@@ -898,7 +897,8 @@ public class Health : MonoBehaviour
         if (!isProp)
             SetOGFade();
 
-        ailmentIcon.SetActive(false);
+        if (ailmentIcon)
+            ailmentIcon.SetActive(false);
 
         SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.End, transform.position);
 
