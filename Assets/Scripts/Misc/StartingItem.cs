@@ -78,6 +78,9 @@ public class StartingItem : MonoBehaviour {
             obj.transform.position = player.transform.position;
 
             CharmPickup pickup = obj.GetComponentInChildren<CharmPickup>();
+
+            pickup.representingCharm = prize.charm;
+
             if (pickup)
             {
                 pickup.Pickup(player);
