@@ -161,6 +161,8 @@ public class PlayerInformation : MonoBehaviour
         //call the event function
         alivePlayer.health.HealthChanged();
 
+        deadPlayer.RemoveAilment();
+
         //sets the dead players health
         deadPlayer.health.health = health;
         //call this event function

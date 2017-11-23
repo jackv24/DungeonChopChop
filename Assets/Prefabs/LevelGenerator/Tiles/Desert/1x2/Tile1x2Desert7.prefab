@@ -5809,6 +5809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -5824,6 +5825,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114286746202084690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5897,37 +5902,91 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawned: 0
   waitForSpawnMessage: 0
+  sendDefeatedMessage: 0
+  defeatedMessage: 
   currentProfileIndex: 0
   profiles:
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
         type: 2}
-      position: {x: -9.483121, y: 0, z: 3.2100143}
+      position: {x: -9.079959, y: 0, z: 5.452299}
       rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
         type: 2}
       position: {x: -14.6981735, y: 0, z: -4.122177}
       rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
+        type: 2}
+      position: {x: -14.6981735, y: 0, z: -4.122177}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
+        type: 2}
+      position: {x: -23.927309, y: 0, z: 5.405033}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
+        type: 2}
+      position: {x: 1.87187, y: 0, z: -5.5206494}
+      rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
         type: 2}
-      position: {x: -4.387123, y: 0, z: -5.0761433}
+      position: {x: -24.894108, y: 0, z: 6.2298193}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
+        type: 2}
+      position: {x: 4.1210203, y: 0, z: -5.4891047}
       rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
         type: 2}
-      position: {x: -15.62933, y: 0, z: 4.989826}
+      position: {x: -15.211433, y: 0, z: 5.1889195}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
+        type: 2}
+      position: {x: -14.38705, y: 0, z: -4.855403}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
+        type: 2}
+      position: {x: -6.2117047, y: 0, z: -4.863962}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
+        type: 2}
+      position: {x: -6.317177, y: 0, z: 5.1261616}
       rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
-    - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
+    - enemyPrefab: {fileID: 1020675461925768, guid: 36a451ab61c189a4ca1aef858a1688ef,
         type: 2}
-      position: {x: -4.9776707, y: 0, z: 3.4098892}
+      position: {x: -7.990443, y: 6.9059105, z: -0.91656375}
       rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
         type: 2}
-      position: {x: -19.169037, y: 0, z: -0.3115692}
+      position: {x: -10.750111, y: 0, z: 5.9479976}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
+        type: 2}
+      position: {x: 1.2452016, y: 0, z: -5.669359}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
+        type: 2}
+      position: {x: -22.8169, y: 0, z: 3.0718021}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
+        type: 2}
+      position: {x: -15.253407, y: 0, z: -4.5716696}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1020675461925768, guid: 36a451ab61c189a4ca1aef858a1688ef,
+        type: 2}
+      position: {x: -11.974161, y: 0, z: 2.6355534}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1020675461925768, guid: 36a451ab61c189a4ca1aef858a1688ef,
+        type: 2}
+      position: {x: -7.9959297, y: 0, z: -2.6796255}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1020675461925768, guid: 36a451ab61c189a4ca1aef858a1688ef,
+        type: 2}
+      position: {x: -12.785674, y: 0, z: -0.6744909}
       rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
   undefeatedEnemies: []
@@ -6127,6 +6186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -6142,6 +6202,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114543203026087100
 MonoBehaviour:
   m_ObjectHideFlags: 1
