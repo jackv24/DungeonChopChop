@@ -12,31 +12,84 @@ public enum SpikeType
 
 public class FloorSpikes : MonoBehaviour {
 
+    public delegate void SpikeEvent();
+
+    public event SpikeEvent OnSpikeUp;
+    public event SpikeEvent OnSpikeDown;
+
     public SpikeType spikeType;
     public float delayTime = 0;
     public float animationSpeed = 1;
     public bool startUp;
 
-    public Lever lever;
+    public Lever[] levers;
 
-    private Animator animator;
+    [Header("Audio and Particles")]
+    public AmountOfParticleTypes[] particleOnUp;
+    public SoundEffect soundOnUp;
+
+    private LevelTile tile;
+    [HideInInspector]
+    public Animator animator;
     private bool startSpiking = false;
+    private EnemyAttack enemyAttack;
+
+    private bool active = false;
+    private int leverCounter = 0;
+    private bool spiking = false;
+
+    private bool firstEnter = true;
 
 
 	// Use this for initialization
 	void Start () 
     {
+        enemyAttack = GetComponentInChildren<EnemyAttack>();
+
+        if (enemyAttack)
+            enemyAttack.damagesOtherEnemies = true;
+
+        tile = GetComponentInParent<LevelTile>();
+
+        if (tile)
+        {
+            tile.OnTileEnter += SetActive;
+            tile.OnTileExit += SetDeactive;
+        }
+
         animator = GetComponentInChildren<Animator>();
         StartCoroutine(spikeDelay());
 
-        animator.speed = animationSpeed;
+        SetupLevers();
 
-        if (lever)
-            lever.OnLeverActivated += Deactivated;
+        animator.speed = animationSpeed;
+	}
+
+    void SetupLevers()
+    {
+        levers = tile.GetComponentsInChildren<Lever>();
+
+        if (levers.Length > 0)
+        {
+            foreach(Lever lever in levers)
+                lever.OnLeverActivated += Deactivated;
+        }
+    }
+
+    void SetActive()
+    {
+        active = true;
+        animator.gameObject.SetActive(true);
 
         if (startUp)
             animator.SetBool("Trigger", true);
-	}
+    }
+
+    void SetDeactive()
+    {
+        active = false;
+        animator.gameObject.SetActive(false);
+    }
 
     IEnumerator spikeDelay()
     {
@@ -47,23 +100,62 @@ public class FloorSpikes : MonoBehaviour {
     IEnumerator boolCooldown()
     {
         animator.SetBool("Trigger", true);
+        if (OnSpikeUp != null)
+            OnSpikeUp();
         yield return new WaitForEndOfFrame();
         animator.SetBool("Trigger", false);
+        if (OnSpikeDown != null)
+            OnSpikeDown();
+    }
+
+    public void SpikeUp()
+    {
+        if (OnSpikeUp != null)
+            OnSpikeUp();
+    }
+
+    public void SpikeDown()
+    {
+        if (OnSpikeDown != null)
+            OnSpikeDown();
+    }
+
+    public void Deactivate()
+    {
+        animator.SetBool("Trigger", false);
+    }
+
+    public void Activate()
+    {
+        animator.SetBool("Trigger", true);
     }
 
     void Deactivated()
     {
-        animator.SetBool("Trigger", false);
+        leverCounter++;
+
+        if (leverCounter >= levers.Length)
+        {
+            animator.SetBool("Trigger", false);
+            SpikeDown();
+            leverCounter = 0;
+        }
     }
 
     void FixedUpdate()
     {
-        if (animator.gameObject.activeSelf)
+        if (active)
         {
-            if (startSpiking)
+            if (animator.gameObject.activeSelf)
             {
-                if (spikeType == SpikeType.Constantly)
-                    animator.SetBool("Trigger", true);
+                if (startSpiking)
+                {
+                    if (spikeType == SpikeType.Constantly)
+                    {
+                        animator.SetBool("Trigger", true);
+                        spiking = true;
+                    }
+                }
             }
         }
     }

@@ -263,35 +263,8 @@ MonoBehaviour:
   _referenceCollection:
     _collection:
     - {fileID: 1379723316772260}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     - {fileID: 1694076661478278}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     - {fileID: 1405901010848328}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     - {fileID: 1463545186711102}
   _assetGuid: d6e71062c89e59041add62c141d71510
 --- !u!114 &114266937501811404
@@ -330,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -348,6 +322,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114656027954159932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -370,11 +345,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1bf5e903cfed1469282c2438e582e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikeType: 0
+  spikeType: 2
   delayTime: 0.5
   animationSpeed: 1
-  startUp: 0
-  lever: {fileID: 0}
+  startUp: 1
+  bossSpike: 1
+  levers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  particleOnUp: []
+  soundOnUp:
+    clips:
+    - {fileID: 8300000, guid: e156b0a44fe2bec4fb8b4004845dce3f, type: 3}
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  animator: {fileID: 0}
 --- !u!114 &114809715420710648
 MonoBehaviour:
   m_ObjectHideFlags: 1

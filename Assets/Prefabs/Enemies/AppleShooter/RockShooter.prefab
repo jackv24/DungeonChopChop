@@ -1442,6 +1442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 2
+  damagesOtherEnemies: 0
   projecticle: {fileID: 1368690437338182, guid: a5a1d09709538664aa1ad82a4c31a9de,
     type: 2}
   shootPosition: {fileID: 1089216748759306}
@@ -1459,9 +1460,9 @@ MonoBehaviour:
   timeTillInterval: 2
   minInterval: 2
   maxInterval: 6
-  burstFire: 0
-  burstAmount: 0
-  timeBetweenShots: 0
+  burstFire: 1
+  burstAmount: 2
+  timeBetweenShots: 0.5
 --- !u!114 &114589051355029414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1669,7 +1670,7 @@ MonoBehaviour:
   LockY: 1
   usingNav: 0
   rotateSpeed: 5
-  hitsTillShoot: 2
+  hitsTillShoot: 1
   lockRotation: 0
   constantShooting: 0
 --- !u!114 &114792984215450224

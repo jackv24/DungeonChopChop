@@ -29,34 +29,92 @@ public class BigBossAttack : EnemyAttack {
 
     [Header("Spread Attack Values")]
     public int amountOfProjectiles = 10;
+    public int stage2BurstAmount = 3;
+    public int stage3BurstAmount = 6;
 
     [Header("Knocked Out Values")]
     public int amountTillKnockout;
+
+    [Header("Beam Values")]
+    public GameObject beam;
+    public float stage1BeamSpeedMulti = 1;
+    public float stage2BeamSpeedMulti = 2;
+    public float stage3BeamSpeedMulti = 3;
 
     public int stage = 0;
 
     private int hitCounter = 0;
     private bool knockedOut = false;
 
+    private ParticleSystem beamParticleSystem;
+    private LookAtPlayer lookAtPlayer;
+
     private int counter = 0;
+    private bool active = false;
+    private LevelTile tile;
+
+    private bool subscribed = false;
+    private bool alive = true;
 
     //[Header("Beam Attack Values")]
 
     void Awake()
     {
+        beamParticleSystem = beam.GetComponentInChildren<ParticleSystem>();
+
         burstFire = false;
 
         usesChildRotation = true;
 
-        StartCoroutine(wait());
+        tile = GetComponentInParent<LevelTile>();
+
+        lookAtPlayer = GetComponent<LookAtPlayer>();
+
+        tile.OnTileEnter += ActivateBoss;
+        tile.OnTileExit += DisableHealthBar;
+    }
+
+    void ActivateBoss()
+    {
+        active = true;
+
+        animator.SetTrigger("Activate");
+
+        BossHealthBar.Instance.SetBoss(enemyHealth);
+
+        if (!subscribed)
+        {
+            if (enemyHealth)
+            {
+                enemyHealth.OnHealthNegative += CheckHitCount;
+                enemyHealth.OnDeath += DoDeath;
+                subscribed = true;
+            }
+        }
+
+        //tile.GetComponent<EnemySpawner>().Spawn(true);
+    }
+
+    void DoDeath()
+    {
+        alive = false;
+
+        lookAtPlayer.lookAtPlayer = false;
+
+        animator.SetTrigger("Death");
+    }
+
+    void DisableHealthBar()
+    {
+        BossHealthBar.Instance.Disable();
     }
 
     // Update is called once per frame
     void FixedUpdate () 
     {
-            //only count up when the boss is in the idle state
-        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle"))
+        if (active && alive && animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle"))
         {
+            //only count up when the boss is in the idle state
             counter++;
 
             if (counter > timeBetweenAttacks * 60)
@@ -75,24 +133,50 @@ public class BigBossAttack : EnemyAttack {
         }
     }
 
-    IEnumerator wait()
-    {
-        yield return new WaitForSeconds(.2f);
-
-        enemyHealth.OnHealthNegative += CheckHitCount;
-    }
-
     float Percentage(float number, int percent)
     {
         return ((float)number * percent) / 100;
     }
 
+    public void BeamDisable()
+    {
+        beamParticleSystem.Stop();
+    }
+
     void Beam()
     {
+        //beamParticleSystem.Play();
+
         if (OnBeamAttack != null)
             OnBeamAttack();
 
         StartCoroutine(boolWait("Beam"));
+
+        StartCoroutine(SetBeamDuration());
+    }
+
+    IEnumerator SetBeamDuration()
+    {
+        beamParticleSystem.Stop();
+
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Beam"))
+            yield return new WaitForEndOfFrame();
+
+        if (stage == 0)
+            animator.speed = stage1BeamSpeedMulti;
+        else if (stage == 1)
+            animator.speed = stage2BeamSpeedMulti;
+        else if (stage == 2)
+            animator.speed = stage3BeamSpeedMulti;
+
+        ParticleSystem.MainModule main = beamParticleSystem.main;
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Beam"))
+        {
+            main.duration = 3f * animator.GetCurrentAnimatorStateInfo(0).speedMultiplier;
+        }
+
+        beamParticleSystem.Play();
     }
 
     void Sweep()
@@ -115,6 +199,8 @@ public class BigBossAttack : EnemyAttack {
     {
         if (OnKnockout != null)
             OnKnockout();
+
+        lookAtPlayer.lookAtPlayer = false;
         
         animator.SetBool("KnockedOut", true);
     }
@@ -134,16 +220,19 @@ public class BigBossAttack : EnemyAttack {
             }
         }
 
-        if (enemyHealth.health <= Percentage(enemyHealth.maxHealth, 50))
-            stage = 1;
-        else if (enemyHealth.health <= Percentage(enemyHealth.maxHealth, 25))
+        if (enemyHealth.health <= Percentage(enemyHealth.maxHealth, 25))
             stage = 2;
+        else if (enemyHealth.health <= Percentage(enemyHealth.maxHealth, 50))
+            stage = 1;
+        
     }
 
     public void RecoveredFromKnockout()
     {
         if (OnKnockoutRecover != null)
             OnKnockoutRecover();
+
+        lookAtPlayer.lookAtPlayer = true;
         
         animator.SetBool("KnockedOut", false);
         knockedOut = false;
@@ -180,7 +269,9 @@ public class BigBossAttack : EnemyAttack {
         if (stage == 0)
             ShootBetweenTwoAngles(-45, 45, amountOfProjectiles, false);
         else if (stage == 1)
-            StartCoroutine(BurstFire(true, BossAttackType.Spread, burstAmount));
+            StartCoroutine(BurstFire(true, BossAttackType.Spread, stage2BurstAmount));
+        else if (stage == 2)
+            StartCoroutine(BurstFire(true, BossAttackType.Spread, stage3BurstAmount));
     }
 
     public void SweepAttack()

@@ -182,6 +182,17 @@ public class PlayerMove : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(-inputVector.x, 0, -inputVector.y)), rotateSpeed * Time.deltaTime);
         }
     }
+
+    public void TeleportToTown()
+    {
+        PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
+
+        if(LevelGenerator.Instance)
+            LevelGenerator.Instance.generatedTiles[0].SetCurrent(LevelGenerator.Instance.currentTile);
+
+        foreach (PlayerInformation playerInfo in playerInfos)
+            playerInfo.transform.position = LevelGenerator.Instance ? LevelGenerator.Instance.generatedTiles[0].tileOrigin.position : Vector3.up;
+    }
 	
 	// Update is called once per frame
 	void Update()
@@ -197,13 +208,7 @@ public class PlayerMove : MonoBehaviour
         //if the player falls through the floor
         if (transform.position.y < -20)
         {
-            PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
-
-			if(LevelGenerator.Instance)
-				LevelGenerator.Instance.generatedTiles[0].SetCurrent(LevelGenerator.Instance.currentTile);
-
-            foreach (PlayerInformation playerInfo in playerInfos)
-                playerInfo.transform.position = LevelGenerator.Instance ? LevelGenerator.Instance.generatedTiles[0].tileOrigin.position : Vector3.up;
+            TeleportToTown();
         }
 
 		doAnimations();

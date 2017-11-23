@@ -23,6 +23,7 @@ public class EnemyAttack : MonoBehaviour
 
 
     public TypesOfAttack attackingType;
+    public bool damagesOtherEnemies = true;
 
     [Header("Projectile Vars")]
     [HideInInspector]
@@ -31,6 +32,7 @@ public class EnemyAttack : MonoBehaviour
     public GameObject shootPosition;
     [HideInInspector]
     public float thrust;
+    [HideInInspector]
     public float projectileDmgMutliplier;
 
     [Space()]
@@ -75,7 +77,8 @@ public class EnemyAttack : MonoBehaviour
     protected EnemyDeath enemyDeath;
     protected NavMeshAgent agent;
 
-    protected bool usesChildRotation = false;
+    [HideInInspector]
+    public bool usesChildRotation = false;
 
     private Collider col;
 
@@ -204,6 +207,26 @@ public class EnemyAttack : MonoBehaviour
             StartCoroutine(BurstFire());
         else
             Shoot();
+    }
+
+    public void DoShoot()
+    {
+        //create the projecticle
+        GameObject projectile = ObjectPooler.GetPooledObject(projecticle);
+
+        if (!shootPosition)
+            projectile.transform.position = transform.position;
+        else
+            projectile.transform.position = shootPosition.transform.position;
+
+        projectile.transform.rotation = transform.rotation;
+
+        projectile.GetComponent<ProjectileCollision>().damageMultiplyer = projectileDmgMutliplier;
+        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * thrust, ForceMode.Impulse);
+        projectile.GetComponent<ProjectileCollision>().thrust = thrust;
+
+        //do sound
+        SoundManager.PlaySound(shootSounds, transform.position);
     }
 
     void Shoot()
@@ -450,6 +473,13 @@ public class EnemyAttack : MonoBehaviour
                     enemyMove.runAwayForSeconds();
             }
         }
+        else
+        {
+            if (damagesOtherEnemies)
+            {
+                c.health.AffectHealth(-damageOnTouch);
+            }
+        }
 
         if (enemyHealth)
         {
@@ -532,5 +562,14 @@ public class EnemyAttack : MonoBehaviour
             if (!colliding.Contains(c))
                 colliding.Remove(c);
         }
+    }
+
+    public void SpikeSound()
+    {
+        SoundManager.PlaySound(SoundManager.Instance.spikeSound, transform.position);
+
+        FloorSpikes floorSpike = GetComponentInParent<FloorSpikes>();
+
+        SpawnEffects.EffectOnHit(floorSpike.particleOnUp, transform.position);
     }
 }

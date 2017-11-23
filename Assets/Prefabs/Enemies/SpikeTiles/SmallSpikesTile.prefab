@@ -76,7 +76,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1080978583988334}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.003487, y: 1.2084495, z: -3.7518415}
+  m_LocalPosition: {x: -4.830482, y: 14.4471655, z: 13.305013}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4911120175336864}
@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -259,6 +260,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114133458617792930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -317,7 +319,14 @@ MonoBehaviour:
   delayTime: 0
   animationSpeed: 1
   startUp: 0
-  lever: {fileID: 0}
+  levers: []
+  particleOnUp: []
+  soundOnUp:
+    clips: []
+    volume: 1
+    minPitchVariance: -0.1
+    maxPitchVariance: 0.1
+  animator: {fileID: 0}
 --- !u!114 &114834857294377236
 MonoBehaviour:
   m_ObjectHideFlags: 1

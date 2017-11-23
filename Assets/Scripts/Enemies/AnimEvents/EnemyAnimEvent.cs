@@ -18,11 +18,13 @@ public class EnemyAnimEvent : MonoBehaviour {
 
     public void Shoot()
     {
-        enemyAttack.Shootforward();
+        enemyAttack.usesChildRotation = false;
+        enemyAttack.DoShoot();
     }
 
     public void ShootCircle()
     {
+        enemyAttack.usesChildRotation = false;
         enemyAttack.ShootCircle();
     }
 }

@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 82706595398126474}
   - component: {fileID: 114908950883978410}
   - component: {fileID: 114255114792646188}
+  - component: {fileID: 114149974465993370}
   m_Layer: 11
   m_Name: SlimeBlue
   m_TagString: Slime
@@ -881,9 +882,25 @@ MonoBehaviour:
   amountToFlash: 1
   fadeTime: 5
   hitShake:
-    magnitude: 0.2
+    magnitude: 0.1
     shakeAmount: 2
     duration: 0.3
+--- !u!114 &114149974465993370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320440510133452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e835c48d15c08240ad72fe07736a33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusType: 3
+  damagePerTick: 0
+  duration: 4
+  timeBetweenDamage: 0
+  speedDamper: 0
 --- !u!114 &114160418837965842
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -1184,6 +1201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 80

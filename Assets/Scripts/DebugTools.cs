@@ -171,19 +171,29 @@ public class DebugTools : MonoBehaviour
                     DungeonGeneratorProfile dungeonProfile = (DungeonGeneratorProfile)LevelGenerator.Instance.profile;
                     LevelTile tpTile = null;
 
-                    //Get tile to teleport to
-                    if (Input.GetKeyDown(KeyCode.Alpha0))
-                    {
-                        tpTile = generatedTiles[0];
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha1))
-                    {
-                        tpTile = dungeonProfile.keyTileObj.GetComponentInParent<LevelTile>();
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha2))
-                    {
-                        tpTile = dungeonProfile.chestTileObj.GetComponentInParent<LevelTile>();
-                    }
+					//Get tile to teleport to
+					if (dungeonProfile.dungeonBiome != LevelTile.Biomes.BossDungeon)
+					{
+						if (Input.GetKeyDown(KeyCode.Alpha0))
+						{
+							tpTile = generatedTiles[0];
+						}
+						else if (Input.GetKeyDown(KeyCode.Alpha1))
+						{
+							tpTile = dungeonProfile.keyTileObj.GetComponentInParent<LevelTile>();
+						}
+						else if (Input.GetKeyDown(KeyCode.Alpha2))
+						{
+							tpTile = dungeonProfile.chestTileObj.GetComponentInParent<LevelTile>();
+						}
+					}
+					else
+					{
+						if (Input.GetKeyDown(KeyCode.Alpha1))
+						{
+							tpTile = LevelGenerator.Instance.generatedTiles[0];
+						}
+					}
 
                     //if tile was selected to teleport, teleport to it
                     if (tpTile)
@@ -264,9 +274,18 @@ public class DebugTools : MonoBehaviour
                 }
                 else if (LevelGenerator.Instance.profile is DungeonGeneratorProfile)
                 {
-                    text += "\nTP to Entrance: T+0\n";
-                    text += "TP to Key Room: T+1\n";
-                    text += "TP to Chest Room: T+2\n";
+					DungeonGeneratorProfile profile = (DungeonGeneratorProfile)LevelGenerator.Instance.profile;
+
+					if (profile.dungeonBiome != LevelTile.Biomes.BossDungeon)
+					{
+						text += "\nTP to Entrance: T+0\n";
+						text += "TP to Key Room: T+1\n";
+						text += "TP to Chest Room: T+2\n";
+					}
+					else
+					{
+						text += "\nTP to Boss: T+1\n";
+					}
                 }
             }
 

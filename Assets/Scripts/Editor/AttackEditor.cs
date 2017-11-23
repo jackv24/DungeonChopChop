@@ -58,6 +58,7 @@ public class AttackEditor : Editor {
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("projecticle"), new GUIContent("Projectile"));
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("shootPosition"), new GUIContent("Shoot Position"));
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("thrust"), new GUIContent("Thrust of projectile"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("projectileDmgMutliplier"), new GUIContent("Proj Damage Multiplier"));
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("burstFire"), new GUIContent("Burst Fire"));
 

@@ -28,10 +28,7 @@ public class WelcomeMan : MonoBehaviour {
     {
         if (!looted)
         {
-            if (ItemsManager.Instance.hasBoots ||
-                ItemsManager.Instance.hasGoggles ||
-                ItemsManager.Instance.hasArmourPiece ||
-                ItemsManager.Instance.hasGauntles)
+            if (GameManager.Instance.enteredDungeon)
             {
                 dialogueSpeaker.lines[0] = messageAfterCollectingLoot;
                 looted = true;

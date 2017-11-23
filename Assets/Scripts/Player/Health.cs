@@ -30,6 +30,7 @@ public class Health : MonoBehaviour
     [Space()]
     public bool IsEnemy;
     public EnemyKind enemyKind;
+    [Space()]
     public bool isProp;
 
     [Space()]
@@ -357,11 +358,18 @@ public class Health : MonoBehaviour
     {
         if (GetComponent<UnityEngine.AI.NavMeshAgent>())
         {
-            GetComponent<EnemyMove>().usingNav = false;
-            GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            NavMeshAgent nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            EnemyMove em = GetComponent<EnemyMove>();
+
+            em.usingNav = false;
+            nav.enabled = false;
+
             yield return new WaitForSeconds(seconds);
-            GetComponent<EnemyMove>().usingNav = true;
-            GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+
+            em.usingNav = true;
+            nav.enabled = true;
+
+            rb.velocity = Vector3.zero;
         }
     }
 
@@ -889,7 +897,8 @@ public class Health : MonoBehaviour
         if (!isProp)
             SetOGFade();
 
-        ailmentIcon.SetActive(false);
+        if (ailmentIcon)
+            ailmentIcon.SetActive(false);
 
         SoundManager.PlayAilmentSound(StatusType.burn, ailmentSoundType.End, transform.position);
 

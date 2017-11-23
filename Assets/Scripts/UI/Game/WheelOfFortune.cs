@@ -48,17 +48,6 @@ public class WheelOfFortune : MonoBehaviour
     private int randomTime;
     private int itemNumber;
 
-    void Start()
-    {
-                
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            SpinWheel();
-    }
-
     public void SpinWheel()
     {
         spinning = false;
@@ -123,7 +112,7 @@ public class WheelOfFortune : MonoBehaviour
             else if (startingItem.prize.charm)
                 playAgainText.text = "TAKE THIS TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.charm.displayName + "'</color> charm";
             else if (startingItem.prize.coins > 0)
-                playAgainText.text = "TAKE THIS TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.coins + "'</color> Gemeralds";
+                playAgainText.text = "TAKE THIS TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.coins + "'</color> Gold";
             else if (startingItem.prize.keys > 0)
                 playAgainText.text = "TAKE THIS TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.keys + "'</color> key";
             else if (startingItem.prize.dungeonKeys > 0)

@@ -29,8 +29,8 @@ GameObject:
   - component: {fileID: 114746373307420388}
   - component: {fileID: 114172301265109884}
   - component: {fileID: 114704785471508092}
-  - component: {fileID: 114373844067676182}
-  - component: {fileID: 114533997859450222}
+  - component: {fileID: 114238659773003312}
+  - component: {fileID: 114064698843348150}
   m_Layer: 17
   m_Name: Barrel
   m_TagString: Untagged
@@ -117,6 +117,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1037736, y: 2.1549983, z: 2.0008078}
   m_Center: {x: 0, y: 1.0774992, z: 0.000000059604645}
+--- !u!114 &114064698843348150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870889608829320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114146773844325052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,18 +422,7 @@ MonoBehaviour:
     _collection:
     - {fileID: 1870889608829320}
   _assetGuid: d64b7c52f8e23a04f8b4a98cd6063697
---- !u!114 &114373844067676182
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1870889608829320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114533997859450222
+--- !u!114 &114238659773003312
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -524,6 +524,7 @@ MonoBehaviour:
   enemyKind:
     enemyType: 0
     enemyBiome: 0
+  isBoss: 0
   isProp: 1
   isPoisoned: 0
   isBurned: 0

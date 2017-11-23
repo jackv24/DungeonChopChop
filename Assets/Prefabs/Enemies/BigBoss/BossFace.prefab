@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 114222151275369944}
   - component: {fileID: 65717901528414362}
   - component: {fileID: 114582060528025888}
+  - component: {fileID: 114712499510784870}
   m_Layer: 0
   m_Name: BossFace
   m_TagString: Untagged
@@ -237,7 +238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1865645408941724
 GameObject:
   m_ObjectHideFlags: 1
@@ -320,7 +321,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515268674998158}
   m_LocalRotation: {x: -0, y: 0.030141333, z: -0, w: 0.9995457}
-  m_LocalPosition: {x: 0.51, y: -11.43, z: 4.97}
+  m_LocalPosition: {x: 0.51, y: -23.58, z: 4.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4564512130419206}
@@ -770,13 +771,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  health: 5
+  maxHealth: 50
+  health: 50
   weight: 1
   IsEnemy: 1
   enemyKind:
     enemyType: 0
     enemyBiome: 0
+  isBoss: 0
   isProp: 0
   isPoisoned: 0
   isBurned: 0
@@ -795,7 +797,7 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
-  hitColor: {r: 0, g: 0, b: 0, a: 0}
+  hitColor: {r: 0.5588235, g: 0.11505191, b: 0.11505191, a: 0}
   timeBetweenFlash: 0.1
   amountToFlash: 5
   fadeTime: 5
@@ -1006,6 +1008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 5
+  damagesOtherEnemies: 0
   projecticle: {fileID: 1187050147648304, guid: 4b445a5311d16c64c9546c5303681f3c,
     type: 2}
   shootPosition: {fileID: 1600239474496334}
@@ -1025,13 +1028,19 @@ MonoBehaviour:
   burstFire: 1
   burstAmount: 3
   timeBetweenShots: 0.5
+  usesChildRotation: 0
   timeBetweenAttacks: 2
   stage1AmountPerShot: 1
   stage2AmountPerShot: 2
   stage3AmountPerShot: 3
   amountOfProjectiles: 10
+  stage2BurstAmount: 3
+  stage3BurstAmount: 6
   amountTillKnockout: 3
-  debugMode: 1
+  beam: {fileID: 1861762220727228}
+  stage1BeamSpeedMulti: 1
+  stage2BeamSpeedMulti: 2
+  stage3BeamSpeedMulti: 3
   stage: 0
 --- !u!114 &114549397602857206
 MonoBehaviour:
@@ -1125,6 +1134,18 @@ MonoBehaviour:
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114712499510784870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1443173315862460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03cc96184bb3604c878837e9015ff35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTillDeathScreen: 3
 --- !u!114 &114748007536033756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1184,6 +1205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 0
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -1202,6 +1224,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114841599295789536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1294,9 +1317,6 @@ MonoBehaviour:
   _guid: aeae0c48-bfee-4670-83de-5e433339d570
   _referenceCollection:
     _collection:
-    - {fileID: 1031504461954256, guid: 706af59d50b3b3147b5221beb88c36ca, type: 2}
-    - {fileID: 1608669218893144, guid: 706af59d50b3b3147b5221beb88c36ca, type: 2}
-    - {fileID: 1439845864348326, guid: 706af59d50b3b3147b5221beb88c36ca, type: 2}
     - {fileID: 1861762220727228}
     - {fileID: 1212697293992296}
     - {fileID: 1329914192494080}
@@ -1340,7 +1360,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 1.6
   simulationSpeed: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -11126,7 +11146,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 1.6
   simulationSpeed: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0

@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     public float enemyHealthMultiplier;
     public float enemyStrengthMultiplier;
 
+    [HideInInspector]
+    public bool enteredDungeon = false;
+
     void Awake()
     {
         Instance = this;
@@ -34,6 +37,9 @@ public class GameManager : MonoBehaviour
             StartCoroutine(SetupGame(startSceneIndex));
         }
 
+        if (LevelGenerator.Instance)
+            LevelGenerator.Instance.OnTileEnter += CheckTileType;
+
         //make sure we are in the game scene
         SceneManager.sceneLoaded += SceneChange; 
 
@@ -41,6 +47,24 @@ public class GameManager : MonoBehaviour
 
         if (startingItem)
             startingItem.AddStartingItems();
+    }
+
+    void CheckTileType()
+    {
+        if (LevelGenerator.Instance)
+        {
+            if (LevelGenerator.Instance.currentTile)
+            {
+                if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon1 ||
+                    LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon2 ||
+                    LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon3 ||
+                    LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon4 ||
+                    LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.BossDungeon)
+                {
+                    enteredDungeon = true;
+                }
+            }
+        }
     }
 
     public void Reset()
