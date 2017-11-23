@@ -65,8 +65,14 @@ public class PlayerInputs : PlayerActionSet
 		Up.AddDefaultBinding(Key.W);
 		Down.AddDefaultBinding(Key.S);
 
+		Left.AddDefaultBinding(Key.LeftArrow);
+		Right.AddDefaultBinding(Key.RightArrow);
+		Up.AddDefaultBinding(Key.UpArrow);
+		Down.AddDefaultBinding(Key.DownArrow);
+
 		BasicAttack.AddDefaultBinding(Key.J);
 		BasicAttack.AddDefaultBinding(Mouse.LeftButton);
+		BasicAttack.AddDefaultBinding(Key.Return);
 
 		Block.AddDefaultBinding(Key.K);
 		Block.AddDefaultBinding(Mouse.RightButton);

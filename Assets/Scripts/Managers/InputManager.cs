@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
 
 	public List<PlayerInputs> playerInput;
 
-    private bool paused = true;
+    private bool hidden = false;
 
     void Awake()
 	{
@@ -21,31 +21,17 @@ public class InputManager : MonoBehaviour
 
 	void Update()
 	{
-        //If there is a levelgenerator present, we must be in-game
-        if (LevelGenerator.Instance)
-        {
-            if (Pause.Instance.paused != paused)
-            {
-                paused = Pause.Instance.paused;
+        if(!hidden && (Input.anyKeyDown || (InControl.InputManager.ActiveDevice != null && InControl.InputManager.ActiveDevice.AnyButtonWasPressed)))
+		{
+			hidden = true;
 
-                if (paused)
-                {
-                    Cursor.visible = true;
-                }
-                else
-                {
-                    Cursor.visible = false;
-                }
-            }
-        }
-        else
-        {
-            Cursor.visible = true;
-        }
+			Cursor.visible = false;
+		}
+		else if(Mathf.Abs(Input.GetAxisRaw("Mouse X")) > 0.1f)
+		{
+			hidden = false;
+
+			Cursor.visible = true;
+		}
     }
-
-	public static PlayerInputs GetPlayerInput(int index)
-	{
-        	return Instance.playerInput[index];
-	}
 }
