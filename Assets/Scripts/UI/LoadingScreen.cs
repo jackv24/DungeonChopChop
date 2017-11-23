@@ -50,6 +50,12 @@ public class LoadingScreen : MonoBehaviour
         }
     }
 
+	void Start()
+	{
+		if (group)
+			group.alpha = 0;
+	}
+
 	void Update()
 	{
         if (visible)
@@ -105,6 +111,10 @@ public class LoadingScreen : MonoBehaviour
                 Instance.visible = true;
                 Instance.showRoutine = Instance.StartCoroutine(Instance.ShowScreen(fadeIn));
             }
+
+			RandomText randomText = Instance.GetComponentInChildren<RandomText>();
+			if (randomText)
+				randomText.Randomise();
 
             return Instance.fadeInTime;
         }
