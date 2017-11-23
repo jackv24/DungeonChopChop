@@ -8474,6 +8474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -8489,6 +8490,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114029733149450782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8633,6 +8638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -8648,6 +8654,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114151809376661452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8948,6 +8958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -8963,6 +8974,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114402778110165452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9777,37 +9792,99 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawned: 0
   waitForSpawnMessage: 0
+  sendDefeatedMessage: 0
+  defeatedMessage: 
   currentProfileIndex: 0
   profiles:
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1560298701560840, guid: a5b926da6b6ee8a45af3727e4219839b,
         type: 2}
-      position: {x: -6.8522134, y: 0, z: 5.508621}
+      position: {x: -9.404939, y: 0, z: 0.10351062}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1020675461925768, guid: 36a451ab61c189a4ca1aef858a1688ef,
+        type: 2}
+      position: {x: -16.386229, y: 0, z: -3.320094}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1020675461925768, guid: 36a451ab61c189a4ca1aef858a1688ef,
+        type: 2}
+      position: {x: 2.8092322, y: 0, z: -3.7803812}
       rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
         type: 2}
-      position: {x: -13.674659, y: 0, z: -4.1879272}
+      position: {x: -22.42173, y: 0, z: 4.7391067}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1020675461925768, guid: 36a451ab61c189a4ca1aef858a1688ef,
+        type: 2}
+      position: {x: -4.241498, y: 0, z: 4.52116}
       rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
         type: 2}
-      position: {x: 0.22846532, y: 0, z: -0.41906738}
+      position: {x: 2.834611, y: 0, z: -4.1492567}
       rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
         type: 2}
-      position: {x: -20.64975, y: 0, z: 0.5188217}
+      position: {x: 0.41184187, y: 0, z: 5.2098045}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
+        type: 2}
+      position: {x: -3.0217266, y: 0, z: 1.6727569}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
+        type: 2}
+      position: {x: -8.882451, y: 0, z: 4.415415}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
+        type: 2}
+      position: {x: -10.22958, y: 0, z: -4.803428}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
+        type: 2}
+      position: {x: -14.851959, y: 0, z: -0.28392792}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
+        type: 2}
+      position: {x: -20.091154, y: 0, z: -3.9263418}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
+        type: 2}
+      position: {x: -23.89421, y: -1.1786537, z: 4.933428}
       rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
         type: 2}
-      position: {x: -9.394897, y: 0, z: -5.7037354}
+      position: {x: 1.1819053, y: 0, z: 4.2653027}
       rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
         type: 2}
-      position: {x: -16.744892, y: 0, z: -0.54478455}
+      position: {x: -10.414077, y: -4.0231876, z: -4.6189146}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
+        type: 2}
+      position: {x: -7.5278835, y: 0, z: 2.7953253}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
+        type: 2}
+      position: {x: -0.89403915, y: 0, z: 0.33744025}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
+        type: 2}
+      position: {x: -23.363895, y: 0, z: -3.1515849}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
+        type: 2}
+      position: {x: 2.908389, y: 0, z: -5.177661}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
+        type: 2}
+      position: {x: -15.696508, y: 0, z: -0.052885056}
+      rotation: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
+        type: 2}
+      position: {x: -24.105143, y: 0, z: 5.593347}
       rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
   undefeatedEnemies: []
@@ -9919,6 +9996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -9934,6 +10012,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114929051489042782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10139,7 +10221,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b6fca6f37c10eb34c8f9ca32e25e4242, type: 3}
-  m_Color: {r: 1, g: 0.9724138, b: 0, a: 0.528}
+  m_Color: {r: 1, g: 0.9724138, b: 0, a: 0.278}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10181,7 +10263,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dd16b09cf4952cc428d6f47bfbaf91e6, type: 3}
-  m_Color: {r: 1, g: 0.9724138, b: 0, a: 0.366}
+  m_Color: {r: 1, g: 0.9724138, b: 0, a: 0.178}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10223,7 +10305,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b246067205cfb7145892f5315682385d, type: 3}
-  m_Color: {r: 1, g: 0.9724138, b: 0, a: 0.566}
+  m_Color: {r: 1, g: 0.9724138, b: 0, a: 0.197}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10265,7 +10347,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dd16b09cf4952cc428d6f47bfbaf91e6, type: 3}
-  m_Color: {r: 1, g: 0.9724138, b: 0, a: 0.454}
+  m_Color: {r: 1, g: 0.9724138, b: 0, a: 0.216}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10307,7 +10389,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b6fca6f37c10eb34c8f9ca32e25e4242, type: 3}
-  m_Color: {r: 1, g: 0.9724138, b: 0, a: 0.497}
+  m_Color: {r: 1, g: 0.9724138, b: 0, a: 0.228}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
