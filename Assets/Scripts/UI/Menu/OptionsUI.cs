@@ -103,7 +103,10 @@ public class OptionsUI : MonoBehaviour
 	void OnDisable()
 	{
 		if (lastSelected && EventSystem.current)
+		{
 			EventSystem.current.SetSelectedGameObject(lastSelected);
+			EventSystem.current.firstSelectedGameObject = lastSelected;
+		}
 
 		if (Pause.Instance)
 			Pause.Instance.OnUnpause -= Close;
@@ -122,6 +125,7 @@ public class OptionsUI : MonoBehaviour
 		yield return new WaitForEndOfFrame();
 
 		EventSystem.current.SetSelectedGameObject(newObject);
+		EventSystem.current.firstSelectedGameObject = newObject;
 	}
 
 	void UpdateResolution()
