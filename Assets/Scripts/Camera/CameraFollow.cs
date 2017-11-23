@@ -101,7 +101,8 @@ public class CameraFollow : MonoBehaviour
 				}
 			}
 
-			targetPos /= numPlayers;
+			if(numPlayers > 0)
+				targetPos /= numPlayers;
 		}
 
 		if (listenerObj)
