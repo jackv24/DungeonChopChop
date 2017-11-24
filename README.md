@@ -12,5 +12,5 @@ A top-down rogue-like dungeon crawler, with co-op play!
 - David Tran
 
 ### Programmers
-- Harrison Gibbins
+- [Harrison Gibbins](http://harrisongibbins.com/)
 - [Jack Vine](http://jackvine.com/)
