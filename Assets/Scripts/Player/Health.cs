@@ -308,6 +308,9 @@ public class Health : MonoBehaviour
             {
                 StartCoroutine(InvincibilityWait(playerInfo));
             }
+
+            if (isFrozen)
+                UnFreeze();
         }
     }
 
