@@ -13,7 +13,7 @@ public class PropFireSpread : MonoBehaviour {
     private Collider thisCol;
     private Collider[] cols;
 
-    private Coroutine coroutine;
+    private bool coroutineInUse = false;
 
 	// Use this for initialization
 	void Start () 
@@ -29,9 +29,9 @@ public class PropFireSpread : MonoBehaviour {
         {
             if (propHealth.isBurned)
             {
-                if (coroutine == null)
+                if (!coroutineInUse)
                 {
-                    coroutine = StartCoroutine(BurnClosestProps());
+                    StartCoroutine(BurnClosestProps());
                 }
             }
         }
@@ -39,6 +39,8 @@ public class PropFireSpread : MonoBehaviour {
 
     IEnumerator BurnClosestProps()
     {
+        coroutineInUse = true;
+
         cols = Physics.OverlapSphere(transform.position, spreadRadius, propLayer);
         if (cols.Length > 0)
         {
@@ -57,6 +59,7 @@ public class PropFireSpread : MonoBehaviour {
                 }
             }
         }
-        coroutine = null;
+
+        coroutineInUse = false;
     }
 }

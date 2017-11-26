@@ -263,6 +263,9 @@ public class Chest : MonoBehaviour
             else
             {
                 obj.transform.parent = animationBone.transform;
+
+                obj.GetComponent<Collider>().enabled = false;
+
                 animationBone.GetComponent<Animator>().SetTrigger("Animate");
             }
         }
@@ -272,5 +275,10 @@ public class Chest : MonoBehaviour
 		PersistentObject persist = GetComponent<PersistentObject>();
 		if (persist)
 			persist.SetPersistentBool(false);
+
+        yield return new WaitForSeconds(1);
+
+        if (containingItem is InventoryItem)
+            obj.GetComponent<Collider>().enabled = true;
 	}
 }

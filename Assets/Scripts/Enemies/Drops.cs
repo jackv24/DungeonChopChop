@@ -17,15 +17,6 @@ public class Drops : MonoBehaviour
     public int minAmountOfDrops;
     public int maxAmountOfDrops;
 
-    [Space()]
-    public bool isWizzer = false;
-
-    void FixedUpdate()
-    {
-        if (isWizzer)
-            DoDrop();
-    }
-
     int addPercentage(int number)
     {
         if (ItemsManager.Instance.itemDropMultiplier == 0)

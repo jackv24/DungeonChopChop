@@ -272,11 +272,22 @@ public class LevelTile : MonoBehaviour
 	{
 		//Show/hide meshes
 		Renderer[] rends = GetComponentsInChildren<Renderer>();
+        Collider[] cols = GetComponentsInChildren<Collider>();
 
 		foreach (Renderer rend in rends)
 		{
 			rend.enabled = inside;
 		}
+
+        #if UNITY_EDITOR
+        //
+        #else
+        foreach (Collider c in cols)
+        {
+            c.enabled = inside;
+        }
+
+        #endif
 
 		if (revealMap)
 		{
