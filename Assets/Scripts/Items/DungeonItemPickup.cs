@@ -45,6 +45,12 @@ public class DungeonItemPickup : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
+        Chest chest = GetComponentInParent<Chest>();
+
+        SpawnEffects.EffectOnHit(chest.poofParticle, transform.position);
+
+        chest.gameObject.SetActive(false);
+
         //choses what dungeon item it is
         if (itemType == DungeonItemType.Goggles)
             ItemsManager.Instance.hasGoggles = true;

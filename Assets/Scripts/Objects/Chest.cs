@@ -53,8 +53,15 @@ public class Chest : MonoBehaviour
 
     [Header("Particles")]
     public GameObject releaseParticle;
+    public AmountOfParticleTypes[] poofParticle;
 
     private Animator animator;
+
+    void OnEnable()
+    {
+        if (chestType == ChestType.Iron)
+            SpawnEffects.EffectOnHit(poofParticle, transform.position);
+    }
 
 	void Start ()
 	{
