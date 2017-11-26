@@ -28,9 +28,12 @@ public class FloorSpikes : MonoBehaviour {
     public AmountOfParticleTypes[] particleOnUp;
     public SoundEffect soundOnUp;
 
-    private LevelTile tile;
     [HideInInspector]
     public Animator animator;
+
+    private LevelTile tile;
+    private EnemySpawner enemySpawner;
+
     private bool startSpiking = false;
     private EnemyAttack enemyAttack;
 
@@ -44,12 +47,14 @@ public class FloorSpikes : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+        animator = GetComponentInChildren<Animator>();
         enemyAttack = GetComponentInChildren<EnemyAttack>();
 
         if (enemyAttack)
             enemyAttack.damagesOtherEnemies = true;
 
         tile = GetComponentInParent<LevelTile>();
+        enemySpawner = GetComponentInParent<EnemySpawner>();
 
         if (tile)
         {
@@ -57,7 +62,9 @@ public class FloorSpikes : MonoBehaviour {
             tile.OnTileExit += SetDeactive;
         }
 
-        animator = GetComponentInChildren<Animator>();
+        if (enemySpawner)
+            enemySpawner.OnEnemiesDefeated += Deactivate;
+
         StartCoroutine(spikeDelay());
 
         SetupLevers();
@@ -123,11 +130,13 @@ public class FloorSpikes : MonoBehaviour {
     public void Deactivate()
     {
         animator.SetBool("Trigger", false);
+        active = false;
     }
 
     public void Activate()
     {
         animator.SetBool("Trigger", true);
+        active = true;
     }
 
     void Deactivated()
