@@ -20,9 +20,9 @@ public class SnowballMove : EnemyMove {
     {
         transform.localScale = originalScale;
 
-        base.OnEnable();
-
         enemyHealth.health = enemyHealth.maxHealth / 2;
+
+        base.OnEnable();
     }
 
 	// Use this for initialization

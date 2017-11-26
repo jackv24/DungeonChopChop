@@ -82,7 +82,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    void ChangeMoveSpeed()
+    public void ChangeMoveSpeed()
     {
         if (agent)
             agent.speed = originalSpeed * GameManager.Instance.enemyMoveMultiplier;

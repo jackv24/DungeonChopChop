@@ -117,13 +117,10 @@ public class EnemyAttack : MonoBehaviour
 
     void OnEnable()
     {
-        //ChangeStrength();
-        ChangeHealth();
-
         colliding.Clear();
     }
 
-    void ChangeHealth()
+    public void ChangeHealth()
     {
         if (enemyHealth)
         {
@@ -132,10 +129,9 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    void ChangeStrength()
+    public void ChangeStrength()
     {
         damageOnTouch =  originalStrength * GameManager.Instance.enemyStrengthMultiplier;
-        Debug.Log(originalStrength + " " + GameManager.Instance.enemyStrengthMultiplier + " = " + damageOnTouch);
     }
 
     void SetActive()

@@ -261,6 +261,11 @@ public class EnemySpawner : MonoBehaviour
                         enemy.transform.rotation = transform.rotation;
                         enemy.transform.Rotate(spawn.rotation);
 
+                        //set up the enemy values
+                        enemy.GetComponent<EnemyAttack>().ChangeHealth();
+                        enemy.GetComponent<EnemyAttack>().ChangeStrength();
+                        enemy.GetComponent<EnemyMove>().ChangeMoveSpeed();
+
 						NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
 
 						if (agent)
