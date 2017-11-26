@@ -39,6 +39,7 @@ public class TurretState : MonoBehaviour {
     {
         overrideActive = false;
         animator.SetBool("Active", false);
+        enemyAttack.enabled = false;
     }
 	
 	// Update is called once per frame

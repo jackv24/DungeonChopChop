@@ -43,6 +43,8 @@ public class FloorSpikes : MonoBehaviour {
 
     private bool firstEnter = true;
 
+    private bool overrideActive = true;
+
 
 	// Use this for initialization
 	void Start () 
@@ -131,6 +133,7 @@ public class FloorSpikes : MonoBehaviour {
     {
         animator.SetBool("Trigger", false);
         active = false;
+        overrideActive = false;
     }
 
     public void Activate()
@@ -153,7 +156,7 @@ public class FloorSpikes : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (active)
+        if (active && overrideActive)
         {
             if (animator.gameObject.activeSelf)
             {
