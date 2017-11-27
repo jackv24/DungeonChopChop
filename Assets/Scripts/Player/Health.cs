@@ -842,13 +842,7 @@ public class Health : MonoBehaviour
             if (!isBurned)
             {
                 if (playerInfo)
-                {
                     damagePerTick = damagePerTick * playerInfo.GetCharmFloat("burnMultiplier");
-                    if (ItemsManager.Instance.hasArmourPiece)
-                    {
-                        damagePerTick = 0;
-                    }
-                }
 
                 CreateAilmentIcon("FireCanvas");
 

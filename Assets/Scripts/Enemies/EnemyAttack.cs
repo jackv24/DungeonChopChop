@@ -33,7 +33,7 @@ public class EnemyAttack : MonoBehaviour
     [HideInInspector]
     public float thrust;
     [HideInInspector]
-    public float projectileDmgMutliplier;
+    public float projectileDmgMutliplier = 1;
 
     [Space()]
     [Tooltip("This values x projectile damage")]
@@ -88,6 +88,9 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
+        if (projectileDmgMutliplier == 0)
+            projectileDmgMutliplier = 1;
+
         enemyDeath = GetComponent<EnemyDeath>();
         col = GetComponent<Collider>();
 

@@ -61,6 +61,8 @@ public class PlayerMove : MonoBehaviour
     private float targetTimeBetweenTickInfire;
     private float targetTickDamageInFire;
 
+    private bool inLava = false;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -150,7 +152,7 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!ItemsManager.Instance.hasArmourPiece)
+        if (!ItemsManager.Instance.hasArmourPiece || inLava)
         {
             if (LevelGenerator.Instance)
             {
@@ -318,21 +320,19 @@ public class PlayerMove : MonoBehaviour
                     acceleration = 10f;
                     slowdownMultiplier = 1;
                 }
-
-
-                if (!ItemsManager.Instance.hasArmourPiece)
+                    
+                //sets the in lava puddle vars
+                if (hit.collider.tag == "Lava")
                 {
-                    //sets the in lava puddle vars
-                    if (hit.collider.tag == "Lava")
-                    {
-                        damageInFireBiome = targetTickDamageInFire;
-                        timeBetweenBiomeBurn = targetTimeBetweenTickInfire;
-                    }
-                    else
-                    {
-                        damageInFireBiome = ogTickDamageInFire;
-                        timeBetweenBiomeBurn = ogTimeBetweenTickInFire;
-                    }
+                    inLava = true;
+                    damageInFireBiome = targetTickDamageInFire;
+                    timeBetweenBiomeBurn = targetTimeBetweenTickInfire;
+                }
+                else
+                {
+                    inLava = false;
+                    damageInFireBiome = ogTickDamageInFire;
+                    timeBetweenBiomeBurn = ogTimeBetweenTickInFire;
                 }
             }
         }
