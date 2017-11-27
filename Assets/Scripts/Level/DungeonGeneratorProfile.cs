@@ -169,9 +169,9 @@ public class DungeonGeneratorProfile : LevelGeneratorProfile
 		}
 
 		//Remove enemy spawner from this tile, since it is the start tile
-		EnemySpawner spawner = furthestTile.GetComponentInChildren<EnemySpawner>();
-		if (spawner)
-			DestroyImmediate(spawner);
+		//EnemySpawner spawner = furthestTile.GetComponentInChildren<EnemySpawner>();
+		//if (spawner)
+		//	DestroyImmediate(spawner);
 
 		//Randomly choose a door to walk in from
 		Transform doorTransform = furthestTile.doors[UnityEngine.Random.Range(0, furthestTile.doors.Count)];

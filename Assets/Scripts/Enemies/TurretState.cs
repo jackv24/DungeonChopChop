@@ -20,7 +20,8 @@ public class TurretState : MonoBehaviour {
 
         enemySpawner = GetComponentInParent<EnemySpawner>();
 
-        enemySpawner.OnEnemiesDefeated += Deactivate;
+        if (enemySpawner)
+            enemySpawner.OnEnemiesDefeated += Deactivate;
         
         tile = GetComponentInParent<LevelTile>();
         enemyAttack = GetComponent<EnemyAttack>();
