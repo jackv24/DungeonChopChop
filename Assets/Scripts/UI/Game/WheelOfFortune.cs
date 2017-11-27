@@ -106,7 +106,7 @@ public class WheelOfFortune : MonoBehaviour
             if (startingItem.prize.sword)
                 playAgainText.text = "TAKE THIS TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.sword.swordName + "'</color>";
             else if (startingItem.prize.shield)
-                playAgainText.text = "TAKE THIS TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.shield.shieldName + "'</color>";
+                playAgainText.text = "TAKE THIS TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.shield.shield.displayName + "'</color>";
             else if (startingItem.prize.item)
                 playAgainText.text = "TAKE THIS TO THE AFTERLIFE: <color=grey>'" + startingItem.prize.item.displayName + "'</color>";
             else if (startingItem.prize.charm)

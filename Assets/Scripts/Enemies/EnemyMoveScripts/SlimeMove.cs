@@ -13,6 +13,7 @@ public enum SlimeType
 public class SlimeMove : EnemyMove {
 
     public SlimeType type;
+    public bool isBoss = false;
 
     [Header("Split Values")]
     public bool doesSplit;
@@ -247,7 +248,7 @@ public class SlimeMove : EnemyMove {
 
     void OnTriggerEnter(Collider col)
     {
-        if (friendly)
+        if (friendly && !isBoss)
         {
             //make sure not player
             if (col.gameObject.layer != 14)

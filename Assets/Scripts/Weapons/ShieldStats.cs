@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ShieldStats : MonoBehaviour {
 
-    public string shieldName;
 	[Header("Shield values")]
     public float blockingResistance;
     [Tooltip("0 = not move, 1 = move at normal speed")]
 	public float speedDamping = .5f; 
+    public InventoryItem shield;
 
 	// Use this for initialization
 	void Start () {

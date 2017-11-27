@@ -95,7 +95,7 @@ public class ShowShieldStats : MonoBehaviour {
         string text = "";
 
         //sets the panel to have the sword name, sword stats and weapon effect
-        text += thisShieldStats.shieldName + "\n"; 
+        text += thisShieldStats.shield.displayName + "\n"; 
         text += string.Format("Blocking Resistance: <color=#{1}>{0}</color>\n", resistanceText, ColorUtility.ToHtmlStringRGB(resistanceColor));
         text += string.Format("Speed Damping: <color=#{1}>{0}</color>", speedDampingText, ColorUtility.ToHtmlStringRGB(speedDampingColor));
 

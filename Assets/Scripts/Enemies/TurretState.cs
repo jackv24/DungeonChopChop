@@ -55,12 +55,9 @@ public class TurretState : MonoBehaviour {
 
     void SetState()
     {
-        if (overrideActive)
-        {
-            if (active)
-                active = false;
-            else
-                active = true;
-        }
+        if (active)
+            active = false;
+        else
+            active = true;
     }
 }

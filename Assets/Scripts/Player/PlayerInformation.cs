@@ -580,19 +580,15 @@ public class PlayerInformation : MonoBehaviour
         else if (animator.GetCurrentAnimatorStateInfo(1).IsTag("RapidAttack"))
             specialAtkMultiplier = playerAttack.rapidDmgMultiplier;
         
-        return (strength * playerAttack.sword.damageMultiplier * specialAtkMultiplier * GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * GetCharmFloat("dmgMultiWhenBurned") * GetCharmFloat("dmgMultiWhenPoisoned") * CoinDamageMultiplier();
+        return (strength * playerAttack.sword.damageMultiplier * specialAtkMultiplier * GetCharmFloat("strengthMultiplier") * playerAttack.criticalHit()) * GetCharmFloat("dmgMultiWhenBurned") * GetCharmFloat("dmgMultiWhenPoisoned") + CoinDamageMultiplier();
     }
 
     float CoinDamageMultiplier()
     {
         if (HasCharmFloat("multiplierPerCoin"))
-        {
             return ItemsManager.Instance.Coins * GetCharmFloat("multiplierPerCoin");
-        }
         else
-        {
             return 1.0f;
-        }
     }
 
     private List<MapItem> mapItems = new List<MapItem>();
