@@ -95,8 +95,7 @@ public class EnemySpawner : MonoBehaviour
         }
 	}
 
-	//Only has to happen occasionally
-	void FixedUpdate()
+	void Update()
 	{
 		if(spawned)
 		{
@@ -216,6 +215,48 @@ public class EnemySpawner : MonoBehaviour
 				toSpawn = newSpawns;
 			}
 
+			//Spawn enemies and disable, adding to a list for enable later, warming the tile during transition to avoid a hitch during gameplay
+			List<GameObject> spawnWarmed = new List<GameObject>(toSpawn.Count);
+
+			foreach (Profile.Spawn spawn in toSpawn)
+			{
+				if (spawn.enemyPrefab)
+				{
+					GameObject enemy = ObjectPooler.GetPooledObject(spawn.enemyPrefab);
+
+					if (enemy)
+					{
+						spawnedEnemies.Add(enemy);
+
+						if (newEnemies)
+							undefeatedEnemies.Add(spawn);
+
+						enemy.transform.position = transform.TransformPoint(new Vector3(spawn.position.x, 0, spawn.position.z));
+						enemy.transform.rotation = transform.rotation;
+						enemy.transform.Rotate(spawn.rotation);
+
+						//set up the enemy values
+						enemy.GetComponentInChildren<EnemyAttack>().ChangeHealth();
+						enemy.GetComponentInChildren<EnemyAttack>().ChangeStrength();
+						enemy.GetComponentInChildren<EnemyMove>().ChangeMoveSpeed();
+
+						NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
+
+						if (agent)
+						{
+							agent.enabled = true;
+							agent.Warp(transform.TransformPoint(spawn.position));
+						}
+
+						spawnWarmed.Add(enemy);
+					}
+				}
+			}
+
+			//Disable enemies after the fact to avoid object pooling
+			foreach (GameObject enemy in spawnWarmed)
+				enemy.SetActive(false);
+
 			//Spawn effects and wait for delay
 			if (LevelVars.Instance)
 			{
@@ -243,39 +284,9 @@ public class EnemySpawner : MonoBehaviour
 				yield return new WaitForSeconds(LevelVars.Instance.enemySpawnDelay);
 			}
 
-			//After delay, actually spawn the enemies
-			foreach (Profile.Spawn spawn in toSpawn)
-			{
-				if (spawn.enemyPrefab)
-				{
-					GameObject enemy = ObjectPooler.GetPooledObject(spawn.enemyPrefab);
-
-					if (enemy)
-					{
-						spawnedEnemies.Add(enemy);
-
-						if (newEnemies)
-							undefeatedEnemies.Add(spawn);
-
-                        enemy.transform.position = transform.TransformPoint(new Vector3(spawn.position.x, 0, spawn.position.z));
-                        enemy.transform.rotation = transform.rotation;
-                        enemy.transform.Rotate(spawn.rotation);
-
-                        //set up the enemy values
-                        enemy.GetComponentInChildren<EnemyAttack>().ChangeHealth();
-                        enemy.GetComponentInChildren<EnemyAttack>().ChangeStrength();
-                        enemy.GetComponentInChildren<EnemyMove>().ChangeMoveSpeed();
-
-						NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
-
-						if (agent)
-						{
-							agent.enabled = true;
-							agent.Warp(transform.TransformPoint(spawn.position));
-						}
-					}
-				}
-			}
+			//After delay and effect, enable to previously spawned enemies
+			foreach (GameObject enemy in spawnWarmed)
+				enemy.SetActive(true);
 
 			spawned = true;
 		}
