@@ -4028,15 +4028,14 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4800154013488248}
+  - component: {fileID: 114413602009706958}
   - component: {fileID: 114357097060263520}
   - component: {fileID: 65459366900083640}
   - component: {fileID: 54187145795032212}
-  - component: {fileID: 114995013550946758}
   - component: {fileID: 114887007436161570}
   - component: {fileID: 114220829138389042}
   - component: {fileID: 114399927228288722}
   - component: {fileID: 114989442074572764}
-  - component: {fileID: 114413602009706958}
   m_Layer: 0
   m_Name: IronChest
   m_TagString: Untagged
@@ -27976,8 +27975,8 @@ MonoBehaviour:
     probability: 0.5
     maxAmount: 1
   possibleObjects: []
-  minAmountOfObjects: 2
-  maxAmountOfObjects: 6
+  minAmountOfObjects: 4
+  maxAmountOfObjects: 10
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
@@ -27986,9 +27985,10 @@ MonoBehaviour:
   containingConsumables: []
   animationBone: {fileID: 0}
   releaseItemDelay: 1
-  releaseItemForce: 0
+  releaseItemForce: 0.2
   openSound:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 85400e9ded764aa4d874c0db8c43e60a, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -37163,18 +37163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 3427b1f0-55a1-4f24-bcb3-78132dd6e2cb
---- !u!114 &114995013550946758
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1620653410521984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba875fb75cc4204ab29d60d515fd8f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beforeMerge: 0
 --- !u!114 &114995798794119998
 MonoBehaviour:
   m_ObjectHideFlags: 1

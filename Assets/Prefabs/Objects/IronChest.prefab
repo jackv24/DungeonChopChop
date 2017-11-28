@@ -60,7 +60,6 @@ GameObject:
   - component: {fileID: 114001410118322262}
   - component: {fileID: 65423453368495548}
   - component: {fileID: 54753410085311608}
-  - component: {fileID: 114919617862166310}
   - component: {fileID: 114586833487454138}
   - component: {fileID: 114197213496599782}
   - component: {fileID: 114199519723644098}
@@ -354,8 +353,8 @@ MonoBehaviour:
     probability: 0.5
     maxAmount: 1
   possibleObjects: []
-  minAmountOfObjects: 2
-  maxAmountOfObjects: 6
+  minAmountOfObjects: 4
+  maxAmountOfObjects: 10
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
@@ -364,9 +363,10 @@ MonoBehaviour:
   containingConsumables: []
   animationBone: {fileID: 0}
   releaseItemDelay: 1
-  releaseItemForce: 0
+  releaseItemForce: 0.2
   openSound:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 85400e9ded764aa4d874c0db8c43e60a, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
@@ -477,18 +477,6 @@ MonoBehaviour:
   setLastSibling: 0
   showOnTileEnter: 1
   registerOnce: 0
---- !u!114 &114919617862166310
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1833604339336476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba875fb75cc4204ab29d60d515fd8f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beforeMerge: 0
 --- !u!114 &114996123355751038
 MonoBehaviour:
   m_ObjectHideFlags: 1
