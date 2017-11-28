@@ -279,15 +279,10 @@ public class LevelTile : MonoBehaviour
 			rend.enabled = inside;
 		}
 
-        #if UNITY_EDITOR
-        //
-        #else
         foreach (Collider c in cols)
         {
             c.enabled = inside;
         }
-
-        #endif
 
 		if (revealMap)
 		{
