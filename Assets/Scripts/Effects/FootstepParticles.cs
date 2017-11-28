@@ -20,6 +20,9 @@ public class FootstepParticles : MonoBehaviour
 	[Space()]
 	public MaterialParticlePair[] materialPairs;
 
+	private MeshRenderer rend;
+	private Collider lastHit;
+
 	public void ParticleFootLeft()
 	{
 		SpawnParticles(leftFoot);
@@ -39,7 +42,12 @@ public class FootstepParticles : MonoBehaviour
 			//Raycast down from foot
 			if(Physics.Raycast(point.position, Vector3.down, out hit, 1.0f, groundLayer))
 			{
-				MeshRenderer rend = hit.collider.GetComponent<MeshRenderer>();
+				if (hit.collider != lastHit)
+				{
+					rend = hit.collider.GetComponent<MeshRenderer>();
+
+					lastHit = hit.collider;
+				}
 
 				//If hit a mesh renderer
 				if(rend)

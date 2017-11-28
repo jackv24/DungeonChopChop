@@ -95,8 +95,7 @@ public class EnemySpawner : MonoBehaviour
         }
 	}
 
-	//Only has to happen occasionally
-	void FixedUpdate()
+	void Update()
 	{
 		if(spawned)
 		{

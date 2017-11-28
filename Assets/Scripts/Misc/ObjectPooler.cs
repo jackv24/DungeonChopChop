@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public static class ObjectPooler
 {
 	private static ObjectPoolerPrewarmer prewarmerInstance;
+
+	private static bool doneOnce = false;
 
     //private class for organising different pools of gameobjects
     private class Pool
@@ -86,6 +89,7 @@ public static class ObjectPooler
 
 	public static GameObject GetPooledObject(GameObject prefab, bool register = true)
     {
+		Profiler.BeginSample("GetPooledObject");
         //Make sure there is a gameobject for organising pooled objects in the scene
         if(!poolObject)
         {
@@ -98,9 +102,11 @@ public static class ObjectPooler
 			GameObject.DontDestroyOnLoad(poolObject);
         }
 
-		if(!prewarmerInstance)
+		if(!prewarmerInstance && !doneOnce)
 		{
 			prewarmerInstance = GameObject.FindObjectOfType<ObjectPoolerPrewarmer>();
+
+			doneOnce = true;
 		}
 
         //Pool starts as null, since one will either be found or created
@@ -118,6 +124,8 @@ public static class ObjectPooler
             pool = new Pool(prefab);
             objectPools.Add(pool);
         }
+
+		Profiler.EndSample();
 
         //Get a pooled object from the pool and return it
         return pool.GetPooledObject(register);
