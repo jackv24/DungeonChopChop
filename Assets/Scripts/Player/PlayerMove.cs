@@ -44,6 +44,7 @@ public class PlayerMove : MonoBehaviour
 	private PlayerInformation playerInformation;
 	private Animator animator;
 	private PlayerAttack playerAttack;
+	private Rigidbody rb;
     [HideInInspector]
     public Health playerHealth;
 
@@ -77,7 +78,8 @@ public class PlayerMove : MonoBehaviour
 		playerAttack = GetComponent<PlayerAttack>();
 		animator = GetComponentInChildren<Animator>();
 		playerInformation = GetComponent<PlayerInformation>();
-		
+		rb = GetComponent<Rigidbody> ();
+
 		characterController = GetComponent<CharacterController>();
 
         input = new PlayerInputs();
@@ -130,6 +132,14 @@ public class PlayerMove : MonoBehaviour
 				allowMove = true;
 			};
 		}
+	}
+
+	void EnableKinematics()
+	{
+		if (rb.isKinematic)
+			rb.isKinematic = false;
+		else
+			rb.isKinematic = true;
 	}
 
 	void doAnimations()
@@ -193,7 +203,7 @@ public class PlayerMove : MonoBehaviour
             LevelGenerator.Instance.generatedTiles[0].SetCurrent(LevelGenerator.Instance.currentTile);
 
         foreach (PlayerInformation playerInfo in playerInfos)
-            playerInfo.transform.position = LevelGenerator.Instance ? LevelGenerator.Instance.generatedTiles[0].tileOrigin.position : Vector3.up;
+			playerInfo.transform.position = LevelGenerator.Instance ? LevelGenerator.Instance.generatedTiles[0].tileOrigin.position + Vector3.up : Vector3.up;
     }
 	
 	// Update is called once per frame
@@ -210,7 +220,7 @@ public class PlayerMove : MonoBehaviour
         //if the player falls through the floor
         if (transform.position.y < -20)
         {
-            TeleportToTown();
+			TeleportToTown();
         }
 
 		doAnimations();

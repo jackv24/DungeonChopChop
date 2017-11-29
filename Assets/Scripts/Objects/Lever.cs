@@ -13,6 +13,8 @@ public class Lever : MonoBehaviour {
     public SoundEffect soundOnHit;
     public AmountOfParticleTypes[] particleOnHit;
 
+	public bool canBeDisabled = true;
+
     public bool activated
     {
         get { return m_activated; }
@@ -42,12 +44,14 @@ public class Lever : MonoBehaviour {
             }
             else
             {
-                animator.SetBool("Trigger", false);
+				if (canBeDisabled) {
+					animator.SetBool ("Trigger", false);
 
-                if (OnLeverDisabled != null)
-                    OnLeverDisabled();
+					if (OnLeverDisabled != null)
+						OnLeverDisabled ();
 
-                m_activated = false;
+					m_activated = false;
+				}
             }
 
             SoundManager.PlaySound(soundOnHit, transform.position);

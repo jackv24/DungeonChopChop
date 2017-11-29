@@ -100,6 +100,12 @@ public class LevelDoor : MonoBehaviour
 	{
 		PlayerInformation[] players = FindObjectsOfType<PlayerInformation>();
 
+		//renable tile colliders
+		Collider[] cols = targetTile.GetComponentsInChildren<Collider>();
+
+		foreach (Collider col in cols)
+			col.enabled = true;
+
 		//Disable player scripts
 		foreach (PlayerInformation p in players)
 		{
