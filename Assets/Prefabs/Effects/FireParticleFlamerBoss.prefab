@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 198642158588306672}
   - component: {fileID: 199234294134308440}
   - component: {fileID: 114819896246920386}
+  - component: {fileID: 114244071996320914}
+  - component: {fileID: 114897611873291136}
   m_Layer: 0
   m_Name: FireParticleFlamerBoss
   m_TagString: Untagged
@@ -42,6 +44,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114244071996320914
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1575034993589154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1575034993589154}
+  _assetGuid: bdf126af76bf5114697a6d93f0da9384
 --- !u!114 &114819896246920386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,6 +73,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstCheckDelay: 0
+--- !u!114 &114897611873291136
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1575034993589154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 8d195b25-8055-4b55-93da-843bfd470cac
 --- !u!198 &198642158588306672
 ParticleSystem:
   m_ObjectHideFlags: 1

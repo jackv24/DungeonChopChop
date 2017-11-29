@@ -278,10 +278,11 @@ public class LevelTile : MonoBehaviour
 		{
 			rend.enabled = inside;
 		}
-
+			
         foreach (Collider c in cols)
         {
-            c.enabled = inside;
+			if (c.gameObject.layer != LayerMask.NameToLayer("Ground"))
+            	c.enabled = inside;
         }
 
 		if (revealMap)
