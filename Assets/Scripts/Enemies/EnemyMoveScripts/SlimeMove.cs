@@ -125,7 +125,7 @@ public class SlimeMove : EnemyMove {
             FollowEnemy();
         }
 
-        foreach (PlayerInformation player in players)
+		foreach (PlayerInformation player in GameManager.Instance.players)
         {
             if (player.HasCharmBool("slimesAreFriends"))
             {
