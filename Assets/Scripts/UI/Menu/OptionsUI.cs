@@ -14,6 +14,8 @@ public class OptionsUI : MonoBehaviour
 	public Toggle fullscreenToggle;
 	public Dropdown qualityDropdown;
 
+    public Toggle postFXToggle;
+
 	private List<Resolution> resolutions;
 
 	public Slider masterVolume;
@@ -75,6 +77,17 @@ public class OptionsUI : MonoBehaviour
             if (musicVolume)
 				musicVolume.onValueChanged.AddListener((float value) => { audioMixer.SetFloat("MusicVolume", Helper.LinearToDecibel(value)); });
         }
+
+        if(postFXToggle)
+        {
+            postFXToggle.onValueChanged.AddListener((bool value) =>
+            {
+                var postFX = FindObjectOfType<UnityEngine.PostProcessing.PostProcessingBehaviour>();
+
+                if (postFX)
+                    postFX.enabled = value;
+            });
+        }
     }
 
 	void Close()
@@ -98,6 +111,11 @@ public class OptionsUI : MonoBehaviour
         {
             musicVolume.value = PlayerPrefs.GetFloat("MusicVolume");
         }
+
+        if(postFXToggle && PlayerPrefs.HasKey("PostFX"))
+        {
+            postFXToggle.isOn = PlayerPrefs.GetInt("PostFX") > 0 ? true : false;
+        }
     }
 
 	void OnDisable()
@@ -116,6 +134,9 @@ public class OptionsUI : MonoBehaviour
 
 		if (musicVolume)
             PlayerPrefs.SetFloat("MusicVolume", musicVolume.value);
+
+        if (postFXToggle)
+            PlayerPrefs.SetInt("PostFX", postFXToggle.isOn ? 1 : 0);
     }
 
 	IEnumerator SwitchSelected(GameObject newObject)
