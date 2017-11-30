@@ -46,8 +46,6 @@ public class EnemyMove : MonoBehaviour
         //sets the time between so we don't have stallers when they spawn
         timeBetweenRoam = 0;
 
-        players = FindObjectsOfType<PlayerInformation>();
-
         usingNav = true;
 
         if (enemyHealth)
@@ -127,7 +125,7 @@ public class EnemyMove : MonoBehaviour
         enemyHealth = GetComponent<Health>();
         enemyAttack = GetComponent<EnemyAttack>();
         animator = GetComponentInChildren<Animator>();
-        players = FindObjectsOfType<PlayerInformation>();
+        players = GameManager.Instance.players.ToArray();
         if (GetComponent<NavMeshAgent>())
         {
             agent = GetComponent<NavMeshAgent>();

@@ -215,8 +215,51 @@ public class EnemySpawner : MonoBehaviour
 				toSpawn = newSpawns;
 			}
 
-			//Spawn effects and wait for delay
-			if (LevelVars.Instance)
+            //Pre-spawn enemies
+            List<GameObject> preSpawned = new List<GameObject>(toSpawn.Count);
+
+            foreach (Profile.Spawn spawn in toSpawn)
+            {
+                if (spawn.enemyPrefab)
+                {
+                    GameObject enemy = ObjectPooler.GetPooledObject(spawn.enemyPrefab);
+
+                    if (enemy)
+                    {
+                        spawnedEnemies.Add(enemy);
+
+                        if (newEnemies)
+                            undefeatedEnemies.Add(spawn);
+
+                        enemy.transform.position = transform.TransformPoint(new Vector3(spawn.position.x, 0, spawn.position.z));
+                        enemy.transform.rotation = transform.rotation;
+                        enemy.transform.Rotate(spawn.rotation);
+
+                        //set up the enemy values
+                        enemy.GetComponentInChildren<EnemyAttack>().ChangeHealth();
+                        enemy.GetComponentInChildren<EnemyAttack>().ChangeStrength();
+                        enemy.GetComponentInChildren<EnemyMove>().ChangeMoveSpeed();
+
+                        NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
+
+                        if (agent)
+                        {
+                            agent.enabled = true;
+                            agent.Warp(transform.TransformPoint(spawn.position));
+                        }
+
+                        preSpawned.Add(enemy);
+                    }
+                }
+            }
+
+            yield return new WaitForEndOfFrame();
+
+            foreach (GameObject obj in preSpawned)
+                obj.SetActive(false);
+
+            //Spawn effects and wait for delay
+            if (LevelVars.Instance)
 			{
 				if (LevelVars.Instance.enemySpawnEffect)
 				{
@@ -242,39 +285,8 @@ public class EnemySpawner : MonoBehaviour
 				yield return new WaitForSeconds(LevelVars.Instance.enemySpawnDelay);
 			}
 
-			//After delay, actually spawn the enemies
-			foreach (Profile.Spawn spawn in toSpawn)
-			{
-				if (spawn.enemyPrefab)
-				{
-					GameObject enemy = ObjectPooler.GetPooledObject(spawn.enemyPrefab);
-
-					if (enemy)
-					{
-						spawnedEnemies.Add(enemy);
-
-						if (newEnemies)
-							undefeatedEnemies.Add(spawn);
-
-                        enemy.transform.position = transform.TransformPoint(new Vector3(spawn.position.x, 0, spawn.position.z));
-                        enemy.transform.rotation = transform.rotation;
-                        enemy.transform.Rotate(spawn.rotation);
-
-                        //set up the enemy values
-                        enemy.GetComponentInChildren<EnemyAttack>().ChangeHealth();
-                        enemy.GetComponentInChildren<EnemyAttack>().ChangeStrength();
-                        enemy.GetComponentInChildren<EnemyMove>().ChangeMoveSpeed();
-
-						NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
-
-						if (agent)
-						{
-							agent.enabled = true;
-							agent.Warp(transform.TransformPoint(spawn.position));
-						}
-					}
-				}
-			}
+            foreach (GameObject obj in preSpawned)
+                obj.SetActive(true);
 
 			spawned = true;
 		}
