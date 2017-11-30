@@ -111,9 +111,6 @@ public class EnemyAttack : MonoBehaviour
             SetInactive();
         }
 
-        //set original stats
-        originalStrength = damageOnTouch;
-
         if (enemyHealth)
             originalHealth = enemyHealth.maxHealth;
     }
@@ -134,7 +131,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void ChangeStrength()
     {
-        damageOnTouch =  originalStrength * GameManager.Instance.enemyStrengthMultiplier;
+		damageOnTouch =  damageOnTouch * GameManager.Instance.enemyStrengthMultiplier;
     }
 
     void SetActive()
