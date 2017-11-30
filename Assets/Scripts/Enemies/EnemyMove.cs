@@ -19,7 +19,6 @@ public class EnemyMove : MonoBehaviour
     protected float originalSpeed;
 
     protected NavMeshAgent agent;
-    protected PlayerInformation[] players;
     protected PlayerInformation currentPlayer = null;
     protected Animator animator;
     protected EnemyAttack enemyAttack;
@@ -54,6 +53,7 @@ public class EnemyMove : MonoBehaviour
         //resets the speed so we don't have quick enemies
         if (agent)
         {
+			agent.enabled = true;
             agent.speed = originalSpeed;
             agent.velocity -= agent.velocity;
 
@@ -125,7 +125,7 @@ public class EnemyMove : MonoBehaviour
         enemyHealth = GetComponent<Health>();
         enemyAttack = GetComponent<EnemyAttack>();
         animator = GetComponentInChildren<Animator>();
-        players = GameManager.Instance.players.ToArray();
+
         if (GetComponent<NavMeshAgent>())
         {
             agent = GetComponent<NavMeshAgent>();
@@ -293,7 +293,7 @@ public class EnemyMove : MonoBehaviour
     public Transform GetClosestPlayer()
     {
         float previousPlayerDistance = float.MaxValue;
-        foreach (PlayerInformation player in players)
+		foreach (PlayerInformation player in GameManager.Instance.players)
         {
             //loops through both players and finds out which player is closest
             float distance = Vector3.Distance(player.transform.position, transform.position);
