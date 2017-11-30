@@ -103,9 +103,6 @@ public class LevelDoor : MonoBehaviour
 		//renable tile colliders
 		Collider[] cols = targetTile.GetComponentsInChildren<Collider>();
 
-		foreach (Collider col in cols)
-			col.enabled = true;
-
 		//Disable player scripts
 		foreach (PlayerInformation p in players)
 		{
