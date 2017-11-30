@@ -84,6 +84,8 @@ public class EnemySpawner : MonoBehaviour
 
 	private bool cleared = false;
 
+    private Coroutine spawnRoutine;
+
 	void Start()
 	{
 		if(profiles.Count > 0)
@@ -130,18 +132,11 @@ public class EnemySpawner : MonoBehaviour
             //Don't spawn if tile already cleared
             if (cleared)
                 return;
-
-            //Don't spawn if we should wait for a message and have not received it
-            if (waitForSpawnMessage && !receivedMessage)
-                return;
         }
 
         shouldSpawn = true;
 
-		if (OnEnemiesSpawned != null)
-			OnEnemiesSpawned();
-
-		StartCoroutine(SpawnWithEffect());
+		spawnRoutine = StartCoroutine(SpawnWithEffect());
 	}
 
 	public void SetSpawnMessage()
@@ -150,8 +145,6 @@ public class EnemySpawner : MonoBehaviour
 		if(waitForSpawnMessage && !receivedMessage)
 		{
             receivedMessage = true;
-
-            Spawn();
         }
 	}
 
@@ -258,6 +251,12 @@ public class EnemySpawner : MonoBehaviour
             foreach (GameObject obj in preSpawned)
                 obj.SetActive(false);
 
+            if(waitForSpawnMessage)
+            {
+                while (!receivedMessage)
+                    yield return new WaitForEndOfFrame();
+            }
+
             //Spawn effects and wait for delay
             if (LevelVars.Instance)
 			{
@@ -288,7 +287,10 @@ public class EnemySpawner : MonoBehaviour
             foreach (GameObject obj in preSpawned)
                 obj.SetActive(true);
 
-			spawned = true;
+            if (OnEnemiesSpawned != null)
+                OnEnemiesSpawned();
+
+            spawned = true;
 		}
 
         if (LevelGenerator.Instance)
@@ -298,6 +300,8 @@ public class EnemySpawner : MonoBehaviour
 	public void Despawn()
 	{
 		spawned = false;
+
+        StopCoroutine(spawnRoutine);
 
 		//Interrupt spawning routine if yet to happen
 		shouldSpawn = false;
