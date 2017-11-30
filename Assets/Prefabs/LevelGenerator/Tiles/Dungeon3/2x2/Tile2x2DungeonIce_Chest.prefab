@@ -1225,6 +1225,8 @@ GameObject:
   - component: {fileID: 114266354504249700}
   - component: {fileID: 114604053191843012}
   - component: {fileID: 114544757619019644}
+  - component: {fileID: 114653566365761824}
+  - component: {fileID: 114145409412160580}
   m_Layer: 0
   m_Name: DungeonChest
   m_TagString: Untagged
@@ -7485,7 +7487,7 @@ Light:
   m_ShadowAngle: 0
 --- !u!114 &114000617786834684
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205456036086828}
@@ -7868,6 +7870,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 68d69c72-20ca-403e-ade1-2f9b0f502904
+--- !u!114 &114145409412160580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642008260200978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendType: 2
+  sendTime: 0
+  message: SetSpawnMessage
+  requireReceiver: 1
+  delayBeforeSend: 1
 --- !u!114 &114148057324820808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8684,7 +8702,7 @@ MonoBehaviour:
   _guid: bf8e554e-c935-49d5-bcc4-1f43ffa0176d
 --- !u!114 &114537121388739380
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205456036086828}
@@ -9109,6 +9127,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 3cb37265-af6f-469c-96ff-7c7588186b16
+--- !u!114 &114653566365761824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642008260200978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0368574c7fa2d7b48af081b700c691b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableOnLevelClear: 1
 --- !u!114 &114656422302077254
 MonoBehaviour:
   m_ObjectHideFlags: 1

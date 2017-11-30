@@ -2033,6 +2033,8 @@ GameObject:
   - component: {fileID: 114980668614081848}
   - component: {fileID: 114731946698491748}
   - component: {fileID: 114127373418880846}
+  - component: {fileID: 114826958315388228}
+  - component: {fileID: 114198282525874148}
   m_Layer: 0
   m_Name: DungeonChest
   m_TagString: Untagged
@@ -7964,6 +7966,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 81560d2b-6f3c-42c6-a557-93c03e611985
+--- !u!114 &114198282525874148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1957561167856456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendType: 2
+  sendTime: 0
+  message: SetSpawnMessage
+  requireReceiver: 1
+  delayBeforeSend: 1
 --- !u!114 &114211518316213968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8683,7 +8701,7 @@ MonoBehaviour:
   _guid: 9cc74c0c-2c90-4b7f-8a98-86a83287cbb4
 --- !u!114 &114472462867959510
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205456036086828}
@@ -9277,6 +9295,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 6f01148f-4c6c-4e13-8c06-2bd108a9be40
+--- !u!114 &114826958315388228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1957561167856456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0368574c7fa2d7b48af081b700c691b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableOnLevelClear: 1
 --- !u!114 &114836276378084014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9575,7 +9605,7 @@ MonoBehaviour:
   enableBehaviour: {fileID: 0}
 --- !u!114 &114980377575130930
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205456036086828}

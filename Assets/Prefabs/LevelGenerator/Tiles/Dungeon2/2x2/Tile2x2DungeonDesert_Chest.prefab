@@ -816,6 +816,8 @@ GameObject:
   - component: {fileID: 114902863498123876}
   - component: {fileID: 114824545766896874}
   - component: {fileID: 114736380143850100}
+  - component: {fileID: 114682929317751076}
+  - component: {fileID: 114944544439243822}
   m_Layer: 0
   m_Name: DungeonChest
   m_TagString: Untagged
@@ -8806,6 +8808,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: e9efecd2-9309-4e86-83c0-f1e732151516
+--- !u!114 &114682929317751076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1428466981029412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0368574c7fa2d7b48af081b700c691b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableOnLevelClear: 1
 --- !u!114 &114685770058155662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8896,7 +8910,7 @@ MonoBehaviour:
   _guid: fd87066a-7888-4570-bf39-ac3b94dd1a28
 --- !u!114 &114734610332643300
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205456036086828}
@@ -9429,7 +9443,7 @@ MonoBehaviour:
   _guid: cfe8e10b-2246-49a2-8f66-003b555c4ddb
 --- !u!114 &114913526134860694
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205456036086828}
@@ -9621,6 +9635,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 22edcc11-d9d7-403d-b022-0f5bb0c75a8c
+--- !u!114 &114944544439243822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1428466981029412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendType: 2
+  sendTime: 0
+  message: SetSpawnMessage
+  requireReceiver: 1
+  delayBeforeSend: 1
 --- !u!114 &114945641097933114
 MonoBehaviour:
   m_ObjectHideFlags: 1
