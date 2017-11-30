@@ -172,6 +172,8 @@ public class Chest : MonoBehaviour
     {
         releaseParticle = ObjectPooler.GetPooledObject(releaseParticle);
         releaseParticle.transform.position = pos;
+
+		releaseParticle.transform.parent = transform;
     }
 
     IEnumerator ReleaseObjects()
