@@ -301,7 +301,8 @@ public class EnemySpawner : MonoBehaviour
 	{
 		spawned = false;
 
-        StopCoroutine(spawnRoutine);
+        if (spawnRoutine != null)
+            StopCoroutine(spawnRoutine);
 
 		//Interrupt spawning routine if yet to happen
 		shouldSpawn = false;
