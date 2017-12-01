@@ -125,14 +125,14 @@ public class PlayerAttack : MonoBehaviour
             } 
             else 
             {
-                if (InControl.InputManager.Devices.Count == 1)
+                if (InControl.InputManager.Devices.Count > 0)
                 {
                     input.AssignDevice(InControl.InputManager.Devices[0]);
+					input.AssignDevice(InControl.InputManager.Devices[1]);
                     input.SetupBindings();
                 }
                 else
                 {
-                    input.AssignDevice(InControl.InputManager.Devices[0]);
                     input.SetupBindings();
                 }
             }

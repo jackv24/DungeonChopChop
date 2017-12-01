@@ -2059,25 +2059,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1447283389439142
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 224790201106173290}
-  - component: {fileID: 222055862130859666}
-  - component: {fileID: 114452017749269288}
-  - component: {fileID: 114849653546866494}
-  - component: {fileID: 114670575720899600}
-  m_Layer: 5
-  m_Name: Cutscene
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1448427493927140
 GameObject:
   m_ObjectHideFlags: 1
@@ -11008,7 +10989,6 @@ MonoBehaviour:
     - {fileID: 1255560666911422}
     - {fileID: 1922658695565408}
     - {fileID: 1300588768023994}
-    - {fileID: 1447283389439142}
     - {fileID: 1430462965409862}
     - {fileID: 1442293456950858}
     - {fileID: 1495132896736934}
@@ -11829,32 +11809,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 0431e1b3-769d-4a45-8fc0-dba064a1082e
---- !u!114 &114452017749269288
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1447283389439142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
 --- !u!114 &114453033415714918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14426,18 +14380,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114670575720899600
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1447283389439142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _guid: cee36a96-226a-435e-8459-29d3c78cd0ab
 --- !u!114 &114676156676146862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16401,25 +16343,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 66663827-fbd2-4311-8dbb-875e6fac3481
---- !u!114 &114849653546866494
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1447283389439142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 903fa23a5321dc64c8a19e95b7d19c1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockBreakCutscenes:
-  - {fileID: 32900000, guid: 417d171b5fb662a4bb7b5ac9aab6138a, type: 3}
-  - {fileID: 32900000, guid: e07da433a10389141a4c50a266d472e4, type: 3}
-  - {fileID: 32900000, guid: 2d88903db49b46a4699808318da708a3, type: 3}
-  - {fileID: 32900000, guid: 3a0ee4070ed9cf844bca3f75a7db4b8f, type: 3}
-  fadeTime: 0.1
-  waitToPlayTime: 0
-  mixer: {fileID: 243157008863679678, guid: 3b94cab2749135b43b3ba9ee3addc841, type: 2}
 --- !u!114 &114851687316459756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18297,12 +18220,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1592611090567164}
---- !u!222 &222055862130859666
-CanvasRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1447283389439142}
 --- !u!222 &222056452654726032
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -22451,7 +22368,6 @@ RectTransform:
   - {fileID: 224788832220732962}
   - {fileID: 224311225444884830}
   - {fileID: 224374281883259548}
-  - {fileID: 224790201106173290}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23692,24 +23608,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1, y: -302}
   m_SizeDelta: {x: 749.6, y: 355.6}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &224790201106173290
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1447283389439142}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 224612963949938604}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.005004883, y: -0.000061035156}
-  m_SizeDelta: {x: 0.39990234, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224791243184482516
 RectTransform:
   m_ObjectHideFlags: 1
@@ -24705,7 +24603,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 49.73}
-  m_ConnectedAnchor: {x: 556.5, y: 247}
+  m_ConnectedAnchor: {x: 800.1222, y: 472.3267}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
