@@ -564,7 +564,7 @@ MonoBehaviour:
     type: 2}
   shootPosition: {fileID: 1714751486246142}
   thrust: 10
-  projectileDmgMutliplier: 0
+  projectileDmgMutliplier: 1
   damageOnTouch: 0.5
   knockbackStrength: 7
   shootSounds:
@@ -577,9 +577,10 @@ MonoBehaviour:
   timeTillInterval: 6
   minInterval: 2
   maxInterval: 6
-  burstFire: 0
-  burstAmount: 0
-  timeBetweenShots: 0
+  burstFire: 1
+  burstAmount: 2
+  timeBetweenShots: 0.5
+  usesChildRotation: 0
   shootRadius: 25
   attackRadius: 5
 --- !u!114 &114339884378111412
@@ -936,7 +937,6 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 0
   maxAmountOfDrops: 2
-  isWizzer: 0
 --- !u!114 &114895938590639476
 MonoBehaviour:
   m_ObjectHideFlags: 1

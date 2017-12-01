@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 114056708907949762}
   - component: {fileID: 114218092630868698}
   - component: {fileID: 114592437426187176}
+  - component: {fileID: 114289301602049330}
   m_Layer: 17
   m_Name: Crate_Closed_2 (3)
   m_TagString: Untagged
@@ -1911,6 +1912,7 @@ GameObject:
   - component: {fileID: 114167981026789664}
   - component: {fileID: 114337370599398144}
   - component: {fileID: 114947885098314758}
+  - component: {fileID: 114158046615468538}
   m_Layer: 17
   m_Name: Crate_Closed_2 (2)
   m_TagString: Untagged
@@ -2467,6 +2469,7 @@ GameObject:
   - component: {fileID: 114839456533802684}
   - component: {fileID: 114914942698976880}
   - component: {fileID: 114770231804796774}
+  - component: {fileID: 114563234183214290}
   m_Layer: 17
   m_Name: Crate_Open
   m_TagString: Untagged
@@ -15011,7 +15014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
+  maxHealth: 3
   health: 1
   weight: 1
   IsEnemy: 0
@@ -15586,6 +15589,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 8cb7bf28-a40c-4379-ab2e-93dd79f2ca95
+--- !u!114 &114158046615468538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1414350865455898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8af6fba017eb594f9bbe87f903e9f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
+    probability: 0.3
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  minAmountOfDrops: 3
+  maxAmountOfDrops: 10
 --- !u!114 &114159146306660578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15874,7 +15939,7 @@ MonoBehaviour:
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
     probability: 1
     maxAmount: 0
-  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+  - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
     probability: 1
     maxAmount: 0
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
@@ -16643,6 +16708,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114289301602049330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053847771528694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8af6fba017eb594f9bbe87f903e9f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
+    probability: 0.3
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  minAmountOfDrops: 3
+  maxAmountOfDrops: 10
 --- !u!114 &114289621150563336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18247,7 +18374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1.5
+  maxHealth: 2
   health: 1
   weight: 1
   IsEnemy: 0
@@ -18408,7 +18535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1.5
+  maxHealth: 2
   health: 1
   weight: 1
   IsEnemy: 0
@@ -18914,6 +19041,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 39f26f18-9314-46c6-98ca-f0d2ffdc21a0
+--- !u!114 &114563234183214290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556980386682878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8af6fba017eb594f9bbe87f903e9f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
+    probability: 0.3
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 1
+    maxAmount: 0
+  minAmountOfDrops: 3
+  maxAmountOfDrops: 10
 --- !u!114 &114564049830243112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22179,7 +22368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1.5
+  maxHealth: 2
   health: 1
   weight: 1
   IsEnemy: 0
