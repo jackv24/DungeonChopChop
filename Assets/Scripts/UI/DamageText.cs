@@ -43,6 +43,8 @@ public class DamageText : MonoBehaviour
             Text text = obj.GetComponentInChildren<Text>();
 			if (text)
 			{
+                damageAmount = damageAmount * -1;
+
 				string s = damageAmount.ToString();
 
 				if (s.Contains("."))
