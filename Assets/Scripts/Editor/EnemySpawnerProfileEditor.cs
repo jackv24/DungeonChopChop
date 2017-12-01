@@ -9,6 +9,8 @@ public class EnemySpawnerProfileEditor : Editor
 {
 	private int currentIndex = 0;
 
+    private bool lockYAxis = true;
+
 	private EnemySpawner spawner;
 
 	private void OnEnable()
@@ -111,6 +113,9 @@ public class EnemySpawnerProfileEditor : Editor
 		else
 			EditorGUILayout.HelpBox("Can not edit spawner in play mode!", MessageType.Warning);
 
+        EditorGUILayout.Space();
+        lockYAxis = EditorGUILayout.Toggle("Lock Y to 0", lockYAxis);
+
 		serializedObject.ApplyModifiedProperties();
 	}
 
@@ -134,6 +139,9 @@ public class EnemySpawnerProfileEditor : Editor
 						Undo.RecordObject(spawner, "Changed spawn position");
 
 						spawn.position = spawner.transform.InverseTransformPoint(position);
+
+                        if(lockYAxis)
+                            spawn.position.y = 0;
 					}
 
 					Handles.Label(position, new GUIContent(spawn.enemyPrefab ? spawn.enemyPrefab.name : "No prefab assigned"), EditorStyles.whiteBoldLabel);
