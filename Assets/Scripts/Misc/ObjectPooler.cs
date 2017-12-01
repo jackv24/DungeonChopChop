@@ -54,9 +54,7 @@ public static class ObjectPooler
                 return obj;
             }
 
-            GameObject empty = new GameObject();
-
-            return empty;
+            return null;
         }
 
         public void Purge()

@@ -273,6 +273,7 @@ public class LevelTile : MonoBehaviour
 		//Show/hide meshes
 		Renderer[] rends = GetComponentsInChildren<Renderer>();
         Collider[] cols = GetComponentsInChildren<Collider>();
+        Light[] lights = GetComponentsInChildren<Light>();
 
 		foreach (Renderer rend in rends)
 		{
@@ -283,6 +284,11 @@ public class LevelTile : MonoBehaviour
         {
 			if (c.gameObject.layer != LayerMask.NameToLayer("Ground"))
             	c.enabled = inside;
+        }
+
+        foreach(Light light in lights)
+        {
+            light.gameObject.SetActive(inside);
         }
 
 		if (revealMap)

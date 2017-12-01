@@ -63,9 +63,12 @@ public class Drops : MonoBehaviour
 
     void Drop(GameObject obj)
     {
-        //creates the item and sets the position to the enemies position
-        GameObject item = ObjectPooler.GetPooledObject(obj);
+        if (obj)
+        {
+            //creates the item and sets the position to the enemies position
+            GameObject item = ObjectPooler.GetPooledObject(obj);
 
-        item.transform.position = transform.position;
+            item.transform.position = transform.position;
+        }
     }
 }
