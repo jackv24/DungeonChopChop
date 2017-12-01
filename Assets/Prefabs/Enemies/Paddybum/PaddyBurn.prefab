@@ -317,16 +317,16 @@ MonoBehaviour:
     minPitchVariance: -0.3
     maxPitchVariance: 0.3
   deathShake:
-    magnitude: 0.7
+    magnitude: 0.3
     shakeAmount: 2
     duration: 0.3
   amountToSplit: 0
   splitEnemy: {fileID: 0}
-  explodeRadius: 3
+  explodeRadius: 5
   statusType: 1
-  damagePerTick: 0.5
+  damagePerTick: 0.4
   timeBetweenTick: 0.5
-  duration: 4
+  duration: 3
   damageOnExplode: 2
   knockbackOnExplode: 8
   shrinktime: 0.0005
@@ -342,12 +342,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
-  damagesOtherEnemies: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
   projectileDmgMutliplier: 0
-  damageOnTouch: 0.5
+  damageOnTouch: 2
   knockbackStrength: 8
   shootSounds:
     clips: []
@@ -361,9 +361,10 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
   paddyType: 1
   radiusTillExplode: 10
-  timeTillExplode: 2
+  timeTillExplode: 1
 --- !u!114 &114246489622267872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,8 +407,8 @@ MonoBehaviour:
   amountToFlash: 1
   fadeTime: 5
   hitShake:
-    magnitude: 0.5
-    shakeAmount: 0.7
+    magnitude: 0.2
+    shakeAmount: 2
     duration: 0.3
 --- !u!114 &114343904985641544
 MonoBehaviour:
@@ -444,7 +445,6 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 1
   maxAmountOfDrops: 1
-  isWizzer: 0
 --- !u!114 &114585174051281660
 MonoBehaviour:
   m_ObjectHideFlags: 1
