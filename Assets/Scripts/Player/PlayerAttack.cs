@@ -128,7 +128,6 @@ public class PlayerAttack : MonoBehaviour
                 if (InControl.InputManager.Devices.Count > 0)
                 {
                     input.AssignDevice(InControl.InputManager.Devices[0]);
-					input.AssignDevice(InControl.InputManager.Devices[1]);
                     input.SetupBindings();
                 }
                 else
