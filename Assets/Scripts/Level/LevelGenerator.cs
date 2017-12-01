@@ -52,6 +52,8 @@ public class LevelGenerator : MonoBehaviour
     private int tileUpdatePause;
     private int tilesUpdated = 0;
 
+    private GameObject tileParent;
+
     void Awake()
 	{
 		Instance = this;
@@ -129,6 +131,10 @@ public class LevelGenerator : MonoBehaviour
 			Clear();
 			yield return new WaitForEndOfFrame();
 
+            tileParent = new GameObject("Tile Parent");
+            tileParent.transform.SetParent(transform);
+            tileParent.transform.localPosition = Vector3.zero;
+
 			//If first seed did not work, try another
 			if (iterations > 0)
 			{
@@ -167,7 +173,7 @@ public class LevelGenerator : MonoBehaviour
             }
 
             //Spawn start tile
-			GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, transform);
+			GameObject startObj = (GameObject)Instantiate(profile.startTile.gameObject, tileParent.transform);
 			startObj.transform.position = transform.position;
 
             //Make sure tile is active to prevent errors if it's accidentally disabled
@@ -251,12 +257,8 @@ public class LevelGenerator : MonoBehaviour
 
     public void Clear()
     {
-		int childAmount = transform.childCount;
-
-		for (int i = 0; i < childAmount; i++)
-		{
-			DestroyImmediate(transform.GetChild(0).gameObject);
-		}
+        if (tileParent)
+            Destroy(tileParent);
 
 		generatedTiles.Clear();
     }
@@ -309,7 +311,7 @@ public class LevelGenerator : MonoBehaviour
 			bool success = false;
 
 			//Spawn tile in world
-			GameObject tileObj = (GameObject)Instantiate(possibleTile.tile.gameObject, transform);
+			GameObject tileObj = (GameObject)Instantiate(possibleTile.tile.gameObject, tileParent.transform);
 
             //Make sure tile is active to prevent errors if it's accidentally disabled
             if (!tileObj.activeSelf)
@@ -478,7 +480,7 @@ public class LevelGenerator : MonoBehaviour
 		}
 
 		//Combine level for batching
-		StaticBatchingUtility.Combine(gameObject);
+		StaticBatchingUtility.Combine(tileParent);
 
 		//Move players to tile centre
 		PlayerInformation[] playerInfos = FindObjectsOfType<PlayerInformation>();
@@ -502,6 +504,8 @@ public class LevelGenerator : MonoBehaviour
 		}
 
 		generatedTiles[0].SetCurrent(null);
+
+        System.GC.Collect();
 	}
 
 	void SpawnChests()
