@@ -24,13 +24,17 @@ public class VispAttack : EnemyAttack {
 	// Update is called once per frame
 	void FixedUpdate () {
         counter++;
-        if (vispMove.InDistanceBetweenTwoRadius(shootRadius, attackRadius))
+
+        if (vispMove)
         {
-            if (counter > (shootInterval * 60))
+            if (vispMove.InDistanceBetweenTwoRadius(shootRadius, attackRadius))
             {
-                animator.SetTrigger("Shoot");
-                counter = 0;
-                shootInterval = Random.Range(minInterval, maxInterval);
+                if (counter > (shootInterval * 60))
+                {
+                    animator.SetTrigger("Shoot");
+                    counter = 0;
+                    shootInterval = Random.Range(minInterval, maxInterval);
+                }
             }
         }
 	}
