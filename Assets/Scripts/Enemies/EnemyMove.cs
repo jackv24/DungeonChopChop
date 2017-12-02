@@ -150,31 +150,22 @@ public class EnemyMove : MonoBehaviour
     public void FollowPlayer()
     {
         //follows the closest player using nav mesh
-        if (canMove)
+        if (canMove && usingNav && agent)
         {
-            if (usingNav)
+            if (InDistance(OverallRadiusFollow) && agent.isOnNavMesh)
             {
-                if (InDistance(OverallRadiusFollow))
-                {
-                    if (agent)
-                    {
-                        if (agent.isOnNavMesh)
-                        {
-                            if (!GetClosestPlayer().GetComponent<Health>().isDead)
-                                agent.SetDestination(GetClosestPlayer().position);
-                            else
-                            {
-                                if (OtherwiseRoam)
-                                    Roam();
-                            }
-                        }
-                    }
-                }
+                if (!GetClosestPlayer().GetComponent<Health>().isDead)
+                    agent.SetDestination(GetClosestPlayer().position);
                 else
                 {
                     if (OtherwiseRoam)
                         Roam();
                 }
+            }
+            else
+            {
+                if (OtherwiseRoam)
+                    Roam();
             }
         }
         else

@@ -22,8 +22,12 @@ public class RandomObjects : MonoBehaviour {
 
             if (random < chanceOfHiding || chanceOfHiding == 100)
             {
-                foreach(GameObject obj in groups.objs)
-                    obj.SetActive(false);
+                foreach (GameObject obj in groups.objs)
+                {
+                    if (obj)
+                        obj.SetActive(false);
+                }
+
             }
         }
 	}
