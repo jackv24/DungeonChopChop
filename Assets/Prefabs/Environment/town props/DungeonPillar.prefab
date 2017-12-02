@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
+  maxHealth: 1
   health: 1
   weight: 1
   IsEnemy: 0
@@ -169,11 +169,11 @@ MonoBehaviour:
   isFrozen: 0
   isSandy: 0
   isDead: 0
-  poisonColor: {r: 0, g: 0, b: 0, a: 0}
-  burnColor: {r: 0.47058827, g: 0.45098042, b: 0.41176474, a: 1}
-  slowlyDyingColor: {r: 0, g: 0, b: 0, a: 0}
-  frozenColor: {r: 0, g: 0, b: 0, a: 0}
-  sandyColor: {r: 0, g: 0, b: 0, a: 0}
+  poisonColor: {r: 0.70480853, g: 0.46712804, b: 0.88235295, a: 0.697}
+  burnColor: {r: 0.78676474, g: 0.36445722, b: 0.36445722, a: 0.716}
+  slowlyDyingColor: {r: 0.50735295, g: 0.8455882, b: 0.4227941, a: 0.653}
+  frozenColor: {r: 0.5597427, g: 0.84890974, b: 0.875, a: 0.716}
+  sandyColor: {r: 0.758837, g: 0.78676474, b: 0.497513, a: 0.684}
   hitParticles: []
   hitSounds:
     clips: []
@@ -186,8 +186,8 @@ MonoBehaviour:
   fadeTime: 5
   hitShake:
     magnitude: 0.1
-    shakeAmount: 0.1
-    duration: 1
+    shakeAmount: 2
+    duration: 0.3
 --- !u!114 &114071929472326018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -531,12 +531,17 @@ MonoBehaviour:
   - prefab: {fileID: 1108359381111716, guid: 36f8ca5ae127cbc4c9eca589f88b9d63, type: 2}
     probability: 0.5
     maxAmount: 0
-  - prefab: {fileID: 1335806162793318, guid: 396b06f0682a13e4aa4a5688e9d98910, type: 2}
+  - prefab: {fileID: 0}
     probability: 0.5
     maxAmount: 0
-  minAmountOfDrops: 1
+  - prefab: {fileID: 0}
+    probability: 0.5
+    maxAmount: 0
+  - prefab: {fileID: 0}
+    probability: 0.5
+    maxAmount: 0
+  minAmountOfDrops: 0
   maxAmountOfDrops: 2
-  isWizzer: 0
 --- !u!114 &114607278135360278
 MonoBehaviour:
   m_ObjectHideFlags: 1
