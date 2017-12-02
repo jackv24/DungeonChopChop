@@ -23,8 +23,11 @@ public class Gate : MonoBehaviour {
 
         tileQuest = GetComponentInParent<TileQuest>();
 
-        if (requiresChallenge)
-            tileQuest.OnQuestComplete += OpenGate;
+        if (tileQuest)
+        {
+            if (requiresChallenge)
+                tileQuest.OnQuestComplete += OpenGate;
+        }
 
         if (lever)
             lever.OnLeverActivated += OpenGate;
