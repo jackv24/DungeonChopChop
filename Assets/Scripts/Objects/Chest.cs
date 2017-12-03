@@ -47,6 +47,7 @@ public class Chest : MonoBehaviour
     public GameObject animationBone;
     public float releaseItemDelay = 1.5f;
     public float releaseItemForce = 10.0f;
+    public int releaseHeight = 3;
 
     [Header("Audio")]
     public SoundEffect openSound;
@@ -131,6 +132,33 @@ public class Chest : MonoBehaviour
         }
     }
 
+    void RemoveChest()
+    {
+        Collider[] cols = GetComponentsInChildren<Collider>();
+        MeshRenderer[] rends = GetComponentsInChildren<MeshRenderer>();
+
+        GetComponentInChildren<Animator>().enabled = false;
+
+        foreach (Collider col in cols)
+        {
+            if (col.transform.parent)
+            {
+                if (col.transform.parent.name != "RootAnimation")
+                    col.enabled = false;
+            }
+            else
+                col.enabled = false;
+        }
+
+        foreach (MeshRenderer ren in rends)
+        {
+            if (ren.transform.parent.name != "RootAnimation")
+                ren.enabled = false;
+        }
+
+        SpawnEffects.EffectOnHit(poofParticle, transform.position);
+    }
+
 	public void Open()
 	{
         if (OnChestOpen != null)
@@ -166,6 +194,7 @@ public class Chest : MonoBehaviour
 		EventSender events = GetComponentInParent<EventSender>();
         if (events)
             events.SendDisabledEvent();
+
 	}
 
     void ReleaseParticle(Vector3 pos)
@@ -211,6 +240,9 @@ public class Chest : MonoBehaviour
         }
 
         ReleaseParticle(obj.transform.position);
+
+        RemoveChest();
+
     }
 
     IEnumerator ReleaseConsumables()
@@ -221,12 +253,17 @@ public class Chest : MonoBehaviour
         {
             GameObject obj = ObjectPooler.GetPooledObject(o);
             //throw out of chest
-            obj.transform.position = transform.position + Vector3.up;
 
-            Vector3 direction = new Vector3(Random.insideUnitSphere.x, 1, Random.insideUnitSphere.z);
-            GetComponent<Rigidbody>().AddForce(direction * releaseItemForce, ForceMode.Impulse);
+            Vector3 direction = new Vector3(Random.insideUnitSphere.x, releaseHeight, Random.insideUnitSphere.z);
 
+            if (obj)
+            {
+                obj.transform.position = transform.position + Vector3.up;
+                obj.GetComponent<Rigidbody>().AddForce(direction * releaseItemForce, ForceMode.Impulse);
+            }
 		}
+
+        RemoveChest();
     }
 
 	IEnumerator ReleaseItems(bool setParent = false)
@@ -268,6 +305,8 @@ public class Chest : MonoBehaviour
                 Rigidbody body = obj.GetComponent<Rigidbody>();
                 if (body)
                     body.AddForce(Vector3.up * releaseItemForce, ForceMode.Impulse);
+
+                RemoveChest();
             }
             else
             {
