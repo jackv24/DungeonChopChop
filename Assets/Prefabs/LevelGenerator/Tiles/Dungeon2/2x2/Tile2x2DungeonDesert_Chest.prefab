@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 114595081717770536}
   - component: {fileID: 114913526134860694}
   - component: {fileID: 114734610332643300}
-  - component: {fileID: 114986460536232084}
+  - component: {fileID: 114800970971371674}
   m_Layer: 0
   m_Name: Tile2x2DungeonDesert_Chest
   m_TagString: Untagged
@@ -815,9 +815,9 @@ GameObject:
   - component: {fileID: 114327932176040446}
   - component: {fileID: 114902863498123876}
   - component: {fileID: 114824545766896874}
-  - component: {fileID: 114736380143850100}
-  - component: {fileID: 114682929317751076}
-  - component: {fileID: 114944544439243822}
+  - component: {fileID: 114586912947718982}
+  - component: {fileID: 114683789376771734}
+  - component: {fileID: 114000973700229004}
   m_Layer: 0
   m_Name: DungeonChest
   m_TagString: Untagged
@@ -7485,6 +7485,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114000973700229004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1428466981029412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendType: 2
+  sendTime: 0
+  message: SetSpawnMessage
+  requireReceiver: 1
+  delayBeforeSend: 1
 --- !u!114 &114003087090919848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8548,6 +8564,20 @@ MonoBehaviour:
   setLastSibling: 0
   showOnTileEnter: 1
   registerOnce: 0
+--- !u!114 &114586912947718982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1428466981029412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7769befae38989749b451b91e4dcba63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: DungeonChest
+  onStart: 0
+  useChild: 0
 --- !u!114 &114589841042623954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8808,7 +8838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: e9efecd2-9309-4e86-83c0-f1e732151516
---- !u!114 &114682929317751076
+--- !u!114 &114683789376771734
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -8920,20 +8950,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: de21f3fb-3ebe-4999-b317-092d1153bf43
---- !u!114 &114736380143850100
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1428466981029412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7769befae38989749b451b91e4dcba63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  identifier: DungeonChest_Desert
-  onStart: 1
-  useChild: 0
 --- !u!114 &114737797180251344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9054,6 +9070,7 @@ MonoBehaviour:
   animationBone: {fileID: 1753400480511248}
   releaseItemDelay: 1.5
   releaseItemForce: 10
+  releaseHeight: 3
   openSound:
     clips:
     - {fileID: 8300000, guid: 85400e9ded764aa4d874c0db8c43e60a, type: 3}
@@ -9123,6 +9140,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 96ed23bb-ebcd-4250-9bb0-7b643bd34952
+--- !u!114 &114800970971371674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205456036086828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab8bedca2022eb42ab66d60fd58d259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawned: 0
+  waitForSpawnMessage: 1
+  sendDefeatedMessage: 1
+  defeatedMessage: ReplaceMessage
+  bossTile: 0
+  currentProfileIndex: 0
+  profiles:
+  - randomised: 1
+    spawns:
+    - enemyPrefab: {fileID: 1874609853619012, guid: f40c92c334a7cba418bee0cdefd1ae3e,
+        type: 2}
+      position: {x: -10.263643, y: 0, z: 9.853903}
+      rotation: {x: 0, y: 0, z: 0}
+  spawnedEnemies: []
+  undefeatedEnemies: []
+  cleared: 0
 --- !u!114 &114807414624453034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9282,65 +9326,6 @@ MonoBehaviour:
           width: 0
           height: 0
         _stringValue: 
-        _vector2Value: {x: 0, y: 0}
-        _vector3Value: {x: 0, y: 0, z: 0}
-        _vector4Value: {x: 0, y: 0, z: 0, w: 0}
-    - _isExpanded: 1
-      _typeName: PersistentObject
-      _overrideProperties:
-      - _path: onStart
-        _animationCurveValue:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 0
-          m_PostInfinity: 0
-          m_RotationOrder: 0
-        _booleanValue: 1
-        _boundsValue:
-          m_Center: {x: 0, y: 0, z: 0}
-          m_Extent: {x: 0, y: 0, z: 0}
-        _colorValue: {r: 0, g: 0, b: 0, a: 0}
-        _doubleValue: 0
-        _floatValue: 0
-        _intValue: 0
-        _longValue: 0
-        _objectReferenceValue: {fileID: 0}
-        _quaternionValue: {x: 0, y: 0, z: 0, w: 1}
-        _rectValue:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-        _stringValue: 
-        _vector2Value: {x: 0, y: 0}
-        _vector3Value: {x: 0, y: 0, z: 0}
-        _vector4Value: {x: 0, y: 0, z: 0, w: 0}
-      - _path: identifier
-        _animationCurveValue:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 0
-          m_PostInfinity: 0
-          m_RotationOrder: 0
-        _booleanValue: 0
-        _boundsValue:
-          m_Center: {x: 0, y: 0, z: 0}
-          m_Extent: {x: 0, y: 0, z: 0}
-        _colorValue: {r: 0, g: 0, b: 0, a: 0}
-        _doubleValue: 0
-        _floatValue: 0
-        _intValue: 0
-        _longValue: 0
-        _objectReferenceValue: {fileID: 0}
-        _quaternionValue: {x: 0, y: 0, z: 0, w: 1}
-        _rectValue:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-        _stringValue: DungeonChest_Desert
         _vector2Value: {x: 0, y: 0}
         _vector3Value: {x: 0, y: 0, z: 0}
         _vector4Value: {x: 0, y: 0, z: 0, w: 0}
@@ -9635,22 +9620,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 22edcc11-d9d7-403d-b022-0f5bb0c75a8c
---- !u!114 &114944544439243822
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1428466981029412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sendType: 2
-  sendTime: 0
-  message: SetSpawnMessage
-  requireReceiver: 1
-  delayBeforeSend: 1
 --- !u!114 &114945641097933114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9715,31 +9684,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   host: {fileID: 0}
---- !u!114 &114986460536232084
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1205456036086828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab8bedca2022eb42ab66d60fd58d259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawned: 0
-  waitForSpawnMessage: 1
-  sendDefeatedMessage: 1
-  defeatedMessage: ReplaceMessage
-  currentProfileIndex: 0
-  profiles:
-  - randomised: 1
-    spawns:
-    - enemyPrefab: {fileID: 1874609853619012, guid: f40c92c334a7cba418bee0cdefd1ae3e,
-        type: 2}
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0}
-  spawnedEnemies: []
-  undefeatedEnemies: []
 --- !u!114 &114991253041401252
 MonoBehaviour:
   m_ObjectHideFlags: 1

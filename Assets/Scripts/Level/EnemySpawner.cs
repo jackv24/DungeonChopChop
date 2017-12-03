@@ -82,7 +82,7 @@ public class EnemySpawner : MonoBehaviour
 
 	private bool shouldSpawn = false;
 
-	private bool cleared = false;
+	public bool cleared = false;
 
     private Coroutine spawnRoutine;
 

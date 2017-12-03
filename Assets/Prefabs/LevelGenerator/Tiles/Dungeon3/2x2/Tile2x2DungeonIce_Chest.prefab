@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 114595081717770536}
   - component: {fileID: 114537121388739380}
   - component: {fileID: 114000617786834684}
-  - component: {fileID: 114546692935819224}
+  - component: {fileID: 114295219213008112}
   m_Layer: 0
   m_Name: Tile2x2DungeonIce_Chest
   m_TagString: Untagged
@@ -1224,9 +1224,9 @@ GameObject:
   - component: {fileID: 114132586200714084}
   - component: {fileID: 114266354504249700}
   - component: {fileID: 114604053191843012}
-  - component: {fileID: 114544757619019644}
-  - component: {fileID: 114653566365761824}
-  - component: {fileID: 114145409412160580}
+  - component: {fileID: 114772641882952422}
+  - component: {fileID: 114506272538900400}
+  - component: {fileID: 114879479184758256}
   m_Layer: 0
   m_Name: DungeonChest
   m_TagString: Untagged
@@ -7679,6 +7679,7 @@ MonoBehaviour:
   animationBone: {fileID: 1231842260332146}
   releaseItemDelay: 1.5
   releaseItemForce: 10
+  releaseHeight: 3
   openSound:
     clips:
     - {fileID: 8300000, guid: 85400e9ded764aa4d874c0db8c43e60a, type: 3}
@@ -7870,22 +7871,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 68d69c72-20ca-403e-ade1-2f9b0f502904
---- !u!114 &114145409412160580
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1642008260200978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sendType: 2
-  sendTime: 0
-  message: SetSpawnMessage
-  requireReceiver: 1
-  delayBeforeSend: 1
 --- !u!114 &114148057324820808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7997,7 +7982,7 @@ MonoBehaviour:
   m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 5562e6b6-adde-456f-b6a8-58131291d834
+  _guid: 4c6c4710-741f-4fef-8838-8b38220ae950
 --- !u!114 &114240578979662038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8108,65 +8093,6 @@ MonoBehaviour:
         _vector2Value: {x: 0, y: 0}
         _vector3Value: {x: 0, y: 0, z: 0}
         _vector4Value: {x: 0, y: 0, z: 0, w: 0}
-    - _isExpanded: 1
-      _typeName: PersistentObject
-      _overrideProperties:
-      - _path: onStart
-        _animationCurveValue:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 0
-          m_PostInfinity: 0
-          m_RotationOrder: 0
-        _booleanValue: 1
-        _boundsValue:
-          m_Center: {x: 0, y: 0, z: 0}
-          m_Extent: {x: 0, y: 0, z: 0}
-        _colorValue: {r: 0, g: 0, b: 0, a: 0}
-        _doubleValue: 0
-        _floatValue: 0
-        _intValue: 0
-        _longValue: 0
-        _objectReferenceValue: {fileID: 0}
-        _quaternionValue: {x: 0, y: 0, z: 0, w: 1}
-        _rectValue:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-        _stringValue: 
-        _vector2Value: {x: 0, y: 0}
-        _vector3Value: {x: 0, y: 0, z: 0}
-        _vector4Value: {x: 0, y: 0, z: 0, w: 0}
-      - _path: identifier
-        _animationCurveValue:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 0
-          m_PostInfinity: 0
-          m_RotationOrder: 0
-        _booleanValue: 0
-        _boundsValue:
-          m_Center: {x: 0, y: 0, z: 0}
-          m_Extent: {x: 0, y: 0, z: 0}
-        _colorValue: {r: 0, g: 0, b: 0, a: 0}
-        _doubleValue: 0
-        _floatValue: 0
-        _intValue: 0
-        _longValue: 0
-        _objectReferenceValue: {fileID: 0}
-        _quaternionValue: {x: 0, y: 0, z: 0, w: 1}
-        _rectValue:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-        _stringValue: DungeonChest_Ice
-        _vector2Value: {x: 0, y: 0}
-        _vector3Value: {x: 0, y: 0, z: 0}
-        _vector4Value: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &114269705256349644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8239,6 +8165,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: dcf94ce5-6d36-415a-8f1f-965f9dd92846
+--- !u!114 &114295219213008112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205456036086828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab8bedca2022eb42ab66d60fd58d259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawned: 0
+  waitForSpawnMessage: 1
+  sendDefeatedMessage: 1
+  defeatedMessage: ReplaceMessage
+  bossTile: 0
+  currentProfileIndex: 0
+  profiles:
+  - randomised: 1
+    spawns:
+    - enemyPrefab: {fileID: 1055673473369210, guid: 57b2be60ec064f046baa4bf5adb70d02,
+        type: 2}
+      position: {x: -10.263643, y: 0, z: 9.853903}
+      rotation: {x: 0, y: 0, z: 0}
+  spawnedEnemies: []
+  undefeatedEnemies: []
+  cleared: 0
 --- !u!114 &114301276857033880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8406,7 +8359,7 @@ MonoBehaviour:
   m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: 6635472f-778e-4323-b72c-eb63905f26f1
+  _guid: 5690136e-9186-4eee-aabd-725b11166850
 --- !u!114 &114392323254419250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8664,6 +8617,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 99f5c499-1988-46eb-8c85-e5203c6364a4
+--- !u!114 &114506272538900400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642008260200978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0368574c7fa2d7b48af081b700c691b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableOnLevelClear: 1
 --- !u!114 &114519609477239964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8814,20 +8779,16 @@ MonoBehaviour:
     - {fileID: 1910818930987186}
     - {fileID: 1692845404988314}
     - {fileID: 1498179912021836}
-    - {fileID: 0}
-    - {fileID: 0}
     - {fileID: 1258682795687616}
     - {fileID: 1148784440834540}
     - {fileID: 1783757626918026}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     - {fileID: 1353698292470538}
     - {fileID: 1093608399770362}
     - {fileID: 1699679706799204}
     - {fileID: 1633811984750248}
     - {fileID: 1642008260200978}
+    - {fileID: 1887231026473114}
+    - {fileID: 1678512878502870}
   _assetGuid: 8c0564a69e9e1e3409aac3bcd75be85a
 --- !u!114 &114537862583553778
 MonoBehaviour:
@@ -8853,45 +8814,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 8b324881-49de-4c34-9532-3a6cc25183af
---- !u!114 &114544757619019644
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1642008260200978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7769befae38989749b451b91e4dcba63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  identifier: DungeonChest_Ice
-  onStart: 1
-  useChild: 0
---- !u!114 &114546692935819224
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1205456036086828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab8bedca2022eb42ab66d60fd58d259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawned: 0
-  waitForSpawnMessage: 1
-  sendDefeatedMessage: 1
-  defeatedMessage: ReplaceMessage
-  currentProfileIndex: 0
-  profiles:
-  - randomised: 1
-    spawns:
-    - enemyPrefab: {fileID: 1055673473369210, guid: 57b2be60ec064f046baa4bf5adb70d02,
-        type: 2}
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0}
-  spawnedEnemies: []
-  undefeatedEnemies: []
 --- !u!114 &114555464077620424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9127,18 +9049,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 3cb37265-af6f-469c-96ff-7c7588186b16
---- !u!114 &114653566365761824
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1642008260200978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0368574c7fa2d7b48af081b700c691b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disableOnLevelClear: 1
 --- !u!114 &114656422302077254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9425,6 +9335,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 5eb9ad70-c64b-42d0-b770-6cca45ed6117
+--- !u!114 &114772641882952422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642008260200978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7769befae38989749b451b91e4dcba63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: DungeonChest
+  onStart: 0
+  useChild: 0
 --- !u!114 &114775433979964894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9538,6 +9462,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeDelay: 0.05
   variance: 0.1
+--- !u!114 &114879479184758256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642008260200978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14f8a12757a0944faf0410cd2ded80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendType: 2
+  sendTime: 0
+  message: SetSpawnMessage
+  requireReceiver: 1
+  delayBeforeSend: 1
 --- !u!114 &114880888975694902
 MonoBehaviour:
   m_ObjectHideFlags: 1

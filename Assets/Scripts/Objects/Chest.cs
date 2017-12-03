@@ -57,6 +57,7 @@ public class Chest : MonoBehaviour
     public AmountOfParticleTypes[] poofParticle;
 
     private Animator animator;
+    private EnemySpawner enemySpawner;
 
     void OnEnable()
     {
@@ -67,6 +68,8 @@ public class Chest : MonoBehaviour
 	void Start ()
 	{
         animator = GetComponentInChildren<Animator>();
+
+        enemySpawner = GetComponentInParent<EnemySpawner>();
 
         //populate the chest with gold items
         if (chestType == ChestType.Gold)
@@ -118,6 +121,9 @@ public class Chest : MonoBehaviour
 							else {
 								ItemsManager.Instance.DungeonKeys -= 1;
 								ItemsManager.Instance.DungeonKeyChange ();
+
+                                if (enemySpawner)
+                                    enemySpawner.cleared = false;
 							}
 						}
                     }
@@ -290,6 +296,8 @@ public class Chest : MonoBehaviour
 			{
 				obj = ObjectPooler.GetPooledObject(item.itemPrefab);                     
 			}
+
+            enemySpawner.Spawn(true);
 		}
 
         if (obj)
