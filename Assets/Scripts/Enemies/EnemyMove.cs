@@ -66,7 +66,8 @@ public class EnemyMove : MonoBehaviour
 
         ChangeMoveSpeed();
 
-        rb.velocity = Vector3.zero;
+        if (rb)
+            rb.velocity = Vector3.zero;
     }
 
     public void ChangeMoveSpeed()

@@ -33,25 +33,27 @@ public class WelcomeMan : MonoBehaviour {
                 dialogueSpeaker.lines[0] = messageAfterCollectingLoot;
                 looted = true;
             }
-
-            if (dialogueSpeaker.CurrentPlayer)
+            else
             {
-                if (!looted)
+                if (dialogueSpeaker.CurrentPlayer)
                 {
-                    if (dialogueSpeaker.CurrentPlayer.playerMove.input.Purchase)
+                    if (!looted)
                     {
-                        if (dropCoins)
-                            drop.DoDrop();
-                        else
+                        if (dialogueSpeaker.CurrentPlayer.playerMove.input.Purchase)
                         {
-                            ItemsManager.Instance.Coins += cashAmount;
-                            ItemsManager.Instance.CoinChange();
+                            if (dropCoins)
+                                drop.DoDrop();
+                            else
+                            {
+                                ItemsManager.Instance.Coins += cashAmount;
+                                ItemsManager.Instance.CoinChange();
 
-                            SoundManager.PlaySound(collectSound, transform.position);
-                            SpawnEffects.EffectOnHit(collectParticle, transform.position);
+                                SoundManager.PlaySound(collectSound, transform.position);
+                                SpawnEffects.EffectOnHit(collectParticle, transform.position);
+                            }
+
+                            looted = true;
                         }
-
-                        looted = true;
                     }
                 }
             }
