@@ -66,18 +66,7 @@ public class EnemyMove : MonoBehaviour
 
         ChangeMoveSpeed();
 
-        StartCoroutine(stall());
-    }
-
-    IEnumerator stall()
-    {
-        if (rb)
-        {
-            //fixes issue with enemies spazzing around the screen on spawn
-            rb.isKinematic = true;
-            yield return new WaitForSeconds(1);
-            rb.isKinematic = false;
-        }
+        rb.velocity = Vector3.zero;
     }
 
     public void ChangeMoveSpeed()
