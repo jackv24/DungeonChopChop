@@ -121,6 +121,7 @@ public class EnemySpawner : MonoBehaviour
 					BroadcastMessage(defeatedMessage);
 
 				spawned = false;
+                cleared = true;
 			}
 		}
 	}
@@ -309,41 +310,44 @@ public class EnemySpawner : MonoBehaviour
 
 	public void Despawn()
 	{
-		spawned = false;
-
         if (spawnRoutine != null)
             StopCoroutine(spawnRoutine);
 
-		//Interrupt spawning routine if yet to happen
-		shouldSpawn = false;
-		List<Profile.Spawn> toRemove = new List<Profile.Spawn>();
+        if (spawned)
+        {
+            spawned = false;
 
-		//Make sure enemies have actually spawned
-		if (spawnedEnemies.Count > 0)
-		{
-			for (int i = 0; i < undefeatedEnemies.Count; i++)
-			{
-				//Add defeated enemies to a list so that iterator is not edited
-				if (!spawnedEnemies[i].activeSelf)
-					toRemove.Add(undefeatedEnemies[i]);
-			}
-		}
+            //Interrupt spawning routine if yet to happen
+            shouldSpawn = false;
+            List<Profile.Spawn> toRemove = new List<Profile.Spawn>();
 
-		//Remove defeated enemies
-		foreach (Profile.Spawn e in toRemove)
-			undefeatedEnemies.Remove(e);
+            //Make sure enemies have actually spawned
+            if (spawnedEnemies.Count > 0)
+            {
+                for (int i = 0; i < undefeatedEnemies.Count; i++)
+                {
+                    //Add defeated enemies to a list so that iterator is not edited
+                    if (!spawnedEnemies[i].activeSelf)
+                        toRemove.Add(undefeatedEnemies[i]);
+                }
+            }
 
-		toRemove.Clear();
+            //Remove defeated enemies
+            foreach (Profile.Spawn e in toRemove)
+                undefeatedEnemies.Remove(e);
 
-		foreach (GameObject enemy in spawnedEnemies)
-			enemy.SetActive(false);
-	
-		spawnedEnemies.Clear();
+            toRemove.Clear();
 
-		//If tile was just cleared, don't allow respawning
-		if (undefeatedEnemies.Count <= 0)
-		{
-			cleared = true;
-		}
+            foreach (GameObject enemy in spawnedEnemies)
+                enemy.SetActive(false);
+
+            spawnedEnemies.Clear();
+
+            //If tile was just cleared, don't allow respawning
+            if (undefeatedEnemies.Count <= 0)
+            {
+                cleared = true;
+            }
+        }
 	}
 }
