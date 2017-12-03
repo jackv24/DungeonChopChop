@@ -178,11 +178,13 @@ public class Chest : MonoBehaviour
         {
             if (chestType == ChestType.Gold)
             {
-                int random = Random.Range(0, 2);
-                if (random == 0)
-                    StartCoroutine(ReleaseItems());
-                else
-                    StartCoroutine(ReleaseObjects());
+                //release charm or sword
+
+                //int random = Random.Range(0, 2);
+                //if (random == 0)
+                StartCoroutine(ReleaseItems());
+                //else
+                //    StartCoroutine(ReleaseObjects());
             }
             else if (chestType == ChestType.Iron)
                 StartCoroutine(ReleaseConsumables());
