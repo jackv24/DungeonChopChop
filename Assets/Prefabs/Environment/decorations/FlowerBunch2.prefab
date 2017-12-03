@@ -117,7 +117,7 @@ BoxCollider:
   m_Center: {x: 0.012413025, y: 0.605375, z: 0.04984069}
 --- !u!114 &114334442801035282
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298106489440056}
@@ -194,7 +194,7 @@ MonoBehaviour:
     duration: 1
 --- !u!114 &114622999231863052
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298106489440056}
@@ -217,22 +217,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drops:
   - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
-    probability: 0.5
-    maxAmount: 0
-  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
-    probability: 1
-    maxAmount: 0
-  - prefab: {fileID: 1108359381111716, guid: 36f8ca5ae127cbc4c9eca589f88b9d63, type: 2}
-    probability: 0.2
-    maxAmount: 0
-  - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
     probability: 0.1
     maxAmount: 0
-  - prefab: {fileID: 0}
-    probability: 1
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 0.2
     maxAmount: 0
-  - prefab: {fileID: 0}
-    probability: 1
+  - prefab: {fileID: 1108359381111716, guid: 36f8ca5ae127cbc4c9eca589f88b9d63, type: 2}
+    probability: 0.8
+    maxAmount: 0
+  - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
+    probability: 0.5
+    maxAmount: 0
+  - prefab: {fileID: 1108359381111716, guid: 36f8ca5ae127cbc4c9eca589f88b9d63, type: 2}
+    probability: 0.8
+    maxAmount: 0
+  - prefab: {fileID: 1108359381111716, guid: 36f8ca5ae127cbc4c9eca589f88b9d63, type: 2}
+    probability: 0.7
     maxAmount: 0
   - prefab: {fileID: 0}
     probability: 1
@@ -248,7 +248,6 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 0
   maxAmountOfDrops: 1
-  isWizzer: 0
 --- !u!114 &114851508572742252
 MonoBehaviour:
   m_ObjectHideFlags: 1

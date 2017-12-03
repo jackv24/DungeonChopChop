@@ -7991,7 +7991,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4397088533171892}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.0518904, y: 0.07815095, z: 1.8432171}
 --- !u!4 &4283183369117132
 Transform:
   m_ObjectHideFlags: 1
@@ -8627,7 +8627,7 @@ Transform:
   - {fileID: 4281757714894804}
   m_Father: {fileID: 4800154013488248}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.017069148, y: -0.0000062105, z: 0.033941437}
+  m_LocalEulerAnglesHint: {x: -0.020972084, y: -0.00016762665, z: -0.10225877}
 --- !u!4 &4398134950184794
 Transform:
   m_ObjectHideFlags: 1
@@ -23447,6 +23447,7 @@ MonoBehaviour:
   profiles: []
   spawnedEnemies: []
   undefeatedEnemies: []
+  cleared: 0
 --- !u!114 &114038063980356610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28715,8 +28716,9 @@ MonoBehaviour:
   containingObject: {fileID: 0}
   containingConsumables: []
   animationBone: {fileID: 0}
-  releaseItemDelay: 1
-  releaseItemForce: 0
+  releaseItemDelay: 0.7
+  releaseItemForce: 0.3
+  releaseHeight: 3
   openSound:
     clips:
     - {fileID: 8300000, guid: 85400e9ded764aa4d874c0db8c43e60a, type: 3}
@@ -33976,6 +33978,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
   undefeatedEnemies: []
+  cleared: 0
 --- !u!114 &114741212845606282
 MonoBehaviour:
   m_ObjectHideFlags: 1
