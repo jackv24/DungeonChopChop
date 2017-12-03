@@ -47,7 +47,7 @@ public class Chest : MonoBehaviour
     public GameObject animationBone;
     public float releaseItemDelay = 1.5f;
     public float releaseItemForce = 10.0f;
-    public int releaseHeight = 3;
+    public int releaseSphereSize = 3;
 
     [Header("Audio")]
     public SoundEffect openSound;
@@ -260,7 +260,7 @@ public class Chest : MonoBehaviour
             GameObject obj = ObjectPooler.GetPooledObject(o);
             //throw out of chest
 
-            Vector3 direction = new Vector3(Random.insideUnitSphere.x, releaseHeight, Random.insideUnitSphere.z);
+            Vector3 direction = new Vector3(Random.insideUnitSphere.x * releaseSphereSize, Random.insideUnitSphere.y * releaseSphereSize, Random.insideUnitSphere.z * releaseSphereSize);
 
             if (obj)
             {
