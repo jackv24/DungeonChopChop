@@ -7239,7 +7239,6 @@ GameObject:
   - component: {fileID: 4160607304873256}
   - component: {fileID: 33980317337721160}
   - component: {fileID: 23982368827563276}
-  - component: {fileID: 65999835503700628}
   - component: {fileID: 114766297232186778}
   m_Layer: 0
   m_Name: chestLID_mesh
@@ -11760,7 +11759,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4954897691776742}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -1.0518904, y: 0.07815095, z: 1.8432171}
+  m_LocalEulerAnglesHint: {x: -54.87114, y: 180, z: 180}
 --- !u!4 &4161076381833728
 Transform:
   m_ObjectHideFlags: 1
@@ -18157,7 +18156,7 @@ Transform:
   - {fileID: 4160607304873256}
   m_Father: {fileID: 4225818791144444}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.020972084, y: -0.00016762665, z: -0.10225877}
+  m_LocalEulerAnglesHint: {x: -0.1977462, y: 0, z: 0}
 --- !u!4 &4956807144023336
 Transform:
   m_ObjectHideFlags: 1
@@ -35032,7 +35031,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.0897717, y: 0.85423553, z: 1.2921034}
-  m_Center: {x: 0.028722286, y: 0.43148476, z: 0.49277678}
+  m_Center: {x: 0.028722286, y: 0.43148476, z: 1.16}
 --- !u!65 &65486939092401110
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -35693,18 +35692,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0172577, y: 2.5980568, z: 1.0250397}
   m_Center: {x: 0.06771088, y: 1.2781692, z: 0.07212067}
---- !u!65 &65999835503700628
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1716105799832458}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.020915, y: 0.87841713, z: 1.7508817}
-  m_Center: {x: -0.0000015497208, y: 0.44732696, z: 0.6482775}
 --- !u!95 &95134489713781922
 Animator:
   serializedVersion: 3
@@ -39699,12 +39686,12 @@ MonoBehaviour:
     probability: 1
     maxAmount: 2
   - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
-    probability: 0.8
-    maxAmount: 1
-  - prefab: {fileID: 1103341720037996, guid: 2b29ad02e9979f947984f68f43976362, type: 2}
     probability: 0.7
     maxAmount: 1
-  - prefab: {fileID: 1335806162793318, guid: 396b06f0682a13e4aa4a5688e9d98910, type: 2}
+  - prefab: {fileID: 1108359381111716, guid: 36f8ca5ae127cbc4c9eca589f88b9d63, type: 2}
+    probability: 0.7
+    maxAmount: 1
+  - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
     probability: 0.7
     maxAmount: 1
   possibleObjects: []
@@ -39717,7 +39704,7 @@ MonoBehaviour:
   containingObject: {fileID: 0}
   containingConsumables: []
   animationBone: {fileID: 0}
-  releaseItemDelay: 0.8
+  releaseItemDelay: 0.42
   releaseItemForce: 0.5
   releaseSphereSize: 18
   openSound:
@@ -39726,8 +39713,108 @@ MonoBehaviour:
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
-  releaseParticle: {fileID: 0}
-  poofParticle: []
+  releaseParticle: {fileID: 1928837666263156, guid: fb52ffb4991f66944aaf1bcbd4f1c890,
+    type: 2}
+  poofParticle:
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1928837666263156, guid: fb52ffb4991f66944aaf1bcbd4f1c890,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 31383
+        atime2: 65535
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 3
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1394710473451934, guid: e76b80a9d164c66418599616c19c7d8a,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.63235295, g: 0.52717453, b: 0.4463668, a: 1}
+        key1: {r: 0.029411793, g: 0.016430035, b: 0, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1394710473451934, guid: e76b80a9d164c66418599616c19c7d8a,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.30882353, g: 0.22112517, b: 0.18166089, a: 1}
+        key1: {r: 0.30882353, g: 0.22112517, b: 0.18166089, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 31383
+        atime2: 65535
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 3
 --- !u!114 &114365701021301764
 MonoBehaviour:
   m_ObjectHideFlags: 1

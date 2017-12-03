@@ -503,7 +503,7 @@ MonoBehaviour:
   _assetGuid: 844b566ba5991964a9a3a580c27c536c
 --- !u!114 &114316704966857902
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1532937816593752}
@@ -571,70 +571,7 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 6119f555c1ce1df4782ef6b2232b4259, type: 2}
     probability: 1
   possibleConsumables: []
-  possibleObjects:
-  - prefab: {fileID: 1210518989845254, guid: 9dec0d1d9b292394687679ea31063981, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1210518989845254, guid: 91356ff9f108e3d4097f556983fafee1, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1210518989845254, guid: b7f50cb041a4f49449cd1e7e010e6ad1, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1305355838016598, guid: 4042ef54f27389d4d9abd96dac1c9f2e, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1168701599439394, guid: fc1e54a208775c44c906db5a704839dc, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1702736564022612, guid: 2df2b1f5075aaec4a8f3997feb7d1d36, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1992342985494866, guid: 60de2ad3c241cbf499c0e5147cf463a4, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1013505199300786, guid: caccaffdf0090984ab405cb89ed488bb, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1033753730530734, guid: 2c9a854c29632654d812c3f361f54b4a, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1824778148565110, guid: 7461569ea559b6d40bbff997ba8f5daa, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1390890990404562, guid: dde20187036402a46a13ed3f10fe1922, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1433744696121786, guid: 5b9cf3c116116b042afe4878a1e734da, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1433744696121786, guid: 1bd4ff083d48ae3468a21e5947e40175, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1297283827874476, guid: 73fa45a69eead2c40b55cadc6fef7ab2, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1824778148565110, guid: 39f928e1192d8c5458625c3ee0e1755a, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1528175561573820, guid: df9f52f49911df7468d04a976c9d7c17, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1185114194559234, guid: 9152d624fb9565d43aba504a0edbc808, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1894812837209922, guid: 65b840e458a822d46a9d47540313f9a8, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1622694245900202, guid: e42c8177e9f3b3542bc04fd94a7361f4, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1067695375697958, guid: 6976b33bd0a32d34899e591f5569bab1, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1264141842905612, guid: c6f26be6259348c4f8e99dd6bd9c6631, type: 2}
-    probability: 1
-    maxAmount: 1
+  possibleObjects: []
   minAmountOfObjects: 1
   maxAmountOfObjects: 1
   playerMask:
@@ -646,18 +583,114 @@ MonoBehaviour:
   animationBone: {fileID: 1532937816593752}
   releaseItemDelay: 1.5
   releaseItemForce: 50
+  releaseSphereSize: 3
   openSound:
     clips:
     - {fileID: 8300000, guid: 85400e9ded764aa4d874c0db8c43e60a, type: 3}
     volume: 1
     minPitchVariance: -0.1
     maxPitchVariance: 0.1
-  releaseParticle: {fileID: 1928837666263156, guid: 389b9ff2e2cd82a4e8a489bb9126b750,
+  releaseParticle: {fileID: 1928837666263156, guid: fb52ffb4991f66944aaf1bcbd4f1c890,
     type: 2}
-  poofParticle: []
+  poofParticle:
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1928837666263156, guid: fb52ffb4991f66944aaf1bcbd4f1c890,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 31383
+        atime2: 65535
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 3
+    - particle: {fileID: 1928837666263156, guid: a55a81c2456b8ae408c05b7654dc1000,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.63235295, g: 0.52717453, b: 0.4463668, a: 1}
+        key1: {r: 0.029411793, g: 0.016430035, b: 0, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+    - particle: {fileID: 1928837666263156, guid: a55a81c2456b8ae408c05b7654dc1000,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.7173778, g: 0.8455882, b: 0.13056879, a: 1}
+        key1: {r: 0.80524695, g: 0.8897059, b: 0.4186851, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
 --- !u!114 &114426432102558782
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1841967110994072}
@@ -680,7 +713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &114461998000748016
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1473000504614386}
@@ -692,7 +725,7 @@ MonoBehaviour:
   _guid: ac6e6a29-a369-4f7a-82f6-27f44ed574bf
 --- !u!114 &114596117213111474
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805343035469878}
@@ -721,7 +754,7 @@ MonoBehaviour:
   registerOnce: 0
 --- !u!114 &114909752249373848
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1184039514092840}
@@ -733,7 +766,7 @@ MonoBehaviour:
   _guid: 3783d813-3c80-41d4-a349-9ecb575c411f
 --- !u!114 &114947939365599430
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1578678712010556}
