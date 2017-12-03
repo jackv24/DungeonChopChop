@@ -18,7 +18,7 @@ public class BossHealthBar : MonoBehaviour {
 
         bossBar = GetComponent<Image>();
 
-        bossBar.gameObject.SetActive(false);
+        bossBar.transform.parent.gameObject.SetActive(false);
 	}
 	
     void UpdateBar()
@@ -32,12 +32,12 @@ public class BossHealthBar : MonoBehaviour {
         bossHealth.OnHealthChange -= UpdateBar;
         bossHealth.OnDeath -= OnDeath;
 
-        bossBar.gameObject.SetActive(false);
+        bossBar.transform.parent.gameObject.SetActive(false);
     }
 
     public void SetBoss(Health boss, float maxHealth = 0)
     {
-        bossBar.gameObject.SetActive(true);
+        bossBar.transform.parent.gameObject.SetActive(true);
 
         bossHealth = boss;
 
@@ -53,6 +53,6 @@ public class BossHealthBar : MonoBehaviour {
 
     public void Disable()
     {
-        bossBar.gameObject.SetActive(false);
+        bossBar.transform.parent.gameObject.SetActive(false);
     }
 }
