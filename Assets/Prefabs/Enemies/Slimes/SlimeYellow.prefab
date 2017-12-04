@@ -787,7 +787,7 @@ MonoBehaviour:
   shootPosition: {fileID: 0}
   thrust: 80
   projectileDmgMutliplier: 0
-  damageOnTouch: 2
+  damageOnTouch: 1
   knockbackStrength: 7
   shootSounds:
     clips: []
@@ -801,6 +801,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114109633836181994
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -852,7 +853,7 @@ MonoBehaviour:
   damagePerTick: 0
   duration: 8
   timeBetweenDamage: 0
-  speedDamper: 0
+  speedDamper: 3
 --- !u!114 &114212502447372398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1020,7 +1021,6 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 0
   maxAmountOfDrops: 3
-  isWizzer: 0
 --- !u!114 &114382322386837200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1311,6 +1311,7 @@ MonoBehaviour:
   LockY: 1
   usingNav: 1
   type: 1
+  isBoss: 0
   doesSplit: 0
   splitInterval: 2
   splitAmount: 0
