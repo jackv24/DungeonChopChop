@@ -964,6 +964,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114402007599849470
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -1377,7 +1378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drops:
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
-    probability: 0.9
+    probability: 0.5
     maxAmount: 0
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
     probability: 0.3
@@ -1386,8 +1387,8 @@ MonoBehaviour:
     probability: 0.2
     maxAmount: 0
   - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
-    probability: 0.1
-    maxAmount: 0
+    probability: 0.7
+    maxAmount: 1
   - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
     probability: 0.05
     maxAmount: 0
@@ -1399,7 +1400,6 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 1
   maxAmountOfDrops: 2
-  isWizzer: 0
 --- !u!137 &137418036792970284
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

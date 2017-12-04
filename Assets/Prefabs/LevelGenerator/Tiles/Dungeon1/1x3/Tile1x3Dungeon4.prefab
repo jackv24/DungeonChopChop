@@ -5607,15 +5607,14 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4795488265566608}
+  - component: {fileID: 114465109718001556}
   - component: {fileID: 114221189163718992}
   - component: {fileID: 65492869157570082}
   - component: {fileID: 54623225384007082}
-  - component: {fileID: 114188216258320560}
   - component: {fileID: 114130041636777274}
   - component: {fileID: 114293101536675690}
   - component: {fileID: 114601960284380830}
   - component: {fileID: 114484843912172346}
-  - component: {fileID: 114465109718001556}
   m_Layer: 0
   m_Name: LockedChest
   m_TagString: Untagged
@@ -8488,7 +8487,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4846795926890362}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!4 &4594075983565920
 Transform:
   m_ObjectHideFlags: 1
@@ -22232,18 +22231,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 57d8a1ba-8927-4d7c-8f4e-eb702f20a397
---- !u!114 &114188216258320560
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976207337043920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba875fb75cc4204ab29d60d515fd8f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beforeMerge: 1
 --- !u!114 &114188684766804886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22619,68 +22606,8 @@ MonoBehaviour:
     probability: 1
   possibleConsumables: []
   possibleObjects:
-  - prefab: {fileID: 1210518989845254, guid: 9dec0d1d9b292394687679ea31063981, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1210518989845254, guid: 91356ff9f108e3d4097f556983fafee1, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1210518989845254, guid: b7f50cb041a4f49449cd1e7e010e6ad1, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1305355838016598, guid: 4042ef54f27389d4d9abd96dac1c9f2e, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1168701599439394, guid: fc1e54a208775c44c906db5a704839dc, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1702736564022612, guid: 2df2b1f5075aaec4a8f3997feb7d1d36, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1992342985494866, guid: 60de2ad3c241cbf499c0e5147cf463a4, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1013505199300786, guid: caccaffdf0090984ab405cb89ed488bb, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1033753730530734, guid: 2c9a854c29632654d812c3f361f54b4a, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1824778148565110, guid: 7461569ea559b6d40bbff997ba8f5daa, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1390890990404562, guid: dde20187036402a46a13ed3f10fe1922, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1433744696121786, guid: 5b9cf3c116116b042afe4878a1e734da, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1433744696121786, guid: 1bd4ff083d48ae3468a21e5947e40175, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1297283827874476, guid: 73fa45a69eead2c40b55cadc6fef7ab2, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1824778148565110, guid: 39f928e1192d8c5458625c3ee0e1755a, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1528175561573820, guid: df9f52f49911df7468d04a976c9d7c17, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1185114194559234, guid: 9152d624fb9565d43aba504a0edbc808, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1894812837209922, guid: 65b840e458a822d46a9d47540313f9a8, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1622694245900202, guid: e42c8177e9f3b3542bc04fd94a7361f4, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1067695375697958, guid: 6976b33bd0a32d34899e591f5569bab1, type: 2}
-    probability: 1
-    maxAmount: 1
-  - prefab: {fileID: 1264141842905612, guid: c6f26be6259348c4f8e99dd6bd9c6631, type: 2}
-    probability: 1
+  - prefab: {fileID: 1103341720037996, guid: 2b29ad02e9979f947984f68f43976362, type: 2}
+    probability: 0.1
     maxAmount: 1
   minAmountOfObjects: 1
   maxAmountOfObjects: 1
@@ -22702,7 +22629,102 @@ MonoBehaviour:
     maxPitchVariance: 0.1
   releaseParticle: {fileID: 1928837666263156, guid: 389b9ff2e2cd82a4e8a489bb9126b750,
     type: 2}
-  poofParticle: []
+  poofParticle:
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1928837666263156, guid: 389b9ff2e2cd82a4e8a489bb9126b750,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 31383
+        atime2: 65535
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 3
+    - particle: {fileID: 1928837666263156, guid: a55a81c2456b8ae408c05b7654dc1000,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.30882353, g: 0.22112517, b: 0.18166089, a: 1}
+        key1: {r: 0.30882353, g: 0.22112517, b: 0.18166089, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 31383
+        atime2: 65535
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 3
+    - particle: {fileID: 1928837666263156, guid: a55a81c2456b8ae408c05b7654dc1000,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.63235295, g: 0.52717453, b: 0.4463668, a: 1}
+        key1: {r: 0.029411793, g: 0.016430035, b: 0, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 65535
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
 --- !u!114 &114231004230715038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -24019,9 +24041,7 @@ MonoBehaviour:
     - {fileID: 1719107356159544}
     - {fileID: 1213033813599252}
     - {fileID: 1216427567406442}
-    - {fileID: 0}
     - {fileID: 1198627777130942}
-    - {fileID: 0}
     - {fileID: 1057985491883478}
     - {fileID: 1583477507414804}
     - {fileID: 1012334533314618}
@@ -24037,7 +24057,6 @@ MonoBehaviour:
     - {fileID: 1281098667813968}
     - {fileID: 1222340574721632}
     - {fileID: 1931897608759598}
-    - {fileID: 0}
     - {fileID: 1667417210693968}
     - {fileID: 1215605662617968}
     - {fileID: 1976207337043920}
@@ -24068,15 +24087,9 @@ MonoBehaviour:
     - {fileID: 1190307629256042}
     - {fileID: 1905865660284120}
     - {fileID: 1345983115234982}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     - {fileID: 1100231640585234}
     - {fileID: 1230011715357296}
     - {fileID: 1599691445824616}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     - {fileID: 1764286623596976}
     - {fileID: 1960547537234030}
     - {fileID: 1307344605042560}
@@ -24113,9 +24126,6 @@ MonoBehaviour:
     - {fileID: 1733995358536466}
     - {fileID: 1753823815482290}
     - {fileID: 1867503441549458}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     - {fileID: 1877558223662288}
     - {fileID: 1466971108484132}
     - {fileID: 1077654471865050}

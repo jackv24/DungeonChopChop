@@ -3227,18 +3227,18 @@ GameObject:
   - component: {fileID: 33230408062949668}
   - component: {fileID: 23756015572311304}
   - component: {fileID: 65118859645135372}
-  - component: {fileID: 114316521359238000}
-  - component: {fileID: 114630343789147744}
-  - component: {fileID: 114318345980419782}
-  - component: {fileID: 114384555373751204}
-  - component: {fileID: 114681491535841504}
-  - component: {fileID: 114608760879523750}
-  - component: {fileID: 114602311697232118}
-  - component: {fileID: 114933713907005072}
-  - component: {fileID: 114921275294925198}
-  - component: {fileID: 114709645709700240}
   - component: {fileID: 114086546633529708}
   - component: {fileID: 114913236552741140}
+  - component: {fileID: 114696304288747784}
+  - component: {fileID: 114281214363628786}
+  - component: {fileID: 114535163043522176}
+  - component: {fileID: 114371099826156730}
+  - component: {fileID: 114945379780816876}
+  - component: {fileID: 114851897696935888}
+  - component: {fileID: 114161942602544162}
+  - component: {fileID: 114353599061582950}
+  - component: {fileID: 114261643284262168}
+  - component: {fileID: 114758790696752148}
   m_Layer: 0
   m_Name: DungeonWall (21)
   m_TagString: Untagged
@@ -30098,7 +30098,7 @@ MonoBehaviour:
   spikeType: 1
   delayTime: 0
   animationSpeed: 1
-  startUp: 0
+  startUp: 1
   levers: []
   particleOnUp: []
   soundOnUp:
@@ -30498,6 +30498,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 84fb960f-0b7c-45df-a539-3b5d22ffedfc
+--- !u!114 &114161942602544162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388051792842876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
+  moveTime: 2
+  canComeBackUp: 0
+  moveParticle:
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
+        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
 --- !u!114 &114162111554672916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -30615,7 +30663,7 @@ MonoBehaviour:
   spikeType: 1
   delayTime: 0
   animationSpeed: 1
-  startUp: 0
+  startUp: 1
   levers: []
   particleOnUp: []
   soundOnUp:
@@ -31314,7 +31362,7 @@ MonoBehaviour:
   spikeType: 1
   delayTime: 0
   animationSpeed: 1
-  startUp: 0
+  startUp: 1
   levers: []
   particleOnUp: []
   soundOnUp:
@@ -31760,6 +31808,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: eb0f14a5-e850-41ae-a95b-f5f52d2b05e7
+--- !u!114 &114261643284262168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388051792842876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
+  moveTime: 2
+  canComeBackUp: 0
+  moveParticle:
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
+        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
 --- !u!114 &114261662638707008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -32045,6 +32141,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 7a22ce74-c25c-43d5-b88b-238372d4725e
+--- !u!114 &114281214363628786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388051792842876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114282487611720790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -32623,54 +32730,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: a8077f8e-31bf-4f94-81ad-a50677aa76b7
---- !u!114 &114316521359238000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388051792842876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  canComeBackUp: 0
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114317096616035048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -32682,54 +32741,6 @@ MonoBehaviour:
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114318345980419782
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388051792842876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  canComeBackUp: 0
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114318526121550668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -32756,7 +32767,7 @@ MonoBehaviour:
   spikeType: 1
   delayTime: 0
   animationSpeed: 1
-  startUp: 0
+  startUp: 1
   levers: []
   particleOnUp: []
   soundOnUp:
@@ -33091,6 +33102,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 0c1e09ad-4159-4644-919f-e6c90b1885c1
+--- !u!114 &114353599061582950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388051792842876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114354944715087614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -33247,6 +33269,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: c0a51eee-7459-4aef-842b-866f2e375f10
+--- !u!114 &114371099826156730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388051792842876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114371814699400216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -33371,17 +33404,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 9915c1da-cf23-403c-a11b-062cb4b3e49c
---- !u!114 &114384555373751204
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388051792842876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114385585356331866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -35500,6 +35522,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeDelay: 0.05
   variance: 0.1
+--- !u!114 &114535163043522176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388051792842876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
+  moveTime: 2
+  canComeBackUp: 0
+  moveParticle:
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
+        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
 --- !u!114 &114537687044903092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -36568,54 +36638,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 57d8a1ba-8927-4d7c-8f4e-eb702f20a397
---- !u!114 &114602311697232118
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388051792842876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  canComeBackUp: 0
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114606166798169158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -36673,17 +36695,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1491221649, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114608760879523750
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388051792842876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114609049852293912
@@ -36843,17 +36854,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeDelay: 0.05
   variance: 0.1
---- !u!114 &114630343789147744
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388051792842876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114630472019286444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37438,54 +37438,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: bf96b7c9-3ac4-4325-8220-daf245ace6a7
---- !u!114 &114681491535841504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388051792842876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  canComeBackUp: 0
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114682865068478382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37625,6 +37577,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 9e7254b5-26ae-4ff9-ad70-82e31cfd2f20
+--- !u!114 &114696304288747784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388051792842876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
+  moveTime: 2
+  canComeBackUp: 0
+  moveParticle:
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
+        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
 --- !u!114 &114697340254146118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37854,17 +37854,6 @@ MonoBehaviour:
     - {fileID: 1757222799517066}
     - {fileID: 1022720929157676}
   _assetGuid: 7cdbbee580d7d644cbc268ed343d4abb
---- !u!114 &114709645709700240
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388051792842876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114711905010332696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -38622,6 +38611,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bd0d314a50f19d4e8a0f53bdd4c5733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114758790696752148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388051792842876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114761724538314326
@@ -40066,6 +40066,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 53eb643a-b8b9-484e-9c3d-a7e09c0e25e5
+--- !u!114 &114851897696935888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388051792842876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114853588946942752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41078,54 +41089,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 3427b1f0-55a1-4f24-bcb3-78132dd6e2cb
---- !u!114 &114921275294925198
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388051792842876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
-  moveTime: 2
-  canComeBackUp: 0
-  moveParticle:
-  - particleType: 0
-    particles:
-    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
-        type: 2}
-      gradient:
-        serializedVersion: 2
-        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
 --- !u!114 &114922212766417046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41394,17 +41357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 54ce7be3-4462-41bb-ba7e-abc07609e2e0
---- !u!114 &114933713907005072
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388051792842876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64137258593d6443a5f953525735b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114933891251562544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41467,6 +41419,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 42fe6e1c-727e-4f8b-be26-5ff6583eedf1
+--- !u!114 &114945379780816876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388051792842876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395b6b23dad3b1047a418d04ed439b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lever: {fileID: 114871026774736168, guid: 25fbf37251f0d684395f47a8a07858aa, type: 2}
+  moveTime: 2
+  canComeBackUp: 0
+  moveParticle:
+  - particleType: 0
+    particles:
+    - particle: {fileID: 1928837666263156, guid: 95d96530b6011f543bee9129aa6370bb,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
+        key1: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
 --- !u!114 &114946374519092688
 MonoBehaviour:
   m_ObjectHideFlags: 1
