@@ -4100,12 +4100,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4847303435686922}
+  - component: {fileID: 114483596217798802}
   - component: {fileID: 33348903461723412}
-  - component: {fileID: 23355198885736046}
-  - component: {fileID: 64321435651160540}
   - component: {fileID: 114144579965795892}
   - component: {fileID: 114648974776760494}
-  - component: {fileID: 114483596217798802}
+  - component: {fileID: 64321435651160540}
   m_Layer: 0
   m_Name: SnowDriftAll (5)
   m_TagString: Snow
@@ -9966,38 +9965,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 422737998551b4a49b976c45adedf0e1, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!23 &23355198885736046
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1870201359601818}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: ea519ed8300953f46be79577d411b2e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17193,6 +17160,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
   undefeatedEnemies: []
+  cleared: 0
 --- !u!114 &114011731115185098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17948,6 +17916,7 @@ MonoBehaviour:
   profiles: []
   spawnedEnemies: []
   undefeatedEnemies: []
+  cleared: 0
 --- !u!114 &114112250896734802
 MonoBehaviour:
   m_ObjectHideFlags: 1

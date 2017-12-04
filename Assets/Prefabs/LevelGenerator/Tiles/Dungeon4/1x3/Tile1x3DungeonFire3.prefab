@@ -2008,12 +2008,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4394344832153190}
+  - component: {fileID: 114715886605160568}
   - component: {fileID: 33168867891869340}
-  - component: {fileID: 23849003343284544}
   - component: {fileID: 64138963429342352}
   - component: {fileID: 114611104410030272}
   - component: {fileID: 114868794539585338}
-  - component: {fileID: 114715886605160568}
   m_Layer: 0
   m_Name: LavaDriftAll
   m_TagString: Lava
@@ -9799,38 +9798,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!23 &23849003343284544
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1472588724881616}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: b83dc5772c7b92e4a856eb03e99b74d4, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!23 &23861647142103036
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -15978,6 +15945,7 @@ MonoBehaviour:
   profiles: []
   spawnedEnemies: []
   undefeatedEnemies: []
+  cleared: 0
 --- !u!114 &114131909671803384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21262,6 +21230,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
   undefeatedEnemies: []
+  cleared: 0
 --- !u!114 &114604566097662314
 MonoBehaviour:
   m_ObjectHideFlags: 1
