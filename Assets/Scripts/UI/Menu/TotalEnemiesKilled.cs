@@ -26,7 +26,7 @@ public class TotalEnemiesKilled : MonoBehaviour {
     {
         if (transform.childCount > 0)
         {
-            if (transform.GetChild(transform.childCount - 1).GetComponent<RectTransform>().position.y < -80)
+            if (transform.GetChild(transform.childCount - 1).GetComponent<RectTransform>().position.y < 204)
             {
                 transform.GetComponent<RectTransform>().position = Vector3.Lerp(transform.GetComponent<RectTransform>().position, new Vector3(
                         transform.GetComponent<RectTransform>().position.x, 
