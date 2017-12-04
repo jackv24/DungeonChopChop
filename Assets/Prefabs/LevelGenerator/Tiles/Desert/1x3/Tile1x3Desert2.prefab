@@ -7073,6 +7073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -7088,6 +7089,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114423247690620764
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -7184,6 +7189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -7199,6 +7205,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114475874269878404
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -7612,6 +7622,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawned: 0
   waitForSpawnMessage: 0
+  sendDefeatedMessage: 0
+  defeatedMessage: 
   currentProfileIndex: 0
   profiles:
   - randomised: 1
@@ -7619,29 +7631,38 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
         type: 2}
       position: {x: -31.362417, y: 0, z: 5.6142883}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
         type: 2}
       position: {x: -8.7883415, y: 0, z: -4.8897934}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
         type: 2}
       position: {x: -24.710567, y: 0, z: -2.2647018}
+      rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1560298701560840, guid: a5b926da6b6ee8a45af3727e4219839b,
         type: 2}
       position: {x: -10.744562, y: 0, z: -5.4857407}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
         type: 2}
       position: {x: -30.714071, y: 0, z: 5.6959076}
+      rotation: {x: 0, y: 0, z: 0}
   - randomised: 1
     spawns:
     - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
         type: 2}
-      position: {x: -1.3512979, y: -13.35405, z: 1.429573}
+      position: {x: -1.3512979, y: 0, z: 1.429573}
+      rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1305525527743298, guid: 5c27ad63cec769d4b87217d848a2be11,
         type: 2}
       position: {x: -40.562317, y: 0, z: -0.25794983}
+      rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
+  undefeatedEnemies: []
+  cleared: 0
 --- !u!114 &114859402846606574
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -7790,6 +7811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -7805,6 +7827,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!212 &212133314426220298
 SpriteRenderer:
   m_ObjectHideFlags: 1

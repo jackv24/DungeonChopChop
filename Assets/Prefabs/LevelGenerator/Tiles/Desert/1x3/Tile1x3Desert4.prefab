@@ -12692,6 +12692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -12707,6 +12708,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114017607685597158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12781,7 +12786,7 @@ MonoBehaviour:
   _guid: f7e37d54-fd0c-4e2d-94c1-e684e28f6910
 --- !u!114 &114062155073492200
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1542051921278114}
@@ -13095,6 +13100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -13110,6 +13116,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114143229628127508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13423,6 +13433,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawned: 0
   waitForSpawnMessage: 0
+  sendDefeatedMessage: 0
+  defeatedMessage: 
   currentProfileIndex: 0
   profiles:
   - randomised: 1
@@ -13439,7 +13451,7 @@ MonoBehaviour:
     spawns:
     - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
         type: 2}
-      position: {x: 1.9113464, y: -1.235671, z: -0.07349396}
+      position: {x: 1.9113464, y: 0, z: -0.07349396}
       rotation: {x: 0, y: 0, z: 0}
     - enemyPrefab: {fileID: 1218496621573730, guid: c5b14c0d54552f1459be570e71b00151,
         type: 2}
@@ -13461,6 +13473,7 @@ MonoBehaviour:
       rotation: {x: 0, y: 0, z: 0}
   spawnedEnemies: []
   undefeatedEnemies: []
+  cleared: 0
 --- !u!114 &114310869739416098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13549,6 +13562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -13564,6 +13578,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114345694762229496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13724,6 +13742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -13739,6 +13758,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114396303596791490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13815,6 +13838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -13830,6 +13854,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114450219228299150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14390,6 +14418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -14405,6 +14434,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114776458937301934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14467,7 +14500,7 @@ MonoBehaviour:
   _guid: 39d00b7d-d95c-420d-8dac-fdf50d44fc12
 --- !u!114 &114790973248353506
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1542051921278114}
@@ -14769,6 +14802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 0
+  damagesOtherEnemies: 1
   projecticle: {fileID: 0}
   shootPosition: {fileID: 0}
   thrust: 0
@@ -14784,6 +14818,10 @@ MonoBehaviour:
   timeTillInterval: 0
   minInterval: 0
   maxInterval: 0
+  burstFire: 0
+  burstAmount: 0
+  timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114907436697371748
 MonoBehaviour:
   m_ObjectHideFlags: 1
