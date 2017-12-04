@@ -76,8 +76,10 @@ public class Chest : MonoBehaviour
         {
             if (randomise)
             {
-                containingItem = Helper.GetRandomItemByProbability(possibleItems);
-                containingObject = Helper.GetRandomGameObjectByProbability(possibleObjects);
+                if (possibleItems.Length > 0)
+                    containingItem = Helper.GetRandomItemByProbability(possibleItems);
+                if (possibleObjects.Length > 0)
+                    containingObject = Helper.GetRandomGameObjectByProbability(possibleObjects);
             }
         }
         else if (chestType == ChestType.Iron)
@@ -87,8 +89,11 @@ public class Chest : MonoBehaviour
                 int random = Random.Range(minAmountOfObjects, maxAmountOfObjects);
                 for (int i = 0; i < random; i++)
                 {
-                    GameObject obj = Helper.GetRandomGameObjectByProbability(possibleConsumables);
-                    containingConsumables.Add(obj);
+                    if (possibleConsumables.Length > 0)
+                    {
+                        GameObject obj = Helper.GetRandomGameObjectByProbability(possibleConsumables);
+                        containingConsumables.Add(obj);
+                    }
                 }
             }
         }
