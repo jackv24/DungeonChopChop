@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 95284639931513610}
   - component: {fileID: 114973529005955698}
   - component: {fileID: 114304056496362904}
+  - component: {fileID: 114971921449181044}
   m_Layer: 11
   m_Name: VispBoss
   m_TagString: Untagged
@@ -562,7 +563,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114188574094110272
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1446547787823128}
@@ -970,7 +971,7 @@ MonoBehaviour:
     duration: 1
 --- !u!114 &114813978033448378
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1322179379819108}
@@ -982,7 +983,7 @@ MonoBehaviour:
   _guid: 089afed7-4a03-4fb2-9aff-dba1ff467139
 --- !u!114 &114849214794523690
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1322179379819108}
@@ -1009,6 +1010,41 @@ MonoBehaviour:
     - {fileID: 1650192769870982}
     - {fileID: 1014393633191626}
   _assetGuid: 63abb8264f1e2f140bb59c682559dc25
+--- !u!114 &114971921449181044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1446547787823128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8af6fba017eb594f9bbe87f903e9f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - prefab: {fileID: 1058312351290586, guid: 21d6d1c75fccd124f8a009055d0ff15d, type: 2}
+    probability: 0.9
+    maxAmount: 0
+  - prefab: {fileID: 1658681933412678, guid: 3caf6818c888a9843bea282dbe10a024, type: 2}
+    probability: 0.3
+    maxAmount: 0
+  - prefab: {fileID: 1500886815647376, guid: 5299fdb9461836040b465c282b4da8d0, type: 2}
+    probability: 0.2
+    maxAmount: 0
+  - prefab: {fileID: 1108359381111716, guid: 36f8ca5ae127cbc4c9eca589f88b9d63, type: 2}
+    probability: 0.5
+    maxAmount: 0
+  - prefab: {fileID: 1362859695216548, guid: 89c592a7e988df2448a3e1a60798d162, type: 2}
+    probability: 0.05
+    maxAmount: 0
+  - prefab: {fileID: 1335806162793318, guid: 3b6edcf3ad2cab34cb98607f943fbad4, type: 2}
+    probability: 0.1
+    maxAmount: 0
+  - prefab: {fileID: 1119699910917224, guid: 97ccae94e474cb9499dfc11069f69887, type: 2}
+    probability: 0.1
+    maxAmount: 0
+  minAmountOfDrops: 10
+  maxAmountOfDrops: 30
 --- !u!114 &114973529005955698
 MonoBehaviour:
   m_ObjectHideFlags: 1

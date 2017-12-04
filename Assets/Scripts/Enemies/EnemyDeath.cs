@@ -44,7 +44,7 @@ public class EnemyDeath : MonoBehaviour
 
 	private Health health;
 	private bool dead = false;
-    private Drops enemyDrop;
+    private Drops[] enemyDrops;
     private Vector3 originalScale;
 
 	// Use this for initialization
@@ -52,7 +52,7 @@ public class EnemyDeath : MonoBehaviour
 	{
         originalScale = transform.localScale;
 
-        enemyDrop = GetComponent<Drops>();
+        enemyDrops = GetComponents<Drops>();
 		health = GetComponent<Health> ();
 	}
 
@@ -101,7 +101,8 @@ public class EnemyDeath : MonoBehaviour
         while (transform.localScale.x > 0)
         {
             transform.localScale -= new Vector3(.005f, .005f, .005f);
-            enemyDrop.DoDrop();
+            foreach(Drops drop in enemyDrops)
+                drop.DoDrop();
             yield return new WaitForEndOfFrame();
         }
 		Die ();
@@ -220,10 +221,12 @@ public class EnemyDeath : MonoBehaviour
 
         CreateSoundObject();
 
-        if (enemyDrop)
-            enemyDrop.DoDrop();
-
-            
+        if (enemyDrops.Length > 0)
+        {
+            foreach(Drops drop in enemyDrops)
+                drop.DoDrop();
+        }
+  
         gameObject.SetActive(false);
 	}
 }

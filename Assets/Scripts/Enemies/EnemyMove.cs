@@ -331,11 +331,17 @@ public class EnemyMove : MonoBehaviour
                 maxDistance = dist;
             }
         }
+
         //returns the closest enemy
         if (closestEnemy)
             return closestEnemy.transform;
         else if (enemies.Length > 2)
-            return enemies[2].transform;
+        {
+            if (enemies[2].gameObject.layer != LayerMask.NameToLayer("Player"))
+                return enemies[2].transform;
+            else
+                return transform;
+        }
         else
             return transform;
     }
