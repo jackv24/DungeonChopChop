@@ -347,7 +347,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1917206671309960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.566, y: 0, z: 0}
+  m_LocalPosition: {x: -19.19, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4800211674073786}
@@ -535,7 +535,6 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 0
   maxAmountOfDrops: 1
-  isWizzer: 0
 --- !u!114 &114281982103539028
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -559,8 +558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac683e1fac78646bab4f40d0ae085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  health: 1
+  maxHealth: 2
+  health: 2
   weight: 2
   IsEnemy: 1
   enemyKind:
@@ -585,8 +584,8 @@ MonoBehaviour:
         type: 2}
       gradient:
         serializedVersion: 2
-        key0: {r: 0.22318338, g: 0.63235295, b: 0.36145452, a: 1}
-        key1: {r: 0.18944636, g: 0.35294116, b: 0.21086983, a: 1}
+        key0: {r: 0.34331748, g: 0.34549874, b: 0.36764705, a: 1}
+        key1: {r: 0.14889707, g: 0.18141478, b: 0.39705884, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -669,8 +668,8 @@ MonoBehaviour:
         type: 2}
       gradient:
         serializedVersion: 2
-        key0: {r: 0.21853374, g: 0.6911765, b: 0.30002388, a: 1}
-        key1: {r: 0.23939861, g: 0.35294116, b: 0.19463666, a: 1}
+        key0: {r: 0.18007118, g: 0, b: 0.49264705, a: 1}
+        key1: {r: 0.38104934, g: 0.1854455, b: 0.7205882, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -721,6 +720,39 @@ MonoBehaviour:
         atime0: 0
         atime1: 65535
         atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+  - particleType: 1
+    particles:
+    - particle: {fileID: 1928837666263156, guid: 64773d296b3f5bd42a8e2bdbbd6929be,
+        type: 2}
+      gradient:
+        serializedVersion: 2
+        key0: {r: 0.89705884, g: 0.8522969, b: 0.8179066, a: 1}
+        key1: {r: 0.7647059, g: 0.69792986, b: 0.6466263, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
@@ -817,10 +849,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11041045711d60349896c4e546f44cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverallRadiusFollow: 30
+  OverallRadiusFollow: 7
   OtherwiseRoam: 1
-  timeBetweenRoam: 3
-  runAwayAfterAttackTime: 1
+  timeBetweenRoam: 5
+  runAwayAfterAttackTime: 2
   enemyMask:
     serializedVersion: 2
     m_Bits: 2048
@@ -856,7 +888,7 @@ MonoBehaviour:
   thrust: 0
   projectileDmgMutliplier: 0
   damageOnTouch: 1
-  knockbackStrength: 1
+  knockbackStrength: 7
   shootSounds:
     clips: []
     volume: 1
@@ -864,11 +896,12 @@ MonoBehaviour:
     maxPitchVariance: 0.1
   projAmount: 0
   timeTillInterval: 0
-  minInterval: 3
+  minInterval: 2
   maxInterval: 5
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
   boomParticles:
   - particleType: 0
     particles:
@@ -1025,7 +1058,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 4
   m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 120
