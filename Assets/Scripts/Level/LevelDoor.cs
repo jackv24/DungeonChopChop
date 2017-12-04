@@ -98,6 +98,10 @@ public class LevelDoor : MonoBehaviour
 
 	IEnumerator WalkOut(GameObject player)
 	{
+        Collider[] doorColliders = targetDoor.GetComponentsInChildren<Collider>();
+        foreach (Collider col in doorColliders)
+            col.enabled = false;
+
 		PlayerInformation[] players = FindObjectsOfType<PlayerInformation>();
 
 		//renable tile colliders
@@ -137,7 +141,10 @@ public class LevelDoor : MonoBehaviour
 				elapsedTime += Time.deltaTime;
 			}
 		}
-	}
+
+        foreach (Collider col in doorColliders)
+            col.enabled = true;
+    }
 
 	public void ReplaceGraphic(LevelTile.Biomes biome)
 	{
