@@ -58,6 +58,7 @@ public class Chest : MonoBehaviour
 
     private Animator animator;
     private EnemySpawner enemySpawner;
+    private LevelTile tile;
 
     void OnEnable()
     {
@@ -70,6 +71,11 @@ public class Chest : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
 
         enemySpawner = GetComponentInParent<EnemySpawner>();
+
+        tile = GetComponentInParent<LevelTile>();
+
+        if (tile)
+            tile.OnTileEnter += EnableChest;
 
         //populate the chest with gold items
         if (chestType == ChestType.Gold)
@@ -98,6 +104,12 @@ public class Chest : MonoBehaviour
             }
         }
 	}
+
+    void EnableChest()
+    {
+        if (!gameObject.activeSelf)
+            gameObject.SetActive(true);
+    }
 
 	public void SetItem(BaseItem item)
 	{
