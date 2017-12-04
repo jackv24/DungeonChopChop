@@ -8,8 +8,8 @@ A top-down rogue-like dungeon crawler, with co-op play!
 
 ### Artists
 - Jerome Chung
-- Tin Le
-- David Tran
+- [Tin Le](https://www.artstation.com/cosmicuppacut)
+- [David Tran](https://www.artstation.com/sykarion)
 
 ### Programmers
 - [Harrison Gibbins](http://harrisongibbins.com/)

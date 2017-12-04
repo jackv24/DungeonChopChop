@@ -77,6 +77,8 @@ public class EnemyAttack : MonoBehaviour
     protected EnemyDeath enemyDeath;
     protected NavMeshAgent agent;
 
+    private FloorSpikes floorSpikes;
+
     [HideInInspector]
     public bool usesChildRotation = false;
 
@@ -90,6 +92,8 @@ public class EnemyAttack : MonoBehaviour
     {
         if (projectileDmgMutliplier == 0)
             projectileDmgMutliplier = 1;
+
+        floorSpikes = GetComponentInParent<FloorSpikes>();
 
         enemyDeath = GetComponent<EnemyDeath>();
         col = GetComponent<Collider>();
@@ -473,8 +477,13 @@ public class EnemyAttack : MonoBehaviour
         {
             if (damagesOtherEnemies)
             {
+                if (floorSpikes)
+                {
+                    if (c.col.tag != "Flying")
+                        c.health.AffectHealth(-damageOnTouch);
+                }
+            } else 
                 c.health.AffectHealth(-damageOnTouch);
-            }
         }
 
         if (enemyHealth)
