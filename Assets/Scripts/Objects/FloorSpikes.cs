@@ -103,7 +103,8 @@ public class FloorSpikes : MonoBehaviour {
     void SetDeactive()
     {
         active = false;
-        animator.gameObject.SetActive(false);
+		if (animator)
+        	animator.gameObject.SetActive(false);
     }
 
     IEnumerator spikeDelay()
