@@ -23,8 +23,9 @@ public class GameManager : MonoBehaviour
     public float enemyHealthMultiplier;
     public float enemyStrengthMultiplier;
 
-    [HideInInspector]
     public bool enteredDungeon = false;
+
+    private bool subscribed = false;
 
     void Awake()
     {
@@ -35,25 +36,43 @@ public class GameManager : MonoBehaviour
         if (LevelGenerator.Instance)
             LevelGenerator.Instance.OnTileEnter += CheckTileType;
 
+        SceneManager.activeSceneChanged += SubToEvent;
+
         StartingItem startingItem = GameObject.FindObjectOfType<StartingItem>();
 
         if (startingItem)
             startingItem.AddStartingItems();
     }
 
+    void SubToEvent(UnityEngine.SceneManagement.Scene t1, UnityEngine.SceneManagement.Scene t2)
+    {
+        if (!subscribed)
+        {
+            if (LevelGenerator.Instance)
+            {
+                LevelGenerator.Instance.OnTileEnter += CheckTileType;
+                subscribed = true;
+            }
+        }
+            
+    }
+
     void CheckTileType()
     {
-        if (LevelGenerator.Instance)
+        if (!enteredDungeon)
         {
-            if (LevelGenerator.Instance.currentTile)
+            if (LevelGenerator.Instance)
             {
-                if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon1 ||
+                if (LevelGenerator.Instance.currentTile)
+                {
+                    if (LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon1 ||
                     LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon2 ||
                     LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon3 ||
                     LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.Dungeon4 ||
                     LevelGenerator.Instance.currentTile.Biome == LevelTile.Biomes.BossDungeon)
-                {
-                    enteredDungeon = true;
+                    {
+                        enteredDungeon = true;
+                    }
                 }
             }
         }
