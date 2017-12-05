@@ -482,8 +482,7 @@ public class EnemyAttack : MonoBehaviour
                     if (c.col.tag != "Flying")
                         c.health.AffectHealth(-damageOnTouch);
                 }
-            } else 
-                c.health.AffectHealth(-damageOnTouch);
+            } 
         }
 
         if (enemyHealth)
