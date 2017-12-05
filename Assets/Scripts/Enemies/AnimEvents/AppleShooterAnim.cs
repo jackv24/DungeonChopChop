@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAnimEvent : MonoBehaviour {
-
+public class AppleShooterAnim : MonoBehaviour {
+    
     EnemyAttack enemyAttack;
 
     // Use this for initialization
@@ -14,12 +14,6 @@ public class EnemyAnimEvent : MonoBehaviour {
     public void Shoot()
     {
         enemyAttack.usesChildRotation = false;
-        enemyAttack.DoShoot();
-    }
-
-    public void ShootCircle()
-    {
-        enemyAttack.usesChildRotation = false;
-        enemyAttack.ShootCircle();
+        enemyAttack.Shootforward();
     }
 }
