@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StartingItem : MonoBehaviour {
 
+    public static StartingItem Instance;
     [Tooltip("Wait time to add items to play")]
     public float waitTime = 2;
 
@@ -16,6 +17,13 @@ public class StartingItem : MonoBehaviour {
     {
         if (!itemsAdded)
             StartCoroutine(AddItems());
+    }
+
+    void Start()
+    {
+        DontDestroyOnLoad(this);
+
+        Instance = this;
     }
 
     IEnumerator AddItems()
@@ -36,11 +44,6 @@ public class StartingItem : MonoBehaviour {
 
         itemsAdded = true;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     void AddSword()
     {

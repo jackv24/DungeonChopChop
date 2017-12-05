@@ -48,16 +48,19 @@ public class ItemsManager : MonoBehaviour {
 
 	public void KeyChange()
 	{
-		OnKeyChange ();
+        if (OnKeyChange != null)
+		    OnKeyChange ();
 	}
 
 	public void CoinChange()
 	{
-		OnCoinChange ();
+        if (OnCoinChange != null)
+		    OnCoinChange ();
 	}
 
 	public void DungeonKeyChange()
 	{
-		OnDungeonKeyChange ();
+        if (OnDungeonKeyChange != null)
+		    OnDungeonKeyChange ();
 	}
 }

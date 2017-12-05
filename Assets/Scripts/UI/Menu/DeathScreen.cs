@@ -58,6 +58,8 @@ public class DeathScreen : MonoBehaviour {
     {
         yield return new WaitForSeconds(waitTillDeathScreen);
 
+        SoundManager.FadeMusic(null);
+
         FadeScreen.Instance.FadeInOut();
 
         while (FadeScreen.Instance.faded)
