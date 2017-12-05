@@ -7,7 +7,7 @@ A top-down rogue-like dungeon crawler, with co-op play!
 - [Stefan Scuteri](https://stefanscuteri.wixsite.com/sscuteri)
 
 ### Artists
-- Jerome Chung
+- [Jerome Chung](https://www.artstation.com/gaddymax)
 - [Tin Le](https://www.artstation.com/cosmicuppacut)
 - [David Tran](https://www.artstation.com/sykarion)
 
