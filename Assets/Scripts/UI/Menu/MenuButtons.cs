@@ -15,6 +15,19 @@ public class MenuButtons : MonoBehaviour
 
     public void MainMenu()
     {
+        InputManager input = FindObjectOfType<InputManager>();
+        GameManager gm = FindObjectOfType<GameManager>();
+        PlayerManager pm = FindObjectOfType<PlayerManager>();
+
+        if (input)
+            Destroy(input.gameObject);
+
+        if (gm)
+            Destroy(gm.gameObject);
+
+        if (pm)
+            Destroy(pm.gameObject);
+        
         ObjectPooler.PurgePools();
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
@@ -85,7 +98,7 @@ public class MenuButtons : MonoBehaviour
     }
 
     public void QuitGame()
-    {
+    {        
         Application.Quit();
     }
 }

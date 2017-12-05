@@ -159,27 +159,7 @@ public class Chest : MonoBehaviour
 
     void RemoveChest()
     {
-        Collider[] cols = GetComponentsInChildren<Collider>();
-        MeshRenderer[] rends = GetComponentsInChildren<MeshRenderer>();
-
-        GetComponentInChildren<Animator>().enabled = false;
-
-        foreach (Collider col in cols)
-        {
-            if (col.transform.parent)
-            {
-                if (col.transform.parent.name != "RootAnimation")
-                    col.enabled = false;
-            }
-            else
-                col.enabled = false;
-        }
-
-        foreach (MeshRenderer ren in rends)
-        {
-            if (ren.transform.parent.name != "RootAnimation")
-                ren.enabled = false;
-        }
+        Destroy(gameObject);
 
         SpawnEffects.EffectOnHit(poofParticle, transform.position);
     }
