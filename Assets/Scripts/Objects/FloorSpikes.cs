@@ -91,10 +91,13 @@ public class FloorSpikes : MonoBehaviour {
     void SetActive()
     {
         active = true;
-        animator.gameObject.SetActive(true);
 
-        if (startUp)
-            animator.SetBool("Trigger", true);
+		if (animator) {
+			animator.gameObject.SetActive (true);
+
+			if (startUp)
+				animator.SetBool ("Trigger", true);
+		}
     }
 
     void SetDeactive()

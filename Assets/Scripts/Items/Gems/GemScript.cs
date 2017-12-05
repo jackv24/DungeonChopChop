@@ -43,7 +43,7 @@ public class GemScript : PickupableItems {
         }
     }
 
-	void OnTriggerEnter(Collider col)
+	void OnTriggerStay(Collider col)
 	{
         if (canPickup)
         {

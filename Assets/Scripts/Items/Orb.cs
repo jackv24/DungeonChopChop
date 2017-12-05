@@ -48,7 +48,7 @@ public class Orb : PickupableItems {
         }
 	}
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
         if (canPickup)
         {
