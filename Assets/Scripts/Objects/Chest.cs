@@ -106,9 +106,11 @@ public class Chest : MonoBehaviour
 	}
 
     void EnableChest()
-    {
-        if (!gameObject.activeSelf)
-            gameObject.SetActive(true);
+    {	
+		if (chestType == ChestType.Dungeon) {
+			if (!gameObject.activeSelf)
+				gameObject.SetActive (true);
+		}
     }
 
 	public void SetItem(BaseItem item)

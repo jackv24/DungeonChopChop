@@ -1025,11 +1025,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingType: 3
+  damagesOtherEnemies: 1
   projecticle: {fileID: 1671332070322448, guid: 1058d111d207a4443934e1b20fa0eb98,
     type: 2}
   shootPosition: {fileID: 0}
   thrust: 15
-  projectileDmgMutliplier: 0
+  projectileDmgMutliplier: 1
   damageOnTouch: 2
   knockbackStrength: 10
   shootSounds:
@@ -1045,6 +1046,7 @@ MonoBehaviour:
   burstFire: 0
   burstAmount: 0
   timeBetweenShots: 0
+  usesChildRotation: 0
 --- !u!114 &114845482331348132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1080,7 +1082,6 @@ MonoBehaviour:
     maxAmount: 0
   minAmountOfDrops: 0
   maxAmountOfDrops: 2
-  isWizzer: 0
 --- !u!114 &114930276797786752
 MonoBehaviour:
   m_ObjectHideFlags: 11

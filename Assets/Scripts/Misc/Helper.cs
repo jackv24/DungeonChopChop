@@ -104,8 +104,6 @@ public static class Helper
         }
 		else
 		{
-            Debug.LogError("There were no possible gameobjects to choose from!");
-
             return null;
         }
     }

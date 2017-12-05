@@ -76,12 +76,15 @@ public class FloorSpikes : MonoBehaviour {
 
     void SetupLevers()
     {
-        levers = tile.GetComponentsInChildren<Lever>();
+		if (tile)
+        	levers = tile.GetComponentsInChildren<Lever>();
 
         if (levers.Length > 0)
         {
-            foreach(Lever lever in levers)
-                lever.OnLeverActivated += Deactivated;
+			foreach (Lever lever in levers) {
+				if (lever)
+					lever.OnLeverActivated += Deactivated;
+			}
         }
     }
 

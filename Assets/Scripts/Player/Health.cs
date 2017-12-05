@@ -816,7 +816,8 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenPoison);
         }
 
-        ailmentIcon.SetActive(false);
+		if (ailmentIcon)
+        	ailmentIcon.SetActive(false);
 
         SetOGFade();
 
