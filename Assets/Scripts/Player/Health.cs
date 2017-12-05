@@ -748,6 +748,9 @@ public class Health : MonoBehaviour
 
     public void RemoveAilment()
     {
+        if (isFrozen)
+            UnFreeze();
+
         isBurned = false;
         isFrozen = false;
         isSandy = false;
@@ -1010,7 +1013,8 @@ public class Health : MonoBehaviour
 
         UnFreeze();
 
-        ailmentIcon.SetActive(false);
+        if (ailmentIcon)
+            ailmentIcon.SetActive(false);
 
         SetOGFade();
 
@@ -1034,6 +1038,9 @@ public class Health : MonoBehaviour
             GetComponent<PlayerMove>().enabled = true;
         else if (GetComponent<EnemyMove>())
             GetComponent<EnemyMove>().enabled = true;
+
+        if (ailmentIcon)
+            ailmentIcon.SetActive(false);
 
         isFrozen = false;
     }
@@ -1090,7 +1097,8 @@ public class Health : MonoBehaviour
                 ResetColour();
             }
 
-            ailmentIcon.SetActive(false);
+            if (ailmentIcon)
+                ailmentIcon.SetActive(false);
 
             SoundManager.PlayAilmentSound(StatusType.Sandy, ailmentSoundType.End, transform.position);
 
